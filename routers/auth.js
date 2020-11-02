@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt');
 const { Router } = require('express');
 const { toJWT } = require('../auth/jwt');
+const { SALT_ROUNDS } = require('../config/constants');
+const authMiddleware = require('../auth/authMiddleware');
 const User = require('../models').user;
 const Team = require('../models').favteam;
-const { SALT_ROUNDS } = require('../config/constants');
 
 const router = new Router();
 
@@ -89,6 +90,16 @@ router.post('/signup', async (req, res) => {
         .status(400)
         .send({ message: 'There is an existing account with this email' });
 
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+/*** GET INFO USER IF THERE IS A JWT TOKEN ***/
+router.get('/me', authMiddleware, async (req, res) => {
+  try {
+    delete req.user.dataValues['password'];
+    res.status(200).send({ ...req.user.dataValues });
+  } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
 });
