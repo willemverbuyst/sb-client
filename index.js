@@ -4,6 +4,7 @@ const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
 const { PORT } = require('./config/constants');
 const devRouter = require('./routers/development');
+const authRouter = require('./routers/auth');
 const app = express();
 const bodyParserMiddleWare = express.json();
 
@@ -21,6 +22,7 @@ if (process.env.DELAY) {
   });
 }
 
+app.use('/', authRouter);
 app.use('/dev', devRouter);
 
 app.listen(PORT, () => {

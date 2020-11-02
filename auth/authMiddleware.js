@@ -1,6 +1,5 @@
 const User = require('../models').user;
 const { toData } = require('./jwt');
-const Team = require('../models').fav_team;
 
 const auth = async (req, res, next) => {
   const auth =
@@ -14,10 +13,8 @@ const auth = async (req, res, next) => {
 
   try {
     const data = toData(auth[1]);
-    const user = await User.findOne({
-      where: { id: data.userId },
-      include: Team,
-    });
+    const user = await User.findByPk(data.userId);
+
     if (!user) return res.status(404).send({ message: 'User does not exist' });
 
     req.user = user;

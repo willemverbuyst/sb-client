@@ -1,20 +1,20 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class fav_team extends Model {
+  class favteam extends Model {
     static associate(models) {
-      team.hasMany(models.user);
+      favteam.hasMany(models.user);
     }
   }
-  fav_team.init(
+  favteam.init(
     {
       name: DataTypes.STRING,
       logo: DataTypes.TEXT,
     },
     {
       sequelize,
-      modelName: 'fav_team',
+      modelName: 'favteam',
     }
   );
-  return fav_team;
+  return favteam;
 };

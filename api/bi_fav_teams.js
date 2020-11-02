@@ -1,5 +1,5 @@
 const Axios = require('axios');
-const Team = require('../models').fav_team;
+const Team = require('../models').favteam;
 const apiKey = require('../config/constants').apiKey;
 const apiUrl = require('../config/constants').apiUrl;
 

@@ -2,10 +2,10 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('users', 'fav_teamId', {
+    await queryInterface.addColumn('users', 'favteamId', {
       type: Sequelize.INTEGER,
       references: {
-        model: 'fav_teams',
+        model: 'favteams',
         key: 'id',
       },
       onUpdate: 'CASCADE',
@@ -14,6 +14,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.removeColumn('users', 'fav_teamId');
+    await queryInterface.removeColumn('users', 'favteamId');
   },
 };

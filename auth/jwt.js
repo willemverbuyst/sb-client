@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { jwtSecret } = require('../config/constants');
+const { jwtSecret } = require('../config/secrets');
 
 const toJWT = (data) => jwt.sign(data, jwtSecret, { expiresIn: '1h' });
 
