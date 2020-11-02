@@ -67,7 +67,7 @@ router.post('/signup', async (req, res) => {
     return res.status(400).send('Please provide all the details');
 
   try {
-    const newUser = await User.create({
+    await User.create({
       userName,
       firstName,
       lastName,
@@ -77,6 +77,11 @@ router.post('/signup', async (req, res) => {
       admin,
       totaalToto,
       favteamId,
+    });
+
+    const newUser = await User.findOne({
+      where: { email },
+      include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
     });
 
     delete newUser.dataValues['password'];
