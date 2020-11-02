@@ -3,11 +3,12 @@ const { Router } = require('express');
 const { toJWT } = require('../auth/jwt');
 const User = require('../models').user;
 const Team = require('../models').favteam;
+const { SALT_ROUNDS } = require('../config/constants');
 
 const router = new Router();
 
 /*** LOGIN ***/
-router.post('/login', async (req, res, _next) => {
+router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -33,6 +34,61 @@ router.post('/login', async (req, res, _next) => {
     return res.status(200).send({ token, ...user.dataValues });
   } catch (error) {
     console.log(error);
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+/*** SIGNUP NEW USER ***/
+router.post('/signup', async (req, res) => {
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber,
+    admin,
+    totaalToto,
+    favteamId,
+  } = req.body;
+
+  if (
+    !userName ||
+    !firstName ||
+    !lastName ||
+    !email ||
+    !password ||
+    !phoneNumber ||
+    !admin ||
+    !totaalToto ||
+    !favteamId
+  )
+    return res.status(400).send('Please provide all the details');
+
+  try {
+    const newUser = await User.create({
+      userName,
+      firstName,
+      lastName,
+      email,
+      password: bcrypt.hashSync(password, SALT_ROUNDS),
+      phoneNumber,
+      admin,
+      totaalToto,
+      favteamId,
+    });
+
+    delete newUser.dataValues['password'];
+
+    const token = toJWT({ userId: newUser.id });
+
+    res.status(201).json({ token, ...newUser.dataValues });
+  } catch (error) {
+    if (error.name === 'SequelizeUniqueConstraintError')
+      return res
+        .status(400)
+        .send({ message: 'There is an existing account with this email' });
+
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
 });
