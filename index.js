@@ -8,8 +8,9 @@ const authRouter = require('./routers/auth');
 const app = express();
 const bodyParserMiddleWare = express.json();
 
-// Call getTeams once, to get all the teams and seed the fav_table
-// const teams = require('./api/bi_fav_teams');
+/* Call getTeams once, to get all the teams and seed the fav_table */
+/* timestamp: 02-11-2020 16:27 */
+// const teams = require('./api/bi_favteams');
 // teams.getTeams();
 
 app.use(loggerMiddleWare('dev'));
@@ -23,7 +24,9 @@ if (process.env.DELAY) {
 }
 
 app.use('/', authRouter);
-app.use('/dev', devRouter);
+
+/* For development only, to test queries */
+// app.use('/dev', devRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
