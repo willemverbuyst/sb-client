@@ -2,13 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
+const teams = require('./api/bi_fav_teams');
 const { PORT } = require('./config/constants');
 const devRouter = require('./routers/development');
-
 const app = express();
-app.use(loggerMiddleWare('dev'));
-
 const bodyParserMiddleWare = express.json();
+
+// Call getTeams once, to get all the teams and seed the fav_table
+// teams.getTeams();
+
+app.use(loggerMiddleWare('dev'));
 app.use(bodyParserMiddleWare);
 app.use(corsMiddleWare());
 
