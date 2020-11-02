@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const { Router } = require('express');
 const { toJWT } = require('../auth/jwt');
 const User = require('../models').user;
+const Team = require('../models').favteam;
 
 const router = new Router();
 
@@ -17,8 +18,8 @@ router.post('/login', async (req, res, _next) => {
 
     const user = await User.findOne({
       where: { email },
+      include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
     });
-    console.log(user);
 
     if (!user || !bcrypt.compareSync(password, user.password))
       return res.status(400).send({
