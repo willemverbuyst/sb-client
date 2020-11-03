@@ -5,7 +5,7 @@ const apiKey = require('../config/constants').apiKey;
 const apiUrl = require('../config/constants').apiUrl;
 const league_id = 2673;
 
-const getMatches = async () => {
+const getFixtures = async () => {
   const response = await Axios.get(`${apiUrl}/fixtures/league/${league_id}`, {
     headers: {
       'X-RapidAPI-Key': apiKey,
