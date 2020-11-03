@@ -10,7 +10,7 @@ const bodyParserMiddleWare = express.json();
 
 /* Call getTeams once, to get all the teams and seed the fav_table */
 /* timestamp: 02-11-2020 16:27 */
-// const teams = require('./api/bi_favteams');
+// const teams = require('./api/bc_favteams');
 // teams.getTeams();
 
 app.use(loggerMiddleWare('dev'));
@@ -25,7 +25,7 @@ if (process.env.DELAY)
 app.use('/', authRouter);
 
 /* For development only, to test queries */
-// app.use('/dev', devRouter);
+app.use('/dev', devRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
