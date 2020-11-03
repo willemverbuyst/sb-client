@@ -13,4 +13,14 @@ router.get('/', authMiddleware, async (_req, res) => {
   }
 });
 
+router.get('/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+  try {
+    const team = await Team.findByPk(id);
+    return res.status(200).send(team);
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
 module.exports = router;
