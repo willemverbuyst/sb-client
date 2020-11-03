@@ -88,7 +88,13 @@ router.post('/signup', async (req, res) => {
 
     const token = toJWT({ userId: newUser.id });
 
-    res.status(201).json({ token, ...newUser.dataValues });
+    res
+      .status(201)
+      .json({
+        token,
+        ...newUser.dataValues,
+        message: 'A user profile has been created',
+      });
   } catch (error) {
     if (error.name === 'SequelizeUniqueConstraintError')
       return res
@@ -132,7 +138,6 @@ router.patch('/me', async (req, res) => {
     const userToUpdate = await User.findOne({
       where: { email },
     });
-    console.log(userToUpdate);
 
     if (!userToUpdate || !bcrypt.compareSync(password1, userToUpdate.password))
       return res.status(400).send({
@@ -152,7 +157,83 @@ router.patch('/me', async (req, res) => {
 
     const token = toJWT({ userId: user.id });
 
-    return res.status(200).send({ token, ...user.dataValues });
+    return res
+      .status(200)
+      .send({
+        token,
+        ...user.dataValues,
+        message: 'Your has password has been changed',
+      });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+/*** UPDATE USER DETAILS ***/
+router.patch('/profile', async (req, res) => {
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber,
+    admin,
+    totaalToto,
+    favteamId,
+  } = req.body;
+
+  if (
+    !userName ||
+    !firstName ||
+    !lastName ||
+    !email ||
+    !password ||
+    !phoneNumber ||
+    !admin ||
+    !totaalToto ||
+    !favteamId
+  )
+    return res.status(400).send('Some data is missing, please try again');
+
+  try {
+    const userToUpdate = await User.findOne({
+      where: { email },
+    });
+
+    if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password))
+      return res.status(400).send({
+        message: 'User with that email not found or password incorrect',
+      });
+
+    await userToUpdate.update({
+      userName,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      admin,
+      totaalToto,
+      favteamId,
+    });
+
+    const user = await User.findOne({
+      where: { email },
+      include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
+    });
+
+    delete user.dataValues['password'];
+
+    const token = toJWT({ userId: user.id });
+
+    return res
+      .status(200)
+      .send({
+        token,
+        ...user.dataValues,
+        message: 'Your user profile has been updated',
+      });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: 'Something went wrong, sorry' });
