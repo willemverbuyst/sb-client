@@ -12,7 +12,6 @@ module.exports = {
       onDelete: 'SET NULL',
     });
   },
-
   down: async (queryInterface, Sequelize) => {
     await queryInterface.removeColumn('users', 'teamId');
   },
