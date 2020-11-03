@@ -10,14 +10,14 @@ const router = new Router();
 
 /*** LOGIN ***/
 router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password)
+    return res
+      .status(400)
+      .send({ message: 'Please provide both email and password' });
+
   try {
-    const { email, password } = req.body;
-
-    if (!email || !password)
-      return res
-        .status(400)
-        .send({ message: 'Please provide both email and password' });
-
     const user = await User.findOne({
       where: { email },
       include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
         message: 'User with that email not found or password incorrect',
       });
 
-    delete user.dataValues['password']; // don't send back the password hash
+    delete user.dataValues['password'];
 
     const token = toJWT({ userId: user.id });
 
@@ -105,6 +105,56 @@ router.get('/me', authMiddleware, async (req, res) => {
     delete req.user.dataValues['password'];
     res.status(200).send({ ...req.user.dataValues });
   } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+/*** CHANGE PASSWORD ***/
+router.patch('/me', async (req, res) => {
+  const { email, password1, password2, newPassword } = req.body;
+
+  if (!email || !password1 || !password2 || !newPassword)
+    return res
+      .status(400)
+      .send({ message: 'Please provide email and passwords' });
+
+  if (password1 !== password2)
+    return res
+      .status(400)
+      .send({ message: 'You must confirm your existing password' });
+
+  if (password1 === newPassword)
+    return res
+      .status(400)
+      .send({ message: 'You new new password must differ from the old one' });
+
+  try {
+    const userToUpdate = await User.findOne({
+      where: { email },
+    });
+    console.log(userToUpdate);
+
+    if (!userToUpdate || !bcrypt.compareSync(password1, userToUpdate.password))
+      return res.status(400).send({
+        message: 'User with that email not found or password incorrect',
+      });
+
+    await userToUpdate.update({
+      password: bcrypt.hashSync(newPassword, SALT_ROUNDS),
+    });
+
+    const user = await User.findOne({
+      where: { email },
+      include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
+    });
+
+    delete user.dataValues['password'];
+
+    const token = toJWT({ userId: user.id });
+
+    return res.status(200).send({ token, ...user.dataValues });
+  } catch (error) {
+    console.log(error);
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
 });
