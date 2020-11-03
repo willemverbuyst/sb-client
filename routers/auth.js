@@ -32,7 +32,10 @@ router.post('/login', async (req, res) => {
 
     const token = toJWT({ userId: user.id });
 
-    return res.status(200).send({ token, ...user.dataValues });
+    return res.status(200).send({
+      userData: { token, ...user.dataValues },
+      message: `Welcome back ${user.userName}`,
+    });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: 'Something went wrong, sorry' });
@@ -88,13 +91,13 @@ router.post('/signup', async (req, res) => {
 
     const token = toJWT({ userId: newUser.id });
 
-    res
-      .status(201)
-      .json({
+    res.status(201).json({
+      userData: {
         token,
         ...newUser.dataValues,
-        message: 'A user profile has been created',
-      });
+      },
+      message: `Welcome ${newUser.userName}, a user profile has been created`,
+    });
   } catch (error) {
     if (error.name === 'SequelizeUniqueConstraintError')
       return res
@@ -157,13 +160,13 @@ router.patch('/me', async (req, res) => {
 
     const token = toJWT({ userId: user.id });
 
-    return res
-      .status(200)
-      .send({
+    return res.status(200).send({
+      userData: {
         token,
         ...user.dataValues,
-        message: 'Your has password has been changed',
-      });
+      },
+      message: 'Your has password has been changed',
+    });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: 'Something went wrong, sorry' });
@@ -227,13 +230,13 @@ router.patch('/profile', async (req, res) => {
 
     const token = toJWT({ userId: user.id });
 
-    return res
-      .status(200)
-      .send({
+    return res.status(200).send({
+      userData: {
         token,
         ...user.dataValues,
-        message: 'Your user profile has been updated',
-      });
+      },
+      message: 'Your user profile has been updated',
+    });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: 'Something went wrong, sorry' });
