@@ -5,6 +5,7 @@ const corsMiddleWare = require('cors');
 const { PORT } = require('./config/constants');
 const devRouter = require('./routers/development');
 const authRouter = require('./routers/auth');
+const teamsRouter = require('./routers/teams');
 const app = express();
 const bodyParserMiddleWare = express.json();
 
@@ -28,6 +29,7 @@ if (process.env.DELAY)
   });
 
 app.use('/', authRouter);
+app.use('/teams', teamsRouter);
 
 /* For development only, to test queries */
 app.use('/dev', devRouter);

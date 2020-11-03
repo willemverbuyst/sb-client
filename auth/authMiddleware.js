@@ -1,6 +1,6 @@
 const { toData } = require('./jwt');
 const User = require('../models').user;
-const Team = require('../models').favteam;
+const Team = require('../models').team;
 
 const auth = async (req, res, next) => {
   const auth =
