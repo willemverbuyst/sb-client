@@ -119,52 +119,31 @@ router.get('/me', authMiddleware, async (req, res) => {
 });
 
 /*** CHANGE PASSWORD ***/
-router.patch('/me', async (req, res) => {
-  const { email, password1, password2, newPassword } = req.body;
+router.patch('/me', authMiddleware, async (req, res) => {
+  const { email, password, newPassword1, newPassword2 } = req.body;
 
-  if (!email || !password1 || !password2 || !newPassword)
+  if (!email || !password || !newPassword1 || !newPassword2)
     return res
       .status(400)
       .send({ message: 'Please provide email and passwords' });
 
-  if (password1 !== password2)
+  if (newPassword1 !== newPassword2)
     return res
       .status(400)
-      .send({ message: 'You must confirm your existing password' });
+      .send({ message: 'Please confirm you new password!' });
 
-  if (password1 === newPassword)
+  if (password === newPassword1)
     return res
       .status(400)
-      .send({ message: 'You new new password must differ from the old one' });
+      .send({ message: 'You new new password must differ from the old one!' });
 
   try {
-    const userToUpdate = await User.findOne({
-      where: { email },
+    const user = req.user;
+    await user.update({
+      password: bcrypt.hashSync(newPassword1, SALT_ROUNDS),
     });
-
-    if (!userToUpdate || !bcrypt.compareSync(password1, userToUpdate.password))
-      return res.status(400).send({
-        message: 'User with that email not found or password incorrect',
-      });
-
-    await userToUpdate.update({
-      password: bcrypt.hashSync(newPassword, SALT_ROUNDS),
-    });
-
-    const user = await User.findOne({
-      where: { email },
-      include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
-    });
-
-    delete user.dataValues['password'];
-
-    const token = toJWT({ userId: user.id });
 
     return res.status(200).send({
-      userData: {
-        token,
-        ...user.dataValues,
-      },
       message: 'Your has password has been changed',
     });
   } catch (error) {
