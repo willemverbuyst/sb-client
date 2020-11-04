@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     static associate(models) {
       user.belongsTo(models.team);
+      user.hasMany(models.prediction);
     }
   }
   user.init(

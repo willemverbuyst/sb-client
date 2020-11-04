@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class fixture extends Model {
     static associate(models) {
-      // define association here
+      fixture.hasMany(models.prediction);
     }
   }
   fixture.init(

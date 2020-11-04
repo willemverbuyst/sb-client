@@ -3,7 +3,8 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class prediction extends Model {
     static associate(models) {
-      // define association here
+      prediction.belongsTo(models.user);
+      prediction.belongsTo(models.fixture);
     }
   }
   prediction.init(
