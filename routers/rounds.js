@@ -4,7 +4,7 @@ const Fixture = require('../models').fixture;
 
 const router = new Router();
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     const fixtures = await Fixture.findAll({
