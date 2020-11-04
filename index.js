@@ -5,9 +5,10 @@ const corsMiddleWare = require('cors');
 const { PORT } = require('./config/constants');
 const devRouter = require('./routers/development');
 const authRouter = require('./routers/auth');
-const teamsRouter = require('./routers/teams');
-const roundRouter = require('./routers/rounds');
 const fixtureRouter = require('./routers/fixtures');
+const roundRouter = require('./routers/rounds');
+const teamRouter = require('./routers/teams');
+const userRouter = require('./routers/users');
 const app = express();
 const bodyParserMiddleWare = express.json();
 
@@ -31,9 +32,10 @@ if (process.env.DELAY)
   });
 
 app.use('/', authRouter);
-app.use('/teams', teamsRouter);
 app.use('/fixtures', fixtureRouter);
 app.use('/rounds', roundRouter);
+app.use('/teams', teamRouter);
+app.use('/users', userRouter);
 
 /* For development only, to test queries */
 app.use('/dev', devRouter);
