@@ -4,7 +4,6 @@ module.exports = {
     await queryInterface.createTable('fixtures', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
@@ -12,12 +11,26 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      homeTeamName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      homeTeamLogo: {
+        type: Sequelize.STRING,
+      },
       goalsHomeTeam: {
         type: Sequelize.INTEGER,
       },
       awayTeamId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      awayTeamName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      awayTeamLogo: {
+        type: Sequelize.STRING,
       },
       goalsAwayTeam: {
         type: Sequelize.INTEGER,

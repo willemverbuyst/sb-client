@@ -1,5 +1,4 @@
 const Axios = require('axios');
-/* Fixture model to be created */
 const Fixture = require('../models').fixture;
 const apiKey = require('../config/constants').apiKey;
 const apiUrl = require('../config/constants').apiUrl;
@@ -12,14 +11,18 @@ const getFixtures = async () => {
     },
   });
 
-  const allFixtures = response.data.api;
+  const fixtureData = response.data.api;
 
-  const fixtures = allFixtures.fixtures.map((fixture) => {
+  const fixtures = fixtureData.fixtures.map((fixture) => {
     return {
       id: fixture.fixture_id,
       homeTeamId: fixture.homeTeam.team_id,
+      homeTeamName: fixture.homeTeam.team_name,
+      homeTeamLogo: fixture.homeTeam.logo,
       goalsHomeTeam: fixture.goalsHomeTeam,
       awayTeamId: fixture.awayTeam.team_id,
+      awayTeamName: fixture.awayTeam.team_name,
+      awayTeamLogo: fixture.awayTeam.logo,
       goalsAwayTeam: fixture.goalsAwayTeam,
       eventTimeStamp: fixture.event_timestamp,
       round: fixture.round,
