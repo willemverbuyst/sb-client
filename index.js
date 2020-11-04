@@ -9,6 +9,7 @@ const fixtureRouter = require('./routers/fixtures');
 const roundRouter = require('./routers/rounds');
 const teamRouter = require('./routers/teams');
 const userRouter = require('./routers/users');
+const scoreRouter = require('./routers/scores');
 const app = express();
 const bodyParserMiddleWare = express.json();
 
@@ -36,6 +37,7 @@ app.use('/fixtures', fixtureRouter);
 app.use('/rounds', roundRouter);
 app.use('/teams', teamRouter);
 app.use('/users', userRouter);
+app.use('/scores', scoreRouter);
 
 /* For development only, to test queries */
 app.use('/dev', devRouter);

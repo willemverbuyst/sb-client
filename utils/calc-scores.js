@@ -39,4 +39,4 @@ const winner = (homeTeam, awayTeam) =>
 // const resultaat = calculateScore(results, prediction);
 // console.log(resultaat);
 
-exports.calculateScore = calculateScore;
+module.exports = calculateScore;
