@@ -30,4 +30,21 @@ router.get('/current/users/:id', authMiddleware, async (req, res) => {
   }
 });
 
+router.get('/all/users/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+
+  // check if the user is the same one as the one who is logged in
+  if (req.user.id !== +id)
+    res.status(401).send({ message: 'You are not allowed to see this data' });
+
+  try {
+    const fixtures = await Fixture.findAll({
+      include: { model: Prediction, where: { userId: id }, required: false },
+    });
+    res.status(200).send(fixtures);
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
 module.exports = router;
