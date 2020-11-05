@@ -1,6 +1,10 @@
 const { Router } = require('express');
 const authMiddleware = require('../auth/authMiddleware');
 const User = require('../models').user;
+const Fixture = require('../models').fixture;
+const Prediction = require('../models').prediction;
+const lastMonday = require('../utils/helper-functions');
+const { Op } = require('sequelize');
 
 const router = new Router();
 
@@ -15,6 +19,30 @@ router.get('/', authMiddleware, async (req, res) => {
       attributes: ['userName', 'firstName', 'lastName', 'email', 'phoneNumber'],
     });
     return res.status(200).send(users);
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const timeStampLastMonday = lastMonday();
+    const fixtures = await Fixture.findAll({
+      where: {
+        eventTimeStamp: {
+          [Op.lt]: [timeStampLastMonday],
+        },
+      },
+      include: {
+        model: Prediction,
+        where: { userId: id },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
+    });
+    res.status(200).send(fixtures);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }

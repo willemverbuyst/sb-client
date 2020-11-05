@@ -34,9 +34,4 @@ const calculateScore = (results, prediction) => {
 const winner = (homeTeam, awayTeam) =>
   homeTeam > awayTeam ? 'homeWins' : homeTeam < awayTeam ? 'awayWins' : 'draw';
 
-// const results = { homeTeam: 5, awayTeam: 1 };
-// const prediction = { homeTeam: 5, awayTeam: 1 };
-// const resultaat = calculateScore(results, prediction);
-// console.log(resultaat);
-
 module.exports = calculateScore;

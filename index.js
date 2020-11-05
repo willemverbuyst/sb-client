@@ -3,7 +3,6 @@ const express = require('express');
 const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
 const { PORT } = require('./config/constants');
-const devRouter = require('./routers/development');
 const authRouter = require('./routers/auth');
 const fixtureRouter = require('./routers/fixtures');
 const roundRouter = require('./routers/rounds');
@@ -38,9 +37,6 @@ app.use('/rounds', roundRouter);
 app.use('/teams', teamRouter);
 app.use('/users', userRouter);
 app.use('/scores', scoreRouter);
-
-/* For development only, to test queries */
-app.use('/dev', devRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);

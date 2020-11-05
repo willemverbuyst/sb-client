@@ -30,7 +30,7 @@
 
 ### /users/:id
 
-`GET` An overview of a users and his previous predictions and scores
+`GET` An overview of a user and his previous predictions and scores
 
 &nbsp;
 
