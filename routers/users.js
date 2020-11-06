@@ -3,7 +3,7 @@ const authMiddleware = require('../auth/authMiddleware');
 const User = require('../models').user;
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
-const lastMonday = require('../utils/helper-functions');
+const { lastMonday, chunkArray } = require('../utils/helper-functions');
 const { Op } = require('sequelize');
 
 const router = new Router();
@@ -29,10 +29,20 @@ router.get('/:id', async (req, res) => {
 
   try {
     const timeStampLastMonday = lastMonday();
+
     const fixtures = await Fixture.findAll({
       where: {
         eventTimeStamp: {
           [Op.lt]: [timeStampLastMonday],
+        },
+      },
+      order: [['id', 'ASC']],
+    });
+
+    const fixturesWithPrediction = await Fixture.findAll({
+      where: {
+        id: {
+          [Op.lte]: fixtures[fixtures.length - 1].id,
         },
       },
       include: {
@@ -42,7 +52,10 @@ router.get('/:id', async (req, res) => {
         required: false,
       },
     });
-    res.status(200).send(fixtures);
+
+    const fixturesGroupedByRounds = chunkArray(fixturesWithPrediction, 9);
+
+    res.status(200).send(fixturesGroupedByRounds);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
