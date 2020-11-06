@@ -4,6 +4,7 @@ const User = require('../models').user;
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const { lastMonday, chunkArray } = require('../utils/helper-functions');
+const calcScores = require('../utils/calc-scores');
 const { Op } = require('sequelize');
 
 const router = new Router();
@@ -51,9 +52,24 @@ router.get('/:id', async (req, res) => {
         attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
         required: false,
       },
+      raw: true,
+      nest: true,
     });
 
-    const fixturesGroupedByRounds = chunkArray(fixturesWithPrediction, 9);
+    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+      return {
+        ...fix,
+        score: calcScores(
+          { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
+          {
+            homeTeam: fix.predictions.pGoalsHomeTeam,
+            awayTeam: fix.predictions.pGoalsAwayTeam,
+          }
+        ),
+      };
+    });
+
+    const fixturesGroupedByRounds = chunkArray(fixturesWithScores, 9);
 
     res.status(200).send(fixturesGroupedByRounds);
   } catch (error) {

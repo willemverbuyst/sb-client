@@ -2,23 +2,23 @@
 
 ### /login
 
-`POST` Login with email and password
+- [x] `POST` Login with email and password
 
 ### /me
 
-`GET` If there is a valid token, return user info
+- [x] `GET` If there is a valid token, return user info
 
 ### /me/password
 
-`PATCH` User can change password
+- [x] `PATCH` User can change password
 
 ### /me/profile
 
-`PATCH` User can change the details of her/his profile
+- [x] `PATCH` User can change the details of her/his profile
 
 ### /signup
 
-`POST` Only the admin can signup a new member
+- [x] `POST` Only the admin can signup a new member
 
 &nbsp;
 
@@ -26,11 +26,11 @@
 
 ### /users
 
-`GET` An overview of all current users for the admin
+- [x] `GET` An overview of all current users for the admin
 
 ### /users/:id
 
-`GET` An overview of a user and his previous predictions and scores
+- [x] `GET` An overview of a user and his previous predictions and scores
 
 &nbsp;
 
@@ -38,7 +38,7 @@
 
 ### /teams
 
-`GET` An overview of teams for the the select box, so a user can pick her/his favorite team.
+- [x] `GET` An overview of teams for the the select box, so a user can pick her/his favorite team.
 
 ### ~~/teams/:id~~
 
