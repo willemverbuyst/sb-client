@@ -6,6 +6,7 @@ const User = require('../models').user;
 const { Op } = require('sequelize');
 const { fixturesPerRound, roundsPerGame } = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
+const reducer = require('../utils/reducer');
 const { chunkArrayGames, lastMonday } = require('../utils/helper-functions');
 
 const router = new Router();
@@ -121,15 +122,7 @@ router.get('/all', async (req, res) => {
         };
       });
 
-      let predictionsReduced = [];
-      predictionsWithScores.reduce((a, b) => {
-        if (!a[b.id]) {
-          a[b.id] = { id: b.id, user: b.user, score: 0 };
-          predictionsReduced.push(a[b.id]);
-        }
-        a[b.id].score += b.score;
-        return a;
-      }, {});
+      let predictionsReduced = reducer(predictionsWithScores);
 
       return res.status(200).send(predictionsReduced);
     } else {
@@ -193,15 +186,7 @@ router.get('/games/:id', async (req, res) => {
         };
       });
 
-      let predictionsReduced = [];
-      predictionsWithScores.reduce((a, b) => {
-        if (!a[b.id]) {
-          a[b.id] = { id: b.id, user: b.user, score: 0 };
-          predictionsReduced.push(a[b.id]);
-        }
-        a[b.id].score += b.score;
-        return a;
-      }, {});
+      const predictionsReduced = reducer(predictionsWithScores);
 
       return res.status(200).send(predictionsReduced);
     } else {
