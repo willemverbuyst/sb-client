@@ -2,7 +2,7 @@
 
 ### /login
 
-- [x] `POST` Login with email and password
+- [x] `POST` Log in with email and password
 
 ### /me
 
@@ -18,7 +18,7 @@
 
 ### /signup
 
-- [x] `POST` Only the admin can signup a new member
+- [x] `POST` Only the admin can sign up a new member
 
 &nbsp;
 
@@ -30,7 +30,7 @@
 
 ### /users/:id
 
-- [x] `GET` An overview of a user and his past predictions and scores
+- [x] `GET` An overview of a user (public profile) and her/his past predictions and scores
 
 &nbsp;
 
@@ -38,7 +38,7 @@
 
 ### /teams
 
-- [x] `GET` An overview of teams for the the select box, so a user can pick her/his favorite team.
+- [x] `GET` An overview of the teams for the the select box (ui), so a user can pick her/his favorite team.
 
 ### ~~/teams/:id~~
 
@@ -46,15 +46,15 @@
 
 &nbsp;
 
-# Fixtures
+# Rounds
 
-### /fixtures/
+### /rounds/current
 
-- [ ] `GET` Get all fictures including the predictions and scores of the logged in user
+- [x] `GET` Get the fictures of the current round including the predictions and scores of the logged-in user
 
-### /fixtures/round/:id
+### /rounds/all
 
-- [ ] `GET` Get the fictures including the predictions and scores of the logged in user for a particular round
+- [x] `GET` Get all the fictures (past, current, future) including the predictions and scores of the logged-in user
 
 &nbsp;
 
