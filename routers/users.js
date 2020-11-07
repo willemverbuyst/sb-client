@@ -12,16 +12,26 @@ const router = new Router();
 
 /*** GET ALL USERS FOR ADMIN ***/
 router.get('/', authMiddleware, async (req, res) => {
-  if (!req.user.admin)
-    res
-      .status(401)
-      .send({ message: 'You must be an adminstrator for this request' });
-
   try {
-    const users = await User.findAll({
-      attributes: ['userName', 'firstName', 'lastName', 'email', 'phoneNumber'],
-    });
-    return res.status(200).send(users);
+    if (!req.user.admin)
+      res
+        .status(401)
+        .send({ message: 'You must be an adminstrator for this request' });
+    else
+      try {
+        const users = await User.findAll({
+          attributes: [
+            'userName',
+            'firstName',
+            'lastName',
+            'email',
+            'phoneNumber',
+          ],
+        });
+        return res.status(200).send(users);
+      } catch (error) {
+        return res.status(400).send({ message: 'Something went wrong, sorry' });
+      }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }

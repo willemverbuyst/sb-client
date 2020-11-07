@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
 });
 
 /*** SIGNUP NEW USER ***/
-router.post('/signup', async (req, res) => {
+router.post('/signup', authMiddleware, async (req, res) => {
   const {
     userName,
     firstName,
@@ -55,6 +55,11 @@ router.post('/signup', async (req, res) => {
     totaalToto,
     favteamId,
   } = req.body;
+
+  if (!req.user.admin)
+    res
+      .status(401)
+      .send({ message: 'You must be an adminstrator for this request' });
 
   if (
     !userName ||
