@@ -1,13 +1,15 @@
 require('dotenv').config();
+const { PORT } = require('./config/constants');
 const express = require('express');
 const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
-const { PORT } = require('./config/constants');
 const authRouter = require('./routers/auth');
+const predictionRouter = require('./routers/predictions');
 const roundRouter = require('./routers/rounds');
+const scoreRouter = require('./routers/scores');
 const teamRouter = require('./routers/teams');
 const userRouter = require('./routers/users');
-const scoreRouter = require('./routers/scores');
+
 const app = express();
 const bodyParserMiddleWare = express.json();
 
@@ -31,10 +33,11 @@ if (process.env.DELAY)
   });
 
 app.use('/', authRouter);
+app.use('/predictions', predictionRouter);
 app.use('/rounds', roundRouter);
+app.use('/scores', scoreRouter);
 app.use('/teams', teamRouter);
 app.use('/users', userRouter);
-app.use('/scores', scoreRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
