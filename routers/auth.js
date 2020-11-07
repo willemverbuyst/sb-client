@@ -3,6 +3,7 @@ const { Router } = require('express');
 const { toJWT } = require('../auth/jwt');
 const { SALT_ROUNDS } = require('../config/constants');
 const authMiddleware = require('../auth/authMiddleware');
+const auth = require('../auth/authMiddleware');
 const User = require('../models').user;
 const Team = require('../models').team;
 
@@ -158,7 +159,7 @@ router.patch('/me/password', authMiddleware, async (req, res) => {
 });
 
 /*** UPDATE USER DETAILS ***/
-router.patch('/me/profile', async (req, res) => {
+router.patch('/me/profile', authMiddleware, async (req, res) => {
   const {
     userName,
     firstName,
@@ -185,9 +186,7 @@ router.patch('/me/profile', async (req, res) => {
     return res.status(400).send('Some data is missing, please try again');
 
   try {
-    const userToUpdate = await User.findOne({
-      where: { email },
-    });
+    const userToUpdate = req.user;
 
     if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password))
       return res.status(400).send({
@@ -200,7 +199,6 @@ router.patch('/me/profile', async (req, res) => {
       lastName,
       email,
       phoneNumber,
-      admin,
       totaalToto,
       favteamId,
     });
