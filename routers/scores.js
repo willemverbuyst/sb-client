@@ -2,20 +2,21 @@ const { Router } = require('express');
 //const authMiddleware = require('../auth/authMiddleware');
 const Prediction = require('../models').prediction;
 const Fixture = require('../models').fixture;
+const User = require('../models').user;
 const { Op } = require('sequelize');
-const calculateScore = require('../utils/calc-scores');
+const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
 
-router.get('/:id', async (req, res) => {
+router.get('/fixtures/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const toUpdateScore = await Prediction.findAll({
-      attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam', 'id'],
+    const predictions = await Prediction.findAll({
+      where: { fixtureId: +id },
+      attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
       include: [
         {
           model: Fixture,
-          attributes: ['goalsHomeTeam', 'goalsAwayTeam', 'status'],
           where: {
             status: 'Match Finished',
             goalsHomeTeam: {
@@ -26,27 +27,43 @@ router.get('/:id', async (req, res) => {
             },
           },
         },
+        { model: User, attributes: ['userName'] },
       ],
-      where: { userId: id },
+      raw: true,
+      nest: true,
     });
 
-    if (toUpdateScore.length) {
-      calculatedScores = toUpdateScore.map((row) => {
+    if (predictions.length) {
+      const predictionsWithScores = predictions.map((pred) => {
         return {
-          id: row.id,
-          totalScore: calculateScore(
+          ...pred,
+          score: calcScores(
+            pred.status,
             {
-              homeTeam: row.fixture.goalsHomeTeam,
-              awayTeam: row.fixture.goalsAwayTeam,
+              homeTeam: pred.fixture.goalsHomeTeam,
+              awayTeam: pred.fixture.goalsAwayTeam,
             },
             {
-              homeTeam: row.pGoalsHomeTeam,
-              awayTeam: row.pGoalsAwayTeam,
+              homeTeam: pred.pGoalsHomeTeam,
+              awayTeam: pred.pGoalsAwayTeam,
             }
           ),
         };
       });
-      return res.status(200).send(calculatedScores);
+
+      const predictionsReduced = {
+        fixture: predictionsWithScores[0].fixture,
+        scores: predictionsWithScores.map((a) => {
+          return {
+            pGoalsHomeTeam: a.pGoalsHomeTeam,
+            pGoalsAwayTeam: a.pGoalsAwayTeam,
+            score: a.score,
+            user: a.user.userName,
+          };
+        }),
+      };
+
+      return res.status(200).send(predictionsReduced);
     } else {
       return res.status(200).send({ message: 'No total scores' });
     }
