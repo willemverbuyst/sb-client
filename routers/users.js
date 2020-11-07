@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const authMiddleware = require('../auth/authMiddleware');
-const User = require('../models').user;
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
+const User = require('../models').user;
 const { lastMonday, chunkArrayRounds } = require('../utils/helper-functions');
 const { fixturesPerRound } = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');

@@ -1,19 +1,17 @@
 const { Router } = require('express');
 const authMiddleware = require('../auth/authMiddleware');
-const Prediction = require('../models').prediction;
 const Fixture = require('../models').fixture;
+const Prediction = require('../models').prediction;
 const User = require('../models').user;
 const { Op } = require('sequelize');
-const { fixturesPerRound, roundsPerGame } = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
 const reducer = require('../utils/reducer');
-const { chunkArrayGames, lastMonday } = require('../utils/helper-functions');
 
 const router = new Router();
 
 /*** GET THE SCORE OF EACH USER FOR A SPECIFIC PAST FIXTURE ***/
 /*** PUBLIC ***/
-router.get('/fixtures/:id', async (req, res) => {
+router.get('/fixtures/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     const predictions = await Prediction.findAll({
@@ -79,7 +77,7 @@ router.get('/fixtures/:id', async (req, res) => {
 
 /*** GET THE TOTAL SCORE OF EACH USER FOR ALL PAST FIXTURES ***/
 /*** PUBLIC ***/
-router.get('/all', async (req, res) => {
+router.get('/all', authMiddleware, async (_req, res) => {
   try {
     const predictions = await Prediction.findAll({
       attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
@@ -135,7 +133,7 @@ router.get('/all', async (req, res) => {
 
 /*** GET THE TOTAL SCORE OF EACH USER FOR A SPECIFIC PAST GAME ***/
 /*** PUBLIC ***/
-router.get('/games/:id', async (req, res) => {
+router.get('/games/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
   const rounds = [+id * 3 - 2, +id * 3 - 1, +id * 3];
