@@ -3,7 +3,6 @@ const { Router } = require('express');
 const { toJWT } = require('../auth/jwt');
 const { SALT_ROUNDS } = require('../config/constants');
 const authMiddleware = require('../auth/authMiddleware');
-const auth = require('../auth/authMiddleware');
 const User = require('../models').user;
 const Team = require('../models').team;
 

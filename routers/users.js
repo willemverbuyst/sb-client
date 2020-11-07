@@ -94,4 +94,44 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+/*** UPDATE USER ADMIN STATUS ***/
+router.patch('/:id/admin', authMiddleware, async (req, res) => {
+  const { admin } = req.body;
+  const { id } = req.params;
+
+  if (!admin)
+    return res.status(400).send('Admin status is missing, please try again');
+
+  try {
+    if (!req.user.admin)
+      res
+        .status(401)
+        .send({ message: 'You must be an adminstrator for this request' });
+    else {
+      try {
+        const userToUpdate = await User.findOne({ where: { id: +id } });
+
+        await userToUpdate.update({
+          admin,
+        });
+
+        const updatedUser = await User.findOne({
+          where: { id: +id },
+        });
+
+        delete updatedUser.dataValues['password'];
+
+        return res.status(200).send({
+          updatedUser: updatedUser,
+          message: 'The user profile has been updated',
+        });
+      } catch (error) {
+        return res.status(400).send({ message: 'Something went wrong, sorry' });
+      }
+    }
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
 module.exports = router;
