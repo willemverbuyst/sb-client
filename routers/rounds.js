@@ -13,6 +13,7 @@ const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
 
+/*** GET CURRENT FIXTURES (9), i.e. 1 ROUND FOR LOGGED IN USER ***/
 router.get('/current', authMiddleware, async (req, res) => {
   const { id } = req.user;
 
@@ -38,6 +39,8 @@ router.get('/current', authMiddleware, async (req, res) => {
   }
 });
 
+/*** GET ALL FIXTURES (306), i.e. 34 ROUNDS FOR LOGGED IN USER ***/
+/*** INCLUDING PREDICTIONS AND SCORES ***/
 router.get('/all', authMiddleware, async (req, res) => {
   const { id } = req.user;
 

@@ -10,6 +10,7 @@ const { Op } = require('sequelize');
 
 const router = new Router();
 
+/*** GET ALL USERS FOR ADMIN ***/
 router.get('/', authMiddleware, async (req, res) => {
   if (!req.user.admin)
     res
@@ -26,6 +27,8 @@ router.get('/', authMiddleware, async (req, res) => {
   }
 });
 
+/*** GET A USER INCLUDING PREDICTIONS AND SCORES FOR PAST FIXTURES ***/
+/*** PUBLIC PROFILE ***/
 router.get('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
