@@ -20,7 +20,7 @@ router.get('/current', authMiddleware, async (req, res) => {
   try {
     const timeStampLastMonday = lastMonday();
     const timeStampNextMonday = nextMonday();
-    const fixtures = await Fixture.findAll({
+    const fixturesWithPrediction = await Fixture.findAll({
       where: {
         eventTimeStamp: {
           [Op.between]: [timeStampLastMonday, timeStampNextMonday],
@@ -32,8 +32,25 @@ router.get('/current', authMiddleware, async (req, res) => {
         attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
         required: false,
       },
+      raw: true,
+      nest: true,
     });
-    res.status(200).send(fixtures);
+
+    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+      return {
+        ...fix,
+        score: calcScores(
+          fix.status,
+          { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
+          {
+            homeTeam: fix.predictions.pGoalsHomeTeam,
+            awayTeam: fix.predictions.pGoalsAwayTeam,
+          }
+        ),
+      };
+    });
+
+    res.status(200).send(fixturesWithScores);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }

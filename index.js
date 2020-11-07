@@ -4,7 +4,6 @@ const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
 const { PORT } = require('./config/constants');
 const authRouter = require('./routers/auth');
-const fixtureRouter = require('./routers/fixtures');
 const roundRouter = require('./routers/rounds');
 const teamRouter = require('./routers/teams');
 const userRouter = require('./routers/users');
@@ -32,7 +31,6 @@ if (process.env.DELAY)
   });
 
 app.use('/', authRouter);
-app.use('/fixtures', fixtureRouter);
 app.use('/rounds', roundRouter);
 app.use('/teams', teamRouter);
 app.use('/users', userRouter);
