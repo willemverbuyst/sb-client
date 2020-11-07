@@ -30,7 +30,7 @@
 
 ### /users/:id
 
-- [x] `GET` An overview of a user and his previous predictions and scores
+- [x] `GET` An overview of a user and his past predictions and scores
 
 &nbsp;
 
@@ -50,11 +50,11 @@
 
 ### /fixtures/
 
-`GET` Get all fictures including the predictions and scores of the logged in user
+- [ ] `GET` Get all fictures including the predictions and scores of the logged in user
 
 ### /fixtures/round/:id
 
-`GET` Get the fictures including the predictions and scores of the logged in user for a particular round
+- [ ] `GET` Get the fictures including the predictions and scores of the logged in user for a particular round
 
 &nbsp;
 
@@ -62,12 +62,12 @@
 
 ### /scores/games/:id
 
-`GET` An overview of the score per game for all users
+- [ ] `GET` An overview of the score per game for all users
 
 ### /scores/matches/:id
 
-`GET` An overview of the score per match for all users
+- [ ] `GET` An overview of the score per match for all users
 
 ### /scores/toto
 
-`GET` An overview of total score of all games for all users
+- [ ] `GET` An overview of total score of all games for all users
