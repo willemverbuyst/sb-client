@@ -9,14 +9,61 @@ const nextMonday = () => {
   return lastMonday() + 7 * 24 * 60 * 60;
 };
 
-const chunkArray = (array, size) => {
-  const chunked_arr = [];
+const chunkArray = (arr, size) => {
+  const chunkedArr = [];
   let index = 0;
-  while (index < array.length) {
-    chunked_arr.push(array.slice(index, size + index));
+  while (index < arr.length) {
+    chunkedArr.push(arr.slice(index, size + index));
     index += size;
   }
-  return chunked_arr;
+  return chunkedArr;
 };
 
-module.exports = { lastMonday, nextMonday, chunkArray };
+const chunkArrayRounds = (arr, sizeGroup) => {
+  const chunkedArr = [];
+  let index = 0;
+  while (index < arr.length) {
+    chunkedArr.push(arr.slice(index, sizeGroup + index));
+    index += sizeGroup;
+  }
+  const chunkedArrWithProp = chunkedArr.map((a, i) => {
+    return {
+      [`Round ${i + 1}`]: a,
+    };
+  });
+  return chunkedArrWithProp;
+};
+
+const chunkArrayGames = (arr, sizeGroup, sizeGame) => {
+  const groupedArr = chunkArrayRounds(arr, sizeGroup);
+  const chunkedArr = [];
+  let index = 0;
+
+  while (index < groupedArr.length) {
+    chunkedArr.push(groupedArr.slice(index, sizeGame + index));
+    index += sizeGame;
+  }
+
+  if (chunkedArr[chunkedArr.length - 1].length < sizeGame)
+    chunkedArr[chunkedArr.length - 2] = [
+      ...chunkedArr[chunkedArr.length - 2],
+      ...chunkedArr[chunkedArr.length - 1],
+    ];
+  chunkedArr.pop();
+
+  const chunkedArrIntoGames = chunkedArr.map((a, i) => {
+    return {
+      [`Game ${i + 1}`]: a,
+    };
+  });
+
+  return chunkedArrIntoGames;
+};
+
+module.exports = {
+  lastMonday,
+  nextMonday,
+  chunkArray,
+  chunkArrayRounds,
+  chunkArrayGames,
+};
