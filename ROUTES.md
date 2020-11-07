@@ -60,14 +60,22 @@
 
 # Scores
 
+### /scores/fixtures/:id
+
+- [x] `GET` An overview of the scores for a specific match for all users
+
 ### /scores/games/:id
 
-- [ ] `GET` An overview of the score per game for all users
+- [x] `GET` An overview of the score per game for all users
 
-### /scores/matches/:id
+### /scores/all
 
-- [ ] `GET` An overview of the score per match for all users
+- [x] `GET` An overview of total scores for all users
 
-### /scores/toto
+&nbsp;
 
-- [ ] `GET` An overview of total score of all games for all users
+# Prediction
+
+### /predictions/:id
+
+- [x] `POST` Post a prediction for a fixture
