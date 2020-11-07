@@ -5,6 +5,10 @@ const lastMonday = () => {
   return Math.floor(date / 1000);
 };
 
+const nextMonday = () => {
+  return lastMonday() + 7 * 24 * 60 * 60;
+};
+
 const chunkArray = (array, size) => {
   const chunked_arr = [];
   let index = 0;
@@ -15,4 +19,4 @@ const chunkArray = (array, size) => {
   return chunked_arr;
 };
 
-module.exports = { lastMonday, chunkArray };
+module.exports = { lastMonday, nextMonday, chunkArray };

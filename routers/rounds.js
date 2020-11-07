@@ -2,27 +2,35 @@ const { Router } = require('express');
 const authMiddleware = require('../auth/authMiddleware');
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
-const lastMonday = require('../utils/helper-functions');
 const { Op } = require('sequelize');
+const {
+  lastMonday,
+  nextMonday,
+  chunkArray,
+} = require('../utils/helper-functions');
+const { fixturesPerRound } = require('../constants/set-up-game');
+const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
 
-router.get('/current/users/:id', authMiddleware, async (req, res) => {
-  const { id } = req.params;
-
-  // check if the user is the same one as the one who is logged in
-  if (req.user.id !== +id)
-    res.status(401).send({ message: 'You are not allowed to see this data' });
+router.get('/current', authMiddleware, async (req, res) => {
+  const { id } = req.user;
 
   try {
-    const timeStampNow = lastMonday();
+    const timeStampLastMonday = lastMonday();
+    const timeStampNextMonday = nextMonday();
     const fixtures = await Fixture.findAll({
       where: {
         eventTimeStamp: {
-          [Op.between]: [timeStampNow, timeStampNow + 7 * 24 * 60 * 60],
+          [Op.between]: [timeStampLastMonday, timeStampNextMonday],
         },
       },
-      include: { model: Prediction, where: { userId: id }, required: false },
+      include: {
+        model: Prediction,
+        where: { userId: id },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
     });
     res.status(200).send(fixtures);
   } catch (error) {
@@ -30,18 +38,41 @@ router.get('/current/users/:id', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/all/users/:id', authMiddleware, async (req, res) => {
-  const { id } = req.params;
-
-  // check if the user is the same one as the one who is logged in
-  if (req.user.id !== +id)
-    res.status(401).send({ message: 'You are not allowed to see this data' });
+router.get('/all', authMiddleware, async (req, res) => {
+  const { id } = req.user;
 
   try {
-    const fixtures = await Fixture.findAll({
-      include: { model: Prediction, where: { userId: id }, required: false },
+    const fixturesWithPrediction = await Fixture.findAll({
+      include: {
+        model: Prediction,
+        where: { userId: id },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
+      raw: true,
+      nest: true,
     });
-    res.status(200).send(fixtures);
+
+    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+      return {
+        ...fix,
+        score: calcScores(
+          fix.status,
+          { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
+          {
+            homeTeam: fix.predictions.pGoalsHomeTeam,
+            awayTeam: fix.predictions.pGoalsAwayTeam,
+          }
+        ),
+      };
+    });
+
+    const fixturesGroupedByRounds = chunkArray(
+      fixturesWithScores,
+      fixturesPerRound
+    );
+
+    res.status(200).send(fixturesGroupedByRounds);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }

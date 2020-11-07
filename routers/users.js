@@ -4,6 +4,7 @@ const User = require('../models').user;
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const { lastMonday, chunkArray } = require('../utils/helper-functions');
+const { fixturesPerRound } = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
 const { Op } = require('sequelize');
 
@@ -25,12 +26,11 @@ router.get('/', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
   try {
     const timeStampLastMonday = lastMonday();
-
     const fixtures = await Fixture.findAll({
       where: {
         eventTimeStamp: {
@@ -60,6 +60,7 @@ router.get('/:id', async (req, res) => {
       return {
         ...fix,
         score: calcScores(
+          fix.status,
           { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
@@ -69,7 +70,10 @@ router.get('/:id', async (req, res) => {
       };
     });
 
-    const fixturesGroupedByRounds = chunkArray(fixturesWithScores, 9);
+    const fixturesGroupedByRounds = chunkArray(
+      fixturesWithScores,
+      fixturesPerRound
+    );
 
     res.status(200).send(fixturesGroupedByRounds);
   } catch (error) {
