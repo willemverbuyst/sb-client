@@ -29,7 +29,7 @@ const tokenUserStillValid = (user: User): TokenUserStillValid => ({
   user,
 });
 
-export const logInUser = (credentials: LogInCredentials) => {
+export const userLogIn = (credentials: LogInCredentials) => {
   const { email, password } = credentials;
   return async (dispatch: any, _getState: GetUserState) => {
     // dispatch(appLoading());

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,6 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { LogInCredentials } from '../../models/credentials.model';
+import { userLogIn } from '../../store/user/actions';
+import { ButtonEvent } from '../../models/events.model';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -29,6 +33,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LogIn() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [logInCredentials, setLogInCredentials] = useState<LogInCredentials>({
+    email: '',
+    password: '',
+  });
+
+  const submitForm = (e: ButtonEvent): void => {
+    e.preventDefault();
+    dispatch(userLogIn(logInCredentials))
+    setLogInCredentials({
+      email: '',
+      password: '',
+    });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -48,6 +66,13 @@ export default function LogIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={logInCredentials.email}
+            onChange={(e) =>
+              setLogInCredentials({
+                ...logInCredentials,
+                email: e.target.value,
+              })
+            }
           />
           <TextField
             variant="outlined"
@@ -59,6 +84,13 @@ export default function LogIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={logInCredentials.password}
+            onChange={(e) =>
+              setLogInCredentials({
+                ...logInCredentials,
+                password: e.target.value,
+              })
+            }
           />
           <Button
             type="submit"
@@ -66,6 +98,7 @@ export default function LogIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={submitForm}
           >
             Log In
           </Button>
