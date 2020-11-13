@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS_USER } from './types';
+import { LOG_IN_SUCCESS_USER } from './types';
 
 const initialState: any = {
   id: null,
@@ -7,7 +7,7 @@ const initialState: any = {
 
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case LOGIN_SUCCESS_USER:
+    case LOG_IN_SUCCESS_USER:
       const userToken = action.user.token;
       userToken && localStorage.setItem('user_token', userToken);
       return { ...state, ...action.user };

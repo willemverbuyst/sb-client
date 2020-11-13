@@ -1,8 +1,8 @@
-import { LOGIN_SUCCESS_USER } from './types';
+import { LOG_IN_SUCCESS_USER } from './types';
 
 export const loginSuccessUser = (user: any) => {
   return {
-    type: LOGIN_SUCCESS_USER,
+    type: LOG_IN_SUCCESS_USER,
     user,
   };
 };
