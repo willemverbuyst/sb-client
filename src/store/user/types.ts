@@ -3,26 +3,26 @@ export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const TOKEN_STILL_VALID_USER = 'TOKEN_STILL_VALID_USER';
 
 export type UserState = {
-  user: User;
+  user: User | null;
 };
 
 export type GetUserState = () => UserState;
 
 export type User = {
-  id: number | null;
-  userName: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  email: string | null;
-  phoneNumber: string | null;
-  admin: boolean | null;
-  totaalToto: boolean | null;
-  token: string | null;
-  team: Team | null;
+  id: number;
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  admin: boolean;
+  totaalToto: boolean;
+  token: string;
+  team: Team;
 };
 
 export type Team = {
-  id: number | null;
+  id: number;
   logo: string;
   name: string;
 };
@@ -41,7 +41,7 @@ export type TokenUserStillValid = {
   user: User;
 };
 
-export type TeacherActionTypes =
+export type UserActionTypes =
   | LogInSuccessUser
   | LogOutUser
   | TokenUserStillValid;
