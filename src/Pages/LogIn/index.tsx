@@ -71,7 +71,6 @@ export default function LogIn() {
           </Button>
         </form>
       </div>
-   
     </Container>
   );
 }
