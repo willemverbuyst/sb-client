@@ -1,1 +1,3 @@
-export const selectStudentSubjects = (state: any) => state.user;
+import { UserState } from './types';
+
+export const selectStudentSubjects = (state: UserState) => state.user;
