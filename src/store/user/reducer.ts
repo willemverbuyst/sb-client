@@ -22,7 +22,7 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
 
     case LOG_OUT_USER:
       localStorage.removeItem('user_token');
-      return { ...initialState, user: null };
+      return { ...initialState, user: null, token: null };
 
     case TOKEN_STILL_VALID_USER:
       return { ...state, user: action.userData };

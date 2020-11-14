@@ -6,15 +6,31 @@ import store from './store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        body: {
+          backgroundColor: '#e6e6e6',
+        },
+      },
+    },
+  },
+});
 
 ReactDOM.render(
-  // <React.StrictMode>
     <Router>
       <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <App />
+        </ThemeProvider>
       </Provider>
     </Router>,
-  // </React.StrictMode>,
   document.getElementById('root')
 );
 

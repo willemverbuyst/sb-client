@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: theme.typography.pxToRem(15),
       fontWeight: theme.typography.fontWeightRegular,
     },
+    title: {
+      fontWeight: 'bold',
+      marginBottom: theme.spacing(1),
+      color: theme.palette.secondary.main
+    }
   }),
 );
 
@@ -36,7 +41,7 @@ export default function Regels() {
   return (
     token ? (  
     <div className={classes.root}>
-      <Typography variant="h2">
+      <Typography variant="h2" className={classes.title}>
         Regels
       </Typography>
       <Accordion>

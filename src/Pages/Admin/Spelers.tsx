@@ -7,6 +7,7 @@ import { selectPlayers } from '../../store/admin/selectors';
 import PlayerCard from '../../Components/PlayerCard';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,6 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
     control: {
       padding: theme.spacing(2),
     },
+    title: {
+      fontWeight: 'bold',
+      marginBottom: theme.spacing(1),
+      color: theme.palette.secondary.main
+    }
   }),
 );
 
@@ -39,14 +45,19 @@ export default function Spelers() {
   }, [dispatch]);
   
   return (
-    <Grid container className={classes.root} spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={spacing}>
-          {players && players.map((player, i) => (
-            <PlayerCard key={i} player={player}/>
-          ))}
+    <>
+      <Typography variant="h2" className={classes.title}>
+          Spelers
+      </Typography>
+      <Grid container className={classes.root} spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={spacing}>
+            {players && players.map((player, i) => (
+              <PlayerCard key={i} player={player}/>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </>        
   ) 
 }
