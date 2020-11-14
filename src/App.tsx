@@ -5,12 +5,12 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import IceBlueGold from './ui/theme';
 import Header from './Components/Header';
-import Admin from './Pages/Admin';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Scores from './Pages/Scores';
+import SignUp from './Pages/Admin/SignUp';
 import Voorspellingen from './Pages/Voorspellingen';
 import Toast from './Components/Toast';
 import { Container } from '@material-ui/core';
@@ -60,7 +60,7 @@ function App() {
         ) : (
         <Container maxWidth="md" className={classes.borderContainer}>
           <Switch>
-            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/admin/signup" component={SignUp} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/profiel" component={Profiel} />

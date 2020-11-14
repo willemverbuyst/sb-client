@@ -16,6 +16,7 @@ import Home from '@material-ui/icons/Home'
 import { selectToken } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from "../../assets/ball.png";
+import { Menu, MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,8 +41,6 @@ export default function Header() {
   const history = useHistory();
   const token = useSelector(selectToken);
 
-  const gotoAdmin = () => history.push("/admin");
-
   const gotoHome = () => history.push("/home");
 
   const gotoProfiel = () => history.push("/profiel");
@@ -50,8 +49,24 @@ export default function Header() {
 
   const gotoScores = () => history.push("/scores");
 
+  const gotoSignUp = () => {
+    handleClose()
+    history.push("/admin/signup")
+  };
+
+  const gotoSpelers = () => {
+    handleClose()
+    history.push("/admin/spelers")
+  };
+
   const gotoVoorspellingen = () => history.push("/voorspellingen");
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
+ 
+  const handleClose = () => setAnchorEl(null);
+ 
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -70,9 +85,21 @@ export default function Header() {
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
                 <AccountCircle />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoAdmin}>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account 
+              circle" onClick={handleClick}>
+              {/* onClick={gotoAdmin}> */}
                 <Build />
               </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
+                <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
+              </Menu>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoRegels}>
                 <HelpOutline />
               </IconButton>

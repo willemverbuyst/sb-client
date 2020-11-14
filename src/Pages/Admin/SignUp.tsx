@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import {  useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors'
 
-export default function Admin() {
+export default function SignUp() {
   const token = useSelector(selectToken);
   const history = useHistory();
 
@@ -15,7 +15,7 @@ export default function Admin() {
 
   return (
     token ? (  <div>
-      Admin
+      Admin - Sign Up
     </div>) : ( null )
   )
 }
