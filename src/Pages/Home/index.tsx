@@ -14,8 +14,12 @@ export default function Home() {
   }, [token]);
 
   return (
-    <div>
+    token ? (  <div>
       Home
-    </div>
+      Top 3
+      Top 3
+      Current Round
+    </div>) : ( null )
+  
   )
 }
