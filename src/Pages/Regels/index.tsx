@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../store/user/selectors'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -21,9 +24,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Regels() {
   const classes = useStyles();
+  const token = useSelector(selectToken);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!token) {
+      history.push("/login");
+    }
+  }, [token]);
 
   return (
     <div className={classes.root}>
+      <Typography variant="h2">
+        Regels
+      </Typography>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -34,10 +35,14 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Header() {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const history = useHistory();
   const token = useSelector(selectToken);
   const user = useSelector(selectUser)
 
   // console.log(user)
+
+  const gotoRegels = () => history.push("/regels");
+
 
   return (
     <div className={classes.root}>
@@ -54,7 +59,7 @@ export default function Header() {
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
                 <ExitToAppIcon />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle">
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoRegels}>
                 <HelpOutline/>
               </IconButton>
             </Toolbar>

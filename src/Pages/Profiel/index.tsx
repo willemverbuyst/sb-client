@@ -11,7 +11,7 @@ export default function Profiel() {
     if (!token) {
       history.push("/login");
     }
-  });
+  }, [token]);
 
   return (
     <div>
