@@ -7,6 +7,7 @@ import IceBlueGold from './ui/theme';
 import Header from './Components/Header';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
+import PageNotFound from './Pages/PageNotFound';
 import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Scores from './Pages/Scores';
@@ -68,6 +69,7 @@ function App() {
             <Route exact path="/regels" component={Regels} />
             <Route exact path="/scores" component={Scores} />
             <Route exact path="/voorspellingen" component={Voorspellingen} />
+            <Route path="/" component={PageNotFound} />
           </Switch>
       </Container>
       )}
