@@ -57,8 +57,8 @@ function App() {
       {isLoading ?  (
         <Container maxWidth="md" className={classes.spinnerContainer}>
           <Progress/>
-        </Container>
-        ) : (
+        </Container> 
+        ) : null }
         <Container maxWidth="md" className={classes.borderContainer}>
           <Switch>
             <Route exact path="/admin/signup" component={SignUp} />
@@ -72,7 +72,6 @@ function App() {
             <Route path="/" component={PageNotFound} />
           </Switch>
       </Container>
-      )}
     </MuiThemeProvider>
   );
 }
