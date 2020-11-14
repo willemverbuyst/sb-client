@@ -11,13 +11,13 @@ import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Scores from './Pages/Scores';
 import SignUp from './Pages/Admin/SignUp';
+import Spelers from './Pages/Admin/Spelers';
 import Voorspellingen from './Pages/Voorspellingen';
 import Toast from './Components/Toast';
 import { Container } from '@material-ui/core';
 import Progress from './Components/Progress';
 import { selectAppLoading } from './store/appState/selectors';
 import { getUserWithStoredToken } from './store/user/actions';
- 
 
 const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
@@ -61,6 +61,7 @@ function App() {
         <Container maxWidth="md" className={classes.borderContainer}>
           <Switch>
             <Route exact path="/admin/signup" component={SignUp} />
+            <Route exact path="/admin/spelers" component={Spelers} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/profiel" component={Profiel} />
