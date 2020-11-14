@@ -4,6 +4,8 @@ export type AdminState = {
   players: Player[] | null;
 };
 
+export type GetAdminState = () => AdminState;
+
 export type Player = {
   userName: string;
   firstName: string;
