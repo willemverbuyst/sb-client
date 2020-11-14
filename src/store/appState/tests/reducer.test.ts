@@ -9,7 +9,7 @@ import {
   AppState,
 } from '../types';
 
-describe('appStateReducer', () => {
+describe('#appStateReducer', () => {
   const initialState: AppState = {
     loading: false,
     message: null,
@@ -25,7 +25,7 @@ describe('appStateReducer', () => {
       expect(newState.message).toBeNull;
     });
   });
-  describe('when given #SET_MESSAGE action type', () => {
+  describe('if given SET_MESSAGE action type', () => {
     test('returns a new state with the payload containing correct values', () => {
       const severity = 'success';
       const text = 'test_message';
@@ -42,7 +42,7 @@ describe('appStateReducer', () => {
       expect(newState.loading).toBe(false);
     });
   });
-  describe('when given #APP_LOADING action type', () => {
+  describe('if given APP_LOADING action type', () => {
     test('returns a new state with loading set to true', () => {
       const action: AppLoading = { type: APP_LOADING };
       const newState: AppState = reducer(initialState, action);
@@ -50,7 +50,7 @@ describe('appStateReducer', () => {
       expect(newState.loading).toBe(true);
     });
   });
-  describe('when given #APP_DONE_LOADING action type', () => {
+  describe('if given #APP_DONE_LOADING action type', () => {
     test('returns a new state with loading set to false', () => {
       const action: AppDoneLoading = { type: APP_DONE_LOADING };
       const newState: AppState = reducer(initialState, action);
