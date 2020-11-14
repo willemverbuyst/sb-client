@@ -9,8 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HelpOutline from '@material-ui/icons/HelpOutline';
-import MenuIcon from '@material-ui/icons/Menu';
-import { selectUser } from '../../store/user/selectors';
+import List from '@material-ui/icons/List';
+import Build from '@material-ui/icons/Build';
+import EmojiEvents from '@material-ui/icons/EmojiEvents'
+import Home from '@material-ui/icons/Home'
 import { selectToken } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from "../../assets/ball.png";
@@ -37,12 +39,18 @@ export default function Header() {
   const dispatch = useDispatch()
   const history = useHistory();
   const token = useSelector(selectToken);
-  const user = useSelector(selectUser)
 
-  // console.log(user)
+  const gotoAdmin = () => history.push("/admin");
+
+  const gotoHome = () => history.push("/home");
+
+  const gotoProfiel = () => history.push("/profiel");
 
   const gotoRegels = () => history.push("/regels");
 
+  const gotoScores = () => history.push("/scores");
+
+  const gotoVoorspellingen = () => history.push("/voorspellingen");
 
   return (
     <div className={classes.root}>
@@ -50,17 +58,26 @@ export default function Header() {
         
           { token ? (
             <Toolbar>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon />
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoHome}>
+                <Home />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle">
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={gotoVoorspellingen}>
+                <List />
+              </IconButton>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoScores}>
+                <EmojiEvents />
+              </IconButton>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
                 <AccountCircle />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
-                <ExitToAppIcon />
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoAdmin}>
+                <Build />
               </IconButton>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoRegels}>
-                <HelpOutline/>
+                <HelpOutline />
+              </IconButton>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut)} >
+                <ExitToAppIcon />
               </IconButton>
             </Toolbar>
             ) : (
