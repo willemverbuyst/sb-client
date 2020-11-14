@@ -14,8 +14,8 @@ export default function Voorspellingen() {
   });
 
   return (
-    <div>
+    token ? ( <div>
       Voorspellingen
-    </div>
+    </div>) : ( null )
   )
 }

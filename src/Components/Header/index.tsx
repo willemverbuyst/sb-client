@@ -76,7 +76,7 @@ export default function Header() {
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoRegels}>
                 <HelpOutline />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut)} >
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
                 <ExitToAppIcon />
               </IconButton>
             </Toolbar>

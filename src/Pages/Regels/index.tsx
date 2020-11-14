@@ -31,9 +31,10 @@ export default function Regels() {
     if (!token) {
       history.push("/login");
     }
-  }, [token]);
+  });
 
   return (
+    token ? (  
     <div className={classes.root}>
       <Typography variant="h2">
         Regels
@@ -121,6 +122,7 @@ export default function Regels() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-    </div>
+    </div> 
+    ) : ( null )
   );
 }

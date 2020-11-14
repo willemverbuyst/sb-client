@@ -11,14 +11,11 @@ export default function Home() {
     if (!token) {
       history.push("/login");
     }
-  }, [token]);
+  });
 
   return (
     token ? (  <div>
       Home
-      Top 3
-      Top 3
-      Current Round
     </div>) : ( null )
   
   )

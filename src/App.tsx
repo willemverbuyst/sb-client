@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
@@ -12,11 +12,12 @@ import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Scores from './Pages/Scores';
 import Voorspellingen from './Pages/Voorspellingen';
-import Toast from './Components/Toast'
+import Toast from './Components/Toast';
 import { Container } from '@material-ui/core';
 import Progress from './Components/Progress';
 import { selectAppLoading } from './store/appState/selectors';
-
+import { getUserWithStoredToken } from './store/user/actions';
+ 
 
 const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
@@ -41,7 +42,12 @@ const useStyles = makeStyles((_theme: Theme) =>
 
 function App() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading)
+
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
 
   return (
     <MuiThemeProvider theme={IceBlueGold}>
