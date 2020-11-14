@@ -2,7 +2,6 @@ import {
   APP_LOADING,
   APP_DONE_LOADING,
   SET_MESSAGE,
-  CLEAR_MESSAGE,
   AppState,
   AppStateTypes,
 } from './types';
@@ -22,9 +21,6 @@ const appStateReducer = (state = initialState, action: AppStateTypes) => {
 
     case SET_MESSAGE:
       return { ...state, message: { ...action.payload } };
-
-    case CLEAR_MESSAGE:
-      return { ...state, message: {} };
 
     default:
       return state;

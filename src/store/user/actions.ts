@@ -41,7 +41,7 @@ export const userLogIn = (credentials: LogInCredentials) => {
       });
 
       dispatch(logInSuccessUser(response.data.userData));
-      dispatch(setMessage('success', 'welcome back!'));
+      dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
