@@ -29,10 +29,7 @@ const useStyles = makeStyles((_theme: Theme) =>
       marginTop: '2rem',
     },
     spinnerContainer: {
-      borderRadius: '4px',
-      padding: '4rem',
       minHeight: '80vh',
-      marginTop: '2rem',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
