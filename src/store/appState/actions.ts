@@ -9,7 +9,6 @@ import {
   AppDoneLoading,
   ClearMessage,
   SetMessage,
-  Severity,
 } from './types';
 
 export const appLoading = (): AppLoading => ({ type: APP_LOADING });
@@ -20,7 +19,10 @@ export const appDoneLoading = (): AppDoneLoading => ({
 
 export const clearMessage = (): ClearMessage => ({ type: CLEAR_MESSAGE });
 
-export const setMessage = (severity: Severity, text: string): SetMessage => {
+export const setMessage = (
+  severity: 'success' | 'info' | 'warning' | 'error',
+  text: string
+): SetMessage => {
   return {
     type: SET_MESSAGE,
     payload: {
@@ -31,7 +33,7 @@ export const setMessage = (severity: Severity, text: string): SetMessage => {
 };
 
 export const showMessageWithTimeout = (
-  severity: Severity,
+  severity: 'success' | 'info' | 'warning' | 'error',
   text: string,
   timeOutMilliSeconds: number
 ) => {

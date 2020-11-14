@@ -12,6 +12,12 @@ import {
   User,
 } from './types';
 import { LogInCredentials } from '../../models/credentials.model';
+import {
+  // appLoading,
+  // appDoneLoading,
+  showMessageWithTimeout,
+  setMessage,
+} from '../appState/actions';
 
 const logInSuccessUser = (user: User): LogInSuccessUser => {
   return {
@@ -40,15 +46,15 @@ export const userLogIn = (credentials: LogInCredentials) => {
       });
 
       dispatch(logInSuccessUser(response.data.userData));
-      // dispatch(showMessageWithTimeout('success', false, 'welcome back!', 1500));
+      dispatch(showMessageWithTimeout('success', 'welcome back!', 1500));
       // dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
-        // dispatch(setMessage('error', true, error.response.data.message));
+        dispatch(setMessage('error', error.response.data.message));
       } else {
         console.log(error.message);
-        // dispatch(setMessage('error', true, error.message));
+        dispatch(setMessage('error', error.message));
       }
       // dispatch(appDoneLoading());
     }

@@ -11,12 +11,8 @@ export type AppState = {
 export type GetState = () => AppState;
 
 export type Message = {
-  severity: Severity;
-  text: string;
-};
-
-export type Severity = {
   severity: 'success' | 'info' | 'warning' | 'error';
+  text: string;
 };
 
 export type AppLoading = {
