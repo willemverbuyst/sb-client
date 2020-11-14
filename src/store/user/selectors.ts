@@ -1,3 +1,5 @@
 import { StoreState } from '../types';
 
-export const selectUser = (state: StoreState) => state.userData;
+export const selectToken = (state: StoreState) => state.userState.token;
+
+export const selectUser = (state: StoreState) => state.userState.user;

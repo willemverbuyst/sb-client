@@ -3,7 +3,8 @@ export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const TOKEN_STILL_VALID_USER = 'TOKEN_STILL_VALID_USER';
 
 export type UserState = {
-  userData: UserData | null;
+  token: string | null;
+  user: UserData | null;
 };
 
 export type GetUserState = () => UserState;

@@ -1,8 +1,8 @@
 import { AppState } from './appState/types';
-import { UserData } from './user/types';
+import { UserState } from './user/types';
 
 export type StoreState = {
-  userData: UserData;
+  userState: UserState;
   appState: AppState;
 };
 

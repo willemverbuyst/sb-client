@@ -4,11 +4,14 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
 import { selectUser } from '../../store/user/selectors';
+import { selectToken } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
+import ball from "../../assets/ball.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,8 +21,11 @@ const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
     },
-    title: {
-      flexGrow: 1,
+    sectionDesktop: {
+      display: 'none',
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+      },
     },
   }),
 );
@@ -27,22 +33,36 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Header() {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const token = useSelector(selectToken);
   const user = useSelector(selectUser)
 
-  // console.log("USER: ", user)
+  // console.log(user)
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Sport Betting App
-          </Typography>
-          <Button onClick={() => dispatch(userLogOut())} color="inherit">Log out</Button>
-        </Toolbar>
+        
+          { token ? (
+            <Toolbar>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle">
+                <AccountCircle />
+              </IconButton>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
+                <ExitToAppIcon />
+              </IconButton>
+            </Toolbar>
+            ) : (
+            <Toolbar>
+              <img src={ball} style={{ width: "40px", margin: "0 10px 0 0" }} alt="soccer ball" />
+              <Typography variant="h6">
+                Sport Betting App
+              </Typography>
+            </Toolbar>
+          )}
+       
       </AppBar>
     </div>
   );

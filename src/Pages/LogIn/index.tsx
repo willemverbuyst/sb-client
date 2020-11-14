@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,6 +11,7 @@ import Container from '@material-ui/core/Container';
 import { LogInCredentials } from '../../models/credentials.model';
 import { userLogIn } from '../../store/user/actions';
 import { ButtonEvent } from '../../models/events.model';
+import { selectToken } from '../../store/user/selectors'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +40,14 @@ export default function LogIn() {
     email: '',
     password: '',
   });
+  const token = useSelector(selectToken);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (token !== null) {
+      history.push("/profiel");
+    }
+  }, [token, history]);
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
