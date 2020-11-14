@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HelpOutline from '@material-ui/icons/HelpOutline';
 import MenuIcon from '@material-ui/icons/Menu';
 import { selectUser } from '../../store/user/selectors';
 import { selectToken } from '../../store/user/selectors';
@@ -52,6 +53,9 @@ export default function Header() {
               </IconButton>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
                 <ExitToAppIcon />
+              </IconButton>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle">
+                <HelpOutline/>
               </IconButton>
             </Toolbar>
             ) : (

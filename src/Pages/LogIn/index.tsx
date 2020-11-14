@@ -44,10 +44,10 @@ export default function LogIn() {
   const history = useHistory();
 
   useEffect(() => {
-    if (token !== null) {
-      history.push("/profiel");
+    if (token) {
+      history.push("/home");
     }
-  }, [token, history]);
+  });
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
