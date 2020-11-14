@@ -1,7 +1,7 @@
 export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
 
 export type AdminState = {
-  players: Player[];
+  players: Player[] | null;
 };
 
 export type Player = {
@@ -12,9 +12,9 @@ export type Player = {
   phoneNumber: string;
 };
 
-export type FetchAllPlayers = {
+export type AllPlayersFetched = {
   type: typeof ALL_PLAYERS_FETCHED;
   players: Player[];
 };
 
-export type AdminActionTypes = FetchAllPlayers;
+export type AdminActionTypes = AllPlayersFetched;
