@@ -6,6 +6,7 @@ import Header from './Components/Header';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Profiel from './Pages/Profiel';
+import Regels from './Pages/Regels';
 import Voorspellingen from './Pages/Voorspellingen';
 import Toast from './Components/Toast'
 
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/login" component={LogIn} />
         <Route exact path="/profiel" component={Profiel} />
+        <Route exact path="/regels" component={Regels} />
         <Route exact path="/voorspellingen" component={Voorspellingen} />
       </Switch>
     </MuiThemeProvider>
