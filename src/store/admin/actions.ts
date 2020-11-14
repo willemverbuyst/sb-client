@@ -3,11 +3,13 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import {
   ALL_PLAYERS_FETCHED,
+  REMOVE_ALL_PLAYERS,
   AllPlayersFetched,
   Player,
-  GetAdminState,
+  RemoveAllPlayers,
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { GetState } from '../types';
 
 const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
   return {
@@ -16,11 +18,19 @@ const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
   };
 };
 
+const removeAllPlayers = (): RemoveAllPlayers => {
+  return {
+    type: REMOVE_ALL_PLAYERS,
+  };
+};
+
+export const removePlayers = () => removeAllPlayers();
+
 export const fetchAllPlayers = () => async (
   dispatch: Dispatch,
-  getState: GetAdminState
+  getState: GetState
 ) => {
-  if (!getState().players) {
+  if (!getState().adminState.players) {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');

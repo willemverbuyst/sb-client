@@ -5,7 +5,6 @@ import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,
   TOKEN_STILL_VALID_USER,
-  GetUserState,
   LogInSuccessUser,
   LogOutUser,
   TokenUserStillValid,
@@ -13,6 +12,8 @@ import {
 } from './types';
 import { LogInCredentials } from '../../models/credentials.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { removePlayers } from '../admin/actions';
+import { GetState } from '../appState/types';
 
 const logInSuccessUser = (userData: UserData): LogInSuccessUser => {
   return {
@@ -32,7 +33,7 @@ const tokenUserStillValid = (userData: UserData): TokenUserStillValid => ({
 
 export const userLogIn = (credentials: LogInCredentials) => {
   const { email, password } = credentials;
-  return async (dispatch: any, _getState: GetUserState) => {
+  return async (dispatch: any, _getState: GetState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/login`, {
@@ -57,13 +58,14 @@ export const userLogIn = (credentials: LogInCredentials) => {
 };
 
 export const userLogOut = () => {
-  return (dispatch: Dispatch, _getState: GetUserState) => {
+  return (dispatch: Dispatch, _getState: GetState) => {
     dispatch(logOutUser());
+    dispatch(removePlayers());
   };
 };
 
 export const getUserWithStoredToken = () => {
-  return async (dispatch: Dispatch, _getState: GetUserState) => {
+  return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
     try {
       // if token check if valid

@@ -1,10 +1,9 @@
 export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
+export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
 
 export type AdminState = {
   players: Player[] | null;
 };
-
-export type GetAdminState = () => AdminState;
 
 export type Player = {
   userName: string;
@@ -19,4 +18,8 @@ export type AllPlayersFetched = {
   players: Player[];
 };
 
-export type AdminActionTypes = AllPlayersFetched;
+export type RemoveAllPlayers = {
+  type: typeof REMOVE_ALL_PLAYERS;
+};
+
+export type AdminActionTypes = AllPlayersFetched | RemoveAllPlayers;

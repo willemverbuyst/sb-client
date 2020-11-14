@@ -7,8 +7,6 @@ export type UserState = {
   user: UserData | null;
 };
 
-export type GetUserState = () => UserState;
-
 export type UserData = {
   id: number;
   userName: string;
