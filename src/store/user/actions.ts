@@ -9,20 +9,15 @@ import {
   LogInSuccessUser,
   LogOutUser,
   TokenUserStillValid,
-  User,
+  UserData,
 } from './types';
 import { LogInCredentials } from '../../models/credentials.model';
-import {
-  // appLoading,
-  // appDoneLoading,
-  showMessageWithTimeout,
-  setMessage,
-} from '../appState/actions';
+import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
-const logInSuccessUser = (user: User): LogInSuccessUser => {
+const logInSuccessUser = (userData: UserData): LogInSuccessUser => {
   return {
     type: LOG_IN_SUCCESS_USER,
-    user,
+    userData,
   };
 };
 
@@ -30,15 +25,15 @@ const logOutUser = (): LogOutUser => ({
   type: LOG_OUT_USER,
 });
 
-const tokenUserStillValid = (user: User): TokenUserStillValid => ({
+const tokenUserStillValid = (userData: UserData): TokenUserStillValid => ({
   type: TOKEN_STILL_VALID_USER,
-  user,
+  userData,
 });
 
 export const userLogIn = (credentials: LogInCredentials) => {
   const { email, password } = credentials;
   return async (dispatch: any, _getState: GetUserState) => {
-    // dispatch(appLoading());
+    dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/login`, {
         email,
@@ -46,8 +41,8 @@ export const userLogIn = (credentials: LogInCredentials) => {
       });
 
       dispatch(logInSuccessUser(response.data.userData));
-      dispatch(showMessageWithTimeout('success', 'welcome back!', 1500));
-      // dispatch(appDoneLoading());
+      dispatch(setMessage('success', 'welcome back!'));
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -56,7 +51,7 @@ export const userLogIn = (credentials: LogInCredentials) => {
         console.log(error.message);
         dispatch(setMessage('error', error.message));
       }
-      // dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -69,7 +64,7 @@ export const userLogOut = () => {
 
 export const getUserWithStoredToken = () => {
   return async (dispatch: Dispatch, _getState: GetUserState) => {
-    // dispatch(appLoading());
+    dispatch(appLoading());
     try {
       // if token check if valid
       const token = localStorage.getItem('user_token');
@@ -77,7 +72,7 @@ export const getUserWithStoredToken = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(tokenUserStillValid(response.data.userData));
-      // dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
@@ -85,7 +80,7 @@ export const getUserWithStoredToken = () => {
         console.log(error);
       }
       dispatch(logOutUser());
-      // dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     }
   };
 };

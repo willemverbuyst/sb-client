@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { selectUser } from '../../store/user/selectors';
+import { userLogOut } from '../../store/user/actions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Header() {
   const classes = useStyles();
+  const dispatch = useDispatch()
+  const user = useSelector(selectUser)
+
+  // console.log("USER: ", user)
 
   return (
     <div className={classes.root}>
@@ -34,7 +41,7 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             Sport Betting App
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button onClick={() => dispatch(userLogOut())} color="inherit">Log out</Button>
         </Toolbar>
       </AppBar>
     </div>

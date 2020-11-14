@@ -7,12 +7,12 @@ import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Profiel from './Pages/Profiel';
 import Voorspellingen from './Pages/Voorspellingen';
-import AlertMessage from './Components/AlertMessage'
+import Toast from './Components/Toast'
 
 function App() {
   return (
     <MuiThemeProvider theme={IceBlueGold}>
-      <AlertMessage/>
+      <Toast/>
       <Header/>
       <Switch>
         <Route exact path="/home" component={Home} />

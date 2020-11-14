@@ -3,12 +3,12 @@ export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const TOKEN_STILL_VALID_USER = 'TOKEN_STILL_VALID_USER';
 
 export type UserState = {
-  user: User | null;
+  userData: UserData | null;
 };
 
 export type GetUserState = () => UserState;
 
-export type User = {
+export type UserData = {
   id: number;
   userName: string;
   firstName: string;
@@ -29,7 +29,7 @@ export type Team = {
 
 export type LogInSuccessUser = {
   type: typeof LOG_IN_SUCCESS_USER;
-  user: User;
+  userData: UserData;
 };
 
 export type LogOutUser = {
@@ -38,7 +38,7 @@ export type LogOutUser = {
 
 export type TokenUserStillValid = {
   type: typeof TOKEN_STILL_VALID_USER;
-  user: User;
+  userData: UserData;
 };
 
 export type UserActionTypes =

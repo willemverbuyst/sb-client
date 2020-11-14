@@ -21,10 +21,10 @@ const appStateReducer = (state = initialState, action: AppStateTypes) => {
       return { ...state, loading: false };
 
     case SET_MESSAGE:
-      return { ...state, message: action.payload };
+      return { ...state, message: { ...action.payload } };
 
     case CLEAR_MESSAGE:
-      return { ...state, message: null };
+      return { ...state, message: {} };
 
     default:
       return state;

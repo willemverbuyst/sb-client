@@ -1,6 +1,3 @@
-import { UserState } from './types';
+import { StoreState } from '../types';
 
-export const selectUser = (state: UserState) => {
-  console.log(state.user);
-  return state.user;
-};
+export const selectUser = (state: StoreState) => state.userData;
