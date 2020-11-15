@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#f1f1f1',
       marginLeft: theme.spacing(5),
       marginRight: theme.spacing(5),
-
     },
     spinnerContainer: {
       minHeight: '100vh',
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 10
+      zIndex: 1000,
     }
   })
 );
@@ -70,17 +69,17 @@ function App() {
         >
         <Grid item md={11} xs={12}>
           <Box className={classes.borderContainer}>
-          <Switch>
-            <Route exact path="/admin/signup" component={SignUp} />
-            <Route exact path="/admin/spelers" component={Spelers} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/login" component={LogIn} />
-            <Route exact path="/profiel" component={Profiel} />
-            <Route exact path="/regels" component={Regels} />
-            <Route exact path="/scores" component={Scores} />
-            <Route exact path="/voorspellingen" component={Voorspellingen} />
-            <Route path="/" component={PageNotFound} />
-          </Switch>
+            <Switch>
+              <Route exact path="/admin/signup" component={SignUp} />
+              <Route exact path="/admin/spelers" component={Spelers} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/login" component={LogIn} />
+              <Route exact path="/profiel" component={Profiel} />
+              <Route exact path="/regels" component={Regels} />
+              <Route exact path="/scores" component={Scores} />
+              <Route exact path="/voorspellingen" component={Voorspellingen} />
+              <Route path="/" component={PageNotFound} />
+            </Switch>
           </Box>
         </Grid>
         <Grid item md={1} xs={12}>

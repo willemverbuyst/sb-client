@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { selectUser } from '../../store/user/selectors';
-import { StringDecoder } from 'string_decoder';
 
 const useStyles = makeStyles(() => ({
   displayName: {
@@ -25,7 +24,7 @@ export default function UserDisplay() {
 
   return (
     <Box className={classes.displayName}>
-      {user ? replaceUnderScore(user.userName) : null}
+      {user ? replaceUnderScore(user.userName) : 'Who are you?'}
     </Box>
   )
 }
