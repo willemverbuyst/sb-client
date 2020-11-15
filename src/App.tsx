@@ -20,10 +20,9 @@ import Progress from './Components/Progress';
 import { selectAppLoading } from './store/appState/selectors';
 import { getUserWithStoredToken } from './store/user/actions';
 
-const useStyles = makeStyles((_theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     borderContainer: {
-      border: '1px solid blue',
       borderRadius: '4px',
       padding: '1rem 2rem',
       minHeight: '85vh',

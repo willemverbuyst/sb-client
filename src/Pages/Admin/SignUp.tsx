@@ -1,34 +1,248 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Box, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
+import { SignUpCredentials } from '../../models/credentials.model';
+import { ButtonEvent } from '../../models/events.model';
+
 
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
-  }
+  },
+  paper: {
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  select: {
+    marginTop: theme.spacing(2)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
 }));
 
 export default function SignUp() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
-
+  const dispatch = useDispatch();
+  const [signUpCredentials, setSignUpCredentials] = useState<SignUpCredentials>({
+    userName: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    admin: false,
+    totaalToto: true,
+    teamId: null,
+  });
+ 
   useEffect(() => {
     if (!token) {
       history.push("/login");
     }
   });
 
+  const submitForm = (e: ButtonEvent): void => {
+    e.preventDefault();
+    console.log(e)
+  };
+
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setSignUpCredentials({
+      ...signUpCredentials,
+      teamId: event.target.value as number,
+    })
+  };
+
   return (
     token ? (  
-      <Typography variant="h2" className={classes.title}>
-        Sign Up
-      </Typography>
+      <Box>
+        <Typography variant="h2" className={classes.title}>
+          Sign Up
+        </Typography>
+        <Container component="main" maxWidth="xs">
+          <div className={classes.paper}>
+            <form className={classes.form} noValidate>
+              <Grid container spacing={1}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="userName"
+                    label="User Name"
+                    name="userName"
+                    autoFocus
+                    value={signUpCredentials.userName}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        userName: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    name="firstName"
+                    value={signUpCredentials.firstName}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        firstName: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    value={signUpCredentials.lastName}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        lastName: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    value={signUpCredentials.email}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        email: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    value={signUpCredentials.password}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        password: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControlLabel
+                    
+                    control={<Checkbox value="admin" color="primary" onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        admin: !!e.target.value,
+                      })
+                    }/>}
+                    label="Admin"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControlLabel
+                    control={<Checkbox value="totaalToto" color="primary" onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        totaalToto: !!e.target.value,
+                      })
+                    } />}
+                    label="Totaal Toto"
+                  />
+                </Grid>
+              </Grid>
+              <Grid item xs={12} className={classes.select}>
+                <FormControl 
+                  variant="outlined"
+                  fullWidth
+                >
+                  <InputLabel id="favTeam">Team</InputLabel>
+                  <Select
+                    labelId="favTeam"
+                    id="teeamId"
+                    value={signUpCredentials.teamId}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        teamId: e.target.value as number,
+                      })}
+                    label="Team"
+                  >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={submitForm}
+              >
+                Log In
+              </Button>        
+            </form>
+          </div>
+        </Container>
+      </Box>
     ) : ( null )
   )
 }
