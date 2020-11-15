@@ -2,7 +2,7 @@ export const ALL_TEAMS_FETCHED = 'ALL_TEAMS_FETCHED';
 export const REMOVE_ALL_TEAMS = 'REMOVE_ALL_TEAMS';
 
 export type TeamState = {
-  players: Team[] | null;
+  teams: Team[] | null;
 };
 
 export type Team = {
