@@ -9,6 +9,8 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import { SignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
+import { fetchAllTeams } from '../../store/teams/actions';
+import { selectTeams } from '../../store/teams/selectors'; 
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -45,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const token = useSelector(selectToken);
+  const teams = useSelector(selectTeams);
   const history = useHistory();
   const dispatch = useDispatch();
   const [signUpCredentials, setSignUpCredentials] = useState<SignUpCredentials>({
@@ -65,16 +68,13 @@ export default function SignUp() {
     }
   });
 
+  useEffect(() => {
+    dispatch(fetchAllTeams())
+  });
+
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
     console.log(e)
-  };
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSignUpCredentials({
-      ...signUpCredentials,
-      teamId: event.target.value as number,
-    })
   };
 
   return (
@@ -205,6 +205,7 @@ export default function SignUp() {
                 </Grid>
               </Grid>
               <Grid item xs={12} className={classes.select}>
+                { teams ? (
                 <FormControl 
                   variant="outlined"
                   fullWidth
@@ -221,11 +222,10 @@ export default function SignUp() {
                       })}
                     label="Team"
                   >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {teams.map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
                   </Select>
-                </FormControl>
+                </FormControl> 
+                ) : ( <></>)}
               </Grid>
               <Button
                 type="submit"
