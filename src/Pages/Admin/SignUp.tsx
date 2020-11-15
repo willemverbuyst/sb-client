@@ -10,7 +10,6 @@ import Container from '@material-ui/core/Container';
 import { SignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 
-
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',

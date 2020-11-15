@@ -9,13 +9,13 @@ import reportWebVitals from './reportWebVitals';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-
 const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
         body: {
-          backgroundColor: '#111',
+          minHeigth: '100vh',
+          backgroundColor: '#1e5eb1',
         },
       },
     },

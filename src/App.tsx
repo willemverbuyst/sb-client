@@ -15,19 +15,25 @@ import SignUp from './Pages/Admin/SignUp';
 import Spelers from './Pages/Admin/Spelers';
 import Voorspellingen from './Pages/Voorspellingen';
 import Toast from './Components/Toast';
-import { Container } from '@material-ui/core';
+import { Container, Grid, Box } from '@material-ui/core';
 import Progress from './Components/Progress';
 import { selectAppLoading } from './store/appState/selectors';
 import { getUserWithStoredToken } from './store/user/actions';
+import UserDisplay from './Components/UserDisplay/UserDisplay';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    content: {
+      marginTop: theme.spacing(2)
+    },
     borderContainer: {
       borderRadius: '4px',
       padding: '1rem 2rem',
       minHeight: '85vh',
-      marginTop: '1rem',
-      backgroundColor: '#e6e6e6',
+      backgroundColor: '#f1f1f1',
+      marginLeft: theme.spacing(5),
+      marginRight: theme.spacing(5),
+
     },
     spinnerContainer: {
       minHeight: '100vh',
@@ -58,7 +64,12 @@ function App() {
           <Progress/>
         </Container> 
         ) : null }
-        <Container maxWidth="lg" className={classes.borderContainer}>
+      <Grid
+        container
+        className={classes.content}
+        >
+        <Grid item md={11} xs={12}>
+          <Box className={classes.borderContainer}>
           <Switch>
             <Route exact path="/admin/signup" component={SignUp} />
             <Route exact path="/admin/spelers" component={Spelers} />
@@ -70,7 +81,12 @@ function App() {
             <Route exact path="/voorspellingen" component={Voorspellingen} />
             <Route path="/" component={PageNotFound} />
           </Switch>
-      </Container>
+          </Box>
+        </Grid>
+        <Grid item md={1} xs={12}>
+          <UserDisplay/>
+        </Grid>
+      </Grid>
     </MuiThemeProvider>
   );
 }

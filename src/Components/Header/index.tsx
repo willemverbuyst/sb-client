@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,26 +11,24 @@ import HelpOutline from '@material-ui/icons/HelpOutline';
 import List from '@material-ui/icons/List';
 import Build from '@material-ui/icons/Build';
 import EmojiEvents from '@material-ui/icons/EmojiEvents'
-import Home from '@material-ui/icons/Home'
+import Home from '@material-ui/icons/Home';
 import { selectToken } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from "../../assets/ball.png";
-import { Menu, MenuItem } from '@material-ui/core';
+import { Box, Menu, MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
     },
-    menuButton: {
+    icon: {
       marginRight: theme.spacing(2),
     },
-    sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
-    },
+    header: {
+      backgroundColor: '#1e5eb1',
+      color: '#fff'
+    }
   }),
 );
 
@@ -69,23 +66,22 @@ export default function Header() {
  
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        
+      <Box className={classes.header}>
           { token ? (
             <Toolbar>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoHome}>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoHome}>
                 <Home />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={gotoVoorspellingen}>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoVoorspellingen}>
                 <List />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoScores}>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoScores}>
                 <EmojiEvents />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
                 <AccountCircle />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account 
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
               circle" onClick={handleClick}>
               {/* onClick={gotoAdmin}> */}
                 <Build />
@@ -100,10 +96,10 @@ export default function Header() {
                 <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
                 <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
               </Menu>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="account circle" onClick={gotoRegels}>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRegels}>
                 <HelpOutline />
               </IconButton>
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
                 <ExitToAppIcon />
               </IconButton>
             </Toolbar>
@@ -115,8 +111,7 @@ export default function Header() {
               </Typography>
             </Toolbar>
           )}
-       
-      </AppBar>
+      </Box>
     </div>
   );
 }

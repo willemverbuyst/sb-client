@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Typography } from '@material-ui/core';
-import TopThreeTable from '../../Components/Table/TopThreeTable'
+import TopThreeTable from '../../Components/Table/TopThreeTable';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Home() {
+export default function HomePage() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -39,7 +39,6 @@ export default function Home() {
         >
           <Grid><TopThreeTable /></Grid>
           <Grid><TopThreeTable /></Grid>
-          
         </Grid>
       </Box>
     ) : ( null )
