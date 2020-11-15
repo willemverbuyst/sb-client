@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -12,10 +12,13 @@ import List from '@material-ui/icons/List';
 import Build from '@material-ui/icons/Build';
 import EmojiEvents from '@material-ui/icons/EmojiEvents'
 import Home from '@material-ui/icons/Home';
+import Schedule from '@material-ui/icons/Schedule';
+import Today from  '@material-ui/icons/Today';
 import { selectToken } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from "../../assets/ball.png";
 import { Box, Menu, MenuItem } from '@material-ui/core';
+import { getToday, getTime } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +40,9 @@ export default function Header() {
   const dispatch = useDispatch()
   const history = useHistory();
   const token = useSelector(selectToken);
-
+  const [showToday, setShowToday] = useState(false)
+  const [showTime, setShowTime] = useState(false)
+  
   const gotoHome = () => history.push("/home");
 
   const gotoProfiel = () => history.push("/profiel");
@@ -83,7 +88,6 @@ export default function Header() {
               </IconButton>
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
               circle" onClick={handleClick}>
-              {/* onClick={gotoAdmin}> */}
                 <Build />
               </IconButton>
               <Menu
@@ -98,6 +102,12 @@ export default function Header() {
               </Menu>
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRegels}>
                 <HelpOutline />
+              </IconButton>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowToday(!showToday)}>
+                {showToday ? getToday() : <Today />}
+              </IconButton>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowTime(!showTime)}>
+                {showTime ? getTime() : <Schedule />}
               </IconButton>
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
                 <ExitToAppIcon />
