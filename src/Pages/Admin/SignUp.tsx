@@ -222,7 +222,8 @@ export default function SignUp() {
                       })}
                     label="Team"
                   >
-                    {teams.map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
+                    {[...teams].sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
+                      .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
                   </Select>
                 </FormControl> 
                 ) : ( <></>)}
