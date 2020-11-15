@@ -226,7 +226,7 @@ export default function SignUp() {
                       .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
                   </Select>
                 </FormControl> 
-                ) : ( <></>)}
+                ) : ('')}
               </Grid>
               <Button
                 type="submit"

@@ -14,7 +14,7 @@ import EmojiEvents from '@material-ui/icons/EmojiEvents'
 import Home from '@material-ui/icons/Home';
 import Schedule from '@material-ui/icons/Schedule';
 import Today from  '@material-ui/icons/Today';
-import { selectToken } from '../../store/user/selectors';
+import { selectToken, selectUser } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from "../../assets/ball.png";
 import { Box, Menu, MenuItem, Tooltip } from '@material-ui/core';
@@ -41,6 +41,7 @@ export default function Header() {
   const dispatch = useDispatch()
   const history = useHistory();
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
   const [showToday, setShowToday] = useState(false)
   const [showTime, setShowTime] = useState(false)
   
@@ -99,22 +100,26 @@ export default function Header() {
                 </Tooltip>
               </IconButton>
             
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
-                circle" onClick={handleClick}>
-                  <Tooltip title="Admin">
-                    <Build />
-                  </Tooltip>
-              </IconButton>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
-                <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
-              </Menu>
+              { user && user.admin ? (
+                <>
+                  <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
+                    circle" onClick={handleClick}>
+                      <Tooltip title="Admin">
+                        <Build />
+                      </Tooltip>
+                  </IconButton>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
+                    <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
+                  </Menu>
+                </>
+              ) : ('')}   
           
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRegels}>
                 <Tooltip title="Regels">
