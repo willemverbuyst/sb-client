@@ -17,16 +17,17 @@ import Today from  '@material-ui/icons/Today';
 import { selectToken } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from "../../assets/ball.png";
-import { Box, Menu, MenuItem } from '@material-ui/core';
+import { Box, Menu, MenuItem, Tooltip } from '@material-ui/core';
 import { getToday, getTime } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
-    },
     icon: {
       marginRight: theme.spacing(2),
+    },
+    text: {
+      marginRight: theme.spacing(3),
+      fontSize: 20
     },
     header: {
       backgroundColor: '#1e5eb1',
@@ -70,25 +71,39 @@ export default function Header() {
   const handleClose = () => setAnchorEl(null);
  
   return (
-    <div className={classes.root}>
       <Box className={classes.header}>
           { token ? (
             <Toolbar>
+              
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoHome}>
-                <Home />
+                <Tooltip title="Home">
+                  <Home />
+                </Tooltip>
               </IconButton>
+              
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoVoorspellingen}>
-                <List />
+                <Tooltip title="Voorspellingen">
+                  <List />
+                </Tooltip>
               </IconButton>
+              
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoScores}>
-                <EmojiEvents />
+                <Tooltip title="Scores">  
+                  <EmojiEvents />
+                </Tooltip>
               </IconButton>
+              
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
-                <AccountCircle />
+                <Tooltip title="Profiel">
+                  <AccountCircle />
+                </Tooltip>
               </IconButton>
+            
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
-              circle" onClick={handleClick}>
-                <Build />
+                circle" onClick={handleClick}>
+                  <Tooltip title="Admin">
+                    <Build />
+                  </Tooltip>
               </IconButton>
               <Menu
                 id="simple-menu"
@@ -100,18 +115,41 @@ export default function Header() {
                 <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
                 <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
               </Menu>
+          
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRegels}>
-                <HelpOutline />
+                <Tooltip title="Regels">
+                  <HelpOutline />
+                </Tooltip>
               </IconButton>
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowToday(!showToday)}>
-                {showToday ? getToday() : <Today />}
+            
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowToday (!showToday)}>
+                <Tooltip title="Datum">
+                  <Today />
+                </Tooltip>
               </IconButton>
+
+              {showToday ? 
+                <Box className={classes.text}>       
+                  {getToday()}
+                </Box> : null }
+          
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowTime(!showTime)}>
-                {showTime ? getTime() : <Schedule />}
+                <Tooltip title="Tijd">
+                  <Schedule />
+                </Tooltip>
               </IconButton>
+             
+              {showTime ? 
+                <Box className={classes.text}>       
+                  {getTime()}
+                </Box> : null }
+
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
-                <ExitToAppIcon />
+                <Tooltip title="Log Out">
+                  <ExitToAppIcon />
+                </Tooltip>
               </IconButton>
+           
             </Toolbar>
             ) : (
             <Toolbar>
@@ -122,6 +160,5 @@ export default function Header() {
             </Toolbar>
           )}
       </Box>
-    </div>
   );
 }
