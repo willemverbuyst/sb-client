@@ -30,4 +30,4 @@ export const getToday = ():string => {
   return `${day} ${new Date().getDate()} ${month}`
 }
 
-export const getTime = ():string => new Date().toLocaleString().slice(11, 20);
+export const getTime = ():string => new Date().toLocaleString().slice(11, 19);

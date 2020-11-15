@@ -56,7 +56,7 @@ export default function SignUp() {
     phoneNumber: '',
     admin: false,
     totaalToto: true,
-    teamId: null,
+    teamId: '',
   });
  
   useEffect(() => {
@@ -183,11 +183,10 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControlLabel
-                    
-                    control={<Checkbox value="admin" color="primary" onChange={(e) =>
+                    control={<Checkbox checked={signUpCredentials.admin} color="primary" onChange={(e) =>
                       setSignUpCredentials({
                         ...signUpCredentials,
-                        admin: !!e.target.value,
+                        admin: e.target.checked,
                       })
                     }/>}
                     label="Admin"
@@ -195,10 +194,10 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControlLabel
-                    control={<Checkbox value="totaalToto" color="primary" onChange={(e) =>
+                    control={<Checkbox checked={signUpCredentials.totaalToto} color="primary" onChange={(e) =>
                       setSignUpCredentials({
                         ...signUpCredentials,
-                        totaalToto: !!e.target.value,
+                        totaalToto: e.target.checked,
                       })
                     } />}
                     label="Totaal Toto"

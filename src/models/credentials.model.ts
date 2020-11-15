@@ -12,5 +12,5 @@ export type SignUpCredentials = {
   phoneNumber: string;
   admin: boolean;
   totaalToto: boolean;
-  teamId: number | null;
+  teamId: number | '';
 };

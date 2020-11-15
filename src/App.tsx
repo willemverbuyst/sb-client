@@ -70,6 +70,7 @@ function App() {
         <Grid item md={11} xs={12}>
           <Box className={classes.borderContainer}>
             <Switch>
+              <Route exact path="/" component={LogIn} />
               <Route exact path="/admin/signup" component={SignUp} />
               <Route exact path="/admin/spelers" component={Spelers} />
               <Route exact path="/home" component={Home} />

@@ -131,7 +131,7 @@ export default function Header() {
               {showToday ? 
                 <Box className={classes.text}>       
                   {getToday()}
-                </Box> : null }
+                </Box> : '' }
           
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowTime(!showTime)}>
                 <Tooltip title="Tijd">
@@ -142,7 +142,7 @@ export default function Header() {
               {showTime ? 
                 <Box className={classes.text}>       
                   {getTime()}
-                </Box> : null }
+                </Box> : '' }
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
                 <Tooltip title="Log Out">
