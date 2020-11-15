@@ -23,18 +23,21 @@ import { getUserWithStoredToken } from './store/user/actions';
 const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
     borderContainer: {
+      border: '1px solid blue',
       borderRadius: '4px',
-      padding: '4rem',
-      minHeight: '80vh',
-      marginTop: '2rem',
+      padding: '1rem 2rem',
+      minHeight: '85vh',
+      marginTop: '1rem',
+      backgroundColor: '#e6e6e6',
     },
     spinnerContainer: {
-      minHeight: '80vh',
+      minHeight: '100vh',
+      postion: 'absolute',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      zIndex: 10
     }
-
   })
 );
 
@@ -52,11 +55,11 @@ function App() {
       <Toast/>
       <Header/>
       {isLoading ?  (
-        <Container maxWidth="md" className={classes.spinnerContainer}>
+        <Container maxWidth="lg" className={classes.spinnerContainer}>
           <Progress/>
         </Container> 
         ) : null }
-        <Container maxWidth="md" className={classes.borderContainer}>
+        <Container maxWidth="lg" className={classes.borderContainer}>
           <Switch>
             <Route exact path="/admin/signup" component={SignUp} />
             <Route exact path="/admin/spelers" component={Spelers} />
