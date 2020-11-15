@@ -1,11 +1,11 @@
 import {
   ALL_TEAMS_FETCHED,
   REMOVE_ALL_TEAMS,
-  TeamState,
+  TeamsState,
   TeamsActionTypes,
 } from './types';
 
-const initialState: TeamState = {
+const initialState: TeamsState = {
   teams: null,
 };
 
