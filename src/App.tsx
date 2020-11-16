@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import IceBlueGold from './ui/theme';
@@ -15,7 +15,7 @@ import SignUp from './Pages/Admin/SignUp';
 import Spelers from './Pages/Admin/Spelers';
 import Voorspellingen from './Pages/Voorspellingen';
 import Toast from './Components/Toast';
-import { Container, Grid, Box } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import Progress from './Components/Progress';
 import { selectAppLoading } from './store/appState/selectors';
 import { getUserWithStoredToken } from './store/user/actions';
@@ -23,10 +23,10 @@ import UserDisplay from './Components/UserDisplay/UserDisplay';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    content: {
+    contentWrapper: {
       marginTop: theme.spacing(2)
     },
-    borderContainer: {
+    content: {
       borderRadius: '4px',
       padding: '1rem 2rem',
       minHeight: '85vh',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(5),
     },
     spinnerContainer: {
-      minHeight: '100vh',
+      minHeight: '85vh',
       postion: 'absolute',
       display: 'flex',
       justifyContent: 'center',
@@ -57,20 +57,20 @@ function App() {
   return (
     <MuiThemeProvider theme={IceBlueGold}>
       <Toast/>
-      <Header/>
-      {isLoading ?  (
-        <Container maxWidth="lg" className={classes.spinnerContainer}>
-          <Progress/>
-        </Container> 
-        ) : null }
+      <Header/> 
       <Grid
         container
-        className={classes.content}
+        className={classes.contentWrapper}
         >
+        {isLoading ?  (
+        <Grid item md={11} xs={12} className={classes.spinnerContainer}>
+          <Progress/>
+        </Grid> 
+        ) : (
         <Grid item md={11} xs={12}>
-          <Box className={classes.borderContainer}>
+          <Box className={classes.content}>
             <Switch>
-              <Route exact path="/" component={LogIn} />
+              <Redirect exact path="/" to="/login" />
               <Route exact path="/admin/signup" component={SignUp} />
               <Route exact path="/admin/spelers" component={Spelers} />
               <Route exact path="/home" component={Home} />
@@ -84,6 +84,7 @@ function App() {
             </Switch>
           </Box>
         </Grid>
+        )}
         <Grid item md={1} xs={12}>
           <UserDisplay/>
         </Grid>
