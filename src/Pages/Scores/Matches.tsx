@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Scores() {
+export default function Matches() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -25,7 +25,7 @@ export default function Scores() {
   return (
     token ? (  
       <Typography variant="h2" className={classes.title}>
-        Scores
+        Matches
       </Typography>
     ) : ( null )
   )

@@ -86,9 +86,19 @@ export default function Header() {
 
   const gotoRegels = () => history.push("/regels");
 
-  const gotoScores = () => {
+  const gotoGames = () => {
     handleCloseScores()
-    history.push("/scores");
+    history.push("/scores/games");
+  }
+
+  const gotoMatches = () => {
+    handleCloseScores()
+    history.push("/scores/matches");
+  }
+
+  const gotoToto = () => {
+    handleCloseScores()
+    history.push("/scores/toto");
   }
 
   const gotoSignUp = () => {
@@ -138,9 +148,9 @@ export default function Header() {
                 open={Boolean(anchorElScores)}
                 onClose={handleCloseScores}
               >
-                <MenuItem onClick={gotoScores}>Games</MenuItem>
-                <MenuItem onClick={gotoScores}>Matches</MenuItem>
-                <MenuItem onClick={gotoScores}>Toto</MenuItem>
+                <MenuItem onClick={gotoGames}>Games</MenuItem>
+                <MenuItem onClick={gotoMatches}>Matches</MenuItem>
+                <MenuItem onClick={gotoToto}>Toto</MenuItem>
               </StyledMenu>
              
               
