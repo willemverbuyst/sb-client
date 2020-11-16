@@ -29,7 +29,7 @@ const rows = [
   createData('Fred Fries', 450),
 ];
 
-export default function TopThreeTable() {
+export default function ScoresTable() {
   const classes = useStyles();
 
   return (

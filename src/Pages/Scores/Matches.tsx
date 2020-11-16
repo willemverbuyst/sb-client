@@ -3,7 +3,12 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { 
+  Box, 
+  Grid, 
+  Typography 
+} from '@material-ui/core';
+import ScoresTable from '../../Components/Table/ScoresTable';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -24,9 +29,19 @@ export default function Matches() {
 
   return (
     token ? (  
-      <Typography variant="h2" className={classes.title}>
-        Matches
-      </Typography>
+      <Box>
+        <Typography variant="h2" className={classes.title}>
+          Matches
+        </Typography>
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid><ScoresTable /></Grid>
+        </Grid>
+      </Box>
     ) : ( null )
   )
 }
