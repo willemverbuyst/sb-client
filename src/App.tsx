@@ -75,6 +75,7 @@ function App() {
               <Route exact path="/admin/spelers" component={Spelers} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/login" component={LogIn} />
+              <Route exact path="/page-not-found" component={PageNotFound} />
               <Route exact path="/profiel" component={Profiel} />
               <Route exact path="/regels" component={Regels} />
               <Route exact path="/scores" component={Scores} />

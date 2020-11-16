@@ -19,9 +19,7 @@ export default function Voorspellingen() {
   const history = useHistory();
 
   useEffect(() => {
-    if (!token) {
-      history.push("/login");
-    }
+    if (!token) history.push("/login");
   });
 
   return (

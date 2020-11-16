@@ -19,12 +19,8 @@ export default function Profiel() {
   const history = useHistory();
 
   useEffect(() => {
-    if (!token) {
-      history.push("/login");
-    }
+    if (!token) history.push("/login");
   });
-
-
 
   return (
     token ? (  

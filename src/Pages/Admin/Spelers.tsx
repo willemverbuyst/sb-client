@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { fetchAllPlayers } from '../../store/admin/actions';
 import { selectPlayers } from '../../store/admin/selectors';
+import { selectUser } from '../../store/user/selectors';
 import PlayerCard from '../../Components/PlayerCard';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
@@ -28,17 +29,19 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Spelers() {
   const [spacing] = React.useState<GridSpacing>(2);
   const classes = useStyles();
-
-  const token = useSelector(selectToken);
   const history = useHistory();
   const dispatch = useDispatch()
+  const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
   const players = useSelector(selectPlayers)
 
   useEffect(() => {
-    if (!token) {
-      history.push("/login");
-    }
+    if (!token) history.push("/login");
   });
+
+  useEffect(() => {
+    if (user && !user.admin) history.push("/page-not-found");
+  })
 
   useEffect(() => {
     dispatch(fetchAllPlayers());

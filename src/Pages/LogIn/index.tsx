@@ -43,9 +43,7 @@ export default function LogIn() {
   const history = useHistory();
 
   useEffect(() => {
-    if (token) {
-      history.push("/home");
-    }
+    if (token) history.push("/home");
   });
 
   const submitForm = (e: ButtonEvent): void => {

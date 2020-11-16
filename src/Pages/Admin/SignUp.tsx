@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllTeams } from '../../store/teams/actions';
+import { selectTeams } from '../../store/teams/selectors'; 
 import { selectToken } from '../../store/user/selectors';
+import { selectUser } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -9,8 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import { SignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
-import { fetchAllTeams } from '../../store/teams/actions';
-import { selectTeams } from '../../store/teams/selectors'; 
+
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -47,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
   const teams = useSelector(selectTeams);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -63,10 +66,12 @@ export default function SignUp() {
   });
  
   useEffect(() => {
-    if (!token) {
-      history.push("/login");
-    }
+    if (!token) history.push("/login");
   });
+
+  useEffect(() => {
+    if (user && !user.admin) history.push("/page-not-found");
+  })
 
   useEffect(() => {
     dispatch(fetchAllTeams())
