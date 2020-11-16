@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import { selectToken, selectUser } from '../../store/user/selectors';
+import { userLogOut } from '../../store/user/actions';
+import { getToday, getTime } from '../../utils/timeFunctions';
+import ball from "../../assets/ball.png";
+import { 
+  createStyles, 
+  makeStyles, 
+  Theme 
+} from '@material-ui/core/styles';
+import { 
+  Box,
+  IconButton, 
+  Menu, 
+  MenuItem,
+  Toolbar, 
+  Tooltip,
+  Typography
+} from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import HelpOutline from '@material-ui/icons/HelpOutline';
 import List from '@material-ui/icons/List';
 import Build from '@material-ui/icons/Build';
 import EmojiEvents from '@material-ui/icons/EmojiEvents'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HelpOutline from '@material-ui/icons/HelpOutline';
 import Home from '@material-ui/icons/Home';
 import Schedule from '@material-ui/icons/Schedule';
 import Today from  '@material-ui/icons/Today';
-import { selectToken, selectUser } from '../../store/user/selectors';
-import { userLogOut } from '../../store/user/actions';
-import ball from "../../assets/ball.png";
-import { Box, Menu, MenuItem, Tooltip } from '@material-ui/core';
-import { getToday, getTime } from '../../utils/timeFunctions';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: 20
     },
     header: {
-      backgroundColor: '#1e5eb1',
+      backgroundColor: theme.palette.primary.main,
       color: '#fff'
     }
   }),
@@ -44,6 +54,7 @@ export default function Header() {
   const user = useSelector(selectUser);
   const [showToday, setShowToday] = useState(false)
   const [showTime, setShowTime] = useState(false)
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   
   const gotoHome = () => history.push("/home");
 
@@ -64,8 +75,6 @@ export default function Header() {
   };
 
   const gotoVoorspellingen = () => history.push("/voorspellingen");
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
  

@@ -1,25 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import { selectAppLoading } from './store/appState/selectors';
+import { getUserWithStoredToken } from './store/user/actions';
 import IceBlueGold from './ui/theme';
 import Header from './Components/Header';
+import Progress from './Components/Progress';
+import Toast from './Components/Toast';
+import UserDisplay from './Components/UserDisplay/UserDisplay';
+import SignUp from './Pages/Admin/SignUp';
+import Spelers from './Pages/Admin/Spelers';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
 import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Scores from './Pages/Scores';
-import SignUp from './Pages/Admin/SignUp';
-import Spelers from './Pages/Admin/Spelers';
 import Voorspellingen from './Pages/Voorspellingen';
-import Toast from './Components/Toast';
+import { 
+  createStyles, 
+  makeStyles, 
+  MuiThemeProvider, 
+  Theme 
+} from '@material-ui/core/styles';
 import { Grid, Box } from '@material-ui/core';
-import Progress from './Components/Progress';
-import { selectAppLoading } from './store/appState/selectors';
-import { getUserWithStoredToken } from './store/user/actions';
-import UserDisplay from './Components/UserDisplay/UserDisplay';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -80,7 +84,7 @@ function App() {
               <Route exact path="/regels" component={Regels} />
               <Route exact path="/scores" component={Scores} />
               <Route exact path="/voorspellingen" component={Voorspellingen} />
-              <Route path="/" component={PageNotFound} />
+              <Redirect path="/" to="/page-not-found" />
             </Switch>
           </Box>
         </Grid>

@@ -6,7 +6,11 @@ import { fetchAllPlayers } from '../../store/admin/actions';
 import { selectPlayers } from '../../store/admin/selectors';
 import { selectUser } from '../../store/user/selectors';
 import PlayerCard from '../../Components/PlayerCard';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { 
+  makeStyles, 
+  createStyles, 
+  Theme 
+} from '@material-ui/core/styles';
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 

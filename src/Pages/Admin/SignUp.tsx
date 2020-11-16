@@ -6,13 +6,22 @@ import { selectTeams } from '../../store/teams/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { selectUser } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Container from '@material-ui/core/Container';
+import { 
+  Box, 
+  Button,
+  Checkbox, 
+  Container,
+  FormControl, 
+  FormControlLabel, 
+  Grid, 
+  InputLabel, 
+  MenuItem, 
+  Select,
+  TextField, 
+  Typography 
+} from '@material-ui/core';
 import { SignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
-
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -25,10 +34,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.

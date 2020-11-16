@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import { selectUser } from '../../store/user/selectors';
 
 const useStyles = makeStyles(() => ({
   displayName: {

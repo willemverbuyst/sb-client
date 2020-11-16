@@ -2,9 +2,13 @@ import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Grid, Typography } from '@material-ui/core';
 import TopThreeTable from '../../Components/Table/TopThreeTable';
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+  Box, 
+  Grid, 
+  Typography 
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   title: {

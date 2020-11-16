@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { LogInCredentials } from '../../models/credentials.model';
 import { userLogIn } from '../../store/user/actions';
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+  Avatar, 
+  Button, 
+  Container, 
+  TextField 
+} from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { LogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { selectToken } from '../../store/user/selectors'
 
