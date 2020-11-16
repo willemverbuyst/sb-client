@@ -10,6 +10,7 @@ import {
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
+import { SignUpCredentials } from '../../models/credentials.model';
 
 const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
   return {
@@ -52,4 +53,52 @@ export const fetchAllPlayers = () => async (
       dispatch(appDoneLoading());
     }
   }
+};
+
+export const addPlayer = (signUpCredentials: SignUpCredentials) => {
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber,
+    admin,
+    totaalToto,
+    teamId,
+  } = signUpCredentials;
+  return async (dispatch: Dispatch, _getState: GetState) => {
+    dispatch(appLoading());
+    try {
+      const token = localStorage.getItem('user_token');
+      const response = await axios.post(
+        `${apiUrl}/signup`,
+        {
+          userName,
+          firstName,
+          lastName,
+          email,
+          password,
+          phoneNumber,
+          admin,
+          totaalToto,
+          teamId,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log(response.data);
+      dispatch(setMessage('success', 'the new player is singned up'));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
 };

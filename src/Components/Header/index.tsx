@@ -12,12 +12,15 @@ import {
 } from '@material-ui/core/styles';
 import { 
   Box,
+  Fade,
   IconButton, 
   Menu, 
   MenuItem,
+  MenuProps,
   Toolbar, 
   Tooltip,
-  Typography
+  Typography,
+  withStyles
 } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import List from '@material-ui/icons/List';
@@ -28,7 +31,6 @@ import HelpOutline from '@material-ui/icons/HelpOutline';
 import Home from '@material-ui/icons/Home';
 import Schedule from '@material-ui/icons/Schedule';
 import Today from  '@material-ui/icons/Today';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -42,9 +44,30 @@ const useStyles = makeStyles((theme: Theme) =>
     header: {
       backgroundColor: theme.palette.primary.main,
       color: '#fff'
-    }
+    },
   }),
 );
+
+const StyledMenu = withStyles({
+  paper: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
+  },
+})((props: MenuProps) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+    TransitionComponent={Fade}
+  />
+));
 
 export default function Header() {
   const classes = useStyles();
@@ -54,7 +77,8 @@ export default function Header() {
   const user = useSelector(selectUser);
   const [showToday, setShowToday] = useState(false)
   const [showTime, setShowTime] = useState(false)
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorElAdmin, setAnchorElAdmin] = React.useState<null | HTMLElement>(null);
+  const [anchorElScores, setAnchorElScores] = React.useState<null | HTMLElement>(null);
   
   const gotoHome = () => history.push("/home");
 
@@ -62,23 +86,28 @@ export default function Header() {
 
   const gotoRegels = () => history.push("/regels");
 
-  const gotoScores = () => history.push("/scores");
+  const gotoScores = () => {
+    handleCloseScores()
+    history.push("/scores");
+  }
 
   const gotoSignUp = () => {
-    handleClose()
+    handleCloseAdmin()
     history.push("/admin/signup")
   };
 
   const gotoSpelers = () => {
-    handleClose()
+    handleCloseAdmin()
     history.push("/admin/spelers")
   };
 
   const gotoVoorspellingen = () => history.push("/voorspellingen");
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
+  const handleAdmin = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorElAdmin(event.currentTarget);
+  const handleScores = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorElScores(event.currentTarget);
  
-  const handleClose = () => setAnchorEl(null);
+  const handleCloseAdmin = () => setAnchorElAdmin(null);
+  const handleCloseScores = () => setAnchorElScores(null);
  
   return (
       <Box className={classes.header}>
@@ -96,12 +125,24 @@ export default function Header() {
                   <List />
                 </Tooltip>
               </IconButton>
-              
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoScores}>
+            
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={handleScores}>
                 <Tooltip title="Scores">  
                   <EmojiEvents />
                 </Tooltip>
               </IconButton>
+              <StyledMenu
+                id="simple-menu"
+                anchorEl={anchorElScores}
+                keepMounted
+                open={Boolean(anchorElScores)}
+                onClose={handleCloseScores}
+              >
+                <MenuItem onClick={gotoScores}>Games</MenuItem>
+                <MenuItem onClick={gotoScores}>Matches</MenuItem>
+                <MenuItem onClick={gotoScores}>Toto</MenuItem>
+              </StyledMenu>
+             
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
                 <Tooltip title="Profiel">
@@ -112,21 +153,21 @@ export default function Header() {
               { user && user.admin ? (
                 <>
                   <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
-                    circle" onClick={handleClick}>
+                    circle" onClick={handleAdmin}>
                       <Tooltip title="Admin">
                         <Build />
                       </Tooltip>
                   </IconButton>
-                  <Menu
+                  <StyledMenu
                     id="simple-menu"
-                    anchorEl={anchorEl}
+                    anchorEl={anchorElAdmin}
                     keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
+                    open={Boolean(anchorElAdmin)}
+                    onClose={handleCloseAdmin}
                   >
                     <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
                     <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
-                  </Menu>
+                  </StyledMenu>
                 </>
               ) : ('')}   
           

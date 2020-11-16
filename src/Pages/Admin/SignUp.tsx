@@ -84,7 +84,18 @@ export default function SignUp() {
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
-    console.log(e)
+    
+    setSignUpCredentials({
+      userName:'',
+      firstName:'',
+      lastName:'',
+      email:'',
+      password:'',
+      phoneNumber:'',
+      admin: false,
+      totaalToto: true,
+      teamId:'',
+    })
   };
 
   return (
