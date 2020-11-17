@@ -6,10 +6,9 @@ import TopThreeTable from '../../Components/Table/TopThreeTable';
 import MatchCard from '../../Components/PlayerCard/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
-  Box, 
-  Grid, 
-  Typography 
+  Box, Typography 
 } from '@material-ui/core';
+import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import { fetchCurrentRound } from '../../store/voorspellingen/actions';
 import { selectCurrentRound } from '../../store/voorspellingen/selectors';
 
@@ -22,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function HomePage() {
+  const [spacing] = React.useState<GridSpacing>(2);
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -44,7 +44,7 @@ export default function HomePage() {
         <Typography variant="h2" className={classes.title}>
           Home
         </Typography>
-        <Grid
+        {/* <Grid
           container
           direction="row"
           justify="space-around"
@@ -52,8 +52,12 @@ export default function HomePage() {
         >
           <Grid><TopThreeTable /></Grid>
           <Grid><TopThreeTable /></Grid>
+        </Grid> */}
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={spacing}>
+            {round ? round.map((wedstrijd, i) => <MatchCard key={i} wedstrijdMetVoorspellingen={wedstrijd}/>) : null }
+          </Grid>
         </Grid>
-        {round ? round.map((wedstrijd, i) => <MatchCard key ={i} wedstrijdMetVoorspellingen={wedstrijd}/>) : null }
       </Box>
     ) : ( null )
   )

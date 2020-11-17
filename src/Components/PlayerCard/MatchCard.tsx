@@ -10,8 +10,9 @@ import { WedstrijdMetVoorspellingen } from '../../store/voorspellingen/types';
 
 const useStyles = makeStyles({
   root: {
-    width: 275,
+    width: 300,
     margin: 20,
+    textAlign: 'center',
   },
   bullet: {
     display: 'inline-block',
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
   },
   pos: {
     marginBottom: 12,
+
   },
 });
 
