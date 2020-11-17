@@ -4,13 +4,13 @@ import { Dispatch } from 'redux';
 import {
   CURRENT_ROUND_FETCHED,
   CurrentRoundFetched,
-  CurrentRound,
+  WedstrijdMetVoorspellingen,
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 
 const currentRoundFetched = (
-  currentRound: CurrentRound[]
+  currentRound: WedstrijdMetVoorspellingen[]
 ): CurrentRoundFetched => {
   return {
     type: CURRENT_ROUND_FETCHED,

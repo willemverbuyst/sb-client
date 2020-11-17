@@ -1,10 +1,10 @@
 export const CURRENT_ROUND_FETCHED = 'GET_CURRENT_ROUND';
 
 export type VoorspellingenState = {
-  currentRound: CurrentRound[] | null;
+  currentRound: WedstrijdMetVoorspellingen[] | null;
 };
 
-export type CurrentRound = {
+export type WedstrijdMetVoorspellingen = {
   awayTeamId: number;
   awayTeamLogo: string;
   awayTeamName: string;
@@ -27,7 +27,7 @@ export type CurrentRound = {
 
 export type CurrentRoundFetched = {
   type: typeof CURRENT_ROUND_FETCHED;
-  currentRound: CurrentRound[];
+  currentRound: WedstrijdMetVoorspellingen[];
 };
 
 export type VoorspellingenActionTypes = CurrentRoundFetched;
