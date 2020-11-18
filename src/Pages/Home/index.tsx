@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
-import TopThreeTable from '../../Components/Table/TopThreeTable';
+// import TopThreeTable from '../../Components/Table/TopThreeTable';
 import MatchCard from '../../Components/PlayerCard/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Box, Typography 
-} from '@material-ui/core';
-import Grid, { GridSpacing } from '@material-ui/core/Grid';
+import { Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import { fetchCurrentRound } from '../../store/voorspellingen/actions';
 import { selectCurrentRound } from '../../store/voorspellingen/selectors';
 
@@ -40,26 +38,26 @@ export default function HomePage() {
     dispatch(fetchCurrentRound())
   });
 
-  console.log(round)
+  // console.log(round)
 
   return (
     token ? (  
       <Grid container>
        
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <Typography variant="h2" className={classes.title}>
             Home
           </Typography>
         </Grid>
      
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <Typography variant="h5" className={classes.subTitle}>
             Programma deze week
           </Typography>
         </Grid>
 
-        <Grid xs={12} container justify="center">
-          {round ? round.map((wedstrijd, i) => <Grid key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
+        <Grid item xs={12} container justify="center">
+          {round ? round.map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
         </Grid>
 
         {/* <Grid xs={12}>

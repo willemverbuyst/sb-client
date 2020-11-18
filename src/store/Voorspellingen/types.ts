@@ -1,7 +1,9 @@
 export const CURRENT_ROUND_FETCHED = 'GET_CURRENT_ROUND';
+export const ALL_FIXTURES_FETCHED = 'ALL_FIXTURES_FETCHED';
 
 export type VoorspellingenState = {
-  currentRound: WedstrijdMetVoorspellingen[] | null;
+  currentRound: Round | null;
+  allFixtures: Game[] | null;
 };
 
 export type WedstrijdMetVoorspellingen = {
@@ -25,9 +27,20 @@ export type WedstrijdMetVoorspellingen = {
   updatedAt: string;
 };
 
+export type Round = WedstrijdMetVoorspellingen[];
+
+export type Game = Round[];
+
 export type CurrentRoundFetched = {
   type: typeof CURRENT_ROUND_FETCHED;
   currentRound: WedstrijdMetVoorspellingen[];
 };
 
-export type VoorspellingenActionTypes = CurrentRoundFetched;
+export type AllFixturesFetched = {
+  type: typeof ALL_FIXTURES_FETCHED;
+  allFixtures: Game[];
+};
+
+export type VoorspellingenActionTypes =
+  | CurrentRoundFetched
+  | AllFixturesFetched;
