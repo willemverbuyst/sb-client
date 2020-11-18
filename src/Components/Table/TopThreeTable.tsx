@@ -12,7 +12,7 @@ import {
 
 const useStyles = makeStyles({
   table: {
-    width: 350,
+    fontSize: 8,
   },
   title: {
     textAlign: 'center',

@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Card, 
-  CardActions, 
   CardContent, 
   Typography 
 } from '@material-ui/core';
@@ -10,21 +9,11 @@ import { WedstrijdMetVoorspellingen } from '../../store/voorspellingen/types';
 
 const useStyles = makeStyles({
   root: {
-    width: 300,
-    margin: 20,
     textAlign: 'center',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    margin: '10px',
   },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-
   },
 });
 
@@ -39,7 +28,7 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
         <Typography variant="h5" component="h2">
         {new Date(wedstrijdMetVoorspellingen.eventTimeStamp * 1000).toDateString()}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography color="textSecondary">
           {wedstrijdMetVoorspellingen.homeTeamName} - {wedstrijdMetVoorspellingen.awayTeamName}
         </Typography>
       </CardContent>

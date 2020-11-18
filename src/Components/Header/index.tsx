@@ -22,13 +22,14 @@ import {
   Typography,
   withStyles
 } from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle'
+import Face from '@material-ui/icons/Face';
 import List from '@material-ui/icons/List';
-import Build from '@material-ui/icons/Build';
-import EmojiEvents from '@material-ui/icons/EmojiEvents'
+import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
 import Home from '@material-ui/icons/Home';
+import PersonAdd from '@material-ui/icons/PersonAdd';
 import Schedule from '@material-ui/icons/Schedule';
 import Today from  '@material-ui/icons/Today';
 
@@ -77,7 +78,6 @@ export default function Header() {
   const user = useSelector(selectUser);
   const [showToday, setShowToday] = useState(false)
   const [showTime, setShowTime] = useState(false)
-  const [anchorElAdmin, setAnchorElAdmin] = React.useState<null | HTMLElement>(null);
   const [anchorElScores, setAnchorElScores] = React.useState<null | HTMLElement>(null);
   
   const gotoHome = () => history.push("/home");
@@ -101,22 +101,14 @@ export default function Header() {
     history.push("/scores/toto");
   }
 
-  const gotoSignUp = () => {
-    handleCloseAdmin()
-    history.push("/admin/signup")
-  };
+  const gotoSignUp = () => history.push("/admin/signup")
 
-  const gotoSpelers = () => {
-    handleCloseAdmin()
-    history.push("/admin/spelers")
-  };
-
+  const gotoSpelers = () => history.push("/admin/spelers")
+  
   const gotoVoorspellingen = () => history.push("/voorspellingen");
 
-  const handleAdmin = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorElAdmin(event.currentTarget);
   const handleScores = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorElScores(event.currentTarget);
  
-  const handleCloseAdmin = () => setAnchorElAdmin(null);
   const handleCloseScores = () => setAnchorElScores(null);
  
   return (
@@ -135,7 +127,7 @@ export default function Header() {
                   <List />
                 </Tooltip>
               </IconButton>
-            
+
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={handleScores}>
                 <Tooltip title="Scores">  
                   <EmojiEvents />
@@ -156,29 +148,22 @@ export default function Header() {
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
                 <Tooltip title="Profiel">
-                  <AccountCircle />
+                  <Face />
+                </Tooltip>
+              </IconButton>
+
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSpelers}>
+                <Tooltip title="Spelers">
+                  <Group />
                 </Tooltip>
               </IconButton>
             
               { user && user.admin ? (
-                <>
-                  <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account 
-                    circle" onClick={handleAdmin}>
-                      <Tooltip title="Admin">
-                        <Build />
-                      </Tooltip>
-                  </IconButton>
-                  <StyledMenu
-                    id="simple-menu"
-                    anchorEl={anchorElAdmin}
-                    keepMounted
-                    open={Boolean(anchorElAdmin)}
-                    onClose={handleCloseAdmin}
-                  >
-                    <MenuItem onClick={gotoSignUp}>Signup</MenuItem>
-                    <MenuItem onClick={gotoSpelers}>Spelers</MenuItem>
-                  </StyledMenu>
-                </>
+                <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSignUp}>
+                  <Tooltip title="Sign up">
+                    <PersonAdd />
+                  </Tooltip>
+                </IconButton>
               ) : ('')}   
           
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRegels}>

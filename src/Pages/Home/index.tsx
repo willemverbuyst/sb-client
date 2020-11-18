@@ -16,12 +16,16 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
+  },
+  subTitle: {
+    // fontWeight: 'bold',
+    marginBottom: theme.spacing(1),
+    color: theme.palette.primary.main
   }
 }));
 
 export default function HomePage() {
-  const [spacing] = React.useState<GridSpacing>(2);
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -40,25 +44,39 @@ export default function HomePage() {
 
   return (
     token ? (  
-      <Box>
-        <Typography variant="h2" className={classes.title}>
-          Home
-        </Typography>
-        {/* <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-        >
-          <Grid><TopThreeTable /></Grid>
-          <Grid><TopThreeTable /></Grid>
-        </Grid> */}
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={spacing}>
-            {round ? round.map((wedstrijd, i) => <MatchCard key={i} wedstrijdMetVoorspellingen={wedstrijd}/>) : null }
-          </Grid>
+      <Grid container>
+       
+        <Grid xs={12}>
+          <Typography variant="h2" className={classes.title}>
+            Home
+          </Typography>
         </Grid>
-      </Box>
+     
+        <Grid xs={12}>
+          <Typography variant="h5" className={classes.subTitle}>
+            Programma deze week
+          </Typography>
+        </Grid>
+
+        <Grid xs={12} container justify="center">
+          {round ? round.map((wedstrijd, i) => <Grid key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
+        </Grid>
+
+        {/* <Grid xs={12}>
+          <Typography variant="h5" className={classes.subTitle}>
+            Top Scores
+          </Typography>
+        </Grid>
+       
+        <Grid container justify="space-around" xs={12}>
+          <Grid item md={3} xs={12}>
+            <TopThreeTable /> 
+          </Grid>
+          <Grid  item md={3} xs={12}>
+            <TopThreeTable /> 
+          </Grid>
+        </Grid> */}
+      </Grid>
     ) : ( null )
   )
 }
