@@ -13,6 +13,21 @@ const monthsLocal = [
   'december'
   ]
 
+const monthsLocalShort = [
+  'jan',
+  'feb',
+  'mrt',
+  'apr',
+  'mei',
+  'jun',
+  'jul',
+  'aug',
+  'sep',
+  'okt',
+  'nov',
+  'dec'
+  ]
+
 const daysLocal = [
   'zo',
   'ma',
@@ -30,4 +45,13 @@ export const getToday = ():string => {
   return `${day} ${new Date().getDate()} ${month}`
 }
 
-export const getTime = ():string => new Date().toLocaleString().slice(11, 19);
+export const getTimeNow = ():string => new Date().toLocaleString().slice(11, 19);
+
+export const timeStamptFormattedToLocalDate = (timeStamp: number):string => {
+  const date = new Date(timeStamp * 1000);
+  const day = daysLocal[+date.getDay()];
+  const month = monthsLocalShort[+date.getMonth()];
+  const year = date.getFullYear().toLocaleString().slice(3, 5);
+
+  return `${day} ${new Date().getDate()} ${month} '${year}`;
+}

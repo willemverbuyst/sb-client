@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectToken, selectUser } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
-import { getToday, getTime } from '../../utils/timeFunctions';
+import { getToday, getTimeNow } from '../../utils/timeFunctions';
 import ball from "../../assets/ball.png";
 import { 
   createStyles, 
@@ -191,7 +191,7 @@ export default function Header() {
              
               {showTime ? 
                 <Box className={classes.text}>       
-                  {getTime()}
+                  {getTimeNow()}
                 </Box> : '' }
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >

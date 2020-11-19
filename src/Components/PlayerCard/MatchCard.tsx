@@ -6,6 +6,7 @@ import {
   Typography 
 } from '@material-ui/core';
 import { WedstrijdMetVoorspellingen } from '../../store/voorspellingen/types';
+import { timeStamptFormattedToLocalDate } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles({
   root: {
@@ -26,7 +27,7 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
     <Card className={classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
-        {new Date(wedstrijdMetVoorspellingen.eventTimeStamp * 1000).toDateString()}
+        {timeStamptFormattedToLocalDate(wedstrijdMetVoorspellingen.eventTimeStamp)}
         </Typography>
         <Typography color="textSecondary">
           {wedstrijdMetVoorspellingen.homeTeamName} - {wedstrijdMetVoorspellingen.awayTeamName}
@@ -36,14 +37,10 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
           <Typography color="textSecondary">
             {wedstrijdMetVoorspellingen.goalsHomeTeam} - {wedstrijdMetVoorspellingen.goalsAwayTeam}
           </Typography> :
-          <Typography color="textSecondary">
+          <Typography color="textSecondary" variant="overline">
             {wedstrijdMetVoorspellingen.status}
           </Typography>
         }
-       
-        <Typography color="textSecondary">
-          {wedstrijdMetVoorspellingen.round}
-        </Typography>
       </CardContent>
     </Card>
   );
