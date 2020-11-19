@@ -33,7 +33,6 @@ export default function Voorspellingen() {
   const [gameNumber, setGameNumber] = React.useState(1);
   const [roundNumber, setRoundNumber] = React.useState(1);
   
-
   useEffect(() => {
     if (!token) history.push("/login");
   });
@@ -49,8 +48,6 @@ export default function Voorspellingen() {
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
     setRoundNumber(value);
   };
-
-  
 
   return (
     token ? (  
@@ -71,23 +68,34 @@ export default function Voorspellingen() {
           {fixtures ? fixtures[gameNumber -1][roundNumber -1].map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
         </Grid>
 
-          <Grid item xs={12} container>
-            <Grid item xs={12} container justify="center" className={classes.pagination}>
-              <Typography variant="h6">
+          <Grid item xs={12}>
+            <Grid container justify="center">
+            <Typography variant="overline" gutterBottom>
                 Rounds
               </Typography>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="center">
               <Pagination count={fixtures[gameNumber -1].length} color="primary" onChange={handleChangeRounds} />
             </Grid>
           </Grid>
             
-          <Grid item xs={12} container>
-            <Grid item xs={12} container justify="center" className={classes.pagination}>
-              <Typography variant="h6">
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <Typography variant="overline" gutterBottom>
                 Games
               </Typography>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="center">
               <Pagination count={fixtures.length} color="secondary" onChange={handleChangeGames} />
             </Grid>
           </Grid>
+       
+       
+          
         </>
       : null }
       </Grid>

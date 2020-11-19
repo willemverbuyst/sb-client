@@ -1,5 +1,6 @@
 export const CURRENT_ROUND_FETCHED = 'GET_CURRENT_ROUND';
 export const ALL_FIXTURES_FETCHED = 'ALL_FIXTURES_FETCHED';
+export const REMOVE_ALL_FIXTURES = 'REMOVE_ALL_FIXTURES';
 
 export type VoorspellingenState = {
   currentRound: Round | null;
@@ -41,6 +42,11 @@ export type AllFixturesFetched = {
   allFixtures: Game[];
 };
 
+export type RemoveAllFixtures = {
+  type: typeof REMOVE_ALL_FIXTURES;
+};
+
 export type VoorspellingenActionTypes =
   | CurrentRoundFetched
-  | AllFixturesFetched;
+  | AllFixturesFetched
+  | RemoveAllFixtures;

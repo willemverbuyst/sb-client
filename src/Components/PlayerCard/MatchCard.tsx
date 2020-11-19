@@ -31,6 +31,19 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
         <Typography color="textSecondary">
           {wedstrijdMetVoorspellingen.homeTeamName} - {wedstrijdMetVoorspellingen.awayTeamName}
         </Typography>
+
+        {wedstrijdMetVoorspellingen.goalsHomeTeam || wedstrijdMetVoorspellingen.goalsAwayTeam ? 
+          <Typography color="textSecondary">
+            {wedstrijdMetVoorspellingen.goalsHomeTeam} - {wedstrijdMetVoorspellingen.goalsAwayTeam}
+          </Typography> :
+          <Typography color="textSecondary">
+            {wedstrijdMetVoorspellingen.status}
+          </Typography>
+        }
+       
+        <Typography color="textSecondary">
+          {wedstrijdMetVoorspellingen.round}
+        </Typography>
       </CardContent>
     </Card>
   );

@@ -1,6 +1,7 @@
 import {
   CURRENT_ROUND_FETCHED,
   ALL_FIXTURES_FETCHED,
+  REMOVE_ALL_FIXTURES,
   VoorspellingenState,
   VoorspellingenActionTypes,
 } from './types';
@@ -20,6 +21,9 @@ const userReducer = (
 
     case ALL_FIXTURES_FETCHED:
       return { ...state, allFixtures: action.allFixtures };
+
+    case REMOVE_ALL_FIXTURES:
+      return { ...state, allFixtures: null };
 
     default:
       return state;

@@ -11,9 +11,10 @@ import {
   UserData,
 } from './types';
 import { LogInCredentials } from '../../models/credentials.model';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removePlayers } from '../admin/actions';
+import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../appState/types';
+import { removeFixtures } from '../voorspellingen/actions';
 
 const logInSuccessUser = (userData: UserData): LogInSuccessUser => {
   return {
@@ -61,6 +62,7 @@ export const userLogOut = () => {
   return (dispatch: Dispatch, _getState: GetState) => {
     dispatch(logOutUser());
     dispatch(removePlayers());
+    dispatch(removeFixtures());
   };
 };
 

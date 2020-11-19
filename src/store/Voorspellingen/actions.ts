@@ -4,8 +4,10 @@ import { Dispatch } from 'redux';
 import {
   ALL_FIXTURES_FETCHED,
   CURRENT_ROUND_FETCHED,
+  REMOVE_ALL_FIXTURES,
   AllFixturesFetched,
   CurrentRoundFetched,
+  RemoveAllFixtures,
   WedstrijdMetVoorspellingen,
   Game,
 } from './types';
@@ -24,6 +26,12 @@ const currentRoundFetched = (
   return {
     type: CURRENT_ROUND_FETCHED,
     currentRound,
+  };
+};
+
+const removeAllFixtures = (): RemoveAllFixtures => {
+  return {
+    type: REMOVE_ALL_FIXTURES,
   };
 };
 
@@ -82,3 +90,5 @@ export const fetchCurrentRound = () => async (
     }
   }
 };
+
+export const removeFixtures = () => removeAllFixtures();
