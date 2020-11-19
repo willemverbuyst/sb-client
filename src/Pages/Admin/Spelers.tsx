@@ -5,7 +5,7 @@ import { selectToken } from '../../store/user/selectors';
 import { fetchAllPlayers } from '../../store/admin/actions';
 import { selectPlayers } from '../../store/admin/selectors';
 import { selectUser } from '../../store/user/selectors';
-import PlayerCard from '../../Components/PlayerCard';
+import PlayerCard from '../../Components/Card';
 import { 
   makeStyles, 
   createStyles, 

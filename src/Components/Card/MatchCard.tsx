@@ -26,10 +26,10 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography variant="h5" component="h2">
+        <Typography>
         {timeStamptFormattedToLocalDate(wedstrijdMetVoorspellingen.eventTimeStamp)}
         </Typography>
-        <Typography color="textSecondary">
+        <Typography variant="h6" color="textSecondary">
           {wedstrijdMetVoorspellingen.homeTeamName} - {wedstrijdMetVoorspellingen.awayTeamName}
         </Typography>
 

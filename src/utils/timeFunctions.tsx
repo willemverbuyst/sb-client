@@ -52,6 +52,8 @@ export const timeStamptFormattedToLocalDate = (timeStamp: number):string => {
   const day = daysLocal[+date.getDay()];
   const month = monthsLocalShort[+date.getMonth()];
   const year = date.getFullYear().toLocaleString().slice(3, 5);
+  const hours = date.getHours();
+  const minutes = date.getMinutes() === 0 ? '00' : date.getMinutes();
 
-  return `${day} ${new Date().getDate()} ${month} '${year}`;
+  return `${hours}:${minutes} - ${day} ${date.getDate()} ${month} '${year}`;
 }

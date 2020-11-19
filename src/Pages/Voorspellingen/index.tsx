@@ -7,7 +7,7 @@ import { selectFixtures } from '../../store/voorspellingen/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
-import MatchCard from '../../Components/PlayerCard/MatchCard';
+import MatchCard from '../../Components/Card/MatchCard';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -65,7 +65,11 @@ export default function Voorspellingen() {
           </Grid>
 
           <Grid item xs={12} container justify="center">
-          {fixtures ? fixtures[gameNumber -1][roundNumber -1].map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
+          {fixtures ? [...fixtures[gameNumber -1][roundNumber -1]]
+            .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
+            .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
+              <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
+            : null }
         </Grid>
 
           <Grid item xs={12}>

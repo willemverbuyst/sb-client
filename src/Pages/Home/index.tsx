@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 // import TopThreeTable from '../../Components/Table/TopThreeTable';
-import MatchCard from '../../Components/PlayerCard/MatchCard';
+import MatchCard from '../../Components/Card/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
