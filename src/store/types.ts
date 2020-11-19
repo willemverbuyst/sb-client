@@ -8,7 +8,7 @@ import { VoorspellingenState } from './voorspellingen/types';
 export type StoreState = {
   adminState: AdminState;
   appState: AppState;
-  scoreState: ScoresState;
+  scoresState: ScoresState;
   teamsState: TeamsState;
   userState: UserState;
   voorspellingenState: VoorspellingenState;

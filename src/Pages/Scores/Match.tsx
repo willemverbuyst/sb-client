@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
@@ -9,6 +9,8 @@ import {
   Typography 
 } from '@material-ui/core';
 import ScoresTable from '../../Components/Table/ScoresTable';
+import { selectMatch } from '../../store/scores/selectors';
+import { fetchScoresMatch } from '../../store/scores/actions';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -20,13 +22,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Matches() {
   const classes = useStyles();
-  const token = useSelector(selectToken);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const { id } = useParams<{ id: string }>();
+  const match = useSelector(selectMatch);
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
+  useEffect(() => {
+    dispatch(fetchScoresMatch(+id))
+  }, [dispatch, id])
+
+  if (match) console.log(match.scores)
 
   return (
     token ? (  
@@ -40,7 +50,8 @@ export default function Matches() {
           justify="space-around"
           alignItems="center"
         >
-          <Grid><ScoresTable /></Grid>
+        { match && match.scores ? <Grid><ScoresTable /></Grid> : <Typography>No Scores yet</Typography>} 
+          
         </Grid>
       </Box>
     ) : ( null )

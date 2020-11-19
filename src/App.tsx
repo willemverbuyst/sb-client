@@ -69,11 +69,11 @@ function App() {
         container
         className={classes.contentWrapper}
         >
-        {isLoading ?  (
+        {/* {isLoading ?  (
         <Grid item md={11} xs={12} className={classes.spinnerContainer}>
           <Progress/>
         </Grid> 
-        ) : (
+        ) : ( */}
         <Grid item md={11} xs={12}>
           <Box className={classes.content}>
             <Switch>
@@ -93,7 +93,7 @@ function App() {
             </Switch>
           </Box>
         </Grid>
-        )}
+        {/* )} */}
         <Grid item md={1} xs={12}>
           <UserDisplay/>
         </Grid>

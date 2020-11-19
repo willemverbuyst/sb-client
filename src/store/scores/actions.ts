@@ -14,28 +14,26 @@ const scoresMatchFetched = (match: Match): ScoresMatchFetched => {
 
 export const fetchScoresMatch = (id: number) => async (
   dispatch: Dispatch,
-  getState: GetState
+  _getState: GetState
 ) => {
-  if (!getState().teamsState.teams) {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.get(`${apiUrl}/scores/fixtures/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const match = response.data;
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/fixtures/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const match = response.data;
 
-      dispatch(scoresMatchFetched(match));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      dispatch(appDoneLoading());
+    dispatch(scoresMatchFetched(match));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
     }
+    dispatch(appDoneLoading());
   }
 };

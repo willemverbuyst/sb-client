@@ -16,7 +16,7 @@ export type Game = {
 
 export type Match = {
   fixture: Fixture;
-  scores: Score[];
+  scores: Score[] | null;
 };
 
 export type Score = {
