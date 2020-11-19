@@ -9,7 +9,7 @@ const initialState: TeamsState = {
   teams: null,
 };
 
-const adminReducer = (state = initialState, action: TeamsActionTypes) => {
+const teamReducer = (state = initialState, action: TeamsActionTypes) => {
   switch (action.type) {
     case ALL_TEAMS_FETCHED:
       return { ...state, teams: action.teams };
@@ -22,4 +22,4 @@ const adminReducer = (state = initialState, action: TeamsActionTypes) => {
   }
 };
 
-export default adminReducer;
+export default teamReducer;

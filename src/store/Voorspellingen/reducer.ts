@@ -11,7 +11,7 @@ const initialState: VoorspellingenState = {
   allFixtures: null,
 };
 
-const userReducer = (
+const voorspellingenReducer = (
   state = initialState,
   action: VoorspellingenActionTypes
 ) => {
@@ -30,4 +30,4 @@ const userReducer = (
   }
 };
 
-export default userReducer;
+export default voorspellingenReducer;

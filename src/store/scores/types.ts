@@ -15,7 +15,7 @@ export type Game = {
 };
 
 export type Match = {
-  fixture: Fixture[];
+  fixture: Fixture;
   scores: Score[];
 };
 
@@ -64,7 +64,7 @@ export type ScoresTotoFetched = {
   toto: Toto[];
 };
 
-export type AdminActionTypes =
+export type ScoresActionTypes =
   | ScoresGamesFetched
   | ScoresMatchesFetched
   | ScoresTotoFetched;
