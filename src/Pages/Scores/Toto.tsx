@@ -8,7 +8,7 @@ import {
   Grid, 
   Typography 
 } from '@material-ui/core';
-import ScoresTable from '../../Components/Table/ScoresTable';
+// import ScoresTable from '../../Components/Table/ScoresTable';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -39,7 +39,7 @@ export default function Toto() {
           justify="space-around"
           alignItems="center"
         >
-          <Grid><ScoresTable /></Grid>
+          {/* <Grid><ScoresTable /></Grid> */}
         </Grid>
       </Box>
     ) : ( null )

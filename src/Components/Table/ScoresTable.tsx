@@ -9,27 +9,19 @@ import {
   TableRow, 
   Typography
 } from '@material-ui/core';
+import { Score } from '../../store/scores/types';
 
 const useStyles = makeStyles({
   table: {
     width: 350,
   },
-  title: {
-    textAlign: 'center',
-  }
 });
 
-function createData(player: string, score: number) {
-  return { player, score };
+type Prop = {
+  scores: Score[]
 }
 
-const rows = [
-  createData('Piet Sjaakie', 159),
-  createData('Anna Ecalir', 237),
-  createData('Fred Fries', 450),
-];
-
-export default function ScoresTable() {
+export default function ScoresTable({scores}: Prop) {
   const classes = useStyles();
 
   return (
@@ -38,17 +30,17 @@ export default function ScoresTable() {
         <TableHead>
           <TableRow>
             <TableCell colSpan={2} align="center" >
-              <Typography variant="h4">Top 3 toto's</Typography>
+              <Typography variant="h4">scores</Typography>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, i) => (
+          {scores.map((score, i) => (
             <TableRow key={i}>
-              <TableCell component="th" scope="row">
-                {row.player}
+              <TableCell>
+                {score.user}
               </TableCell>
-              <TableCell align="right">{row.score}</TableCell>
+              <TableCell align="right">{score.score}</TableCell>
             </TableRow>
           ))}
         </TableBody>

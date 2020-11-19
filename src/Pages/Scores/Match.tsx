@@ -50,7 +50,7 @@ export default function Matches() {
           justify="space-around"
           alignItems="center"
         >
-        { match && match.scores ? <Grid><ScoresTable /></Grid> : <Typography>No Scores yet</Typography>} 
+        { match && match.scores ? <Grid><ScoresTable scores={match.scores}/></Grid> : <Typography>No Scores yet</Typography>} 
           
         </Grid>
       </Box>
