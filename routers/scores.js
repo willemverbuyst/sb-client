@@ -186,7 +186,7 @@ router.get('/games/:id', authMiddleware, async (req, res) => {
 
       const predictionsReduced = reducer(predictionsWithScores);
 
-      return res.status(200).send(predictionsReduced);
+      return res.status(200).send({ game: predictionsReduced });
     } else {
       return res.status(200).send({ message: 'No total scores' });
     }
@@ -194,5 +194,68 @@ router.get('/games/:id', authMiddleware, async (req, res) => {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
 });
+
+/*** GET THE TOTAL SCORE OF EACH USER FOR A ALL GAMES ***/
+/*** PUBLIC ***/
+// router.get('/games', authMiddleware, async (req, res) => {
+
+//   const rounds = [+id * 3 - 2, +id * 3 - 1, +id * 3];
+//   if (+id === 11) rounds.push(id * 3 + 1);
+
+//   const seasons = rounds.map((a) => `Regular Season - ${a}`);
+
+//   try {
+//     const predictions = await Prediction.findAll({
+//       attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
+//       include: [
+//         {
+//           model: Fixture,
+//           where: {
+//             status: 'Match Finished',
+//             goalsHomeTeam: {
+//               [Op.ne]: null,
+//             },
+//             goalsAwayTeam: {
+//               [Op.ne]: null,
+//             },
+//             round: { [Op.in]: seasons },
+//           },
+//         },
+//         { model: User, attributes: ['userName', 'id'] },
+//       ],
+//       raw: true,
+//       nest: true,
+//     });
+
+//     if (predictions.length) {
+//       const predictionsWithScores = predictions.map((pred) => {
+//         return {
+//           ...pred,
+//           score: calcScores(
+//             pred.status,
+//             {
+//               homeTeam: pred.fixture.goalsHomeTeam,
+//               awayTeam: pred.fixture.goalsAwayTeam,
+//             },
+//             {
+//               homeTeam: pred.pGoalsHomeTeam,
+//               awayTeam: pred.pGoalsAwayTeam,
+//             }
+//           ),
+//           user: pred.user.userName,
+//           id: pred.user.id,
+//         };
+//       });
+
+//       const predictionsReduced = reducer(predictionsWithScores);
+
+//       return res.status(200).send({ game: predictionsReduced });
+//     } else {
+//       return res.status(200).send({ message: 'No total scores' });
+//     }
+//   } catch (error) {
+//     return res.status(400).send({ message: 'Something went wrong, sorry' });
+//   }
+// });
 
 module.exports = router;

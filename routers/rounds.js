@@ -69,6 +69,7 @@ router.get('/all', authMiddleware, async (req, res) => {
         attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
         required: false,
       },
+      order: [['id', 'ASC']],
       raw: true,
       nest: true,
     });

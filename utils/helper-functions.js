@@ -26,12 +26,12 @@ const chunkArrayRounds = (arr, sizeGroup) => {
     chunkedArr.push(arr.slice(index, sizeGroup + index));
     index += sizeGroup;
   }
-  const chunkedArrWithProp = chunkedArr.map((a, i) => {
-    return {
-      [`Round ${i + 1}`]: a,
-    };
-  });
-  return chunkedArrWithProp;
+  // const chunkedArrWithProp = chunkedArr.map((a) => {
+  //   return {
+  //     round: a,
+  //   };
+  // });
+  return chunkedArr;
 };
 
 const chunkArrayGames = (arr, sizeGroup, sizeGame) => {
@@ -51,13 +51,13 @@ const chunkArrayGames = (arr, sizeGroup, sizeGame) => {
     ];
   chunkedArr.pop();
 
-  const chunkedArrIntoGames = chunkedArr.map((a, i) => {
-    return {
-      [`Game ${i + 1}`]: a,
-    };
-  });
+  // const chunkedArrIntoGames = chunkedArr.map((a) => {
+  //   return {
+  //     game: a,
+  //   };
+  // });
 
-  return chunkedArrIntoGames;
+  return chunkedArr;
 };
 
 module.exports = {
