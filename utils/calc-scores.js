@@ -1,6 +1,6 @@
 const scores = require('../constants/scores');
 
-const calculateScore = (status, results, prediction) => {
+const calculateScore = (results, prediction) => {
   let currentScore = 0;
 
   const resultMatch = winner(results.homeTeam, results.awayTeam);
@@ -34,12 +34,9 @@ const calculateScore = (status, results, prediction) => {
     prediction.homeTeam == null ||
     prediction.awayTeam == null
   ) {
-    if (status === 'Match Finished') {
-      currentScore = 0;
-    } else {
-      currentScore = 'No score yet';
-    }
+    currentScore = 0;
   }
+
   return currentScore;
 };
 

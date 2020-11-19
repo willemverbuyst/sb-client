@@ -14,37 +14,24 @@ const router = new Router();
 router.get('/fixtures/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
+    const fixture = await Fixture.findOne({
+      where: { id },
+    });
     const predictions = await Prediction.findAll({
       where: { fixtureId: +id },
-      attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
-      include: [
-        {
-          model: Fixture,
-          where: {
-            status: 'Match Finished',
-            goalsHomeTeam: {
-              [Op.ne]: null,
-            },
-            goalsAwayTeam: {
-              [Op.ne]: null,
-            },
-          },
-        },
-        { model: User, attributes: ['userName'] },
-      ],
+      include: [{ model: User, attributes: ['userName'] }],
       raw: true,
       nest: true,
     });
 
-    if (predictions.length) {
+    if (predictions.length > 0) {
       const predictionsWithScores = predictions.map((pred) => {
         return {
           ...pred,
           score: calcScores(
-            pred.status,
             {
-              homeTeam: pred.fixture.goalsHomeTeam,
-              awayTeam: pred.fixture.goalsAwayTeam,
+              homeTeam: fixture.goalsHomeTeam,
+              awayTeam: fixture.goalsAwayTeam,
             },
             {
               homeTeam: pred.pGoalsHomeTeam,
@@ -54,21 +41,18 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
         };
       });
 
-      const predictionsReduced = {
-        fixture: predictionsWithScores[0].fixture,
-        scores: predictionsWithScores.map((a) => {
-          return {
-            pGoalsHomeTeam: a.pGoalsHomeTeam,
-            pGoalsAwayTeam: a.pGoalsAwayTeam,
-            score: a.score,
-            user: a.user.userName,
-          };
-        }),
-      };
+      const predictionsReduced = predictionsWithScores.map((a) => {
+        return {
+          pGoalsHomeTeam: a.pGoalsHomeTeam,
+          pGoalsAwayTeam: a.pGoalsAwayTeam,
+          score: a.score,
+          user: a.user.userName,
+        };
+      });
 
-      return res.status(200).send(predictionsReduced);
+      return res.status(200).send({ fixture, predictionsReduced });
     } else {
-      return res.status(200).send({ message: 'No total scores' });
+      return res.status(200).send({ fixture, scores: [] });
     }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
