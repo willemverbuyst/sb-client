@@ -16,7 +16,7 @@ import PageNotFound from './Pages/PageNotFound';
 import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Games from './Pages/Scores/Games';
-import Matches from './Pages/Scores/Matches';
+import Match from './Pages/Scores/Match';
 import Toto from './Pages/Scores/Toto';
 import Voorspellingen from './Pages/Voorspellingen';
 import { 
@@ -86,7 +86,7 @@ function App() {
               <Route exact path="/profiel" component={Profiel} />
               <Route exact path="/regels" component={Regels} />
               <Route exact path="/scores/games" component={Games} />
-              <Route exact path="/scores/matches" component={Matches} />
+              <Route exact path="/scores/match/:id" component={Match} />
               <Route exact path="/scores/toto" component={Toto} />
               <Route exact path="/voorspellingen" component={Voorspellingen} />
               <Redirect path="/" to="/page-not-found" />

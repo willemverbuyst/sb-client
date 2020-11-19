@@ -18,6 +18,7 @@ export type WedstrijdMetVoorspellingen = {
   homeTeamId: number;
   homeTeamLogo: string;
   homeTeamName: string;
+  id: number;
   predictions: {
     pGoalsAwayTeam: number | null;
     pGoalsHomeTeam: number | null;

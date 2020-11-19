@@ -27,11 +27,12 @@ export default function Matches() {
     if (!token) history.push("/login");
   });
 
+
   return (
     token ? (  
       <Box>
         <Typography variant="h2" className={classes.title}>
-          Matches
+          Match
         </Typography>
         <Grid
           container

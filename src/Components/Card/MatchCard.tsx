@@ -1,6 +1,9 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { 
+  Box,
+  Button,
   Card, 
   CardContent, 
   Typography 
@@ -22,6 +25,7 @@ type Prop = { wedstrijdMetVoorspellingen: WedstrijdMetVoorspellingen }
 
 export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Card className={classes.root}>
@@ -44,8 +48,13 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
           <Typography color="textSecondary" variant="overline">
             {wedstrijdMetVoorspellingen.status}
           </Typography> 
-
         }
+        <Box>
+        <Button onClick={()=> history.push(`/scores/match/${wedstrijdMetVoorspellingen.id}`)}>
+            {wedstrijdMetVoorspellingen.id}
+        </Button> 
+
+        </Box>
       </CardContent>
     </Card>
   );
