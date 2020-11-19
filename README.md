@@ -17,7 +17,7 @@ In config/constants.js and config/config.js the process.env variables are listed
 3. API_URL=[The API URL from https://www.api-football.com/](https://www.api-football.com/)
 4. API_KEY=[The API Key from https://www.api-football.com/](https://www.api-football.com/)
 
-### Get runnning
+### Get running
 
 1. Clone Repo
 2. `npm i` to install dependencies.
