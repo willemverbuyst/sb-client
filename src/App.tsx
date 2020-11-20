@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: theme.spacing(5),
       marginRight: theme.spacing(5),
     },
+    user: {
+      marginRight: theme.spacing(5),
+    },
     spinnerContainer: {
       minHeight: '85vh',
       postion: 'absolute',
@@ -49,6 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       zIndex: 1000,
     }
+
   })
 );
 
@@ -95,7 +99,9 @@ function App() {
         </Grid>
         {/* )} */}
         <Grid item md={1} xs={12}>
-          <UserDisplay/>
+          <Box className={classes.user}>
+            <UserDisplay/>
+          </Box>
         </Grid>
       </Grid>
     </MuiThemeProvider>

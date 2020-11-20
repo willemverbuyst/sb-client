@@ -18,7 +18,6 @@ type Prop = {
 }
 
 export default function ScoresTable({scores}: Prop) {
-
   return (
     <TableContainer>
       <Table aria-label="simple table">
