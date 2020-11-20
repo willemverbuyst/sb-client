@@ -6,6 +6,7 @@ import {
   Card, 
   CardContent, 
   Grid,
+  TextField,
   Typography 
 } from '@material-ui/core';
 import { WedstrijdMetVoorspellingen } from '../../store/voorspellingen/types';
@@ -15,7 +16,6 @@ const useStyles = makeStyles({
   card: {
     textAlign: 'center',
     margin: '10px',
-    cursor: 'pointer',
   },
   avatar: {
     height: 20,
@@ -25,7 +25,13 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   match: {
+    cursor: 'pointer',
     height: 60,
+  },
+  inputBox: {
+    width: 40,
+    padding: '3px',
+    textAlign: 'right'
   }
 });
 
@@ -36,13 +42,14 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
   const history = useHistory();
 
   return (
-    <Card className={classes.card} onClick={()=> history.push(`/scores/match/${wedstrijdMetVoorspellingen.id}`)}>
+    <Card className={classes.card}>
       <CardContent>
         <Typography variant="overline" color="textSecondary">
         {timeStampFormattedToLocalDate(wedstrijdMetVoorspellingen.eventTimeStamp)} 
         </Typography>
         
-        <Grid xs={12} className={classes.match}container justify="center" alignItems="center">
+        <Grid item xs={12} className={classes.match}container justify="center" alignItems="center" 
+          onClick={()=> history.push(`/scores/match/${wedstrijdMetVoorspellingen.id}`)}>
           <Grid item xs={4} container justify="flex-end" alignItems="center">
             <Typography>
               {wedstrijdMetVoorspellingen.homeTeamName}
@@ -81,16 +88,48 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
           </Grid>
         </Grid>
 
-        {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
+        {(wedstrijdMetVoorspellingen.goalsHomeTeam || wedstrijdMetVoorspellingen.goalsAwayTeam) &&
+          (!wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || !wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) ? 
             <Typography variant="overline" color="textSecondary">
-            {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
+              Geen voorspelling
             </Typography>
-            :
+          : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
             <Typography variant="overline" color="textSecondary">
-            Geen voorspelling
+              {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
             </Typography>
-            }
-
+          :
+          <Grid item xs={12} container justify="center">
+            <TextField
+              id="outlined-number"
+              type="number"
+              onChange={()=> console.log('input')}
+              InputProps={{
+                classes: {
+                  input: classes.inputBox,
+                },
+                inputProps: { 
+                  min: 0,
+                  max: 99
+              }
+              }}
+            />
+            &nbsp;&nbsp;-&nbsp;&nbsp;
+            <TextField
+              id="outlined-number"
+              type="number"
+              onChange={()=> console.log('input')}
+              InputProps={{
+                classes: {
+                  input: classes.inputBox,
+                },
+                inputProps: { 
+                  min: 0,
+                  max: 99
+              }
+              }}
+            />
+          </Grid>
+        }
       </CardContent>
     </Card>
   );
