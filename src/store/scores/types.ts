@@ -35,7 +35,7 @@ export type Fixture = {
   goalsAwayTeam: number;
   goalsHomeTeam: number;
   homeTeamId: number;
-  homeTeamLogo: number;
+  homeTeamLogo: string;
   homeTeamName: string;
   id: number;
   round: string;

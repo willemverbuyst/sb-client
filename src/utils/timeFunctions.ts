@@ -29,6 +29,16 @@ const monthsLocalShort = [
   ]
 
 const daysLocal = [
+  'zondag',
+  'maaandag',
+  'dinsdag',
+  'woensdag',
+  'donderdag',
+  'vrijdag',
+  'zaterdag',
+]
+
+const daysLocalShort = [
   'zo',
   'ma',
   'di',
@@ -39,23 +49,21 @@ const daysLocal = [
 ]
 
 export const getToday = ():string => {
-  const day = daysLocal[+new Date().getDay()]
-  const month = monthsLocal[+new Date().getMonth()]
+  const day = daysLocalShort[+new Date().getDay()]
+  const month = monthsLocalShort[+new Date().getMonth()]
 
   return `${day} ${new Date().getDate()} ${month}`
 }
 
 export const getTimeNow = ():string => new Date().toLocaleString().slice(11, 19);
 
-export const timeStamptFormattedToLocalDate = (timeStamp: number):string => {
+export const timeStampFormattedToLocalDate = (timeStamp: number):string => {
   const date = new Date(timeStamp * 1000);
   const day = daysLocal[+date.getDay()];
-  const month = monthsLocalShort[+date.getMonth()];
-  const year = date.getFullYear().toLocaleString().slice(3, 5);
-  // const hours = date.getHours();
-  // const minutes = date.getMinutes() === 0 ? '00' : date.getMinutes();
+  const month = monthsLocal[+date.getMonth()];
+  const year = date.getFullYear().toString()
 
-  return `${day} ${date.getDate()} ${month} '${year}`;
+  return `${day} ${date.getDate()} ${month} ${year}`;
 }
 
 export const getTimeFromTimeStamp = (timeStamp: number):string => {
