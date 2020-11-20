@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { 
   Table, 
   TableBody, 
@@ -7,40 +6,41 @@ import {
   TableContainer, 
   TableHead, 
   TableRow, 
-  Typography
 } from '@material-ui/core';
 import { Score } from '../../store/scores/types';
 
-const useStyles = makeStyles({
-  table: {
-    width: 350,
-  },
-});
+const sortTable = (arr: Score[]): Score[] => [...arr]
+  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
+  .sort((score1, score2) => score2.score - score1.score);
 
 type Prop = {
   scores: Score[]
 }
 
 export default function ScoresTable({scores}: Prop) {
-  const classes = useStyles();
 
   return (
     <TableContainer>
-      <Table className={classes.table} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell colSpan={2} align="center" >
-              <Typography variant="h4">scores</Typography>
-            </TableCell>
+            <TableCell align="left">Speler</TableCell>
+            <TableCell align="center">Voorspelling</TableCell>
+            <TableCell align="right">Score</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {scores.map((score, i) => (
+          {sortTable(scores).map((score, i) => (
             <TableRow key={i}>
-              <TableCell>
+              <TableCell align="left">
                 {score.user}
               </TableCell>
-              <TableCell align="right">{score.score}</TableCell>
+              <TableCell align="center">
+                {score.pGoalsHomeTeam} - {score.pGoalsAwayTeam}
+              </TableCell>
+              <TableCell align="right">
+                {score.score}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

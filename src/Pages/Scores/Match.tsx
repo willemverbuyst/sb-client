@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
   Avatar,
   Box, 
+  Divider,
   Grid, 
   Typography 
 } from '@material-ui/core';
@@ -19,7 +20,16 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
-  }
+  },
+  match: {
+    marginBottom: theme.spacing(6),
+  },
+  date: {
+    marginBottom: theme.spacing(2),
+  },
+  table: {
+    marginTop: theme.spacing(6),
+  },
 }));
 
 export default function Matches() {
@@ -46,8 +56,8 @@ export default function Matches() {
         </Typography>
      
         {match ? 
-        <>       
-          <Grid item xs={12} container justify="center">
+        <Grid className={classes.match}>       
+          <Grid item xs={12} container justify="center" className={classes.date}>
             <Typography variant="overline">
                {timeStampFormattedToLocalDate(match.fixture.eventTimeStamp)}
             </Typography>
@@ -77,16 +87,22 @@ export default function Matches() {
               </Typography>
             </Grid>
           </Grid> 
-        </> 
+        </Grid>
         : null }
+
+        <Divider/>
+
         { match && match.scores ?
         <Grid
           container
           direction="row"
-          justify="space-around"
+          justify="center"
           alignItems="center"
+          className={classes.table}
         >
-          <Grid><ScoresTable scores={match.scores}/></Grid>
+          <Grid item xs={12} md={6} container justify="center">
+            <ScoresTable scores={match.scores}/>
+            </Grid>
         </Grid>
         : null }
        
