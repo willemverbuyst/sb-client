@@ -30,7 +30,7 @@ export default function Toto() {
   return (
     token ? (  
       <Box>
-        <Typography variant="h2" className={classes.title}>
+        <Typography variant="h3" className={classes.title}>
           Toto
         </Typography>
         <Grid

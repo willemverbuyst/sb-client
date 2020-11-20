@@ -51,7 +51,7 @@ export default function Matches() {
   return (
     token ? (  
       <Box>
-        <Typography variant="h2" className={classes.title}>
+        <Typography variant="h3" className={classes.title}>
           Match
         </Typography>
      

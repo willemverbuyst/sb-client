@@ -97,7 +97,6 @@ function App() {
             </Switch>
           </Box>
         </Grid>
-        {/* )} */}
         <Grid item md={1} xs={12}>
           <Box className={classes.user}>
             <UserDisplay/>

@@ -53,7 +53,7 @@ export default function Spelers() {
   
   return (
     <>
-      <Typography variant="h2" className={classes.title}>
+      <Typography variant="h3" className={classes.title}>
           Spelers
       </Typography>
       <Grid container className={classes.root} spacing={2}>

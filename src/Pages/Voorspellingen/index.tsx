@@ -52,9 +52,9 @@ export default function Voorspellingen() {
   return (
     token ? (  
       <Grid container>
-      <Typography variant="h2" className={classes.title}>
-        Voorspellingen
-      </Typography>
+        <Typography variant="h3" className={classes.title}>
+          Voorspellingen
+        </Typography>
 
       { fixtures ?
         <>

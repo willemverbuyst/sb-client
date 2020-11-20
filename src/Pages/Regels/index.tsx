@@ -47,7 +47,7 @@ export default function Regels() {
   return (
     token ? (  
     <div className={classes.root}>
-      <Typography variant="h2" className={classes.title}>
+      <Typography variant="h3" className={classes.title}>
         Regels
       </Typography>
       <Accordion>
