@@ -59,22 +59,16 @@ export default function Voorspellingen() {
       { fixtures ?
         <>
           <Grid item xs={12} container justify="center">
-            <Typography variant="h5" className={classes.subTitle}>
-              Game {gameNumber} - Round {roundNumber}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={12} container justify="center">
           {fixtures ? [...fixtures[gameNumber -1][roundNumber -1]]
             .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
             .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
               <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
             : null }
-        </Grid>
+          </Grid>
 
           <Grid item xs={12}>
             <Grid container justify="center">
-            <Typography variant="overline" gutterBottom>
+              <Typography variant="overline" gutterBottom>
                 Rounds
               </Typography>
             </Grid>
