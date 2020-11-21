@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { addPlayer } from '../../store/admin/actions';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors'; 
 import { selectToken } from '../../store/user/selectors';
@@ -84,6 +85,8 @@ export default function SignUp() {
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
+
+    dispatch(addPlayer(signUpCredentials))
     
     setSignUpCredentials({
       userName:'',
@@ -225,6 +228,25 @@ export default function SignUp() {
                   />
                 </Grid>
               </Grid>
+              <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="phoneNumber"
+                    label="phomeNumber"
+                    type="text"
+                    id="phoneNumber"
+                    value={signUpCredentials.phoneNumber}
+                    onChange={(e) =>
+                      setSignUpCredentials({
+                        ...signUpCredentials,
+                        phoneNumber: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
               <Grid item xs={12} className={classes.select}>
                 { teams ? (
                 <FormControl 
@@ -257,7 +279,7 @@ export default function SignUp() {
                 className={classes.submit}
                 onClick={submitForm}
               >
-                Log In
+                Sign Up
               </Button>        
             </form>
           </div>
