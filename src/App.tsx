@@ -9,7 +9,7 @@ import Progress from './Components/Progress';
 import Toast from './Components/Toast';
 import UserDisplay from './Components/UserDisplay/UserDisplay';
 import SignUp from './Pages/Admin/SignUp';
-import Spelers from './Pages/Admin/Spelers';
+import Spelers from './Pages/Spelers';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
@@ -83,7 +83,6 @@ function App() {
             <Switch>
               <Redirect exact path="/" to="/login" />
               <Route exact path="/admin/signup" component={SignUp} />
-              <Route exact path="/admin/spelers" component={Spelers} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/page-not-found" component={PageNotFound} />
@@ -92,6 +91,7 @@ function App() {
               <Route exact path="/scores/games" component={Games} />
               <Route exact path="/scores/match/:id" component={Match} />
               <Route exact path="/scores/toto" component={Toto} />
+              <Route exact path="/spelers" component={Spelers} />
               <Route exact path="/voorspellingen" component={Voorspellingen} />
               <Redirect path="/" to="/page-not-found" />
             </Switch>

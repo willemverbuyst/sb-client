@@ -103,7 +103,7 @@ export default function Header() {
 
   const gotoSignUp = () => history.push("/admin/signup")
 
-  const gotoSpelers = () => history.push("/admin/spelers")
+  const gotoSpelers = () => history.push("/spelers")
   
   const gotoVoorspellingen = () => history.push("/voorspellingen");
 
