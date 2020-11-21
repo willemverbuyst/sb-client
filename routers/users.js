@@ -2,6 +2,7 @@ const { Router } = require('express');
 const authMiddleware = require('../auth/authMiddleware');
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
+const Team = require('../models').team;
 const User = require('../models').user;
 const { lastMonday, chunkArrayRounds } = require('../utils/helper-functions');
 const { fixturesPerRound } = require('../constants/set-up-game');
@@ -26,6 +27,14 @@ router.get('/', authMiddleware, async (req, res) => {
             'lastName',
             'email',
             'phoneNumber',
+            'admin',
+            'totaalToto',
+          ],
+          include: [
+            {
+              model: Team,
+              attributes: ['id', 'logo', 'name'],
+            },
           ],
         });
         return res.status(200).send(users);

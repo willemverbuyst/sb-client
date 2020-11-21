@@ -88,15 +88,20 @@ router.post('/signup', authMiddleware, async (req, res) => {
 
     const newUser = await User.findOne({
       where: { email },
+      attributes: [
+        'userName',
+        'firstName',
+        'lastName',
+        'email',
+        'phoneNumber',
+        'admin',
+        'totaalToto',
+      ],
       include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
     });
 
-    delete newUser.dataValues['password'];
-
     res.status(201).json({
-      userData: {
-        ...newUser.dataValues,
-      },
+      userData: newUser,
       message: `A new user profile has been created for ${newUser.dataValues.userName}`,
     });
   } catch (error) {
