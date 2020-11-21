@@ -41,6 +41,30 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
 
   const handleCancel = () => setShowInput(false)
 
+
+  const showInputField = () => {
+    if (showInput) {
+      return <InputVoorspellingen leaveInput={handleCancel} fixtureId={wedstrijdMetVoorspellingen.id} pGoalsAwayTeam=   {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} pGoalsHomeTeam={wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} />
+    } else {
+      return (wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) &&
+          wedstrijdMetVoorspellingen.status === 'Match Finished' ?
+            <Typography variant="overline" color="textSecondary">
+              Voorspelling was: {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
+            </Typography>
+          : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
+            <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+            {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam }</Button> 
+          : wedstrijdMetVoorspellingen.status === 'Match Finished' ?
+            <Typography variant="overline" color="textSecondary">
+              Geen voorspelling
+            </Typography>
+          :
+            <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+              Plaats voorspelling 
+            </Button>;
+    }
+  }
+ 
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -89,30 +113,9 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
         </Grid>
 
         <Grid item xs={12} container justify="center">
-          {wedstrijdMetVoorspellingen.status === 'Match Finished' &&
-            (!wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || !wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) ? 
-              <Typography variant="overline" color="textSecondary">
-                Geen voorspelling
-              </Typography>
-            : wedstrijdMetVoorspellingen.status === 'Match Finished' ?
-              <Typography variant="overline" color="textSecondary">
-                {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
-              </Typography>
-            : showInput ?
-              <InputVoorspellingen leaveInput={handleCancel} fixtureId={wedstrijdMetVoorspellingen.id} pGoalsAwayTeam={wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} pGoalsHomeTeam={wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam}  />
-            : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
-              <Tooltip title="Je voorspelling veranderen?" arrow>
-                <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-                  {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
-                </Button>
-              </Tooltip>
-            :
-              <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-                Plaats Voorspelling
-              </Button>
-          }
+          {showInputField()} 
         </Grid>
-
+        
       </CardContent>
     </Card>
   );

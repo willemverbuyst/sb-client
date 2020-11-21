@@ -31,7 +31,6 @@ export default function InputVoorspellingen(props: Props) {
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
 
   const handleSubmit = () => {
-    console.log('submit score', pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId)
     dispatch(postNewPrediction(pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId))
     props.leaveInput();
   }
