@@ -91,4 +91,40 @@ export const fetchCurrentRound = () => async (
   }
 };
 
+export const postPrediction = (
+  pGoalsHomeTeam: number,
+  pGoalsAwayTeam: number,
+  fixtureId: number
+) => {
+  return async (dispatch: any, _getState: GetState) => {
+    dispatch(appLoading());
+    try {
+      const token = localStorage.getItem('user_token');
+      const response = await axios.post(
+        `${apiUrl}/predictions`,
+        {
+          pGoalsHomeTeam,
+          pGoalsAwayTeam,
+          fixtureId,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      dispatch(setMessage('success', response.data.message));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
 export const removeFixtures = () => removeAllFixtures();

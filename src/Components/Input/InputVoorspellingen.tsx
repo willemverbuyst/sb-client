@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { postPrediction } from '../../store/voorspellingen/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Button,
@@ -35,6 +36,7 @@ export default function InputVoorspellingen(props: Props) {
   const handleGoalsHomeTeam = (value: number) => {
     setBtnDisabled(false);
     setPGoalsHomeTeam(value);
+    
   }
 
   const handleGoalsAwayTeam = (value: number) => {
