@@ -2,8 +2,10 @@ import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import {
+  ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
   REMOVE_ALL_PLAYERS,
+  AddNewPlayer,
   AllPlayersFetched,
   Player,
   RemoveAllPlayers,
@@ -11,6 +13,13 @@ import {
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 import { SignUpCredentials } from '../../models/credentials.model';
+
+const addNewPlayer = (player: Player): AddNewPlayer => {
+  return {
+    type: ADD_NEW_PLAYER,
+    player,
+  };
+};
 
 const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
   return {
@@ -87,8 +96,8 @@ export const addPlayer = (signUpCredentials: SignUpCredentials) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log(response.data);
-      dispatch(setMessage('success', 'the new player is singned up'));
+      dispatch(addNewPlayer(response.data.userData));
+      dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
