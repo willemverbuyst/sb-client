@@ -38,6 +38,7 @@ export default function HomePage() {
     dispatch(fetchCurrentRound())
   });
 
+  const handleSubmit = () => {console.log('submit')}
   // console.log(round)
 
   return (

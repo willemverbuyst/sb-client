@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Avatar,
+  Button,
   Card, 
   CardContent, 
   Grid,
-  TextField,
-  Typography 
+  Typography,
+  Tooltip
 } from '@material-ui/core';
 import { WedstrijdMetVoorspellingen } from '../../store/voorspellingen/types';
 import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
+import InputVoorspellingen from '../Input/InputVoorspellingen';
 
 const useStyles = makeStyles({
   card: {
@@ -28,18 +30,14 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     height: 60,
   },
-  inputBox: {
-    width: 40,
-    padding: '3px',
-    textAlign: 'right'
-  }
 });
 
 type Prop = { wedstrijdMetVoorspellingen: WedstrijdMetVoorspellingen }
 
-export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
+export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
   const classes = useStyles();
   const history = useHistory();
+  const [showInput, setShowInput] = useState<boolean>(false)
 
   return (
     <Card className={classes.card}>
@@ -88,48 +86,29 @@ export default function MatchCard({wedstrijdMetVoorspellingen}: Prop) {
           </Grid>
         </Grid>
 
-        {(wedstrijdMetVoorspellingen.goalsHomeTeam || wedstrijdMetVoorspellingen.goalsAwayTeam) &&
-          (!wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || !wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) ? 
-            <Typography variant="overline" color="textSecondary">
-              Geen voorspelling
-            </Typography>
-          : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
-            <Typography variant="overline" color="textSecondary">
-              {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
-            </Typography>
-          :
-          <Grid item xs={12} container justify="center">
-            <TextField
-              id="outlined-number"
-              type="number"
-              onChange={()=> console.log('input')}
-              InputProps={{
-                classes: {
-                  input: classes.inputBox,
-                },
-                inputProps: { 
-                  min: 0,
-                  max: 99
-              }
-              }}
-            />
-            &nbsp;&nbsp;-&nbsp;&nbsp;
-            <TextField
-              id="outlined-number"
-              type="number"
-              onChange={()=> console.log('input')}
-              InputProps={{
-                classes: {
-                  input: classes.inputBox,
-                },
-                inputProps: { 
-                  min: 0,
-                  max: 99
-              }
-              }}
-            />
-          </Grid>
-        }
+        <Grid item xs={12} container justify="center">
+          {(wedstrijdMetVoorspellingen.goalsHomeTeam || wedstrijdMetVoorspellingen.goalsAwayTeam) &&
+            (!wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || !wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) ? 
+              <Typography variant="overline" color="textSecondary">
+                Geen voorspelling
+              </Typography>
+            : showInput ?
+              <InputVoorspellingen/>
+            : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
+              <Tooltip title="Je voorspelling veranderen?" arrow>
+                <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+                  {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
+                </Button>
+              </Tooltip>
+            :
+              <Tooltip title="Een voorspelling plaatsen?" arrow>
+                <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+                  Voorspelling
+                </Button>
+              </Tooltip>
+          }
+        </Grid>
+
       </CardContent>
     </Card>
   );

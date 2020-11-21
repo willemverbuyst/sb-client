@@ -37,21 +37,28 @@ export default function SpelersProfiel() {
   const token = useSelector(selectToken);
   const playerProfile = useSelector(selectPlayerProfile)
 
-  console.log(playerProfile)
-
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
   useEffect(() => {
     dispatch(fetchPlayerProfile(+id));
-  }, [dispatch]);
+  }, [dispatch, id]);
   
   return (
     <>
-      <Typography variant="h3" className={classes.title}>
-        Speler
-      </Typography>
+      {playerProfile ? 
+      <>
+        <Typography variant="h3" className={classes.title}>
+          {playerProfile.userName}
+        </Typography>
+        <img alt={playerProfile.team.name} src={playerProfile.team.logo} />
+      </>
+      :
+        <Typography variant="h3" className={classes.title}>
+          Spelers
+        </Typography> 
+      }
     </>        
   ) 
 }

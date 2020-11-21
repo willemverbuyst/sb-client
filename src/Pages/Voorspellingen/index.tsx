@@ -49,6 +49,10 @@ export default function Voorspellingen() {
     setRoundNumber(value);
   };
 
+  const handleSubmit = () => {
+    console.log('clicked')
+  }
+
   return (
     token ? (  
       <Grid container>
@@ -90,10 +94,7 @@ export default function Voorspellingen() {
             <Grid container justify="center">
               <Pagination count={fixtures.length} color="secondary" onChange={handleChangeGames} />
             </Grid>
-          </Grid>
-       
-       
-          
+          </Grid>   
         </>
       : null }
       </Grid>

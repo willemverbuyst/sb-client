@@ -52,7 +52,7 @@ export default function Matches() {
     token ? (  
       <Box>
         <Typography variant="h3" className={classes.title}>
-          Match
+          Scores
         </Typography>
      
         {match ? 

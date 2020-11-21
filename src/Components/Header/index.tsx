@@ -117,19 +117,19 @@ export default function Header() {
             <Toolbar>
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoHome}>
-                <Tooltip title="Home">
+                <Tooltip title="Home" arrow>
                   <Home />
                 </Tooltip>
               </IconButton>
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoVoorspellingen}>
-                <Tooltip title="Voorspellingen">
+                <Tooltip title="Voorspellingen" arrow>
                   <List />
                 </Tooltip>
               </IconButton>
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={handleScores}>
-                <Tooltip title="Scores">  
+                <Tooltip title="Scores" arrow>  
                   <EmojiEvents />
                 </Tooltip>
               </IconButton>
@@ -153,27 +153,27 @@ export default function Header() {
               </IconButton>
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSpelers}>
-                <Tooltip title="Spelers">
+                <Tooltip title="Spelers" arrow>
                   <Group />
                 </Tooltip>
               </IconButton>
             
               { user && user.admin ? (
                 <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSignUp}>
-                  <Tooltip title="Sign up">
+                  <Tooltip title="Sign up" arrow>
                     <PersonAdd />
                   </Tooltip>
                 </IconButton>
               ) : ('')}   
           
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRegels}>
-                <Tooltip title="Regels">
+                <Tooltip title="Regels" arrow>
                   <HelpOutline />
                 </Tooltip>
               </IconButton>
             
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowToday (!showToday)}>
-                <Tooltip title="Datum">
+                <Tooltip title="Datum" arrow>
                   <Today />
                 </Tooltip>
               </IconButton>
@@ -184,7 +184,7 @@ export default function Header() {
                 </Box> : '' }
           
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowTime(!showTime)}>
-                <Tooltip title="Tijd">
+                <Tooltip title="Tijd" arrow>
                   <Schedule />
                 </Tooltip>
               </IconButton>
@@ -195,7 +195,7 @@ export default function Header() {
                 </Box> : '' }
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
-                <Tooltip title="Log Out">
+                <Tooltip title="Log Out" arrow>
                   <ExitToAppIcon />
                 </Tooltip>
               </IconButton>
