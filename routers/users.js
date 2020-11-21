@@ -11,36 +11,27 @@ const { Op } = require('sequelize');
 
 const router = new Router();
 
-/*** GET ALL USERS FOR ADMIN ***/
-router.get('/', authMiddleware, async (req, res) => {
+/*** GET ALL USERS ***/
+router.get('/', authMiddleware, async (_req, res) => {
   try {
-    if (!req.user.admin)
-      res
-        .status(401)
-        .send({ message: 'You must be an adminstrator for this request' });
-    else
-      try {
-        const users = await User.findAll({
-          attributes: [
-            'userName',
-            'firstName',
-            'lastName',
-            'email',
-            'phoneNumber',
-            'admin',
-            'totaalToto',
-          ],
-          include: [
-            {
-              model: Team,
-              attributes: ['id', 'logo', 'name'],
-            },
-          ],
-        });
-        return res.status(200).send(users);
-      } catch (error) {
-        return res.status(400).send({ message: 'Something went wrong, sorry' });
-      }
+    const users = await User.findAll({
+      attributes: [
+        'userName',
+        'firstName',
+        'lastName',
+        'email',
+        'phoneNumber',
+        'admin',
+        'totaalToto',
+      ],
+      include: [
+        {
+          model: Team,
+          attributes: ['id', 'logo', 'name'],
+        },
+      ],
+    });
+    return res.status(200).send(users);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
