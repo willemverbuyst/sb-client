@@ -4,10 +4,13 @@ import { Dispatch } from 'redux';
 import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
+  PLAYER_PROFILE_FETCHED,
   REMOVE_ALL_PLAYERS,
   AddNewPlayer,
   AllPlayersFetched,
   Player,
+  PlayerProfile,
+  PlayerProfileFetched,
   RemoveAllPlayers,
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
@@ -28,40 +31,19 @@ const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
   };
 };
 
+const playerProfileFetched = (
+  playerProfile: PlayerProfile
+): PlayerProfileFetched => {
+  return {
+    type: PLAYER_PROFILE_FETCHED,
+    playerProfile,
+  };
+};
+
 const removeAllPlayers = (): RemoveAllPlayers => {
   return {
     type: REMOVE_ALL_PLAYERS,
   };
-};
-
-export const removePlayers = () => removeAllPlayers();
-
-export const fetchAllPlayers = () => async (
-  dispatch: Dispatch,
-  getState: GetState
-) => {
-  if (!getState().playersState.players) {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.get(`${apiUrl}/users`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const players = response.data;
-
-      dispatch(allPlayersFetched(players));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      dispatch(appDoneLoading());
-    }
-  }
 };
 
 export const addPlayer = (signUpCredentials: SignUpCredentials) => {
@@ -111,3 +93,59 @@ export const addPlayer = (signUpCredentials: SignUpCredentials) => {
     }
   };
 };
+
+export const fetchAllPlayers = () => async (
+  dispatch: Dispatch,
+  getState: GetState
+) => {
+  if (!getState().playersState.players) {
+    dispatch(appLoading());
+    try {
+      const token = localStorage.getItem('user_token');
+      const response = await axios.get(`${apiUrl}/users`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const players = response.data;
+
+      dispatch(allPlayersFetched(players));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  }
+};
+
+export const fetchPlayerProfile = (id: number) => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/users/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const playerProfile = response.data;
+
+    dispatch(playerProfileFetched(playerProfile));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const removePlayers = () => removeAllPlayers();

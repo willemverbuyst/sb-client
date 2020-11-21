@@ -1,11 +1,13 @@
 import { Team } from '../teams/types';
 
-export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
-export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
 export const ADD_NEW_PLAYER = 'ADD_NEW_PLAYER';
+export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
+export const PLAYER_PROFILE_FETCHED = 'PLAYER_PROFILE_FETCHED';
+export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
 
 export type PlayersState = {
   players: Player[] | null;
+  playerProfile: PlayerProfile | null;
 };
 
 export type Player = {
@@ -19,6 +21,8 @@ export type Player = {
   userName: string;
 };
 
+export type PlayerProfile = Player;
+
 export type AddNewPlayer = {
   type: typeof ADD_NEW_PLAYER;
   player: Player;
@@ -29,6 +33,11 @@ export type AllPlayersFetched = {
   players: Player[];
 };
 
+export type PlayerProfileFetched = {
+  type: typeof PLAYER_PROFILE_FETCHED;
+  playerProfile: PlayerProfile;
+};
+
 export type RemoveAllPlayers = {
   type: typeof REMOVE_ALL_PLAYERS;
 };
@@ -36,4 +45,5 @@ export type RemoveAllPlayers = {
 export type PlayersActionTypes =
   | AddNewPlayer
   | AllPlayersFetched
+  | PlayerProfileFetched
   | RemoveAllPlayers;

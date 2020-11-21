@@ -9,7 +9,8 @@ import Progress from './Components/Progress';
 import Toast from './Components/Toast';
 import UserDisplay from './Components/UserDisplay/UserDisplay';
 import SignUp from './Pages/Admin/SignUp';
-import Spelers from './Pages/Spelers';
+import Spelers from './Pages/Spelers/Spelers';
+import SpelersProfiel from './Pages/Spelers/SpelersProfiel';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
@@ -92,6 +93,7 @@ function App() {
               <Route exact path="/scores/match/:id" component={Match} />
               <Route exact path="/scores/toto" component={Toto} />
               <Route exact path="/spelers" component={Spelers} />
+              <Route exact path="/spelers/:id" component={SpelersProfiel} />
               <Route exact path="/voorspellingen" component={Voorspellingen} />
               <Redirect path="/" to="/page-not-found" />
             </Switch>
