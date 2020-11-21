@@ -23,7 +23,7 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
       return { ...state, players: action.players };
 
     case PLAYER_PROFILE_FETCHED:
-      return { ...state, playersProfile: action.playerProfile };
+      return { ...state, playerProfile: action.playerProfile };
 
     case REMOVE_ALL_PLAYERS:
       return { ...state, players: null };

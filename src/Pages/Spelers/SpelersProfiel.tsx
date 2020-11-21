@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
-import { fetchAllPlayers } from '../../store/players/actions';
-import { selectPlayers } from '../../store/players/selectors';
-import SpelersTable from '../../Components/Table/SpelersTable';
+import { fetchPlayerProfile } from '../../store/players/actions';
+import { selectPlayerProfile } from '../../store/players/selectors';
+// import SpelersTable from '../../Components/Table/SpelersTable';
 import { 
   makeStyles, 
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,17 +32,20 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function SpelersProfiel() {
   const classes = useStyles();
   const history = useHistory();
-  // const dispatch = useDispatch()
+  const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch()
   const token = useSelector(selectToken);
-  // const players = useSelector(selectPlayers)
+  const playerProfile = useSelector(selectPlayerProfile)
+
+  console.log(playerProfile)
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
-  // useEffect(() => {
-  //   dispatch(fetchAllPlayers());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchPlayerProfile(+id));
+  }, [dispatch]);
   
   return (
     <>

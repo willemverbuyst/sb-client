@@ -14,6 +14,7 @@ export type Player = {
   admin: boolean;
   email: string;
   firstName: string;
+  id: number;
   lastName: string;
   phoneNumber: string;
   team: Team;

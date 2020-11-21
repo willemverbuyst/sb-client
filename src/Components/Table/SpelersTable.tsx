@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/selectors'
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
   checkAdmin: {
     color: theme.palette.secondary.main,
+  },
+  link: {
+    cursor: 'pointer'
   }
 }));
 
@@ -38,6 +42,7 @@ type Prop = {
 export default function SpelersTable({players}: Prop) {
   const classes = useStyles();
   const user = useSelector(selectUser);
+  const history = useHistory()
 
   return (
     <TableContainer>
@@ -72,7 +77,7 @@ export default function SpelersTable({players}: Prop) {
               </TableCell> 
               }
              
-              <TableCell align="left">
+              <TableCell align="left" className={classes.link} onClick={()=> history.push(`/spelers/${player.id}`)}>
                 {player.userName}
               </TableCell>
 
