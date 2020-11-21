@@ -17,40 +17,49 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
     const fixture = await Fixture.findOne({
       where: { id },
     });
-    const predictions = await Prediction.findAll({
-      where: { fixtureId: +id },
-      include: [{ model: User, attributes: ['userName'] }],
-      raw: true,
-      nest: true,
-    });
 
-    if (predictions.length > 0) {
-      const predictionsWithScores = predictions.map((pred) => {
-        return {
-          ...pred,
-          score: calcScores(
-            {
-              homeTeam: fixture.goalsHomeTeam,
-              awayTeam: fixture.goalsAwayTeam,
-            },
-            {
-              homeTeam: pred.pGoalsHomeTeam,
-              awayTeam: pred.pGoalsAwayTeam,
-            }
-          ),
-        };
-      });
+    if (fixture.status === 'Match Finished') {
+      try {
+        const predictions = await Prediction.findAll({
+          where: { fixtureId: +id },
+          include: [{ model: User, attributes: ['userName'] }],
+          raw: true,
+          nest: true,
+        });
 
-      const scores = predictionsWithScores.map((a) => {
-        return {
-          pGoalsHomeTeam: a.pGoalsHomeTeam,
-          pGoalsAwayTeam: a.pGoalsAwayTeam,
-          score: a.score,
-          user: a.user.userName,
-        };
-      });
+        if (predictions.length > 0) {
+          const predictionsWithScores = predictions.map((pred) => {
+            return {
+              ...pred,
+              score: calcScores(
+                {
+                  homeTeam: fixture.goalsHomeTeam,
+                  awayTeam: fixture.goalsAwayTeam,
+                },
+                {
+                  homeTeam: pred.pGoalsHomeTeam,
+                  awayTeam: pred.pGoalsAwayTeam,
+                }
+              ),
+            };
+          });
 
-      return res.status(200).send({ fixture, scores });
+          const scores = predictionsWithScores.map((a) => {
+            return {
+              pGoalsHomeTeam: a.pGoalsHomeTeam,
+              pGoalsAwayTeam: a.pGoalsAwayTeam,
+              score: a.score,
+              user: a.user.userName,
+            };
+          });
+
+          return res.status(200).send({ fixture, scores });
+        } else {
+          return res.status(200).send({ fixture, scores: null });
+        }
+      } catch (error) {
+        return res.status(400).send({ message: 'Something went wrong, sorry' });
+      }
     } else {
       return res.status(200).send({ fixture, scores: null });
     }
