@@ -4,12 +4,15 @@ import { Dispatch } from 'redux';
 import {
   ALL_FIXTURES_FETCHED,
   CURRENT_ROUND_FETCHED,
+  POST_PREDICTION,
   REMOVE_ALL_FIXTURES,
   AllFixturesFetched,
   CurrentRoundFetched,
+  PostPrediction,
   RemoveAllFixtures,
   WedstrijdMetVoorspellingen,
   Game,
+  Prediction,
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
@@ -20,12 +23,20 @@ const allFixturesFetched = (allFixtures: Game[]): AllFixturesFetched => {
     allFixtures,
   };
 };
+
 const currentRoundFetched = (
   currentRound: WedstrijdMetVoorspellingen[]
 ): CurrentRoundFetched => {
   return {
     type: CURRENT_ROUND_FETCHED,
     currentRound,
+  };
+};
+
+const postPrediction = (prediction: Prediction): PostPrediction => {
+  return {
+    type: POST_PREDICTION,
+    prediction,
   };
 };
 
@@ -91,7 +102,7 @@ export const fetchCurrentRound = () => async (
   }
 };
 
-export const postPrediction = (
+export const postNewPrediction = (
   pGoalsHomeTeam: number,
   pGoalsAwayTeam: number,
   fixtureId: number
@@ -111,7 +122,7 @@ export const postPrediction = (
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
+      dispatch(postPrediction({ pGoalsAwayTeam, pGoalsHomeTeam, fixtureId }));
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {

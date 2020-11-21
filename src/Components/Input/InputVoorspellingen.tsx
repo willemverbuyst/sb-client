@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postPrediction } from '../../store/voorspellingen/actions';
+import { postNewPrediction } from '../../store/voorspellingen/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Button,
@@ -17,26 +17,28 @@ const useStyles = makeStyles({
 });
 
 type Props = {
-  handleClick: React.MouseEventHandler<HTMLButtonElement>;
+  leaveInput: () => void;
   fixtureId: number;
+  pGoalsHomeTeam: number | null;
+  pGoalsAwayTeam: number | null;
 }
 
 export default function InputVoorspellingen(props: Props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
-  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(0);
+  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(props.pGoalsHomeTeam? props.pGoalsHomeTeam : 0);
+  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(props.pGoalsAwayTeam? props.pGoalsAwayTeam : 0);
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
 
   const handleSubmit = () => {
     console.log('submit score', pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId)
-    dispatch(postPrediction(pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId))
+    dispatch(postNewPrediction(pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId))
+    props.leaveInput();
   }
 
   const handleGoalsHomeTeam = (value: number) => {
     setBtnDisabled(false);
-    setPGoalsHomeTeam(value);
-    
+    setPGoalsHomeTeam(value);    
   }
 
   const handleGoalsAwayTeam = (value: number) => {
@@ -48,7 +50,7 @@ export default function InputVoorspellingen(props: Props) {
     <Grid item xs={12} container justify="center">
       <Grid item xs={2} container justify="center">
         <Button variant="contained" size="small" color="secondary" 
-          disableElevation onClick={props.handleClick}>
+          disableElevation onClick={props.leaveInput}>
           Cancel
         </Button>
       </Grid>

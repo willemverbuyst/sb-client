@@ -39,7 +39,7 @@ export default function Voorspellingen() {
 
   useEffect(() => {
     dispatch(fetchAllFixtures());
-  }, [dispatch]);
+  }, [dispatch, fixtures]);
 
   const handleChangeGames = (_event: React.ChangeEvent<unknown>, value: number) => {
     setGameNumber(value);
@@ -48,10 +48,6 @@ export default function Voorspellingen() {
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
     setRoundNumber(value);
   };
-
-  const handleSubmit = () => {
-    console.log('clicked')
-  }
 
   return (
     token ? (  

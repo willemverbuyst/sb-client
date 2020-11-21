@@ -99,7 +99,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
                 {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
               </Typography>
             : showInput ?
-              <InputVoorspellingen handleClick={handleCancel} fixtureId={wedstrijdMetVoorspellingen.id}/>
+              <InputVoorspellingen leaveInput={handleCancel} fixtureId={wedstrijdMetVoorspellingen.id} pGoalsAwayTeam={wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} pGoalsHomeTeam={wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam}  />
             : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
               <Tooltip title="Je voorspelling veranderen?" arrow>
                 <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
