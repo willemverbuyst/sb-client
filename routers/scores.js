@@ -41,7 +41,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
         };
       });
 
-      const predictionsReduced = predictionsWithScores.map((a) => {
+      const scores = predictionsWithScores.map((a) => {
         return {
           pGoalsHomeTeam: a.pGoalsHomeTeam,
           pGoalsAwayTeam: a.pGoalsAwayTeam,
@@ -50,9 +50,9 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
         };
       });
 
-      return res.status(200).send({ fixture, predictionsReduced });
+      return res.status(200).send({ fixture, scores });
     } else {
-      return res.status(200).send({ fixture, scores: [] });
+      return res.status(200).send({ fixture, scores: null });
     }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });

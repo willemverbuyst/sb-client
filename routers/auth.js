@@ -53,7 +53,7 @@ router.post('/signup', authMiddleware, async (req, res) => {
     phoneNumber,
     admin,
     totaalToto,
-    favteamId,
+    teamId,
   } = req.body;
 
   if (!req.user.admin)
@@ -68,11 +68,10 @@ router.post('/signup', authMiddleware, async (req, res) => {
     !email ||
     !password ||
     !phoneNumber ||
-    !admin ||
-    !totaalToto ||
-    !favteamId
-  )
-    return res.status(400).send('Please provide all the details');
+    !teamId
+  ) {
+    return res.status(400).send({ message: 'Please provide all the details' });
+  }
 
   try {
     await User.create({
@@ -84,7 +83,7 @@ router.post('/signup', authMiddleware, async (req, res) => {
       phoneNumber,
       admin,
       totaalToto,
-      favteamId,
+      teamId,
     });
 
     const newUser = await User.findOne({
@@ -94,14 +93,11 @@ router.post('/signup', authMiddleware, async (req, res) => {
 
     delete newUser.dataValues['password'];
 
-    const token = toJWT({ userId: newUser.id });
-
     res.status(201).json({
       userData: {
-        token,
         ...newUser.dataValues,
       },
-      message: `Welcome ${newUser.userName}, a user profile has been created`,
+      message: `A new user profile has been created for ${newUser.dataValues.userName}`,
     });
   } catch (error) {
     if (error.name === 'SequelizeUniqueConstraintError')
