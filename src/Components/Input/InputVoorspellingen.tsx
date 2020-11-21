@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Button,
@@ -14,56 +15,80 @@ const useStyles = makeStyles({
   }
 });
 
-export default function InputVoorspellingen() {
-  const classes = useStyles();
-  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>()
-  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>()
+type Props = {
+  handleClick: React.MouseEventHandler<HTMLButtonElement>;
+  fixtureId: number;
+}
 
-  const disable = !(typeof pGoalsHomeTeam === 'number' && typeof pGoalsAwayTeam === 'number')
+export default function InputVoorspellingen(props: Props) {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
+  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(0);
+  const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
 
   const handleSubmit = () => {
-    console.log('submit score', pGoalsHomeTeam, pGoalsAwayTeam)
+    console.log('submit score', pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId)
+    dispatch(postPrediction(pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId))
   }
 
-  return <Grid item xs={12} container justify="center">
-            <Grid item xs={2} container justify="center"></Grid>
-            <Grid item xs={8} container justify="center">
-            <TextField
-              id="outlined-number"
-              type="number"
-              onChange={(e)=> setPGoalsHomeTeam(+e.target.value)}
-              InputProps={{
-                classes: {
-                  input: classes.inputBox,
-                },
-                inputProps: { 
-                  min: 0,
-                  max: 99
-              }
-              }}
-            />
-            &nbsp;&nbsp;-&nbsp;&nbsp;
-            <TextField
-              id="outlined-number"
-              type="number"
-              onChange={(e)=> setPGoalsAwayTeam(+e.target.value)}
-              InputProps={{
-                classes: {
-                  input: classes.inputBox,
-                },
-                inputProps: { 
-                  min: 0,
-                  max: 99
-              }
-              }}
-            />
-            </Grid>
-            <Grid item xs={2} container justify="center">
-              <Button disabled={disable} variant="contained" size="small" color="secondary" 
-                disableElevation onClick={handleSubmit}>
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
+  const handleGoalsHomeTeam = (value: number) => {
+    setBtnDisabled(false);
+    setPGoalsHomeTeam(value);
+  }
 
+  const handleGoalsAwayTeam = (value: number) => {
+    setBtnDisabled(false);
+    setPGoalsAwayTeam(value);
+  }
+
+  return (
+    <Grid item xs={12} container justify="center">
+      <Grid item xs={2} container justify="center">
+        <Button variant="contained" size="small" color="secondary" 
+          disableElevation onClick={props.handleClick}>
+          Cancel
+        </Button>
+      </Grid>
+      <Grid item xs={8} container justify="center">
+        <TextField
+          id="outlined-number"
+          type="number"
+          value={pGoalsHomeTeam}
+          onChange={(e) => handleGoalsHomeTeam(+e.target.value) }
+          InputProps={{
+            classes: {
+              input: classes.inputBox,
+            },
+            inputProps: { 
+              min: 0,
+              max: 99
+          }
+          }}
+        />
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        <TextField
+          id="outlined-number"
+          type="number"
+          value={pGoalsAwayTeam}
+          onChange={(e) => handleGoalsAwayTeam(+e.target.value) }
+          InputProps={{
+            classes: {
+              input: classes.inputBox,
+            },
+            inputProps: { 
+              min: 0,
+              max: 99
+          }
+          }}
+        />
+      </Grid>
+      <Grid item xs={2} container justify="center">
+        <Button disabled={btnDisabled} variant="contained" size="small" color="primary" 
+          disableElevation onClick={handleSubmit}>
+          Submit
+        </Button>
+      </Grid>
+    </Grid>
+  )
 }

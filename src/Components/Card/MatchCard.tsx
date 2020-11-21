@@ -39,6 +39,8 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
   const history = useHistory();
   const [showInput, setShowInput] = useState<boolean>(false)
 
+  const handleCancel = () => setShowInput(false)
+
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -64,13 +66,13 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
                 t.b.a.
               </Typography> 
               :
-              wedstrijdMetVoorspellingen.goalsHomeTeam || wedstrijdMetVoorspellingen.goalsAwayTeam ? 
+              wedstrijdMetVoorspellingen.status === 'Match Finished' ? 
                 <Typography>
                   {wedstrijdMetVoorspellingen.goalsHomeTeam} - {wedstrijdMetVoorspellingen.goalsAwayTeam}
                 </Typography> 
                 :
                 <Typography>
-                {getTimeFromTimeStamp(wedstrijdMetVoorspellingen.eventTimeStamp)} 
+                  {getTimeFromTimeStamp(wedstrijdMetVoorspellingen.eventTimeStamp)} 
                 </Typography>
               }
           </Grid>
@@ -87,13 +89,17 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
         </Grid>
 
         <Grid item xs={12} container justify="center">
-          {(wedstrijdMetVoorspellingen.goalsHomeTeam || wedstrijdMetVoorspellingen.goalsAwayTeam) &&
+          {wedstrijdMetVoorspellingen.status === 'Match Finished' &&
             (!wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || !wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) ? 
               <Typography variant="overline" color="textSecondary">
                 Geen voorspelling
               </Typography>
+            : wedstrijdMetVoorspellingen.status === 'Match Finished' ?
+              <Typography variant="overline" color="textSecondary">
+                {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
+              </Typography>
             : showInput ?
-              <InputVoorspellingen/>
+              <InputVoorspellingen handleClick={handleCancel} fixtureId={wedstrijdMetVoorspellingen.id}/>
             : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam && wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
               <Tooltip title="Je voorspelling veranderen?" arrow>
                 <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
@@ -101,11 +107,9 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
                 </Button>
               </Tooltip>
             :
-              <Tooltip title="Een voorspelling plaatsen?" arrow>
-                <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-                  Voorspelling
-                </Button>
-              </Tooltip>
+              <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+                Plaats Voorspelling
+              </Button>
           }
         </Grid>
 
