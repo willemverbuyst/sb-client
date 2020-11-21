@@ -1,13 +1,13 @@
-import { AdminState } from './admin/types';
 import { AppState } from './appState/types';
+import { PlayersState } from './players/types';
 import { ScoresState } from './scores/types';
 import { TeamsState } from './teams/types';
 import { UserState } from './user/types';
 import { VoorspellingenState } from './voorspellingen/types';
 
 export type StoreState = {
-  adminState: AdminState;
   appState: AppState;
+  playersState: PlayersState;
   scoresState: ScoresState;
   teamsState: TeamsState;
   userState: UserState;

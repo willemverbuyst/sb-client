@@ -2,18 +2,16 @@ import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
-import { fetchAllPlayers } from '../../store/admin/actions';
-import { selectPlayers } from '../../store/admin/selectors';
+import { fetchAllPlayers } from '../../store/players/actions';
+import { selectPlayers } from '../../store/players/selectors';
 import SpelersTable from '../../Components/Table/SpelersTable';
-import PlayerCard from '../../Components/Card';
 import { 
   makeStyles, 
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
-import Grid, { GridSpacing } from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-import { ALL_PLAYERS_FETCHED } from '../../store/admin/types';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function Spelers() {
-  const [spacing] = React.useState<GridSpacing>(2);
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch()
@@ -50,10 +47,10 @@ export default function Spelers() {
   return (
     <>
       <Typography variant="h3" className={classes.title}>
-          Spelers
+        Spelers
       </Typography>
       <Grid item xs={12} container justify="center"> 
-      {players ? <Grid item xs={10}><SpelersTable players={players} /></Grid> : null }
+        {players ? <Grid item xs={10}><SpelersTable players={players} /></Grid> : null }
       </Grid>
     </>        
   ) 

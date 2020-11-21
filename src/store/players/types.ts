@@ -4,7 +4,7 @@ export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
 export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
 export const ADD_NEW_PLAYER = 'ADD_NEW_PLAYER';
 
-export type AdminState = {
+export type PlayersState = {
   players: Player[] | null;
 };
 
@@ -33,7 +33,7 @@ export type RemoveAllPlayers = {
   type: typeof REMOVE_ALL_PLAYERS;
 };
 
-export type AdminActionTypes =
+export type PlayersActionTypes =
   | AddNewPlayer
   | AllPlayersFetched
   | RemoveAllPlayers;

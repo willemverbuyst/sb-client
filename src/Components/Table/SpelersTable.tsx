@@ -11,13 +11,12 @@ import {
   TableRow, 
 } from '@material-ui/core';
 import Check from '@material-ui/icons/Check'
-import { Player } from '../../store/admin/types';
+import { Player } from '../../store/players/types';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
     height: 30,
     width: 30,
-    margin: 'auto'
   },
   check: {
     color: theme.palette.primary.main,
@@ -38,10 +37,10 @@ export default function SpelersTable({players}: Prop) {
           <TableRow>
             <TableCell align="center">Admin</TableCell>
             <TableCell align="left">UserName</TableCell>
-            <TableCell align="center">team</TableCell>
+            <TableCell align="left">team</TableCell>
             <TableCell align="left">firstName</TableCell>
             <TableCell align="left">lastName</TableCell>
-            <TableCell align="right">telefoon</TableCell>
+            <TableCell align="left">telefoon</TableCell>
             <TableCell align="center">totaalToto</TableCell>
           </TableRow>
         </TableHead>
@@ -58,7 +57,7 @@ export default function SpelersTable({players}: Prop) {
               <TableCell align="left">
                 {player.userName}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="left">
                 <Avatar className={classes.avatar} alt={player.team.name} src={player.team.logo} />
               </TableCell>
               <TableCell align="left">
@@ -67,7 +66,7 @@ export default function SpelersTable({players}: Prop) {
               <TableCell align="left">
                 {player.lastName}
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="left">
                 {player.phoneNumber}
               </TableCell>
               <TableCell className={classes.check} align="center">

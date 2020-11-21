@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { addPlayer } from '../../store/admin/actions';
+import { addPlayer } from '../../store/players/actions';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors'; 
 import { selectToken } from '../../store/user/selectors';

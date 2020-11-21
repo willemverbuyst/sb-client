@@ -11,7 +11,7 @@ import {
   UserData,
 } from './types';
 import { LogInCredentials } from '../../models/credentials.model';
-import { removePlayers } from '../admin/actions';
+import { removePlayers } from '../players/actions';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../appState/types';
 import { removeFixtures } from '../voorspellingen/actions';

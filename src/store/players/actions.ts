@@ -40,7 +40,7 @@ export const fetchAllPlayers = () => async (
   dispatch: Dispatch,
   getState: GetState
 ) => {
-  if (!getState().adminState.players) {
+  if (!getState().playersState.players) {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');

@@ -2,15 +2,15 @@ import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
   REMOVE_ALL_PLAYERS,
-  AdminState,
-  AdminActionTypes,
+  PlayersState,
+  PlayersActionTypes,
 } from './types';
 
-const initialState: AdminState = {
+const initialState: PlayersState = {
   players: null,
 };
 
-const adminReducer = (state = initialState, action: AdminActionTypes) => {
+const playersReducer = (state = initialState, action: PlayersActionTypes) => {
   switch (action.type) {
     case ADD_NEW_PLAYER:
       if (state.players)
@@ -28,4 +28,4 @@ const adminReducer = (state = initialState, action: AdminActionTypes) => {
   }
 };
 
-export default adminReducer;
+export default playersReducer;
