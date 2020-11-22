@@ -28,10 +28,10 @@ import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
-import Home from '@material-ui/icons/Home';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import Schedule from '@material-ui/icons/Schedule';
 import Today from  '@material-ui/icons/Today';
+import { Weekend } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -118,7 +118,7 @@ export default function Header() {
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoHome}>
                 <Tooltip title="Home" arrow>
-                  <Home />
+                  <Weekend />
                 </Tooltip>
               </IconButton>
               

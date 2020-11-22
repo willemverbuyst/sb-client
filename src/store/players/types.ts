@@ -20,6 +20,7 @@ export type Player = {
   team: Team;
   totaalToto: boolean;
   userName: string;
+  pastFixturesWithScores: any[] | null;
 };
 
 export type PlayerProfile = Player;

@@ -11,7 +11,7 @@ import {
   Theme 
 } from '@material-ui/core/styles';
 // import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import { Divider, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,6 +53,9 @@ export default function SpelersProfiel() {
           {playerProfile.userName}
         </Typography>
         <img alt={playerProfile.team.name} src={playerProfile.team.logo} />
+
+        <Divider/>
+        
       </>
       :
         <Typography variant="h3" className={classes.title}>

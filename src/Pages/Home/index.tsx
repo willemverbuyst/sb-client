@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-// import TopThreeTable from '../../Components/Table/TopThreeTable';
-import MatchCard from '../../Components/Card/MatchCard';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import { fetchCurrentRound } from '../../store/voorspellingen/actions';
 import { selectCurrentRound } from '../../store/voorspellingen/selectors';
+import { selectToken } from '../../store/user/selectors';
+import MatchCard from '../../Components/Card/MatchCard';
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -17,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
   },
   subTitle: {
-    // fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main
   }
@@ -44,13 +41,13 @@ export default function HomePage() {
        
         <Grid item xs={12}>
           <Typography variant="h3" className={classes.title}>
-            Home
+          Deze week
           </Typography>
         </Grid>
      
         <Grid item xs={12}>
           <Typography variant="h5" className={classes.subTitle}>
-            Programma deze week
+            Speelronde: x TotorondeL y
           </Typography>
         </Grid>
 
@@ -58,20 +55,6 @@ export default function HomePage() {
           {round ? round.map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
         </Grid>
 
-        {/* <Grid xs={12}>
-          <Typography variant="h5" className={classes.subTitle}>
-            Top Scores
-          </Typography>
-        </Grid>
-       
-        <Grid container justify="space-around" xs={12}>
-          <Grid item md={3} xs={12}>
-            <TopThreeTable /> 
-          </Grid>
-          <Grid  item md={3} xs={12}>
-            <TopThreeTable /> 
-          </Grid>
-        </Grid> */}
       </Grid>
     ) : ( null )
   )

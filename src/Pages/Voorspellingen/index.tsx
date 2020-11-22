@@ -69,7 +69,7 @@ export default function Voorspellingen() {
           <Grid item xs={12}>
             <Grid container justify="center">
               <Typography variant="overline" gutterBottom>
-                Rounds
+                Speelronde
               </Typography>
             </Grid>
           </Grid>
@@ -82,7 +82,7 @@ export default function Voorspellingen() {
           <Grid item xs={12}>
             <Grid container justify="center">
               <Typography variant="overline" gutterBottom>
-                Games
+                Totoronde
               </Typography>
             </Grid>
           </Grid>

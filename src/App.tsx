@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#f1f1f1',
       marginLeft: theme.spacing(5),
       marginRight: theme.spacing(5),
+      marginBottom: theme.spacing(5),
     },
     user: {
       marginRight: theme.spacing(5),

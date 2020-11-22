@@ -109,7 +109,6 @@ export const postNewPrediction = (
 ) => {
   return async (dispatch: any, _getState: GetState) => {
     dispatch(appLoading());
-    dispatch(postPrediction({ pGoalsAwayTeam, pGoalsHomeTeam, fixtureId }));
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.post(
@@ -125,6 +124,7 @@ export const postNewPrediction = (
       );
 
       dispatch(setMessage('success', response.data.message));
+      dispatch(postPrediction({ pGoalsAwayTeam, pGoalsHomeTeam, fixtureId }));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
