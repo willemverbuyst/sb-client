@@ -5,13 +5,13 @@ import {
   ALL_TEAMS_FETCHED,
   REMOVE_ALL_TEAMS,
   AllTeamsFetched,
-  Team,
   RemoveAllTeams,
 } from './types';
+import { ITeam } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 
-const allTeamsFetched = (teams: Team[]): AllTeamsFetched => {
+const allTeamsFetched = (teams: ITeam[]): AllTeamsFetched => {
   return {
     type: ALL_TEAMS_FETCHED,
     teams,
@@ -23,8 +23,6 @@ const removeAllTeams = (): RemoveAllTeams => {
     type: REMOVE_ALL_TEAMS,
   };
 };
-
-export const removeTeams = () => removeAllTeams();
 
 export const fetchAllTeams = () => async (
   dispatch: Dispatch,
@@ -53,3 +51,5 @@ export const fetchAllTeams = () => async (
     }
   }
 };
+
+export const removeTeams = () => removeAllTeams();

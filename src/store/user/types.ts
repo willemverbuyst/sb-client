@@ -1,3 +1,5 @@
+import { ITeam } from '../../models/toto.models';
+
 export const LOG_IN_SUCCESS_USER = 'LOGIN_SUCCESS_USER';
 export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const TOKEN_STILL_VALID_USER = 'TOKEN_STILL_VALID_USER';
@@ -17,13 +19,7 @@ export type UserData = {
   admin: boolean;
   totaalToto: boolean;
   token: string;
-  team: Team;
-};
-
-export type Team = {
-  id: number;
-  logo: string;
-  name: string;
+  team: ITeam;
 };
 
 export type LogInSuccessUser = {

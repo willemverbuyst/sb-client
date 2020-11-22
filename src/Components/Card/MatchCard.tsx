@@ -10,7 +10,7 @@ import {
   Typography,
   Tooltip
 } from '@material-ui/core';
-import { WedstrijdMetVoorspellingen } from '../../store/voorspellingen/types';
+import { IWedstrijdMetScoreEnVoorspellingen } from '../../models/toto.models';
 import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
 import InputVoorspellingen from '../Input/InputVoorspellingen';
 
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-type Prop = { wedstrijdMetVoorspellingen: WedstrijdMetVoorspellingen }
+type Prop = { wedstrijdMetVoorspellingen: IWedstrijdMetScoreEnVoorspellingen }
 
 export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
   const classes = useStyles();

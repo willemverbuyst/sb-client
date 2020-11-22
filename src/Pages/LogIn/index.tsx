@@ -10,7 +10,7 @@ import {
   TextField 
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { LogInCredentials } from '../../models/credentials.model';
+import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { selectToken } from '../../store/user/selectors'
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function LogIn() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [logInCredentials, setLogInCredentials] = useState<LogInCredentials>({
+  const [logInCredentials, setLogInCredentials] = useState<ILogInCredentials>({
     email: '',
     password: '',
   });

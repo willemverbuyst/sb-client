@@ -1,4 +1,4 @@
-import { Team } from '../teams/types';
+import { TotoRonde, ITeam } from '../../models/toto.models';
 
 export const ADD_NEW_PLAYER = 'ADD_NEW_PLAYER';
 export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
@@ -17,13 +17,14 @@ export type Player = {
   id: number;
   lastName: string;
   phoneNumber: string;
-  team: Team;
+  team: ITeam;
   totaalToto: boolean;
   userName: string;
-  pastFixturesWithScores: any[] | null;
 };
 
-export type PlayerProfile = Player;
+export type PlayerProfile = Player & {
+  pastFixturesWithScores: TotoRonde[] | null;
+};
 
 export type AddNewPlayer = {
   type: typeof ADD_NEW_PLAYER;

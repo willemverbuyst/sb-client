@@ -9,7 +9,7 @@ import {
   TableRow, 
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Score } from '../../store/scores/types';
+import { PredictionWithScorePerUser } from '../../store/scores/types';
 
 const useStyles = makeStyles(() => ({
   link: {
@@ -17,12 +17,12 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const sortTable = (arr: Score[]): Score[] => [...arr]
+const sortTable = (arr: PredictionWithScorePerUser[]): PredictionWithScorePerUser[] => [...arr]
   .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
   .sort((score1, score2) => score2.score - score1.score);
 
 type Prop = {
-  scores: Score[]
+  scores: PredictionWithScorePerUser[]
 }
 
 export default function ScoresTable({scores}: Prop) {

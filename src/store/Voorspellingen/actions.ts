@@ -10,14 +10,16 @@ import {
   CurrentRoundFetched,
   PostPrediction,
   RemoveAllFixtures,
-  WedstrijdMetVoorspellingen,
-  Game,
   Prediction,
 } from './types';
+import {
+  IWedstrijdMetScoreEnVoorspellingen,
+  TotoRonde,
+} from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 
-const allFixturesFetched = (allFixtures: Game[]): AllFixturesFetched => {
+const allFixturesFetched = (allFixtures: TotoRonde[]): AllFixturesFetched => {
   return {
     type: ALL_FIXTURES_FETCHED,
     allFixtures,
@@ -25,7 +27,7 @@ const allFixturesFetched = (allFixtures: Game[]): AllFixturesFetched => {
 };
 
 const currentRoundFetched = (
-  currentRound: WedstrijdMetVoorspellingen[]
+  currentRound: IWedstrijdMetScoreEnVoorspellingen[]
 ): CurrentRoundFetched => {
   return {
     type: CURRENT_ROUND_FETCHED,

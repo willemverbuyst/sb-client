@@ -21,7 +21,7 @@ import {
   TextField, 
   Typography 
 } from '@material-ui/core';
-import { SignUpCredentials } from '../../models/credentials.model';
+import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,7 @@ export default function SignUp() {
   const teams = useSelector(selectTeams);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [signUpCredentials, setSignUpCredentials] = useState<SignUpCredentials>({
+  const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
     userName: '',
     firstName: '',
     lastName: '',

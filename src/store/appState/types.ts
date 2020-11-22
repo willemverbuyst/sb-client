@@ -7,19 +7,17 @@ export type AppState = {
   message: Message | null;
 };
 
-export type GetState = () => AppState;
-
 export type Message = {
   severity: 'success' | 'info' | 'warning' | 'error';
   text: string;
 };
 
-export type AppLoading = {
-  type: typeof APP_LOADING;
-};
-
 export type AppDoneLoading = {
   type: typeof APP_DONE_LOADING;
+};
+
+export type AppLoading = {
+  type: typeof APP_LOADING;
 };
 
 export type SetMessage = {
@@ -27,4 +25,4 @@ export type SetMessage = {
   payload: Message;
 };
 
-export type AppStateTypes = AppLoading | AppDoneLoading | SetMessage;
+export type AppStateTypes = AppDoneLoading | AppLoading | SetMessage;

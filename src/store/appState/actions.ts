@@ -7,11 +7,11 @@ import {
   SetMessage,
 } from './types';
 
-export const appLoading = (): AppLoading => ({ type: APP_LOADING });
-
 export const appDoneLoading = (): AppDoneLoading => ({
   type: APP_DONE_LOADING,
 });
+
+export const appLoading = (): AppLoading => ({ type: APP_LOADING });
 
 export const setMessage = (
   severity: 'success' | 'info' | 'warning' | 'error',

@@ -15,7 +15,7 @@ import {
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
-import { SignUpCredentials } from '../../models/credentials.model';
+import { ISignUpCredentials } from '../../models/credentials.model';
 
 const addNewPlayer = (player: Player): AddNewPlayer => {
   return {
@@ -46,7 +46,7 @@ const removeAllPlayers = (): RemoveAllPlayers => {
   };
 };
 
-export const addPlayer = (signUpCredentials: SignUpCredentials) => {
+export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
   const {
     userName,
     firstName,

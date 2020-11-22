@@ -1,19 +1,15 @@
+import { ITeam } from '../../models/toto.models';
+
 export const ALL_TEAMS_FETCHED = 'ALL_TEAMS_FETCHED';
 export const REMOVE_ALL_TEAMS = 'REMOVE_ALL_TEAMS';
 
 export type TeamsState = {
-  teams: Team[] | null;
-};
-
-export type Team = {
-  id: number;
-  name: string;
-  logo: string;
+  teams: ITeam[] | null;
 };
 
 export type AllTeamsFetched = {
   type: typeof ALL_TEAMS_FETCHED;
-  teams: Team[];
+  teams: ITeam[];
 };
 
 export type RemoveAllTeams = {

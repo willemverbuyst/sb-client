@@ -1,9 +1,7 @@
 import { SCORES_MATCH_FETCHED, ScoresActionTypes, ScoresState } from './types';
 
 const initialState: ScoresState = {
-  games: null,
   match: null,
-  toto: null,
 };
 
 const scoresReducer = (state = initialState, action: ScoresActionTypes) => {

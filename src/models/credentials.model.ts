@@ -1,9 +1,9 @@
-export type LogInCredentials = {
+export interface ILogInCredentials {
   email: string;
   password: string;
-};
+}
 
-export type SignUpCredentials = {
+export interface ISignUpCredentials {
   userName: string;
   firstName: string;
   lastName: string;
@@ -13,4 +13,4 @@ export type SignUpCredentials = {
   admin: boolean;
   totaalToto: boolean;
   teamId: number | '';
-};
+}

@@ -10,10 +10,10 @@ import {
   TokenUserStillValid,
   UserData,
 } from './types';
-import { LogInCredentials } from '../../models/credentials.model';
+import { ILogInCredentials } from '../../models/credentials.model';
 import { removePlayers } from '../players/actions';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { GetState } from '../appState/types';
+import { GetState } from '../types';
 import { removeFixtures } from '../voorspellingen/actions';
 
 const logInSuccessUser = (userData: UserData): LogInSuccessUser => {
@@ -32,7 +32,7 @@ const tokenUserStillValid = (userData: UserData): TokenUserStillValid => ({
   userData,
 });
 
-export const userLogIn = (credentials: LogInCredentials) => {
+export const userLogIn = (credentials: ILogInCredentials) => {
   const { email, password } = credentials;
   return async (dispatch: any, _getState: GetState) => {
     dispatch(appLoading());
