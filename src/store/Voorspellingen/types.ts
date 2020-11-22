@@ -1,4 +1,5 @@
-import { SpeelRonde, TotoRonde } from '../../models/toto.models';
+import { IPrediction } from '../../models/predictions.model';
+import { Round, TotoRound } from '../../models/toto.models';
 
 export const CURRENT_ROUND_FETCHED = 'GET_CURRENT_ROUND';
 export const ALL_FIXTURES_FETCHED = 'ALL_FIXTURES_FETCHED';
@@ -6,29 +7,23 @@ export const POST_PREDICTION = 'POST_PREDICTION';
 export const REMOVE_ALL_FIXTURES = 'REMOVE_ALL_FIXTURES';
 
 export type VoorspellingenState = {
-  currentRound: SpeelRonde | null;
-  allFixtures: TotoRonde[] | null;
-};
-
-export type Prediction = {
-  pGoalsAwayTeam: number;
-  pGoalsHomeTeam: number;
-  fixtureId: number;
+  currentRound: Round | null;
+  allFixtures: TotoRound[] | null;
 };
 
 export type CurrentRoundFetched = {
   type: typeof CURRENT_ROUND_FETCHED;
-  currentRound: SpeelRonde;
+  currentRound: Round;
 };
 
 export type AllFixturesFetched = {
   type: typeof ALL_FIXTURES_FETCHED;
-  allFixtures: TotoRonde[];
+  allFixtures: TotoRound[];
 };
 
 export type PostPrediction = {
   type: typeof POST_PREDICTION;
-  prediction: Prediction;
+  prediction: IPrediction;
 };
 
 export type RemoveAllFixtures = {

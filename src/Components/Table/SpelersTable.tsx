@@ -14,7 +14,7 @@ import {
   TableRow, 
 } from '@material-ui/core';
 import Check from '@material-ui/icons/Check'
-import { Player } from '../../store/players/types';
+import { IPlayer } from '../../models/player.model';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const sortTable = (arr: Player[]): Player[] => [...arr]
+const sortTable = (arr: IPlayer[]): IPlayer[] => [...arr]
   .sort((player1, player2) => player1.userName.toLowerCase().localeCompare(player2.userName.toLowerCase()))
 
 type Prop = {
-  players: Player[]
+  players: IPlayer[]
 }
 
 export default function SpelersTable({players}: Prop) {

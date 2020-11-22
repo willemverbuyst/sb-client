@@ -8,23 +8,22 @@ import {
   REMOVE_ALL_PLAYERS,
   AddNewPlayer,
   AllPlayersFetched,
-  Player,
-  PlayerProfile,
   PlayerProfileFetched,
   RemoveAllPlayers,
 } from './types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 import { ISignUpCredentials } from '../../models/credentials.model';
+import { IPlayer, IPlayerProfile } from '../../models/player.model';
 
-const addNewPlayer = (player: Player): AddNewPlayer => {
+const addNewPlayer = (player: IPlayer): AddNewPlayer => {
   return {
     type: ADD_NEW_PLAYER,
     player,
   };
 };
 
-const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
+const allPlayersFetched = (players: IPlayer[]): AllPlayersFetched => {
   return {
     type: ALL_PLAYERS_FETCHED,
     players,
@@ -32,7 +31,7 @@ const allPlayersFetched = (players: Player[]): AllPlayersFetched => {
 };
 
 const playerProfileFetched = (
-  playerProfile: PlayerProfile
+  playerProfile: IPlayerProfile
 ): PlayerProfileFetched => {
   return {
     type: PLAYER_PROFILE_FETCHED,

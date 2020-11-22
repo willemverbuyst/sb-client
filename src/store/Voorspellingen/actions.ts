@@ -10,32 +10,27 @@ import {
   CurrentRoundFetched,
   PostPrediction,
   RemoveAllFixtures,
-  Prediction,
 } from './types';
-import {
-  IWedstrijdMetScoreEnVoorspellingen,
-  TotoRonde,
-} from '../../models/toto.models';
+import { IPrediction } from '../../models/predictions.model';
+import { Round, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 
-const allFixturesFetched = (allFixtures: TotoRonde[]): AllFixturesFetched => {
+const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
   return {
     type: ALL_FIXTURES_FETCHED,
     allFixtures,
   };
 };
 
-const currentRoundFetched = (
-  currentRound: IWedstrijdMetScoreEnVoorspellingen[]
-): CurrentRoundFetched => {
+const currentRoundFetched = (currentRound: Round): CurrentRoundFetched => {
   return {
     type: CURRENT_ROUND_FETCHED,
     currentRound,
   };
 };
 
-const postPrediction = (prediction: Prediction): PostPrediction => {
+const postPrediction = (prediction: IPrediction): PostPrediction => {
   return {
     type: POST_PREDICTION,
     prediction,
@@ -104,11 +99,11 @@ export const fetchCurrentRound = () => async (
   }
 };
 
-export const postNewPrediction = (
-  pGoalsHomeTeam: number,
-  pGoalsAwayTeam: number,
-  fixtureId: number
-) => {
+export const postNewPrediction = ({
+  pGoalsHomeTeam,
+  pGoalsAwayTeam,
+  fixtureId,
+}: IPrediction) => {
   return async (dispatch: any, _getState: GetState) => {
     dispatch(appLoading());
     try {

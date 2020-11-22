@@ -4,7 +4,7 @@ export interface ITeam {
   logo: string;
 }
 
-export interface IWedstrijd {
+export interface IFixture {
   awayTeamId: number;
   awayTeamLogo: string;
   awayTeamName: string;
@@ -21,17 +21,17 @@ export interface IWedstrijd {
   updatedAt: string;
 }
 
-export interface IWedstrijdMetScore extends IWedstrijd {
+export interface IFixtureWithScore extends IFixture {
   score: string;
 }
 
-export interface IWedstrijdMetScoreEnVoorspellingen extends IWedstrijdMetScore {
+export interface IFixtureWithScoreAndPredictions extends IFixtureWithScore {
   predictions: {
     pGoalsAwayTeam: number | null;
     pGoalsHomeTeam: number | null;
   };
 }
 
-export type SpeelRonde = IWedstrijdMetScoreEnVoorspellingen[];
+export type Round = IFixtureWithScoreAndPredictions[];
 
-export type TotoRonde = SpeelRonde[];
+export type TotoRound = Round[];

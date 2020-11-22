@@ -16,16 +16,16 @@ const initialState: UserState = {
 const userReducer = (state = initialState, action: UserActionTypes) => {
   switch (action.type) {
     case LOG_IN_SUCCESS_USER:
-      const userToken = action.userData.token;
+      const userToken = action.user.token;
       userToken && localStorage.setItem('user_token', userToken);
-      return { ...state, user: action.userData, token: userToken };
+      return { ...state, user: action.user, token: userToken };
 
     case LOG_OUT_USER:
       localStorage.removeItem('user_token');
       return { ...initialState, user: null, token: null };
 
     case TOKEN_STILL_VALID_USER:
-      return { ...state, user: action.userData };
+      return { ...state, user: action.user };
 
     default:
       return state;

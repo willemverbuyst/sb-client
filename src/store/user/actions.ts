@@ -8,18 +8,18 @@ import {
   LogInSuccessUser,
   LogOutUser,
   TokenUserStillValid,
-  UserData,
 } from './types';
 import { ILogInCredentials } from '../../models/credentials.model';
+import { IUser } from '../../models/player.model';
 import { removePlayers } from '../players/actions';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 import { removeFixtures } from '../voorspellingen/actions';
 
-const logInSuccessUser = (userData: UserData): LogInSuccessUser => {
+const logInSuccessUser = (user: IUser): LogInSuccessUser => {
   return {
     type: LOG_IN_SUCCESS_USER,
-    userData,
+    user,
   };
 };
 
@@ -27,9 +27,9 @@ const logOutUser = (): LogOutUser => ({
   type: LOG_OUT_USER,
 });
 
-const tokenUserStillValid = (userData: UserData): TokenUserStillValid => ({
+const tokenUserStillValid = (user: IUser): TokenUserStillValid => ({
   type: TOKEN_STILL_VALID_USER,
-  userData,
+  user,
 });
 
 export const userLogIn = (credentials: ILogInCredentials) => {

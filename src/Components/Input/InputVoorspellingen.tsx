@@ -7,6 +7,7 @@ import {
   Grid,
   TextField,
 } from '@material-ui/core';
+import { IPrediction } from '../../models/predictions.model';
 
 const useStyles = makeStyles({
   inputBox: {
@@ -31,7 +32,12 @@ export default function InputVoorspellingen(props: Props) {
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
 
   const handleSubmit = () => {
-    dispatch(postNewPrediction(pGoalsHomeTeam, pGoalsAwayTeam, props.fixtureId))
+    const prediction: IPrediction = {
+      pGoalsHomeTeam, 
+      pGoalsAwayTeam, 
+      fixtureId: props.fixtureId
+    }
+    dispatch(postNewPrediction(prediction))
     props.leaveInput();
   }
 
