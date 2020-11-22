@@ -1,3 +1,5 @@
+const { totalFixtures } = require('../constants/set-up-game');
+
 const lastMonday = () => {
   const date = new Date();
   const day = date.getDay() || 7;
@@ -26,11 +28,30 @@ const chunkArrayRounds = (arr, sizeGroup) => {
     chunkedArr.push(arr.slice(index, sizeGroup + index));
     index += sizeGroup;
   }
-  // const chunkedArrWithProp = chunkedArr.map((a) => {
-  //   return {
-  //     round: a,
-  //   };
-  // });
+  return chunkedArr;
+};
+
+const chunkArrayTotoRounds = (arr, fixturesPerRound, roundsPerTotoRound) => {
+  const groupedArr = chunkArrayRounds(arr, fixturesPerRound);
+  const chunkedArr = [];
+  let index = 0;
+
+  while (index < groupedArr.length) {
+    chunkedArr.push(groupedArr.slice(index, roundsPerTotoRound + index));
+    index += roundsPerTotoRound;
+  }
+
+  if (
+    arr.length > totalFixtures - fixturesPerRound &&
+    chunkedArr[chunkedArr.length - 1].length < roundsPerTotoRound
+  ) {
+    chunkedArr[chunkedArr.length - 2] = [
+      ...chunkedArr[chunkedArr.length - 2],
+      ...chunkedArr[chunkedArr.length - 1],
+    ];
+    chunkedArr.pop();
+  }
+
   return chunkedArr;
 };
 
@@ -51,12 +72,6 @@ const chunkArrayGames = (arr, sizeGroup, sizeGame) => {
     ];
   chunkedArr.pop();
 
-  // const chunkedArrIntoGames = chunkedArr.map((a) => {
-  //   return {
-  //     game: a,
-  //   };
-  // });
-
   return chunkedArr;
 };
 
@@ -66,4 +81,5 @@ module.exports = {
   chunkArray,
   chunkArrayRounds,
   chunkArrayGames,
+  chunkArrayTotoRounds,
 };

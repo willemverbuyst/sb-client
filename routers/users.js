@@ -4,8 +4,14 @@ const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const Team = require('../models').team;
 const User = require('../models').user;
-const { lastMonday, chunkArrayRounds } = require('../utils/helper-functions');
-const { fixturesPerRound } = require('../constants/set-up-game');
+const {
+  lastMonday,
+  chunkArrayTotoRounds,
+} = require('../utils/helper-functions');
+const {
+  fixturesPerRound,
+  roundsPerTotoRound,
+} = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
 const { Op } = require('sequelize');
 
@@ -40,7 +46,7 @@ router.get('/', authMiddleware, async (_req, res) => {
 
 /*** GET A USER INCLUDING PREDICTIONS AND SCORES FOR PAST FIXTURES ***/
 /*** PUBLIC PROFILE ***/
-router.get('/:id', authMiddleware, async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const user = await User.findOne({
@@ -61,56 +67,56 @@ router.get('/:id', authMiddleware, async (req, res) => {
           attributes: ['id', 'logo', 'name'],
         },
       ],
+      raw: true,
+      nest: true,
     });
-    // const timeStampLastMonday = lastMonday();
-    // const fixtures = await Fixture.findAll({
-    //   where: {
-    //     eventTimeStamp: {
-    //       [Op.lt]: [timeStampLastMonday],
-    //     },
-    //   },
-    //   order: [['id', 'ASC']],
-    // });
+    const timeStampLastMonday = lastMonday();
+    const fixtures = await Fixture.findAll({
+      where: {
+        eventTimeStamp: {
+          [Op.lt]: [timeStampLastMonday],
+        },
+      },
+      order: [['id', 'ASC']],
+    });
 
-    // const fixturesWithPrediction = await Fixture.findAll({
-    //   where: {
-    //     id: {
-    //       [Op.lte]: fixtures[fixtures.length - 1].id,
-    //     },
-    //   },
-    //   include: {
-    //     model: Prediction,
-    //     where: { userId: id },
-    //     attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
-    //     required: false,
-    //   },
-    //   raw: true,
-    //   nest: true,
-    // });
+    const fixturesWithPrediction = await Fixture.findAll({
+      where: {
+        id: {
+          [Op.lte]: fixtures[fixtures.length - 1].id,
+        },
+      },
+      include: {
+        model: Prediction,
+        where: { userId: id },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
+      raw: true,
+      nest: true,
+    });
 
-    // const fixturesWithScores = fixturesWithPrediction.map((fix) => {
-    //   return {
-    //     ...fix,
-    //     score: calcScores(
-    //       fix.status,
-    //       { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
-    //       {
-    //         homeTeam: fix.predictions.pGoalsHomeTeam,
-    //         awayTeam: fix.predictions.pGoalsAwayTeam,
-    //       }
-    //     ),
-    //   };
-    // });
+    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+      return {
+        ...fix,
+        score: calcScores(
+          fix.status,
+          { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
+          {
+            homeTeam: fix.predictions.pGoalsHomeTeam,
+            awayTeam: fix.predictions.pGoalsAwayTeam,
+          }
+        ),
+      };
+    });
 
-    // const fixturesGroupedByRounds = chunkArrayRounds(
-    //   fixturesWithScores,
-    //   fixturesPerRound
-    // );
+    const fixturesGroupedByRounds = chunkArrayTotoRounds(
+      fixturesWithScores,
+      fixturesPerRound,
+      roundsPerTotoRound
+    );
 
-    // const response = {
-    //   user,
-    //   pastPredictions: fixturesGroupedByRounds,
-    // };
+    user.pastFixturesWithScores = fixturesGroupedByRounds;
 
     res.status(200).send(user);
   } catch (error) {

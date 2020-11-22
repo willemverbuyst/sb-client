@@ -22,7 +22,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
       try {
         const predictions = await Prediction.findAll({
           where: { fixtureId: +id },
-          include: [{ model: User, attributes: ['userName'] }],
+          include: [{ model: User, attributes: ['userName', 'id'] }],
           raw: true,
           nest: true,
         });
@@ -50,6 +50,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
               pGoalsAwayTeam: a.pGoalsAwayTeam,
               score: a.score,
               user: a.user.userName,
+              userId: a.user.id,
             };
           });
 

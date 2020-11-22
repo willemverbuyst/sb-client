@@ -8,7 +8,10 @@ const {
   nextMonday,
   chunkArrayGames,
 } = require('../utils/helper-functions');
-const { fixturesPerRound, roundsPerGame } = require('../constants/set-up-game');
+const {
+  fixturesPerRound,
+  roundsPerTotoRound,
+} = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
@@ -91,7 +94,7 @@ router.get('/all', authMiddleware, async (req, res) => {
     const fixturesGroupedByRounds = chunkArrayGames(
       fixturesWithScores,
       fixturesPerRound,
-      roundsPerGame
+      roundsPerTotoRound
     );
 
     res.status(200).send(fixturesGroupedByRounds);
