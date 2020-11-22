@@ -49,11 +49,13 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
       return (wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) &&
           wedstrijdMetVoorspellingen.status === 'Match Finished' ?
             <Typography variant="overline" color="textSecondary">
-              Voorspelling was: {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
+              Je voorspelling was {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
             </Typography>
           : wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam ?
-            <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-            {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam }</Button> 
+            <Tooltip title="Je voorspelling veranderen?" arrow>
+              <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+              {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam }</Button> 
+            </Tooltip>
           : wedstrijdMetVoorspellingen.status === 'Match Finished' ?
             <Typography variant="overline" color="textSecondary">
               Geen voorspelling
@@ -115,7 +117,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
         <Grid item xs={12} container justify="center">
           {showInputField()} 
         </Grid>
-        
+
       </CardContent>
     </Card>
   );

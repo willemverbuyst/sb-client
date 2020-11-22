@@ -24,6 +24,7 @@ export type Score = {
   pGoalsHomeTeam: number;
   score: number;
   user: string;
+  userId: number;
 };
 
 export type Fixture = {
