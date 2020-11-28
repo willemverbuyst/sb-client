@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postNewPrediction } from '../../store/voorspellingen/actions';
+import { postNewPrediction, updateOldPrediction } from '../../store/voorspellingen/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Button,
@@ -37,7 +37,10 @@ export default function InputVoorspellingen(props: Props) {
       pGoalsAwayTeam, 
       fixtureId: props.fixtureId
     }
-    dispatch(postNewPrediction(prediction))
+    props.pGoalsAwayTeam || props.pGoalsHomeTeam ? 
+      dispatch(updateOldPrediction(prediction)) :
+      dispatch(postNewPrediction(prediction));
+    
     props.leaveInput();
   }
 

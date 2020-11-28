@@ -132,7 +132,7 @@ export const postNewPrediction = ({
       );
 
       dispatch(setMessage('success', response.data.message));
-      dispatch(postPrediction({ pGoalsAwayTeam, pGoalsHomeTeam, fixtureId }));
+      dispatch(postPrediction(response.data.prediction));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -158,7 +158,7 @@ export const updateOldPrediction = ({
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
-      const response = await axios.post(
+      const response = await axios.patch(
         `${apiUrl}/predictions/${fixtureId}`,
         {
           pGoalsHomeTeam,
