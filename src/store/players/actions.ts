@@ -11,10 +11,10 @@ import {
   PlayerProfileFetched,
   RemoveAllPlayers,
 } from './types';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { IPlayer, IPlayerProfile } from '../../models/player.model';
+import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
 const addNewPlayer = (player: IPlayer): AddNewPlayer => {
   return {

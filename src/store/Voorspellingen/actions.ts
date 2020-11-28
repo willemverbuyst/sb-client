@@ -11,10 +11,10 @@ import {
   PostPrediction,
   RemoveAllFixtures,
 } from './types';
+import { GetState } from '../types';
 import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { GetState } from '../types';
 
 const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
   return {

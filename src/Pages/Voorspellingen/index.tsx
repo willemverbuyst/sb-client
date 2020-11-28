@@ -30,7 +30,7 @@ export default function Voorspellingen() {
   const history = useHistory();
   const dispatch = useDispatch();
   const fixtures = useSelector(selectFixtures)
-  const [gameNumber, setGameNumber] = React.useState(1);
+  const [totoRoundNumber, setTotoRoundNumber] = React.useState(1);
   const [roundNumber, setRoundNumber] = React.useState(1);
   
   useEffect(() => {
@@ -41,9 +41,12 @@ export default function Voorspellingen() {
     dispatch(fetchAllFixtures());
   }, [dispatch, fixtures]);
 
-  const handleChangeGames = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setGameNumber(value);
+  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
+    setTotoRoundNumber(value);
+    setRoundNumber(1);
   };
+
+  console.log(roundNumber)
 
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
     setRoundNumber(value);
@@ -59,7 +62,7 @@ export default function Voorspellingen() {
       { fixtures ?
         <>
           <Grid item xs={12} container justify="center">
-          {fixtures ? [...fixtures[gameNumber -1][roundNumber -1]]
+          {fixtures ? [...fixtures[totoRoundNumber -1][roundNumber -1]]
             .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
             .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
               <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
@@ -75,7 +78,7 @@ export default function Voorspellingen() {
           </Grid>
           <Grid item xs={12}>
             <Grid container justify="center">
-              <Pagination count={fixtures[gameNumber -1].length} color="primary" onChange={handleChangeRounds} />
+              <Pagination page={roundNumber} count={fixtures[totoRoundNumber -1].length} color="primary" onChange={handleChangeRounds} />
             </Grid>
           </Grid>
             
@@ -88,7 +91,7 @@ export default function Voorspellingen() {
           </Grid>
           <Grid item xs={12}>
             <Grid container justify="center">
-              <Pagination count={fixtures.length} color="secondary" onChange={handleChangeGames} />
+              <Pagination page={totoRoundNumber} count={fixtures.length} color="secondary" onChange={handleChangeTotoRounds} />
             </Grid>
           </Grid>   
         </>

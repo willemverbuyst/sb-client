@@ -2,8 +2,8 @@ import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { SCORES_MATCH_FETCHED, Match, ScoresMatchFetched } from './types';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
+import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
 const scoresMatchFetched = (match: Match): ScoresMatchFetched => {
   return {

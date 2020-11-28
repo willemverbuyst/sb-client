@@ -9,11 +9,11 @@ import {
   LogOutUser,
   TokenUserStillValid,
 } from './types';
+import { GetState } from '../types';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
-import { removePlayers } from '../players/actions';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { GetState } from '../types';
+import { removePlayers } from '../players/actions';
 import { removeFixtures } from '../voorspellingen/actions';
 
 const logInSuccessUser = (user: IUser): LogInSuccessUser => {

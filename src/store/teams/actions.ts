@@ -7,9 +7,9 @@ import {
   AllTeamsFetched,
   RemoveAllTeams,
 } from './types';
+import { GetState } from '../types';
 import { ITeam } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { GetState } from '../types';
 
 const allTeamsFetched = (teams: ITeam[]): AllTeamsFetched => {
   return {
