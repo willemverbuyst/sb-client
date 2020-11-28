@@ -133,7 +133,7 @@ export const fetchPlayerProfile = (id: number) => async (
     });
     const playerProfile = response.data;
 
-    console.log(playerProfile);
+    // console.log(playerProfile);
     dispatch(playerProfileFetched(playerProfile));
     dispatch(appDoneLoading());
   } catch (error) {
