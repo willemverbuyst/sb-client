@@ -7,6 +7,7 @@ const {
   lastMonday,
   nextMonday,
   chunkArrayGames,
+  totoRoundNumber,
 } = require('../utils/helper-functions');
 const {
   fixturesPerRound,
@@ -53,7 +54,16 @@ router.get('/current', authMiddleware, async (req, res) => {
       };
     });
 
-    res.status(200).send(fixturesWithScores);
+    const currentSeason = fixturesWithScores[0].round;
+    const currentTotoRound = totoRoundNumber(currentSeason.slice(-2));
+
+    const currentRound = {
+      round: currentSeason,
+      totoRound: currentTotoRound,
+      fixturesWithScores,
+    };
+
+    res.status(200).send(currentRound);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }

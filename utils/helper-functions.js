@@ -1,4 +1,8 @@
-const { totalFixtures } = require('../constants/set-up-game');
+const {
+  roundsPerTotoRound,
+  totalFixtures,
+  totoRounds,
+} = require('../constants/set-up-game');
 
 const lastMonday = () => {
   const date = new Date();
@@ -75,6 +79,11 @@ const chunkArrayGames = (arr, sizeGroup, sizeGame) => {
   return chunkedArr;
 };
 
+const totoRoundNumber = (seasonNumber) =>
+  seasonNumber > totoRounds * roundsPerTotoRound
+    ? totoRounds
+    : Math.ceil(seasonNumber / roundsPerTotoRound);
+
 module.exports = {
   lastMonday,
   nextMonday,
@@ -82,4 +91,5 @@ module.exports = {
   chunkArrayRounds,
   chunkArrayGames,
   chunkArrayTotoRounds,
+  totoRoundNumber,
 };
