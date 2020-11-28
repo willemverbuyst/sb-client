@@ -24,12 +24,18 @@ router.post('/', authMiddleware, async (req, res) => {
         .status(404)
         .json({ message: "You can't predict the outcome of a finished match" });
 
-    const prediction = await Prediction.create({
+    const createdPrediction = await Prediction.create({
       pGoalsHomeTeam: +pGoalsHomeTeam,
       pGoalsAwayTeam: +pGoalsAwayTeam,
       userId,
       fixtureId: +fixtureId,
     });
+
+    const prediction = {
+      pGoalsAwayTeam: createdPrediction.pGoalsAwayTeam,
+      pGoalsHomeTeam: createdPrediction.pGoalsHomeTeam,
+      fixtureId: createdPrediction.fixtureId,
+    };
 
     return res
       .status(201)
@@ -64,9 +70,15 @@ router.patch('/:id', authMiddleware, async (req, res) => {
       pGoalsAwayTeam: +pGoalsAwayTeam,
     });
 
+    const prediction = {
+      pGoalsAwayTeam: updatedPrediction.pGoalsAwayTeam,
+      pGoalsHomeTeam: updatedPrediction.pGoalsHomeTeam,
+      fixtureId: updatedPrediction.fixtureId,
+    };
+
     return res
       .status(201)
-      .json({ updatedPrediction, message: 'Je voorspelling is geplaatst.' });
+      .json({ prediction, message: 'Je voorspelling is aangepast.' });
   } catch (error) {
     return res.status(400).send({ message: 'Er gaat iets mis, sorry' });
   }
