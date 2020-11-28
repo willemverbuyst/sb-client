@@ -6,8 +6,8 @@ import { fetchAllFixtures } from '../../store/voorspellingen/actions';
 import { selectFixtures } from '../../store/voorspellingen/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
 import MatchCard from '../../Components/Card/MatchCard';
+import PaginationComponent from '../../Components/Pagination';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -46,9 +46,7 @@ export default function Voorspellingen() {
     setRoundNumber(1);
   };
 
-  console.log(roundNumber)
-
-  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
     setRoundNumber(value);
   };
 
@@ -69,31 +67,20 @@ export default function Voorspellingen() {
             : null }
           </Grid>
 
-          <Grid item xs={12}>
-            <Grid container justify="center">
-              <Typography variant="overline" gutterBottom>
-                Speelronde
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Grid container justify="center">
-              <Pagination page={roundNumber} count={fixtures[totoRoundNumber -1].length} color="primary" onChange={handleChangeRounds} />
-            </Grid>
-          </Grid>
-            
-          <Grid item xs={12}>
-            <Grid container justify="center">
-              <Typography variant="overline" gutterBottom>
-                Totoronde
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Grid container justify="center">
-              <Pagination page={totoRoundNumber} count={fixtures.length} color="secondary" onChange={handleChangeTotoRounds} />
-            </Grid>
-          </Grid>   
+          <PaginationComponent 
+            label="Speelronde"
+            totoRoundNumber={roundNumber}
+            numberFixtures={fixtures[totoRoundNumber -1].length} 
+            color="primary" 
+            handleChange={handleChangeRounds}
+          /> 
+          <PaginationComponent 
+            label="Totoronde"
+            totoRoundNumber={totoRoundNumber}
+            numberFixtures={fixtures.length}
+            color="secondary"
+            handleChange={handleChangeTotoRounds}
+          /> 
         </>
       : null }
       </Grid>
