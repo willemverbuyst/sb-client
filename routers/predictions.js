@@ -39,13 +39,36 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/', async (_req, res) => {
-  try {
-    const predictions = await Prediction.findAll();
+/*** CHANGE A PREDICTION FOR A SPECIFIC FIXTURE ***/
+router.patch('/:id', authMiddleware, async (req, res) => {
+  const userId = req.user.id;
+  const fixtureId = req.params.id;
+  const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
-    res.status(200).json(predictions);
+  if (!pGoalsHomeTeam || !pGoalsAwayTeam)
+    return res.status(400).send('Details are missing, please try again!');
+
+  try {
+    const fixture = await Fixture.findOne({ where: { id: fixtureId } });
+    if (fixture.status === 'Matched Finished')
+      return res.status(404).json({
+        message: "You can't change the prediction for a finished match!",
+      });
+
+    const predictionToUpdate = await Prediction.findOne({
+      where: { fixtureId, userId },
+    });
+
+    const updatedPrediction = await predictionToUpdate.update({
+      pGoalsHomeTeam: +pGoalsHomeTeam,
+      pGoalsAwayTeam: +pGoalsAwayTeam,
+    });
+
+    return res
+      .status(201)
+      .json({ updatedPrediction, message: 'Je voorspelling is geplaatst.' });
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er gaat iets mis, sorry' });
   }
 });
 
