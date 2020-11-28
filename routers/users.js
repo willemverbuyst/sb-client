@@ -8,10 +8,6 @@ const {
   lastMonday,
   chunkArrayTotoRounds,
 } = require('../utils/helper-functions');
-const {
-  fixturesPerRound,
-  roundsPerTotoRound,
-} = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
 const { Op } = require('sequelize');
 
@@ -70,7 +66,9 @@ router.get('/:id', async (req, res) => {
       raw: true,
       nest: true,
     });
+
     const timeStampLastMonday = lastMonday();
+
     const fixtures = await Fixture.findAll({
       where: {
         eventTimeStamp: {
@@ -96,7 +94,7 @@ router.get('/:id', async (req, res) => {
       nest: true,
     });
 
-    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+    const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
       return {
         ...fix,
         score: calcScores(
@@ -110,13 +108,11 @@ router.get('/:id', async (req, res) => {
       };
     });
 
-    const fixturesGroupedByRounds = chunkArrayTotoRounds(
-      fixturesWithScores,
-      fixturesPerRound,
-      roundsPerTotoRound
+    const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
+      fixturesWithPredictionAndScore
     );
 
-    user.pastFixturesWithScores = fixturesGroupedByRounds;
+    user.pastFixturesWithScores = fixturesGroupedByTotoRounds;
 
     res.status(200).send(user);
   } catch (error) {

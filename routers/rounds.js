@@ -6,24 +6,22 @@ const { Op } = require('sequelize');
 const {
   lastMonday,
   nextMonday,
-  chunkArrayGames,
-  totoRoundNumber,
+  chunkArrayTotoRounds,
+  getTotoRoundNumber,
 } = require('../utils/helper-functions');
-const {
-  fixturesPerRound,
-  roundsPerTotoRound,
-} = require('../constants/set-up-game');
 const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
 
-/*** GET CURRENT FIXTURES (9), i.e. 1 ROUND FOR LOGGED IN USER ***/
+/*** GET CURRENT ROUND (9 FIXTURES) FOR LOGGED IN USER ***/
+/*** INCLUDING PREDICTIONS AND SCORES ***/
 router.get('/current', authMiddleware, async (req, res) => {
   const { id } = req.user;
 
   try {
     const timeStampLastMonday = lastMonday();
     const timeStampNextMonday = nextMonday();
+
     const fixturesWithPrediction = await Fixture.findAll({
       where: {
         eventTimeStamp: {
@@ -40,7 +38,7 @@ router.get('/current', authMiddleware, async (req, res) => {
       nest: true,
     });
 
-    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+    const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
       return {
         ...fix,
         score: calcScores(
@@ -54,13 +52,13 @@ router.get('/current', authMiddleware, async (req, res) => {
       };
     });
 
-    const currentSeason = fixturesWithScores[0].round;
-    const currentTotoRound = totoRoundNumber(currentSeason.slice(-2));
+    const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
+    const totoRoundNumber = getTotoRoundNumber(roundNumber);
 
     const currentRound = {
-      round: currentSeason,
-      totoRound: currentTotoRound,
-      fixturesWithScores,
+      roundNumber,
+      totoRoundNumber,
+      fixtures: fixturesWithPredictionAndScore,
     };
 
     res.status(200).send(currentRound);
@@ -69,7 +67,7 @@ router.get('/current', authMiddleware, async (req, res) => {
   }
 });
 
-/*** GET ALL FIXTURES (306), i.e. 34 ROUNDS FOR LOGGED IN USER ***/
+/*** GET ALL 34 ROUNDS (306 FIXTURES) FOR LOGGED IN USER ***/
 /*** INCLUDING PREDICTIONS AND SCORES ***/
 router.get('/all', authMiddleware, async (req, res) => {
   const { id } = req.user;
@@ -87,7 +85,7 @@ router.get('/all', authMiddleware, async (req, res) => {
       nest: true,
     });
 
-    const fixturesWithScores = fixturesWithPrediction.map((fix) => {
+    const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
       return {
         ...fix,
         score: calcScores(
@@ -101,10 +99,8 @@ router.get('/all', authMiddleware, async (req, res) => {
       };
     });
 
-    const fixturesGroupedByRounds = chunkArrayGames(
-      fixturesWithScores,
-      fixturesPerRound,
-      roundsPerTotoRound
+    const fixturesGroupedByRounds = chunkArrayTotoRounds(
+      fixturesWithPredictionAndScore
     );
 
     res.status(200).send(fixturesGroupedByRounds);

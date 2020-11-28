@@ -1,4 +1,5 @@
 const {
+  fixturesPerRound,
   roundsPerTotoRound,
   totalFixtures,
   totoRounds,
@@ -25,18 +26,8 @@ const chunkArray = (arr, size) => {
   return chunkedArr;
 };
 
-const chunkArrayRounds = (arr, sizeGroup) => {
-  const chunkedArr = [];
-  let index = 0;
-  while (index < arr.length) {
-    chunkedArr.push(arr.slice(index, sizeGroup + index));
-    index += sizeGroup;
-  }
-  return chunkedArr;
-};
-
-const chunkArrayTotoRounds = (arr, fixturesPerRound, roundsPerTotoRound) => {
-  const groupedArr = chunkArrayRounds(arr, fixturesPerRound);
+const chunkArrayTotoRounds = (arr) => {
+  const groupedArr = chunkArray(arr, fixturesPerRound);
   const chunkedArr = [];
   let index = 0;
 
@@ -59,27 +50,7 @@ const chunkArrayTotoRounds = (arr, fixturesPerRound, roundsPerTotoRound) => {
   return chunkedArr;
 };
 
-const chunkArrayGames = (arr, sizeGroup, sizeGame) => {
-  const groupedArr = chunkArrayRounds(arr, sizeGroup);
-  const chunkedArr = [];
-  let index = 0;
-
-  while (index < groupedArr.length) {
-    chunkedArr.push(groupedArr.slice(index, sizeGame + index));
-    index += sizeGame;
-  }
-
-  if (chunkedArr[chunkedArr.length - 1].length < sizeGame)
-    chunkedArr[chunkedArr.length - 2] = [
-      ...chunkedArr[chunkedArr.length - 2],
-      ...chunkedArr[chunkedArr.length - 1],
-    ];
-  chunkedArr.pop();
-
-  return chunkedArr;
-};
-
-const totoRoundNumber = (seasonNumber) =>
+const getTotoRoundNumber = (seasonNumber) =>
   seasonNumber > totoRounds * roundsPerTotoRound
     ? totoRounds
     : Math.ceil(seasonNumber / roundsPerTotoRound);
@@ -88,8 +59,6 @@ module.exports = {
   lastMonday,
   nextMonday,
   chunkArray,
-  chunkArrayRounds,
-  chunkArrayGames,
   chunkArrayTotoRounds,
-  totoRoundNumber,
+  getTotoRoundNumber,
 };
