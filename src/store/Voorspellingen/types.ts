@@ -5,6 +5,7 @@ export const CURRENT_ROUND_FETCHED = 'GET_CURRENT_ROUND';
 export const ALL_FIXTURES_FETCHED = 'ALL_FIXTURES_FETCHED';
 export const POST_PREDICTION = 'POST_PREDICTION';
 export const REMOVE_ALL_FIXTURES = 'REMOVE_ALL_FIXTURES';
+export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
 
 export type VoorspellingenState = {
   currentRound: ICurrentRound | null;
@@ -30,8 +31,14 @@ export type RemoveAllFixtures = {
   type: typeof REMOVE_ALL_FIXTURES;
 };
 
+export type UpdatePrediction = {
+  type: typeof UPDATE_PREDICTION;
+  prediction: IPrediction;
+};
+
 export type VoorspellingenActionTypes =
   | CurrentRoundFetched
   | AllFixturesFetched
   | PostPrediction
-  | RemoveAllFixtures;
+  | RemoveAllFixtures
+  | UpdatePrediction;

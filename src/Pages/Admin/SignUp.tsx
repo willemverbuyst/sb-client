@@ -107,6 +107,8 @@ export default function SignUp() {
         <Typography variant="h3" className={classes.title}>
           Sign Up
         </Typography>
+
+        { teams ?
         <Container component="main" maxWidth="xs">
           <div className={classes.paper}>
             <form className={classes.form} noValidate>
@@ -248,28 +250,28 @@ export default function SignUp() {
                   />
                 </Grid>
               <Grid item xs={12} className={classes.select}>
-                { teams ? (
-                <FormControl 
-                  variant="outlined"
-                  fullWidth
+             
+              <FormControl 
+                variant="outlined"
+                fullWidth
+              >
+                <InputLabel id="favTeam">Team</InputLabel>
+                <Select
+                  labelId="favTeam"
+                  id="teeamId"
+                  value={signUpCredentials.teamId}
+                  onChange={(e) =>
+                    setSignUpCredentials({
+                      ...signUpCredentials,
+                      teamId: e.target.value as number,
+                    })}
+                  label="Team"
                 >
-                  <InputLabel id="favTeam">Team</InputLabel>
-                  <Select
-                    labelId="favTeam"
-                    id="teeamId"
-                    value={signUpCredentials.teamId}
-                    onChange={(e) =>
-                      setSignUpCredentials({
-                        ...signUpCredentials,
-                        teamId: e.target.value as number,
-                      })}
-                    label="Team"
-                  >
-                    {[...teams].sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
-                      .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
-                  </Select>
-                </FormControl> 
-                ) : ('')}
+                  {[...teams].sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
+                    .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
+                </Select>
+              </FormControl> 
+                
               </Grid>
               <Button
                 type="submit"
@@ -284,6 +286,7 @@ export default function SignUp() {
             </form>
           </div>
         </Container>
+        : null }
       </Box>
     ) : ( null )
   )

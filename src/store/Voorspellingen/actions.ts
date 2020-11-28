@@ -6,10 +6,12 @@ import {
   CURRENT_ROUND_FETCHED,
   POST_PREDICTION,
   REMOVE_ALL_FIXTURES,
+  UPDATE_PREDICTION,
   AllFixturesFetched,
   CurrentRoundFetched,
   PostPrediction,
   RemoveAllFixtures,
+  UpdatePrediction,
 } from './types';
 import { GetState } from '../types';
 import { IPrediction } from '../../models/predictions.model';
@@ -42,6 +44,13 @@ const postPrediction = (prediction: IPrediction): PostPrediction => {
 const removeAllFixtures = (): RemoveAllFixtures => {
   return {
     type: REMOVE_ALL_FIXTURES,
+  };
+};
+
+const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
+  return {
+    type: UPDATE_PREDICTION,
+    prediction,
   };
 };
 
@@ -139,3 +148,39 @@ export const postNewPrediction = ({
 };
 
 export const removeFixtures = () => removeAllFixtures();
+
+export const updateOldPrediction = ({
+  pGoalsHomeTeam,
+  pGoalsAwayTeam,
+  fixtureId,
+}: IPrediction) => {
+  return async (dispatch: any, _getState: GetState) => {
+    dispatch(appLoading());
+    try {
+      const token = localStorage.getItem('user_token');
+      const response = await axios.post(
+        `${apiUrl}/predictions/${fixtureId}`,
+        {
+          pGoalsHomeTeam,
+          pGoalsAwayTeam,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      dispatch(setMessage('success', response.data.message));
+      dispatch(postPrediction(response.data.prediction));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
