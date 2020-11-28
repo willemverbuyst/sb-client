@@ -7,7 +7,7 @@ type Props = {
   totoRoundNumber: number;
   numberFixtures: number;
   color: 'primary' | 'secondary' | 'standard';
-  handleChange: (_event: React.ChangeEvent<unknown>, value:number) => void;
+  onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 }
 
 export default function PaginationComponent(props: Props) {
@@ -26,7 +26,7 @@ export default function PaginationComponent(props: Props) {
             page={props.totoRoundNumber} 
             count={props.numberFixtures} 
             color={props.color} 
-            onChange={(e:any) => props.handleChange(e, +e.target.innerText)} 
+            onChange={props.onChange} 
           />
         </Grid>
       </Grid>  

@@ -170,7 +170,7 @@ export const updateOldPrediction = ({
       );
 
       dispatch(setMessage('success', response.data.message));
-      dispatch(postPrediction(response.data.prediction));
+      dispatch(updatePrediction(response.data.prediction));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

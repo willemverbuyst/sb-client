@@ -72,14 +72,14 @@ export default function Voorspellingen() {
             totoRoundNumber={roundNumber}
             numberFixtures={fixtures[totoRoundNumber -1].length} 
             color="primary" 
-            handleChange={handleChangeRounds}
+            onChange={handleChangeRounds}
           /> 
           <PaginationComponent 
             label="Totoronde"
             totoRoundNumber={totoRoundNumber}
             numberFixtures={fixtures.length}
             color="secondary"
-            handleChange={handleChangeTotoRounds}
+            onChange={handleChangeTotoRounds}
           /> 
         </>
       : null }
