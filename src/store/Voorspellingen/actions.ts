@@ -12,7 +12,7 @@ import {
   RemoveAllFixtures,
 } from './types';
 import { IPrediction } from '../../models/predictions.model';
-import { Round, TotoRound } from '../../models/toto.models';
+import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { GetState } from '../types';
 
@@ -23,7 +23,9 @@ const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
   };
 };
 
-const currentRoundFetched = (currentRound: Round): CurrentRoundFetched => {
+const currentRoundFetched = (
+  currentRound: ICurrentRound
+): CurrentRoundFetched => {
   return {
     type: CURRENT_ROUND_FETCHED,
     currentRound,
@@ -82,9 +84,9 @@ export const fetchCurrentRound = () => async (
       const response = await axios.get(`${apiUrl}/rounds/current`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const round = response.data;
+      const currentRound = response.data;
 
-      dispatch(currentRoundFetched(round));
+      dispatch(currentRoundFetched(currentRound));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

@@ -1,7 +1,7 @@
-export interface ITeam {
-  id: number;
-  name: string;
-  logo: string;
+export interface ICurrentRound {
+  fixtures: IFixtureWithScoreAndPredictions[];
+  roundNumber: number;
+  totoRoundNumber: number;
 }
 
 export interface IFixture {
@@ -30,6 +30,12 @@ export interface IFixtureWithScoreAndPredictions extends IFixtureWithScore {
     pGoalsAwayTeam: number | null;
     pGoalsHomeTeam: number | null;
   };
+}
+
+export interface ITeam {
+  id: number;
+  name: string;
+  logo: string;
 }
 
 export type Round = IFixtureWithScoreAndPredictions[];

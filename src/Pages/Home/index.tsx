@@ -25,7 +25,7 @@ export default function HomePage() {
   const token = useSelector(selectToken);
   const history = useHistory();
   const dispatch = useDispatch();
-  const round = useSelector(selectCurrentRound);
+  const currentRound = useSelector(selectCurrentRound);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -39,21 +39,25 @@ export default function HomePage() {
     token ? (  
       <Grid container>
        
-        <Grid item xs={12}>
-          <Typography variant="h3" className={classes.title}>
-          Deze week
-          </Typography>
-        </Grid>
-     
-        <Grid item xs={12}>
-          <Typography variant="h5" className={classes.subTitle}>
-            Speelronde: x TotorondeL y
-          </Typography>
-        </Grid>
+        {currentRound ? 
+        <>
+          <Grid item xs={12}>
+            <Typography variant="h3" className={classes.title}>
+            Deze week
+            </Typography>
+          </Grid>
+       
+          <Grid item xs={12}>
+            <Typography variant="h5" className={classes.subTitle}>
+              Speelronde: {currentRound.roundNumber} Totoronde: {currentRound.totoRoundNumber}
+            </Typography>
+          </Grid>
 
-        <Grid item xs={12} container justify="center">
-          {round ? round.map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) : null }
-        </Grid>
+          <Grid item xs={12} container justify="center">
+            {currentRound.fixtures.map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>)}
+          </Grid>
+        </>
+        : null }
 
       </Grid>
     ) : ( null )
