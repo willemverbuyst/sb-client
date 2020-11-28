@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { 
-  Avatar,
-  Checkbox,
   TableCell, 
   TableRow,
-  Tooltip, 
 } from '@material-ui/core';
 import Check from '@material-ui/icons/Check';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     height: 30,
     width: 30,
+    objectFit: 'contain',
   },
   checkToto: {
     color: theme.palette.primary.main,
@@ -36,33 +34,21 @@ type Props = {
 export default function PlayerRow(props: Props) {
   const classes = useStyles();
   const history = useHistory()
-  const [playerIsAdmin, setPlayerIsAdmin] = useState<boolean>(props.player.admin)
 
   return (
-    <TableRow>
-      { props.userIsAdmin ?  
-        <TableCell align="center">
-          <Tooltip title="Update admin status?"> 
-            <Checkbox
-              name="isAdmin"
-              color="primary"
-              checked={playerIsAdmin}
-              onChange={() => setPlayerIsAdmin(!playerIsAdmin)}
-            />
-          </Tooltip> 
-        </TableCell>
-      :    
-        <TableCell className={classes.checkAdmin} align="center">
-          {props.player.admin ? <Check/> : null}
-        </TableCell> 
-      }
+    <TableRow className={classes.link} onClick={()=> history.push(`/spelers/${props.player.id}`)}>
+     
+      <TableCell className={classes.checkAdmin} align="center">
+        {props.player.admin ? <Check/> : null}
+      </TableCell> 
+  
              
-      <TableCell align="left" className={classes.link} onClick={()=> history.push(`/spelers/${props.player.id}`)}>
+      <TableCell align="left">
         {props.player.userName}
       </TableCell>
 
       <TableCell align="left">
-        <Avatar className={classes.avatar} alt={props.player.team.name} src={props.player.team.logo} />
+        <img className={classes.avatar} alt={props.player.team.name} src={props.player.team.logo} />
       </TableCell>
 
       <TableCell align="left">

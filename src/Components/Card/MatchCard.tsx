@@ -21,7 +21,8 @@ const useStyles = makeStyles({
   },
   avatar: {
     height: 20,
-    width: 20
+    width: 20,
+    objectFit: 'contain',
   },
   title: {
     fontSize: 14,
@@ -83,7 +84,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
-            <Avatar className={classes.avatar} alt={wedstrijdMetVoorspellingen.homeTeamLogo} src={wedstrijdMetVoorspellingen.homeTeamLogo} />
+            <img className={classes.avatar} alt={wedstrijdMetVoorspellingen.homeTeamLogo} src={wedstrijdMetVoorspellingen.homeTeamLogo} />
           </Grid>
 
           <Grid item xs={2} container justify="center" alignItems="center">
@@ -104,7 +105,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
-            <Avatar className={classes.avatar} alt={wedstrijdMetVoorspellingen.awayTeamLogo} src={wedstrijdMetVoorspellingen.awayTeamLogo} />
+            <img className={classes.avatar} alt={wedstrijdMetVoorspellingen.awayTeamLogo} src={wedstrijdMetVoorspellingen.awayTeamLogo} />
           </Grid>
 
           <Grid item xs={4} container justify="flex-start" alignItems="center">
