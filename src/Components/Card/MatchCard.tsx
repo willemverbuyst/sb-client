@@ -2,7 +2,6 @@ import React, { useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { 
-  Avatar,
   Button,
   Card, 
   CardContent, 
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     margin: '10px',
   },
-  avatar: {
+  logo: {
     height: 20,
     width: 20,
     objectFit: 'contain',
@@ -42,13 +41,18 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
 
   const handleCancel = () => setShowInput(false)
 
-
   const showInputField = () => {
     if (showInput) {
-      return <InputVoorspellingen leaveInput={handleCancel} fixtureId={wedstrijdMetVoorspellingen.id} pGoalsAwayTeam=   {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} pGoalsHomeTeam={wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} />
+      return (
+        <InputVoorspellingen 
+          leaveInput={handleCancel} 
+          fixtureId={wedstrijdMetVoorspellingen.id} 
+          pGoalsAwayTeam={wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
+          pGoalsHomeTeam={wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} 
+        />
+      )
     } else {
-      return (wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) &&
-          wedstrijdMetVoorspellingen.status === 'Match Finished' ?
+      return (wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam || wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam) && wedstrijdMetVoorspellingen.status === 'Match Finished' ?
             <Typography variant="overline" color="textSecondary">
               Je voorspelling was {wedstrijdMetVoorspellingen.predictions.pGoalsHomeTeam} - {wedstrijdMetVoorspellingen.predictions.pGoalsAwayTeam} 
             </Typography>
@@ -84,7 +88,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
-            <img className={classes.avatar} alt={wedstrijdMetVoorspellingen.homeTeamLogo} src={wedstrijdMetVoorspellingen.homeTeamLogo} />
+            <img className={classes.logo} alt={wedstrijdMetVoorspellingen.homeTeamLogo} src={wedstrijdMetVoorspellingen.homeTeamLogo} />
           </Grid>
 
           <Grid item xs={2} container justify="center" alignItems="center">
@@ -105,7 +109,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
-            <img className={classes.avatar} alt={wedstrijdMetVoorspellingen.awayTeamLogo} src={wedstrijdMetVoorspellingen.awayTeamLogo} />
+            <img className={classes.logo} alt={wedstrijdMetVoorspellingen.awayTeamLogo} src={wedstrijdMetVoorspellingen.awayTeamLogo} />
           </Grid>
 
           <Grid item xs={4} container justify="flex-start" alignItems="center">
