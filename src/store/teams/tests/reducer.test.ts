@@ -13,7 +13,7 @@ describe('#allTeamsFetched', () => {
       logo: 'test_logo',
     },
   ];
-  describe('w/ initial state and #ALL_TEAMS_FETCHED action type', () => {
+  describe('w/ initial state and ALL_TEAMS_FETCHED action type', () => {
     test('returns the new state with teams', () => {
       const newState: TeamsState = reducer(initialState, {
         type: ALL_TEAMS_FETCHED,
@@ -24,7 +24,7 @@ describe('#allTeamsFetched', () => {
       expect(newState.teams?.length).toBe(1);
     });
   });
-  describe('w/ initial state and #ALL_TEAMS_FETCHED action type and no teams', () => {
+  describe('w/ initial state and ALL_TEAMS_FETCHED action type and no teams', () => {
     test('returns the new state w/ an empty array for teams', () => {
       const newState: TeamsState = reducer(initialState, {
         type: ALL_TEAMS_FETCHED,
@@ -51,7 +51,7 @@ describe('#removeAllTeams', () => {
   const state: TeamsState = {
     teams,
   };
-  describe('w/ a state w/ teams and #REMOVE_ALL_TEAMS action type', () => {
+  describe('w/ a state w/ teams and REMOVE_ALL_TEAMS action type', () => {
     test('returns the initial state', () => {
       const newState: TeamsState = reducer(state, {
         type: REMOVE_ALL_TEAMS,

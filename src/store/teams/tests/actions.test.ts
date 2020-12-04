@@ -13,7 +13,7 @@ import {
 } from '../types';
 
 describe('#teamsState', () => {
-  describe('#allTeamsFetched  w/', () => {
+  describe('#allTeamsFetched w/ teams', () => {
     const teams: ITeam[] = [
       {
         id: 1,
@@ -25,8 +25,18 @@ describe('#teamsState', () => {
       type: ALL_TEAMS_FETCHED,
       teams,
     };
-    test('returns an action w/ type #ALL_TEAMS_FETCHED and payload w/ teams', () => {
+    test('returns an action w/ type ALL_TEAMS_FETCHED and teams as payload', () => {
       expect(allTeamsFetched(teams)).toEqual(expected);
+      expect(allTeamsFetched(teams).teams.length).toBe(1);
+    });
+  });
+  describe('#removeAllTeams', () => {
+    const expected: RemoveAllTeams = {
+      type: REMOVE_ALL_TEAMS,
+    };
+    test('returns an action w/ type REMOVE_ALL_TEAMS and no payload', () => {
+      expect(removeAllTeams()).toEqual(expected);
+      expect(removeAllTeams().type).toBe(expected.type);
     });
   });
 });
