@@ -11,7 +11,7 @@ import {
 } from '../types';
 import { IUser } from '../../../models/player.model';
 import { ITeam } from '../../../models/toto.models';
-import { logInSuccessUser } from '../actions';
+import { logInSuccessUser, logOutUser } from '../actions';
 
 describe('#userState', () => {
   describe('#logInSuccessUser w/ user', () => {
@@ -39,6 +39,15 @@ describe('#userState', () => {
     test('returns an action w/ type LOG_IN_SUCCESS_USER and user as payload', () => {
       expect(logInSuccessUser(user)).toEqual(expected);
       expect(logInSuccessUser(user).user).not.toBe(undefined);
+    });
+  });
+  describe('#logOutUser', () => {
+    const action: LogOutUser = {
+      type: LOG_OUT_USER,
+    };
+    test('should return an object containing type LOG_OUT_STUDENT and no payload', () => {
+      expect(logOutUser()).toEqual(action);
+      expect(logOutUser()).not.toHaveProperty('user');
     });
   });
 });
