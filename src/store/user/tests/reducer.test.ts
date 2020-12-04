@@ -49,3 +49,26 @@ describe('#logInSuccessUser', () => {
     });
   });
 });
+
+describe('#logOutUser', () => {
+  const initialState: UserState = {
+    token: null,
+    user: null,
+  };
+  const action: LogOutUser = {
+    type: LOG_OUT_USER,
+  };
+  describe('with given state and LOG_OUT_USER action', () => {
+    test('returns the initial state', () => {
+      const newState = reducer(initialState, action);
+      expect(newState).toEqual(initialState);
+      expect(newState.token).toBeNull();
+      expect(initialState.token).toBeNull();
+      newState.token = 'x';
+      const newerState = reducer(newState, action);
+      expect(newState.token).not.toEqual(initialState.token);
+      expect(newerState.token).toBeNull();
+      expect(initialState.token).toBeNull();
+    });
+  });
+});
