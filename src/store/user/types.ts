@@ -1,5 +1,4 @@
 import { IUser } from '../../models/player.model';
-import { ITeam } from '../../models/toto.models';
 
 export const LOG_IN_SUCCESS_USER = 'LOGIN_SUCCESS_USER';
 export const LOG_OUT_USER = 'LOG_OUT_USER';
