@@ -13,7 +13,7 @@ describe('#allTeamsFetched', () => {
       logo: 'test_logo',
     },
   ];
-  describe('with initial state and #ALL_TEAMS_FETCHED, action', () => {
+  describe('w/ initial state and #ALL_TEAMS_FETCHED action type', () => {
     test('returns the new state with teams', () => {
       const newState: TeamsState = reducer(initialState, {
         type: ALL_TEAMS_FETCHED,
@@ -24,13 +24,15 @@ describe('#allTeamsFetched', () => {
       expect(newState.teams?.length).toBe(1);
     });
   });
-  // describe('if given FETCH_TEACHERS action with empty array', () => {
-  //   test('returns the new state with [] ', () => {
-  //     const newState = reducer(initialState, {
-  //       type: STORE_TEACHERS,
-  //       teachers: [],
-  //     });
-  //     expect(newState).toEqual({ all: [] });
-  //   });
-  // });
+  describe('w/ initial state and #ALL_TEAMS_FETCHED action type and an empty array as payload', () => {
+    test('returns the new state w/ an empty array for teams', () => {
+      const newState: TeamsState = reducer(initialState, {
+        type: ALL_TEAMS_FETCHED,
+        teams: [],
+      });
+      expect(newState).not.toEqual(initialState);
+      expect(newState.teams).toEqual([]);
+      expect(newState.teams?.length).toBe(0);
+    });
+  });
 });
