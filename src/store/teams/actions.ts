@@ -52,4 +52,5 @@ export const fetchAllTeams = () => async (
   }
 };
 
-export const removeTeams = () => removeAllTeams();
+export const removeTeams = (dispatch: Dispatch, _getState: GetState) =>
+  dispatch(removeAllTeams());
