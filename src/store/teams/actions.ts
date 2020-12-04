@@ -11,14 +11,14 @@ import { GetState } from '../types';
 import { ITeam } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
-const allTeamsFetched = (teams: ITeam[]): AllTeamsFetched => {
+export const allTeamsFetched = (teams: ITeam[]): AllTeamsFetched => {
   return {
     type: ALL_TEAMS_FETCHED,
     teams,
   };
 };
 
-const removeAllTeams = (): RemoveAllTeams => {
+export const removeAllTeams = (): RemoveAllTeams => {
   return {
     type: REMOVE_ALL_TEAMS,
   };
