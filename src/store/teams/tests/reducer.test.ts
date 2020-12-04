@@ -24,7 +24,7 @@ describe('#allTeamsFetched', () => {
       expect(newState.teams?.length).toBe(1);
     });
   });
-  describe('w/ initial state and #ALL_TEAMS_FETCHED action type and an empty array as payload', () => {
+  describe('w/ initial state and #ALL_TEAMS_FETCHED action type and no teams', () => {
     test('returns the new state w/ an empty array for teams', () => {
       const newState: TeamsState = reducer(initialState, {
         type: ALL_TEAMS_FETCHED,
@@ -33,6 +33,31 @@ describe('#allTeamsFetched', () => {
       expect(newState).not.toEqual(initialState);
       expect(newState.teams).toEqual([]);
       expect(newState.teams?.length).toBe(0);
+    });
+  });
+});
+
+describe('#removeAllTeams', () => {
+  const initialState: TeamsState = {
+    teams: null,
+  };
+  const teams: ITeam[] = [
+    {
+      id: 1,
+      name: 'test_name',
+      logo: 'test_logo',
+    },
+  ];
+  const state: TeamsState = {
+    teams,
+  };
+  describe('w/ a state w/ teams and #REMOVE_ALL_TEAMS action type', () => {
+    test('returns the initial state', () => {
+      const newState: TeamsState = reducer(state, {
+        type: REMOVE_ALL_TEAMS,
+      });
+      expect(newState).toEqual(initialState);
+      expect(newState.teams).toEqual(null);
     });
   });
 });
