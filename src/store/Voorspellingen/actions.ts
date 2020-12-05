@@ -18,14 +18,16 @@ import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
-const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
+export const allFixturesFetched = (
+  allFixtures: TotoRound[]
+): AllFixturesFetched => {
   return {
     type: ALL_FIXTURES_FETCHED,
     allFixtures,
   };
 };
 
-const currentRoundFetched = (
+export const currentRoundFetched = (
   currentRound: ICurrentRound
 ): CurrentRoundFetched => {
   return {
@@ -34,20 +36,20 @@ const currentRoundFetched = (
   };
 };
 
-const postPrediction = (prediction: IPrediction): PostPrediction => {
+export const postPrediction = (prediction: IPrediction): PostPrediction => {
   return {
     type: POST_PREDICTION,
     prediction,
   };
 };
 
-const removeAllFixtures = (): RemoveAllFixtures => {
+export const removeAllFixtures = (): RemoveAllFixtures => {
   return {
     type: REMOVE_ALL_FIXTURES,
   };
 };
 
-const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
+export const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
   return {
     type: UPDATE_PREDICTION,
     prediction,

@@ -16,21 +16,21 @@ import { ISignUpCredentials } from '../../models/credentials.model';
 import { IPlayer, IPlayerProfile } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
-const addNewPlayer = (player: IPlayer): AddNewPlayer => {
+export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
   return {
     type: ADD_NEW_PLAYER,
     player,
   };
 };
 
-const allPlayersFetched = (players: IPlayer[]): AllPlayersFetched => {
+export const allPlayersFetched = (players: IPlayer[]): AllPlayersFetched => {
   return {
     type: ALL_PLAYERS_FETCHED,
     players,
   };
 };
 
-const playerProfileFetched = (
+export const playerProfileFetched = (
   playerProfile: IPlayerProfile
 ): PlayerProfileFetched => {
   return {
@@ -39,7 +39,7 @@ const playerProfileFetched = (
   };
 };
 
-const removeAllPlayers = (): RemoveAllPlayers => {
+export const removeAllPlayers = (): RemoveAllPlayers => {
   return {
     type: REMOVE_ALL_PLAYERS,
   };

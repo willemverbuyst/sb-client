@@ -15,10 +15,17 @@ import {
   logOutUser,
   tokenUserStillValid,
   userLogIn,
+  userLogOut,
 } from '../actions';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
+import { removeAllPlayers } from '../../players/actions';
+import { removeAllFixtures } from '../../voorspellingen/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});
 
 describe('#userState', () => {
   describe('#logInSuccessUser w/ user', () => {
@@ -127,5 +134,18 @@ describe('#userLogIn', () => {
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
+  });
+});
+
+describe('#userLogOut', () => {
+  it('dispatches three actions', () => {
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+
+    userLogOut()(dispatch, getState);
+    expect(dispatch).toHaveBeenCalledWith(logOutUser());
+    expect(dispatch).toHaveBeenCalledWith(removeAllPlayers());
+    expect(dispatch).toHaveBeenCalledWith(removeAllFixtures());
+    expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });
