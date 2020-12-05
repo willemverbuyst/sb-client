@@ -16,6 +16,7 @@ import {
   tokenUserStillValid,
   userLogIn,
   userLogOut,
+  getUserWithStoredToken,
 } from '../actions';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/actions';
@@ -146,6 +147,41 @@ describe('#userLogOut', () => {
     expect(dispatch).toHaveBeenCalledWith(logOutUser());
     expect(dispatch).toHaveBeenCalledWith(removeAllPlayers());
     expect(dispatch).toHaveBeenCalledWith(removeAllFixtures());
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#getUserWithStoredToken', () => {
+  const team: ITeam = {
+    id: 1,
+    name: 'test_name',
+    logo: 'test_logo',
+  };
+  const user: IUser = {
+    admin: true,
+    email: 'test@test.com',
+    firstName: 'test',
+    id: 1,
+    lastName: 'test',
+    phoneNumber: 'test',
+    team,
+    totaalToto: true,
+    userName: 'test',
+    token: 'test_token',
+  };
+  it('returns user', async () => {
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: user };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await getUserWithStoredToken()(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(tokenUserStillValid(response.data));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });
