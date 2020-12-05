@@ -125,9 +125,9 @@ router.get('/all', authMiddleware, async (_req, res) => {
   }
 });
 
-/*** GET THE TOTAL SCORE OF EACH USER FOR A SPECIFIC PAST GAME ***/
+/*** GET THE TOTAL SCORE OF EACH USER FOR A SPECIFIC PAST TOTOROUND ***/
 /*** PUBLIC ***/
-router.get('/games/:id', authMiddleware, async (req, res) => {
+router.get('/totorounds/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
   const rounds = [+id * 3 - 2, +id * 3 - 1, +id * 3];
@@ -158,12 +158,11 @@ router.get('/games/:id', authMiddleware, async (req, res) => {
       nest: true,
     });
 
-    if (predictions.length) {
+    if (predictions.length > 0) {
       const predictionsWithScores = predictions.map((pred) => {
         return {
           ...pred,
           score: calcScores(
-            pred.status,
             {
               homeTeam: pred.fixture.goalsHomeTeam,
               awayTeam: pred.fixture.goalsAwayTeam,
@@ -180,9 +179,9 @@ router.get('/games/:id', authMiddleware, async (req, res) => {
 
       const predictionsReduced = reducer(predictionsWithScores);
 
-      return res.status(200).send({ game: predictionsReduced });
+      return res.status(200).send({ totoRound: predictionsReduced });
     } else {
-      return res.status(200).send({ message: 'No total scores' });
+      return res.status(200).send({ totoRound: predictions });
     }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });

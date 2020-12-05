@@ -125,7 +125,7 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
   const { admin } = req.body;
   const { id } = req.params;
 
-  if (!admin)
+  if (!typeof admin === 'boolean')
     return res.status(400).send('Admin status is missing, please try again');
 
   try {
