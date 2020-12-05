@@ -4,7 +4,7 @@ import Pagination from '@material-ui/lab/Pagination';
 
 type Props = {
   label: string;
-  totoRoundNumber: number;
+  number: number;
   numberFixtures: number;
   color: 'primary' | 'secondary' | 'standard';
   onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
@@ -23,7 +23,7 @@ export default function PaginationComponent(props: Props) {
       <Grid item xs={12}>
         <Grid container justify="center">
           <Pagination 
-            page={props.totoRoundNumber} 
+            page={props.number} 
             count={props.numberFixtures} 
             color={props.color} 
             onChange={props.onChange} 

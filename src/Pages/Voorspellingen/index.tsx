@@ -5,7 +5,7 @@ import { selectToken } from '../../store/user/selectors';
 import { fetchAllFixtures } from '../../store/voorspellingen/actions';
 import { selectFixtures } from '../../store/voorspellingen/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 
@@ -53,31 +53,44 @@ export default function Voorspellingen() {
   };
 
   return (
-    <Grid container>
-      <Typography variant="h3" className={classes.title}>
-        Voorspellingen
-      </Typography>
+    <Grid container justify="space-between">
+      <Grid>
+        <Typography variant="h3" className={classes.title}>
+          Voorspellingen
+        </Typography>
+      </Grid>
+      <Grid>
+        <Button
+          variant="contained" 
+          size="small" 
+          color="secondary" 
+          disableElevation 
+          onClick={()=> history.push(`/scores/totoronde/${totoRoundNumber}`)}
+        >
+          Toto-ronde: {totoRoundNumber}
+        </Button>
+      </Grid>
 
       { fixtures ?
         <>
           <Grid item xs={12} container justify="center">
-          {fixtures ? [...fixtures[totoRoundNumber -1][roundNumber -1]]
-            .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
-            .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
-              <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
+            { fixtures ? [...fixtures[totoRoundNumber -1][roundNumber -1]]
+              .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
+              .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
+                <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
             : null }
           </Grid>
 
           <PaginationComponent 
             label="Speelronde"
-            totoRoundNumber={roundNumber}
+            number={roundNumber}
             numberFixtures={fixtures[totoRoundNumber -1].length} 
             color="primary" 
             onChange={handleChangeRounds}
           /> 
           <PaginationComponent 
             label="Totoronde"
-            totoRoundNumber={totoRoundNumber}
+            number={totoRoundNumber}
             numberFixtures={fixtures.length}
             color="secondary"
             onChange={handleChangeTotoRounds}

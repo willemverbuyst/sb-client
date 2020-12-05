@@ -8,7 +8,6 @@ import {
   Grid, 
   Typography 
 } from '@material-ui/core';
-// import ScoresTable from '../../Components/Table/ScoresTable';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Toto() {
+export default function TotoRound() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -30,7 +29,7 @@ export default function Toto() {
   return ( 
     <Box>
       <Typography variant="h3" className={classes.title}>
-        Toto
+        Toto-ronde
       </Typography>
       <Grid
         container

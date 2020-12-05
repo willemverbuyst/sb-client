@@ -16,7 +16,7 @@ import Profiel from './Pages/Profiel';
 import Regels from './Pages/Regels';
 import Games from './Pages/Scores/Games';
 import Match from './Pages/Scores/Match';
-import Toto from './Pages/Scores/Toto';
+import TotoRound from './Pages/Scores/TotoRound';
 import Voorspellingen from './Pages/Voorspellingen';
 import { 
   createStyles, 
@@ -83,7 +83,7 @@ function App() {
               <Route exact path="/regels" component={Regels} />
               <Route exact path="/scores/games" component={Games} />
               <Route exact path="/scores/match/:id" component={Match} />
-              <Route exact path="/scores/toto" component={Toto} />
+              <Route exact path="/scores/totoronde/:id" component={TotoRound} />
               <Route exact path="/spelers" component={Spelers} />
               <Route exact path="/spelers/:id" component={SpelersProfiel} />
               <Route exact path="/voorspellingen" component={Voorspellingen} />
