@@ -7,16 +7,21 @@ import { selectTotoRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
+  Divider,
   Grid, 
   Typography 
 } from '@material-ui/core';
+import TotoRoundTable from '../../Components/Table/TotoRoundTable';
 
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
-  }
+  },
+  table: {
+    marginTop: theme.spacing(6),
+  },
 }));
 
 export default function TotoRound() {
@@ -42,13 +47,22 @@ export default function TotoRound() {
       <Typography variant="h3" className={classes.title}>
         Scores toto-ronde
       </Typography>
-      <Grid
-        container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-      >
-      </Grid>
+
+      <Divider/>
+
+      { totoRound ?
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.table}
+        >
+        <Grid item xs={12} md={6} container justify="center">
+          <TotoRoundTable totoRound={totoRound}/>
+          </Grid>
+        </Grid>
+      : null }
     </Box>
   )
 }

@@ -22,10 +22,6 @@ type Prop = {
 export default function SpelersTable({players}: Prop) {
   const user = useSelector(selectUser);
 
-  // const handleChange =() => {
-  //   console.log('clicked')
-  // }
-
   return (
     <TableContainer>
       <Table aria-label="simple table">

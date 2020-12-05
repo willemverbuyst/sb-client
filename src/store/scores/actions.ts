@@ -66,7 +66,7 @@ export const fetchScoresTotoRound = (id: number) => async (
     const response = await axios.get(`${apiUrl}/scores/totorounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const totoRound = response.data;
+    const totoRound = response.data.totoRound;
 
     dispatch(scoresTotoRoundFetched(totoRound));
     dispatch(appDoneLoading());
