@@ -143,7 +143,7 @@ describe('#userLogOut', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
 
-    userLogOut()(dispatch, getState);
+    userLogOut(dispatch, getState);
     expect(dispatch).toHaveBeenCalledWith(logOutUser());
     expect(dispatch).toHaveBeenCalledWith(removeAllPlayers());
     expect(dispatch).toHaveBeenCalledWith(removeAllFixtures());
@@ -176,7 +176,7 @@ describe('#getUserWithStoredToken', () => {
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await getUserWithStoredToken()(dispatch, getState);
+    await getUserWithStoredToken(dispatch, getState);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());

@@ -56,59 +56,55 @@ export const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
   };
 };
 
-export const fetchAllFixtures = () => async (
+export const fetchAllFixtures = async (
   dispatch: Dispatch,
-  getState: GetState
+  _getState: GetState
 ) => {
-  if (!getState().voorspellingenState.allFixtures) {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.get(`${apiUrl}/rounds/all`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const allFixtures = response.data;
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/rounds/all`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const allFixtures = response.data;
 
-      dispatch(allFixturesFetched(allFixtures));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      dispatch(appDoneLoading());
+    dispatch(allFixturesFetched(allFixtures));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
     }
+    dispatch(appDoneLoading());
   }
 };
 
-export const fetchCurrentRound = () => async (
+export const fetchCurrentRound = async (
   dispatch: Dispatch,
-  getState: GetState
+  _getState: GetState
 ) => {
-  if (!getState().voorspellingenState.currentRound) {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.get(`${apiUrl}/rounds/current`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const currentRound = response.data;
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/rounds/current`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const currentRound = response.data;
 
-      dispatch(currentRoundFetched(currentRound));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      dispatch(appDoneLoading());
+    dispatch(currentRoundFetched(currentRound));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
     }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -116,73 +112,67 @@ export const postNewPrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,
-}: IPrediction) => {
-  return async (dispatch: any, _getState: GetState) => {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.post(
-        `${apiUrl}/predictions`,
-        {
-          pGoalsHomeTeam,
-          pGoalsAwayTeam,
-          fixtureId,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      dispatch(setMessage('success', response.data.message));
-      dispatch(postPrediction(response.data.prediction));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
+}: IPrediction) => async (dispatch: any, _getState: GetState) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.post(
+      `${apiUrl}/predictions`,
+      {
+        pGoalsHomeTeam,
+        pGoalsAwayTeam,
+        fixtureId,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
       }
-      dispatch(appDoneLoading());
-    }
-  };
-};
+    );
 
-export const removeFixtures = () => removeAllFixtures();
+    dispatch(setMessage('success', response.data.message));
+    dispatch(postPrediction(response.data.prediction));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
 
 export const updateOldPrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,
-}: IPrediction) => {
-  return async (dispatch: any, _getState: GetState) => {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.patch(
-        `${apiUrl}/predictions/${fixtureId}`,
-        {
-          pGoalsHomeTeam,
-          pGoalsAwayTeam,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      dispatch(setMessage('success', response.data.message));
-      dispatch(updatePrediction(response.data.prediction));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
+}: IPrediction) => async (dispatch: any, _getState: GetState) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.patch(
+      `${apiUrl}/predictions/${fixtureId}`,
+      {
+        pGoalsHomeTeam,
+        pGoalsAwayTeam,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
       }
-      dispatch(appDoneLoading());
+    );
+
+    dispatch(setMessage('success', response.data.message));
+    dispatch(updatePrediction(response.data.prediction));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
     }
-  };
+    dispatch(appDoneLoading());
+  }
 };

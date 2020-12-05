@@ -14,7 +14,8 @@ import { ILogInCredentials } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removePlayers } from '../players/actions';
-import { removeFixtures } from '../voorspellingen/actions';
+import { removeAllFixtures } from '../voorspellingen/actions';
+import { removeAllTeams } from '../teams/actions';
 
 export const logInSuccessUser = (user: IUser): LogInSuccessUser => {
   return {
@@ -58,33 +59,33 @@ export const userLogIn = (credentials: ILogInCredentials) => {
   };
 };
 
-export const userLogOut = () => {
-  return (dispatch: Dispatch, _getState: GetState) => {
-    dispatch(logOutUser());
-    dispatch(removePlayers());
-    dispatch(removeFixtures());
-  };
+export const userLogOut = (dispatch: Dispatch, _getState: GetState) => {
+  dispatch(logOutUser());
+  dispatch(removePlayers());
+  dispatch(removeAllFixtures());
+  dispatch(removeAllTeams());
 };
 
-export const getUserWithStoredToken = () => {
-  return async (dispatch: Dispatch, _getState: GetState) => {
-    dispatch(appLoading());
-    try {
-      // if token check if valid
-      const token = localStorage.getItem('user_token');
-      const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(tokenUserStillValid(response.data));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.message);
-      } else {
-        console.log(error);
-      }
-      dispatch(logOutUser());
-      dispatch(appDoneLoading());
+export const getUserWithStoredToken = async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    // if token check if valid
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(tokenUserStillValid(response.data));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.message);
+    } else {
+      console.log(error);
     }
-  };
+    dispatch(logOutUser());
+    dispatch(appDoneLoading());
+  }
 };

@@ -194,7 +194,7 @@ export default function Header() {
                   {getTimeNow()}
                 </Box> : '' }
 
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut())} >
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut)} >
                 <Tooltip title="Log Out" arrow>
                   <ExitToAppIcon />
                 </Tooltip>

@@ -93,31 +93,29 @@ export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
   };
 };
 
-export const fetchAllPlayers = () => async (
+export const fetchAllPlayers = async (
   dispatch: Dispatch,
-  getState: GetState
+  _getState: GetState
 ) => {
-  if (!getState().playersState.players) {
-    dispatch(appLoading());
-    try {
-      const token = localStorage.getItem('user_token');
-      const response = await axios.get(`${apiUrl}/users`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const players = response.data;
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/users`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const players = response.data;
 
-      dispatch(allPlayersFetched(players));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      dispatch(appDoneLoading());
+    dispatch(allPlayersFetched(players));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
     }
+    dispatch(appDoneLoading());
   }
 };
 

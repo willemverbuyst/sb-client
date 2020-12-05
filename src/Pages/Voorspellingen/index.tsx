@@ -38,8 +38,8 @@ export default function Voorspellingen() {
   });
 
   useEffect(() => {
-    dispatch(fetchAllFixtures());
-  }, [dispatch, fixtures]);
+    dispatch(fetchAllFixtures);
+  }, [dispatch]);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
     setTotoRoundNumber(value);

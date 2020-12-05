@@ -32,8 +32,8 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    dispatch(fetchCurrentRound())
-  });
+    dispatch(fetchCurrentRound)
+  },[dispatch]);
 
   return (
     token ? (  

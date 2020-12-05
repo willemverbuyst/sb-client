@@ -1,11 +1,6 @@
 import axios from 'axios';
 import { ITeam } from '../../../models/toto.models';
-import {
-  allTeamsFetched,
-  removeTeams,
-  removeAllTeams,
-  fetchAllTeams,
-} from '../actions';
+import { allTeamsFetched, removeAllTeams, fetchAllTeams } from '../actions';
 import {
   ALL_TEAMS_FETCHED,
   REMOVE_ALL_TEAMS,
@@ -60,7 +55,7 @@ describe('#fetchAllTeams', () => {
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchAllTeams()(dispatch, getState);
+    await fetchAllTeams(dispatch, getState);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
 
@@ -68,15 +63,5 @@ describe('#fetchAllTeams', () => {
     expect(dispatch).toHaveBeenCalledWith(allTeamsFetched(teams));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('#removeTeams', () => {
-  test('dispatches #removeAllTeams', () => {
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    removeTeams(dispatch, getState);
-    expect(dispatch).toHaveBeenCalledWith(removeAllTeams());
-    expect(dispatch).toHaveBeenCalledTimes(1);
   });
 });

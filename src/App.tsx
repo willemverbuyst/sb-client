@@ -60,7 +60,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserWithStoredToken());
+    dispatch(getUserWithStoredToken);
   }, [dispatch]);
 
   return (

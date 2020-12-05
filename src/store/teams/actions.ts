@@ -24,11 +24,10 @@ export const removeAllTeams = (): RemoveAllTeams => {
   };
 };
 
-export const fetchAllTeams = () => async (
+export const fetchAllTeams = async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {
-  // if (!getState().teamsState.teams) {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -48,9 +47,5 @@ export const fetchAllTeams = () => async (
       dispatch(setMessage('error', error.message));
     }
     dispatch(appDoneLoading());
-    // }
   }
 };
-
-export const removeTeams = (dispatch: Dispatch, _getState: GetState) =>
-  dispatch(removeAllTeams());
