@@ -13,7 +13,7 @@ import { GetState } from '../types';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { removePlayers } from '../players/actions';
+import { removeAllPlayers } from '../players/actions';
 import { removeAllFixtures } from '../voorspellingen/actions';
 import { removeAllTeams } from '../teams/actions';
 
@@ -61,7 +61,7 @@ export const userLogIn = (credentials: ILogInCredentials) => {
 
 export const userLogOut = (dispatch: Dispatch, _getState: GetState) => {
   dispatch(logOutUser());
-  dispatch(removePlayers());
+  dispatch(removeAllPlayers());
   dispatch(removeAllFixtures());
   dispatch(removeAllTeams());
 };

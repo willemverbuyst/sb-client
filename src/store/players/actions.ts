@@ -145,5 +145,3 @@ export const fetchPlayerProfile = (id: number) => async (
     dispatch(appDoneLoading());
   }
 };
-
-export const removePlayers = () => removeAllPlayers();

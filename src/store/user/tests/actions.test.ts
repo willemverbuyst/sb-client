@@ -20,6 +20,7 @@ import {
 } from '../actions';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/actions';
+import { removeAllTeams } from '../../teams/actions';
 import { removeAllFixtures } from '../../voorspellingen/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -147,7 +148,8 @@ describe('#userLogOut', () => {
     expect(dispatch).toHaveBeenCalledWith(logOutUser());
     expect(dispatch).toHaveBeenCalledWith(removeAllPlayers());
     expect(dispatch).toHaveBeenCalledWith(removeAllFixtures());
-    expect(dispatch).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenCalledWith(removeAllTeams());
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
 
