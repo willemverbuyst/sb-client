@@ -12,15 +12,10 @@ import {
 } from '@material-ui/core/styles';
 import { 
   Box,
-  Fade,
   IconButton, 
-  Menu, 
-  MenuItem,
-  MenuProps,
   Toolbar, 
   Tooltip,
   Typography,
-  withStyles
 } from '@material-ui/core';
 import Face from '@material-ui/icons/Face';
 import List from '@material-ui/icons/List';
@@ -49,27 +44,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const StyledMenu = withStyles({
-  paper: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)'
-  },
-})((props: MenuProps) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center',
-    }}
-    {...props}
-    TransitionComponent={Fade}
-  />
-));
-
 export default function Header() {
   const classes = useStyles();
   const dispatch = useDispatch()
@@ -78,38 +52,20 @@ export default function Header() {
   const user = useSelector(selectUser);
   const [showToday, setShowToday] = useState(false)
   const [showTime, setShowTime] = useState(false)
-  const [anchorElScores, setAnchorElScores] = React.useState<null | HTMLElement>(null);
-  
+
   const gotoHome = () => history.push("/home");
 
   const gotoProfiel = () => history.push("/profiel");
 
   const gotoRegels = () => history.push("/regels");
 
-  const gotoGames = () => {
-    handleCloseScores()
-    history.push("/scores/games");
-  }
-
-  const gotoMatches = () => {
-    handleCloseScores()
-    history.push("/scores/matches");
-  }
-
-  const gotoToto = () => {
-    handleCloseScores()
-    history.push("/scores/toto");
-  }
-
+  const gotoTotalToto= () => history.push("/scores/totaltoto");
+  
   const gotoSignUp = () => history.push("/admin/signup")
 
   const gotoSpelers = () => history.push("/spelers")
   
   const gotoVoorspellingen = () => history.push("/voorspellingen");
-
-  const handleScores = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorElScores(event.currentTarget);
- 
-  const handleCloseScores = () => setAnchorElScores(null);
  
   return (
       <Box className={classes.header}>
@@ -128,26 +84,14 @@ export default function Header() {
                 </Tooltip>
               </IconButton>
 
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={handleScores}>
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoTotalToto}>
                 <Tooltip title="Scores" arrow>  
                   <EmojiEvents />
                 </Tooltip>
               </IconButton>
-              <StyledMenu
-                id="simple-menu"
-                anchorEl={anchorElScores}
-                keepMounted
-                open={Boolean(anchorElScores)}
-                onClose={handleCloseScores}
-              >
-                <MenuItem onClick={gotoGames}>Games</MenuItem>
-                <MenuItem onClick={gotoMatches}>Matches</MenuItem>
-                <MenuItem onClick={gotoToto}>Toto</MenuItem>
-              </StyledMenu>
-             
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
-                <Tooltip title="Profiel">
+                <Tooltip title="Profiel"  arrow>
                   <Face />
                 </Tooltip>
               </IconButton>
