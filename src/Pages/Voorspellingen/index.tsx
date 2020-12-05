@@ -68,7 +68,7 @@ export default function Voorspellingen() {
           disableElevation 
           onClick={()=> history.push(`/scores/totoronde/${totoRoundNumber}`)}
         >
-          Toto-ronde: {totoRoundNumber}
+          TOTORONDE: {totoRoundNumber}
         </Button>
       : null }
       </Grid>

@@ -6,7 +6,7 @@ import { selectCurrentRound } from '../../store/voorspellingen/selectors';
 import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -41,15 +41,28 @@ export default function HomePage() {
       <Grid container>
         {currentRound ? 
         <>
-          <Grid item xs={12}>
-            <Typography variant="h3" className={classes.title}>
-            Deze week
-            </Typography>
+          <Grid container justify="space-between">
+            <Grid>
+              <Typography variant="h3" className={classes.title}>
+              Deze week
+              </Typography>
+            </Grid>
+            <Grid>
+              <Button
+                variant="contained" 
+                size="small" 
+                color="secondary" 
+                disableElevation 
+                onClick={()=> history.push(`/scores/totoronde/${currentRound.totoRoundNumber}`)}
+              >
+                TOTORONDE: {currentRound.totoRoundNumber}
+              </Button>
+            </Grid>
           </Grid>
        
           <Grid item xs={12}>
             <Typography variant="h5" className={classes.subTitle}>
-              Speelronde: {currentRound.roundNumber} Totoronde: {currentRound.totoRoundNumber}
+              Speelronde: {currentRound.roundNumber}
             </Typography>
           </Grid>
 

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
   Avatar,
   Box, 
+  Button, 
   Divider,
   Grid, 
   Typography 
@@ -50,9 +51,24 @@ export default function Fixture() {
 
   return (
     <Box>
-      <Typography variant="h3" className={classes.title}>
-        Scores
-      </Typography>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+          Scores
+          </Typography>
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained" 
+            size="small" 
+            color="secondary" 
+            disableElevation 
+            onClick={()=> history.push('/voorspellingen')}
+          >
+            VOORSPELLINGEN
+          </Button>
+        </Grid>
+      </Grid>
 
       {fixture ? 
         <Grid className={classes.fixture}>       

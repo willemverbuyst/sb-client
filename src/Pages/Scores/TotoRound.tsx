@@ -7,6 +7,7 @@ import { selectTotoRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
+  Button, 
   Divider,
   Grid, 
   Typography 
@@ -45,11 +46,26 @@ export default function TotoRound() {
   
   return ( 
     <Box>
-      <Typography variant="h3" className={classes.title}>
-        Scores
-      </Typography>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+          Scores
+          </Typography>
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained" 
+            size="small" 
+            color="secondary" 
+            disableElevation 
+            onClick={()=> history.push('/voorspellingen')}
+          >
+            VOORSPELLINGEN
+          </Button>
+        </Grid>
+      </Grid>
 
-      { totoRound ?
+      { totoRound && totoRound.length > 0 ?
         <>
           <Grid 
             item xs={12} 
@@ -57,7 +73,7 @@ export default function TotoRound() {
             className={classes.totoRound}
           >
             <Typography variant="h4">
-              Toto-ronde {id}
+              TOTORONDE {id}
             </Typography>
           </Grid>
           <Divider/>
