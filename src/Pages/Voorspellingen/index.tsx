@@ -60,6 +60,7 @@ export default function Voorspellingen() {
         </Typography>
       </Grid>
       <Grid>
+      { fixtures ?
         <Button
           variant="contained" 
           size="small" 
@@ -69,6 +70,7 @@ export default function Voorspellingen() {
         >
           Toto-ronde: {totoRoundNumber}
         </Button>
+      : null }
       </Grid>
 
       { fixtures ?

@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   table: {
     marginTop: theme.spacing(6),
   },
+  totoRound: {
+    marginBottom: theme.spacing(6),
+  }
 }));
 
 export default function TotoRound() {
@@ -40,28 +43,36 @@ export default function TotoRound() {
     dispatch(fetchScoresTotoRound(+id))
   }, [dispatch, id])
   
-  console.log(totoRound)
-
   return ( 
     <Box>
       <Typography variant="h3" className={classes.title}>
-        Scores toto-ronde
+        Scores
       </Typography>
 
-      <Divider/>
-
       { totoRound ?
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classes.table}
-        >
-        <Grid item xs={12} md={6} container justify="center">
-          <TotoRoundTable totoRound={totoRound}/>
+        <>
+          <Grid 
+            item xs={12} 
+            container justify="center" 
+            className={classes.totoRound}
+          >
+            <Typography variant="h4">
+              Toto-ronde {id}
+            </Typography>
           </Grid>
-        </Grid>
+          <Divider/>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            className={classes.table}
+          >
+          <Grid item xs={12} md={4} container justify="center">
+            <TotoRoundTable totoRound={totoRound}/>
+            </Grid>
+          </Grid>
+        </>
       : null }
     </Box>
   )

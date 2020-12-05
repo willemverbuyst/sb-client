@@ -18,8 +18,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 const sortTable = (arr: UserWithTotoRoundScore[]): UserWithTotoRoundScore[] => [...arr]
-  .sort((score1, score2) => score2.score - score1.score)
-  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()));
+  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
+  .sort((score1, score2) => score2.score - score1.score);
+
 
 type Prop = {
   totoRound: UserWithTotoRoundScore[];

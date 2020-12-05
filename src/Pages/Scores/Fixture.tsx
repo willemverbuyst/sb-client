@@ -51,9 +51,9 @@ export default function Fixture() {
   return (
     <Box>
       <Typography variant="h3" className={classes.title}>
-        Scores wedstrijd
+        Scores
       </Typography>
-      
+
       {fixture ? 
         <Grid className={classes.fixture}>       
           <Grid item xs={12} container justify="center" className={classes.date}>
