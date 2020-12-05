@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { postNewPrediction, updateOldPrediction } from '../../store/voorspellingen/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
@@ -8,6 +9,8 @@ import {
   TextField,
 } from '@material-ui/core';
 import { IPrediction } from '../../models/predictions.model';
+import Progress from '../Progress';
+
 
 const useStyles = makeStyles({
   inputBox: {
@@ -30,6 +33,7 @@ export default function InputVoorspellingen(props: Props) {
   const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(props.pGoalsHomeTeam? props.pGoalsHomeTeam : 0);
   const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(props.pGoalsAwayTeam? props.pGoalsAwayTeam : 0);
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
+  const isLoading = useSelector(selectAppLoading)
 
   const handleSubmit = () => {
     const prediction: IPrediction = {
@@ -40,8 +44,6 @@ export default function InputVoorspellingen(props: Props) {
     props.pGoalsAwayTeam || props.pGoalsHomeTeam ? 
       dispatch(updateOldPrediction(prediction)) :
       dispatch(postNewPrediction(prediction));
-    
-    props.leaveInput();
   }
 
   const handleGoalsHomeTeam = (value: number) => {
@@ -53,9 +55,13 @@ export default function InputVoorspellingen(props: Props) {
     setBtnDisabled(false);
     setPGoalsAwayTeam(value);
   }
-
+  
   return (
     <Grid item xs={12} container justify="center">
+      {isLoading ?
+        <Progress />
+      :
+      <>
       <Grid item xs={2} container justify="center">
         <Button variant="contained" size="small" color="secondary" 
           disableElevation onClick={props.leaveInput}>
@@ -96,11 +102,18 @@ export default function InputVoorspellingen(props: Props) {
         />
       </Grid>
       <Grid item xs={2} container justify="center">
-        <Button disabled={btnDisabled} variant="contained" size="small" color="primary" 
-          disableElevation onClick={handleSubmit}>
+        <Button 
+          disabled={btnDisabled} 
+          variant="contained" 
+          size="small" 
+          color="primary" 
+          disableElevation 
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
       </Grid>
+      </>}
     </Grid>
   )
 }

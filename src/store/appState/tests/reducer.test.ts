@@ -50,7 +50,7 @@ describe('#appStateReducer', () => {
       expect(newState.loading).toBe(true);
     });
   });
-  describe('if given #APP_DONE_LOADING action type', () => {
+  describe('if given APP_DONE_LOADING action type', () => {
     test('returns a new state with loading set to false', () => {
       const action: AppDoneLoading = { type: APP_DONE_LOADING };
       const newState: AppState = reducer(initialState, action);

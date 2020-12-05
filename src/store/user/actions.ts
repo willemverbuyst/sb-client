@@ -16,18 +16,18 @@ import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removePlayers } from '../players/actions';
 import { removeFixtures } from '../voorspellingen/actions';
 
-const logInSuccessUser = (user: IUser): LogInSuccessUser => {
+export const logInSuccessUser = (user: IUser): LogInSuccessUser => {
   return {
     type: LOG_IN_SUCCESS_USER,
     user,
   };
 };
 
-const logOutUser = (): LogOutUser => ({
+export const logOutUser = (): LogOutUser => ({
   type: LOG_OUT_USER,
 });
 
-const tokenUserStillValid = (user: IUser): TokenUserStillValid => ({
+export const tokenUserStillValid = (user: IUser): TokenUserStillValid => ({
   type: TOKEN_STILL_VALID_USER,
   user,
 });
