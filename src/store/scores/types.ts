@@ -1,12 +1,12 @@
 import { IFixture } from '../../models/toto.models';
 
-export const SCORES_MATCH_FETCHED = 'SCORES_MATCH_FETCHED';
+export const SCORES_FIXTURE_FETCHED = 'SCORES_FIXTURE_FETCHED';
 
 export type ScoresState = {
-  match: Match | null;
+  fixture: Fixture | null;
 };
 
-export type Match = {
+export type Fixture = {
   fixture: IFixture;
   scores: PredictionWithScorePerUser[] | null;
 };
@@ -19,9 +19,9 @@ export type PredictionWithScorePerUser = {
   userId: number;
 };
 
-export type ScoresMatchFetched = {
-  type: typeof SCORES_MATCH_FETCHED;
-  match: Match;
+export type ScoresFixtureFetched = {
+  type: typeof SCORES_FIXTURE_FETCHED;
+  fixture: Fixture;
 };
 
-export type ScoresActionTypes = ScoresMatchFetched;
+export type ScoresActionTypes = ScoresFixtureFetched;

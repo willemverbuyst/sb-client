@@ -1,18 +1,18 @@
 import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { SCORES_MATCH_FETCHED, Match, ScoresMatchFetched } from './types';
+import { SCORES_FIXTURE_FETCHED, Fixture, ScoresFixtureFetched } from './types';
 import { GetState } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
-const scoresMatchFetched = (match: Match): ScoresMatchFetched => {
+const scoresFixtureFetched = (fixture: Fixture): ScoresFixtureFetched => {
   return {
-    type: SCORES_MATCH_FETCHED,
-    match,
+    type: SCORES_FIXTURE_FETCHED,
+    fixture,
   };
 };
 
-export const fetchScoresMatch = (id: number) => async (
+export const fetchScoresFixture = (id: number) => async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {
@@ -22,9 +22,9 @@ export const fetchScoresMatch = (id: number) => async (
     const response = await axios.get(`${apiUrl}/scores/fixtures/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const match = response.data;
+    const fixture = response.data;
 
-    dispatch(scoresMatchFetched(match));
+    dispatch(scoresFixtureFetched(fixture));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

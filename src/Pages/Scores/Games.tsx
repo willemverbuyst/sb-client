@@ -30,7 +30,7 @@ export default function Games() {
   return (
     <Box>
       <Typography variant="h3" className={classes.title}>
-        Games
+        ???
       </Typography>
       <Grid
         container
@@ -38,7 +38,6 @@ export default function Games() {
         justify="space-around"
         alignItems="center"
       >
-        {/* <Grid><ScoresTable /></Grid> */}
       </Grid>
     </Box>
   )

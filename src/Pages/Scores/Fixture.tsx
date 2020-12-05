@@ -11,8 +11,8 @@ import {
   Typography 
 } from '@material-ui/core';
 import ScoresTable from '../../Components/Table/ScoresTable';
-import { selectMatch } from '../../store/scores/selectors';
-import { fetchScoresMatch } from '../../store/scores/actions';
+import { selectFixture } from '../../store/scores/selectors';
+import { fetchScoresFixture } from '../../store/scores/actions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
   },
-  match: {
+  fixture: {
     marginBottom: theme.spacing(6),
   },
   date: {
@@ -32,57 +32,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Matches() {
+export default function Fixture() {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const { id } = useParams<{ id: string }>();
-  const match = useSelector(selectMatch);
+  const fixture = useSelector(selectFixture);
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
   useEffect(() => {
-    dispatch(fetchScoresMatch(+id))
+    dispatch(fetchScoresFixture(+id))
   }, [dispatch, id])
 
   return (
     <Box>
       <Typography variant="h3" className={classes.title}>
-        Scores
+        Scores wedstrijd
       </Typography>
-     
-      {match ? 
-        <Grid className={classes.match}>       
+      
+      {fixture ? 
+        <Grid className={classes.fixture}>       
           <Grid item xs={12} container justify="center" className={classes.date}>
             <Typography variant="overline">
-               {timeStampFormattedToLocalDate(match.fixture.eventTimeStamp)}
+               {timeStampFormattedToLocalDate(fixture.fixture.eventTimeStamp)}
             </Typography>
           </Grid> 
           <Grid item xs={12} container justify="center">
             <Grid item xs={3} container justify="flex-end" alignItems="center">
               <Typography variant="h4">
-                 {match.fixture.homeTeamName}
+                 {fixture.fixture.homeTeamName}
               </Typography>
             </Grid>
 
             <Grid item xs={1} container justify="center">
-              <Avatar alt={match.fixture.homeTeamName} src={match.fixture.homeTeamLogo} />
+              <Avatar alt={fixture.fixture.homeTeamName} src={fixture.fixture.homeTeamLogo} />
             </Grid>
             <Grid item xs={1} container justify="center">
               <Typography variant="h4">
-                {match.fixture.goalsHomeTeam} - {match.fixture.goalsAwayTeam}
+                {fixture.fixture.goalsHomeTeam} - {fixture.fixture.goalsAwayTeam}
               </Typography>
             </Grid>
             <Grid item xs={1} container justify="center">
-              <Avatar alt={match.fixture.awayTeamName} src={match.fixture.awayTeamLogo} />
+              <Avatar alt={fixture.fixture.awayTeamName} src={fixture.fixture.awayTeamLogo} />
             </Grid>
 
             <Grid item xs={3} container justify="flex-start" alignItems="center">
               <Typography variant="h4">
-                {match.fixture.awayTeamName}
+                {fixture.fixture.awayTeamName}
               </Typography>
             </Grid>
           </Grid> 
@@ -91,7 +91,7 @@ export default function Matches() {
 
       <Divider/>
 
-      { match && match.scores ?
+      { fixture && fixture.scores ?
         <Grid
           container
           direction="row"
@@ -100,7 +100,7 @@ export default function Matches() {
           className={classes.table}
         >
           <Grid item xs={12} md={6} container justify="center">
-            <ScoresTable scores={match.scores}/>
+            <ScoresTable scores={fixture.scores}/>
             </Grid>
         </Grid>
       : null }

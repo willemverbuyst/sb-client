@@ -1,13 +1,17 @@
-import { SCORES_MATCH_FETCHED, ScoresActionTypes, ScoresState } from './types';
+import {
+  SCORES_FIXTURE_FETCHED,
+  ScoresActionTypes,
+  ScoresState,
+} from './types';
 
 const initialState: ScoresState = {
-  match: null,
+  fixture: null,
 };
 
 const scoresReducer = (state = initialState, action: ScoresActionTypes) => {
   switch (action.type) {
-    case SCORES_MATCH_FETCHED:
-      return { ...state, match: action.match };
+    case SCORES_FIXTURE_FETCHED:
+      return { ...state, fixture: action.fixture };
 
     default:
       return state;

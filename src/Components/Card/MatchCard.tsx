@@ -44,7 +44,7 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
         </Typography>
         
         <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" 
-          onClick={()=> history.push(`/scores/match/${wedstrijdMetVoorspellingen.id}`)}>
+          onClick={()=> history.push(`/scores/wedstrijd/${wedstrijdMetVoorspellingen.id}`)}>
           <Grid item xs={4} container justify="flex-end" alignItems="center">
             <Typography>
               {wedstrijdMetVoorspellingen.homeTeamName}

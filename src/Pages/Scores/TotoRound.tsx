@@ -29,7 +29,7 @@ export default function TotoRound() {
   return ( 
     <Box>
       <Typography variant="h3" className={classes.title}>
-        Toto-ronde
+        Scores toto-ronde
       </Typography>
       <Grid
         container
