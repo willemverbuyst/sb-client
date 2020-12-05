@@ -56,7 +56,7 @@ export const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
   };
 };
 
-export const fetchAllFixtures = async (
+export const fetchAllFixtures = () => async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {
@@ -82,7 +82,7 @@ export const fetchAllFixtures = async (
   }
 };
 
-export const fetchCurrentRound = async (
+export const fetchCurrentRound = () => async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {

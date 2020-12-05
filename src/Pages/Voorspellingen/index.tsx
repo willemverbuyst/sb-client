@@ -38,8 +38,10 @@ export default function Voorspellingen() {
   });
 
   useEffect(() => {
-    dispatch(fetchAllFixtures);
-  }, [dispatch]);
+    if (!fixtures) {
+      dispatch(fetchAllFixtures());
+    }
+  }, [dispatch, fixtures]);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
     setTotoRoundNumber(value);
@@ -51,11 +53,10 @@ export default function Voorspellingen() {
   };
 
   return (
-    token ? (  
-      <Grid container>
-        <Typography variant="h3" className={classes.title}>
-          Voorspellingen
-        </Typography>
+    <Grid container>
+      <Typography variant="h3" className={classes.title}>
+        Voorspellingen
+      </Typography>
 
       { fixtures ?
         <>
@@ -83,8 +84,8 @@ export default function Voorspellingen() {
           /> 
         </>
       : null }
-      </Grid>
-    ) : ( null )
+
+    </Grid>
   )
 }
 

@@ -80,8 +80,10 @@ export default function SignUp() {
   })
 
   useEffect(() => {
-    dispatch(fetchAllTeams)
-  },[dispatch]);
+    if (!teams) {
+      dispatch(fetchAllTeams)
+    }
+  },[dispatch, teams]);
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();

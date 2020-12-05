@@ -45,7 +45,6 @@ export default function Regels() {
   });
 
   return (
-    token ? (  
     <div className={classes.root}>
       <Typography variant="h3" className={classes.title}>
         Regels
@@ -134,6 +133,5 @@ export default function Regels() {
         </AccordionDetails>
       </Accordion>
     </div> 
-    ) : ( null )
   );
 }

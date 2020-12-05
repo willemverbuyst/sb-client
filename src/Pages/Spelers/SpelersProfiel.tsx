@@ -46,8 +46,7 @@ export default function SpelersProfiel() {
   }, [dispatch, id]);
   
   return (
-    <>
-      {playerProfile ? 
+    playerProfile ? 
       <>
         <Typography variant="h3" className={classes.title}>
           {playerProfile.userName}
@@ -55,13 +54,10 @@ export default function SpelersProfiel() {
         <img alt={playerProfile.team.name} src={playerProfile.team.logo} />
 
         <Divider/>
-        
       </>
-      :
-        <Typography variant="h3" className={classes.title}>
-          Spelers
-        </Typography> 
-      }
-    </>        
+    :
+      <Typography variant="h3" className={classes.title}>
+        Spelers
+      </Typography>     
   ) 
 }

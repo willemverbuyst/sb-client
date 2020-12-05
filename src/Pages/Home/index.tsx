@@ -32,13 +32,13 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    dispatch(fetchCurrentRound)
-  },[dispatch]);
+    if (!currentRound) {
+      dispatch(fetchCurrentRound())
+    }
+  }, [dispatch, currentRound]);
 
   return (
-    token ? (  
       <Grid container>
-       
         {currentRound ? 
         <>
           <Grid item xs={12}>
@@ -58,8 +58,6 @@ export default function HomePage() {
           </Grid>
         </>
         : null }
-
       </Grid>
-    ) : ( null )
   )
 }

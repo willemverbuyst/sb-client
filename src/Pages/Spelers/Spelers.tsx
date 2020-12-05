@@ -41,8 +41,10 @@ export default function Spelers() {
   });
 
   useEffect(() => {
-    dispatch(fetchAllPlayers);
-  }, [dispatch]);
+    if (!players) {
+      dispatch(fetchAllPlayers());
+    }
+  }, [dispatch, players]);
   
   return (
     <>

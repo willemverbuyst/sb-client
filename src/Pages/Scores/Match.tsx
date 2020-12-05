@@ -49,13 +49,12 @@ export default function Matches() {
   }, [dispatch, id])
 
   return (
-    token ? (  
-      <Box>
-        <Typography variant="h3" className={classes.title}>
-          Scores
-        </Typography>
+    <Box>
+      <Typography variant="h3" className={classes.title}>
+        Scores
+      </Typography>
      
-        {match ? 
+      {match ? 
         <Grid className={classes.match}>       
           <Grid item xs={12} container justify="center" className={classes.date}>
             <Typography variant="overline">
@@ -88,11 +87,11 @@ export default function Matches() {
             </Grid>
           </Grid> 
         </Grid>
-        : null }
+      : null }
 
-        <Divider/>
+      <Divider/>
 
-        { match && match.scores ?
+      { match && match.scores ?
         <Grid
           container
           direction="row"
@@ -104,9 +103,7 @@ export default function Matches() {
             <ScoresTable scores={match.scores}/>
             </Grid>
         </Grid>
-        : null }
-       
-      </Box>
-    ) : ( null )
+      : null }
+    </Box>
   )
 }

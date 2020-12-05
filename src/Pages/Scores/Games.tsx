@@ -28,20 +28,18 @@ export default function Games() {
   });
 
   return (
-    token ? (  
-      <Box>
-        <Typography variant="h3" className={classes.title}>
-          Games
-        </Typography>
-        <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-        >
-          {/* <Grid><ScoresTable /></Grid> */}
-        </Grid>
-      </Box>
-    ) : ( null )
+    <Box>
+      <Typography variant="h3" className={classes.title}>
+        Games
+      </Typography>
+      <Grid
+        container
+        direction="row"
+        justify="space-around"
+        alignItems="center"
+      >
+        {/* <Grid><ScoresTable /></Grid> */}
+      </Grid>
+    </Box>
   )
 }

@@ -27,21 +27,18 @@ export default function Toto() {
     if (!token) history.push("/login");
   });
 
-  return (
-    token ? (  
-      <Box>
-        <Typography variant="h3" className={classes.title}>
-          Toto
-        </Typography>
-        <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-        >
-          {/* <Grid><ScoresTable /></Grid> */}
-        </Grid>
-      </Box>
-    ) : ( null )
+  return ( 
+    <Box>
+      <Typography variant="h3" className={classes.title}>
+        Toto
+      </Typography>
+      <Grid
+        container
+        direction="row"
+        justify="space-around"
+        alignItems="center"
+      >
+      </Grid>
+    </Box>
   )
 }

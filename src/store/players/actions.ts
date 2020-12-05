@@ -93,7 +93,7 @@ export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
   };
 };
 
-export const fetchAllPlayers = async (
+export const fetchAllPlayers = () => async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {
