@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
+import { fetchScoresTotoRound } from '../../store/scores/actions';
+import { selectTotoRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -19,12 +21,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TotoRound() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { id } = useParams<{ id: string }>();
   const token = useSelector(selectToken);
   const history = useHistory();
+  const totoRound = useSelector(selectTotoRound);
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
+
+  useEffect(() => {
+    dispatch(fetchScoresTotoRound(+id))
+  }, [dispatch, id])
+  
+  console.log(totoRound)
 
   return ( 
     <Box>
