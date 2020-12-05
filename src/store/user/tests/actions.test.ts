@@ -6,12 +6,19 @@ import {
   LogInSuccessUser,
   LogOutUser,
   TokenUserStillValid,
-  UserState,
-  UserActionTypes,
 } from '../types';
+import { ILogInCredentials } from '../../../models/credentials.model';
 import { IUser } from '../../../models/player.model';
 import { ITeam } from '../../../models/toto.models';
-import { logInSuccessUser, logOutUser, tokenUserStillValid } from '../actions';
+import {
+  logInSuccessUser,
+  logOutUser,
+  tokenUserStillValid,
+  userLogIn,
+} from '../actions';
+import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
+
+const mockAxios = axios as jest.Mocked<typeof axios>;
 
 describe('#userState', () => {
   describe('#logInSuccessUser w/ user', () => {
@@ -76,5 +83,49 @@ describe('#userState', () => {
       expect(tokenUserStillValid(user)).toEqual(action);
       expect(tokenUserStillValid(user).user).not.toBeUndefined();
     });
+  });
+});
+
+describe('#userLogIn', () => {
+  it('calls axios and returns a user', async () => {
+    const team: ITeam = {
+      id: 1,
+      name: 'test_name',
+      logo: 'test_logo',
+    };
+    const user: IUser = {
+      admin: true,
+      email: 'test@test.com',
+      firstName: 'test',
+      id: 1,
+      lastName: 'test',
+      phoneNumber: 'test',
+      team,
+      totaalToto: true,
+      userName: 'test',
+      token: 'test_token',
+    };
+    const credentials: ILogInCredentials = {
+      email: 'test@test',
+      password: 'test_password',
+    };
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: { userData: user, message: 'test_message' } };
+
+    mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
+
+    await userLogIn(credentials)(dispatch, getState);
+
+    expect(mockAxios.post).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(
+      logInSuccessUser(response.data.userData)
+    );
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
