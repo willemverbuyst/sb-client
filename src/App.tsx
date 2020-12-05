@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { selectAppLoading } from './store/appState/selectors';
 import { getUserWithStoredToken } from './store/user/actions';
 import IceBlueGold from './ui/theme';
 import Header from './Components/Header';
-import Progress from './Components/Progress';
 import Toast from './Components/Toast';
 import UserDisplay from './Components/UserDisplay/UserDisplay';
 import SignUp from './Pages/Admin/SignUp';
@@ -27,7 +25,6 @@ import {
   Theme 
 } from '@material-ui/core/styles';
 import { Grid, Box } from '@material-ui/core';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,7 +58,6 @@ const useStyles = makeStyles((theme: Theme) =>
 function App() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectAppLoading)
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
@@ -75,11 +71,6 @@ function App() {
         container
         className={classes.contentWrapper}
         >
-        {/* {isLoading ?  (
-        <Grid item md={11} xs={12} className={classes.spinnerContainer}>
-          <Progress/>
-        </Grid> 
-        ) : ( */}
         <Grid item md={11} xs={12}>
           <Box className={classes.content}>
             <Switch>
