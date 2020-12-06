@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Voorspellingen() {
+export default function Predictions() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();

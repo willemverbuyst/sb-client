@@ -17,7 +17,7 @@ import Regels from './Pages/Regels';
 import TotalToto from './Pages/Scores/TotalToto';
 import Fixture from './Pages/Scores/Fixture';
 import TotoRound from './Pages/Scores/TotoRound';
-import Voorspellingen from './Pages/Voorspellingen';
+import Predictions from './Pages/Predictions';
 import { 
   createStyles, 
   makeStyles, 
@@ -86,7 +86,7 @@ function App() {
               <Route exact path="/scores/wedstrijd/:id" component={Fixture} />
               <Route exact path="/spelers" component={Spelers} />
               <Route exact path="/spelers/:id" component={SpelersProfiel} />
-              <Route exact path="/voorspellingen" component={Voorspellingen} />
+              <Route exact path="/voorspellingen" component={Predictions} />
               <Redirect path="/" to="/page-not-found" />
             </Switch>
           </Box>
