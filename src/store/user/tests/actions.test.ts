@@ -20,8 +20,8 @@ import {
 } from '../actions';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/actions';
+import { removeAllFixtures } from '../../predictions/actions';
 import { removeAllTeams } from '../../teams/actions';
-import { removeAllFixtures } from '../../voorspellingen/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

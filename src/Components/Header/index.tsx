@@ -85,7 +85,7 @@ export default function Header() {
               </IconButton>
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoTotalToto}>
-                <Tooltip title="Scores" arrow>  
+                <Tooltip title="Totaltoto" arrow>  
                   <EmojiEvents />
                 </Tooltip>
               </IconButton>

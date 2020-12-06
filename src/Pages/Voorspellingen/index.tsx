@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllFixtures } from '../../store/predictions/actions';
+import { selectFixtures } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { fetchAllFixtures } from '../../store/voorspellingen/actions';
-import { selectFixtures } from '../../store/voorspellingen/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Typography } from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';

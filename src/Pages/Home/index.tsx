@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentRound } from '../../store/voorspellingen/actions';
-import { selectCurrentRound } from '../../store/voorspellingen/selectors';
+import { fetchCurrentRound } from '../../store/predictions/actions';
+import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';

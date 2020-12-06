@@ -14,7 +14,7 @@ import { ILogInCredentials } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removeAllPlayers } from '../players/actions';
-import { removeAllFixtures } from '../voorspellingen/actions';
+import { removeAllFixtures } from '../predictions/actions';
 import { removeAllTeams } from '../teams/actions';
 
 export const logInSuccessUser = (user: IUser): LogInSuccessUser => {

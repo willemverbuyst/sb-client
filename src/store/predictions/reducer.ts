@@ -4,18 +4,18 @@ import {
   POST_PREDICTION,
   REMOVE_ALL_FIXTURES,
   UPDATE_PREDICTION,
-  VoorspellingenState,
-  VoorspellingenActionTypes,
+  PredictionsState,
+  PredictionActionTypes,
 } from './types';
 
-const initialState: VoorspellingenState = {
+const initialState: PredictionsState = {
   currentRound: null,
   allFixtures: null,
 };
 
-const voorspellingenReducer = (
+const predictionsReducer = (
   state = initialState,
-  action: VoorspellingenActionTypes
+  action: PredictionActionTypes
 ) => {
   switch (action.type) {
     case CURRENT_ROUND_FETCHED:
@@ -84,4 +84,4 @@ const voorspellingenReducer = (
   }
 };
 
-export default voorspellingenReducer;
+export default predictionsReducer;

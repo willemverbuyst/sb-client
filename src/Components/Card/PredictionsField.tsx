@@ -10,8 +10,8 @@ import {
 } from '@material-ui/core';
 
 import { IPrediction } from '../../models/predictions.model';
-import { updateOldPrediction, postNewPrediction } from '../../store/voorspellingen/actions';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
+import { updateOldPrediction, postNewPrediction } from '../../store/predictions/actions';
 import { selectAppLoading } from '../../store/appState/selectors';
 import Progress from '../Progress';
 

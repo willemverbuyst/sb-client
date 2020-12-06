@@ -7,7 +7,7 @@ export const POST_PREDICTION = 'POST_PREDICTION';
 export const REMOVE_ALL_FIXTURES = 'REMOVE_ALL_FIXTURES';
 export const UPDATE_PREDICTION = 'UPDATE_PREDICTION';
 
-export type VoorspellingenState = {
+export type PredictionsState = {
   currentRound: ICurrentRound | null;
   allFixtures: TotoRound[] | null;
 };
@@ -36,7 +36,7 @@ export type UpdatePrediction = {
   prediction: IPrediction;
 };
 
-export type VoorspellingenActionTypes =
+export type PredictionActionTypes =
   | CurrentRoundFetched
   | AllFixturesFetched
   | PostPrediction
