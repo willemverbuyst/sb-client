@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Profiel() {
+export default function Profile() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();

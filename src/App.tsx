@@ -12,12 +12,13 @@ import SpelersProfiel from './Pages/Spelers/SpelersProfiel';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
-import Profiel from './Pages/Profiel';
+import Predictions from './Pages/Predictions';
+import Profile from './Pages/Profile';
 import Regels from './Pages/Regels';
 import TotalToto from './Pages/Scores/TotalToto';
 import Fixture from './Pages/Scores/Fixture';
 import TotoRound from './Pages/Scores/TotoRound';
-import Predictions from './Pages/Predictions';
+
 import { 
   createStyles, 
   makeStyles, 
@@ -79,7 +80,7 @@ function App() {
               <Route exact path="/home" component={Home} />
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/page-not-found" component={PageNotFound} />
-              <Route exact path="/profiel" component={Profiel} />
+              <Route exact path="/profiel" component={Profile} />
               <Route exact path="/regels" component={Regels} />
               <Route exact path="/scores/totaltoto" component={TotalToto} />
               <Route exact path="/scores/totoronde/:id" component={TotoRound} />
