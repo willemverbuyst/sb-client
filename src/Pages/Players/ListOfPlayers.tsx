@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
-import { fetchPlayerProfile } from '../../store/players/actions';
-import { selectPlayerProfile } from '../../store/players/selectors';
-// import SpelersTable from '../../Components/Table/SpelersTable';
+import { fetchAllPlayers } from '../../store/players/actions';
+import { selectPlayers } from '../../store/players/selectors';
+import SpelersTable from '../../Components/Table/SpelersTable';
 import { 
   makeStyles, 
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
-// import Grid from '@material-ui/core/Grid';
-import { Divider, Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,35 +29,31 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function SpelersProfiel() {
+export default function ListOfPlayers() {
   const classes = useStyles();
   const history = useHistory();
-  const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch()
   const token = useSelector(selectToken);
-  const playerProfile = useSelector(selectPlayerProfile)
+  const players = useSelector(selectPlayers)
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
   useEffect(() => {
-    dispatch(fetchPlayerProfile(+id));
-  }, [dispatch, id]);
+    if (!players) {
+      dispatch(fetchAllPlayers());
+    }
+  }, [dispatch, players]);
   
   return (
-    playerProfile ? 
-      <>
-        <Typography variant="h3" className={classes.title}>
-          {playerProfile.userName}
-        </Typography>
-        <img alt={playerProfile.team.name} src={playerProfile.team.logo} />
-
-        <Divider/>
-      </>
-    :
+    <>
       <Typography variant="h3" className={classes.title}>
         Spelers
-      </Typography>     
+      </Typography>
+      <Grid item xs={12} container justify="center"> 
+        {players ? <Grid item xs={10}><SpelersTable players={players} /></Grid> : null }
+      </Grid>
+    </>        
   ) 
 }

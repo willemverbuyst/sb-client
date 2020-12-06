@@ -7,16 +7,16 @@ import Header from './Components/Header';
 import Toast from './Components/Toast';
 import UserDisplay from './Components/UserDisplay/UserDisplay';
 import SignUp from './Pages/Admin/SignUp';
-import Spelers from './Pages/Spelers/Spelers';
-import SpelersProfiel from './Pages/Spelers/SpelersProfiel';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
+import ListOfPlayers from './Pages/Players/ListOfPlayers';
+import PublicProfilePlayer from './Pages/Players/PublicProfilePlayer';
 import Predictions from './Pages/Predictions';
 import Profile from './Pages/Profile';
 import Rules from './Pages/Rules';
-import TotalToto from './Pages/Scores/TotalToto';
 import Fixture from './Pages/Scores/Fixture';
+import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
 import { 
   createStyles, 
@@ -84,8 +84,8 @@ function App() {
               <Route exact path="/scores/totaltoto" component={TotalToto} />
               <Route exact path="/scores/totoronde/:id" component={TotoRound} />
               <Route exact path="/scores/wedstrijd/:id" component={Fixture} />
-              <Route exact path="/spelers" component={Spelers} />
-              <Route exact path="/spelers/:id" component={SpelersProfiel} />
+              <Route exact path="/spelers" component={ListOfPlayers} />
+              <Route exact path="/spelers/:id" component={PublicProfilePlayer} />
               <Route exact path="/voorspellingen" component={Predictions} />
               <Redirect path="/" to="/page-not-found" />
             </Switch>
