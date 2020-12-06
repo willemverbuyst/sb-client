@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function Regels() {
+export default function Rules() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
