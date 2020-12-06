@@ -71,7 +71,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
 
 /*** GET THE TOTAL SCORE OF EACH USER FOR ALL PAST FIXTURES (TOTAL TOTO) ***/
 /*** PUBLIC ***/
-router.get('/all', authMiddleware, async (_req, res) => {
+router.get('/all', async (_req, res) => {
   try {
     const predictions = await Prediction.findAll({
       attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
@@ -94,12 +94,11 @@ router.get('/all', authMiddleware, async (_req, res) => {
       nest: true,
     });
 
-    if (predictions.length) {
+    if (predictions.length > 0) {
       const predictionsWithScores = predictions.map((pred) => {
         return {
           ...pred,
           score: calcScores(
-            pred.status,
             {
               homeTeam: pred.fixture.goalsHomeTeam,
               awayTeam: pred.fixture.goalsAwayTeam,
@@ -118,7 +117,7 @@ router.get('/all', authMiddleware, async (_req, res) => {
 
       return res.status(200).send(predictionsReduced);
     } else {
-      return res.status(200).send({ message: 'No total scores' });
+      return res.status(200).send({ predictions });
     }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
