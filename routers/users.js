@@ -120,7 +120,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-/*** UPDATE USER ADMIN STATUS ***/
+/*** UPDATE USER ADMIN STATUS BY ADMIN ***/
 router.patch('/:id/admin', authMiddleware, async (req, res) => {
   const { admin } = req.body;
   const { id } = req.params;

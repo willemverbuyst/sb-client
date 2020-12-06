@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-/*** SIGNUP NEW USER ***/
+/*** SIGNUP NEW USER BY ADMIN ***/
 router.post('/signup', authMiddleware, async (req, res) => {
   const {
     userName,
