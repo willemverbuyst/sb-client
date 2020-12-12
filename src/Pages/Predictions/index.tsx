@@ -5,10 +5,16 @@ import { fetchAllFixtures } from '../../store/predictions/actions';
 import { selectFixtures } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, Typography } from '@material-ui/core';
+import { 
+  Box, 
+  Button, 
+  Grid, 
+  Typography
+} from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
-import Progress from '../../Components/Progress/ProgressCircular';
+import ProgressCircular from '../../Components/Progress/ProgressCircular';
+import { selectAppLoading } from '../../store/appState/selectors';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -22,6 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
   pagination: {
     padding: theme.spacing(2)
+  },
+  content: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 }));
 
@@ -35,6 +48,7 @@ export default function Predictions() {
   const { ronde } = useParams<{ ronde: string }>();
   const t = +totoronde;
   let r = +ronde;
+  const isLoading = useSelector(selectAppLoading);
   
   useEffect(() => {
     if (!token) history.push("/login");
@@ -76,11 +90,15 @@ export default function Predictions() {
             </Button>
           </Grid>
         :
-          <Progress colorSpinner="secondary"/>  
+          null
         }
       </Grid>
 
-      { fixtures ?
+      { isLoading ?
+        <Box className={classes.content}>
+          <ProgressCircular/> 
+        </Box>
+      : fixtures ?
         <>
           <Grid item xs={12} container justify="center">
             { fixtures ? [...fixtures[t-1][r -1]]

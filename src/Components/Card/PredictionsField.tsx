@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { 
   Button,
   Grid,
@@ -12,8 +12,6 @@ import {
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../store/predictions/actions';
-import { selectAppLoading } from '../../store/appState/selectors';
-import Progress from '../Progress/ProgressCircular';
 
 const useStyles = makeStyles({
   inputBox: {
@@ -30,7 +28,6 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
   const dispatch = useDispatch();
   const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
   const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(0);
-  const isLoading = useSelector(selectAppLoading);
   const [showInput, setShowInput] = useState<boolean>(false)
 
   const handleSubmit = () => {
@@ -114,31 +111,28 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
   }
 
   return (
-    isLoading ? 
-      <Progress colorSpinner="primary"/> 
-    :
-      <Grid item xs={12} container justify="center">
-        { showInput ?
-          renderInput() 
-        : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) && 
-            fixtureWithPrediction.status === 'Match Finished' ?
-          <Typography variant="overline" color="textSecondary">
-            Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
-          </Typography>
-        : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ?
-          <Tooltip title="Je voorspelling veranderen?" arrow>
-            <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-            {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam }</Button> 
-          </Tooltip>
-        : fixtureWithPrediction.status === 'Match Finished' ?
-          <Typography variant="overline" color="textSecondary">
-            Geen voorspelling
-          </Typography>
-        :
+    <Grid item xs={12} container justify="center">
+      { showInput ?
+        renderInput() 
+      : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) && 
+          fixtureWithPrediction.status === 'Match Finished' ?
+        <Typography variant="overline" color="textSecondary">
+          Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
+        </Typography>
+      : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ?
+        <Tooltip title="Je voorspelling veranderen?" arrow>
           <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-            Plaats voorspelling 
-          </Button>
-        }
-      </Grid>
+          {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam }</Button> 
+        </Tooltip>
+      : fixtureWithPrediction.status === 'Match Finished' ?
+        <Typography variant="overline" color="textSecondary">
+          Geen voorspelling
+        </Typography>
+      :
+        <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+          Plaats voorspelling 
+        </Button>
+      }
+    </Grid>
   )
 }

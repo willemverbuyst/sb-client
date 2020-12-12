@@ -7,8 +7,13 @@ import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid, Typography } from '@material-ui/core';
-import Progress from '../../Components/Progress/ProgressCircular';
+import { 
+  Box, 
+  Button, 
+  Grid, 
+  Typography } 
+from '@material-ui/core';
+import ProgressCircular from '../../Components/Progress/ProgressCircular';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -20,6 +25,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main
   },
+  content: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 }));
 
 export default function HomePage() {
@@ -61,11 +73,15 @@ export default function HomePage() {
             </Button>
           </Grid> 
         : 
-          <Progress colorSpinner="secondary"/> 
+          null
         }
       </Grid>
-     
-      { currentRound ?
+
+      { isLoading ?
+        <Box className={classes.content}>
+          <ProgressCircular/> 
+        </Box>
+      : currentRound ?
         <>
           <Grid item xs={12}>
             <Typography variant="h5" className={classes.subTitle}>
