@@ -13,7 +13,7 @@ import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../store/predictions/actions';
 import { selectAppLoading } from '../../store/appState/selectors';
-import Progress from '../Progress';
+import Progress from '../Progress/ProgressCircular';
 
 const useStyles = makeStyles({
   inputBox: {

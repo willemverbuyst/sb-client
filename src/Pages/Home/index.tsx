@@ -8,7 +8,7 @@ import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Typography } from '@material-ui/core';
-import Progress from '../../Components/Progress';
+import Progress from '../../Components/Progress/ProgressCircular';
 
 const useStyles = makeStyles((theme) => ({
   title: {

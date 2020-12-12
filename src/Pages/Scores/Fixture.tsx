@@ -15,6 +15,8 @@ import ScoresTable from '../../Components/Table/ScoresTable';
 import { selectFixture } from '../../store/scores/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import { selectAppLoading } from '../../store/appState/selectors';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -40,6 +42,7 @@ export default function Fixture() {
   const token = useSelector(selectToken);
   const { id } = useParams<{ id: string }>();
   const fixture = useSelector(selectFixture);
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -65,12 +68,15 @@ export default function Fixture() {
             disableElevation 
             onClick={()=> history.goBack()}
           >
-            TERUG NAAR VOORSPELLINGEN
+            TERUG
           </Button>
         </Grid>
       </Grid>
 
-      {fixture ? 
+      {isLoading ? 
+        <ProgressLinear colorSpinner="primary"/>
+      :
+      fixture ? 
         <Grid className={classes.fixture}>       
           <Grid item xs={12} container justify="center" className={classes.date}>
             <Typography variant="overline">
@@ -117,7 +123,7 @@ export default function Fixture() {
         >
           <Grid item xs={12} md={6} container justify="center">
             <ScoresTable scores={fixture.scores}/>
-            </Grid>
+          </Grid>
         </Grid>
       : null }
     </Box>

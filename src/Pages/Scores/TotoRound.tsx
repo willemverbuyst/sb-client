@@ -13,6 +13,8 @@ import {
   Typography 
 } from '@material-ui/core';
 import TotoRoundTable from '../../Components/Table/TotoRoundTable';
+import { selectAppLoading } from '../../store/appState/selectors';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -35,6 +37,7 @@ export default function TotoRound() {
   const token = useSelector(selectToken);
   const history = useHistory();
   const totoRound = useSelector(selectTotoRound);
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -60,12 +63,15 @@ export default function TotoRound() {
             disableElevation 
             onClick={()=> history.goBack()}
           >
-            TERUG NAAR VOORSPELLINGEN
+            TERUG
           </Button>
         </Grid>
       </Grid>
 
-      { totoRound && totoRound.length > 0 ?
+      {isLoading ? 
+        <ProgressLinear colorSpinner="primary"/>
+      :
+      totoRound && totoRound.length > 0 ?
         <>
           <Grid 
             item xs={12} 

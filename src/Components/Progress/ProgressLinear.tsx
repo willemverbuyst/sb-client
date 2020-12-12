@@ -4,26 +4,26 @@ import {
   makeStyles, 
   Theme 
 } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
+      width: '100%',
       '& > * + *': {
-        marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(2),
       },
     },
   }),
 );
 
-export default function Progress({colorSpinner}: any) {
+export default function ProgressLinear({colorSpinner}: any) {
   const classes = useStyles();
-
 
   return (
     <div className={classes.root}>
-      <CircularProgress color={colorSpinner}/>
+      <LinearProgress />
+      <LinearProgress color={colorSpinner} />
     </div>
   );
 }
