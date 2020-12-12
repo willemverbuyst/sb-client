@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   pagination: {
     padding: theme.spacing(2)
   },
-  content: {
+  progress: {
     minHeight: '70vh',
     width: '100%',
     display: 'flex',
@@ -95,7 +95,7 @@ export default function Predictions() {
       </Grid>
 
       { isLoading ?
-        <Box className={classes.content}>
+        <Box className={classes.progress}>
           <ProgressCircular/> 
         </Box>
       : fixtures ?

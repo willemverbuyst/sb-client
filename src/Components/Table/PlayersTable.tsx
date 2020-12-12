@@ -19,7 +19,7 @@ type Prop = {
   players: IPlayer[]
 }
 
-export default function SpelersTable({players}: Prop) {
+export default function PlayersTable({players}: Prop) {
   const user = useSelector(selectUser);
 
   return (

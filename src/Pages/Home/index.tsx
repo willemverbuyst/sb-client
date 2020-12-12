@@ -6,6 +6,7 @@ import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
+import ProgressCircular from '../../Components/Progress/ProgressCircular';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -13,7 +14,7 @@ import {
   Grid, 
   Typography } 
 from '@material-ui/core';
-import ProgressCircular from '../../Components/Progress/ProgressCircular';
+
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main
   },
-  content: {
+  progress: {
     minHeight: '70vh',
     width: '100%',
     display: 'flex',
@@ -78,7 +79,7 @@ export default function HomePage() {
       </Grid>
 
       { isLoading ?
-        <Box className={classes.content}>
+        <Box className={classes.progress}>
           <ProgressCircular/> 
         </Box>
       : currentRound ?

@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
-import SpelersTable from '../../Components/Table/SpelersTable';
+import PlayersTable from '../../Components/Table/PlayersTable';
+import ProgressCircular from '../../Components/Progress/ProgressCircular';
 import { 
   makeStyles, 
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +28,17 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 'bold',
       marginBottom: theme.spacing(1),
       color: theme.palette.secondary.main
-    }
+    },
+    progress: {
+      minHeight: '70vh',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    playersTable: {
+      marginTop: theme.spacing(6),
+    },
   }),
 );
 
@@ -34,7 +47,8 @@ export default function ListOfPlayers() {
   const history = useHistory();
   const dispatch = useDispatch()
   const token = useSelector(selectToken);
-  const players = useSelector(selectPlayers)
+  const players = useSelector(selectPlayers);
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -52,7 +66,15 @@ export default function ListOfPlayers() {
         Spelers
       </Typography>
       <Grid item xs={12} container justify="center"> 
-        {players ? <Grid item xs={10}><SpelersTable players={players} /></Grid> : null }
+      { isLoading ?
+        <Box className={classes.progress}>
+          <ProgressCircular/> 
+        </Box>
+      : players ? 
+        <Grid item xs={10} className={classes.playersTable}>
+          <PlayersTable players={players} />
+        </Grid> 
+      : null }
       </Grid>
     </>        
   ) 
