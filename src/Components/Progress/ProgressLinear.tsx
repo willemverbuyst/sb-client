@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function ProgressLinear({colorSpinner}: any) {
+export default function ProgressLinear() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <LinearProgress />
-      <LinearProgress color={colorSpinner} />
+      <LinearProgress color="secondary"/>
+      <LinearProgress color="primary" />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Avatar,
-  Box, 
+  Box,
   Button, 
   Divider,
   Grid, 
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   date: {
     marginBottom: theme.spacing(2),
   },
-  table: {
+  scores: {
     marginTop: theme.spacing(6),
   },
 }));
@@ -74,7 +74,7 @@ export default function Fixture() {
       </Grid>
 
       {isLoading ? 
-        <ProgressLinear colorSpinner="primary"/>
+        <ProgressLinear />
       :
       fixture ? 
         <Grid className={classes.fixture}>       
@@ -113,18 +113,24 @@ export default function Fixture() {
 
       <Divider/>
 
-      { fixture && fixture.scores ?
+      { !isLoading && fixture && fixture.scores ?
         <Grid
           container
           direction="row"
           justify="center"
           alignItems="center"
-          className={classes.table}
+          className={classes.scores}
         >
           <Grid item xs={12} md={6} container justify="center">
             <ScoresTable scores={fixture.scores}/>
           </Grid>
         </Grid>
+      : !isLoading && fixture && !fixture.scores ?
+        <Grid container justify="center" className={classes.scores}>
+          <Typography variant="overline">
+            Geen scores!
+          </Typography>
+        </Grid> 
       : null }
     </Box>
   )

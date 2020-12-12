@@ -69,7 +69,7 @@ export default function TotoRound() {
       </Grid>
 
       {isLoading ? 
-        <ProgressLinear colorSpinner="primary"/>
+        <ProgressLinear />
       :
       totoRound && totoRound.length > 0 ?
         <>
