@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Typography } from '@material-ui/core';
+import Progress from '../../Components/Progress';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -17,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   subTitle: {
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main
-  }
+  },
 }));
 
 export default function HomePage() {
@@ -26,6 +28,7 @@ export default function HomePage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentRound = useSelector(selectCurrentRound);
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -38,28 +41,32 @@ export default function HomePage() {
   }, [dispatch, currentRound]);
 
   return (
-      <Grid container>
-        {currentRound ? 
+    <Grid container>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+          Deze week
+          </Typography>
+        </Grid>
+        { currentRound ?
+          <Grid>
+            <Button
+              variant="contained" 
+              size="small" 
+              color="secondary" 
+              disableElevation 
+              onClick={()=> history.push(`/scores/totoronde/${currentRound.totoRoundNumber}`)}
+            >
+              TOTORONDE: {currentRound.totoRoundNumber}
+            </Button>
+          </Grid> 
+        : 
+          <Progress colorSpinner="secondary"/> 
+        }
+      </Grid>
+     
+      { currentRound ?
         <>
-          <Grid container justify="space-between">
-            <Grid>
-              <Typography variant="h3" className={classes.title}>
-              Deze week
-              </Typography>
-            </Grid>
-            <Grid>
-              <Button
-                variant="contained" 
-                size="small" 
-                color="secondary" 
-                disableElevation 
-                onClick={()=> history.push(`/scores/totoronde/${currentRound.totoRoundNumber}`)}
-              >
-                TOTORONDE: {currentRound.totoRoundNumber}
-              </Button>
-            </Grid>
-          </Grid>
-       
           <Grid item xs={12}>
             <Typography variant="h5" className={classes.subTitle}>
               Speelronde: {currentRound.roundNumber}
@@ -70,7 +77,7 @@ export default function HomePage() {
             {currentRound.fixtures.map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>)}
           </Grid>
         </>
-        : null }
-      </Grid>
+      :  null }
+    </Grid>
   )
 }

@@ -30,12 +30,8 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
   const dispatch = useDispatch();
   const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
   const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(0);
-  const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
-  const isLoading = false
+  const isLoading = useSelector(selectAppLoading);
   const [showInput, setShowInput] = useState<boolean>(false)
-
-  console.log("pH ", fixtureWithPrediction.predictions.pGoalsHomeTeam)
-  console.log("pA ",fixtureWithPrediction.predictions.pGoalsAwayTeam)
 
   const handleSubmit = () => {
     const prediction: IPrediction = {
@@ -52,12 +48,10 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
   }
 
   const handleGoalsHomeTeam = (value: number) => {
-    setBtnDisabled(false);
     setPGoalsHomeTeam(value);    
   }
 
   const handleGoalsAwayTeam = (value: number) => {
-    setBtnDisabled(false);
     setPGoalsAwayTeam(value);
   }
 
@@ -91,7 +85,6 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
             id="outlined-number"
             type="number"
             defaultValue={fixtureWithPrediction.predictions.pGoalsAwayTeam || 0}
-            // value={fixtureWithPrediction.predictions.pGoalsAwayTeam || 0}
             onChange={(e) => handleGoalsAwayTeam(+e.target.value) }
             InputProps={{
               classes: {
@@ -122,8 +115,8 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
 
   return (
     isLoading ? 
-      <Progress />
-    : 
+      <Progress colorSpinner="primary"/> 
+    :
       <Grid item xs={12} container justify="center">
         { showInput ?
           renderInput() 

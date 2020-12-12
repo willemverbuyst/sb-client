@@ -17,12 +17,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function Progress() {
+export default function Progress({colorSpinner}: any) {
   const classes = useStyles();
+
 
   return (
     <div className={classes.root}>
-      <CircularProgress/>
+      <CircularProgress color={colorSpinner}/>
     </div>
   );
 }

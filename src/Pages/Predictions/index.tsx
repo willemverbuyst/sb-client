@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, Grid, Typography } from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
+import Progress from '../../Components/Progress';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -53,24 +54,28 @@ export default function Predictions() {
   };
 
   return (
-    <Grid container justify="space-between">
-      <Grid>
-        <Typography variant="h3" className={classes.title}>
-          Voorspellingen
-        </Typography>
-      </Grid>
-      <Grid>
-      { fixtures ?
-        <Button
-          variant="contained" 
-          size="small" 
-          color="secondary" 
-          disableElevation 
-          onClick={()=> history.push(`/scores/totoronde/${totoRoundNumber}`)}
-        >
-          TOTORONDE: {totoRoundNumber}
-        </Button>
-      : null }
+    <Grid container>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+            Voorspellingen
+          </Typography>
+        </Grid>
+        { fixtures ?
+          <Grid>
+            <Button
+              variant="contained" 
+              size="small" 
+              color="secondary" 
+              disableElevation 
+              onClick={()=> history.push(`/scores/totoronde/${totoRoundNumber}`)}
+            >
+              TOTORONDE: {totoRoundNumber}
+            </Button>
+          </Grid>
+        :
+          <Progress colorSpinner="secondary"/>  
+        }
       </Grid>
 
       { fixtures ?
@@ -99,7 +104,6 @@ export default function Predictions() {
           /> 
         </>
       : null }
-
     </Grid>
   )
 }
