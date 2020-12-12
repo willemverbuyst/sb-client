@@ -99,11 +99,11 @@ router.get('/all', authMiddleware, async (req, res) => {
       };
     });
 
-    const fixturesGroupedByRounds = chunkArrayTotoRounds(
+    const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
       fixturesWithPredictionAndScore
     );
 
-    res.status(200).send(fixturesGroupedByRounds);
+    res.status(200).send(fixturesGroupedByTotoRounds);
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }

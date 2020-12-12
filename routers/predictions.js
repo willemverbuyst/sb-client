@@ -47,11 +47,17 @@ router.post('/', authMiddleware, async (req, res) => {
 
 /*** CHANGE A PREDICTION FOR A SPECIFIC FIXTURE ***/
 router.patch('/:id', authMiddleware, async (req, res) => {
-  const userId = req.user.id;
-  const fixtureId = req.params.id;
+  const userId = +req.user.id;
+  const fixtureId = +req.params.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
-  if (!pGoalsHomeTeam || !pGoalsAwayTeam)
+  console.log('hello');
+
+  if (
+    typeof pGoalsHomeTeam !== 'number' ||
+    typeof pGoalsAwayTeam !== 'number' ||
+    !fixtureId
+  )
     return res.status(400).send('Details are missing, please try again!');
 
   try {
