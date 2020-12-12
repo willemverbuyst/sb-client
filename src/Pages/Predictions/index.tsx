@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory , useParams} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllFixtures } from '../../store/predictions/actions';
 import { selectFixtures } from '../../store/predictions/selectors';
@@ -31,8 +31,10 @@ export default function Predictions() {
   const history = useHistory();
   const dispatch = useDispatch();
   const fixtures = useSelector(selectFixtures)
-  const [totoRoundNumber, setTotoRoundNumber] = React.useState(1);
-  const [roundNumber, setRoundNumber] = React.useState(1);
+  const { totoronde} = useParams<{ totoronde: string }>();
+  const { ronde } = useParams<{ ronde: string }>();
+  const t = +totoronde;
+  let r = +ronde;
   
   useEffect(() => {
     if (!token) history.push("/login");
@@ -45,12 +47,12 @@ export default function Predictions() {
   }, [dispatch, fixtures]);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setTotoRoundNumber(value);
-    setRoundNumber(1);
+    r = 1;
+    history.push(`/voorspellingen/${value}/${r}`);
   };
 
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
-    setRoundNumber(value);
+    history.push(`/voorspellingen/${t}/${value}`);
   };
 
   return (
@@ -68,9 +70,9 @@ export default function Predictions() {
               size="small" 
               color="secondary" 
               disableElevation 
-              onClick={()=> history.push(`/scores/totoronde/${totoRoundNumber}`)}
+              onClick={()=> history.push(`/scores/totoronde/${t}`)}
             >
-              TOTORONDE: {totoRoundNumber}
+              SCORES TOTORONDE: {t}
             </Button>
           </Grid>
         :
@@ -81,26 +83,25 @@ export default function Predictions() {
       { fixtures ?
         <>
           <Grid item xs={12} container justify="center">
-            { fixtures ? [...fixtures[totoRoundNumber -1][roundNumber -1]]
+            { fixtures ? [...fixtures[t-1][r -1]]
               .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
               .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
                 <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
             : null }
           </Grid>
-
-          <PaginationComponent 
-            label="Speelronde"
-            number={roundNumber}
-            numberFixtures={fixtures[totoRoundNumber -1].length} 
-            color="primary" 
-            onChange={handleChangeRounds}
-          /> 
           <PaginationComponent 
             label="Totoronde"
-            number={totoRoundNumber}
-            numberFixtures={fixtures.length}
-            color="secondary"
+            page={t}
+            count={fixtures.length}
+            color="primary"
             onChange={handleChangeTotoRounds}
+          /> 
+          <PaginationComponent 
+            label="Speelronde"
+            page={r}
+            count={fixtures[t -1].length} 
+            color="secondary" 
+            onChange={handleChangeRounds}
           /> 
         </>
       : null }

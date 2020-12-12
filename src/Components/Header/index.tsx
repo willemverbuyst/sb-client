@@ -65,7 +65,7 @@ export default function Header() {
 
   const gotoSpelers = () => history.push("/spelers")
   
-  const gotoVoorspellingen = () => history.push("/voorspellingen");
+  const gotoVoorspellingen = () => history.push("/voorspellingen/1/1");
  
   return (
       <Box className={classes.header}>

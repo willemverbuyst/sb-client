@@ -58,9 +58,9 @@ export default function TotoRound() {
             size="small" 
             color="secondary" 
             disableElevation 
-            onClick={()=> history.push('/voorspellingen')}
+            onClick={()=> history.goBack()}
           >
-            VOORSPELLINGEN
+            TERUG NAAR VOORSPELLINGEN
           </Button>
         </Grid>
       </Grid>
@@ -89,7 +89,13 @@ export default function TotoRound() {
             </Grid>
           </Grid>
         </>
-      : null }
+      : 
+      <Grid>
+        <Typography variant="overline">
+          Nog geen scores voor totoronde {id}
+        </Typography>
+      </Grid> 
+      }
     </Box>
   )
 }
