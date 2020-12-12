@@ -11,7 +11,7 @@ import {
 
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { updateOldPrediction, postNewPrediction } from '../../store/predictions/actions';
+import { changePrediction, postNewPrediction } from '../../store/predictions/actions';
 import { selectAppLoading } from '../../store/appState/selectors';
 import Progress from '../Progress';
 
@@ -28,23 +28,24 @@ type Prop = { fixtureWithPrediction: IFixtureWithScoreAndPredictions }
 export default function PredictionsField({fixtureWithPrediction} : Prop ) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(fixtureWithPrediction.predictions.pGoalsHomeTeam ? 
-    fixtureWithPrediction.predictions.pGoalsHomeTeam : 0);
-  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(fixtureWithPrediction.predictions.pGoalsAwayTeam ? 
-    fixtureWithPrediction.predictions.pGoalsAwayTeam : 0);
+  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
+  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(0);
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
-  const isLoading = useSelector(selectAppLoading)
+  const isLoading = false
   const [showInput, setShowInput] = useState<boolean>(false)
+
+  console.log("pH ", fixtureWithPrediction.predictions.pGoalsHomeTeam)
+  console.log("pA ",fixtureWithPrediction.predictions.pGoalsAwayTeam)
 
   const handleSubmit = () => {
     const prediction: IPrediction = {
-      pGoalsHomeTeam, 
-      pGoalsAwayTeam, 
+      pGoalsHomeTeam,
+      pGoalsAwayTeam,
       fixtureId: fixtureWithPrediction.id
     }
 
     fixtureWithPrediction.predictions.pGoalsAwayTeam || fixtureWithPrediction.predictions.pGoalsHomeTeam ? 
-      dispatch(updateOldPrediction(prediction)) :
+      dispatch(changePrediction(prediction)) :
       dispatch(postNewPrediction(prediction));
 
     setShowInput(false)
@@ -73,7 +74,7 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
           <TextField
             id="outlined-number"
             type="number"
-            value={pGoalsHomeTeam}
+            defaultValue={fixtureWithPrediction.predictions.pGoalsHomeTeam || 0}
             onChange={(e) => handleGoalsHomeTeam(+e.target.value) }
             InputProps={{
               classes: {
@@ -89,7 +90,8 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
           <TextField
             id="outlined-number"
             type="number"
-            value={pGoalsAwayTeam}
+            defaultValue={fixtureWithPrediction.predictions.pGoalsAwayTeam || 0}
+            // value={fixtureWithPrediction.predictions.pGoalsAwayTeam || 0}
             onChange={(e) => handleGoalsAwayTeam(+e.target.value) }
             InputProps={{
               classes: {
@@ -102,9 +104,9 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
             }}
           />
         </Grid>
+ 
         <Grid item xs={2} container justify="center">
           <Button 
-            disabled={btnDisabled} 
             variant="contained" 
             size="small" 
             color="primary" 
@@ -120,30 +122,30 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
 
   return (
     isLoading ? 
-      <Progress /> 
+      <Progress />
     : 
-    <Grid item xs={12} container justify="center">
-      { showInput ?
-        renderInput() 
-      : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) && 
-          fixtureWithPrediction.status === 'Match Finished' ?
-        <Typography variant="overline" color="textSecondary">
-          Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
-        </Typography>
-      : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ?
-        <Tooltip title="Je voorspelling veranderen?" arrow>
+      <Grid item xs={12} container justify="center">
+        { showInput ?
+          renderInput() 
+        : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) && 
+            fixtureWithPrediction.status === 'Match Finished' ?
+          <Typography variant="overline" color="textSecondary">
+            Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
+          </Typography>
+        : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ?
+          <Tooltip title="Je voorspelling veranderen?" arrow>
+            <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
+            {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam }</Button> 
+          </Tooltip>
+        : fixtureWithPrediction.status === 'Match Finished' ?
+          <Typography variant="overline" color="textSecondary">
+            Geen voorspelling
+          </Typography>
+        :
           <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-          {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam }</Button> 
-        </Tooltip>
-      : fixtureWithPrediction.status === 'Match Finished' ?
-        <Typography variant="overline" color="textSecondary">
-          Geen voorspelling
-        </Typography>
-      :
-        <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-          Plaats voorspelling 
-        </Button>
-      }
-    </Grid>
+            Plaats voorspelling 
+          </Button>
+        }
+      </Grid>
   )
 }

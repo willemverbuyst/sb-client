@@ -25,27 +25,30 @@ const predictionsReducer = (
       return { ...state, allFixtures: action.allFixtures };
 
     case POST_PREDICTION:
+      console.log('in the reducer');
+
       if (state.allFixtures) {
         return {
           ...state,
-          allFixtures: state.allFixtures.map((game) =>
-            game.map((round) =>
-              round.map((fixture) => {
-                if (fixture.id === action.prediction.fixtureId) {
-                  return {
-                    ...fixture,
-                    predictions: {
-                      pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
-                      pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
-                    },
-                  };
-                }
-                return {
-                  ...fixture,
-                };
-              })
-            )
-          ),
+          allFixtures: state.allFixtures.map((af) => af),
+          // allFixtures: state.allFixtures.map((game) =>
+          //   game.map((round) =>
+          //     round.map((fixture) => {
+          //       if (fixture.id === action.prediction.fixtureId) {
+          //         return {
+          //           ...fixture,
+          //           predictions: {
+          //             pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
+          //             pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+          //           },
+          //         };
+          //       }
+          //       return {
+          //         ...fixture,
+          //       };
+          //     })
+          //   )
+          // ),
         };
       }
       return { ...state };

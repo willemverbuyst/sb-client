@@ -5,7 +5,7 @@ import {
   SCORES_FIXTURE_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
   FixtureWithScores,
-  UserWithTotoRoundScore,
+  UserWithScore,
   ScoresFixtureFetched,
   ScoresTotoRoundFetched,
 } from './types';
@@ -22,7 +22,7 @@ const scoresFixtureFetched = (
 };
 
 const scoresTotoRoundFetched = (
-  totoRound: UserWithTotoRoundScore[]
+  totoRound: UserWithScore[]
 ): ScoresTotoRoundFetched => {
   return {
     type: SCORES_TOTO_ROUND_FETCHED,

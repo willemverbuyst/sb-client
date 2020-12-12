@@ -143,7 +143,7 @@ export const postNewPrediction = ({
   }
 };
 
-export const updateOldPrediction = ({
+export const changePrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,

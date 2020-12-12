@@ -9,7 +9,7 @@ import {
   TableRow, 
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { UserWithTotoRoundScore } from '../../store/scores/types';
+import { UserWithScore } from '../../store/scores/types';
 
 const useStyles = makeStyles(() => ({
   link: {
@@ -17,13 +17,13 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const sortTable = (arr: UserWithTotoRoundScore[]): UserWithTotoRoundScore[] => [...arr]
+const sortTable = (arr: UserWithScore[]): UserWithScore[] => [...arr]
   .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
   .sort((score1, score2) => score2.score - score1.score);
 
 
 type Prop = {
-  totoRound: UserWithTotoRoundScore[];
+  totoRound: UserWithScore[];
 }
 
 export default function TotoRoundTable({ totoRound }: Prop) {

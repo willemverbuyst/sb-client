@@ -42,16 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     user: {
       marginRight: theme.spacing(5),
-    },
-    spinnerContainer: {
-      minHeight: '85vh',
-      postion: 'absolute',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 1000,
     }
-
   })
 );
 

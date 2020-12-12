@@ -5,7 +5,7 @@ export const SCORES_TOTO_ROUND_FETCHED = 'SCORES_TOTO_ROUND_FETCHED';
 
 export type ScoresState = {
   fixtureScores: FixtureWithScores | null;
-  totoRoundScores: UserWithTotoRoundScore[] | null;
+  totoRoundScores: UserWithScore[] | null;
 };
 
 export type FixtureWithScores = {
@@ -13,7 +13,7 @@ export type FixtureWithScores = {
   scores: PredictionWithScorePerUser[] | null;
 };
 
-export type UserWithTotoRoundScore = {
+export type UserWithScore = {
   id: number;
   score: number;
   user: string;
@@ -34,7 +34,7 @@ export type ScoresFixtureFetched = {
 
 export type ScoresTotoRoundFetched = {
   type: typeof SCORES_TOTO_ROUND_FETCHED;
-  totoRound: UserWithTotoRoundScore[];
+  totoRound: UserWithScore[];
 };
 
 export type ScoresActionTypes = ScoresFixtureFetched | ScoresTotoRoundFetched;
