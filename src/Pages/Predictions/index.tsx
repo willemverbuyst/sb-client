@@ -34,7 +34,7 @@ export default function Predictions() {
   const { totoronde} = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
   const t = +totoronde;
-  const r = +ronde;
+  let r = +ronde;
   
   useEffect(() => {
     if (!token) history.push("/login");
@@ -47,6 +47,7 @@ export default function Predictions() {
   }, [dispatch, fixtures]);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
+    r = 1;
     history.push(`/voorspellingen/${value}/${r}`);
   };
 
@@ -71,7 +72,7 @@ export default function Predictions() {
               disableElevation 
               onClick={()=> history.push(`/scores/totoronde/${t}`)}
             >
-              TOTORONDE: {t}
+              SCORES TOTORONDE: {t}
             </Button>
           </Grid>
         :
@@ -89,18 +90,18 @@ export default function Predictions() {
             : null }
           </Grid>
           <PaginationComponent 
-            label="Speelronde"
-            page={r}
-            count={fixtures[t -1].length} 
-            color="primary" 
-            onChange={handleChangeRounds}
-          /> 
-          <PaginationComponent 
             label="Totoronde"
             page={t}
             count={fixtures.length}
-            color="secondary"
+            color="primary"
             onChange={handleChangeTotoRounds}
+          /> 
+          <PaginationComponent 
+            label="Speelronde"
+            page={r}
+            count={fixtures[t -1].length} 
+            color="secondary" 
+            onChange={handleChangeRounds}
           /> 
         </>
       : null }

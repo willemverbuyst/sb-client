@@ -63,9 +63,9 @@ export default function Fixture() {
             size="small" 
             color="secondary" 
             disableElevation 
-            onClick={()=> history.push('/voorspellingen')}
+            onClick={()=> history.goBack()}
           >
-            VOORSPELLINGEN
+            TERUG NAAR VOORSPELLINGEN
           </Button>
         </Grid>
       </Grid>
