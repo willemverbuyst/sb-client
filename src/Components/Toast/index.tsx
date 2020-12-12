@@ -37,7 +37,15 @@ export default function Toast() {
 
   return message ? (
     <div className={classes.root}>
-      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+      <Snackbar 
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open} 
+        autoHideDuration={3000} 
+        onClose={handleClose}
+      >
         <Alert severity={message.severity}>
           {message.text}
         </Alert>
