@@ -77,7 +77,7 @@ function App() {
               <Route exact path="/scores/wedstrijd/:id" component={Fixture} />
               <Route exact path="/spelers" component={ListOfPlayers} />
               <Route exact path="/spelers/:id" component={PublicProfilePlayer} />
-              <Route exact path="/voorspellingen" component={Predictions} />
+              <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
               <Redirect path="/" to="/page-not-found" />
             </Switch>
           </Box>
