@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { userLogIn } from '../../store/user/actions';
+import { selectToken } from '../../store/user/selectors'
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Avatar, 
+  Box,
   Button, 
   Container, 
   TextField 
@@ -12,7 +15,8 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
-import { selectToken } from '../../store/user/selectors'
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  progress: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 }));
 
 export default function LogIn() {
@@ -43,6 +54,7 @@ export default function LogIn() {
   });
   const token = useSelector(selectToken);
   const history = useHistory();
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     if (token) history.push("/home");
@@ -58,6 +70,11 @@ export default function LogIn() {
   };
 
   return (
+    isLoading ?
+      <Box className={classes.progress}>
+        <ProgressLinear/> 
+      </Box>
+    : 
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -112,7 +129,7 @@ export default function LogIn() {
           </Button>
         </form>
       </div>
-    </Container>
+    </Container> 
   );
 }
 
