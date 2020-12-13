@@ -128,7 +128,7 @@ export default function Fixture() {
       : !isLoading && fixture && !fixture.scores ?
         <Grid container justify="center" className={classes.scores}>
           <Typography variant="overline">
-            Geen scores!
+            Geen scores
           </Typography>
         </Grid> 
       : null }
