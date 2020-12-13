@@ -6,7 +6,7 @@ import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
-import ProgressCircular from '../../Components/Progress/ProgressCircular';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -80,7 +80,7 @@ export default function HomePage() {
 
       { isLoading ?
         <Box className={classes.progress}>
-          <ProgressCircular/> 
+          <ProgressLinear/> 
         </Box>
       : currentRound ?
         <>

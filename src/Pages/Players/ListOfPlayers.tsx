@@ -6,7 +6,7 @@ import { selectToken } from '../../store/user/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
 import PlayersTable from '../../Components/Table/PlayersTable';
-import ProgressCircular from '../../Components/Progress/ProgressCircular';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { 
   makeStyles, 
   createStyles, 
@@ -68,7 +68,7 @@ export default function ListOfPlayers() {
       <Grid item xs={12} container justify="center"> 
       { isLoading ?
         <Box className={classes.progress}>
-          <ProgressCircular/> 
+          <ProgressLinear/> 
         </Box>
       : players ? 
         <Grid item xs={10} className={classes.playersTable}>

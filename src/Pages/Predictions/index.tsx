@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
-import ProgressCircular from '../../Components/Progress/ProgressCircular';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 
 const useStyles = makeStyles((theme) => ({
@@ -96,7 +96,7 @@ export default function Predictions() {
 
       { isLoading ?
         <Box className={classes.progress}>
-          <ProgressCircular/> 
+          <ProgressLinear/> 
         </Box>
       : fixtures ?
         <>
