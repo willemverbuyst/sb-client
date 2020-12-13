@@ -18,12 +18,6 @@ import { Box, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    control: {
-      padding: theme.spacing(2),
-    },
     title: {
       fontWeight: 'bold',
       marginBottom: theme.spacing(1),
@@ -61,21 +55,24 @@ export default function ListOfPlayers() {
   }, [dispatch, players]);
   
   return (
-    <>
-      <Typography variant="h3" className={classes.title}>
-        Spelers
-      </Typography>
-      <Grid item xs={12} container justify="center"> 
+    <Grid container>
+      <Grid container>
+        <Typography variant="h3" className={classes.title}>
+          Spelers
+        </Typography>
+      </Grid>
+
       { isLoading ?
         <Box className={classes.progress}>
           <ProgressLinear/> 
         </Box>
       : players ? 
-        <Grid item xs={10} className={classes.playersTable}>
-          <PlayersTable players={players} />
-        </Grid> 
+        <Grid container justify="center"> 
+          <Grid item xs={10} className={classes.playersTable}>
+            <PlayersTable players={players} />
+          </Grid> 
+        </Grid>
       : null }
-      </Grid>
-    </>        
+    </Grid>        
   ) 
 }
