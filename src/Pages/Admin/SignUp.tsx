@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { addPlayer } from '../../store/players/actions';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors'; 
@@ -23,6 +24,7 @@ import {
 } from '@material-ui/core';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -50,6 +52,13 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  progress: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 }));
 
 export default function SignUp() {
@@ -57,8 +66,10 @@ export default function SignUp() {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const teams = useSelector(selectTeams);
+  const isLoading = useSelector(selectAppLoading);
   const history = useHistory();
   const dispatch = useDispatch();
+
   const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
     userName: '',
     firstName: '',
@@ -104,12 +115,18 @@ export default function SignUp() {
   };
 
   return ( 
-      <Box>
+    <Grid container>
+      <Grid container>
         <Typography variant="h3" className={classes.title}>
           Sign Up
         </Typography>
+      </Grid>
 
-        { teams ? 
+      { isLoading ?
+        <Box className={classes.progress}>
+          <ProgressLinear/> 
+        </Box>
+      : teams ? 
         <Container component="main" maxWidth="xs">
           <div className={classes.paper}>
             <form className={classes.form} noValidate>
@@ -287,7 +304,7 @@ export default function SignUp() {
             </form>
           </div>
         </Container>
-        : null }
-      </Box>
+      : null }
+    </Grid>
   )
 }
