@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { IPlayer, IPlayerProfile } from '../../../models/player.model';
 import {
   addNewPlayer,
+  addPlayer,
   allPlayersFetched,
   playerProfileFetched,
   removeAllPlayers,
@@ -16,6 +18,15 @@ import {
   PlayerProfileFetched,
   RemoveAllPlayers,
 } from '../types';
+import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
+import { ITeam } from '../../../models/toto.models';
+import { ISignUpCredentials } from '../../../models/credentials.model';
+
+const mockAxios = axios as jest.Mocked<typeof axios>;
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});
 
 describe('#playersState', () => {
   describe('#addNewPlayer w/ player', () => {
@@ -108,5 +119,53 @@ describe('#playersState', () => {
       expect(removeAllPlayers()).not.toHaveProperty('payload');
       expect(removeAllPlayers()).toHaveProperty('type');
     });
+  });
+});
+
+describe('#addPlayer', () => {
+  it('calls axios and returns a player', async () => {
+    const signUpCredentials: ISignUpCredentials = {
+      userName: 'test',
+      firstName: 'test',
+      lastName: 'test',
+      email: 'test@test.com',
+      password: 'test',
+      phoneNumber: '123',
+      admin: false,
+      totaalToto: true,
+      teamId: 1,
+    };
+    const player: IPlayer = {
+      admin: false,
+      email: 'test@test.com',
+      firstName: 'test_player',
+      id: 1,
+      lastName: 'tst_player',
+      phoneNumber: '123',
+      team: {
+        id: 1,
+        logo: 'test_logo',
+        name: 'test_name',
+      },
+      totaalToto: true,
+      userName: 'TEST',
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: { userData: player, message: 'test_message' } };
+
+    mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
+
+    await addPlayer(signUpCredentials)(dispatch, getState);
+
+    expect(mockAxios.post).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(addNewPlayer(response.data.userData));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
