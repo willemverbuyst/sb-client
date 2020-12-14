@@ -4,6 +4,7 @@ import {
   addNewPlayer,
   addPlayer,
   allPlayersFetched,
+  fetchAllPlayers,
   playerProfileFetched,
   removeAllPlayers,
 } from '../actions';
@@ -12,14 +13,12 @@ import {
   ALL_PLAYERS_FETCHED,
   PLAYER_PROFILE_FETCHED,
   REMOVE_ALL_PLAYERS,
-  PlayersState,
   AddNewPlayer,
   AllPlayersFetched,
   PlayerProfileFetched,
   RemoveAllPlayers,
 } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
-import { ITeam } from '../../../models/toto.models';
 import { ISignUpCredentials } from '../../../models/credentials.model';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -167,5 +166,40 @@ describe('#addPlayer', () => {
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
+  });
+});
+describe('#fetchAllPlayers', () => {
+  it('calls axios and returns all players', async () => {
+    const players: IPlayer[] = [
+      {
+        admin: false,
+        email: 'test@test.com',
+        firstName: 'test_player',
+        id: 1,
+        lastName: 'tst_player',
+        phoneNumber: '123',
+        team: {
+          id: 1,
+          logo: 'test_logo',
+          name: 'test_name',
+        },
+        totaalToto: true,
+        userName: 'TEST',
+      },
+    ];
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: players };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchAllPlayers()(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(allPlayersFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });
