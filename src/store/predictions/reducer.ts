@@ -45,6 +45,7 @@ const predictionsReducer = (
           ),
         };
       }
+      // UPDATE CURRENT ROUND AS WELL????
       return state;
 
     case REMOVE_ALL_FIXTURES:

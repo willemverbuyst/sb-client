@@ -1,12 +1,9 @@
+import { IPrediction } from '../../../models/predictions.model';
 import {
   ICurrentRound,
-  IFixtureWithScore,
   IFixtureWithScoreAndPredictions,
-  Round,
   TotoRound,
 } from '../../../models/toto.models';
-import { REMOVE_ALL_PLAYERS } from '../../players/types';
-import scoresReducer from '../../scores/reducer';
 import reducer from '../reducer';
 import {
   ALL_FIXTURES_FETCHED,
@@ -112,6 +109,57 @@ describe('#predictionsStateReducer', () => {
       expect(newState.allFixtures?.length).not.toBe(3);
       expect(newState.currentRound).toBeNull;
       expect(newState).not.toEqual(initialState);
+    });
+  });
+  describe('if given POST_PREDICTION action type and a state', () => {
+    const totoRound: TotoRound[] = [
+      [
+        [
+          {
+            awayTeamId: 1,
+            awayTeamLogo: 'test',
+            awayTeamName: 'test',
+            createdAt: 'test',
+            eventTimeStamp: 1,
+            goalsAwayTeam: null,
+            goalsHomeTeam: null,
+            homeTeamId: 1,
+            homeTeamLogo: 'test',
+            homeTeamName: 'test',
+            id: 1,
+            round: 'test',
+            status: 'test',
+            updatedAt: 'test',
+            score: 'scores',
+            predictions: {
+              pGoalsAwayTeam: null,
+              pGoalsHomeTeam: null,
+            },
+          },
+        ],
+      ],
+    ];
+    const prediction: IPrediction = {
+      pGoalsAwayTeam: 1,
+      pGoalsHomeTeam: 4,
+      fixtureId: 1,
+    };
+    const state: PredictionsState = {
+      currentRound: null,
+      allFixtures: totoRound,
+    };
+    const action: PostPrediction = {
+      type: POST_PREDICTION,
+      prediction,
+    };
+    const newState: PredictionsState = reducer(state, action);
+
+    test('returns the initial state with current round', () => {
+      expect(newState.allFixtures).not.toBeNull;
+      expect(newState.allFixtures?.length).toBe(totoRound.length);
+      expect(newState.currentRound).toBeNull;
+      expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).toBe(1);
+      expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).toBe(4);
     });
   });
   describe('if given REMOVE_ALL_FIXTURES action type and a state', () => {
