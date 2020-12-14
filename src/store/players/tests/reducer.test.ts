@@ -251,7 +251,7 @@ describe('#playersStateReducer', () => {
         pastFixturesWithScores: null,
       };
       const state: PlayersState = {
-        players: players,
+        players,
         playerProfile: playerProfile1,
       };
       const action: PlayerProfileFetched = {
@@ -265,6 +265,59 @@ describe('#playersStateReducer', () => {
       expect(newState.playerProfile?.firstName).toBe('test_player2');
       expect(newState.playerProfile?.firstName).not.toBe('test_player1');
       expect(newState.players).toEqual(players);
+    });
+  });
+  describe('if given REMOVE_ALL_PLAYERS action type and a state', () => {
+    test('returns the state with no profile and no players', () => {
+      const players: IPlayer[] = [
+        {
+          admin: false,
+          email: 'test@test.com',
+          firstName: 'test_player',
+          id: 1,
+          lastName: 'tst_player',
+          phoneNumber: '123',
+          team: {
+            id: 1,
+            logo: 'test_logo',
+            name: 'test_name',
+          },
+          totaalToto: true,
+          userName: 'TEST',
+        },
+      ];
+      const playerProfile: IPlayerProfile = {
+        admin: false,
+        email: 'test@test.com',
+        firstName: 'test_player1',
+        id: 1,
+        lastName: 'tst_player',
+        phoneNumber: '123',
+        team: {
+          id: 1,
+          logo: 'test_logo',
+          name: 'test_name',
+        },
+        totaalToto: true,
+        userName: 'TEST',
+        pastFixturesWithScores: null,
+      };
+      const state: PlayersState = {
+        players,
+        playerProfile,
+      };
+      const initialState: PlayersState = {
+        players: null,
+        playerProfile: null,
+      };
+      const action: RemoveAllPlayers = {
+        type: REMOVE_ALL_PLAYERS,
+      };
+      const newState: PlayersState = reducer(state, action);
+
+      expect(newState.playerProfile).toBeNull;
+      expect(newState.players).toBeNull;
+      expect(newState).toEqual(initialState);
     });
   });
 });
