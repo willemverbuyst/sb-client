@@ -1,5 +1,9 @@
-import { TotoRound } from '../../../models/toto.models';
-import { allFixturesFetched } from '../actions';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  TotoRound,
+} from '../../../models/toto.models';
+import { allFixturesFetched, currentRoundFetched } from '../actions';
 import {
   ALL_FIXTURES_FETCHED,
   CURRENT_ROUND_FETCHED,
@@ -52,6 +56,47 @@ describe('#predictionsState', () => {
       expect(allFixturesFetched(totoRound).allFixtures.length).toBeGreaterThan(
         0
       );
+    });
+  });
+  describe('#currentRoundFetched', () => {
+    const fixtures: IFixtureWithScoreAndPredictions[] = [
+      {
+        awayTeamId: 1,
+        awayTeamLogo: 'test',
+        awayTeamName: 'test',
+        createdAt: 'test',
+        eventTimeStamp: 1,
+        goalsAwayTeam: null,
+        goalsHomeTeam: null,
+        homeTeamId: 1,
+        homeTeamLogo: 'test',
+        homeTeamName: 'test',
+        id: 1,
+        round: 'test',
+        status: 'test',
+        updatedAt: 'test',
+        score: 'scores',
+        predictions: {
+          pGoalsAwayTeam: null,
+          pGoalsHomeTeam: null,
+        },
+      },
+    ];
+    const currentRound: ICurrentRound = {
+      fixtures,
+      roundNumber: 1,
+      totoRoundNumber: 1,
+    };
+    const expected: CurrentRoundFetched = {
+      type: CURRENT_ROUND_FETCHED,
+      currentRound,
+    };
+    test('returns an action w/ type CURRENT_ROUND_FETCHED and current round as payload', () => {
+      expect(currentRoundFetched(currentRound)).toEqual(expected);
+      expect(currentRoundFetched(currentRound).currentRound).toEqual(
+        currentRound
+      );
+      expect(currentRoundFetched(currentRound)).toHaveProperty('currentRound');
     });
   });
 });
