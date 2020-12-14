@@ -205,7 +205,7 @@ describe('#fetchAllPlayers', () => {
   });
 });
 describe('#fetchPlayerProfile', () => {
-  it('calls axios and returns all players', async () => {
+  it('calls axios and returns a player profile', async () => {
     const id = 1;
     const player: IPlayerProfile = {
       admin: false,
