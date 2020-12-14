@@ -5,6 +5,7 @@ import {
   addPlayer,
   allPlayersFetched,
   fetchAllPlayers,
+  fetchPlayerProfile,
   playerProfileFetched,
   removeAllPlayers,
 } from '../actions';
@@ -199,6 +200,40 @@ describe('#fetchAllPlayers', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(allPlayersFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+describe('#fetchPlayerProfile', () => {
+  it('calls axios and returns all players', async () => {
+    const id = 1;
+    const player: IPlayerProfile = {
+      admin: false,
+      email: 'test@test.com',
+      firstName: 'test_player',
+      id: 1,
+      lastName: 'tst_player',
+      phoneNumber: '123',
+      team: {
+        id: 1,
+        logo: 'test_logo',
+        name: 'test_name',
+      },
+      totaalToto: true,
+      userName: 'TEST',
+      pastFixturesWithScores: null,
+    };
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: player };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchPlayerProfile(id)(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(playerProfileFetched(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
