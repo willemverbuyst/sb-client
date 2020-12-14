@@ -3,6 +3,7 @@ import {
   addNewPlayer,
   allPlayersFetched,
   playerProfileFetched,
+  removeAllPlayers,
 } from '../actions';
 import {
   ADD_NEW_PLAYER,
@@ -96,6 +97,16 @@ describe('#playersState', () => {
       expect(playerProfileFetched(playerProfile)?.playerProfile.firstName).toBe(
         'test_player'
       );
+    });
+  });
+  describe('#removeAllPlayers', () => {
+    const expected: RemoveAllPlayers = {
+      type: REMOVE_ALL_PLAYERS,
+    };
+    test('returns an action w/ type REMOVE_ALL_PLAYERS and no payload', () => {
+      expect(removeAllPlayers()).toEqual(expected);
+      expect(removeAllPlayers()).not.toHaveProperty('payload');
+      expect(removeAllPlayers()).toHaveProperty('type');
     });
   });
 });
