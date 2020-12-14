@@ -2,6 +2,8 @@ import {
   ICurrentRound,
   IFixtureWithScore,
   IFixtureWithScoreAndPredictions,
+  Round,
+  TotoRound,
 } from '../../../models/toto.models';
 import scoresReducer from '../../scores/reducer';
 import reducer from '../reducer';
@@ -62,6 +64,52 @@ describe('#predictionsStateReducer', () => {
     test('returns the initial state with current round', () => {
       expect(newState.allFixtures).toBeNull;
       expect(newState.currentRound).not.toBeNull;
+      expect(newState).not.toEqual(initialState);
+    });
+  });
+  describe('if given ALL_FIXTURES_FETCHED action type and intialState', () => {
+    const totoRound: TotoRound[] = [
+      [
+        [
+          {
+            awayTeamId: 1,
+            awayTeamLogo: 'test',
+            awayTeamName: 'test',
+            createdAt: 'test',
+            eventTimeStamp: 1,
+            goalsAwayTeam: null,
+            goalsHomeTeam: null,
+            homeTeamId: 1,
+            homeTeamLogo: 'test',
+            homeTeamName: 'test',
+            id: 1,
+            round: 'test',
+            status: 'test',
+            updatedAt: 'test',
+            score: 'scores',
+            predictions: {
+              pGoalsAwayTeam: null,
+              pGoalsHomeTeam: null,
+            },
+          },
+        ],
+      ],
+    ];
+
+    const initialState: PredictionsState = {
+      currentRound: null,
+      allFixtures: null,
+    };
+    const action: AllFixturesFetched = {
+      type: ALL_FIXTURES_FETCHED,
+      allFixtures: totoRound,
+    };
+    const newState: PredictionsState = reducer(initialState, action);
+
+    test('returns the initial state with current round', () => {
+      expect(newState.allFixtures).not.toBeNull;
+      expect(newState.allFixtures?.length).not.toBe(3);
+      expect(newState.currentRound).toBeNull;
       expect(newState).not.toEqual(initialState);
     });
   });
