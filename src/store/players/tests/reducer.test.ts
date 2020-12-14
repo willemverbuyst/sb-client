@@ -78,4 +78,88 @@ describe('#playersStateReducer', () => {
       expect(newState.players).toEqual([player, player]);
     });
   });
+  describe('if given ALL_PLAYERS_FETCHED action type and initialState', () => {
+    test('returns a new state with a players', () => {
+      const players = [
+        {
+          admin: false,
+          email: 'test@test.com',
+          firstName: 'test_player',
+          id: 1,
+          lastName: 'tst_player',
+          phoneNumber: '123',
+          team: {
+            id: 1,
+            logo: 'test_logo',
+            name: 'test_name',
+          },
+          totaalToto: true,
+          userName: 'TEST',
+        },
+      ];
+      const initialState: PlayersState = {
+        players: null,
+        playerProfile: null,
+      };
+      const action: AllPlayersFetched = {
+        type: ALL_PLAYERS_FETCHED,
+        players,
+      };
+      const newState: PlayersState = reducer(initialState, action);
+      expect(newState.playerProfile).toBeNull;
+      expect(newState.players!.length).toBe(players.length);
+      expect(newState.players).toEqual(players);
+    });
+  });
+  describe('if given ALL_PLAYERS_FETCHED action type and a state with players', () => {
+    test('returns a state with the new fetched players', () => {
+      const players1 = [
+        {
+          admin: false,
+          email: 'test@test.com',
+          firstName: 'test_player1',
+          id: 1,
+          lastName: 'tst_player',
+          phoneNumber: '123',
+          team: {
+            id: 1,
+            logo: 'test_logo',
+            name: 'test_name',
+          },
+          totaalToto: true,
+          userName: 'TEST',
+        },
+      ];
+      const players2 = [
+        {
+          admin: false,
+          email: 'test@test.com',
+          firstName: 'test_player2',
+          id: 1,
+          lastName: 'tst_player',
+          phoneNumber: '123',
+          team: {
+            id: 1,
+            logo: 'test_logo',
+            name: 'test_name',
+          },
+          totaalToto: true,
+          userName: 'TEST',
+        },
+      ];
+      const state: PlayersState = {
+        players: players1,
+        playerProfile: null,
+      };
+      const action: AllPlayersFetched = {
+        type: ALL_PLAYERS_FETCHED,
+        players: players2,
+      };
+      const newState: PlayersState = reducer(state, action);
+      expect(newState.playerProfile).toBeNull;
+      expect(newState.players!.length).toBe(players2.length);
+      expect(newState.players).toEqual(players2);
+      expect(newState.players).not.toEqual(players1);
+    });
+  });
 });
