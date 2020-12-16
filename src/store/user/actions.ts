@@ -61,6 +61,7 @@ export const userLogIn = (credentials: ILogInCredentials) => {
 
 export const userLogOut = (dispatch: Dispatch, _getState: GetState) => {
   dispatch(logOutUser());
+  dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(removeAllPlayers());
   dispatch(removeAllFixtures());
   dispatch(removeAllTeams());

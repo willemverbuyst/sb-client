@@ -66,6 +66,11 @@ export default function Header() {
   const gotoSpelers = () => history.push("/spelers")
   
   const gotoVoorspellingen = () => history.push("/voorspellingen/1/1");
+
+  const gotoLogin = () => {
+    dispatch(userLogOut)
+    history.push("/login")
+  }
  
   return (
       <Box className={classes.header}>
@@ -138,7 +143,7 @@ export default function Header() {
                   {getTimeNow()}
                 </Box> : '' }
 
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={() => dispatch(userLogOut)} >
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={gotoLogin} >
                 <Tooltip title="Log Out" arrow>
                   <ExitToAppIcon />
                 </Tooltip>

@@ -58,7 +58,7 @@ export default function LogIn() {
 
   useEffect(() => {
     if (token) history.push("/home");
-  });
+  }, [token, history]);
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
