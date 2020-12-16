@@ -1,43 +1,105 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
+import { fetchScoresTotalToto } from '../../store/scores/actions';
+import { selectTotalToto } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
+  Divider,
   Grid, 
   Typography 
 } from '@material-ui/core';
+import TotoRoundTable from '../../Components/Table/TotoRoundTable';
+import { selectAppLoading } from '../../store/appState/selectors';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
+  },
+  table: {
+    marginTop: theme.spacing(6),
+  },
+  totoRound: {
+    marginBottom: theme.spacing(6),
+  },
+  progress: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 }));
 
 export default function TotalToto() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
+  const totalToto = useSelector(selectTotalToto);
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
-  return (
+  useEffect(() => {
+    if (!totalToto) {
+      dispatch(fetchScoresTotalToto())
+    }
+  }, [dispatch, totalToto])
+  
+  return ( 
     <Box>
-      <Typography variant="h3" className={classes.title}>
-        TotalToto
-      </Typography>
-      <Grid
-        container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-      >
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+          Scores
+          </Typography>
+        </Grid>
       </Grid>
+
+      {isLoading ? 
+        <Box className={classes.progress}>
+          <ProgressLinear/> 
+        </Box>
+      :
+      totalToto && totalToto.length > 0 ?
+        <>
+          <Grid 
+            item xs={12} 
+            container justify="center" 
+            className={classes.totoRound}
+          >
+            <Typography variant="h4">
+              TOTALTOTO
+            </Typography>
+          </Grid>
+          <Divider/>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            className={classes.table}
+          >
+          <Grid item xs={12} md={4} container justify="center">
+            <TotoRoundTable totoRound={totalToto}/>
+            </Grid>
+          </Grid>
+        </>
+      : 
+      <Grid>
+        <Typography variant="overline">
+          Nog geen scores voor totalToto
+        </Typography>
+      </Grid> 
+      }
     </Box>
   )
 }
