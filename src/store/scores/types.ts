@@ -1,10 +1,12 @@
 import { IFixture } from '../../models/toto.models';
 
 export const SCORES_FIXTURE_FETCHED = 'SCORES_FIXTURE_FETCHED';
+export const SCORES_TOTAL_TOTO_FETCHED = 'SCORES_TOTAL_TOTO_FETCHED';
 export const SCORES_TOTO_ROUND_FETCHED = 'SCORES_TOTO_ROUND_FETCHED';
 
 export type ScoresState = {
   fixtureScores: FixtureWithScores | null;
+  totalTotoScores: UserWithScore[] | null;
   totoRoundScores: UserWithScore[] | null;
 };
 
@@ -32,9 +34,17 @@ export type ScoresFixtureFetched = {
   fixture: FixtureWithScores;
 };
 
+export type ScoresTotalTotoFetched = {
+  type: typeof SCORES_TOTAL_TOTO_FETCHED;
+  totalToto: UserWithScore[];
+};
+
 export type ScoresTotoRoundFetched = {
   type: typeof SCORES_TOTO_ROUND_FETCHED;
   totoRound: UserWithScore[];
 };
 
-export type ScoresActionTypes = ScoresFixtureFetched | ScoresTotoRoundFetched;
+export type ScoresActionTypes =
+  | ScoresFixtureFetched
+  | ScoresTotalTotoFetched
+  | ScoresTotoRoundFetched;

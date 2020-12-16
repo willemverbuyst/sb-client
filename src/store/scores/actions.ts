@@ -3,10 +3,12 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import {
   SCORES_FIXTURE_FETCHED,
+  SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
   FixtureWithScores,
   UserWithScore,
   ScoresFixtureFetched,
+  ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
 } from './types';
 import { GetState } from '../types';
@@ -18,6 +20,15 @@ const scoresFixtureFetched = (
   return {
     type: SCORES_FIXTURE_FETCHED,
     fixture,
+  };
+};
+
+const scoresTotalTotoFetched = (
+  totalToto: UserWithScore[]
+): ScoresTotalTotoFetched => {
+  return {
+    type: SCORES_TOTAL_TOTO_FETCHED,
+    totalToto,
   };
 };
 
@@ -43,6 +54,32 @@ export const fetchScoresFixture = (id: number) => async (
     const fixture = response.data;
 
     dispatch(scoresFixtureFetched(fixture));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchScoresTotalToto = () => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/all`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const totalToto = response.data;
+
+    dispatch(scoresTotalTotoFetched(totalToto));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
