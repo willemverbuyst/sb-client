@@ -59,7 +59,7 @@ export default function TotalToto() {
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-          Scores
+            Scores
           </Typography>
         </Grid>
       </Grid>
@@ -80,7 +80,9 @@ export default function TotalToto() {
               TOTALTOTO
             </Typography>
           </Grid>
+
           <Divider/>
+          
           <Grid
             container
             direction="row"

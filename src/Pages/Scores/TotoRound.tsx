@@ -27,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
   totoRound: {
     marginBottom: theme.spacing(6),
+  },
+  progress: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 }));
 
@@ -69,7 +76,9 @@ export default function TotoRound() {
       </Grid>
 
       {isLoading ? 
-        <ProgressLinear />
+        <Box className={classes.progress}>
+          <ProgressLinear/> 
+        </Box>
       :
       totoRound && totoRound.length > 0 ?
         <>
@@ -82,7 +91,9 @@ export default function TotoRound() {
               TOTORONDE {id}
             </Typography>
           </Grid>
+
           <Divider/>
+          
           <Grid
             container
             direction="row"

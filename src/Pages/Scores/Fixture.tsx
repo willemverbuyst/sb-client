@@ -33,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
   scores: {
     marginTop: theme.spacing(6),
   },
+  progress: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 }));
 
 export default function Fixture() {
@@ -74,44 +81,48 @@ export default function Fixture() {
       </Grid>
 
       {isLoading ? 
-        <ProgressLinear />
+        <Box className={classes.progress}>
+          <ProgressLinear/> 
+        </Box>
       :
       fixture ? 
-        <Grid className={classes.fixture}>       
-          <Grid item xs={12} container justify="center" className={classes.date}>
-            <Typography variant="overline">
-               {timeStampFormattedToLocalDate(fixture.fixture.eventTimeStamp)}
-            </Typography>
-          </Grid> 
-          <Grid item xs={12} container justify="center">
-            <Grid item xs={3} container justify="flex-end" alignItems="center">
-              <Typography variant="h4">
-                 {fixture.fixture.homeTeamName}
+        <>
+          <Grid className={classes.fixture}>       
+            <Grid item xs={12} container justify="center" className={classes.date}>
+              <Typography variant="overline">
+                 {timeStampFormattedToLocalDate(fixture.fixture.eventTimeStamp)}
               </Typography>
-            </Grid>
+            </Grid> 
+            <Grid item xs={12} container justify="center">
+              <Grid item xs={3} container justify="flex-end" alignItems="center">
+                <Typography variant="h4">
+                   {fixture.fixture.homeTeamName}
+                </Typography>
+              </Grid>
 
-            <Grid item xs={1} container justify="center">
-              <Avatar alt={fixture.fixture.homeTeamName} src={fixture.fixture.homeTeamLogo} />
-            </Grid>
-            <Grid item xs={1} container justify="center">
-              <Typography variant="h4">
-                {fixture.fixture.goalsHomeTeam} - {fixture.fixture.goalsAwayTeam}
-              </Typography>
-            </Grid>
-            <Grid item xs={1} container justify="center">
-              <Avatar alt={fixture.fixture.awayTeamName} src={fixture.fixture.awayTeamLogo} />
-            </Grid>
+              <Grid item xs={1} container justify="center">
+                <Avatar alt={fixture.fixture.homeTeamName} src={fixture.fixture.homeTeamLogo} />
+              </Grid>
+              <Grid item xs={1} container justify="center">
+                <Typography variant="h4">
+                  {fixture.fixture.goalsHomeTeam} - {fixture.fixture.goalsAwayTeam}
+                </Typography>
+              </Grid>
+              <Grid item xs={1} container justify="center">
+                <Avatar alt={fixture.fixture.awayTeamName} src={fixture.fixture.awayTeamLogo} />
+              </Grid>
 
-            <Grid item xs={3} container justify="flex-start" alignItems="center">
-              <Typography variant="h4">
-                {fixture.fixture.awayTeamName}
-              </Typography>
-            </Grid>
-          </Grid> 
-        </Grid>
+              <Grid item xs={3} container justify="flex-start" alignItems="center">
+                <Typography variant="h4">
+                  {fixture.fixture.awayTeamName}
+                </Typography>
+              </Grid>
+            </Grid> 
+          </Grid>
+
+          <Divider/>
+        </>
       : null }
-
-      <Divider/>
 
       { !isLoading && fixture && fixture.scores ?
         <Grid
