@@ -160,6 +160,33 @@ describe('#predictionsState', () => {
   });
 });
 
+describe('#changePrediction', () => {
+  it('calls axios and changes an existing prediction', async () => {
+    const prediction: IPrediction = {
+      pGoalsAwayTeam: 1,
+      pGoalsHomeTeam: 4,
+      fixtureId: 1,
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: { prediction, message: 'test_message' } };
+
+    mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
+
+    await changePrediction(prediction)(dispatch, getState);
+
+    expect(mockAxios.patch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(updatePrediction(prediction));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(4);
+  });
+});
+
 describe('#fetchAllFixtures', () => {
   it('calls axios and returns fixtures', async () => {
     const totoRound: TotoRound[] = [
@@ -248,33 +275,6 @@ describe('#fetchCurrentRound', () => {
     expect(dispatch).toHaveBeenCalledWith(currentRoundFetched(currentRound));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('#changePrediction', () => {
-  it('calls axios and changes an existing prediction', async () => {
-    const prediction: IPrediction = {
-      pGoalsAwayTeam: 1,
-      pGoalsHomeTeam: 4,
-      fixtureId: 1,
-    };
-
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const response = { data: { prediction, message: 'test_message' } };
-
-    mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
-
-    await changePrediction(prediction)(dispatch, getState);
-
-    expect(mockAxios.patch).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(updatePrediction(prediction));
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
 

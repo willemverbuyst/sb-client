@@ -2,17 +2,25 @@ import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import {
+  REMOVE_ALL_SCORES,
   SCORES_FIXTURE_FETCHED,
   SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
   FixtureWithScores,
   UserWithScore,
+  RemoveAllScores,
   ScoresFixtureFetched,
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
 } from './types';
 import { GetState } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+
+export const removeAllScores = (): RemoveAllScores => {
+  return {
+    type: REMOVE_ALL_SCORES,
+  };
+};
 
 const scoresFixtureFetched = (
   fixture: FixtureWithScores

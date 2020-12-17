@@ -1,4 +1,5 @@
 import {
+  REMOVE_ALL_SCORES,
   SCORES_FIXTURE_FETCHED,
   SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
@@ -14,6 +15,13 @@ const initialState: ScoresState = {
 
 const scoresReducer = (state = initialState, action: ScoresActionTypes) => {
   switch (action.type) {
+    case REMOVE_ALL_SCORES:
+      return {
+        fixtureScores: null,
+        totalTotoScores: null,
+        totoRoundScores: null,
+      };
+
     case SCORES_FIXTURE_FETCHED:
       return { ...state, fixtureScores: action.fixture };
 
