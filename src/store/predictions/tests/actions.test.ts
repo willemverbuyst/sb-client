@@ -9,6 +9,7 @@ import {
   allFixturesFetched,
   currentRoundFetched,
   fetchAllFixtures,
+  fetchCurrentRound,
   postPrediction,
   removeAllFixtures,
   updatePrediction,
@@ -25,7 +26,7 @@ import {
   RemoveAllFixtures,
   UpdatePrediction,
 } from '../types';
-import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
+import { appLoading, appDoneLoading } from '../../appState/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
@@ -197,6 +198,52 @@ describe('#fetchAllFixtures', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(allFixturesFetched(totoRound));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#fetchCurrentRound', () => {
+  it('calls axios and returns current round', async () => {
+    const fixtures: IFixtureWithScoreAndPredictions[] = [
+      {
+        awayTeamId: 1,
+        awayTeamLogo: 'test',
+        awayTeamName: 'test',
+        createdAt: 'test',
+        eventTimeStamp: 1,
+        goalsAwayTeam: null,
+        goalsHomeTeam: null,
+        homeTeamId: 1,
+        homeTeamLogo: 'test',
+        homeTeamName: 'test',
+        id: 1,
+        round: 'test',
+        status: 'test',
+        updatedAt: 'test',
+        score: 'scores',
+        predictions: {
+          pGoalsAwayTeam: null,
+          pGoalsHomeTeam: null,
+        },
+      },
+    ];
+    const currentRound: ICurrentRound = {
+      fixtures,
+      roundNumber: 1,
+      totoRoundNumber: 1,
+    };
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: currentRound };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchCurrentRound()(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(currentRoundFetched(currentRound));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
