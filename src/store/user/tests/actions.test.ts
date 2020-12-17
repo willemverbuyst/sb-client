@@ -140,16 +140,17 @@ describe('#userLogIn', () => {
 });
 
 describe('#userLogOut', () => {
-  it('dispatches three actions', () => {
+  it('dispatches five actions', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
 
     userLogOut(dispatch, getState);
     expect(dispatch).toHaveBeenCalledWith(logOutUser());
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', 'Tot ziens!'));
     expect(dispatch).toHaveBeenCalledWith(removeAllPlayers());
     expect(dispatch).toHaveBeenCalledWith(removeAllFixtures());
     expect(dispatch).toHaveBeenCalledWith(removeAllTeams());
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(5);
   });
 });
 

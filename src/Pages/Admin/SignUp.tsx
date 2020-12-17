@@ -112,6 +112,8 @@ export default function SignUp() {
       totaalToto: true,
       teamId:'',
     })
+
+    history.push('/spelers')
   };
 
   return ( 
