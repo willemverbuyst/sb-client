@@ -10,6 +10,7 @@ import {
   currentRoundFetched,
   fetchAllFixtures,
   fetchCurrentRound,
+  postNewPrediction,
   postPrediction,
   removeAllFixtures,
   updatePrediction,
@@ -26,7 +27,7 @@ import {
   RemoveAllFixtures,
   UpdatePrediction,
 } from '../types';
-import { appLoading, appDoneLoading } from '../../appState/actions';
+import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
@@ -246,5 +247,32 @@ describe('#fetchCurrentRound', () => {
     expect(dispatch).toHaveBeenCalledWith(currentRoundFetched(currentRound));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#postPredictoin', () => {
+  it('calls axios and add a prediction', async () => {
+    const prediction: IPrediction = {
+      pGoalsAwayTeam: 1,
+      pGoalsHomeTeam: 4,
+      fixtureId: 1,
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: { prediction, message: 'test_message' } };
+
+    mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
+
+    await postNewPrediction(prediction)(dispatch, getState);
+
+    expect(mockAxios.post).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(postPrediction(prediction));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });

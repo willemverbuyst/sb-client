@@ -169,6 +169,7 @@ describe('#addPlayer', () => {
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
+
 describe('#fetchAllPlayers', () => {
   it('calls axios and returns all players', async () => {
     const players: IPlayer[] = [
