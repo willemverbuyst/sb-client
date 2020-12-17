@@ -1,9 +1,14 @@
+import { IPrediction } from '../../../models/predictions.model';
 import {
   ICurrentRound,
   IFixtureWithScoreAndPredictions,
   TotoRound,
 } from '../../../models/toto.models';
-import { allFixturesFetched, currentRoundFetched } from '../actions';
+import {
+  allFixturesFetched,
+  currentRoundFetched,
+  postPrediction,
+} from '../actions';
 import {
   ALL_FIXTURES_FETCHED,
   CURRENT_ROUND_FETCHED,
@@ -97,6 +102,22 @@ describe('#predictionsState', () => {
         currentRound
       );
       expect(currentRoundFetched(currentRound)).toHaveProperty('currentRound');
+    });
+  });
+  describe('#postPrediction', () => {
+    const prediction: IPrediction = {
+      pGoalsAwayTeam: 1,
+      pGoalsHomeTeam: 4,
+      fixtureId: 1,
+    };
+    const expected: PostPrediction = {
+      type: POST_PREDICTION,
+      prediction,
+    };
+    test('returns an action w/ type POST_PREDICTION, and prediction as payload', () => {
+      expect(postPrediction(prediction)).toEqual(expected);
+      expect(postPrediction(prediction).prediction).toEqual(prediction);
+      expect(postPrediction(prediction)).toHaveProperty('prediction');
     });
   });
 });
