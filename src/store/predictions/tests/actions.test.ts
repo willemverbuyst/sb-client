@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { IPrediction } from '../../../models/predictions.model';
 import {
   ICurrentRound,
@@ -7,6 +8,7 @@ import {
 import {
   allFixturesFetched,
   currentRoundFetched,
+  fetchAllFixtures,
   postPrediction,
   removeAllFixtures,
   updatePrediction,
@@ -23,6 +25,13 @@ import {
   RemoveAllFixtures,
   UpdatePrediction,
 } from '../types';
+import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
+
+const mockAxios = axios as jest.Mocked<typeof axios>;
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});
 
 describe('#predictionsState', () => {
   describe('#allFixturesFetched', () => {
@@ -145,5 +154,50 @@ describe('#predictionsState', () => {
       expect(updatePrediction(prediction).prediction).toEqual(prediction);
       expect(updatePrediction(prediction)).toHaveProperty('prediction');
     });
+  });
+});
+
+describe('#fetchAllFixtures', () => {
+  it('calls axios and returns fixtures', async () => {
+    const totoRound: TotoRound[] = [
+      [
+        [
+          {
+            awayTeamId: 1,
+            awayTeamLogo: 'test',
+            awayTeamName: 'test',
+            createdAt: 'test',
+            eventTimeStamp: 1,
+            goalsAwayTeam: null,
+            goalsHomeTeam: null,
+            homeTeamId: 1,
+            homeTeamLogo: 'test',
+            homeTeamName: 'test',
+            id: 1,
+            round: 'test',
+            status: 'test',
+            updatedAt: 'test',
+            score: 'scores',
+            predictions: {
+              pGoalsAwayTeam: null,
+              pGoalsHomeTeam: null,
+            },
+          },
+        ],
+      ],
+    ];
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: totoRound };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchAllFixtures()(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(allFixturesFetched(totoRound));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });
