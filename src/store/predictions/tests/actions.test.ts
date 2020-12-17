@@ -9,6 +9,7 @@ import {
   currentRoundFetched,
   postPrediction,
   removeAllFixtures,
+  updatePrediction,
 } from '../actions';
 import {
   ALL_FIXTURES_FETCHED,
@@ -21,7 +22,6 @@ import {
   PostPrediction,
   RemoveAllFixtures,
   UpdatePrediction,
-  PredictionsState,
 } from '../types';
 
 describe('#predictionsState', () => {
@@ -128,6 +128,22 @@ describe('#predictionsState', () => {
     test('returns an action w/ type REMOVE_ALL_FIXTURES, and no payload', () => {
       expect(removeAllFixtures()).toEqual(expected);
       expect(removeAllFixtures()).not.toHaveProperty('fixgtures');
+    });
+  });
+  describe('#updatePrediction', () => {
+    const prediction: IPrediction = {
+      pGoalsAwayTeam: 1,
+      pGoalsHomeTeam: 4,
+      fixtureId: 1,
+    };
+    const expected: UpdatePrediction = {
+      type: UPDATE_PREDICTION,
+      prediction,
+    };
+    test('returns an action w/ type UPDATE_PREDICTION, and prediction as payload', () => {
+      expect(updatePrediction(prediction)).toEqual(expected);
+      expect(updatePrediction(prediction).prediction).toEqual(prediction);
+      expect(updatePrediction(prediction)).toHaveProperty('prediction');
     });
   });
 });
