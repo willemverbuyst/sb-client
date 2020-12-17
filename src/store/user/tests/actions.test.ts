@@ -22,6 +22,7 @@ import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/actions';
 import { removeAllFixtures } from '../../predictions/actions';
 import { removeAllTeams } from '../../teams/actions';
+import { removeAllScores } from '../../scores/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
@@ -140,17 +141,18 @@ describe('#userLogIn', () => {
 });
 
 describe('#userLogOut', () => {
-  it('dispatches five actions', () => {
+  it('dispatches six actions', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
 
     userLogOut(dispatch, getState);
     expect(dispatch).toHaveBeenCalledWith(logOutUser());
     expect(dispatch).toHaveBeenCalledWith(setMessage('success', 'Tot ziens!'));
+    expect(dispatch).toHaveBeenCalledWith(removeAllScores());
     expect(dispatch).toHaveBeenCalledWith(removeAllPlayers());
     expect(dispatch).toHaveBeenCalledWith(removeAllFixtures());
     expect(dispatch).toHaveBeenCalledWith(removeAllTeams());
-    expect(dispatch).toHaveBeenCalledTimes(5);
+    expect(dispatch).toHaveBeenCalledTimes(6);
   });
 });
 

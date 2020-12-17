@@ -16,6 +16,7 @@ import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removeAllPlayers } from '../players/actions';
 import { removeAllFixtures } from '../predictions/actions';
 import { removeAllTeams } from '../teams/actions';
+import { removeAllScores } from '../scores/actions';
 
 export const logInSuccessUser = (user: IUser): LogInSuccessUser => {
   return {
@@ -62,6 +63,7 @@ export const userLogIn = (credentials: ILogInCredentials) => {
 export const userLogOut = (dispatch: Dispatch, _getState: GetState) => {
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
+  dispatch(removeAllScores());
   dispatch(removeAllPlayers());
   dispatch(removeAllFixtures());
   dispatch(removeAllTeams());
