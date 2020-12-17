@@ -8,6 +8,7 @@ import {
   allFixturesFetched,
   currentRoundFetched,
   postPrediction,
+  removeAllFixtures,
 } from '../actions';
 import {
   ALL_FIXTURES_FETCHED,
@@ -118,6 +119,15 @@ describe('#predictionsState', () => {
       expect(postPrediction(prediction)).toEqual(expected);
       expect(postPrediction(prediction).prediction).toEqual(prediction);
       expect(postPrediction(prediction)).toHaveProperty('prediction');
+    });
+  });
+  describe('#removeAllFixtures', () => {
+    const expected: RemoveAllFixtures = {
+      type: REMOVE_ALL_FIXTURES,
+    };
+    test('returns an action w/ type REMOVE_ALL_FIXTURES, and no payload', () => {
+      expect(removeAllFixtures()).toEqual(expected);
+      expect(removeAllFixtures()).not.toHaveProperty('fixgtures');
     });
   });
 });
