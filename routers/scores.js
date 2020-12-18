@@ -71,7 +71,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
 
 /*** GET THE TOTAL SCORE OF EACH USER FOR ALL PAST FIXTURES (TOTAL TOTO) ***/
 /*** PUBLIC ***/
-router.get('/all', async (_req, res) => {
+router.get('/all', authMiddleware, async (_req, res) => {
   try {
     const predictions = await Prediction.findAll({
       attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],

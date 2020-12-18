@@ -51,8 +51,6 @@ router.patch('/:id', authMiddleware, async (req, res) => {
   const fixtureId = +req.params.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
-  console.log('hello');
-
   if (
     typeof pGoalsHomeTeam !== 'number' ||
     typeof pGoalsAwayTeam !== 'number' ||

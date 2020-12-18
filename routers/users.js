@@ -42,7 +42,7 @@ router.get('/', authMiddleware, async (_req, res) => {
 
 /*** GET A USER INCLUDING PREDICTIONS AND SCORES FOR PAST FIXTURES ***/
 /*** PUBLIC PROFILE ***/
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     const user = await User.findOne({
@@ -90,6 +90,7 @@ router.get('/:id', async (req, res) => {
         attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
         required: false,
       },
+      order: [['id', 'ASC']],
       raw: true,
       nest: true,
     });
@@ -111,6 +112,8 @@ router.get('/:id', async (req, res) => {
     const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
       fixturesWithPredictionAndScore
     );
+
+    // FILTER OUT PREDICTIONS AND SCORE WHEN NOT STATUS MATCH FINISHED
 
     user.pastFixturesWithScores = fixturesGroupedByTotoRounds;
 

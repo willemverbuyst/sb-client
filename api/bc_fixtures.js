@@ -15,7 +15,7 @@ const getFixtures = async () => {
 
   const fixtures = fixtureData.fixtures.map((fixture) => {
     return {
-      id: fixture.fixture_id,
+      id: +fixture.fixture_id,
       homeTeamId: fixture.homeTeam.team_id,
       homeTeamName: fixture.homeTeam.team_name,
       homeTeamLogo: fixture.homeTeam.logo,
@@ -30,9 +30,13 @@ const getFixtures = async () => {
     };
   });
 
-  /* Fixture model to be created */
-  Fixture.bulkCreate(fixtures, {
-    updateOnDuplicate: ['id'],
+  await Fixture.bulkCreate(fixtures, {
+    updateOnDuplicate: [
+      'goalsHomeTeam',
+      'goalsAwayTeam',
+      'status',
+      'eventTimeStamp',
+    ],
   });
 };
 
