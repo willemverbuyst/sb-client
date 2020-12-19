@@ -90,7 +90,13 @@ export default function HomePage() {
           </Grid>
 
           <Grid item xs={12} container justify="center">
-            {currentRound.fixtures.map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}><MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>)}
+            {currentRound.fixtures.map((wedstrijd, i) => 
+              <Grid item key={i} lg={4} md={6} xs={12}>
+                <MatchCard 
+                  wedstrijdMetVoorspellingen={wedstrijd}
+                  publicPredictions={false}
+                />
+              </Grid>)}
           </Grid>
         </>
       :  null }

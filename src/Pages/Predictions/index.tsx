@@ -103,8 +103,13 @@ export default function Predictions() {
           <Grid item xs={12} container justify="center">
             { fixtures ? [...fixtures[t-1][r -1]]
               .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
-              .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
-                <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
+              .map((wedstrijd, i) => 
+                <Grid item key={i} lg={4} md={6} xs={12}>
+                  <MatchCard 
+                    wedstrijdMetVoorspellingen={wedstrijd}
+                    publicPredictions={false}
+                  />
+                </Grid>) 
             : null }
           </Grid>
           <PaginationComponent 

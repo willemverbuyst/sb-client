@@ -10,6 +10,7 @@ import {
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
+import PublicPredictions from './PublicPredictions';
 
 const useStyles = makeStyles({
   card: {
@@ -30,9 +31,9 @@ const useStyles = makeStyles({
   },
 });
 
-type Prop = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions }
+type Prop = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions, publicPredictions: boolean }
 
-export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
+export default function MatchCard({ wedstrijdMetVoorspellingen, publicPredictions }: Prop) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -91,7 +92,11 @@ export default function MatchCard({ wedstrijdMetVoorspellingen }: Prop) {
         </Grid>
 
         <Grid item xs={12} container justify="center">
-          <PredictionsField fixtureWithPrediction={wedstrijdMetVoorspellingen}/>
+          { publicPredictions ? 
+            <PublicPredictions fixtureWithPrediction={wedstrijdMetVoorspellingen}/>
+          :
+            <PredictionsField fixtureWithPrediction={wedstrijdMetVoorspellingen}/>
+          }
         </Grid>
 
       </CardContent>
