@@ -113,6 +113,7 @@ export const fetchScoresTotoRound = (id: number) => async (
     });
     const totoRound = response.data.totoRound;
 
+    console.log(response.data);
     dispatch(scoresTotoRoundFetched(totoRound));
     dispatch(appDoneLoading());
   } catch (error) {
