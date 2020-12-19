@@ -11,7 +11,7 @@ type Prop = {
 export default function ScoresFixtureBarChart({ scores }: Prop) {
   const history = useHistory();
   const labels = scores.map(player => player.user.toLocaleUpperCase());
-  const userScores = scores.map(player => player.score);
+  const userScores = scores.map(player => player.score + 0.1);
   const userPredictions = scores.map(player => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`)
   const max = Math.max(...userScores) * 1.2;
   
@@ -51,6 +51,7 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
           yAxes: [
             {
               ticks: {
+                beginAtZero:true,
                 display: false,
                 suggestedMin: 0,
                 suggestedMax: max,
@@ -74,6 +75,9 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
              align:'top',
              display: true,
              color: 'black',
+             formatter: function(value) {
+              return `${value - 0.1}`;
+          }
           }
         }  
       }}
