@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectToken, selectUser } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
-import { getToday, getTimeNow } from '../../utils/timeFunctions';
 import ball from "../../assets/ball.png";
 import { 
   createStyles, 
@@ -24,8 +23,6 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
 import PersonAdd from '@material-ui/icons/PersonAdd';
-import Schedule from '@material-ui/icons/Schedule';
-import Today from  '@material-ui/icons/Today';
 import { Weekend } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,8 +47,6 @@ export default function Header() {
   const history = useHistory();
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
-  const [showToday, setShowToday] = useState(false)
-  const [showTime, setShowTime] = useState(false)
 
   const gotoHome = () => history.push("/home");
 
@@ -120,28 +115,6 @@ export default function Header() {
                   <HelpOutline />
                 </Tooltip>
               </IconButton>
-            
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowToday (!showToday)}>
-                <Tooltip title="Datum" arrow>
-                  <Today />
-                </Tooltip>
-              </IconButton>
-
-              {showToday ? 
-                <Box className={classes.text}>       
-                  {getToday()}
-                </Box> : '' }
-          
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={() => setShowTime(!showTime)}>
-                <Tooltip title="Tijd" arrow>
-                  <Schedule />
-                </Tooltip>
-              </IconButton>
-             
-              {showTime ? 
-                <Box className={classes.text}>       
-                  {getTimeNow()}
-                </Box> : '' }
 
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={gotoLogin} >
                 <Tooltip title="Log Out" arrow>
