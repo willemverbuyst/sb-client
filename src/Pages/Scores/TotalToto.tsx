@@ -14,6 +14,7 @@ import {
 import TotoRoundTable from '../../Components/Table/TotoRoundTable';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -90,8 +91,9 @@ export default function TotalToto() {
             alignItems="center"
             className={classes.table}
           >
-          <Grid item xs={12} md={4} container justify="center">
-            <TotoRoundTable totoRound={totalToto}/>
+          <Grid item xs={12} md={6} container justify="center">
+            <ScoresBarChart/>
+            {/* <TotoRoundTable totoRound={totalToto}/> */}
             </Grid>
           </Grid>
         </>

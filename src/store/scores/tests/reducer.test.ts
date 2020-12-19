@@ -1,5 +1,4 @@
 import { IFixture } from '../../../models/toto.models';
-import { fetchCurrentRound } from '../../predictions/actions';
 import reducer from '../reducer';
 import {
   REMOVE_ALL_SCORES,

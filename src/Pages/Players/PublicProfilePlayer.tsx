@@ -44,6 +44,8 @@ export default function PublicProfilePlayer() {
   useEffect(() => {
     dispatch(fetchPlayerProfile(+id));
   }, [dispatch, id]);
+
+  console.log(playerProfile)
   
   return (
     playerProfile ? 
