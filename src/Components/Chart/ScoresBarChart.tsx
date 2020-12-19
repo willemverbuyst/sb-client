@@ -4,19 +4,19 @@ import 'chartjs-plugin-datalabels';
 import { UserWithScore } from '../../store/scores/types';
 
 type Prop = {
-  totoRound: UserWithScore[];
+  scores: UserWithScore[];
 }
 
-export default function BarChart({ totoRound }: Prop) {
-  const labels = totoRound.map(player => player.user.toLocaleUpperCase())
-  const scores = totoRound.map(player => player.score)
-  const max = Math.max(...scores) * 1.2
+export default function BarChart({ scores }: Prop) {
+  const labels = scores.map(player => player.user.toLocaleUpperCase())
+  const userScores = scores.map(player => player.score)
+  const max = Math.max(...userScores) * 1.2
 
   const chartData = {
     labels: labels,
     datasets: [
       {
-        data: scores,
+        data: userScores,
         backgroundColor:' #EA9C3B',
         borderWidth: 0,
         hoverBackgroundColor: '#888',
@@ -38,6 +38,7 @@ export default function BarChart({ totoRound }: Prop) {
             {
               ticks: {
                 display: false,
+                suggestedMin: 0,
                 suggestedMax: max,
               },
               gridLines: {

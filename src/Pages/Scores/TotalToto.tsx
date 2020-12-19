@@ -92,7 +92,7 @@ export default function TotalToto() {
             className={classes.barChart}
           >
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresBarChart totoRound={totalToto}/>
+              <ScoresBarChart scores={totalToto}/>
             </Grid>
           </Grid>
         </>

@@ -12,9 +12,9 @@ import {
   Grid, 
   Typography 
 } from '@material-ui/core';
-import TotoRoundTable from '../../Components/Table/TotoRoundTable';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -101,8 +101,8 @@ export default function TotoRound() {
             alignItems="center"
             className={classes.table}
           >
-          <Grid item xs={12} md={4} container justify="center">
-            <TotoRoundTable totoRound={totoRound}/>
+            <Grid item xs={12} md={6} container justify="center">
+              <ScoresBarChart scores={totoRound}/>
             </Grid>
           </Grid>
         </>
