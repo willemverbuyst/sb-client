@@ -19,7 +19,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(3),
     color: theme.palette.secondary.main
   },
   subTitle: {
@@ -74,7 +74,7 @@ export default function Predictions() {
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-            Voorspellingen
+            Mijn voorspellingen
           </Typography>
         </Grid>
         { fixtures ?

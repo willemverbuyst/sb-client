@@ -25,7 +25,7 @@ export default function Profile() {
   return (
     token ? (  
       <Typography variant="h3"  className={classes.title}>
-        Profiel
+        Mijn profiel
       </Typography>
     ) : ( null )
   )

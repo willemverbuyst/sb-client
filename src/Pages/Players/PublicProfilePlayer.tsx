@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
@@ -55,8 +55,8 @@ export default function PublicProfilePlayer() {
   const token = useSelector(selectToken);
   const playerProfile = useSelector(selectPlayerProfile)
   const isLoading = useSelector(selectAppLoading);
-  const [totoRoundNumber, setTotoRoundNumber] = React.useState(1);
-  const [roundNumber, setRoundNumber] = React.useState(1);
+  const [totoRoundNumber, setTotoRoundNumber] = useState<number>(1);
+  const [roundNumber, setRoundNumber] = useState<number>(1);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -77,9 +77,18 @@ export default function PublicProfilePlayer() {
   
   return (
     isLoading ?
+    <Grid container>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+            Wacht op profiel
+          </Typography>
+        </Grid>
+      </Grid>
       <Box className={classes.progress}>
         <ProgressLinear/> 
       </Box>
+    </Grid>
     : playerProfile ?
       <Grid container>
         <Grid container>

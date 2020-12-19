@@ -19,7 +19,7 @@ from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(3),
     color: theme.palette.secondary.main,
   },
   subTitle: {
@@ -58,7 +58,7 @@ export default function HomePage() {
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-          Deze week
+          Programma van deze week
           </Typography>
         </Grid>
         { currentRound ?

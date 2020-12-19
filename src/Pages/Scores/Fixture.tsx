@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
   date: {
     marginBottom: theme.spacing(2),
   },
-  scores: {
-    marginTop: theme.spacing(6),
+  divider: {
+    marginBottom: theme.spacing(6),
   },
   progress: {
     minHeight: '70vh',
@@ -125,7 +125,7 @@ export default function Fixture() {
             </Grid> 
           </Grid>
 
-          <Divider/>
+          <Divider className={classes.divider}/>
         </>
       : null }
 
@@ -135,14 +135,13 @@ export default function Fixture() {
           direction="row"
           justify="center"
           alignItems="center"
-          className={classes.scores}
         >
           <Grid item xs={12} md={6} container justify="center">
             <ScoresFixtureBarChart scores={scoresSortedByName}/>
           </Grid>
         </Grid>
       : !isLoading && fixture && !fixture.scores ?
-        <Grid container justify="center" className={classes.scores}>
+        <Grid container justify="center">
           <Typography variant="overline">
             Geen scores
           </Typography>

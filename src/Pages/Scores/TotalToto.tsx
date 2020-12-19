@@ -22,9 +22,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
   },
-  barChart: {
-    marginTop: theme.spacing(6),
-    padding: theme.spacing(6),
+  divider: {
+    marginBottom: theme.spacing(6),
   },
   totoRound: {
     marginBottom: theme.spacing(6),
@@ -86,14 +85,13 @@ export default function TotalToto() {
             </Typography>
           </Grid>
 
-          <Divider/>
+          <Divider className={classes.divider}/>
           
           <Grid
             container
             direction="row"
             justify="center"
             alignItems="center"
-            className={classes.barChart}
           >
             <Grid item xs={12} md={6} container justify="center">
               <ScoresBarChart scores={totalTotoSortedByName}/>

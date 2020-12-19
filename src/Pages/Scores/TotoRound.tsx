@@ -20,13 +20,13 @@ import { UserWithScore } from '../../store/scores/types';
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
+    color: theme.palette.secondary.main,
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
-  },
-  table: {
-    marginTop: theme.spacing(6),
   },
   totoRound: {
+    marginBottom: theme.spacing(6),
+  },
+  divider: {
     marginBottom: theme.spacing(6),
   },
   progress: {
@@ -96,14 +96,13 @@ export default function TotoRound() {
             </Typography>
           </Grid>
 
-          <Divider/>
+          <Divider className={classes.divider}/>
           
           <Grid
             container
             direction="row"
             justify="center"
             alignItems="center"
-            className={classes.table}
           >
             <Grid item xs={12} md={6} container justify="center">
               <ScoresBarChart scores={totoRoundSortedByName}/>
