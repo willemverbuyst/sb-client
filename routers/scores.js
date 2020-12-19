@@ -88,30 +88,32 @@ router.get('/all', authMiddleware, async (_req, res) => {
             },
           },
         },
-        { model: User, attributes: ['userName', 'id'] },
+        { model: User, attributes: ['userName', 'id', 'totaalToto'] },
       ],
       raw: true,
       nest: true,
     });
 
     if (predictions.length > 0) {
-      const predictionsWithScores = predictions.map((pred) => {
-        return {
-          ...pred,
-          score: calcScores(
-            {
-              homeTeam: pred.fixture.goalsHomeTeam,
-              awayTeam: pred.fixture.goalsAwayTeam,
-            },
-            {
-              homeTeam: pred.pGoalsHomeTeam,
-              awayTeam: pred.pGoalsAwayTeam,
-            }
-          ),
-          user: pred.user.userName,
-          id: pred.user.id,
-        };
-      });
+      const predictionsWithScores = [...predictions]
+        .filter((pred) => pred.user.totaalToto)
+        .map((pred) => {
+          return {
+            ...pred,
+            score: calcScores(
+              {
+                homeTeam: pred.fixture.goalsHomeTeam,
+                awayTeam: pred.fixture.goalsAwayTeam,
+              },
+              {
+                homeTeam: pred.pGoalsHomeTeam,
+                awayTeam: pred.pGoalsAwayTeam,
+              }
+            ),
+            user: pred.user.userName,
+            id: pred.user.id,
+          };
+        });
 
       let predictionsReduced = reducer(predictionsWithScores);
 

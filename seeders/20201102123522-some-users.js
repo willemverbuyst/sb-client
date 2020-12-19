@@ -9,7 +9,7 @@ module.exports = {
       [
         {
           id: 1,
-          userName: 'user_p',
+          userName: 'Pascal',
           firstName: 'Pascal',
           lastName: 'Duin',
           email: 'pascal@pascal.com',
@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           id: 2,
-          userName: 'user_r',
+          userName: 'Rick',
           firstName: 'Rick',
           lastName: 'Wolt',
           email: 'rick@rick.com',
@@ -44,7 +44,7 @@ module.exports = {
           password: bcrypt.hashSync('sifan123', SALT_ROUNDS),
           phoneNumber: '0612345678',
           admin: false,
-          totaalToto: true,
+          totaalToto: false,
           teamId: 1118,
           createdAt: new Date(),
           updatedAt: new Date(),
