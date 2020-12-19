@@ -11,7 +11,6 @@ import {
   Grid, 
   Typography 
 } from '@material-ui/core';
-import TotoRoundTable from '../../Components/Table/TotoRoundTable';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
@@ -22,8 +21,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main
   },
-  table: {
+  barChart: {
     marginTop: theme.spacing(6),
+    padding: theme.spacing(6),
   },
   totoRound: {
     marginBottom: theme.spacing(6),
@@ -89,11 +89,10 @@ export default function TotalToto() {
             direction="row"
             justify="center"
             alignItems="center"
-            className={classes.table}
+            className={classes.barChart}
           >
-          <Grid item xs={12} md={6} container justify="center">
-            <ScoresBarChart/>
-            {/* <TotoRoundTable totoRound={totalToto}/> */}
+            <Grid item xs={12} md={6} container justify="center">
+              <ScoresBarChart totoRound={totalToto}/>
             </Grid>
           </Grid>
         </>

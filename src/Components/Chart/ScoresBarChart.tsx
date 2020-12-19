@@ -1,19 +1,25 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
+import { UserWithScore } from '../../store/scores/types';
 
-const labels = ['Jan', 'Piet', 'Ann']
-const data = [4,6,1]
-const color = '#EA9C3B'
-const title= 'Toto Ronde'
+type Prop = {
+  totoRound: UserWithScore[];
+}
 
-export default function BarChart() {
+export default function BarChart({ totoRound }: Prop) {
+  const labels = totoRound.map(player => player.user.toLocaleUpperCase())
+  const scores = totoRound.map(player => player.score)
+  const max = Math.max(...scores) * 1.2
+
   const chartData = {
     labels: labels,
     datasets: [
       {
-        data: data,
-        backgroundColor: color,
+        data: scores,
+        backgroundColor:' #EA9C3B',
         borderWidth: 0,
+        hoverBackgroundColor: '#888',
       },
     ],
   };
@@ -27,15 +33,12 @@ export default function BarChart() {
           display: false,
         },
         responsive: true,
-        title: { text: title, display: true, padding: 15, fontSize: 14 },
         scales: {
           yAxes: [
             {
               ticks: {
-                autoSkip: true,
-                maxTicksLimit: 10,
-                beginAtZero: true,
-                stepSize: 1,
+                display: false,
+                suggestedMax: max,
               },
               gridLines: {
                 display: false,
@@ -50,6 +53,14 @@ export default function BarChart() {
             },
           ],
         },
+        plugins: {
+          datalabels: {
+             anchor: 'end',
+             align:'top',
+             display: true,
+             color: 'black',
+          }
+        }
       }}
     />
   );
