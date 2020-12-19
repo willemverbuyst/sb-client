@@ -29,14 +29,16 @@ export default function BarChart({ scores }: Prop) {
         hoverBackgroundColor: '#888',
       },
     ],
-  
+
   };
 
   return (
     <Bar
       data={chartData}
       options={{
-        tooltips: { enabled: false },
+        tooltips: { 
+          enabled: false, 
+        },
         legend: {
           display: false,
         },

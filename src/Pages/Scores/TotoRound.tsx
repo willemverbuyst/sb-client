@@ -15,6 +15,7 @@ import {
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
+import { UserWithScore } from '../../store/scores/types';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -53,6 +54,9 @@ export default function TotoRound() {
   useEffect(() => {
     dispatch(fetchScoresTotoRound(+id))
   }, [dispatch, id])
+
+  const totoRoundSortedByName: UserWithScore[]= [...totoRound!]
+  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()));
   
   return ( 
     <Box>
@@ -102,7 +106,7 @@ export default function TotoRound() {
             className={classes.table}
           >
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresBarChart scores={totoRound}/>
+              <ScoresBarChart scores={totoRoundSortedByName}/>
             </Grid>
           </Grid>
         </>
