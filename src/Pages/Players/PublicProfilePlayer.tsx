@@ -4,15 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';
-// import SpelersTable from '../../Components/Table/SpelersTable';
 import { 
   makeStyles, 
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
-// import Grid from '@material-ui/core/Grid';
-import { Divider, Typography } from '@material-ui/core';
-import PublicProfileTable from '../../Components/Table/PublicProfileTable';
+import { 
+  Box, 
+  Divider, 
+  Grid, 
+  Typography 
+} from '@material-ui/core';
+import MatchCard from '../../Components/Card/MatchCard';
+import PaginationComponent from '../../Components/Pagination';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import { selectAppLoading } from '../../store/appState/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +32,17 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 'bold',
       marginBottom: theme.spacing(1),
       color: theme.palette.secondary.main
+    },
+    logo: {
+      height: 50,
+      marginLeft: 10,
+    },
+    progress: {
+      minHeight: '70vh',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     }
   }),
 );
@@ -37,6 +54,9 @@ export default function PublicProfilePlayer() {
   const dispatch = useDispatch()
   const token = useSelector(selectToken);
   const playerProfile = useSelector(selectPlayerProfile)
+  const isLoading = useSelector(selectAppLoading);
+  const [totoRoundNumber, setTotoRoundNumber] = React.useState(1);
+  const [roundNumber, setRoundNumber] = React.useState(1);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -46,23 +66,64 @@ export default function PublicProfilePlayer() {
     dispatch(fetchPlayerProfile(+id));
   }, [dispatch, id]);
 
-  console.log(playerProfile)
+  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
+    setTotoRoundNumber(value);
+    setRoundNumber(1);
+  };
+
+  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
+    setRoundNumber(value);
+  };
   
   return (
-    playerProfile ? 
-      <>
-        <Typography variant="h3" className={classes.title}>
-          {playerProfile.userName}
-        </Typography>
-        <img alt={playerProfile.team.name} src={playerProfile.team.logo} />
+    isLoading ?
+      <Box className={classes.progress}>
+        <ProgressLinear/> 
+      </Box>
+    : playerProfile ?
+      <Grid container>
+        <Grid container>
+          <Grid>
+            <Typography variant="h3" className={classes.title}>
+              {playerProfile.userName}
+            </Typography>
+          </Grid>
+          <Grid>
+            <img 
+            alt={playerProfile.team.name} 
+            src={playerProfile.team.logo} 
+            className={classes.logo}/> 
+          </Grid>
+        </Grid>
 
         <Divider/>
 
-        <PublicProfileTable />
-      </>
-    :
-      <Typography variant="h3" className={classes.title}>
-        Spelers
-      </Typography>     
+        { playerProfile && playerProfile.pastFixturesWithScores ?
+          <>
+            <Grid item xs={12} container justify="center">
+              { playerProfile.pastFixturesWithScores ? [...playerProfile.pastFixturesWithScores[totoRoundNumber-1][roundNumber -1]]
+                .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
+                .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
+                  <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
+              : null }
+            </Grid>
+            <PaginationComponent 
+              label="Totoronde"
+              page={totoRoundNumber}
+              count={playerProfile.pastFixturesWithScores.length}
+              color="primary"
+              onChange={handleChangeTotoRounds}
+            /> 
+            <PaginationComponent 
+              label="Speelronde"
+              page={roundNumber}
+              count={playerProfile.pastFixturesWithScores[totoRoundNumber -1].length} 
+              color="secondary" 
+              onChange={handleChangeRounds}
+            /> 
+          </>
+        : null }
+      </Grid> 
+    :null 
   ) 
 }
