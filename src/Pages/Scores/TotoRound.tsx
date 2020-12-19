@@ -55,8 +55,8 @@ export default function TotoRound() {
     dispatch(fetchScoresTotoRound(+id))
   }, [dispatch, id])
 
-  const totoRoundSortedByName: UserWithScore[]= [...totoRound!]
-  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()));
+  const totoRoundSortedByName: UserWithScore[]=  totoRound ? [...totoRound]
+  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
   
   return ( 
     <Box>

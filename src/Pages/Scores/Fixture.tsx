@@ -11,12 +11,13 @@ import {
   Grid, 
   Typography 
 } from '@material-ui/core';
-import ScoresTable from '../../Components/Table/ScoresTable';
 import { selectFixture } from '../../store/scores/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
+import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
+import { PredictionWithScorePerUser } from '../../store/scores/types';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -58,6 +59,10 @@ export default function Fixture() {
   useEffect(() => {
     dispatch(fetchScoresFixture(+id))
   }, [dispatch, id])
+
+
+  const scoresSortedByName: PredictionWithScorePerUser[] = fixture? [...fixture.scores!]
+    .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : []
 
   return (
     <Box>
@@ -133,7 +138,7 @@ export default function Fixture() {
           className={classes.scores}
         >
           <Grid item xs={12} md={6} container justify="center">
-            <ScoresTable scores={fixture.scores}/>
+            <ScoresFixtureBarChart scores={scoresSortedByName}/>
           </Grid>
         </Grid>
       : !isLoading && fixture && !fixture.scores ?

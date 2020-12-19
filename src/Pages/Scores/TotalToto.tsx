@@ -56,8 +56,8 @@ export default function TotalToto() {
     }
   }, [dispatch, totalToto])
 
-  const totalTotoSortedByName: UserWithScore[]= [...totalToto!]
-    .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()));
+  const totalTotoSortedByName: UserWithScore[]= totalToto ? [...totalToto]
+    .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
  
   return ( 
     <Box>

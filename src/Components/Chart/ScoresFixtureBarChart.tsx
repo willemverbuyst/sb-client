@@ -2,20 +2,21 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
-import { UserWithScore } from '../../store/scores/types';
+import { PredictionWithScorePerUser } from '../../store/scores/types';
 
 type Prop = {
-  scores: UserWithScore[];
+  scores: PredictionWithScorePerUser[]
 }
 
-export default function BarChart({ scores }: Prop) {
+export default function ScoresFixtureBarChart({ scores }: Prop) {
   const history = useHistory();
   const labels = scores.map(player => player.user.toLocaleUpperCase());
   const userScores = scores.map(player => player.score);
+  const userPredictions = scores.map(player => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`)
   const max = Math.max(...userScores) * 1.2;
-
+  
   const gotoPlayer = (id: number) => 
-    history.push(`/spelers/${scores[id].id}`);
+    history.push(`/spelers/${scores[id].userId}`);
 
   const chartData = {
     labels: labels,
@@ -27,14 +28,20 @@ export default function BarChart({ scores }: Prop) {
         hoverBackgroundColor: '#EA9C3B',
       },
     ],
+    tooltipItem: 'hello'
   };
 
   return (
     <Bar
       data={chartData}
       options={{
-        tooltips: { 
-          enabled: false, 
+        tooltips: {
+          enabled: true, 
+          callbacks: {
+            title: (tooltipItem, _chartData) => 
+              `Voorspelling: ${userPredictions[tooltipItem[0].index!]}`,
+            label: () => ''
+          },
         },
         legend: {
           display: false,
@@ -68,7 +75,7 @@ export default function BarChart({ scores }: Prop) {
              display: true,
              color: 'black',
           }
-        }
+        }  
       }}
       onElementsClick={(e) => {if (e[0] !== undefined ) gotoPlayer(e[0]._index)}}
     />
