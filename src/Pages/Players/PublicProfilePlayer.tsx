@@ -15,7 +15,7 @@ import {
   Grid, 
   Typography 
 } from '@material-ui/core';
-import MatchCard from '../../Components/Card/MatchCard';
+import PublicMatchCard from '../../Components/Card/PublicMatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -113,7 +113,7 @@ export default function PublicProfilePlayer() {
               { playerProfile.pastFixturesWithScores ? [...playerProfile.pastFixturesWithScores[totoRoundNumber-1][roundNumber -1]]
                 .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
                 .map((wedstrijd, i) => <Grid item key={i} lg={4} md={6} xs={12}>
-                  <MatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
+                  <PublicMatchCard wedstrijdMetVoorspellingen={wedstrijd}/></Grid>) 
               : null }
             </Grid>
             <PaginationComponent 
