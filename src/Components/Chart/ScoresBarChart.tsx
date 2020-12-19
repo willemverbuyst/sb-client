@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { UserWithScore } from '../../store/scores/types';
@@ -8,9 +9,15 @@ type Prop = {
 }
 
 export default function BarChart({ scores }: Prop) {
+  const history = useHistory();
   const labels = scores.map(player => player.user.toLocaleUpperCase())
   const userScores = scores.map(player => player.score)
   const max = Math.max(...userScores) * 1.2
+
+  console.log(scores)
+  
+  const gotoPlayer = (id: number) => 
+    history.push(`/spelers/${scores[id].id}`)
 
   const chartData = {
     labels: labels,
@@ -22,6 +29,7 @@ export default function BarChart({ scores }: Prop) {
         hoverBackgroundColor: '#888',
       },
     ],
+  
   };
 
   return (
@@ -62,7 +70,9 @@ export default function BarChart({ scores }: Prop) {
              color: 'black',
           }
         }
+       
       }}
+      onElementsClick={(e) => {if (e[0] !== undefined ) gotoPlayer(e[0]._index)}}
     />
   );
 }
