@@ -99,7 +99,6 @@ router.get('/:id', authMiddleware, async (req, res) => {
       return {
         ...fix,
         score: calcScores(
-          fix.status,
           { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
