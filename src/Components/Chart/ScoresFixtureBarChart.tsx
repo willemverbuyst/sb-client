@@ -71,13 +71,11 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
         },
         plugins: {
           datalabels: {
-             anchor: 'end',
-             align:'top',
-             display: true,
-             color: 'black',
-             formatter: function(value) {
-              return `${value - 0.1}`;
-          }
+            anchor: 'end',
+            align:'top',
+            display: true,
+            color: 'black',
+            formatter: (value) => `${value - 0.1}`
           }
         }  
       }}

@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core/styles';
 // import Grid from '@material-ui/core/Grid';
 import { Divider, Typography } from '@material-ui/core';
+import PublicProfileTable from '../../Components/Table/PublicProfileTable';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,6 +57,8 @@ export default function PublicProfilePlayer() {
         <img alt={playerProfile.team.name} src={playerProfile.team.logo} />
 
         <Divider/>
+
+        <PublicProfileTable />
       </>
     :
       <Typography variant="h3" className={classes.title}>

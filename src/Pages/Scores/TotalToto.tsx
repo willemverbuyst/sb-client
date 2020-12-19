@@ -82,7 +82,7 @@ export default function TotalToto() {
             className={classes.totoRound}
           >
             <Typography variant="h4">
-              TOTALTOTO
+              TOTAAL TOTO
             </Typography>
           </Grid>
 
