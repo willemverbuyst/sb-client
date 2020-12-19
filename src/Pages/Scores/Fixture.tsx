@@ -61,7 +61,7 @@ export default function Fixture() {
   }, [dispatch, id])
 
 
-  const scoresSortedByName: PredictionWithScorePerUser[] = fixture? [...fixture.scores!]
+  const scoresSortedByName: PredictionWithScorePerUser[] = fixture && fixture.scores ? [...fixture.scores]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : []
 
   return (
