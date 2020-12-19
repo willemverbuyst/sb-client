@@ -46,10 +46,10 @@ export default function Predictions() {
   const fixtures = useSelector(selectFixtures)
   const { totoronde} = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
-  const t = +totoronde;
+  let t = +totoronde;
   let r = +ronde;
   const isLoading = useSelector(selectAppLoading);
-  
+
   useEffect(() => {
     if (!token) history.push("/login");
   });
@@ -61,11 +61,15 @@ export default function Predictions() {
   }, [dispatch, fixtures]);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
-    r = 1;
+    r = value * 3 - 2;
     history.push(`/voorspellingen/${value}/${r}`);
   };
 
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
+    t = value !== fixtures?.flat().length 
+      ? Math.floor((value - 1)/ 3) + 1 
+      : Math.floor((value - 2)/ 3) + 1 
+
     history.push(`/voorspellingen/${t}/${value}`);
   };
 
@@ -101,7 +105,8 @@ export default function Predictions() {
       : fixtures ?
         <>
           <Grid item xs={12} container justify="center">
-            { fixtures ? [...fixtures[t-1][r -1]]
+            { fixtures ? [...fixtures[t - 1][r !== fixtures.flat().length 
+              ? (r + 2) % 3 : (r % 3) + 2 ]]
               .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
               .map((wedstrijd, i) => 
                 <Grid item key={i} lg={4} md={6} xs={12}>
@@ -122,7 +127,7 @@ export default function Predictions() {
           <PaginationComponent 
             label="Speelronde"
             page={r}
-            count={fixtures[t -1].length} 
+            count={fixtures.flat().length}
             color="secondary" 
             onChange={handleChangeRounds}
           /> 

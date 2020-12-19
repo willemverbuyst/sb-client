@@ -74,6 +74,8 @@ export default function PublicProfilePlayer() {
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
     setRoundNumber(value);
   };
+
+  // console.log(playerProfile)
   
   return (
     isLoading ?

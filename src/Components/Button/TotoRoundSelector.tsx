@@ -10,10 +10,10 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 
-const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => `Toto ronde ${i}`)
+const options = [...Array(11)].map((_u, i) => `Toto ronde ${i + 1}`)
 
 export default function TotoRoundSelector() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const history = useHistory();
 
