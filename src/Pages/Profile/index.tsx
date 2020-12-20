@@ -1,32 +1,309 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors'
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken, selectUser } from '../../store/user/selectors'
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { 
+  Box, 
+  Button, 
+  Checkbox, 
+  Container, 
+  FormControl, 
+  FormControlLabel, 
+  Grid, 
+  InputLabel, 
+  MenuItem, 
+  Select, 
+  TextField, 
+  Typography 
+} from '@material-ui/core';
+import { ISignUpCredentials } from '../../models/credentials.model';
+import { selectAppLoading } from '../../store/appState/selectors';
+import { selectTeams } from '../../store/teams/selectors';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import { fetchAllTeams } from '../../store/teams/actions';
+import { ButtonEvent } from '../../models/events.model';
 
-const useStyles = makeStyles((theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
-  }
-}));
+const useStyles = makeStyles((theme: Theme) => ({
+    title: {
+      fontWeight: 'bold',
+      marginBottom: theme.spacing(1),
+      color: theme.palette.secondary.main
+    },
+    paper: {
+      marginTop: theme.spacing(2),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    select: {
+      marginTop: theme.spacing(2)
+    },
+    submit: {
+      marginTop: theme.spacing(3),
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    progress: {
+      minHeight: '70vh',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }
+ }));
 
 export default function Profile() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const teams = useSelector(selectTeams);
+  const isLoading = useSelector(selectAppLoading);
+  const [showInput, setShowInput] = useState(false);
+  const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
+    userName: user?.userName || '',
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
+    email: user?.email || '',
+    password: '',
+    phoneNumber: user?.phoneNumber || '',
+    admin: user?.admin || false,
+    totaalToto: user?.totaalToto || true,
+    teamId: '',
+  });
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
+  useEffect(() => {
+    if (!teams) {
+      dispatch(fetchAllTeams)
+    }
+  },[dispatch, teams]);
+
+  const submitForm = (e: ButtonEvent): void => {
+    e.preventDefault();
+
+    // UPDATE USER
+    
+    setSignUpCredentials({
+      userName:'',
+      firstName:'',
+      lastName:'',
+      email:'',
+      password:'',
+      phoneNumber:'',
+      admin: false,
+      totaalToto: true,
+      teamId:'',
+    })
+
+    setShowInput(false)
+  };
+
   return (
-    token ? (  
-      <Typography variant="h3"  className={classes.title}>
-        Mijn profiel
-      </Typography>
-    ) : ( null )
+    <Grid container>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+            Mijn profiel
+          </Typography>
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained" 
+            size="small" 
+            color="secondary" 
+            disableElevation 
+            onClick={() => setShowInput(!showInput)}
+          >
+            {!showInput ? 'EDIT PROFIEL' : 'SLUIT PROFIEL'}
+          </Button>
+        </Grid>
+      </Grid>
+
+      { showInput && isLoading ?
+          <Box className={classes.progress}>
+            <ProgressLinear/> 
+          </Box>
+        : showInput && teams ? 
+          <Container component="main" maxWidth="xs">
+            <div className={classes.paper}>
+              <form className={classes.form} noValidate>
+                <Grid container spacing={1}>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="userName"
+                      label="User Name"
+                      name="userName"
+                      autoFocus
+                      value={signUpCredentials.userName}
+                      onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          userName: e.target.value,
+                        })
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="firstName"
+                      label="First Name"
+                      name="firstName"
+                      value={signUpCredentials.firstName}
+                      onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          firstName: e.target.value,
+                        })
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="lastName"
+                      label="Last Name"
+                      name="lastName"
+                      value={signUpCredentials.lastName}
+                      onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          lastName: e.target.value,
+                        })
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      value={signUpCredentials.email}
+                      onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          email: e.target.value,
+                        })
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <FormControlLabel
+                      control={<Checkbox checked={signUpCredentials.admin} color="primary" onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          admin: e.target.checked,
+                        })
+                      }/>}
+                      label="Admin"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <FormControlLabel
+                      control={<Checkbox checked={signUpCredentials.totaalToto} color="primary" onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          totaalToto: e.target.checked,
+                        })
+                      } />}
+                      label="Totaal Toto"
+                    />
+                  </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="phoneNumber"
+                      label="phomeNumber"
+                      type="text"
+                      id="phoneNumber"
+                      value={signUpCredentials.phoneNumber}
+                      onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          phoneNumber: e.target.value,
+                        })
+                      }
+                    />
+                  </Grid>
+                <Grid item xs={12} className={classes.select}>
+               
+                  <FormControl 
+                    variant="outlined"
+                    fullWidth
+                  >
+                    <InputLabel id="favTeam">Team</InputLabel>
+                    <Select
+                      labelId="favTeam"
+                      id="teeamId"
+                      value={signUpCredentials.teamId}
+                      onChange={(e) =>
+                        setSignUpCredentials({
+                          ...signUpCredentials,
+                          teamId: e.target.value as number,
+                        })}
+                      label="Team"
+                    >
+                      {[...teams].sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
+                        .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
+                    </Select>
+                  </FormControl> 
+                  
+                </Grid>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  onClick={submitForm}
+                >
+                  UPDATE PROFIEL
+                </Button>        
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                  onClick={submitForm}
+                >
+                  CHANGE PASSWORD
+                </Button>        
+              </form>
+            </div>
+          </Container>
+        : null }
+    </Grid>
   )
 }

@@ -1,3 +1,0 @@
-Clean up logic pagination
-Get Log Out on JWT expired working
-Adjust route /totaltoto to totaaltoto and change all references
