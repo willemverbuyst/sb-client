@@ -16,6 +16,7 @@ import Predictions from './Pages/Predictions';
 import Profile from './Pages/Profile';
 import Rules from './Pages/Rules';
 import Fixture from './Pages/Scores/Fixture';
+import Round from './Pages/Scores/Round';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
 import { 
@@ -72,6 +73,7 @@ function App() {
               <Route exact path="/page-not-found" component={PageNotFound} />
               <Route exact path="/profiel" component={Profile} />
               <Route exact path="/regels" component={Rules} />
+              <Route exact path="/scores/ronde/:id" component={Round} />
               <Route exact path="/scores/totaltoto" component={TotalToto} />
               <Route exact path="/scores/totoronde/:id" component={TotoRound} />
               <Route exact path="/scores/wedstrijd/:id" component={Fixture} />
