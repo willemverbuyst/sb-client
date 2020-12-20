@@ -63,7 +63,7 @@ export default function Header() {
   const gotoVoorspellingen = () => history.push("/voorspellingen/1/1");
 
   const gotoLogin = () => {
-    dispatch(userLogOut())
+    dispatch(userLogOut(dispatch))
     history.push("/login")
   }
  

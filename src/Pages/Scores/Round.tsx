@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
-import { fetchScoresTotalToto } from '../../store/scores/actions';
-import { selectTotalToto } from '../../store/scores/selectors';
+import  { fetchScoresRound } from '../../store/scores/actions';
+import { selectRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -45,7 +45,7 @@ export default function Round() {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
-  const totalToto = useSelector(selectTotalToto);
+  const round = useSelector(selectRound);
   const isLoading = useSelector(selectAppLoading);
   const { id } = useParams<{ id: string }>();
 
@@ -54,12 +54,12 @@ export default function Round() {
   });
 
   useEffect(() => {
-    if (!totalToto) {
-      dispatch(fetchScoresTotalToto())
+    if (!round) {
+      dispatch(fetchScoresRound(+id))
     }
-  }, [dispatch, totalToto])
+  }, [dispatch, round])
 
-  const totalTotoSortedByName: UserWithScore[]= totalToto ? [...totalToto]
+  const roundSortedByName: UserWithScore[]= round ? [...round]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
  
   return ( 
@@ -77,7 +77,7 @@ export default function Round() {
           <ProgressLinear/> 
         </Box>
       :
-      totalToto && totalToto.length > 0 ?
+      round && round.length > 0 ?
         <>
           <Grid 
             item xs={12} 
@@ -98,7 +98,7 @@ export default function Round() {
             alignItems="center"
           >
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresBarChart scores={totalTotoSortedByName}/>
+              <ScoresBarChart scores={roundSortedByName}/>
             </Grid>
           </Grid>
         </>

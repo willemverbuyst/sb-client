@@ -94,7 +94,7 @@ export const fetchScoresRound = (id: number) => async (
     const response = await axios.get(`${apiUrl}/scores/rounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const round = response.data;
+    const round = response.data.round;
 
     dispatch(scoresRoundFetched(round));
     dispatch(appDoneLoading());
