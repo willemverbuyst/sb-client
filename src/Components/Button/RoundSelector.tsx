@@ -10,20 +10,20 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 
-const options = [...Array(3)].map((_u, i) => `Ronde ${i + 1}`)
-
 export default function RoundSelector() {
   const [open, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
 
+  const options = +id !== 11 ? [...Array(3)].map((_u, i) => `Ronde ${(+id - 1 ) * 3 + i + 1}`) : [...Array(4)].map((_u, i) => `Ronde ${(+id - 1 ) * 3 + i + 1}`)
+
   const handleMenuItemClick = (
     _event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number,
   ) => {
     setOpen(false);
-    history.push(`/scores/ronde/${index + 1}`)
+    history.push(`/scores/ronde/${(+id - 1 ) * 3 + index + 1}`)
   };
 
   const handleToggle = () => {

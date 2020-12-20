@@ -51,14 +51,12 @@ export default function TotoRound() {
   const totoRound = useSelector(selectTotoRound);
   const isLoading = useSelector(selectAppLoading);
 
-  console.log(totoRound)
-
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
   useEffect(() => {
-    if (! totoRound || (totoRound && +id !== +totoRound.id)) {
+    if (!totoRound || (totoRound && +id !== +totoRound.id)) {
       dispatch(fetchScoresTotoRound(+id))
     }
   }, [dispatch, id, totoRound])
