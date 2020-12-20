@@ -7,6 +7,7 @@ import { selectRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
+  Button,
   Divider,
   Grid, 
   Typography 
@@ -54,12 +55,12 @@ export default function Round() {
   });
 
   useEffect(() => {
-    if (!round) {
+    if (!round || (round && +id !== +round.id)) {
       dispatch(fetchScoresRound(+id))
     }
-  }, [dispatch, round])
+  }, [dispatch, id, round])
 
-  const roundSortedByName: UserWithScore[]= round ? [...round]
+  const roundSortedByName: UserWithScore[]= round && round.usersWithScores ? [...round.usersWithScores]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
  
   return ( 
@@ -70,6 +71,17 @@ export default function Round() {
             Scores
           </Typography>
         </Grid>
+        <Grid>
+          <Button
+            variant="contained" 
+            size="small" 
+            color="secondary" 
+            disableElevation 
+            onClick={()=> history.goBack()}
+          >
+            TERUG
+          </Button>
+        </Grid>
       </Grid>
 
       {isLoading ? 
@@ -77,7 +89,7 @@ export default function Round() {
           <ProgressLinear/> 
         </Box>
       :
-      round && round.length > 0 ?
+      round && round.usersWithScores && round.usersWithScores.length > 0 ?
         <>
           <Grid 
             item xs={12} 

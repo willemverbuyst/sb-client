@@ -8,6 +8,7 @@ import {
   SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
   FixtureWithScores,
+  Scores,
   UserWithScore,
   RemoveAllScores,
   ScoresFixtureFetched,
@@ -33,7 +34,7 @@ const scoresFixtureFetched = (
   };
 };
 
-const scoresRoundFetched = (round: UserWithScore[]): ScoresRoundFetched => {
+const scoresRoundFetched = (round: Scores): ScoresRoundFetched => {
   return {
     type: SCORES_ROUND_FETCHED,
     round,
@@ -49,9 +50,7 @@ const scoresTotalTotoFetched = (
   };
 };
 
-const scoresTotoRoundFetched = (
-  totoRound: UserWithScore[]
-): ScoresTotoRoundFetched => {
+const scoresTotoRoundFetched = (totoRound: Scores): ScoresTotoRoundFetched => {
   return {
     type: SCORES_TOTO_ROUND_FETCHED,
     totoRound,
@@ -94,7 +93,7 @@ export const fetchScoresRound = (id: number) => async (
     const response = await axios.get(`${apiUrl}/scores/rounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const round = response.data.round;
+    const round = response.data;
 
     dispatch(scoresRoundFetched(round));
     dispatch(appDoneLoading());
@@ -146,7 +145,9 @@ export const fetchScoresTotoRound = (id: number) => async (
     const response = await axios.get(`${apiUrl}/scores/totorounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const totoRound = response.data.totoRound;
+    const totoRound = response.data;
+
+    console.log(totoRound);
 
     dispatch(scoresTotoRoundFetched(totoRound));
     dispatch(appDoneLoading());

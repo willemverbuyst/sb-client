@@ -51,15 +51,19 @@ export default function TotoRound() {
   const totoRound = useSelector(selectTotoRound);
   const isLoading = useSelector(selectAppLoading);
 
+  console.log(totoRound)
+
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
   useEffect(() => {
-    dispatch(fetchScoresTotoRound(+id))
-  }, [dispatch, id])
+    if (! totoRound || (totoRound && +id !== +totoRound.id)) {
+      dispatch(fetchScoresTotoRound(+id))
+    }
+  }, [dispatch, id, totoRound])
 
-  const totoRoundSortedByName: UserWithScore[]=  totoRound ? [...totoRound]
+  const totoRoundSortedByName: UserWithScore[]=  totoRound && totoRound.usersWithScores ? [...totoRound.usersWithScores]
   .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
   
   return ( 
@@ -88,7 +92,7 @@ export default function TotoRound() {
           <ProgressLinear/> 
         </Box>
       :
-      totoRound && totoRound.length > 0 ?
+      totoRound && totoRound.usersWithScores && totoRound.usersWithScores.length > 0 ?
         <>
           <Grid 
             item xs={12} 
