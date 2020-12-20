@@ -187,7 +187,11 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
 
       return res.status(200).send(totoRound);
     } else {
-      return res.status(200).send({ totoRound: predictions });
+      const totoRound = {
+        usersWithScores: predictions,
+        id,
+      };
+      return res.status(200).send(totoRound);
     }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
@@ -251,7 +255,12 @@ router.get('/rounds/:id', authMiddleware, async (req, res) => {
 
       return res.status(200).send(round);
     } else {
-      return res.status(200).send({ round: predictions });
+      const round = {
+        usersWithScores: predictions,
+        id,
+      };
+
+      return res.status(200).send(round);
     }
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
