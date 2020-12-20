@@ -107,25 +107,6 @@ export default function TotalToto() {
               <ScoresBarChart scores={totalTotoSortedByName}/>
             </Grid>
           </Grid>
-
-          <Grid 
-            container 
-            justify="center" 
-            className={classes.breadCrumbs}
-          >
-            <Breadcrumbs 
-              separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
-            >
-              <Button
-                color="primary"
-                disabled
-              >
-                Totaal Toto
-              </Button>
-              <TotoRoundSelector/>
-              <Button color="primary" disabled>Ronde</Button>
-            </Breadcrumbs>
-          </Grid>
         </>
       : 
       <Grid>
@@ -134,6 +115,24 @@ export default function TotalToto() {
         </Typography>
       </Grid> 
       }
+      <Grid 
+        container 
+        justify="center" 
+        className={classes.breadCrumbs}
+      >
+        <Breadcrumbs 
+          separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
+        >
+          <Button
+            color="primary"
+            disabled
+          >
+            Totaal Toto
+          </Button>
+          <TotoRoundSelector/>
+          <Button color="primary" disabled>Ronde</Button>
+        </Breadcrumbs>
+      </Grid>
     </Box>
   )
 }

@@ -119,25 +119,6 @@ export default function TotoRound() {
               <ScoresBarChart scores={totoRoundSortedByName}/>
             </Grid>
           </Grid>
-          
-          <Grid 
-            container 
-            justify="center" 
-            className={classes.breadCrumbs}
-          >
-            <Breadcrumbs 
-              separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
-            >
-              <Button
-                color="primary"
-                onClick={()=> history.push('/scores/totaaltoto')}
-              >
-                Totaal Toto
-              </Button>
-              <Button color="primary" disabled>Toto Ronde {id}</Button>
-              <RoundSelector/>
-            </Breadcrumbs>
-          </Grid>
         </>
       : 
       <Grid>
@@ -146,6 +127,24 @@ export default function TotoRound() {
         </Typography>
       </Grid> 
       }
+      <Grid 
+        container 
+        justify="center" 
+        className={classes.breadCrumbs}
+      >
+        <Breadcrumbs 
+          separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
+        >
+          <Button
+            color="primary"
+            onClick={()=> history.push('/scores/totaaltoto')}
+          >
+            Totaal Toto
+          </Button>
+          <Button color="primary" disabled>Toto Ronde {id}</Button>
+          <RoundSelector/>
+        </Breadcrumbs>
+      </Grid>
     </Box>
   )
 }

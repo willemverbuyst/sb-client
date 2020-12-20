@@ -104,33 +104,6 @@ export default function Round() {
               <ScoresBarChart scores={roundSortedByName}/>
             </Grid>
           </Grid>
-
-          <Grid 
-            container 
-            justify="center" 
-            className={classes.breadCrumbs}
-          >
-            <Breadcrumbs 
-              separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
-            >
-              <Button
-                color="primary"
-                onClick={()=> history.push('/scores/totaaltoto')}
-              >
-                Totaal Toto
-              </Button>
-              <Button 
-                color="primary"
-                onClick={()=> history.goBack()}
-              >
-                Totoronde { +id !== 34
-                  ? Math.floor((+id - 1)/ 3) + 1 
-                  : Math.floor((+id - 2)/ 3) + 1 
-                  }
-              </Button>
-              <Button color="primary" disabled>Ronde {id}</Button>
-            </Breadcrumbs>
-          </Grid>
         </>
       : 
       <Grid>
@@ -139,6 +112,33 @@ export default function Round() {
         </Typography>
       </Grid> 
       }
+      
+      <Grid 
+        container 
+        justify="center" 
+        className={classes.breadCrumbs}
+      >
+        <Breadcrumbs 
+          separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
+        >
+          <Button
+            color="primary"
+            onClick={()=> history.push('/scores/totaaltoto')}
+          >
+            Totaal Toto
+          </Button>
+          <Button 
+            color="primary"
+            onClick={()=> history.goBack()}
+          >
+            Totoronde { +id !== 34
+              ? Math.floor((+id - 1)/ 3) + 1 
+              : Math.floor((+id - 2)/ 3) + 1 
+              }
+          </Button>
+          <Button color="primary" disabled>Ronde {id}</Button>
+        </Breadcrumbs>
+      </Grid>
     </Box>
   )
 }
