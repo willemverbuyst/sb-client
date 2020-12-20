@@ -180,7 +180,12 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
 
       const predictionsReduced = reducer(predictionsWithScores);
 
-      return res.status(200).send({ totoRound: predictionsReduced });
+      const totoRound = {
+        usersWithScores: predictionsReduced,
+        id,
+      };
+
+      return res.status(200).send(totoRound);
     } else {
       return res.status(200).send({ totoRound: predictions });
     }
@@ -239,8 +244,12 @@ router.get('/rounds/:id', authMiddleware, async (req, res) => {
       });
 
       const predictionsReduced = reducer(predictionsWithScores);
+      const round = {
+        usersWithScores: predictionsReduced,
+        id,
+      };
 
-      return res.status(200).send({ round: predictionsReduced });
+      return res.status(200).send(round);
     } else {
       return res.status(200).send({ round: predictions });
     }
