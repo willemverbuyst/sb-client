@@ -47,7 +47,7 @@ export default function TotoRoundSelector() {
             aria-label="Ga naar toto ronde"
             aria-haspopup="menu"
             onClick={handleToggle}
-            disableElevation 
+            variant="text"
           >
             Ga naar toto ronde
           </Button>

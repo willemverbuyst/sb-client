@@ -7,15 +7,18 @@ import { selectTotalToto } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
+  Breadcrumbs,
+  Button,
   Divider,
   Grid, 
   Typography 
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import BreadCrumbsScores from '../../Components/BreadCrumbs';
+import TotoRoundSelector from '../../Components/Button/TotoRoundSelector';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -37,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   selector: {
+    marginTop: theme.spacing(6),
+  },
+  breadCrumbs: {
     marginTop: theme.spacing(6),
   }
 }));
@@ -101,13 +107,24 @@ export default function TotalToto() {
               <ScoresBarChart scores={totalTotoSortedByName}/>
             </Grid>
           </Grid>
+
           <Grid 
-            item xs={12} 
             container 
             justify="center" 
-            className={classes.selector}
+            className={classes.breadCrumbs}
           >
-            <BreadCrumbsScores />
+            <Breadcrumbs 
+              separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
+            >
+              <Button
+                color="primary"
+                disabled
+              >
+                Totaal Toto
+              </Button>
+              <TotoRoundSelector/>
+              <Button color="primary" disabled>Ronde</Button>
+            </Breadcrumbs>
           </Grid>
         </>
       : 
