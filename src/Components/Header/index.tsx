@@ -54,7 +54,7 @@ export default function Header() {
 
   const gotoRegels = () => history.push("/regels");
 
-  const gotoTotalToto= () => history.push("/scores/totaltoto");
+  const gotoTotalToto= () => history.push("/scores/totaaltoto");
   
   const gotoSignUp = () => history.push("/admin/signup")
 
@@ -63,7 +63,7 @@ export default function Header() {
   const gotoVoorspellingen = () => history.push("/voorspellingen/1/1");
 
   const gotoLogin = () => {
-    dispatch(userLogOut(dispatch))
+    dispatch(userLogOut())
     history.push("/login")
   }
  

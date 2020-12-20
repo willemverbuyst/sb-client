@@ -15,7 +15,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import TotoRoundSelector from '../../Components/Button/TotoRoundSelector';
+import BreadCrumbsScores from '../../Components/BreadCrumbs';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -107,7 +107,7 @@ export default function TotalToto() {
             justify="center" 
             className={classes.selector}
           >
-            <TotoRoundSelector />
+            <BreadCrumbsScores />
           </Grid>
         </>
       : 

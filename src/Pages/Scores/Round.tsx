@@ -127,7 +127,7 @@ export default function Round() {
               >
                 Totoronde
               </Link>
-              <Typography color="textPrimary">Ronde</Typography>
+              <Typography color="textPrimary">Ronde {id}</Typography>
             </Breadcrumbs>
           </Grid>
         </>

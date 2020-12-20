@@ -39,7 +39,7 @@ export default function TotoRoundSelector() {
   return (
     <Grid container direction="column" alignItems="center">
       <Grid item xs={12}>
-        <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+        <ButtonGroup color="primary" ref={anchorRef}>
           <Button
             color="primary"
             aria-controls={open ? 'split-button-menu' : undefined}

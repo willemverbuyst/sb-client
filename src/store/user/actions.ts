@@ -60,7 +60,7 @@ export const userLogIn = (credentials: ILogInCredentials) => {
   };
 };
 
-export const userLogOut = (dispatch: Dispatch) => {
+export const userLogOut = () => (dispatch: Dispatch) => {
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(removeAllScores());
@@ -88,7 +88,7 @@ export const getUserWithStoredToken = async (
     } else {
       console.log(error);
     }
-    userLogOut(dispatch);
+    userLogOut();
     dispatch(appDoneLoading());
   }
 };
