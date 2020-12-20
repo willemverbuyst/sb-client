@@ -19,6 +19,7 @@ describe('#scoresStateReducer', () => {
   describe('if given REMOVE_ALL_SCORES action type and a state', () => {
     const initialState: ScoresState = {
       fixtureScores: null,
+      roundScores: null,
       totalTotoScores: null,
       totoRoundScores: null,
     };
@@ -49,6 +50,13 @@ describe('#scoresStateReducer', () => {
       fixture,
       scores: [predictionWithScorePerUser],
     };
+    const roundScores: UserWithScore[] = [
+      {
+        id: 1,
+        score: 1,
+        user: 'test_user',
+      },
+    ];
     const totalTotoScores: UserWithScore[] = [
       {
         id: 1,
@@ -65,6 +73,7 @@ describe('#scoresStateReducer', () => {
     ];
     const state: ScoresState = {
       fixtureScores,
+      roundScores,
       totalTotoScores,
       totoRoundScores,
     };
@@ -84,6 +93,7 @@ describe('#scoresStateReducer', () => {
   describe('if given SCORES_FIXTURE_FETCHED action type and a payload with fixtures', () => {
     const initialState: ScoresState = {
       fixtureScores: null,
+      roundScores: null,
       totalTotoScores: null,
       totoRoundScores: null,
     };
@@ -124,6 +134,7 @@ describe('#scoresStateReducer', () => {
 
     test('returns a state w/ a fixture with scores', () => {
       expect(newState).not.toEqual(initialState);
+      expect(newState.roundScores).toEqual(null);
       expect(newState.totalTotoScores).toEqual(null);
       expect(newState.totoRoundScores).toEqual(null);
       expect(newState).toHaveProperty('fixtureScores');
