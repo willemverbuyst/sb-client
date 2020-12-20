@@ -40,7 +40,7 @@ export default function RoundSelector() {
   return (
     <Grid container direction="column" alignItems="center">
       <Grid item xs={12}>
-        <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+        <ButtonGroup color="primary" ref={anchorRef}>
           <Button
             color="primary"
             aria-controls={open ? 'split-button-menu' : undefined}
@@ -48,7 +48,7 @@ export default function RoundSelector() {
             aria-label="Ga naar toto ronde"
             aria-haspopup="menu"
             onClick={handleToggle}
-            disableElevation 
+            variant="text"
           >
             Ga naar ronde
           </Button>

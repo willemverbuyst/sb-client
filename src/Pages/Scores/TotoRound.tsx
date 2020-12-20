@@ -8,10 +8,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
   Button, 
+  Breadcrumbs,
   Divider,
   Grid, 
   Typography 
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
@@ -38,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   selector: {
+    marginTop: theme.spacing(6),
+  },
+  breadCrumbs: {
     marginTop: theme.spacing(6),
   }
 }));
@@ -114,15 +119,25 @@ export default function TotoRound() {
               <ScoresBarChart scores={totoRoundSortedByName}/>
             </Grid>
           </Grid>
+          
           <Grid 
-            item xs={12} 
             container 
             justify="center" 
-            className={classes.selector}
+            className={classes.breadCrumbs}
           >
-            <RoundSelector />
+            <Breadcrumbs 
+              separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
+            >
+              <Button
+                color="primary"
+                onClick={()=> history.push('/scores/totaaltoto')}
+              >
+                Totaal Toto
+              </Button>
+              <Button color="primary" disabled>Toto Ronde {id}</Button>
+              <RoundSelector/>
+            </Breadcrumbs>
           </Grid>
-        
         </>
       : 
       <Grid>
