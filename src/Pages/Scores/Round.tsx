@@ -8,9 +8,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
   Breadcrumbs,
+  Button,
   Divider,
   Grid, 
-  Link,
   Typography 
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -113,21 +113,22 @@ export default function Round() {
             <Breadcrumbs 
               separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
             >
-              <Link 
-                color="inherit" 
-                href="#" 
+              <Button
+                color="primary"
                 onClick={()=> history.push('/scores/totaaltoto')}
               >
                 Totaal Toto
-              </Link>
-              <Link 
-                color="inherit" 
-                href="#" 
+              </Button>
+              <Button 
+                color="primary"
                 onClick={()=> history.goBack()}
               >
-                Totoronde
-              </Link>
-              <Typography color="textPrimary">Ronde {id}</Typography>
+                Totoronde { +id !== 34
+                  ? Math.floor((+id - 1)/ 3) + 1 
+                  : Math.floor((+id - 2)/ 3) + 1 
+                  }
+              </Button>
+              <Button color="primary" disabled>Ronde {id}</Button>
             </Breadcrumbs>
           </Grid>
         </>
