@@ -189,4 +189,64 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
   }
 });
 
+/*** GET THE TOTAL SCORE OF EACH USER FOR A SPECIFIC PAST ROUND ***/
+/*** PUBLIC ***/
+router.get('/rounds/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+
+  const season = `Regular Season - ${id}`;
+
+  try {
+    const predictions = await Prediction.findAll({
+      attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
+      include: [
+        {
+          model: Fixture,
+          where: {
+            status: 'Match Finished',
+            goalsHomeTeam: {
+              [Op.ne]: null,
+            },
+            goalsAwayTeam: {
+              [Op.ne]: null,
+            },
+            round: season,
+          },
+        },
+        { model: User, attributes: ['userName', 'id'] },
+      ],
+      raw: true,
+      nest: true,
+    });
+
+    if (predictions.length > 0) {
+      const predictionsWithScores = predictions.map((pred) => {
+        return {
+          ...pred,
+          score: calcScores(
+            {
+              homeTeam: pred.fixture.goalsHomeTeam,
+              awayTeam: pred.fixture.goalsAwayTeam,
+            },
+            {
+              homeTeam: pred.pGoalsHomeTeam,
+              awayTeam: pred.pGoalsAwayTeam,
+            }
+          ),
+          user: pred.user.userName,
+          id: pred.user.id,
+        };
+      });
+
+      const predictionsReduced = reducer(predictionsWithScores);
+
+      return res.status(200).send({ round: predictionsReduced });
+    } else {
+      return res.status(200).send({ round: predictions });
+    }
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
 module.exports = router;
