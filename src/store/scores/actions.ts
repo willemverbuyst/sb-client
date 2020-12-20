@@ -4,12 +4,14 @@ import { Dispatch } from 'redux';
 import {
   REMOVE_ALL_SCORES,
   SCORES_FIXTURE_FETCHED,
+  SCORES_ROUND_FETCHED,
   SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
   FixtureWithScores,
   UserWithScore,
   RemoveAllScores,
   ScoresFixtureFetched,
+  ScoresRoundFetched,
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
 } from './types';
@@ -28,6 +30,13 @@ const scoresFixtureFetched = (
   return {
     type: SCORES_FIXTURE_FETCHED,
     fixture,
+  };
+};
+
+const scoresRoundFetched = (round: UserWithScore[]): ScoresRoundFetched => {
+  return {
+    type: SCORES_ROUND_FETCHED,
+    round,
   };
 };
 
@@ -62,6 +71,32 @@ export const fetchScoresFixture = (id: number) => async (
     const fixture = response.data;
 
     dispatch(scoresFixtureFetched(fixture));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchScoresRound = (id: number) => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/rounds/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const round = response.data;
+
+    dispatch(scoresRoundFetched(round));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -113,7 +148,6 @@ export const fetchScoresTotoRound = (id: number) => async (
     });
     const totoRound = response.data.totoRound;
 
-    console.log(response.data);
     dispatch(scoresTotoRoundFetched(totoRound));
     dispatch(appDoneLoading());
   } catch (error) {
