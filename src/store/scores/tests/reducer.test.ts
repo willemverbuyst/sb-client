@@ -13,6 +13,7 @@ import {
   ScoresTotoRoundFetched,
   ScoresState,
   PredictionWithScorePerUser,
+  Scores,
 } from '../types';
 
 describe('#scoresStateReducer', () => {
@@ -50,13 +51,16 @@ describe('#scoresStateReducer', () => {
       fixture,
       scores: [predictionWithScorePerUser],
     };
-    const roundScores: UserWithScore[] = [
-      {
-        id: 1,
-        score: 1,
-        user: 'test_user',
-      },
-    ];
+    const roundScores: Scores = {
+      usersWithScores: [
+        {
+          id: 1,
+          score: 1,
+          user: 'test_user',
+        },
+      ],
+      id: 1,
+    };
     const totalTotoScores: UserWithScore[] = [
       {
         id: 1,
@@ -64,13 +68,16 @@ describe('#scoresStateReducer', () => {
         user: 'test_user',
       },
     ];
-    const totoRoundScores: UserWithScore[] = [
-      {
-        id: 1,
-        score: 1,
-        user: 'test_user',
-      },
-    ];
+    const totoRoundScores: Scores = {
+      usersWithScores: [
+        {
+          id: 1,
+          score: 1,
+          user: 'test_user',
+        },
+      ],
+      id: 1,
+    };
     const state: ScoresState = {
       fixtureScores,
       roundScores,
