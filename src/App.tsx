@@ -74,7 +74,7 @@ function App() {
               <Route exact path="/profiel" component={Profile} />
               <Route exact path="/regels" component={Rules} />
               <Route exact path="/scores/ronde/:id" component={Round} />
-              <Route exact path="/scores/totaltoto" component={TotalToto} />
+              <Route exact path="/scores/totaaltoto" component={TotalToto} />
               <Route exact path="/scores/totoronde/:id" component={TotoRound} />
               <Route exact path="/scores/wedstrijd/:id" component={Fixture} />
               <Route exact path="/spelers" component={ListOfPlayers} />

@@ -7,11 +7,13 @@ import { selectRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
-  Button,
+  Breadcrumbs,
   Divider,
   Grid, 
+  Link,
   Typography 
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  selector: {
+  breadCrumbs: {
     marginTop: theme.spacing(6),
   }
 }));
@@ -71,17 +73,6 @@ export default function Round() {
             Scores
           </Typography>
         </Grid>
-        <Grid>
-          <Button
-            variant="contained" 
-            size="small" 
-            color="secondary" 
-            disableElevation 
-            onClick={()=> history.goBack()}
-          >
-            TERUG
-          </Button>
-        </Grid>
       </Grid>
 
       {isLoading ? 
@@ -113,6 +104,32 @@ export default function Round() {
               <ScoresBarChart scores={roundSortedByName}/>
             </Grid>
           </Grid>
+
+          <Grid 
+            container 
+            justify="center" 
+            className={classes.breadCrumbs}
+          >
+            <Breadcrumbs 
+              separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
+            >
+              <Link 
+                color="inherit" 
+                href="#" 
+                onClick={()=> history.push('/scores/totaaltoto')}
+              >
+                Totaal Toto
+              </Link>
+              <Link 
+                color="inherit" 
+                href="#" 
+                onClick={()=> history.goBack()}
+              >
+                Totoronde
+              </Link>
+              <Typography color="textPrimary">Ronde</Typography>
+            </Breadcrumbs>
+          </Grid>
         </>
       : 
       <Grid>
@@ -124,3 +141,7 @@ export default function Round() {
     </Box>
   )
 }
+
+
+
+
