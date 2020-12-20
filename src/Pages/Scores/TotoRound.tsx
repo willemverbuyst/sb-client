@@ -16,6 +16,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
+import RoundSelector from '../../Components/Button/RoundSelector';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -35,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  selector: {
+    marginTop: theme.spacing(6),
   }
 }));
 
@@ -108,6 +112,15 @@ export default function TotoRound() {
               <ScoresBarChart scores={totoRoundSortedByName}/>
             </Grid>
           </Grid>
+          <Grid 
+            item xs={12} 
+            container 
+            justify="center" 
+            className={classes.selector}
+          >
+            <RoundSelector />
+          </Grid>
+        
         </>
       : 
       <Grid>
