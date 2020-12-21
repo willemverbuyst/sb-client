@@ -54,7 +54,7 @@ export default function ChangePasswordForm() {
           required
           fullWidth
           id="password1"
-          label="Wachtwoord"
+          label="Password"
           name="password1"
           type="password"
           autoComplete="email"
@@ -70,7 +70,7 @@ export default function ChangePasswordForm() {
           required
           fullWidth
           name="password2"
-          label="Bevestig wachtwoord"
+          label="Confirm password"
           type="password"
           id="password2"
           value={password2}

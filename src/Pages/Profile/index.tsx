@@ -23,6 +23,7 @@ import { selectTeams } from '../../store/teams/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { ButtonEvent } from '../../models/events.model';
+import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 
 const useStyles = makeStyles((theme: Theme) => ({
     title: {
@@ -70,7 +71,8 @@ export default function Profile() {
   const user = useSelector(selectUser);
   const teams = useSelector(selectTeams);
   const isLoading = useSelector(selectAppLoading);
-  const [showInput, setShowInput] = useState(false);
+  const [editProfile, setEditProfile] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
   const [profileDetails, setProfileDetails] = useState<IProfileDetails>({
     userName: user?.userName || '',
     firstName: user?.firstName || '',
@@ -108,8 +110,18 @@ export default function Profile() {
       teamId:'',
     })
 
-    setShowInput(false)
+    setEditProfile(false)
   };
+
+  const handleEditProfile = () => {
+    setChangePassword(false);
+    setEditProfile(!editProfile)
+  }
+
+  const handleChangePassword = () => {
+    setEditProfile(false);
+    setChangePassword(!changePassword)
+  }
 
   return (
     <Grid container>
@@ -125,28 +137,28 @@ export default function Profile() {
             size="small" 
             color="secondary" 
             disableElevation 
-            onClick={() => setShowInput(!showInput)}
+            onClick={handleEditProfile}
           >
-            {!showInput ? 'EDIT PROFIEL' : 'SLUIT PROFIEL'}
+            {!editProfile ? 'EDIT PROFIEL' : 'SLUIT EDIT PROFIEL'}
           </Button>
           <Button
             variant="contained"
             size="small" 
             color="secondary"
             disableElevation 
-            onClick={submitForm}
+            onClick={handleChangePassword}
             className={classes.passwordBtn}
           >
-            CHANGE PASSWORD
+            {!changePassword? 'CHANGE PASSWORD' : 'SLUIT CHANGE PASSWORD'}
           </Button>  
         </Grid>
       </Grid>
 
-      { showInput && isLoading ?
+      { editProfile && isLoading ?
           <Box className={classes.progress}>
             <ProgressLinear/> 
           </Box>
-        : showInput && teams ? 
+        : editProfile && teams ? 
           <Container component="main" maxWidth="xs">
             <div className={classes.paper}>
               <form className={classes.form} noValidate>
@@ -306,6 +318,8 @@ export default function Profile() {
               </form>
             </div>
           </Container>
+        : changePassword ? 
+          <ChangePasswordForm/>
         : null }
     </Grid>
   )
