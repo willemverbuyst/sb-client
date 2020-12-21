@@ -8,6 +8,8 @@ import {
   LogInSuccessUser,
   LogOutUser,
   TokenUserStillValid,
+  UPDATE_USER_PROFILE,
+  UpdateUserProfile,
 } from './types';
 import { GetState } from '../types';
 import {
@@ -37,7 +39,12 @@ export const tokenUserStillValid = (user: IUser): TokenUserStillValid => ({
   user,
 });
 
-export const userEditProfile = (profileDetails: IProfileDetails) => {
+export const updateUserProfile = (user: IUser): UpdateUserProfile => ({
+  type: UPDATE_USER_PROFILE,
+  user,
+});
+
+export const editUserProfile = (profileDetails: IProfileDetails) => {
   const {
     userName,
     firstName,

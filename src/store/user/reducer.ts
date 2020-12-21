@@ -2,6 +2,7 @@ import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,
   TOKEN_STILL_VALID_USER,
+  UPDATE_USER_PROFILE,
   UserState,
   UserActionTypes,
 } from './types';
@@ -25,6 +26,9 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
       return { ...initialState, user: null, token: null };
 
     case TOKEN_STILL_VALID_USER:
+      return { ...state, user: action.user };
+
+    case UPDATE_USER_PROFILE:
       return { ...state, user: action.user };
 
     default:

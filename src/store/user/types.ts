@@ -3,6 +3,7 @@ import { IUser } from '../../models/player.model';
 export const LOG_IN_SUCCESS_USER = 'LOGIN_SUCCESS_USER';
 export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const TOKEN_STILL_VALID_USER = 'TOKEN_STILL_VALID_USER';
+export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
 
 export type UserState = {
   token: string | null;
@@ -23,7 +24,13 @@ export type TokenUserStillValid = {
   user: IUser;
 };
 
+export type UpdateUserProfile = {
+  type: typeof UPDATE_USER_PROFILE;
+  user: IUser;
+};
+
 export type UserActionTypes =
   | LogInSuccessUser
   | LogOutUser
-  | TokenUserStillValid;
+  | TokenUserStillValid
+  | UpdateUserProfile;
