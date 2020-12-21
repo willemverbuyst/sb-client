@@ -34,7 +34,7 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
       return { ...state, user: action.user };
 
     case USER_SCORES_FETCHED:
-      return { ...state, user: action.scores };
+      return { ...state, scores: action.scores };
 
     default:
       return state;

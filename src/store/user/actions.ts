@@ -137,7 +137,6 @@ export const fetchUserScores = () => async (
     });
     const scores = response.data.scores;
 
-    console.log(scores);
     dispatch(userScoresFetched(scores));
     dispatch(appDoneLoading());
   } catch (error) {
@@ -154,7 +153,7 @@ export const fetchUserScores = () => async (
 
 export const userLogIn = (credentials: ILogInCredentials) => {
   const { email, password } = credentials;
-  return async (dispatch: any, _getState: GetState) => {
+  return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/login`, {

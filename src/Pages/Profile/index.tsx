@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors'
+import { useDispatch, useSelector } from 'react-redux';
+import { selectScores, selectToken } from '../../store/user/selectors'
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -13,6 +13,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
+import { fetchUserScores } from '../../store/user/actions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -36,12 +37,20 @@ export default function Profile() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
+  const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
+  const scores = useSelector(selectScores);
   const [editProfile, setEditProfile] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
 
   useEffect(() => {
     if (!token) history.push("/login");
+  });
+
+  useEffect(() => {
+    if (!scores) {
+      dispatch(fetchUserScores());
+    }
   });
 
   const handleEditProfile = () => {
