@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     select: {
       marginTop: theme.spacing(2)
     },
+    passwordBtn: {
+      marginLeft: theme.spacing(1),
+    },
     submit: {
       marginTop: theme.spacing(3),
     },
@@ -128,6 +131,16 @@ export default function Profile() {
           >
             {!showInput ? 'EDIT PROFIEL' : 'SLUIT PROFIEL'}
           </Button>
+          <Button
+            variant="contained"
+            size="small" 
+            color="secondary"
+            disableElevation 
+            onClick={submitForm}
+            className={classes.passwordBtn}
+          >
+            CHANGE PASSWORD
+          </Button>  
         </Grid>
       </Grid>
 
@@ -283,23 +296,14 @@ export default function Profile() {
                 <Button
                   type="submit"
                   fullWidth
+                  disableElevation 
                   variant="contained"
                   color="primary"
                   className={classes.submit}
                   onClick={submitForm}
                 >
                   UPDATE PROFIEL
-                </Button>        
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="secondary"
-                  className={classes.submit}
-                  onClick={submitForm}
-                >
-                  CHANGE PASSWORD
-                </Button>        
+                </Button>              
               </form>
             </div>
           </Container>

@@ -295,6 +295,7 @@ export default function SignUp() {
               </Grid>
               <Button
                 type="submit"
+                disableElevation 
                 fullWidth
                 variant="contained"
                 color="primary"
