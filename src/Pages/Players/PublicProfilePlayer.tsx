@@ -118,7 +118,7 @@ export default function PublicProfilePlayer() {
                   <Grid item key={i} lg={4} md={6} xs={12}>
                     <MatchCard 
                       wedstrijdMetVoorspellingen={wedstrijd} 
-                      publicPredictions={true}
+                      display="public"
                     />
                   </Grid>) 
               : null }

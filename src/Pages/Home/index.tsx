@@ -10,7 +10,6 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Box, 
-  Button, 
   Grid, 
   Typography } 
 from '@material-ui/core';
@@ -60,21 +59,6 @@ export default function HomePage() {
           Programma van deze week
           </Typography>
         </Grid>
-        { currentRound ?
-          <Grid>
-            <Button
-              variant="contained" 
-              size="small" 
-              color="secondary" 
-              disableElevation 
-              onClick={()=> history.push(`/scores/totoronde/${currentRound.totoRoundNumber}`)}
-            >
-              TOTORONDE: {currentRound.totoRoundNumber}
-            </Button>
-          </Grid> 
-        : 
-          null
-        }
       </Grid>
 
       { isLoading ?
@@ -82,23 +66,15 @@ export default function HomePage() {
           <ProgressLinear/> 
         </Box>
       : currentRound ?
-        <>
-          <Grid item xs={12}>
-            <Typography variant="h5" className={classes.subTitle}>
-              Speelronde: {currentRound.roundNumber}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={12} container justify="center">
-            {currentRound.fixtures.map((wedstrijd, i) => 
-              <Grid item key={i} lg={4} md={6} xs={12}>
-                <MatchCard 
-                  wedstrijdMetVoorspellingen={wedstrijd}
-                  publicPredictions={false}
-                />
-              </Grid>)}
-          </Grid>
-        </>
+        <Grid item xs={12} container justify="center">
+          {currentRound.fixtures.map((wedstrijd, i) => 
+            <Grid item key={i} lg={4} md={6} xs={12}>
+              <MatchCard 
+                wedstrijdMetVoorspellingen={wedstrijd}
+                display="Home"
+              />
+            </Grid>)}
+        </Grid>
       :  null }
     </Grid>
   )
