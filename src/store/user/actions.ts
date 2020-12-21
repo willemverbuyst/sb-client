@@ -5,11 +5,14 @@ import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,
   TOKEN_STILL_VALID_USER,
+  UPDATE_USER_PROFILE,
+  USER_SCORES_FETCHED,
   LogInSuccessUser,
   LogOutUser,
+  ScoresUser,
   TokenUserStillValid,
-  UPDATE_USER_PROFILE,
   UpdateUserProfile,
+  UserScoresFetched,
 } from './types';
 import { GetState } from '../types';
 import {
@@ -42,6 +45,11 @@ export const tokenUserStillValid = (user: IUser): TokenUserStillValid => ({
 export const updateUserProfile = (user: IUser): UpdateUserProfile => ({
   type: UPDATE_USER_PROFILE,
   user,
+});
+
+export const userScoresFetched = (scores: ScoresUser): UserScoresFetched => ({
+  type: USER_SCORES_FETCHED,
+  scores,
 });
 
 export const changePassword = (newPassword: string) => {
@@ -115,6 +123,33 @@ export const editUserProfile = (profileDetails: IProfileDetails) => {
       dispatch(appDoneLoading());
     }
   };
+};
+
+export const fetchUserScores = () => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/users`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const scores = response.data.scores;
+
+    console.log(scores);
+    dispatch(userScoresFetched(scores));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
 };
 
 export const userLogIn = (credentials: ILogInCredentials) => {

@@ -3,6 +3,7 @@ import {
   LOG_OUT_USER,
   TOKEN_STILL_VALID_USER,
   UPDATE_USER_PROFILE,
+  USER_SCORES_FETCHED,
   UserState,
   UserActionTypes,
 } from './types';
@@ -12,6 +13,7 @@ const token = localStorage.getItem('user_token');
 const initialState: UserState = {
   token: token,
   user: null,
+  scores: null,
 };
 
 const userReducer = (state = initialState, action: UserActionTypes) => {
@@ -30,6 +32,9 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
 
     case UPDATE_USER_PROFILE:
       return { ...state, user: action.user };
+
+    case USER_SCORES_FETCHED:
+      return { ...state, user: action.scores };
 
     default:
       return state;
