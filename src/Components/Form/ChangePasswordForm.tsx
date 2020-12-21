@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
-  Avatar, 
   Button, 
   Container, 
   TextField 
 } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ButtonEvent } from '../../models/events.model';
 import { changePassword } from '../../store/user/actions';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -20,13 +19,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  submit: {
+  margin: {
     margin: theme.spacing(3, 0, 2),
   },
 }));
@@ -40,6 +39,7 @@ export default function ChangePasswordForm(prop: Prop) {
   const dispatch = useDispatch();
   const [password1, setPassword1] = useState<string>('');
   const [password2, setPassword2] = useState<string>('');
+  const [showAlert, setShowAlert] = useState<boolean>(false)
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
@@ -48,17 +48,19 @@ export default function ChangePasswordForm(prop: Prop) {
       dispatch(changePassword(password1));
       prop.handleSubmit();
     } else {
-    // create a modal
-    alert('Passwords are not the same')
+      setShowAlert(true);
     }
   };
+
+  const closeAlert = () => {
+    setShowAlert(false);
+    setPassword1('');
+    setPassword2('');
+  }
 
   return (
     <Container component="main" maxWidth="xs">
     <div className={classes.paper}>
-      <Avatar className={classes.avatar}>
-        <LockOutlinedIcon />
-      </Avatar>
       <form className={classes.form} noValidate>
         <TextField
           variant="outlined"
@@ -95,11 +97,21 @@ export default function ChangePasswordForm(prop: Prop) {
           fullWidth
           variant="contained"
           color="primary"
-          className={classes.submit}
+          className={classes.margin}
           onClick={submitForm}
         >
           CHANGE PASSWORD
         </Button>
+        { showAlert ?
+          <Alert 
+            onClose={closeAlert}
+            severity="error" 
+            variant="outlined"
+            className={classes.margin}
+          >
+              Passwords are not the same
+          </Alert>
+        : null }
       </form>
     </div>
   </Container> 
