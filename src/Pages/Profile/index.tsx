@@ -10,10 +10,10 @@ import {
   Typography 
 } from '@material-ui/core';
 import { selectAppLoading } from '../../store/appState/selectors';
-import { selectTeams } from '../../store/teams/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
+
 
 const useStyles = makeStyles((theme: Theme) => ({
     title: {
@@ -37,7 +37,6 @@ export default function Profile() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
-  const teams = useSelector(selectTeams);
   const isLoading = useSelector(selectAppLoading);
   const [editProfile, setEditProfile] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
@@ -87,11 +86,11 @@ export default function Profile() {
         </Grid>
       </Grid>
 
-      { editProfile && isLoading ?
+      { isLoading ?
           <Box className={classes.progress}>
             <ProgressLinear/> 
           </Box>
-        : editProfile && teams ? 
+        : editProfile ? 
           <EditProfileForm/>
         : changePassword ? 
           <ChangePasswordForm/>
