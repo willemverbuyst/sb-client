@@ -14,6 +14,7 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 import { fetchUserScores } from '../../store/user/actions';
+import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -93,6 +94,8 @@ export default function Profile() {
           </Button>  
         </Grid>
       </Grid>
+
+      <ScoresStackedChart/>
 
       { isLoading ?
           <Box className={classes.progress}>
