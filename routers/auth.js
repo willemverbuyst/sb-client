@@ -126,19 +126,12 @@ router.get('/me', authMiddleware, async (req, res) => {
 
 /*** CHANGE PASSWORD ***/
 router.patch('/me/password', authMiddleware, async (req, res) => {
-  const { email, password, newPassword1, newPassword2 } = req.body;
+  const { newPassword } = req.body;
 
-  if (!email || !password || !newPassword1 || !newPassword2)
-    return res
-      .status(400)
-      .send({ message: 'Please provide email and passwords' });
+  if (!newPassword)
+    return res.status(400).send({ message: 'Please provide new password' });
 
-  if (newPassword1 !== newPassword2)
-    return res
-      .status(400)
-      .send({ message: 'Please confirm you new password!' });
-
-  if (password === newPassword1)
+  if (bcrypt.compareSync(newPassword, req.user.password))
     return res
       .status(400)
       .send({ message: 'You new new password must differ from the old one!' });
@@ -146,7 +139,7 @@ router.patch('/me/password', authMiddleware, async (req, res) => {
   try {
     const user = req.user;
     await user.update({
-      password: bcrypt.hashSync(newPassword1, SALT_ROUNDS),
+      password: bcrypt.hashSync(newPassword, SALT_ROUNDS),
     });
 
     return res.status(200).send({
@@ -165,7 +158,6 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
     firstName,
     lastName,
     email,
-    password,
     phoneNumber,
     admin,
     totaalToto,
@@ -177,10 +169,7 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
     !firstName ||
     !lastName ||
     !email ||
-    !password ||
     !phoneNumber ||
-    !admin ||
-    !totaalToto ||
     !favteamId
   )
     return res.status(400).send('Some data is missing, please try again');
@@ -199,6 +188,7 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
       lastName,
       email,
       phoneNumber,
+      admin,
       totaalToto,
       favteamId,
     });
