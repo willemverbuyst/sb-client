@@ -13,8 +13,9 @@ import {
 } from './types';
 import { GetState } from '../types';
 import {
-  IProfileDetails,
   ILogInCredentials,
+  IPassword,
+  IProfileDetails,
 } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
@@ -43,6 +44,33 @@ export const updateUserProfile = (user: IUser): UpdateUserProfile => ({
   type: UPDATE_USER_PROFILE,
   user,
 });
+
+export const changePassword = (password: IPassword) => {
+  return async (dispatch: Dispatch, _getState: GetState) => {
+    dispatch(appLoading());
+    try {
+      const token = localStorage.getItem('user_token');
+      const response = await axios.patch(
+        `${apiUrl}/me/password`,
+        {
+          password,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      dispatch(setMessage('success', response.data.message));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
 
 export const editUserProfile = (profileDetails: IProfileDetails) => {
   const {
