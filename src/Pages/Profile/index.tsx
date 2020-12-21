@@ -17,7 +17,7 @@ import {
   TextField, 
   Typography 
 } from '@material-ui/core';
-import { ISignUpCredentials } from '../../models/credentials.model';
+import { IEditProfileDetails } from '../../models/credentials.model';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectTeams } from '../../store/teams/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -71,12 +71,11 @@ export default function Profile() {
   const teams = useSelector(selectTeams);
   const isLoading = useSelector(selectAppLoading);
   const [showInput, setShowInput] = useState(false);
-  const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
+  const [editProfileDetails, setEditProfileDetails] = useState<IEditProfileDetails>({
     userName: user?.userName || '',
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
     email: user?.email || '',
-    password: '',
     phoneNumber: user?.phoneNumber || '',
     admin: user?.admin || false,
     totaalToto: user?.totaalToto || true,
@@ -98,12 +97,11 @@ export default function Profile() {
 
     // UPDATE USER
     
-    setSignUpCredentials({
+    setEditProfileDetails({
       userName:'',
       firstName:'',
       lastName:'',
       email:'',
-      password:'',
       phoneNumber:'',
       admin: false,
       totaalToto: true,
@@ -163,10 +161,10 @@ export default function Profile() {
                       label="User Name"
                       name="userName"
                       autoFocus
-                      value={signUpCredentials.userName}
+                      value={editProfileDetails.userName}
                       onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           userName: e.target.value,
                         })
                       }
@@ -181,10 +179,10 @@ export default function Profile() {
                       id="firstName"
                       label="First Name"
                       name="firstName"
-                      value={signUpCredentials.firstName}
+                      value={editProfileDetails.firstName}
                       onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           firstName: e.target.value,
                         })
                       }
@@ -199,10 +197,10 @@ export default function Profile() {
                       id="lastName"
                       label="Last Name"
                       name="lastName"
-                      value={signUpCredentials.lastName}
+                      value={editProfileDetails.lastName}
                       onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           lastName: e.target.value,
                         })
                       }
@@ -218,10 +216,10 @@ export default function Profile() {
                       label="Email Address"
                       name="email"
                       autoComplete="email"
-                      value={signUpCredentials.email}
+                      value={editProfileDetails.email}
                       onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           email: e.target.value,
                         })
                       }
@@ -229,9 +227,9 @@ export default function Profile() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <FormControlLabel
-                      control={<Checkbox checked={signUpCredentials.admin} color="primary" onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                      control={<Checkbox checked={editProfileDetails.admin} color="primary" onChange={(e) =>
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           admin: e.target.checked,
                         })
                       }/>}
@@ -240,9 +238,9 @@ export default function Profile() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <FormControlLabel
-                      control={<Checkbox checked={signUpCredentials.totaalToto} color="primary" onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                      control={<Checkbox checked={editProfileDetails.totaalToto} color="primary" onChange={(e) =>
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           totaalToto: e.target.checked,
                         })
                       } />}
@@ -260,10 +258,10 @@ export default function Profile() {
                       label="phomeNumber"
                       type="text"
                       id="phoneNumber"
-                      value={signUpCredentials.phoneNumber}
+                      value={editProfileDetails.phoneNumber}
                       onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           phoneNumber: e.target.value,
                         })
                       }
@@ -279,10 +277,10 @@ export default function Profile() {
                     <Select
                       labelId="favTeam"
                       id="teeamId"
-                      value={signUpCredentials.teamId}
+                      value={editProfileDetails.teamId}
                       onChange={(e) =>
-                        setSignUpCredentials({
-                          ...signUpCredentials,
+                        setEditProfileDetails({
+                          ...editProfileDetails,
                           teamId: e.target.value as number,
                         })}
                       label="Team"
@@ -290,9 +288,9 @@ export default function Profile() {
                       {[...teams].sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
                         .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
                     </Select>
-                  </FormControl> 
-                  
+                  </FormControl>
                 </Grid>
+
                 <Button
                   type="submit"
                   fullWidth
@@ -303,7 +301,8 @@ export default function Profile() {
                   onClick={submitForm}
                 >
                   UPDATE PROFIEL
-                </Button>              
+                </Button>  
+
               </form>
             </div>
           </Container>

@@ -14,3 +14,18 @@ export interface ISignUpCredentials {
   totaalToto: boolean;
   teamId: number | '';
 }
+
+export interface IEditProfileDetails {
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  admin: boolean;
+  totaalToto: boolean;
+  teamId: number | '';
+}
+
+export interface IChangePassword {
+  newPassword: string;
+}
