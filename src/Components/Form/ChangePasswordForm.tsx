@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
   Avatar, 
@@ -8,6 +9,7 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ButtonEvent } from '../../models/events.model';
+import { changePassword } from '../../store/user/actions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -35,16 +37,20 @@ type Prop = {
 
 export default function ChangePasswordForm(prop: Prop) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [password1, setPassword1] = useState<string>('');
   const [password2, setPassword2] = useState<string>('');
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
 
-    console.log(password1);
-    console.log(password2);
-
-    prop.handleSubmit()
+    if (password1 === password2) {
+      dispatch(changePassword(password1));
+      prop.handleSubmit();
+    } else {
+    // create a modal
+    alert('Passwords are not the same')
+    }
   };
 
   return (

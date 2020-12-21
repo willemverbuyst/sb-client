@@ -14,23 +14,22 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 
-
 const useStyles = makeStyles((theme: Theme) => ({
-    title: {
-      fontWeight: 'bold',
-      marginBottom: theme.spacing(1),
-      color: theme.palette.secondary.main
-    },
-    passwordBtn: {
-      marginLeft: theme.spacing(1),
-    },
-    progress: {
-      minHeight: '70vh',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }
+  title: {
+    fontWeight: 'bold',
+    marginBottom: theme.spacing(1),
+    color: theme.palette.secondary.main
+  },
+  passwordBtn: {
+    marginLeft: theme.spacing(1),
+  },
+  progress: {
+    minHeight: '70vh',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
  }));
 
 export default function Profile() {

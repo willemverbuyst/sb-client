@@ -14,7 +14,6 @@ import {
 import { GetState } from '../types';
 import {
   ILogInCredentials,
-  IPassword,
   IProfileDetails,
 } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
@@ -45,7 +44,7 @@ export const updateUserProfile = (user: IUser): UpdateUserProfile => ({
   user,
 });
 
-export const changePassword = (password: IPassword) => {
+export const changePassword = (newPassword: string) => {
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
     try {
@@ -53,7 +52,7 @@ export const changePassword = (password: IPassword) => {
       const response = await axios.patch(
         `${apiUrl}/me/password`,
         {
-          password,
+          newPassword,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );

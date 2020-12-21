@@ -25,7 +25,3 @@ export interface IProfileDetails {
   totaalToto: boolean;
   teamId: number | '';
 }
-
-export interface IPassword {
-  newPassword: string;
-}
