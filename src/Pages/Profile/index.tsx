@@ -17,7 +17,7 @@ import {
   TextField, 
   Typography 
 } from '@material-ui/core';
-import { IEditProfileDetails } from '../../models/credentials.model';
+import { IProfileDetails } from '../../models/credentials.model';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectTeams } from '../../store/teams/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -71,7 +71,7 @@ export default function Profile() {
   const teams = useSelector(selectTeams);
   const isLoading = useSelector(selectAppLoading);
   const [showInput, setShowInput] = useState(false);
-  const [editProfileDetails, setEditProfileDetails] = useState<IEditProfileDetails>({
+  const [profileDetails, setProfileDetails] = useState<IProfileDetails>({
     userName: user?.userName || '',
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
@@ -97,7 +97,7 @@ export default function Profile() {
 
     // UPDATE USER
     
-    setEditProfileDetails({
+    setProfileDetails({
       userName:'',
       firstName:'',
       lastName:'',
@@ -161,10 +161,10 @@ export default function Profile() {
                       label="User Name"
                       name="userName"
                       autoFocus
-                      value={editProfileDetails.userName}
+                      value={profileDetails.userName}
                       onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                        setProfileDetails({
+                          ...profileDetails,
                           userName: e.target.value,
                         })
                       }
@@ -179,10 +179,10 @@ export default function Profile() {
                       id="firstName"
                       label="First Name"
                       name="firstName"
-                      value={editProfileDetails.firstName}
+                      value={profileDetails.firstName}
                       onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                        setProfileDetails({
+                          ...profileDetails,
                           firstName: e.target.value,
                         })
                       }
@@ -197,10 +197,10 @@ export default function Profile() {
                       id="lastName"
                       label="Last Name"
                       name="lastName"
-                      value={editProfileDetails.lastName}
+                      value={profileDetails.lastName}
                       onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                        setProfileDetails({
+                          ...profileDetails,
                           lastName: e.target.value,
                         })
                       }
@@ -216,10 +216,10 @@ export default function Profile() {
                       label="Email Address"
                       name="email"
                       autoComplete="email"
-                      value={editProfileDetails.email}
+                      value={profileDetails.email}
                       onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                        setProfileDetails({
+                          ...profileDetails,
                           email: e.target.value,
                         })
                       }
@@ -227,9 +227,9 @@ export default function Profile() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <FormControlLabel
-                      control={<Checkbox checked={editProfileDetails.admin} color="primary" onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                      control={<Checkbox checked={profileDetails.admin} color="primary" onChange={(e) =>
+                        setProfileDetails({
+                          ...profileDetails,
                           admin: e.target.checked,
                         })
                       }/>}
@@ -238,9 +238,9 @@ export default function Profile() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <FormControlLabel
-                      control={<Checkbox checked={editProfileDetails.totaalToto} color="primary" onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                      control={<Checkbox checked={profileDetails.totaalToto} color="primary" onChange={(e) =>
+                        setProfileDetails({
+                          ...profileDetails,
                           totaalToto: e.target.checked,
                         })
                       } />}
@@ -258,10 +258,10 @@ export default function Profile() {
                       label="phomeNumber"
                       type="text"
                       id="phoneNumber"
-                      value={editProfileDetails.phoneNumber}
+                      value={profileDetails.phoneNumber}
                       onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                        setProfileDetails({
+                          ...profileDetails,
                           phoneNumber: e.target.value,
                         })
                       }
@@ -277,10 +277,10 @@ export default function Profile() {
                     <Select
                       labelId="favTeam"
                       id="teeamId"
-                      value={editProfileDetails.teamId}
+                      value={profileDetails.teamId}
                       onChange={(e) =>
-                        setEditProfileDetails({
-                          ...editProfileDetails,
+                        setProfileDetails({
+                          ...profileDetails,
                           teamId: e.target.value as number,
                         })}
                       label="Team"

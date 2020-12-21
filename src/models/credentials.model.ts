@@ -15,7 +15,7 @@ export interface ISignUpCredentials {
   teamId: number | '';
 }
 
-export interface IEditProfileDetails {
+export interface IProfileDetails {
   userName: string;
   firstName: string;
   lastName: string;
@@ -26,6 +26,6 @@ export interface IEditProfileDetails {
   teamId: number | '';
 }
 
-export interface IChangePassword {
+export interface IPassword {
   newPassword: string;
 }

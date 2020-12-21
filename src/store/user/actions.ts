@@ -10,7 +10,10 @@ import {
   TokenUserStillValid,
 } from './types';
 import { GetState } from '../types';
-import { ILogInCredentials } from '../../models/credentials.model';
+import {
+  IProfileDetails,
+  ILogInCredentials,
+} from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removeAllPlayers } from '../players/actions';
@@ -33,6 +36,52 @@ export const tokenUserStillValid = (user: IUser): TokenUserStillValid => ({
   type: TOKEN_STILL_VALID_USER,
   user,
 });
+
+export const userEditProfile = (profileDetails: IProfileDetails) => {
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    admin,
+    totaalToto,
+    teamId,
+  } = profileDetails;
+  return async (dispatch: Dispatch, _getState: GetState) => {
+    dispatch(appLoading());
+    try {
+      const token = localStorage.getItem('user_token');
+      const response = await axios.patch(
+        `${apiUrl}/me/profile`,
+        {
+          userName,
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          admin,
+          totaalToto,
+          teamId,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      dispatch(updateUserProfile(response.data.userData));
+      dispatch(setMessage('success', response.data.message));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
 
 export const userLogIn = (credentials: ILogInCredentials) => {
   const { email, password } = credentials;
