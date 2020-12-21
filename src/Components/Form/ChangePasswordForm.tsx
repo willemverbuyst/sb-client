@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
   Avatar, 
   Button, 
@@ -9,7 +9,7 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ButtonEvent } from '../../models/events.model';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -29,7 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ChangePasswordForm() {
+type Prop = {
+  handleSubmit: () => void;
+}
+
+export default function ChangePasswordForm(prop: Prop) {
   const classes = useStyles();
   const [password1, setPassword1] = useState<string>('');
   const [password2, setPassword2] = useState<string>('');
@@ -39,6 +43,8 @@ export default function ChangePasswordForm() {
 
     console.log(password1);
     console.log(password2);
+
+    prop.handleSubmit()
   };
 
   return (

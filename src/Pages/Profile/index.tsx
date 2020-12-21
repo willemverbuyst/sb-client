@@ -91,9 +91,9 @@ export default function Profile() {
             <ProgressLinear/> 
           </Box>
         : editProfile ? 
-          <EditProfileForm/>
+          <EditProfileForm handleSubmit={() => setEditProfile(false)}/>
         : changePassword ? 
-          <ChangePasswordForm/>
+          <ChangePasswordForm handleSubmit={() => setChangePassword(false)}/>
         : null }
     </Grid>
   )

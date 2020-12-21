@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/selectors'
 import { 
@@ -19,7 +19,7 @@ import { ButtonEvent } from '../../models/events.model';
 import { IProfileDetails } from '../../models/credentials.model';
 import { selectTeams } from '../../store/teams/selectors';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     marginTop: theme.spacing(2),
     display: 'flex',
@@ -42,7 +42,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditProfileForm() {
+type Prop = {
+  handleSubmit: () => void;
+}
+
+export default function EditProfileForm(props: Prop) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -67,7 +71,10 @@ export default function EditProfileForm() {
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
 
-    // UPDATE USER
+   console.log(
+     profileDetails
+   )
+
     
     setProfileDetails({
       userName:'',
@@ -79,6 +86,8 @@ export default function EditProfileForm() {
       totaalToto: true,
       teamId:'',
     })
+
+    props.handleSubmit()
   };
 
   return (
