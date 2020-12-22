@@ -17,6 +17,7 @@ import Profile from './Pages/Profile';
 import Rules from './Pages/Rules';
 import Fixture from './Pages/Scores/Fixture';
 import Round from './Pages/Scores/Round';
+import ScoresUser from './Pages/Scores/ScoresUser';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
 import { 
@@ -26,6 +27,7 @@ import {
   Theme 
 } from '@material-ui/core/styles';
 import { Grid, Box } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,6 +72,7 @@ function App() {
               <Route exact path="/admin/signup" component={SignUp} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/login" component={LogIn} />
+              <Route exact path="/mijnscores" component={ScoresUser} />
               <Route exact path="/page-not-found" component={PageNotFound} />
               <Route exact path="/profiel" component={Profile} />
               <Route exact path="/regels" component={Rules} />

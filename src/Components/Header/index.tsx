@@ -20,9 +20,11 @@ import Face from '@material-ui/icons/Face';
 import List from '@material-ui/icons/List';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
 import PersonAdd from '@material-ui/icons/PersonAdd';
+import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
 import { Weekend } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,15 +52,17 @@ export default function Header() {
 
   const gotoHome = () => history.push("/home");
 
+  const gotoMyScores = () =>  history.push("/mijnscores")
+
   const gotoProfiel = () => history.push("/profiel");
 
   const gotoRegels = () => history.push("/regels");
 
-  const gotoTotalToto= () => history.push("/scores/totaaltoto");
-  
   const gotoSignUp = () => history.push("/admin/signup")
 
   const gotoSpelers = () => history.push("/spelers")
+
+  const gotoTotalToto= () => history.push("/scores/totaaltoto");
   
   const gotoVoorspellingen = () => history.push("/voorspellingen/1/1");
 
@@ -73,25 +77,25 @@ export default function Header() {
             <Toolbar>
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoHome}>
-                <Tooltip title="Home" arrow>
+                <Tooltip title="Programma" arrow>
                   <Weekend />
                 </Tooltip>
               </IconButton>
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoVoorspellingen}>
-                <Tooltip title="Voorspellingen" arrow>
-                  <List />
+                <Tooltip title="Mijn voorspellingen" arrow>
+                  <SportsSoccerIcon />
                 </Tooltip>
               </IconButton>
 
-              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoTotalToto}>
-                <Tooltip title="Totaal toto" arrow>  
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoMyScores}>
+                <Tooltip title="Mijn Scores" arrow>  
                   <EmojiEvents />
                 </Tooltip>
               </IconButton>
               
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfiel}>
-                <Tooltip title="Profiel"  arrow>
+                <Tooltip title="Mijn profiel"  arrow>
                   <Face />
                 </Tooltip>
               </IconButton>
@@ -99,6 +103,12 @@ export default function Header() {
               <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSpelers}>
                 <Tooltip title="Spelers" arrow>
                   <Group />
+                </Tooltip>
+              </IconButton>
+
+              <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoTotalToto}>
+                <Tooltip title="Alle scores" arrow>
+                  <FormatListNumberedIcon />
                 </Tooltip>
               </IconButton>
             
