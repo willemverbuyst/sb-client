@@ -182,4 +182,41 @@ describe('#scoresStateReducer', () => {
       expect(newState.totalTotoScores?.length).toBeLessThan(2);
     });
   });
+  describe('if given SCORES_TOTO_ROUND_FETCHED action type and a payload with totoRound', () => {
+    const initialState: ScoresState = {
+      fixtureScores: null,
+      roundScores: null,
+      totalTotoScores: null,
+      totoRoundScores: null,
+    };
+    const totoRound: Scores = {
+      usersWithScores: [
+        {
+          score: 10,
+          user: 'test_user',
+          id: 1,
+        },
+      ],
+      id: 1,
+    };
+
+    const action: ScoresTotoRoundFetched = {
+      type: SCORES_TOTO_ROUND_FETCHED,
+      totoRound,
+    };
+    const newState: ScoresState = reducer(initialState, action);
+
+    test('returns a state w/ a totoRoundScores', () => {
+      expect(newState).not.toEqual(initialState);
+      expect(newState.fixtureScores).toBeNull();
+      expect(newState.roundScores).toBeNull();
+      expect(newState.totalTotoScores).toBeNull();
+      expect(newState.totoRoundScores).not.toBeNull();
+      expect(newState).toHaveProperty('totoRoundScores');
+      expect(newState.totoRoundScores?.usersWithScores.length).toBeGreaterThan(
+        0
+      );
+      expect(newState.totoRoundScores?.usersWithScores.length).toBeLessThan(2);
+    });
+  });
 });
