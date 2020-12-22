@@ -25,7 +25,7 @@ export const removeAllScores = (): RemoveAllScores => {
   };
 };
 
-const scoresFixtureFetched = (
+export const scoresFixtureFetched = (
   fixture: FixtureWithScores
 ): ScoresFixtureFetched => {
   return {
@@ -34,14 +34,14 @@ const scoresFixtureFetched = (
   };
 };
 
-const scoresRoundFetched = (round: Scores): ScoresRoundFetched => {
+export const scoresRoundFetched = (round: Scores): ScoresRoundFetched => {
   return {
     type: SCORES_ROUND_FETCHED,
     round,
   };
 };
 
-const scoresTotalTotoFetched = (
+export const scoresTotalTotoFetched = (
   totalToto: UserWithScore[]
 ): ScoresTotalTotoFetched => {
   return {
@@ -50,7 +50,9 @@ const scoresTotalTotoFetched = (
   };
 };
 
-const scoresTotoRoundFetched = (totoRound: Scores): ScoresTotoRoundFetched => {
+export const scoresTotoRoundFetched = (
+  totoRound: Scores
+): ScoresTotoRoundFetched => {
   return {
     type: SCORES_TOTO_ROUND_FETCHED,
     totoRound,

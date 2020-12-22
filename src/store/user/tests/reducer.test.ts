@@ -3,6 +3,8 @@ import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,
   TOKEN_STILL_VALID_USER,
+  UPDATE_USER_PROFILE,
+  USER_SCORES_FETCHED,
   LogInSuccessUser,
   LogOutUser,
   TokenUserStillValid,
