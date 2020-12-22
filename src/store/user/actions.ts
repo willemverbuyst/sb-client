@@ -205,7 +205,7 @@ export const getUserWithStoredToken = async (
     } else {
       console.log(error);
     }
-    userLogOut();
+    userLogOut()(dispatch);
     dispatch(appDoneLoading());
   }
 };

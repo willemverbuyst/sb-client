@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { ScoresUser } from '../../store/user/types';
@@ -9,9 +8,6 @@ type Prop = {
 }
 
 export default function ScoresStackedChart({userScores}: Prop) {
-  // const history = useHistory();
-  // const gotoPlayer = (id: number) => 
-  //   history.push(`/spelers/${scores[id].id}`);
 
   const chartData = {
     labels: userScores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
@@ -23,6 +19,7 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         backgroundColor: '#1e5eb1',
+        hoverBackgroundColor: '#EA9C3B',
       },
       {
         stack: '',
@@ -31,6 +28,7 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         backgroundColor: '#4f8ad8',
+        hoverBackgroundColor: '#EA9C3B',
       },
       {
         stack: '',
@@ -39,6 +37,7 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         backgroundColor: '#99c3fa',
+        hoverBackgroundColor: '#EA9C3B',
       },
       {
         stack: '',
@@ -47,6 +46,7 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         backgroundColor: '#c2d9f7',
+        hoverBackgroundColor: '#EA9C3B',
       }
     ]
   }
@@ -55,8 +55,22 @@ export default function ScoresStackedChart({userScores}: Prop) {
     <Bar
       data={chartData}
       options={{
-        tooltips: { 
-          enabled: false, 
+        tooltips: {
+          enabled: true,  
+          callbacks: {
+            title: (tooltipItem, _chartData) => {
+              let total = 0;
+              for (let i = 0; i < chartData.datasets.length; i++) {
+                typeof chartData.datasets[i].data[tooltipItem[0].index!] === 'number' 
+                ? total += chartData.datasets[i].data[tooltipItem[0].index!]
+                : total += 0
+              }
+              return `Totaal: ${total}`
+            },
+            label: (tooltipItem, _chartData) => {
+              return `Scores: ${userScores[tooltipItem!.index!]}`
+            }
+          },
         },
         legend: {
           display: false,
@@ -84,16 +98,12 @@ export default function ScoresStackedChart({userScores}: Prop) {
             },
           ],
         },
-        // plugins: {
-        //   datalabels: {
-        //      anchor: 'end',
-        //      align:'top',
-        //      display: true,
-        //      color: 'black',
-        //   }
-        // }
+        plugins: {
+          datalabels: {
+            display: false,
+          }
+        }
       }}
-      // onElementsClick={(e) => {if (e[0] !== undefined ) gotoPlayer(e[0]._index)}}
     />
   );
 }
