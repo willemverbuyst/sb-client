@@ -6,6 +6,10 @@ const User = require('../models').user;
 const { Op } = require('sequelize');
 const calcScores = require('../utils/calc-scores');
 const reducer = require('../utils/reducer');
+const {
+  chunkArrayTotoRounds,
+  lastMonday,
+} = require('../utils/helper-functions');
 
 const router = new Router();
 
@@ -257,6 +261,79 @@ router.get('/rounds/:id', authMiddleware, async (req, res) => {
     } else {
       const round = {
         usersWithScores: predictions,
+        id,
+      };
+
+      return res.status(200).send(round);
+    }
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+/*** GET THE SCORES OF LOGGED IN USER FOR A ALL ROUNDS ***/
+/*** PRIVATE ***/
+router.get('/users', authMiddleware, async (req, res) => {
+  const { id } = req.user;
+
+  const timeStampLastMonday = lastMonday();
+
+  const fixtures = await Fixture.findAll({
+    where: {
+      eventTimeStamp: {
+        [Op.lt]: [timeStampLastMonday],
+      },
+    },
+    order: [['id', 'ASC']],
+  });
+
+  try {
+    const fixturesWithPredictions = await Fixture.findAll({
+      where: {
+        id: {
+          [Op.lte]: fixtures[fixtures.length - 1].id,
+        },
+      },
+      include: [
+        {
+          model: Prediction,
+          where: {
+            userId: +id,
+          },
+          required: false,
+        },
+      ],
+      order: [['id', 'ASC']],
+      raw: true,
+      nest: true,
+    });
+
+    if (fixtures.length > 0) {
+      const fixturesWithScores = fixturesWithPredictions.map((fixture) => {
+        return {
+          score: calcScores(
+            {
+              homeTeam: fixture.goalsHomeTeam,
+              awayTeam: fixture.goalsAwayTeam,
+            },
+            {
+              homeTeam: fixture.predictions.pGoalsHomeTeam,
+              awayTeam: fixture.predictions.pGoalsAwayTeam,
+            }
+          ),
+        };
+      });
+
+      const chunkedScores = chunkArrayTotoRounds(fixturesWithScores);
+
+      const result = chunkedScores.map((totoround) =>
+        totoround.map((round) => round.reduce((a, b) => a + b.score, 0))
+      );
+
+      return res.status(200).send({ scores: result });
+    } else {
+      const round = {
+        usersWithScores: fixtures,
         id,
       };
 
