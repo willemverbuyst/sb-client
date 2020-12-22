@@ -13,6 +13,7 @@ import { ITeam } from '../../../models/toto.models';
 
 describe('#logInSuccessUser', () => {
   const initialState: UserState = {
+    scores: null,
     token: null,
     user: null,
   };
@@ -43,7 +44,7 @@ describe('#logInSuccessUser', () => {
       expect(newState.token).not.toBeNull();
       expect(newState.token).not.toBe(initialState.token);
       expect(newState.token).toBe(user.token);
-      expect(newState).toEqual({ token: user.token, user });
+      expect(newState).toEqual({ scores: null, token: user.token, user });
       expect(newState).not.toEqual(initialState);
     });
   });
@@ -51,6 +52,7 @@ describe('#logInSuccessUser', () => {
 
 describe('#logOutUser', () => {
   const initialState: UserState = {
+    scores: null,
     token: null,
     user: null,
   };
@@ -74,10 +76,12 @@ describe('#logOutUser', () => {
 
 describe('#tokenUserStillValid', () => {
   const initialState: UserState = {
+    scores: null,
     token: null,
     user: null,
   };
   const state: UserState = {
+    scores: null,
     token: 'test_token',
     user: null,
   };
@@ -108,7 +112,7 @@ describe('#tokenUserStillValid', () => {
       expect(newState.token).not.toBeNull();
       expect(newState.token).not.toBe(initialState.token);
       expect(newState.token).toBe(user.token);
-      expect(newState).toEqual({ token: user.token, user });
+      expect(newState).toEqual({ scores: null, token: user.token, user });
       expect(newState).not.toEqual(initialState);
     });
   });

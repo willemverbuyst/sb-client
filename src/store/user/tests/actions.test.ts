@@ -144,7 +144,7 @@ describe('#userLogOut', () => {
   it('dispatches six actions', () => {
     const dispatch = jest.fn();
 
-    userLogOut(dispatch);
+    userLogOut()(dispatch);
     expect(dispatch).toHaveBeenCalledWith(logOutUser());
     expect(dispatch).toHaveBeenCalledWith(setMessage('success', 'Tot ziens!'));
     expect(dispatch).toHaveBeenCalledWith(removeAllScores());
