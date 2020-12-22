@@ -92,9 +92,9 @@ describe('#scoresStateReducer', () => {
     test('returns the initial state', () => {
       expect(newState).toEqual(initialState);
       expect(newState).toHaveProperty('fixtureScores');
-      expect(newState.fixtureScores).toEqual(null);
-      expect(newState.totalTotoScores).toEqual(null);
-      expect(newState.totoRoundScores).toEqual(null);
+      expect(newState.fixtureScores).toBeNull();
+      expect(newState.totalTotoScores).toBeNull();
+      expect(newState.totoRoundScores).toBeNull();
     });
   });
   describe('if given SCORES_FIXTURE_FETCHED action type and a payload with fixtures', () => {
@@ -141,14 +141,14 @@ describe('#scoresStateReducer', () => {
 
     test('returns a state w/ a fixture with scores', () => {
       expect(newState).not.toEqual(initialState);
-      expect(newState.roundScores).toEqual(null);
-      expect(newState.totalTotoScores).toEqual(null);
-      expect(newState.totoRoundScores).toEqual(null);
+      expect(newState.roundScores).toBeNull();
+      expect(newState.totalTotoScores).toBeNull();
+      expect(newState.totoRoundScores).toBeNull();
       expect(newState).toHaveProperty('fixtureScores');
-      expect(newState.fixtureScores).not.toEqual(null);
+      expect(newState.fixtureScores).not.toBeNull();
       expect(newState.fixtureScores?.scores?.length).toBeGreaterThan(0);
       expect(newState.fixtureScores?.scores?.length).toBeLessThan(2);
-      expect(newState.fixtureScores?.fixture).not.toEqual(null);
+      expect(newState.fixtureScores?.fixture).not.toBeNull();
     });
   });
 });

@@ -69,6 +69,8 @@ describe('#logOutUser', () => {
       const newerState = reducer(newState, action);
       expect(newState.token).not.toEqual(initialState.token);
       expect(newerState.token).toBeNull();
+      expect(newerState.user).toBeNull();
+      expect(newerState.scores).toBeNull();
       expect(initialState.token).toBeNull();
     });
   });
