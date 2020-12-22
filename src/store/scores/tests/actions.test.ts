@@ -27,6 +27,17 @@ beforeEach(() => {
 });
 
 describe('#scoressState', () => {
+  describe('#removeAllScores', () => {
+    const expected: RemoveAllScores = {
+      type: REMOVE_ALL_SCORES,
+    };
+    test('returns an action w/ type REMOVE_ALL_SCORES and no payload', () => {
+      expect(removeAllScores()).toEqual(expected);
+      expect(removeAllScores()).not.toHaveProperty('payload');
+      expect(removeAllScores()).toHaveProperty('type');
+    });
+  });
+
   describe('#scoresFixtureFetched w/ fixture', () => {
     const fixture: IFixture = {
       awayTeamId: 1,
