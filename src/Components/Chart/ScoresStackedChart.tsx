@@ -2,51 +2,54 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
-import { UserWithScore } from '../../store/scores/types';
+import { ScoresUser } from '../../store/user/types';
 
 type Prop = {
-  scores: UserWithScore[];
+  userScores: ScoresUser;
 }
 
-export default function ScoresStackedChart() {
+export default function ScoresStackedChart({userScores}: Prop) {
   // const history = useHistory();
-  // const labels = scores.map(player => player.user.toLocaleUpperCase());
-  // const userScores = scores.map(player => player.score);
-  // const max = Math.max(...userScores) * 1.2;
-
   // const gotoPlayer = (id: number) => 
   //   history.push(`/spelers/${scores[id].id}`);
 
-const chartData = {
-  labels: ['Ronde 1', 'Ronde 2', 'Ronde 3', 'Ronde 4', 'Ronde 5'],
-  datasets: [
-    // These two will be in the same stack.
-    {
-      stack: '',
-      label: 'data1',
-      data: [3, 2, 3, 4, 5],
-      borderWidth: 2,
-      borderColor: '#f1f1f1',
-      backgroundColor:' #1e5eb1',
-    },
-    {
-      stack: '',
-      label: 'data2',
-      data: [5, 4, 3, 2, 1],
-      borderWidth: 2,
-      borderColor: '#f1f1f1',
-      backgroundColor:' #4f8ad8',
-    },
-    {
-      stack: '',
-      label: 'data3',
-      data: [1, 2, 3, 3, 3],
-      borderWidth: 2,
-      borderColor: '#f1f1f1',
-      backgroundColor:' #99c3fa',
-    }
-  ]
-}
+  const chartData = {
+    labels: userScores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
+    datasets: [
+      {
+        stack: '',
+        label: 'part1',
+        data: userScores.map(totoRound => totoRound[0]),
+        borderWidth: 2,
+        borderColor: '#f1f1f1',
+        backgroundColor: '#1e5eb1',
+      },
+      {
+        stack: '',
+        label: 'part2',
+        data: userScores.map(totoRound => totoRound[1]),
+        borderWidth: 2,
+        borderColor: '#f1f1f1',
+        backgroundColor: '#4f8ad8',
+      },
+      {
+        stack: '',
+        label: 'part3',
+        data: userScores.map(totoRound => totoRound[2]),
+        borderWidth: 2,
+        borderColor: '#f1f1f1',
+        backgroundColor: '#99c3fa',
+      },
+      {
+        stack: '',
+        label: 'part4',
+        data: userScores.map(totoRound => totoRound[3]),
+        borderWidth: 2,
+        borderColor: '#f1f1f1',
+        backgroundColor: '#c2d9f7',
+      }
+    ]
+  }
 
   return (
     <Bar
@@ -65,7 +68,6 @@ const chartData = {
               ticks: {
                 display: false,
                 suggestedMin: 0,
-                suggestedMax: 10,
               },
               gridLines: {
                 display: false,

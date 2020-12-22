@@ -95,7 +95,9 @@ export default function Profile() {
         </Grid>
       </Grid>
 
-      <ScoresStackedChart/>
+      { scores ? 
+        <ScoresStackedChart userScores={scores}/>
+      : null }
 
       { isLoading ?
           <Box className={classes.progress}>
