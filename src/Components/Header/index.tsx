@@ -92,12 +92,6 @@ export default function Header() {
               <EmojiEvents />
             </Tooltip>
           </IconButton>
-          
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProfile}>
-            <Tooltip title="Mijn profiel"  arrow>
-              <Face />
-            </Tooltip>
-          </IconButton>
 
           <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoPlayers}>
             <Tooltip title="Spelers" arrow>
@@ -118,6 +112,18 @@ export default function Header() {
               </Tooltip>
             </IconButton>
           ) : ('')}   
+             
+          <IconButton 
+            edge="start" 
+            className={classes.icon} 
+            color="inherit" 
+            aria-label="account circle" 
+            onClick={gotoProfile}
+          >
+            <Tooltip title="Mijn profiel"  arrow>
+              <Face />
+            </Tooltip>
+          </IconButton>
       
           <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRules}>
             <Tooltip title="Regels" arrow>

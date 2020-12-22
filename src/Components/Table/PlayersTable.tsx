@@ -34,7 +34,7 @@ export default function PlayersTable({players}: Prop) {
             { user && user.admin ? <TableCell align="left">achternaam</TableCell> : null }
             <TableCell align="center">totaal-toto</TableCell>
             { user && user.admin ? <TableCell align="left">telefoon</TableCell> : null }
-            <TableCell align="left">email</TableCell>
+            { user && user.admin ? <TableCell align="left">email</TableCell> : null }
           </TableRow>
         </TableHead>
         <TableBody>

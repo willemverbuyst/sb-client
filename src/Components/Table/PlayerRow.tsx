@@ -71,9 +71,11 @@ export default function PlayerRow(props: Props) {
         </TableCell>
       : null }
 
+      { props.userIsAdmin? 
       <TableCell align="left">
         {props.player.email}
       </TableCell>
+      : null }
       
     </TableRow>
   )

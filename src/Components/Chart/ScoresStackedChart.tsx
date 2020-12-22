@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { ScoresUser } from '../../store/user/types';
@@ -8,6 +9,10 @@ type Prop = {
 }
 
 export default function ScoresStackedChart({userScores}: Prop) {
+  const history = useHistory();
+
+  const gotoTotoRound = (id: number) => 
+  history.push(`/scores/totoronde/${id}`);
 
   const chartData = {
     labels: userScores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
@@ -104,6 +109,7 @@ export default function ScoresStackedChart({userScores}: Prop) {
           }
         }
       }}
+      onElementsClick={(e) => {if (e[0] !== undefined ) gotoTotoRound(e[0]._index + 1 )}}
     />
   );
 }
