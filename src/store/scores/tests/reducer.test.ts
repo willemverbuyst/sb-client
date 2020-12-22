@@ -151,4 +151,35 @@ describe('#scoresStateReducer', () => {
       expect(newState.fixtureScores?.fixture).not.toBeNull();
     });
   });
+  describe('if given SCORES_TOTAL_TOTO_FETCHED action type and a payload with totalToto', () => {
+    const initialState: ScoresState = {
+      fixtureScores: null,
+      roundScores: null,
+      totalTotoScores: null,
+      totoRoundScores: null,
+    };
+    const totalToto: UserWithScore[] = [
+      {
+        score: 10,
+        user: 'test_user',
+        id: 1,
+      },
+    ];
+    const action: ScoresTotalTotoFetched = {
+      type: SCORES_TOTAL_TOTO_FETCHED,
+      totalToto,
+    };
+    const newState: ScoresState = reducer(initialState, action);
+
+    test('returns a state w/ a totalTotoScores', () => {
+      expect(newState).not.toEqual(initialState);
+      expect(newState.fixtureScores).toBeNull();
+      expect(newState.roundScores).toBeNull();
+      expect(newState.totalTotoScores).not.toBeNull();
+      expect(newState.totoRoundScores).toBeNull();
+      expect(newState).toHaveProperty('totalTotoScores');
+      expect(newState.totalTotoScores?.length).toBeGreaterThan(0);
+      expect(newState.totalTotoScores?.length).toBeLessThan(2);
+    });
+  });
 });
