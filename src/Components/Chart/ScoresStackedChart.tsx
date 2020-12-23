@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Bar } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { ScoresUser } from '../../store/user/types';
 
@@ -14,42 +14,36 @@ export default function ScoresStackedChart({userScores}: Prop) {
   const gotoTotoRound = (id: number) => 
   history.push(`/scores/totoronde/${id}`);
 
+  const totals = userScores.map((totoround) => totoround.reduce((a, b)=> a + b))
+
   const chartData = {
     labels: userScores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
     datasets: [
       {
         stack: '',
         label: 'part1',
-        data: userScores.map(totoRound => totoRound[0]),
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
+        data: userScores.map(totoRound => totoRound[0] ? totoRound[0] : 0 ),
         backgroundColor: '#1e5eb1',
         hoverBackgroundColor: '#EA9C3B',
       },
       {
         stack: '',
         label: 'part2',
-        data: userScores.map(totoRound => totoRound[1]),
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
+        data: userScores.map(totoRound => totoRound[1] ? totoRound[1] : 0 ),
         backgroundColor: '#4f8ad8',
         hoverBackgroundColor: '#EA9C3B',
       },
       {
         stack: '',
         label: 'part3',
-        data: userScores.map(totoRound => totoRound[2]),
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
+        data: userScores.map(totoRound => totoRound[2] ? totoRound[2] : 0 ),
         backgroundColor: '#99c3fa',
         hoverBackgroundColor: '#EA9C3B',
       },
       {
         stack: '',
         label: 'part4',
-        data: userScores.map(totoRound => totoRound[3]),
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
+        data: userScores.map(totoRound => totoRound[3] ? totoRound[3] : 0 ),
         backgroundColor: '#c2d9f7',
         hoverBackgroundColor: '#EA9C3B',
       }
@@ -57,24 +51,14 @@ export default function ScoresStackedChart({userScores}: Prop) {
   }
 
   return (
-    <Bar
+    <HorizontalBar
       data={chartData}
       options={{
         tooltips: {
           enabled: true,  
           callbacks: {
-            title: (tooltipItem, _chartData) => {
-              let total = 0;
-              for (let i = 0; i < chartData.datasets.length; i++) {
-                typeof chartData.datasets[i].data[tooltipItem[0].index!] === 'number' 
-                ? total += chartData.datasets[i].data[tooltipItem[0].index!]
-                : total += 0
-              }
-              return `Totaal: ${total}`
-            },
-            label: (tooltipItem, _chartData) => {
-              return `Scores: ${userScores[tooltipItem!.index!]}`
-            }
+            title: (tooltipItem, _chartData) => `Scores: ${userScores[tooltipItem[0].index!]}`,
+            label: (_tooltipItem, _chartData) => ``,
           },
         },
         legend: {
@@ -84,10 +68,6 @@ export default function ScoresStackedChart({userScores}: Prop) {
         scales: {
           yAxes: [
             {
-              ticks: {
-                display: false,
-                suggestedMin: 0,
-              },
               gridLines: {
                 display: false,
               },
@@ -96,6 +76,9 @@ export default function ScoresStackedChart({userScores}: Prop) {
           ],
           xAxes: [
             {
+              ticks: {
+                display: false
+              },
               gridLines: {
                 display: false,
               },
@@ -105,7 +88,11 @@ export default function ScoresStackedChart({userScores}: Prop) {
         },
         plugins: {
           datalabels: {
-            display: false,
+            display: (ctx) =>  ctx.datasetIndex === 3,
+            formatter: (_value, ctx) => totals[ctx.dataIndex],
+            anchor: 'end',
+            align: 'end',
+            color: '#000',
           }
         }
       }}
