@@ -83,7 +83,6 @@ export default function ScoresUser() {
             <Divider className={classes.divider}/>
           </Grid>
           
-          
           <Grid
             container
             direction="row"

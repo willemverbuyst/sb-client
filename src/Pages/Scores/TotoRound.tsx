@@ -68,6 +68,9 @@ export default function TotoRound() {
 
   const totoRoundSortedByName: UserWithScore[]=  totoRound && totoRound.usersWithScores ? [...totoRound.usersWithScores]
   .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
+
+  const gotoTotoRound = () => 
+  history.push(`/voorspellingen/${id}/${+id * 3 - 2}`);
   
   return ( 
     <Box>
@@ -83,9 +86,9 @@ export default function TotoRound() {
             size="small" 
             color="secondary" 
             disableElevation 
-            onClick={()=> history.goBack()}
+            onClick={gotoTotoRound}
           >
-            TERUG
+            MIJN VOORSPELLINGEN
           </Button>
         </Grid>
       </Grid>

@@ -18,6 +18,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
+import { TOTAL_ROUNDS } from '../../constants/setupGame';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -64,7 +65,15 @@ export default function Round() {
 
   const roundSortedByName: UserWithScore[]= round && round.usersWithScores ? [...round.usersWithScores]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
- 
+
+  const gotoTotoRound = () => {  
+    const t = +id !== TOTAL_ROUNDS
+      ? Math.floor((+id - 1)/ 3) + 1 
+      : Math.floor((+id - 2)/ 3) + 1 
+
+    history.push(`/voorspellingen/${t}/${+id}`);
+  }
+
   return ( 
     <Box>
       <Grid container justify="space-between">
@@ -72,6 +81,17 @@ export default function Round() {
           <Typography variant="h3" className={classes.title}>
             Scores
           </Typography>
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained" 
+            size="small" 
+            color="secondary" 
+            disableElevation 
+            onClick={gotoTotoRound}
+          >
+            MIJN VOORSPELLINGEN
+          </Button>
         </Grid>
       </Grid>
 
