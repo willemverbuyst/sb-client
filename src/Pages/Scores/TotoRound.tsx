@@ -84,7 +84,7 @@ export default function TotoRound() {
           <Button
             variant="contained" 
             size="small" 
-            color="secondary" 
+            color="primary" 
             disableElevation 
             onClick={gotoTotoRound}
           >

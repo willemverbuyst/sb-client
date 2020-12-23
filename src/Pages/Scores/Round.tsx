@@ -86,7 +86,7 @@ export default function Round() {
           <Button
             variant="contained" 
             size="small" 
-            color="secondary" 
+            color="primary" 
             disableElevation 
             onClick={gotoTotoRound}
           >
@@ -151,7 +151,7 @@ export default function Round() {
             color="primary"
             onClick={()=> history.goBack()}
           >
-            Totoronde { +id !== 34
+            Totoronde { +id !== TOTAL_ROUNDS
               ? Math.floor((+id - 1)/ 3) + 1 
               : Math.floor((+id - 2)/ 3) + 1 
               }

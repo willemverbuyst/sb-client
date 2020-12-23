@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  btn: {
+    marginTop: theme.spacing(1)
   }
 }));
 
@@ -83,15 +86,30 @@ export default function Predictions() {
         </Grid>
         { fixtures ?
           <Grid>
-            <Button
-              variant="contained" 
-              size="small" 
-              color="secondary" 
-              disableElevation 
-              onClick={()=> history.push(`/scores/totoronde/${t}`)}
-            >
-              SCORES TOTORONDE: {t}
-            </Button>
+            <Grid>
+              <Button
+                fullWidth
+                variant="contained" 
+                size="small" 
+                color="secondary" 
+                disableElevation 
+                onClick={()=> history.push(`/scores/totoronde/${t}`)}
+              >
+                SCORES TOTORONDE: {t}
+              </Button>
+            </Grid>
+            <Grid className={classes.btn}>
+              <Button
+                fullWidth
+                variant="contained" 
+                size="small" 
+                color="secondary" 
+                disableElevation 
+                onClick={()=> history.push(`/scores/ronde/${r}`)}
+              >
+                SCORES RONDE: {r}
+              </Button>
+            </Grid>
           </Grid>
         :
           null

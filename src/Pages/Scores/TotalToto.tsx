@@ -67,6 +67,9 @@ export default function TotalToto() {
 
   const totalTotoSortedByName: UserWithScore[]= totalToto ? [...totalToto]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
+
+  const gotoTotoRound = () => 
+    history.push(`/voorspellingen/1/1`);
  
   return ( 
     <Box>
@@ -75,6 +78,17 @@ export default function TotalToto() {
           <Typography variant="h3" className={classes.title}>
             Scores
           </Typography>
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained" 
+            size="small" 
+            color="primary" 
+            disableElevation 
+            onClick={gotoTotoRound}
+          >
+            MIJN VOORSPELLINGEN
+          </Button>
         </Grid>
       </Grid>
 
