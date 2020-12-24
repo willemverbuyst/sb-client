@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectScores, selectToken, selectUser } from '../../store/user/selectors'
+import { selectScores, selectToken } from '../../store/user/selectors'
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -39,24 +39,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
  }));
 
-export default function ScoresUser() {
+export default function ScoresPlayer() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
-  const user = useSelector(selectUser);
   const scores = useSelector(selectScores);
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
+  console.log(scores)
+
   useEffect(() => {
-    if (user && !scores) {
-      dispatch(fetchUserScores(+user.id));
-    }
-  });
+    //  adjust logic to prevent refetching
+    dispatch(fetchUserScores(+id));
+  }, [dispatch, id]);
 
   return (
     <Box>
@@ -76,7 +77,7 @@ export default function ScoresUser() {
               disableElevation 
               onClick={()=> history.push(`/voorspellingen/1/1`)}
             >
-              MIJN VOORSPELLINGEN
+              VOORSPELLINGEN
             </Button>
           </Grid>
         </Grid>
@@ -94,7 +95,7 @@ export default function ScoresUser() {
             className={classes.totoRound}
           >
             <Typography variant="h4">
-              MIJN TOTO RONDES
+              TOTO RONDES
             </Typography>
           </Grid>
 
@@ -116,7 +117,7 @@ export default function ScoresUser() {
       : 
         <Grid>
           <Typography variant="overline">
-            Je hebt nog geen scores
+            Nog geen scores
           </Typography>
         </Grid> 
       }

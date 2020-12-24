@@ -125,14 +125,14 @@ export const editUserProfile = (profileDetails: IProfileDetails) => {
   };
 };
 
-export const fetchUserScores = () => async (
+export const fetchUserScores = (id: number) => async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/me/scores`, {
+    const response = await axios.get(`${apiUrl}/scores/users/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const scores = response.data.scores;

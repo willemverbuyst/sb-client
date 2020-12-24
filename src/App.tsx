@@ -27,6 +27,7 @@ import {
   Theme 
 } from '@material-ui/core/styles';
 import { Grid, Box } from '@material-ui/core';
+import ScoresPlayer from './Pages/Players/ScoresPlayer';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -73,16 +74,17 @@ function App() {
               <Route exact path="/home" component={Home} />
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/mijnscores" component={ScoresUser} />
-              <Route exact path="/page-not-found" component={PageNotFound} />
-              <Route exact path="/profiel" component={Profile} />
-              <Route exact path="/regels" component={Rules} />
               <Route exact path="/klassement/ronde/:id" component={Round} />
               <Route exact path="/klassement/totaaltoto" component={TotalToto} />
               <Route exact path="/klassement/totoronde/:id" component={TotoRound} />
-              <Route exact path="/wedstrijd/:id" component={Fixture} />
+              <Route exact path="/page-not-found" component={PageNotFound} />
+              <Route exact path="/profiel" component={Profile} />
+              <Route exact path="/regels" component={Rules} />
+              <Route exact path="/spelers/scores/:id" component={ScoresPlayer} />
               <Route exact path="/spelers" component={ListOfPlayers} />
               <Route exact path="/spelers/:id" component={PublicProfilePlayer} />
               <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
+              <Route exact path="/wedstrijd/:id" component={Fixture} />
               <Redirect path="/" to="/page-not-found" />
             </Switch>
           </Box>
