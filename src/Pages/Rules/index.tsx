@@ -9,6 +9,7 @@ import {
   withStyles
 } from '@material-ui/core/styles';
 import { 
+  Box,
   Grid,
   List, 
   ListItem, 
@@ -81,7 +82,7 @@ export default function Rules() {
   });
 
   return (
-    <Grid container>
+    <Box>
       <Grid container>
         <Grid>
           <Typography variant="h3" className={classes.title}>
@@ -202,6 +203,6 @@ export default function Rules() {
           </Accordion>
         </Grid>
       </Grid>
-    </Grid> 
+    </Box> 
   );
 }

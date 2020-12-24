@@ -52,8 +52,8 @@ export default function Program() {
   }, [dispatch, currentRound]);
 
   return (
-    <Grid container>
-      <Grid container justify="space-between">
+    <Box>
+      <Grid container>
         <Grid>
           <Typography variant="h3" className={classes.title}>
           Programma
@@ -76,6 +76,6 @@ export default function Program() {
             </Grid>)}
         </Grid>
       :  null }
-    </Grid>
+    </Box>
   )
 }

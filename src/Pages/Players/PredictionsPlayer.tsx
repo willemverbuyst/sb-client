@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core/styles';
 import { 
   Box, 
-  Divider, 
+  Button, 
   Grid, 
   Typography 
 } from '@material-ui/core';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       fontWeight: 'bold',
-      marginBottom: theme.spacing(1),
+      marginBottom: theme.spacing(3),
       color: theme.palette.secondary.main
     },
     logo: {
@@ -74,40 +74,44 @@ export default function PredictionsPlayer() {
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
     setRoundNumber(value);
   };
-
-  // console.log(playerProfile)
   
+  const gotoScores = () => history.push(`/spelers/${id}/scores`);
+
   return (
     isLoading ?
-    <Grid container>
-      <Grid container justify="space-between">
+    <Box>
+      <Grid container >
         <Grid>
           <Typography variant="h3" className={classes.title}>
-            Wacht op profiel
+            Wacht op voorspellingen
           </Typography>
         </Grid>
       </Grid>
       <Box className={classes.progress}>
         <ProgressLinear/> 
       </Box>
-    </Grid>
+    </Box>
     : playerProfile ?
-      <Grid container>
-        <Grid container>
+      <Box>
+        <Grid container justify="space-between">
           <Grid>
             <Typography variant="h3" className={classes.title}>
               {playerProfile.userName}
             </Typography>
           </Grid>
           <Grid>
-            <img 
-            alt={playerProfile.team.name} 
-            src={playerProfile.team.logo} 
-            className={classes.logo}/> 
+            <Button
+              fullWidth
+              variant="contained" 
+              size="small" 
+              color="secondary" 
+              disableElevation 
+              onClick={gotoScores}
+            >
+              SCORES
+            </Button>
           </Grid>
         </Grid>
-
-        <Divider/>
 
         { playerProfile && playerProfile.pastFixturesWithScores ?
           <>
@@ -139,7 +143,7 @@ export default function PredictionsPlayer() {
             /> 
           </>
         : null }
-      </Grid> 
+      </Box> 
     :null 
   ) 
 }

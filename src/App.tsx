@@ -81,7 +81,11 @@ function App() {
               <Route exact path="/scores" component={ScoresUser} />
               <Route exact path="/spelers" component={ListOfPlayers} />
               <Route exact path="/spelers/:id/scores" component={ScoresPlayer} />
-              <Route exact path="/spelers/:id/voorspellingen" component={PredictionsPlayer} />
+              <Route 
+                exact 
+                path="/spelers/:id/voorspellingen/:totoronde/:ronde" 
+                component={PredictionsPlayer} 
+              />
               <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
               <Route exact path="/wedstrijd/:id" component={Fixture} />
               <Redirect path="/" to="/page-not-found" />

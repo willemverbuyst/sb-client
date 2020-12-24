@@ -57,14 +57,27 @@ export default function ScoresPlayer() {
   }, [dispatch, id]);
 
   return (
-    <Box>
-      <Grid container justify="space-between">
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Scores
-          </Typography>
+    isLoading ?
+      <Box>
+        <Grid container >
+          <Grid>
+            <Typography variant="h3" className={classes.title}>
+              Wacht op scores
+            </Typography>
+          </Grid>
         </Grid>
-        { isLoading ? null :
+        <Box className={classes.progress}>
+          <ProgressLinear/> 
+        </Box>
+      </Box>
+    : scoresPlayer ?
+      <Box>
+        <Grid container justify="space-between">
+          <Grid>
+            <Typography variant="h3" className={classes.title}>
+            {scoresPlayer.userName}
+            </Typography>
+          </Grid>
           <Grid>
             <Grid>
               <Button
@@ -75,55 +88,51 @@ export default function ScoresPlayer() {
                 disableElevation 
                 onClick={()=> history.push(`/voorspellingen/1/1`)}
               >
-                {scoresPlayer?.userName.toLocaleUpperCase()}S VOORSPELLINGEN
+                VOORSPELLINGEN
               </Button>
             </Grid>
           </Grid>
-        }
-      </Grid>
+        </Grid>
 
-      { isLoading ?
-          <Box className={classes.progress}>
-            <ProgressLinear/> 
-          </Box>
-      : scoresPlayer && scoresPlayer.scores ? 
-        <>
-          <Grid 
-            item xs={12} 
-            container justify="center" 
-            className={classes.totoRound}
-          >
-            <Typography variant="h4">
-            {scoresPlayer?.userName.toLocaleUpperCase()}S TOTO RONDES
-            </Typography>
-          </Grid>
-
-          <Grid className={classes.divider}>
-            <Divider/>
-          </Grid>
-          
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item xs={12} md={6} container justify="center">
-              <ScoresStackedChart 
-                scores={scoresPlayer.scores}
-                colorMain={colorSecondary}
-                colorHover={colorPrimary}
-              />
+        { scoresPlayer && scoresPlayer.scores ? 
+          <>
+            <Grid 
+              item xs={12} 
+              container justify="center" 
+              className={classes.totoRound}
+            >
+              <Typography variant="h4">
+                TOTO RONDES
+              </Typography>
             </Grid>
-          </Grid>
-        </>  
-      : 
-        <Grid>
-          <Typography variant="overline">
-            Nog geen scores
-          </Typography>
-        </Grid> 
-      }
-    </Box>
+
+            <Grid className={classes.divider}>
+              <Divider/>
+            </Grid>
+            
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item xs={12} md={6} container justify="center">
+                <ScoresStackedChart 
+                  scores={scoresPlayer.scores}
+                  colorMain={colorSecondary}
+                  colorHover={colorPrimary}
+                />
+              </Grid>
+            </Grid>
+          </>  
+        : 
+          <Grid>
+            <Typography variant="overline">
+              Nog geen scores
+            </Typography>
+          </Grid> 
+        } 
+      </Box>
+    : null 
   )
 }

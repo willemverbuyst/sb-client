@@ -16,7 +16,7 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
   const max = Math.max(...userScores) * 1.2;
   
   const gotoPlayer = (id: number) => 
-    history.push(`/spelers/${scores[id].userId}`);
+    history.push(`/spelers/${scores[id].userId}/scores`);
 
   const chartData = {
     labels: labels,

@@ -35,7 +35,8 @@ export default function PlayerRow(props: Props) {
   const classes = useStyles();
   const history = useHistory()
 
-  const gotoPredictions = () => history.push(`/spelers/${props.player.id}/voorspellingen`)
+  const gotoPredictions = () => 
+    history.push(`/spelers/${props.player.id}/voorspellingen/1/1`)
 
   return (
     <TableRow className={classes.link} onClick={gotoPredictions}>

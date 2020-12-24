@@ -12,8 +12,7 @@ import {
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -55,24 +54,26 @@ export default function ListOfPlayers() {
   }, [dispatch, players]);
   
   return (
-    <Grid container>
+    <Box>
       <Grid container>
-        <Typography variant="h3" className={classes.title}>
-          Spelers
-        </Typography>
-      </Grid>
-
-      { isLoading ?
-        <Box className={classes.progress}>
-          <ProgressLinear/> 
-        </Box>
-      : players ? 
-        <Grid container justify="center"> 
-          <Grid item xs={10} className={classes.playersTable}>
-            <PlayersTable players={players} />
-          </Grid> 
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+            Spelers
+          </Typography>
         </Grid>
-      : null }
-    </Grid>        
+
+        { isLoading ?
+          <Box className={classes.progress}>
+            <ProgressLinear/> 
+          </Box>
+        : players ? 
+          <Grid container justify="center"> 
+            <Grid item xs={10} className={classes.playersTable}>
+              <PlayersTable players={players} />
+            </Grid> 
+          </Grid>
+        : null }
+      </Grid>
+    </Box>      
   ) 
 }
