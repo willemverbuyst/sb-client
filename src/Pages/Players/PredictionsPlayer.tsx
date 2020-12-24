@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
@@ -19,6 +19,7 @@ import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
+import { TOTAL_ROUNDS } from '../../constants/setupGame';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,8 +56,10 @@ export default function PredictionsPlayer() {
   const token = useSelector(selectToken);
   const playerProfile = useSelector(selectPlayerProfile)
   const isLoading = useSelector(selectAppLoading);
-  const [totoRoundNumber, setTotoRoundNumber] = useState<number>(1);
-  const [roundNumber, setRoundNumber] = useState<number>(1);
+  const { totoronde} = useParams<{ totoronde: string }>();
+  const { ronde } = useParams<{ ronde: string }>();
+  let t = +totoronde;
+  let r = +ronde;
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -66,16 +69,20 @@ export default function PredictionsPlayer() {
     dispatch(fetchPlayerProfile(+id));
   }, [dispatch, id]);
 
+  const gotoScores = () => history.push(`/spelers/${id}/scores`);
+
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setTotoRoundNumber(value);
-    setRoundNumber(1);
+    r = value * 3 - 2;
+    history.push(`/spelers/${id}/voorspellingen/${value}/${r}`);
   };
 
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
-    setRoundNumber(value);
+    t = value !== TOTAL_ROUNDS 
+      ? Math.floor((value - 1)/ 3) + 1 
+      : Math.floor((value - 2)/ 3) + 1 
+
+    history.push(`/spelers/${id}/voorspellingen/${t}/${value}`);
   };
-  
-  const gotoScores = () => history.push(`/spelers/${id}/scores`);
 
   return (
     isLoading ?
@@ -116,7 +123,7 @@ export default function PredictionsPlayer() {
         { playerProfile && playerProfile.pastFixturesWithScores ?
           <>
             <Grid item xs={12} container justify="center">
-              { playerProfile.pastFixturesWithScores ? [...playerProfile.pastFixturesWithScores[totoRoundNumber-1][roundNumber -1]]
+              { playerProfile.pastFixturesWithScores ? [...playerProfile.pastFixturesWithScores[t-1][r !== TOTAL_ROUNDS ? (r + 2) % 3 : (r % 3) + 2 ]]
                 .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
                 .map((wedstrijd, i) => 
                   <Grid item key={i} lg={4} md={6} xs={12}>
@@ -129,15 +136,15 @@ export default function PredictionsPlayer() {
             </Grid>
             <PaginationComponent 
               label="Totoronde"
-              page={totoRoundNumber}
+              page={t}
               count={playerProfile.pastFixturesWithScores.length}
               color="primary"
               onChange={handleChangeTotoRounds}
             /> 
             <PaginationComponent 
               label="Speelronde"
-              page={roundNumber}
-              count={playerProfile.pastFixturesWithScores[totoRoundNumber -1].length} 
+              page={r}
+              count={playerProfile.pastFixturesWithScores.flat().length} 
               color="secondary" 
               onChange={handleChangeRounds}
             /> 

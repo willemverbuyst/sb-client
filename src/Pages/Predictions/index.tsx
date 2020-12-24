@@ -15,6 +15,7 @@ import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
+import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -72,7 +73,7 @@ export default function Predictions() {
   };
 
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value:number) => {
-    t = value !== fixtures?.flat().length 
+    t = value !== TOTAL_ROUNDS
       ? Math.floor((value - 1)/ 3) + 1 
       : Math.floor((value - 2)/ 3) + 1 
 
@@ -116,7 +117,7 @@ export default function Predictions() {
       : fixtures ?
         <>          
           <Grid item xs={12} container justify="center">
-            { fixtures ? [...fixtures[t - 1][r !== fixtures.flat().length 
+            { fixtures ? [...fixtures[t - 1][r !== TOTAL_ROUNDS 
               ? (r + 2) % 3 : (r % 3) + 2 ]]
               .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
               .map((wedstrijd, i) => 
@@ -131,14 +132,14 @@ export default function Predictions() {
           <PaginationComponent 
             label="Totoronde"
             page={t}
-            count={fixtures.length}
+            count={TOTO_ROUNDS}
             color="primary"
             onChange={handleChangeTotoRounds}
           /> 
           <PaginationComponent 
             label="Speelronde"
             page={r}
-            count={fixtures.flat().length}
+            count={TOTAL_ROUNDS}
             color="secondary" 
             onChange={handleChangeRounds}
           /> 
