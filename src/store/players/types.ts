@@ -9,10 +9,13 @@ export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
 export type PlayersState = {
   players: IPlayer[] | null;
   playerProfile: IPlayerProfile | null;
-  scores: ScoresPlayer | null;
+  scoresPlayer: ScoresPlayer | null;
 };
 
-export type ScoresPlayer = number[][];
+export type ScoresPlayer = {
+  scores: number[][];
+  userName: string;
+};
 
 export type AddNewPlayer = {
   type: typeof ADD_NEW_PLAYER;
@@ -31,7 +34,7 @@ export type PlayerProfileFetched = {
 
 export type PlayerScoresFetched = {
   type: typeof PLAYER_SCORES_FETCHED;
-  scores: ScoresPlayer;
+  scoresPlayer: ScoresPlayer;
 };
 
 export type RemoveAllPlayers = {

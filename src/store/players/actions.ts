@@ -43,10 +43,10 @@ export const playerProfileFetched = (
 };
 
 export const playerScoresFetched = (
-  scores: ScoresPlayer
+  scoresPlayer: ScoresPlayer
 ): PlayerScoresFetched => ({
   type: PLAYER_SCORES_FETCHED,
-  scores,
+  scoresPlayer,
 });
 
 export const removeAllPlayers = (): RemoveAllPlayers => {
@@ -165,9 +165,9 @@ export const fetchPlayerScores = (id: number) => async (
     const response = await axios.get(`${apiUrl}/scores/players/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const scores = response.data.scores;
+    const scoresPlayer = response.data;
 
-    dispatch(playerScoresFetched(scores));
+    dispatch(playerScoresFetched(scoresPlayer));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

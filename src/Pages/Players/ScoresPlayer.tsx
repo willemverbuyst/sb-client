@@ -36,10 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  btn: {
-    marginTop: theme.spacing(1)
-  }
- }));
+}));
 
 export default function ScoresPlayer() {
   const classes = useStyles();
@@ -47,7 +44,7 @@ export default function ScoresPlayer() {
   const history = useHistory();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
-  const scores = useSelector(selectPlayerScores);
+  const scoresPlayer = useSelector(selectPlayerScores);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -67,27 +64,29 @@ export default function ScoresPlayer() {
             Scores
           </Typography>
         </Grid>
-        <Grid>
+        { isLoading ? null :
           <Grid>
-            <Button
-              fullWidth
-              variant="contained" 
-              size="small" 
-              color="primary" 
-              disableElevation 
-              onClick={()=> history.push(`/voorspellingen/1/1`)}
-            >
-              VOORSPELLINGEN
-            </Button>
+            <Grid>
+              <Button
+                fullWidth
+                variant="contained" 
+                size="small" 
+                color="secondary" 
+                disableElevation 
+                onClick={()=> history.push(`/voorspellingen/1/1`)}
+              >
+                {scoresPlayer?.userName.toLocaleUpperCase()}S VOORSPELLINGEN
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
+        }
       </Grid>
 
       { isLoading ?
           <Box className={classes.progress}>
             <ProgressLinear/> 
           </Box>
-      : scores ? 
+      : scoresPlayer && scoresPlayer.scores ? 
         <>
           <Grid 
             item xs={12} 
@@ -95,7 +94,7 @@ export default function ScoresPlayer() {
             className={classes.totoRound}
           >
             <Typography variant="h4">
-              TOTO RONDES
+            {scoresPlayer?.userName.toLocaleUpperCase()}S TOTO RONDES
             </Typography>
           </Grid>
 
@@ -111,7 +110,7 @@ export default function ScoresPlayer() {
           >
             <Grid item xs={12} md={6} container justify="center">
               <ScoresStackedChart 
-                userScores={scores}
+                scores={scoresPlayer.scores}
                 colorMain={colorSecondary}
                 colorHover={colorPrimary}
               />

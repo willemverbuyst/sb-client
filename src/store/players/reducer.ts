@@ -11,7 +11,7 @@ import {
 const initialState: PlayersState = {
   players: null,
   playerProfile: null,
-  scores: null,
+  scoresPlayer: null,
 };
 
 const playersReducer = (state = initialState, action: PlayersActionTypes) => {
@@ -28,7 +28,7 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
       return { ...state, playerProfile: action.playerProfile };
 
     case PLAYER_SCORES_FETCHED:
-      return { ...state, scores: action.scores };
+      return { ...state, scoresPlayer: action.scoresPlayer };
 
     case REMOVE_ALL_PLAYERS:
       return { ...state, players: null, playerProfile: null, scores: null };

@@ -68,20 +68,23 @@ export default function ScoresUser() {
             Scores
           </Typography>
         </Grid>
-        <Grid>
+
+        { isLoading ? null :
           <Grid>
-            <Button
-              fullWidth
-              variant="contained" 
-              size="small" 
-              color="primary" 
-              disableElevation 
-              onClick={()=> history.push(`/voorspellingen/1/1`)}
-            >
-              MIJN VOORSPELLINGEN
-            </Button>
+            <Grid>
+              <Button
+                fullWidth
+                variant="contained" 
+                size="small" 
+                color="primary" 
+                disableElevation 
+                onClick={()=> history.push(`/voorspellingen/1/1`)}
+              >
+                MIJN VOORSPELLINGEN
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
+        }
       </Grid>
 
       { isLoading ?
@@ -112,7 +115,7 @@ export default function ScoresUser() {
           >
             <Grid item xs={12} md={6} container justify="center">
               <ScoresStackedChart 
-                userScores={scores} 
+                scores={scores} 
                 colorMain={colorPrimary}
                 colorHover={colorSecondary}/>
             </Grid>

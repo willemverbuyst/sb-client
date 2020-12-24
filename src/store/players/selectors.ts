@@ -6,4 +6,4 @@ export const selectPlayerProfile = (state: StoreState) =>
   state.playersState.playerProfile;
 
 export const selectPlayerScores = (state: StoreState) =>
-  state.playersState.scores;
+  state.playersState.scoresPlayer;
