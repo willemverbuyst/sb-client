@@ -57,7 +57,7 @@ export default function LogIn() {
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
-    if (token) history.push("/home");
+    if (token) history.push("/programma");
   }, [token, history]);
 
   const submitForm = (e: ButtonEvent): void => {

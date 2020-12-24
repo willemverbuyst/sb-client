@@ -14,6 +14,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { fetchUserScores } from '../../store/user/actions';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -110,7 +111,10 @@ export default function ScoresUser() {
             alignItems="center"
           >
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresStackedChart userScores={scores}/>
+              <ScoresStackedChart 
+                userScores={scores} 
+                colorMain={colorPrimary}
+                colorHover={colorSecondary}/>
             </Grid>
           </Grid>
         </>  

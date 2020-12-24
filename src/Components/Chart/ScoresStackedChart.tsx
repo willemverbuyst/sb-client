@@ -4,17 +4,22 @@ import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { ScoresUser } from '../../store/user/types';
 
+
 type Prop = {
   userScores: ScoresUser;
+  colorMain: any;
+  colorHover: any;
 }
 
-export default function ScoresStackedChart({userScores}: Prop) {
+export default function ScoresStackedChart({userScores, colorMain, colorHover}: Prop) {
   const history = useHistory();
+  const colorPrimary = colorMain;
+  const colorSecondary = colorHover;
 
   const gotoTotoRound = (id: number) => 
   history.push(`/voorspellingen/${id}/${id * 3 - 2}`);
 
-  const totals = userScores.map((totoround) => totoround.reduce((a, b)=> a + b))
+  const totals = userScores.map((totoround) => totoround.reduce((a, b)=> a + b));
 
   const chartData = {
     labels: userScores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
@@ -25,8 +30,8 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         data: userScores.map(totoRound => totoRound[0] ? totoRound[0] : 0 ),
-        backgroundColor: '#1e5eb1',
-        hoverBackgroundColor: '#EA9C3B',
+        backgroundColor: colorPrimary.color1,
+        hoverBackgroundColor: colorSecondary.color1,
       },
       {
         stack: '',
@@ -34,8 +39,8 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         data: userScores.map(totoRound => totoRound[1] ? totoRound[1] : 0 ),
-        backgroundColor: '#4f8ad8',
-        hoverBackgroundColor: '#EA9C3B',
+        backgroundColor: colorPrimary.color2,
+        hoverBackgroundColor: colorSecondary.color2,
       },
       {
         stack: '',
@@ -43,8 +48,8 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         data: userScores.map(totoRound => totoRound[2] ? totoRound[2] : 0 ),
-        backgroundColor: '#99c3fa',
-        hoverBackgroundColor: '#EA9C3B',
+        backgroundColor: colorPrimary.color3,
+        hoverBackgroundColor: colorSecondary.color3,
       },
       {
         stack: '',
@@ -52,8 +57,8 @@ export default function ScoresStackedChart({userScores}: Prop) {
         borderWidth: 2,
         borderColor: '#f1f1f1',
         data: userScores.map(totoRound => totoRound[3] ? totoRound[3] : 0 ),
-        backgroundColor: '#c2d9f7',
-        hoverBackgroundColor: '#EA9C3B',
+        backgroundColor: colorPrimary.color4,
+        hoverBackgroundColor: colorSecondary.color4,
       }
     ]
   }
