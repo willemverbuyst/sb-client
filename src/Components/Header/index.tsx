@@ -54,7 +54,7 @@ export default function Header() {
     history.push("/login")
   }
 
-  const gotoMyScores = () =>  history.push("/mijnscores")
+  const gotoMyScores = () =>  history.push("/scores")
 
   const gotoPlayers = () => history.push("/spelers")
 
@@ -62,7 +62,7 @@ export default function Header() {
 
   const gotoProfile = () => history.push("/profiel");
 
-  const gotoProgram = () => history.push("/home");
+  const gotoProgram = () => history.push("/programma");
 
   const gotoRules = () => history.push("/regels");
 

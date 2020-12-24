@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function HomePage() {
+export default function Program() {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();

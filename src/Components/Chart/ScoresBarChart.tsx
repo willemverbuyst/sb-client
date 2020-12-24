@@ -15,7 +15,7 @@ export default function BarChart({ scores }: Prop) {
   const max = Math.max(...userScores) * 1.2;
 
   const gotoPlayer = (id: number) => 
-    history.push(`/spelers/scores/${scores[id].id}`);
+    history.push(`/spelers/${scores[id].id}/scores`);
 
   const chartData = {
     labels: labels,

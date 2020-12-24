@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function PublicProfilePlayer() {
+export default function PredictionsPlayer() {
   const classes = useStyles();
   const history = useHistory();
   const { id } = useParams<{ id: string }>();

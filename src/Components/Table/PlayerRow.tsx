@@ -35,20 +35,25 @@ export default function PlayerRow(props: Props) {
   const classes = useStyles();
   const history = useHistory()
 
+  const gotoPredictions = () => history.push(`/spelers/${props.player.id}/voorspellingen`)
+
   return (
-    <TableRow className={classes.link} onClick={()=> history.push(`/spelers/${props.player.id}`)}>
+    <TableRow className={classes.link} onClick={gotoPredictions}>
      
       <TableCell className={classes.checkAdmin} align="center">
         {props.player.admin ? <Check/> : null}
       </TableCell> 
   
-             
       <TableCell align="left">
         {props.player.userName}
       </TableCell>
 
       <TableCell align="left">
-        <img className={classes.avatar} alt={props.player.team.name} src={props.player.team.logo} />
+        <img 
+          className={classes.avatar} 
+          alt={props.player.team.name} 
+          src={props.player.team.logo}
+        />
       </TableCell>
 
       <TableCell align="left">

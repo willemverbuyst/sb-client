@@ -53,6 +53,7 @@ export default function ScoresUser() {
   });
 
   useEffect(() => {
+    // update logic!
     if (user && !scores) {
       dispatch(fetchUserScores(+user.id));
     }

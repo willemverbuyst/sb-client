@@ -6,18 +6,19 @@ import IceBlueGold from './ui/theme';
 import Header from './Components/Header';
 import Toast from './Components/Toast';
 import UserDisplay from './Components/UserDisplay/UserDisplay';
-import SignUp from './Pages/Admin/SignUp';
-import Home from './Pages/Home';
+import Fixture from './Pages/Scores/Fixture';
+import ListOfPlayers from './Pages/Players/ListOfPlayers';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
-import ListOfPlayers from './Pages/Players/ListOfPlayers';
-import PublicProfilePlayer from './Pages/Players/PublicProfilePlayer';
 import Predictions from './Pages/Predictions';
+import PredictionsPlayer from './Pages/Players/PredictionsPlayer';
 import Profile from './Pages/Profile';
+import Program from './Pages/Program';
 import Rules from './Pages/Rules';
-import Fixture from './Pages/Scores/Fixture';
 import Round from './Pages/Scores/Round';
+import ScoresPlayer from './Pages/Players/ScoresPlayer';
 import ScoresUser from './Pages/Scores/ScoresUser';
+import SignUp from './Pages/Admin/SignUp';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
 import { 
@@ -27,8 +28,6 @@ import {
   Theme 
 } from '@material-ui/core/styles';
 import { Grid, Box } from '@material-ui/core';
-import ScoresPlayer from './Pages/Players/ScoresPlayer';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -71,18 +70,18 @@ function App() {
             <Switch>
               <Redirect exact path="/" to="/login" />
               <Route exact path="/admin/signup" component={SignUp} />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/login" component={LogIn} />
-              <Route exact path="/mijnscores" component={ScoresUser} />
               <Route exact path="/klassement/ronde/:id" component={Round} />
               <Route exact path="/klassement/totaaltoto" component={TotalToto} />
               <Route exact path="/klassement/totoronde/:id" component={TotoRound} />
+              <Route exact path="/login" component={LogIn} />
               <Route exact path="/page-not-found" component={PageNotFound} />
               <Route exact path="/profiel" component={Profile} />
+              <Route exact path="/programma" component={Program} />
               <Route exact path="/regels" component={Rules} />
-              <Route exact path="/spelers/scores/:id" component={ScoresPlayer} />
+              <Route exact path="/scores" component={ScoresUser} />
               <Route exact path="/spelers" component={ListOfPlayers} />
-              <Route exact path="/spelers/:id" component={PublicProfilePlayer} />
+              <Route exact path="/spelers/:id/voorspellingen" component={PredictionsPlayer} />
+              <Route exact path="/spelers/:id/scores" component={ScoresPlayer} />
               <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
               <Route exact path="/wedstrijd/:id" component={Fixture} />
               <Redirect path="/" to="/page-not-found" />
