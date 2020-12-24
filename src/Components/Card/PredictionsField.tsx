@@ -6,7 +6,8 @@ import {
   TextField,
   Typography,
   Tooltip,
-  makeStyles
+  makeStyles,
+  Chip
 } from '@material-ui/core';
 
 import { IPrediction } from '../../models/predictions.model';
@@ -116,9 +117,16 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
         renderInput() 
       : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) && 
           fixtureWithPrediction.status === 'Match Finished' ?
-        <Typography variant="overline" color="textSecondary">
-          Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
-        </Typography>
+        <Grid container justify="space-around">
+          <Typography variant="overline" color="textSecondary">
+            Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
+          </Typography>
+          <Chip 
+          label={`SCORE ${fixtureWithPrediction.score}`} 
+          variant="outlined"
+          color="primary"
+        />
+      </Grid>
       : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ?
         <Tooltip title="Je voorspelling veranderen?" arrow>
           <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
