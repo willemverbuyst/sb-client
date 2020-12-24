@@ -132,7 +132,7 @@ export const fetchUserScores = (id: number) => async (
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/scores/users/${id}`, {
+    const response = await axios.get(`${apiUrl}/scores/players/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const scores = response.data.scores;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectScores, selectToken } from '../../store/user/selectors'
+import { selectToken } from '../../store/user/selectors'
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -12,7 +12,8 @@ import {
 } from '@material-ui/core';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { fetchUserScores } from '../../store/user/actions';
+import { fetchPlayerScores } from '../../store/players/actions';
+import { selectPlayerScores } from '../../store/players/selectors';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -45,18 +46,16 @@ export default function ScoresPlayer() {
   const history = useHistory();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
-  const scores = useSelector(selectScores);
+  const scores = useSelector(selectPlayerScores);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (!token) history.push("/login");
   });
 
-  console.log(scores)
-
   useEffect(() => {
     //  adjust logic to prevent refetching
-    dispatch(fetchUserScores(+id));
+    dispatch(fetchPlayerScores(+id));
   }, [dispatch, id]);
 
   return (
