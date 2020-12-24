@@ -5,11 +5,14 @@ import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
   PLAYER_PROFILE_FETCHED,
+  PLAYER_SCORES_FETCHED,
   REMOVE_ALL_PLAYERS,
   AddNewPlayer,
   AllPlayersFetched,
   PlayerProfileFetched,
+  PlayerScoresFetched,
   RemoveAllPlayers,
+  ScoresPlayer,
 } from './types';
 import { GetState } from '../types';
 import { ISignUpCredentials } from '../../models/credentials.model';
@@ -38,6 +41,13 @@ export const playerProfileFetched = (
     playerProfile,
   };
 };
+
+export const playerScoresFetched = (
+  scores: ScoresPlayer
+): PlayerScoresFetched => ({
+  type: PLAYER_SCORES_FETCHED,
+  scores,
+});
 
 export const removeAllPlayers = (): RemoveAllPlayers => {
   return {
@@ -132,6 +142,32 @@ export const fetchPlayerProfile = (id: number) => async (
     const playerProfile = response.data;
 
     dispatch(playerProfileFetched(playerProfile));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchPlayerScores = (id: number) => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/users/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const scores = response.data.scores;
+
+    dispatch(playerScoresFetched(scores));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

@@ -2,6 +2,7 @@ import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
   PLAYER_PROFILE_FETCHED,
+  PLAYER_SCORES_FETCHED,
   REMOVE_ALL_PLAYERS,
   PlayersState,
   PlayersActionTypes,
@@ -10,6 +11,7 @@ import {
 const initialState: PlayersState = {
   players: null,
   playerProfile: null,
+  scores: null,
 };
 
 const playersReducer = (state = initialState, action: PlayersActionTypes) => {
@@ -25,8 +27,11 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
     case PLAYER_PROFILE_FETCHED:
       return { ...state, playerProfile: action.playerProfile };
 
+    case PLAYER_SCORES_FETCHED:
+      return { ...state, scores: action.scores };
+
     case REMOVE_ALL_PLAYERS:
-      return { ...state, players: null, playerProfile: null };
+      return { ...state, players: null, playerProfile: null, scores: null };
 
     default:
       return state;
