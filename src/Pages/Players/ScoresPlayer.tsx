@@ -86,7 +86,7 @@ export default function ScoresPlayer() {
                 size="small" 
                 color="secondary" 
                 disableElevation 
-                onClick={()=> history.push(`/voorspellingen/1/1`)}
+                onClick={()=> history.push(`/spelers/${id}/voorspellingen/1/1`)}
               >
                 VOORSPELLINGEN
               </Button>
@@ -94,7 +94,7 @@ export default function ScoresPlayer() {
           </Grid>
         </Grid>
 
-        { scoresPlayer && scoresPlayer.scores ? 
+        { scoresPlayer ? 
           <>
             <Grid 
               item xs={12} 
@@ -118,9 +118,10 @@ export default function ScoresPlayer() {
             >
               <Grid item xs={12} md={6} container justify="center">
                 <ScoresStackedChart 
-                  scores={scoresPlayer.scores}
+                  scoresPlayer={scoresPlayer}
                   colorMain={colorSecondary}
                   colorHover={colorPrimary}
+                  loggedInUser={false}
                 />
               </Grid>
             </Grid>

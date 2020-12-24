@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectScores, selectToken, selectUser } from '../../store/user/selectors'
+import { selectToken, selectUser } from '../../store/user/selectors'
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { 
   Box, 
@@ -12,7 +12,8 @@ import {
 } from '@material-ui/core';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { fetchUserScores } from '../../store/user/actions';
+import { fetchPlayerScores } from '../../store/players/actions';
+import { selectPlayerScores } from '../../store/players/selectors';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
@@ -47,7 +48,7 @@ export default function ScoresUser() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
   const user = useSelector(selectUser);
-  const scores = useSelector(selectScores);
+  const scoresPlayer = useSelector(selectPlayerScores);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -55,8 +56,8 @@ export default function ScoresUser() {
 
   useEffect(() => {
     // update logic!
-    if (user && !scores) {
-      dispatch(fetchUserScores(+user.id));
+    if (user && !scoresPlayer) {
+      dispatch(fetchPlayerScores(+user.id));
     }
   });
 
@@ -80,7 +81,7 @@ export default function ScoresUser() {
                 disableElevation 
                 onClick={()=> history.push(`/voorspellingen/1/1`)}
               >
-                MIJN VOORSPELLINGEN
+                VOORSPELLINGEN
               </Button>
             </Grid>
           </Grid>
@@ -91,7 +92,7 @@ export default function ScoresUser() {
           <Box className={classes.progress}>
             <ProgressLinear/> 
           </Box>
-      : scores ? 
+      : scoresPlayer ? 
         <>
           <Grid 
             item xs={12} 
@@ -115,9 +116,11 @@ export default function ScoresUser() {
           >
             <Grid item xs={12} md={6} container justify="center">
               <ScoresStackedChart 
-                scores={scores} 
+                scoresPlayer={scoresPlayer} 
                 colorMain={colorPrimary}
-                colorHover={colorSecondary}/>
+                colorHover={colorSecondary}
+                loggedInUser={true}
+              />
             </Grid>
           </Grid>
         </>  

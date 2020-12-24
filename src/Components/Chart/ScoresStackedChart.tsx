@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
+import { ScoresPlayer } from '../../store/players/types';
 
 type Color = {
   color1: string, 
@@ -11,30 +12,34 @@ type Color = {
 }
 
 type Prop = {
-  scores: number[][];
+  scoresPlayer: ScoresPlayer;
   colorMain: Color;
   colorHover: Color;
+  loggedInUser: boolean;
 }
 
-export default function ScoresStackedChart({scores, colorMain, colorHover}: Prop) {
+export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover, loggedInUser}: Prop) {
   const history = useHistory();
   const colorPrimary = colorMain;
   const colorSecondary = colorHover;
 
-  const gotoTotoRound = (id: number) => 
-  history.push(`/voorspellingen/${id}/${id * 3 - 2}`);
+  const gotoTotoRound = (id: number) => {
+    loggedInUser ? history.push(`/voorspellingen/${id}/${id * 3 - 2}`)
+      : history.push(`/spelers/${scoresPlayer.id}/voorspellingen/${id}/${id * 3 - 2}`)
+  }
 
-  const totals = scores.map((totoround) => totoround.reduce((a, b)=> a + b));
+
+  const totals = scoresPlayer.scores.map((totoround) => totoround.reduce((a, b)=> a + b));
 
   const chartData = {
-    labels: scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
+    labels: scoresPlayer.scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
     datasets: [
       {
         stack: '',
         label: 'part1',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scores.map(totoRound => totoRound[0] ? totoRound[0] : 0 ),
+        data: scoresPlayer.scores.map(totoRound => totoRound[0] ? totoRound[0] : 0 ),
         backgroundColor: colorPrimary.color1,
         hoverBackgroundColor: colorSecondary.color1,
       },
@@ -43,7 +48,7 @@ export default function ScoresStackedChart({scores, colorMain, colorHover}: Prop
         label: 'part2',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scores.map(totoRound => totoRound[1] ? totoRound[1] : 0 ),
+        data: scoresPlayer.scores.map(totoRound => totoRound[1] ? totoRound[1] : 0 ),
         backgroundColor: colorPrimary.color2,
         hoverBackgroundColor: colorSecondary.color2,
       },
@@ -52,7 +57,7 @@ export default function ScoresStackedChart({scores, colorMain, colorHover}: Prop
         label: 'part3',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scores.map(totoRound => totoRound[2] ? totoRound[2] : 0 ),
+        data: scoresPlayer.scores.map(totoRound => totoRound[2] ? totoRound[2] : 0 ),
         backgroundColor: colorPrimary.color3,
         hoverBackgroundColor: colorSecondary.color3,
       },
@@ -61,7 +66,7 @@ export default function ScoresStackedChart({scores, colorMain, colorHover}: Prop
         label: 'part4',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scores.map(totoRound => totoRound[3] ? totoRound[3] : 0 ),
+        data: scoresPlayer.scores.map(totoRound => totoRound[3] ? totoRound[3] : 0 ),
         backgroundColor: colorPrimary.color4,
         hoverBackgroundColor: colorSecondary.color4,
       }
@@ -75,7 +80,7 @@ export default function ScoresStackedChart({scores, colorMain, colorHover}: Prop
         tooltips: {
           enabled: true,  
           callbacks: {
-            title: (tooltipItem, _chartData) => `Scores: ${scores[tooltipItem[0].index!]}`,
+            title: (tooltipItem, _chartData) => `Scores: ${scoresPlayer.scores[tooltipItem[0].index!]}`,
             label: (_tooltipItem, _chartData) => ``,
           },
         },

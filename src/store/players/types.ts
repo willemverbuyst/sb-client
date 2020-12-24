@@ -15,6 +15,7 @@ export type PlayersState = {
 export type ScoresPlayer = {
   scores: number[][];
   userName: string;
+  id: number;
 };
 
 export type AddNewPlayer = {
