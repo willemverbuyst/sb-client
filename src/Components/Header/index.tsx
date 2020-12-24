@@ -68,7 +68,7 @@ export default function Header() {
 
   const gotoSignUp = () => history.push("/admin/signup")
 
-  const gotoTotalToto= () => history.push("/scores/totaaltoto");
+  const gotoTotalToto= () => history.push("/klassement/totaaltoto");
   
   return (
     <Box className={classes.header}>

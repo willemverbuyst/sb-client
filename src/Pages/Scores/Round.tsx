@@ -143,7 +143,7 @@ export default function Round() {
         >
           <Button
             color="primary"
-            onClick={()=> history.push('/scores/totaaltoto')}
+            onClick={()=> history.push('/klassement/totaaltoto')}
           >
             Totaal Toto
           </Button>

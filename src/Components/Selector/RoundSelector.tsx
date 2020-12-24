@@ -23,7 +23,7 @@ export default function RoundSelector() {
     index: number,
   ) => {
     setOpen(false);
-    history.push(`/scores/ronde/${(+id - 1 ) * 3 + index + 1}`)
+    history.push(`/klassement/ronde/${(+id - 1 ) * 3 + index + 1}`)
   };
 
   const handleToggle = () => {

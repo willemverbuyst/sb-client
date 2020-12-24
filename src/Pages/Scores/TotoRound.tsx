@@ -18,7 +18,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import RoundSelector from '../../Components/Button/RoundSelector';
+import RoundSelector from '../../Components/Selector/RoundSelector';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -140,7 +140,7 @@ export default function TotoRound() {
         >
           <Button
             color="primary"
-            onClick={()=> history.push('/scores/totaaltoto')}
+            onClick={()=> history.push('/klassement/totaaltoto')}
           >
             Totaal Toto
           </Button>

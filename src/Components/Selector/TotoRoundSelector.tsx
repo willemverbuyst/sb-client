@@ -22,7 +22,7 @@ export default function TotoRoundSelector() {
     index: number,
   ) => {
     setOpen(false);
-    history.push(`/scores/totoronde/${index + 1}`)
+    history.push(`/klassement/totoronde/${index + 1}`)
   };
 
   const handleToggle = () => {

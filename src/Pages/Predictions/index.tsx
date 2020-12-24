@@ -79,6 +79,8 @@ export default function Predictions() {
     history.push(`/voorspellingen/${t}/${value}`);
   };
 
+  const gotoRanking = () => history.push(`/klassement/ronde/${r}`);
+
   return (
     <Box>
       <Grid container justify="space-between">
@@ -96,7 +98,7 @@ export default function Predictions() {
                 size="small" 
                 color="secondary" 
                 disableElevation 
-                onClick={()=> history.push(`/scores/ronde/${r}`)}
+                onClick={gotoRanking}
               >
                 KLASSEMENT
               </Button>

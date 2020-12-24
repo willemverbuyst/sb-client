@@ -18,7 +18,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import TotoRoundSelector from '../../Components/Button/TotoRoundSelector';
+import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
 
 const useStyles = makeStyles((theme) => ({
   title: {

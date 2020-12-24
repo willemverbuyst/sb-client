@@ -76,10 +76,10 @@ function App() {
               <Route exact path="/page-not-found" component={PageNotFound} />
               <Route exact path="/profiel" component={Profile} />
               <Route exact path="/regels" component={Rules} />
-              <Route exact path="/scores/ronde/:id" component={Round} />
-              <Route exact path="/scores/totaaltoto" component={TotalToto} />
-              <Route exact path="/scores/totoronde/:id" component={TotoRound} />
-              <Route exact path="/scores/wedstrijd/:id" component={Fixture} />
+              <Route exact path="/klassement/ronde/:id" component={Round} />
+              <Route exact path="/klassement/totaaltoto" component={TotalToto} />
+              <Route exact path="/klassement/totoronde/:id" component={TotoRound} />
+              <Route exact path="/wedstrijd/:id" component={Fixture} />
               <Route exact path="/spelers" component={ListOfPlayers} />
               <Route exact path="/spelers/:id" component={PublicProfilePlayer} />
               <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
