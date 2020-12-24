@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
   Card, 
   CardContent, 
+  Chip,
   Grid,
   Typography,
 } from '@material-ui/core';
@@ -17,6 +18,7 @@ const useStyles = makeStyles({
   card: {
     textAlign: 'center',
     margin: '10px',
+    position: 'relative',
   },
   logo: {
     height: 20,
@@ -30,6 +32,14 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     height: 60,
   },
+  chip: {
+    position: 'absolute',
+    right: 5,
+    top: 5,
+    transform: 'rotate(12deg)',
+    color: '#c5c5c5', 
+    border: 'none',
+  }
 });
 
 type Prop = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions, display: string }
@@ -41,6 +51,15 @@ export default function MatchCard({ wedstrijdMetVoorspellingen, display }: Prop)
   return (
     <Card className={classes.card}>
       <CardContent>
+        { wedstrijdMetVoorspellingen.status === 'Match Finished' ?
+          <Chip 
+            size="small"
+            className={classes.chip}
+            label={`${wedstrijdMetVoorspellingen.score} pt.`} 
+            variant="outlined"
+          />
+        :null }
+
         <Typography variant="overline" color="textSecondary">
         {timeStampFormattedToLocalDate(wedstrijdMetVoorspellingen.eventTimeStamp)} 
         </Typography>

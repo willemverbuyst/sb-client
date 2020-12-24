@@ -7,9 +7,7 @@ import {
   Typography,
   Tooltip,
   makeStyles,
-  Chip
 } from '@material-ui/core';
-
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../store/predictions/actions';
@@ -19,7 +17,7 @@ const useStyles = makeStyles({
     width: 40,
     padding: '3px',
     textAlign: 'right'
-  }
+  },
 });
 
 type Prop = { fixtureWithPrediction: IFixtureWithScoreAndPredictions }
@@ -117,25 +115,18 @@ export default function PredictionsField({fixtureWithPrediction} : Prop ) {
         renderInput() 
       : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) && 
           fixtureWithPrediction.status === 'Match Finished' ?
-        <Grid container justify="space-around">
           <Typography variant="overline" color="textSecondary">
             Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam} 
           </Typography>
-          <Chip 
-          label={`SCORE ${fixtureWithPrediction.score}`} 
-          variant="outlined"
-          color="primary"
-        />
-      </Grid>
       : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ?
         <Tooltip title="Je voorspelling veranderen?" arrow>
           <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
           {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam }</Button> 
         </Tooltip>
       : fixtureWithPrediction.status === 'Match Finished' ?
-        <Typography variant="overline" color="textSecondary">
-          Geen voorspelling
-        </Typography>
+          <Typography variant="overline" color="textSecondary">
+            Geen voorspelling
+          </Typography>
       :
         <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
           Plaats voorspelling 
