@@ -58,7 +58,7 @@ export default function Profile() {
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-            Mijn profiel
+            Profiel
           </Typography>
         </Grid>
         <Grid>

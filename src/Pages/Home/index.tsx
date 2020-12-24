@@ -56,7 +56,7 @@ export default function HomePage() {
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-          Programma van deze week
+          Programma
           </Typography>
         </Grid>
       </Grid>

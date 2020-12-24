@@ -26,6 +26,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.primary.main
   },
+  divider: {
+    marginBottom: theme.spacing(6),
+  },
+  totoRound: {
+    marginBottom: theme.spacing(6),
+  },
   pagination: {
     padding: theme.spacing(2)
   },
@@ -36,9 +42,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  btn: {
-    marginTop: theme.spacing(1)
-  }
 }));
 
 export default function Predictions() {
@@ -77,11 +80,11 @@ export default function Predictions() {
   };
 
   return (
-    <Grid container>
+    <Box>
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-            Mijn voorspellingen
+            Voorspellingen
           </Typography>
         </Grid>
         { fixtures ?
@@ -93,21 +96,9 @@ export default function Predictions() {
                 size="small" 
                 color="secondary" 
                 disableElevation 
-                onClick={()=> history.push(`/scores/totoronde/${t}`)}
-              >
-                SCORES TOTORONDE: {t}
-              </Button>
-            </Grid>
-            <Grid className={classes.btn}>
-              <Button
-                fullWidth
-                variant="contained" 
-                size="small" 
-                color="secondary" 
-                disableElevation 
                 onClick={()=> history.push(`/scores/ronde/${r}`)}
               >
-                SCORES RONDE: {r}
+                KLASSEMENT
               </Button>
             </Grid>
           </Grid>
@@ -121,7 +112,7 @@ export default function Predictions() {
           <ProgressLinear/> 
         </Box>
       : fixtures ?
-        <>
+        <>          
           <Grid item xs={12} container justify="center">
             { fixtures ? [...fixtures[t - 1][r !== fixtures.flat().length 
               ? (r + 2) % 3 : (r % 3) + 2 ]]
@@ -151,7 +142,7 @@ export default function Predictions() {
           /> 
         </>
       : null }
-    </Grid>
+    </Box>
   )
 }
 

@@ -69,14 +69,14 @@ export default function Fixture() {
       <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
-          Scores
+            Uitslag
           </Typography>
         </Grid>
         <Grid>
           <Button
             variant="contained" 
             size="small" 
-            color="secondary" 
+            color="primary" 
             disableElevation 
             onClick={()=> history.goBack()}
           >

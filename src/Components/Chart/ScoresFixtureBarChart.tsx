@@ -23,9 +23,9 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
     datasets: [
       {
         data: userScores,
-        backgroundColor:' #1e5eb1',
+        backgroundColor:'#EA9C3B',
         borderWidth: 0,
-        hoverBackgroundColor: '#EA9C3B',
+        hoverBackgroundColor:'#1e5eb1',
       },
     ],
     tooltipItem: 'hello'

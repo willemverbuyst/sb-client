@@ -82,13 +82,13 @@ export default function Header() {
           </IconButton>
           
           <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoPredictions}>
-            <Tooltip title="Mijn voorspellingen" arrow>
+            <Tooltip title="Voorspellingen" arrow>
               <SportsSoccerIcon />
             </Tooltip>
           </IconButton>
 
           <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoMyScores}>
-            <Tooltip title="Mijn Scores" arrow>  
+            <Tooltip title="Scores" arrow>  
               <EmojiEvents />
             </Tooltip>
           </IconButton>
@@ -100,7 +100,7 @@ export default function Header() {
           </IconButton>
 
           <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoTotalToto}>
-            <Tooltip title="Alle scores" arrow>
+            <Tooltip title="Klassement" arrow>
               <FormatListNumberedIcon />
             </Tooltip>
           </IconButton>
@@ -120,7 +120,7 @@ export default function Header() {
             aria-label="account circle" 
             onClick={gotoProfile}
           >
-            <Tooltip title="Mijn profiel"  arrow>
+            <Tooltip title="Profiel"  arrow>
               <Face />
             </Tooltip>
           </IconButton>

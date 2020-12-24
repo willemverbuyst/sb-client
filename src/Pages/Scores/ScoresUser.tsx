@@ -66,31 +66,19 @@ export default function ScoresUser() {
           </Typography>
         </Grid>
         <Grid>
-            <Grid>
-              <Button
-                fullWidth
-                variant="contained" 
-                size="small" 
-                color="primary" 
-                disableElevation 
-                onClick={()=> history.push(`/voorspellingen/1/1`)}
-              >
-                MIJN VOORSPELLINGEN
-              </Button>
-            </Grid>
-            <Grid className={classes.btn}>
-              <Button
-                fullWidth
-                variant="contained" 
-                size="small" 
-                color="secondary" 
-                disableElevation 
-                onClick={()=> history.push(`/scores/totaaltoto`)}
-              >
-                ALLE SCORES
-              </Button>
-            </Grid>
+          <Grid>
+            <Button
+              fullWidth
+              variant="contained" 
+              size="small" 
+              color="primary" 
+              disableElevation 
+              onClick={()=> history.push(`/voorspellingen/1/1`)}
+            >
+              MIJN VOORSPELLINGEN
+            </Button>
           </Grid>
+        </Grid>
       </Grid>
 
       { isLoading ?
@@ -105,12 +93,12 @@ export default function ScoresUser() {
             className={classes.totoRound}
           >
             <Typography variant="h4">
-              MIJN SCORES 
+              MIJN TOTO RONDES
             </Typography>
           </Grid>
 
-          <Grid>
-            <Divider className={classes.divider}/>
+          <Grid className={classes.divider}>
+            <Divider/>
           </Grid>
           
           <Grid
