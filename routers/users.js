@@ -126,9 +126,17 @@ router.get('/:id', authMiddleware, async (req, res) => {
 router.patch('/:id/admin', authMiddleware, async (req, res) => {
   const { admin } = req.body;
   const { id } = req.params;
+  const userId = req.user.id;
+
+  console.log(id, userId);
 
   if (!typeof admin === 'boolean')
     return res.status(400).send('Admin status is missing, please try again');
+
+  if (+userId === +id)
+    return res
+      .status(400)
+      .send({ message: 'You cannot change your own admin status!' });
 
   try {
     if (!req.user.admin)
@@ -145,12 +153,26 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
 
         const updatedUser = await User.findOne({
           where: { id: +id },
+          attributes: [
+            'id',
+            'userName',
+            'firstName',
+            'lastName',
+            'email',
+            'phoneNumber',
+            'admin',
+            'totaalToto',
+          ],
+          include: [
+            {
+              model: Team,
+              attributes: ['id', 'logo', 'name'],
+            },
+          ],
         });
 
-        delete updatedUser.dataValues['password'];
-
         return res.status(200).send({
-          updatedUser: updatedUser,
+          updatedUser,
           message: 'The user profile has been updated',
         });
       } catch (error) {

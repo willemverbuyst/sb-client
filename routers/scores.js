@@ -335,6 +335,7 @@ router.get('/players/:id', authMiddleware, async (req, res) => {
       const scoresPlayer = {
         scores,
         userName: user.userName,
+        id: user.id,
       };
 
       return res.status(200).send(scoresPlayer);

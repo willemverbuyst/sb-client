@@ -5,6 +5,7 @@ const { SALT_ROUNDS } = require('../config/constants');
 const authMiddleware = require('../auth/authMiddleware');
 const Team = require('../models').team;
 const User = require('../models').user;
+
 const router = new Router();
 
 /*** LOGIN ***/
