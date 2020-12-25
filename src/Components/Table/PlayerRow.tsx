@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { 
+  Button,
   Checkbox,
   TableCell, 
   TableRow,
 } from '@material-ui/core';
 import Check from '@material-ui/icons/Check';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
+import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -27,6 +29,16 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer'
   }
 }));
+
+const ColorButton = withStyles((theme: Theme) => ({
+  root: {
+    color: theme.palette.getContrastText(red[500]),
+    backgroundColor: red[500],
+    '&:hover': {
+      backgroundColor: red[700],
+    },
+  },
+}))(Button);
 
 type Props = {
   key: number;
@@ -52,7 +64,7 @@ export default function PlayerRow(props: Props) {
   return (
     <TableRow>
      
-      {props.updateStatus ? 
+      { props.updateStatus ? 
         <TableCell>
           <Checkbox
             checked={isAdmin}
@@ -105,6 +117,14 @@ export default function PlayerRow(props: Props) {
       { props.userIsAdmin? 
       <TableCell align="left">
         {props.player.email}
+      </TableCell>
+      : null }
+
+      { props.userIsAdmin && props.updateStatus ? 
+      <TableCell align="left">
+        <ColorButton size="small">
+          DELETE
+        </ColorButton>
       </TableCell>
       : null }
       

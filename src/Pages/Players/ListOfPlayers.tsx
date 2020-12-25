@@ -80,7 +80,7 @@ export default function ListOfPlayers() {
             disableElevation 
             onClick={editAdminStatus}
           >
-            {update ? 'UPDATE KLAAR' : 'UPDATE ADMIN STATUS'}
+            { update ? 'KLAAR' : 'EDIT SPELER' }
           </Button>
         </Grid>
         : null }

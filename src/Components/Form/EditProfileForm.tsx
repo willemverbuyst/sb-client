@@ -59,7 +59,7 @@ export default function EditProfileForm(props: Prop) {
     phoneNumber: user?.phoneNumber || '',
     admin: user?.admin || false,
     totaalToto: user?.totaalToto || true,
-    teamId: '',
+    teamId: user?.team.id || '',
   });
 
   useEffect(() => {
@@ -70,12 +70,6 @@ export default function EditProfileForm(props: Prop) {
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
-
-   console.log(
-     profileDetails
-   )
-
-    
     setProfileDetails({
       userName:'',
       firstName:'',
@@ -104,7 +98,6 @@ export default function EditProfileForm(props: Prop) {
                 id="userName"
                 label="User Name"
                 name="userName"
-                autoFocus
                 value={profileDetails.userName}
                 onChange={(e) =>
                   setProfileDetails({

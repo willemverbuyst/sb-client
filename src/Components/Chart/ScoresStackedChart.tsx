@@ -27,7 +27,7 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
   let colorPrimary;
   let colorSecondary;
 
-  if (user?.id === scoresPlayer.id) {
+  if (!loggedInUser && user?.id === scoresPlayer.id) {
     colorPrimary = colorHover;
     colorSecondary = colorMain;
   } else {

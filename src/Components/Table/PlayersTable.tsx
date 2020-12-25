@@ -36,6 +36,7 @@ export default function PlayersTable({players, changeStatus}: Prop) {
             <TableCell align="center">totaal-toto</TableCell>
             { user && user.admin ? <TableCell align="left">telefoon</TableCell> : null }
             { user && user.admin ? <TableCell align="left">email</TableCell> : null }
+            { user && user.admin && changeStatus ? <TableCell align="left"></TableCell> : null }
           </TableRow>
         </TableHead>
         <TableBody>
