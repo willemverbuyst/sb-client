@@ -14,6 +14,8 @@ import {
   RemoveAllPlayers,
   ScoresPlayer,
   UpdateAdminStatus,
+  DeletePlayer,
+  DELETE_PLAYER,
 } from './types';
 import { GetState } from '../types';
 import { ISignUpCredentials } from '../../models/credentials.model';
@@ -31,6 +33,13 @@ export const allPlayersFetched = (players: IPlayer[]): AllPlayersFetched => {
   return {
     type: ALL_PLAYERS_FETCHED,
     players,
+  };
+};
+
+export const deletePlayer = (playerId: number): DeletePlayer => {
+  return {
+    type: DELETE_PLAYER,
+    playerId,
   };
 };
 
@@ -176,6 +185,32 @@ export const fetchPlayerScores = (id: number) => async (
     const scoresPlayer = response.data;
 
     dispatch(playerScoresFetched(scoresPlayer));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const playerDelete = (id: number) => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.delete(`${apiUrl}/users/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    dispatch(deletePlayer(id));
+    dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

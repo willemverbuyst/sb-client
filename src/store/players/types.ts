@@ -2,6 +2,7 @@ import { IPlayer, IPlayerProfile } from '../../models/player.model';
 
 export const ADD_NEW_PLAYER = 'ADD_NEW_PLAYER';
 export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
+export const DELETE_PLAYER = 'DELETE_PLAYER';
 export const PLAYER_PROFILE_FETCHED = 'PLAYER_PROFILE_FETCHED';
 export const PLAYER_SCORES_FETCHED = 'PLAYER_SCORES_FETCHED';
 export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
@@ -48,9 +49,15 @@ export type UpdateAdminStatus = {
   player: IPlayer;
 };
 
+export type DeletePlayer = {
+  type: typeof DELETE_PLAYER;
+  playerId: number;
+};
+
 export type PlayersActionTypes =
   | AddNewPlayer
   | AllPlayersFetched
+  | DeletePlayer
   | PlayerProfileFetched
   | PlayerScoresFetched
   | RemoveAllPlayers

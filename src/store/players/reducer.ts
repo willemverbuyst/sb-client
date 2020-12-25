@@ -1,6 +1,7 @@
 import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
+  DELETE_PLAYER,
   PLAYER_PROFILE_FETCHED,
   PLAYER_SCORES_FETCHED,
   REMOVE_ALL_PLAYERS,
@@ -24,6 +25,14 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
 
     case ALL_PLAYERS_FETCHED:
       return { ...state, players: [...action.players] };
+
+    case DELETE_PLAYER:
+      return {
+        ...state,
+        players: state.players?.filter(
+          (player) => player.id !== action.playerId
+        ),
+      };
 
     case PLAYER_PROFILE_FETCHED:
       return { ...state, playerProfile: action.playerProfile };
