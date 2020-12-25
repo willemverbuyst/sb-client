@@ -203,11 +203,10 @@ export const updatePlayerAdminStatus = (id: number, admin: boolean) => async (
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const player = response.data;
-
-    console.log(player);
+    const player = response.data.updatedUser;
 
     dispatch(updateAdminStatus(player));
+    dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

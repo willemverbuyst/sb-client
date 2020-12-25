@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { 
   Checkbox,
   TableCell, 
@@ -8,6 +9,7 @@ import {
 import Check from '@material-ui/icons/Check';
 import { makeStyles } from '@material-ui/core/styles';
 import { IPlayer } from '../../models/player.model';
+import { updatePlayerAdminStatus } from '../../store/players/actions';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -36,13 +38,12 @@ type Props = {
 export default function PlayerRow(props: Props) {
   const classes = useStyles();
   const history = useHistory()
+  const dispatch = useDispatch();
   const [isAdmin, setIsAdmin] = useState<boolean>(props.player.admin)
-
-  console.log('INIT', isAdmin)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsAdmin(!isAdmin)
-    console.log('ONCHNGE', e.target.checked)
+    dispatch(updatePlayerAdminStatus(props.player.id, e.target.checked))
   }
 
   const gotoPredictions = () => 

@@ -35,9 +35,20 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
       return { ...state, players: null, playerProfile: null, scores: null };
 
     case UPDATE_ADMIN_STATUS:
-      if (state.players)
-        return { ...state, players: [...state.players, action.player] };
-      else return state;
+      if (state.players) {
+        return {
+          ...state,
+          players: [
+            ...state.players.map((player) => {
+              if (player.id === action.player.id) {
+                return action.player;
+              } else {
+                return player;
+              }
+            }),
+          ],
+        };
+      } else return state;
 
     default:
       return state;
