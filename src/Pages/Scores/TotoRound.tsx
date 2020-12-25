@@ -66,8 +66,12 @@ export default function TotoRound() {
     }
   }, [dispatch, id, totoRound])
 
-  const totoRoundSortedByName: UserWithScore[]=  totoRound && totoRound.usersWithScores ? [...totoRound.usersWithScores]
-  .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
+  const totoRoundSortedByUserName: UserWithScore[]=  
+    totoRound && totoRound.usersWithScores ? 
+      [...totoRound.usersWithScores]
+        .sort((name1, name2) => name1.user.toLowerCase()
+        .localeCompare(name2.user.toLowerCase())) : 
+        [];
 
   const gotoTotoRound = () => 
   history.push(`/voorspellingen/${id}/${+id * 3 - 2}`);
@@ -106,7 +110,7 @@ export default function TotoRound() {
             className={classes.totoRound}
           >
             <Typography variant="h4">
-              TOTORONDE {id}
+              TOTO RONDE {id}
             </Typography>
           </Grid>
 
@@ -119,14 +123,14 @@ export default function TotoRound() {
             alignItems="center"
           >
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresBarChart scores={totoRoundSortedByName}/>
+              <ScoresBarChart scores={totoRoundSortedByUserName}/>
             </Grid>
           </Grid>
         </>
       : 
       <Grid>
         <Typography variant="overline">
-          Nog geen scores voor totoronde {id}
+          Nog geen scores voor toto ronde {id}
         </Typography>
       </Grid> 
       }
@@ -147,7 +151,7 @@ export default function TotoRound() {
           <Button color="primary" disabled>Toto Ronde {id}</Button>
           <RoundSelector/>
         </Breadcrumbs>
-      </Grid>
+      </Grid> 
     </Box>
   )
 }

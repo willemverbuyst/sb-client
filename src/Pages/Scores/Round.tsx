@@ -66,12 +66,22 @@ export default function Round() {
   const roundSortedByName: UserWithScore[]= round && round.usersWithScores ? [...round.usersWithScores]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
 
-  const gotoTotoRound = () => {  
+  const gotoPredictions = () => {  
     const t = +id !== TOTAL_ROUNDS
       ? Math.floor((+id - 1)/ 3) + 1 
       : Math.floor((+id - 2)/ 3) + 1 
 
     history.push(`/voorspellingen/${t}/${+id}`);
+  }
+
+  const gotoTotalToto = () => history.push('/klassement/totaaltoto');
+
+  const gotoTotoRound = () => {  
+    const tr = +id !== TOTAL_ROUNDS
+      ? Math.floor((+id - 1)/ 3) + 1 
+      : Math.floor((+id - 2)/ 3) + 1 
+
+    history.push(`/klassement/totoronde/${tr}`);
   }
 
   return ( 
@@ -88,7 +98,7 @@ export default function Round() {
             size="small" 
             color="primary" 
             disableElevation 
-            onClick={gotoTotoRound}
+            onClick={gotoPredictions}
           >
             MIJN VOORSPELLINGEN
           </Button>
@@ -143,13 +153,13 @@ export default function Round() {
         >
           <Button
             color="primary"
-            onClick={()=> history.push('/klassement/totaaltoto')}
+            onClick={gotoTotalToto}
           >
             Totaal Toto
           </Button>
           <Button 
             color="primary"
-            onClick={()=> history.goBack()}
+            onClick={gotoTotoRound}
           >
             Totoronde { +id !== TOTAL_ROUNDS
               ? Math.floor((+id - 1)/ 3) + 1 

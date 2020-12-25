@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import { TOTO_ROUNDS } from '../../constants/setupGame';
 
 export default function RoundSelector() {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,16 @@ export default function RoundSelector() {
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
 
-  const options = +id !== 11 ? [...Array(3)].map((_u, i) => `Ronde ${(+id - 1 ) * 3 + i + 1}`) : [...Array(4)].map((_u, i) => `Ronde ${(+id - 1 ) * 3 + i + 1}`)
+  const options = +id !== TOTO_ROUNDS ? 
+    [...Array(3)].map((_u, i) => `Ronde ${(+id - 1 ) * 3 + i + 1}`) :
+    [...Array(4)].map((_u, i) => `Ronde ${(+id - 1 ) * 3 + i + 1}`)
+
+  const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+      return;
+    }
+    setOpen(false);
+  };
 
   const handleMenuItemClick = (
     _event: React.MouseEvent<HTMLLIElement, MouseEvent>,
@@ -28,13 +38,6 @@ export default function RoundSelector() {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
-      return;
-    }
-    setOpen(false);
   };
 
   return (

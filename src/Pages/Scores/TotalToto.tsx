@@ -65,7 +65,7 @@ export default function TotalToto() {
     }
   }, [dispatch, totalToto])
 
-  const totalTotoSortedByName: UserWithScore[]= totalToto ? [...totalToto]
+  const totalTotoSortedByUserName: UserWithScore[]= totalToto ? [...totalToto]
     .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : [];
 
   const gotoTotoRound = () => 
@@ -118,7 +118,7 @@ export default function TotalToto() {
             alignItems="center"
           >
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresBarChart scores={totalTotoSortedByName}/>
+              <ScoresBarChart scores={totalTotoSortedByUserName}/>
             </Grid>
           </Grid>
         </>

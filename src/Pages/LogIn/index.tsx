@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   progress: {
-    minHeight: '70vh',
+    minHeight: '85vh',
     width: '100%',
     display: 'flex',
     justifyContent: 'center',

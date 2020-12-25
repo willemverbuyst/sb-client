@@ -17,6 +17,13 @@ export default function TotoRoundSelector() {
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const history = useHistory();
 
+  const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+      return;
+    }
+    setOpen(false);
+  };
+
   const handleMenuItemClick = (
     _event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number,
@@ -27,13 +34,6 @@ export default function TotoRoundSelector() {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
-      return;
-    }
-    setOpen(false);
   };
 
   return (
@@ -49,7 +49,7 @@ export default function TotoRoundSelector() {
             onClick={handleToggle}
             variant="text"
           >
-            Ga naar toto ronde
+            Toto ronde
           </Button>
         </ButtonGroup>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
