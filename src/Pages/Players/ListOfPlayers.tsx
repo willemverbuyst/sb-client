@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
-import { selectToken } from '../../store/user/selectors';
+import { selectToken, selectUser } from '../../store/user/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
 import PlayersTable from '../../Components/Table/PlayersTable';
@@ -12,8 +12,12 @@ import {
   createStyles, 
   Theme 
 } from '@material-ui/core/styles';
-import { Box, Grid, Typography } from '@material-ui/core';
-
+import { 
+  Box, 
+  Button, 
+  Grid, 
+  Typography 
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -42,6 +46,8 @@ export default function ListOfPlayers() {
   const token = useSelector(selectToken);
   const players = useSelector(selectPlayers);
   const isLoading = useSelector(selectAppLoading);
+  const user = useSelector(selectUser);
+  const [update, setUpdate] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token) history.push("/login");
@@ -52,15 +58,33 @@ export default function ListOfPlayers() {
       dispatch(fetchAllPlayers());
     }
   }, [dispatch, players]);
+
+  const editAdminStatus  = () => setUpdate(!update)
   
   return (
     <Box>
-      <Grid container>
+      <Grid container justify="space-between">
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Spelers
           </Typography>
         </Grid>
+
+        { user && user.admin ?
+        <Grid>
+          <Button
+            fullWidth
+            variant="contained" 
+            size="small" 
+            color="secondary" 
+            disableElevation 
+            onClick={editAdminStatus}
+          >
+            {update ? 'UPDATE KLAAR' : 'UPDATE ADMIN STATUS'}
+          </Button>
+        </Grid>
+        : null }
+      </Grid>
 
         { isLoading ?
           <Box className={classes.progress}>
@@ -69,11 +93,11 @@ export default function ListOfPlayers() {
         : players ? 
           <Grid container justify="center"> 
             <Grid item xs={10} className={classes.playersTable}>
-              <PlayersTable players={players} />
+              <PlayersTable players={players} changeStatus={update}/>
             </Grid> 
           </Grid>
         : null }
-      </Grid>
+
     </Box>      
   ) 
 }

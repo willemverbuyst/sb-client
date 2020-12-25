@@ -16,10 +16,11 @@ const sortTable = (arr: IPlayer[]): IPlayer[] => [...arr]
   .sort((player1, player2) => player1.userName.toLowerCase().localeCompare(player2.userName.toLowerCase()))
 
 type Prop = {
-  players: IPlayer[]
+  players: IPlayer[];
+  changeStatus: boolean;
 }
 
-export default function PlayersTable({players}: Prop) {
+export default function PlayersTable({players, changeStatus}: Prop) {
   const user = useSelector(selectUser);
 
   return (
@@ -43,6 +44,7 @@ export default function PlayersTable({players}: Prop) {
               key={i}
               player={player}
               userIsAdmin={user.admin}
+              updateStatus={changeStatus}
             /> 
           )}
         </TableBody>

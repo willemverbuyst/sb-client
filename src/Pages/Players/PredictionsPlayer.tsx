@@ -5,8 +5,8 @@ import { selectToken } from '../../store/user/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';
 import { 
-  makeStyles, 
   createStyles, 
+  makeStyles, 
   Theme 
 } from '@material-ui/core/styles';
 import { 

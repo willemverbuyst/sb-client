@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { 
+  Checkbox,
   TableCell, 
   TableRow,
 } from '@material-ui/core';
@@ -29,23 +30,46 @@ type Props = {
   key: number;
   player: IPlayer;
   userIsAdmin: boolean;
+  updateStatus: boolean;
 }
 
 export default function PlayerRow(props: Props) {
   const classes = useStyles();
   const history = useHistory()
+  const [isAdmin, setIsAdmin] = useState<boolean>(props.player.admin)
+
+  console.log('INIT', isAdmin)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAdmin(!isAdmin)
+    console.log('ONCHNGE', e.target.checked)
+  }
 
   const gotoPredictions = () => 
     history.push(`/spelers/${props.player.id}/voorspellingen/1/1`)
 
   return (
-    <TableRow className={classes.link} onClick={gotoPredictions}>
+    <TableRow>
      
-      <TableCell className={classes.checkAdmin} align="center">
-        {props.player.admin ? <Check/> : null}
-      </TableCell> 
+      {props.updateStatus ? 
+        <TableCell>
+          <Checkbox
+            checked={isAdmin}
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+         </TableCell>
+      : 
+        <TableCell className={classes.checkAdmin} align="center">
+          {props.player.admin ? <Check/> : null}
+        </TableCell> 
+      }
   
-      <TableCell align="left">
+      <TableCell 
+        align="left"  
+        className={classes.link}
+        onClick={gotoPredictions}
+      >
         {props.player.userName}
       </TableCell>
 
