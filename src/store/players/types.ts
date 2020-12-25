@@ -5,6 +5,7 @@ export const ALL_PLAYERS_FETCHED = 'ALL_PLAYERS_FETCHED';
 export const PLAYER_PROFILE_FETCHED = 'PLAYER_PROFILE_FETCHED';
 export const PLAYER_SCORES_FETCHED = 'PLAYER_SCORES_FETCHED';
 export const REMOVE_ALL_PLAYERS = 'REMOVE_ALL_PLAYERS';
+export const UPDATE_ADMIN_STATUS = 'UPDATE_ADMIN_STATUS';
 
 export type PlayersState = {
   players: IPlayer[] | null;
@@ -42,9 +43,15 @@ export type RemoveAllPlayers = {
   type: typeof REMOVE_ALL_PLAYERS;
 };
 
+export type UpdateAdminStatus = {
+  type: typeof UPDATE_ADMIN_STATUS;
+  player: IPlayer;
+};
+
 export type PlayersActionTypes =
   | AddNewPlayer
   | AllPlayersFetched
   | PlayerProfileFetched
   | PlayerScoresFetched
-  | RemoveAllPlayers;
+  | RemoveAllPlayers
+  | UpdateAdminStatus;

@@ -13,6 +13,7 @@ import {
   PlayerScoresFetched,
   RemoveAllPlayers,
   ScoresPlayer,
+  UpdateAdminStatus,
 } from './types';
 import { GetState } from '../types';
 import { ISignUpCredentials } from '../../models/credentials.model';
@@ -52,6 +53,13 @@ export const playerScoresFetched = (
 export const removeAllPlayers = (): RemoveAllPlayers => {
   return {
     type: REMOVE_ALL_PLAYERS,
+  };
+};
+
+export const updateAdminStatus = (player: IPlayer): UpdateAdminStatus => {
+  return {
+    type: 'UPDATE_ADMIN_STATUS',
+    player,
   };
 };
 
@@ -168,6 +176,38 @@ export const fetchPlayerScores = (id: number) => async (
     const scoresPlayer = response.data;
 
     dispatch(playerScoresFetched(scoresPlayer));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const updatePlayerAdminStatus = (id: number, admin: boolean) => async (
+  dispatch: Dispatch,
+  _getState: GetState
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.patch(
+      `${apiUrl}/users/${id}/admin`,
+      { admin },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    const player = response.data;
+
+    console.log(player);
+
+    dispatch(updateAdminStatus(player));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

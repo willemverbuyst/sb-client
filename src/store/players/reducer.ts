@@ -4,6 +4,7 @@ import {
   PLAYER_PROFILE_FETCHED,
   PLAYER_SCORES_FETCHED,
   REMOVE_ALL_PLAYERS,
+  UPDATE_ADMIN_STATUS,
   PlayersState,
   PlayersActionTypes,
 } from './types';
@@ -32,6 +33,11 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
 
     case REMOVE_ALL_PLAYERS:
       return { ...state, players: null, playerProfile: null, scores: null };
+
+    case UPDATE_ADMIN_STATUS:
+      if (state.players)
+        return { ...state, players: [...state.players, action.player] };
+      else return state;
 
     default:
       return state;
