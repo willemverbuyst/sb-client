@@ -12,6 +12,7 @@ import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
 import { red } from '@material-ui/core/colors';
+import DeleteDialog from '../Toast/DeleteDialog';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -45,13 +46,14 @@ type Props = {
   player: IPlayer;
   userIsAdmin: boolean;
   updateStatus: boolean;
+  onChange: () => void;
 }
 
 export default function PlayerRow(props: Props) {
   const classes = useStyles();
   const history = useHistory()
   const dispatch = useDispatch();
-  const [isAdmin, setIsAdmin] = useState<boolean>(props.player.admin)
+  const [isAdmin, setIsAdmin] = useState<boolean>(props.player.admin);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsAdmin(!isAdmin)
@@ -122,7 +124,7 @@ export default function PlayerRow(props: Props) {
 
       { props.userIsAdmin && props.updateStatus ? 
       <TableCell align="left">
-        <ColorButton size="small">
+        <ColorButton size="small" onClick={props.onChange}>
           DELETE
         </ColorButton>
       </TableCell>

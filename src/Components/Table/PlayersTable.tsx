@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/selectors'
 import { 
@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import { IPlayer } from '../../models/player.model';
 import PlayerRow from './PlayerRow';
+import DeleteDialog from '../Toast/DeleteDialog';
 
 const sortTable = (arr: IPlayer[]): IPlayer[] => [...arr]
   .sort((player1, player2) => player1.userName.toLowerCase().localeCompare(player2.userName.toLowerCase()))
@@ -22,8 +23,12 @@ type Prop = {
 
 export default function PlayersTable({players, changeStatus}: Prop) {
   const user = useSelector(selectUser);
+  const [showDialog, setShowDialog] = useState(false)
+
+  const handleChange = () => setShowDialog(!showDialog)
 
   return (
+    <>
     <TableContainer>
       <Table aria-label="simple table">
         <TableHead>
@@ -46,10 +51,13 @@ export default function PlayersTable({players, changeStatus}: Prop) {
               player={player}
               userIsAdmin={user.admin}
               updateStatus={changeStatus}
+              onChange={handleChange}
             /> 
           )}
         </TableBody>
       </Table>
     </TableContainer>
+    { showDialog ? <DeleteDialog closeDialog={handleChange}/> : null }
+    </>
   );
 }
