@@ -128,8 +128,6 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
   const { id } = req.params;
   const userId = req.user.id;
 
-  console.log(id, userId);
-
   if (!typeof admin === 'boolean')
     return res.status(400).send('Admin status is missing, please try again');
 
@@ -179,6 +177,19 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
         return res.status(400).send({ message: 'Something went wrong, sorry' });
       }
     }
+  } catch (error) {
+    return res.status(400).send({ message: 'Something went wrong, sorry' });
+  }
+});
+
+/*** DELETE USER AND HER/HIS PREDICTIONS BY ADMIN ***/
+router.delete('/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.destroy({ where: { id } });
+    await Prediction.destroy({ where: { userId: id } });
+
+    return res.status(200).send({ message: 'Player has been deleted!' });
   } catch (error) {
     return res.status(400).send({ message: 'Something went wrong, sorry' });
   }
