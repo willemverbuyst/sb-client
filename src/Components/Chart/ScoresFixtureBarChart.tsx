@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
+import { selectUser } from '../../store/user/selectors';
 
 type Prop = {
   scores: PredictionWithScorePerUser[]
@@ -13,10 +15,13 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
   const labels = scores.map(player => player.user.toLocaleUpperCase());
   const userScores = scores.map(player => player.score + 0.1);
   const userPredictions = scores.map(player => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`)
+  const user = useSelector(selectUser);
   const max = Math.max(...userScores) * 1.2;
   
   const gotoPlayer = (id: number) => 
     history.push(`/spelers/${scores[id].userId}/scores`);
+
+  const hoverBackgroundColors = scores.map(score => score?.userId === user?.id ? '#1e5eb1' : '#aaa' );
 
   const chartData = {
     labels: labels,
@@ -25,7 +30,7 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
         data: userScores,
         backgroundColor:'#EA9C3B',
         borderWidth: 0,
-        hoverBackgroundColor:'#1e5eb1',
+        hoverBackgroundColor: hoverBackgroundColors,
       },
     ],
     tooltipItem: 'hello'

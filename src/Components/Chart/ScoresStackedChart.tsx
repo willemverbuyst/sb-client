@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import { ScoresPlayer } from '../../store/players/types';
+import { selectUser } from '../../store/user/selectors';
 
 type Color = {
   color1: string, 
@@ -20,14 +22,23 @@ type Prop = {
 
 export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover, loggedInUser}: Prop) {
   const history = useHistory();
-  const colorPrimary = colorMain;
-  const colorSecondary = colorHover;
+  const user = useSelector(selectUser)
+
+  let colorPrimary;
+  let colorSecondary;
+
+  if (user?.id === scoresPlayer.id) {
+    colorPrimary = colorHover;
+    colorSecondary = colorMain;
+  } else {
+    colorPrimary = colorMain;
+    colorSecondary = colorHover;
+  }
 
   const gotoTotoRound = (id: number) => {
     loggedInUser ? history.push(`/voorspellingen/${id}/${id * 3 - 2}`)
       : history.push(`/spelers/${scoresPlayer.id}/voorspellingen/${id}/${id * 3 - 2}`)
   }
-
 
   const totals = scoresPlayer.scores.map((totoround) => totoround.reduce((a, b)=> a + b));
 
