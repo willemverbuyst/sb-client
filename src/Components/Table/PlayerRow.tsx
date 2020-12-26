@@ -12,7 +12,6 @@ import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
 import { red } from '@material-ui/core/colors';
-import DeleteDialog from '../Toast/DeleteDialog';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {

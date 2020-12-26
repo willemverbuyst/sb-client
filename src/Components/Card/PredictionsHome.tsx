@@ -15,6 +15,12 @@ export default function PredictionsHome({fixtureWithPrediction} : Prop ) {
               Voorspelling: {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam}
             </Typography>
           </Grid>
+      : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) ?
+        <Grid container justify="space-around">
+          <Typography variant="overline" color="secondary">
+            Voorspelling: {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam}
+          </Typography>
+        </Grid>
       : 
           <Typography variant="overline" color="textSecondary">
             Geen voorspelling

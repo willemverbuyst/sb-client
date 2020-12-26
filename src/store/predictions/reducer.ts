@@ -25,12 +25,29 @@ const predictionsReducer = (
       return { ...state, allFixtures: action.allFixtures };
 
     case POST_PREDICTION:
-      if (state.allFixtures) {
-        return {
-          ...state,
-          allFixtures: state.allFixtures.map((totoRound) =>
-            totoRound.map((round) =>
-              round.map((fixture) =>
+      return {
+        ...state,
+        allFixtures: state.allFixtures
+          ? state.allFixtures.map((totoRound) =>
+              totoRound.map((round) =>
+                round.map((fixture) =>
+                  fixture.id === action.prediction.fixtureId
+                    ? {
+                        ...fixture,
+                        predictions: {
+                          pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
+                          pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+                        },
+                      }
+                    : fixture
+                )
+              )
+            )
+          : null,
+        currentRound: state.currentRound
+          ? {
+              ...state.currentRound,
+              fixtures: state.currentRound.fixtures.map((fixture) =>
                 fixture.id === action.prediction.fixtureId
                   ? {
                       ...fixture,
@@ -40,24 +57,38 @@ const predictionsReducer = (
                       },
                     }
                   : fixture
-              )
-            )
-          ),
-        };
-      }
-      // UPDATE CURRENT ROUND AS WELL????
-      return state;
+              ),
+            }
+          : null,
+      };
 
     case REMOVE_ALL_FIXTURES:
       return { allFixtures: null, currentRound: null };
 
     case UPDATE_PREDICTION:
-      if (state.allFixtures) {
-        return {
-          ...state,
-          allFixtures: state.allFixtures.map((totoRound) =>
-            totoRound.map((round) =>
-              round.map((fixture) =>
+      return {
+        ...state,
+        allFixtures: state.allFixtures
+          ? state.allFixtures.map((totoRound) =>
+              totoRound.map((round) =>
+                round.map((fixture) =>
+                  fixture.id === action.prediction.fixtureId
+                    ? {
+                        ...fixture,
+                        predictions: {
+                          pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
+                          pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+                        },
+                      }
+                    : fixture
+                )
+              )
+            )
+          : null,
+        currentRound: state.currentRound
+          ? {
+              ...state.currentRound,
+              fixtures: state.currentRound.fixtures.map((fixture) =>
                 fixture.id === action.prediction.fixtureId
                   ? {
                       ...fixture,
@@ -67,12 +98,10 @@ const predictionsReducer = (
                       },
                     }
                   : fixture
-              )
-            )
-          ),
-        };
-      }
-      return state;
+              ),
+            }
+          : null,
+      };
 
     default:
       return state;
