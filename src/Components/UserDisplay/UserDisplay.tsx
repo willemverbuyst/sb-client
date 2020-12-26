@@ -40,7 +40,6 @@ export default function UserDisplay() {
             </Typography>
           </Grid>
           <Grid container justify="center" className={classes.team} >
-            {/* with ripple badge if there is a match today */}
             <Avatar alt={user.team.name} src={user.team.logo} className={classes.avatar}/>
           </Grid>
         </Grid>

@@ -3,7 +3,7 @@ import {
   timeStampFormattedToLocalDate,
 } from '../timeFunctions';
 
-describe('if given timestamp', () => {
+describe('if given a timestamp', () => {
   const timeStampTest = 1610206200;
 
   test('returns a time (hh:mm)', () => {
@@ -11,7 +11,7 @@ describe('if given timestamp', () => {
   });
 });
 
-describe('if give timestamp', () => {
+describe('if given a timestamp', () => {
   const timeStampTest = 1610206200;
 
   test('returns a formatted date', () => {
