@@ -13,6 +13,7 @@ import {
   playerScoresFetched,
   removeAllPlayers,
   updateAdminStatus,
+  updatePlayerAdminStatus,
 } from '../actions';
 import {
   ADD_NEW_PLAYER,
@@ -367,6 +368,48 @@ describe('#fplayerDelete', () => {
     expect(mockAxios.delete).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(deletePlayer(id));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(4);
+  });
+});
+
+describe('#updatePlayerAdminStatus', () => {
+  it('calls axios and returns an updated player', async () => {
+    const id = 1;
+    const status = true;
+    const player: IPlayerProfile = {
+      admin: false,
+      email: 'test@test.com',
+      firstName: 'test_player',
+      id: 1,
+      lastName: 'tst_player',
+      phoneNumber: '123',
+      team: {
+        id: 1,
+        logo: 'test_logo',
+        name: 'test_name',
+      },
+      totaalToto: true,
+      userName: 'TEST',
+      pastFixturesWithScores: null,
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: { updatedUser: player, message: 'ok' } };
+
+    mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
+
+    await updatePlayerAdminStatus(id, status)(dispatch, getState);
+
+    expect(mockAxios.patch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(
+      updateAdminStatus(response.data.updatedUser)
+    );
     expect(dispatch).toHaveBeenCalledWith(
       setMessage('success', response.data.message)
     );
