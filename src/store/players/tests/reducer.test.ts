@@ -32,6 +32,7 @@ describe('#playersStateReducer', () => {
     const initialState: PlayersState = {
       players: null,
       playerProfile: null,
+      scoresPlayer: null,
     };
     const action: AddNewPlayer = {
       type: ADD_NEW_PLAYER,
@@ -43,9 +44,11 @@ describe('#playersStateReducer', () => {
       expect(newState).toEqual({
         players: null,
         playerProfile: null,
+        scoresPlayer: null,
       });
       expect(newState.playerProfile).toBeNull;
       expect(newState.players).toBeNull;
+      expect(newState.scoresPlayer).tobeNull;
       expect(newState).toEqual(initialState);
     });
   });
@@ -68,6 +71,7 @@ describe('#playersStateReducer', () => {
     const initialState: PlayersState = {
       players: [player],
       playerProfile: null,
+      scoresPlayer: null,
     };
     const action: AddNewPlayer = {
       type: ADD_NEW_PLAYER,
@@ -103,6 +107,7 @@ describe('#playersStateReducer', () => {
       const initialState: PlayersState = {
         players: null,
         playerProfile: null,
+        scoresPlayer: null,
       };
       const action: AllPlayersFetched = {
         type: ALL_PLAYERS_FETCHED,
@@ -153,6 +158,7 @@ describe('#playersStateReducer', () => {
     const state: PlayersState = {
       players: players1,
       playerProfile: null,
+      scoresPlayer: null,
     };
     const action: AllPlayersFetched = {
       type: ALL_PLAYERS_FETCHED,
@@ -187,6 +193,7 @@ describe('#playersStateReducer', () => {
     const initialState: PlayersState = {
       players: null,
       playerProfile: null,
+      scoresPlayer: null,
     };
     const action: PlayerProfileFetched = {
       type: PLAYER_PROFILE_FETCHED,
@@ -252,6 +259,7 @@ describe('#playersStateReducer', () => {
     const state: PlayersState = {
       players,
       playerProfile: playerProfile1,
+      scoresPlayer: null,
     };
     const action: PlayerProfileFetched = {
       type: PLAYER_PROFILE_FETCHED,
@@ -304,10 +312,12 @@ describe('#playersStateReducer', () => {
     const state: PlayersState = {
       players,
       playerProfile,
+      scoresPlayer: null,
     };
     const initialState: PlayersState = {
       players: null,
       playerProfile: null,
+      scoresPlayer: null,
     };
     const action: RemoveAllPlayers = {
       type: REMOVE_ALL_PLAYERS,

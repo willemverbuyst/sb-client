@@ -41,7 +41,11 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
       return { ...state, scoresPlayer: action.scoresPlayer };
 
     case REMOVE_ALL_PLAYERS:
-      return { ...state, players: null, playerProfile: null, scores: null };
+      return {
+        players: null,
+        playerProfile: null,
+        scoresPlayer: null,
+      };
 
     case UPDATE_ADMIN_STATUS:
       if (state.players) {

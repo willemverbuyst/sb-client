@@ -15,7 +15,7 @@ const teamReducer = (state = initialState, action: TeamsActionTypes) => {
       return { ...state, teams: action.teams };
 
     case REMOVE_ALL_TEAMS:
-      return { ...state, teams: null };
+      return { teams: null };
 
     default:
       return state;
