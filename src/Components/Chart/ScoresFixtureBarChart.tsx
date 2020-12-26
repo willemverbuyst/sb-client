@@ -42,7 +42,10 @@ const ScoresFixtureBarChart: React.FC<Props> = ({ scores }: Props): ReactElement
         tooltips: {
           enabled: true,
           callbacks: {
-            title: (tooltipItem, _chartData) => `Voorspelling: ${userPredictions[tooltipItem[0].index!]}`,
+            title: (tooltipItem) =>
+              typeof tooltipItem[0].index === 'number'
+                ? `Voorspelling: ${userPredictions[tooltipItem[0].index]}`
+                : `Prediction ???`,
             label: () => '',
           },
         },

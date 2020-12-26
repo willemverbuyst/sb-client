@@ -53,11 +53,12 @@ describe('#fetchAllTeams', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: teams };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchAllTeams(dispatch, getState);
+    await fetchAllTeams()(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());

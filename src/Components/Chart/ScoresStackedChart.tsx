@@ -97,8 +97,11 @@ const ScoresStackedChart: React.FC<Props> = ({
         tooltips: {
           enabled: true,
           callbacks: {
-            title: (tooltipItem, _chartData) => `Scores: ${scoresPlayer.scores[tooltipItem[0].index!]}`,
-            label: (_tooltipItem, _chartData) => ``,
+            title: (tooltipItem) =>
+              typeof tooltipItem[0].index === 'number'
+                ? `Scores: ${scoresPlayer.scores[tooltipItem[0].index]}`
+                : `Scores ???`,
+            label: () => ``,
           },
         },
         legend: {

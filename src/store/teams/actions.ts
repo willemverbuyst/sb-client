@@ -23,7 +23,6 @@ export const removeAllTeams = (): RemoveAllTeams => {
 
 export const fetchAllTeams = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {

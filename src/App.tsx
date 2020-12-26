@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { getUserWithStoredToken } from './store/user/actions';
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-function App() {
+const App: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -88,6 +88,6 @@ function App() {
       </Grid>
     </MuiThemeProvider>
   );
-}
+};
 
 export default App;

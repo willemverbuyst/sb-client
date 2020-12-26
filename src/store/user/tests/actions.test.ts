@@ -140,11 +140,12 @@ describe('#changePassword', () => {
     const password = 'test_password';
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { message: 'ok' } };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
-    await changePassword(password)(dispatch, getState);
+    await changePassword(password)(dispatch, getState, extraArg);
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -185,11 +186,12 @@ describe('#editUserProfile', () => {
     };
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { message: 'ok', userData: updatedUser } };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
-    await editUserProfile(user)(dispatch, getState);
+    await editUserProfile(user)(dispatch, getState, extraArg);
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -225,11 +227,12 @@ describe('#userLogIn', () => {
     };
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { userData: user, message: 'test_message' } };
 
     mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
 
-    await userLogIn(credentials)(dispatch, getState);
+    await userLogIn(credentials)(dispatch, getState, extraArg);
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());

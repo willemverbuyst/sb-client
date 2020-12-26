@@ -56,7 +56,6 @@ export const scoresTotoRoundFetched = (totoRound: Scores): ScoresTotoRoundFetche
 
 export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -82,7 +81,6 @@ export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, un
 
 export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -108,7 +106,6 @@ export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unkn
 
 export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -134,7 +131,6 @@ export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, A
 
 export const fetchScoresTotoRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {

@@ -73,7 +73,7 @@ export const addPlayer = (
   signUpCredentials: ISignUpCredentials,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { userName, firstName, lastName, email, password, phoneNumber, admin, totaalToto, teamId } = signUpCredentials;
-  return async (dispatch: Dispatch, _getState: GetState) => {
+  return async (dispatch: Dispatch) => {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
@@ -111,7 +111,6 @@ export const addPlayer = (
 
 export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -137,7 +136,6 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
 
 export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -163,7 +161,6 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
 
 export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -189,7 +186,6 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
 
 export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -216,7 +212,7 @@ export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown,
 export const updatePlayerAdminStatus = (
   id: number,
   admin: boolean,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch, _getState: GetState) => {
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

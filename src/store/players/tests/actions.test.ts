@@ -232,11 +232,12 @@ describe('#addPlayer', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { userData: player, message: 'test_message' } };
 
     mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
 
-    await addPlayer(signUpCredentials)(dispatch, getState);
+    await addPlayer(signUpCredentials)(dispatch, getState, extraArg);
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -269,11 +270,12 @@ describe('#fetchAllPlayers', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: players };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchAllPlayers()(dispatch, getState);
+    await fetchAllPlayers()(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -305,11 +307,12 @@ describe('#fetchPlayerProfile', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: player };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchPlayerProfile(id)(dispatch, getState);
+    await fetchPlayerProfile(id)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -333,11 +336,12 @@ describe('#fetchPlayerScores', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: scoresPlayer };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchPlayerScores(id)(dispatch, getState);
+    await fetchPlayerScores(id)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -353,11 +357,12 @@ describe('#fplayerDelete', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { message: 'ok' } };
 
     mockAxios.delete.mockImplementationOnce(() => Promise.resolve(response));
 
-    await playerDelete(id)(dispatch, getState);
+    await playerDelete(id)(dispatch, getState, extraArg);
 
     expect(mockAxios.delete).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -391,11 +396,12 @@ describe('#updatePlayerAdminStatus', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { updatedUser: player, message: 'ok' } };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
-    await updatePlayerAdminStatus(id, status)(dispatch, getState);
+    await updatePlayerAdminStatus(id, status)(dispatch, getState, extraArg);
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());

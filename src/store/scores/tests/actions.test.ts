@@ -190,11 +190,12 @@ describe('#fetchScoresFixture', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: fixtureScores };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchScoresFixture(id)(dispatch, getState);
+    await fetchScoresFixture(id)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -220,11 +221,12 @@ describe('#fetchScoresRound', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: roundScores };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchScoresRound(id)(dispatch, getState);
+    await fetchScoresRound(id)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -246,11 +248,12 @@ describe('#fetchScoresTotalToto', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: totalTotoScores };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchScoresTotalToto()(dispatch, getState);
+    await fetchScoresTotalToto()(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -276,11 +279,12 @@ describe('#fetchScoresTotoRound', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: totoRoundScores };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchScoresTotoRound(id)(dispatch, getState);
+    await fetchScoresTotoRound(id)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());

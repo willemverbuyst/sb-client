@@ -57,10 +57,7 @@ export const changePrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,
-}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
-  _getState: GetState,
-) => {
+}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -92,7 +89,6 @@ export const changePrediction = ({
 
 export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -118,7 +114,6 @@ export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Actio
 
 export const fetchCurrentRound = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch,
-  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -146,10 +141,7 @@ export const postNewPrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,
-}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
-  _getState: GetState,
-) => {
+}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

@@ -44,7 +44,7 @@ export const updateUserProfile = (user: IUser): UpdateUserProfile => ({
 });
 
 export const changePassword = (newPassword: string): ThunkAction<void, StoreState, unknown, Action<string>> => {
-  return async (dispatch: Dispatch, _getState: GetState) => {
+  return async (dispatch: Dispatch) => {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
@@ -74,7 +74,7 @@ export const editUserProfile = (
   profileDetails: IProfileDetails,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { userName, firstName, lastName, email, phoneNumber, admin, totaalToto, teamId } = profileDetails;
-  return async (dispatch: Dispatch, _getState: GetState) => {
+  return async (dispatch: Dispatch) => {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
@@ -111,7 +111,7 @@ export const editUserProfile = (
 
 export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { email, password } = credentials;
-  return async (dispatch: Dispatch, _getState: GetState) => {
+  return async (dispatch: Dispatch) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/login`, {

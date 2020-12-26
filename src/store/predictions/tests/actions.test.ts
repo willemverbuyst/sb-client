@@ -171,11 +171,12 @@ describe('#changePrediction', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { prediction, message: 'test_message' } };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
-    await changePrediction(prediction)(dispatch, getState);
+    await changePrediction(prediction)(dispatch, getState, extraArg);
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -217,11 +218,12 @@ describe('#fetchAllFixtures', () => {
     ];
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: totoRound };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchAllFixtures()(dispatch, getState);
+    await fetchAllFixtures()(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -263,11 +265,12 @@ describe('#fetchCurrentRound', () => {
     };
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: currentRound };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchCurrentRound()(dispatch, getState);
+    await fetchCurrentRound()(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -287,11 +290,12 @@ describe('#postNewPrediction', () => {
 
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: { prediction, message: 'test_message' } };
 
     mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
 
-    await postNewPrediction(prediction)(dispatch, getState);
+    await postNewPrediction(prediction)(dispatch, getState, extraArg);
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
