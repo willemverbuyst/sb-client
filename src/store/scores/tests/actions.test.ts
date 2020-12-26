@@ -13,7 +13,6 @@ import {
   ScoresRoundFetched,
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
-  ScoresState,
   PredictionWithScorePerUser,
   Scores,
 } from '../types';
@@ -22,6 +21,7 @@ import {
   scoresFixtureFetched,
   scoresRoundFetched,
   scoresTotalTotoFetched,
+  scoresTotoRoundFetched,
 } from '../actions';
 
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
@@ -127,6 +127,33 @@ describe('#scoressState', () => {
       expect(scoresTotalTotoFetched(totalToto).totalToto).not.toBe(undefined);
       expect(scoresTotalTotoFetched(totalToto).type).toBe(
         SCORES_TOTAL_TOTO_FETCHED
+      );
+    });
+  });
+
+  describe('#scoresTotoRoundFetched w/ sores', () => {
+    const totoRoundScores: Scores = {
+      usersWithScores: [
+        {
+          id: 1,
+          score: 1,
+          user: 'test_user',
+        },
+      ],
+      id: 1,
+    };
+    const expected: ScoresTotoRoundFetched = {
+      type: SCORES_TOTO_ROUND_FETCHED,
+      totoRound: totoRoundScores,
+    };
+
+    test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
+      expect(scoresTotoRoundFetched(totoRoundScores)).toEqual(expected);
+      expect(scoresTotoRoundFetched(totoRoundScores).totoRound).not.toBe(
+        undefined
+      );
+      expect(scoresTotoRoundFetched(totoRoundScores).type).toBe(
+        SCORES_TOTO_ROUND_FETCHED
       );
     });
   });
