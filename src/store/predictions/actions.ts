@@ -58,7 +58,7 @@ export const changePrediction = ({
   pGoalsAwayTeam,
   fixtureId,
 }: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: any,
+  dispatch: Dispatch,
   _getState: GetState,
 ) => {
   dispatch(appLoading());

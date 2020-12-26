@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectToken, selectUser } from '../../store/user/selectors';
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function Header() {
+const Header: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -154,4 +154,6 @@ export default function Header() {
       )}
     </Box>
   );
-}
+};
+
+export default Header;

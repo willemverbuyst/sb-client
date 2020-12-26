@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -10,7 +10,7 @@ type Props = {
   onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 };
 
-export default function PaginationComponent(props: Props) {
+const PaginationComponent: React.FC<Props> = (props: Props): ReactElement => {
   return (
     <>
       <Grid item xs={12}>
@@ -27,4 +27,6 @@ export default function PaginationComponent(props: Props) {
       </Grid>
     </>
   );
-}
+};
+
+export default PaginationComponent;

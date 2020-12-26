@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -12,7 +12,7 @@ import MenuList from '@material-ui/core/MenuList';
 
 const options = [...Array(11)].map((_u, i) => `Toto ronde ${i + 1}`);
 
-export default function TotoRoundSelector() {
+const TotoRoundSelector: React.FC = (): ReactElement => {
   const [open, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const history = useHistory();
@@ -74,4 +74,6 @@ export default function TotoRoundSelector() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default TotoRoundSelector;

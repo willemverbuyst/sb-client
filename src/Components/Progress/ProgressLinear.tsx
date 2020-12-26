@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function ProgressLinear() {
+const ProgressLinear: React.FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -22,4 +22,6 @@ export default function ProgressLinear() {
       <LinearProgress color="primary" />
     </div>
   );
-}
+};
+
+export default ProgressLinear;

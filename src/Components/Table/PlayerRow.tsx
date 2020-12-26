@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button, Checkbox, TableCell, TableRow } from '@material-ui/core';
@@ -8,7 +8,7 @@ import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
 import { red } from '@material-ui/core/colors';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
     height: 30,
     width: 30,
@@ -43,7 +43,7 @@ type Props = {
   onChange: (player: IPlayer) => void;
 };
 
-export default function PlayerRow(props: Props) {
+const PlayerRow: React.FC<Props> = (props: Props): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -97,4 +97,6 @@ export default function PlayerRow(props: Props) {
       ) : null}
     </TableRow>
   );
-}
+};
+
+export default PlayerRow;

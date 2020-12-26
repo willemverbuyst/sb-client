@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/selectors';
@@ -42,11 +42,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Prop = {
+type Props = {
   handleSubmit: () => void;
 };
 
-export default function EditProfileForm(props: Prop) {
+const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -259,4 +259,6 @@ export default function EditProfileForm(props: Prop) {
       </div>
     </Container>
   );
-}
+};
+
+export default EditProfileForm;

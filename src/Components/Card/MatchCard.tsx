@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Chip, Grid, Typography } from '@material-ui/core';
@@ -36,9 +36,9 @@ const useStyles = makeStyles({
   },
 });
 
-type Prop = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions; display: string };
+type Props = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions; display: string };
 
-export default function MatchCard({ wedstrijdMetVoorspellingen, display }: Prop) {
+const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Props): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -116,4 +116,6 @@ export default function MatchCard({ wedstrijdMetVoorspellingen, display }: Prop)
       </CardContent>
     </Card>
   );
-}
+};
+
+export default MatchCard;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Grid, TextField, Typography, Tooltip, makeStyles } from '@material-ui/core';
 import { IPrediction } from '../../models/predictions.model';
@@ -13,9 +13,9 @@ const useStyles = makeStyles({
   },
 });
 
-type Prop = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
+type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
 
-export default function PredictionsField({ fixtureWithPrediction }: Prop) {
+const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
@@ -128,4 +128,6 @@ export default function PredictionsField({ fixtureWithPrediction }: Prop) {
       )}
     </Grid>
   );
-}
+};
+
+export default PredictionsField;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
@@ -13,14 +13,19 @@ type Color = {
   color4: string;
 };
 
-type Prop = {
+type Props = {
   scoresPlayer: ScoresPlayer;
   colorMain: Color;
   colorHover: Color;
   loggedInUser: boolean;
 };
 
-export default function ScoresStackedChart({ scoresPlayer, colorMain, colorHover, loggedInUser }: Prop) {
+const ScoresStackedChart: React.FC<Props> = ({
+  scoresPlayer,
+  colorMain,
+  colorHover,
+  loggedInUser,
+}: Props): ReactElement => {
   const history = useHistory();
   const user = useSelector(selectUser);
 
@@ -139,4 +144,6 @@ export default function ScoresStackedChart({ scoresPlayer, colorMain, colorHover
       }}
     />
   );
-}
+};
+
+export default ScoresStackedChart;

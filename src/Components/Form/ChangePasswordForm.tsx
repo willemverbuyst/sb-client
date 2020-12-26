@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Container, TextField } from '@material-ui/core';
@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Prop = {
+type Props = {
   handleSubmit: () => void;
 };
 
-export default function ChangePasswordForm(prop: Prop) {
+const ChangePasswordForm: React.FC<Props> = (prop: Props): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [password1, setPassword1] = useState<string>('');
@@ -103,4 +103,6 @@ export default function ChangePasswordForm(prop: Prop) {
       </div>
     </Container>
   );
-}
+};
+
+export default ChangePasswordForm;

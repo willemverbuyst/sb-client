@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 
-type Prop = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
+type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
 
-export default function PublicPredictions({ fixtureWithPrediction }: Prop) {
+const PublicPredictions: React.FC<Props> = ({ fixtureWithPrediction }: Props): ReactElement => {
   return (
     <Grid item xs={12} container justify="center">
       {(fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) &&
@@ -24,4 +24,6 @@ export default function PublicPredictions({ fixtureWithPrediction }: Prop) {
       )}
     </Grid>
   );
-}
+};
+
+export default PublicPredictions;

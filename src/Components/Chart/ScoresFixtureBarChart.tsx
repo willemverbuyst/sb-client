@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
@@ -6,11 +6,11 @@ import 'chartjs-plugin-datalabels';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 import { selectUser } from '../../store/user/selectors';
 
-type Prop = {
+type Props = {
   scores: PredictionWithScorePerUser[];
 };
 
-export default function ScoresFixtureBarChart({ scores }: Prop) {
+const ScoresFixtureBarChart: React.FC<Props> = ({ scores }: Props): ReactElement => {
   const history = useHistory();
   const labels = scores.map((player) => player.user.toLocaleUpperCase());
   const userScores = scores.map((player) => player.score + 0.1);
@@ -87,4 +87,6 @@ export default function ScoresFixtureBarChart({ scores }: Prop) {
       }}
     />
   );
-}
+};
+
+export default ScoresFixtureBarChart;

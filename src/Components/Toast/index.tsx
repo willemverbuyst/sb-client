@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectMessage } from '../../store/appState/selectors';
 import { makeStyles, Theme } from '@material-ui/core/styles';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function Toast() {
+const Toast: React.FC = (): ReactElement => {
   const message = useSelector(selectMessage);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -48,5 +48,9 @@ export default function Toast() {
         <Alert severity={message.severity}>{message.text}</Alert>
       </Snackbar>
     </div>
-  ) : null;
-}
+  ) : (
+    <></>
+  );
+};
+
+export default Toast;

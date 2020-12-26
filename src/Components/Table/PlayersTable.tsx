@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/selectors';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
@@ -9,12 +9,12 @@ import DeleteDialog from '../Toast/DeleteDialog';
 const sortTable = (arr: IPlayer[]): IPlayer[] =>
   [...arr].sort((player1, player2) => player1.userName.toLowerCase().localeCompare(player2.userName.toLowerCase()));
 
-type Prop = {
+type Props = {
   players: IPlayer[];
   changeStatus: boolean;
 };
 
-export default function PlayersTable({ players, changeStatus }: Prop) {
+const PlayersTable: React.FC<Props> = ({ players, changeStatus }: Props): ReactElement => {
   const user = useSelector(selectUser);
   const [showDialog, setShowDialog] = useState(false);
   const [player, setPlayer] = useState<IPlayer | null>(null);
@@ -62,4 +62,6 @@ export default function PlayersTable({ players, changeStatus }: Prop) {
       {showDialog && player ? <DeleteDialog closeDialog={handleChange} playerToDelete={player} /> : null}
     </>
   );
-}
+};
+
+export default PlayersTable;

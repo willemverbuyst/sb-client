@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,7 +16,7 @@ type Props = {
   closeDialog: () => void;
 };
 
-export default function DeleteDialog(props: Props) {
+const DeleteDialog: React.FC<Props> = (props: Props): ReactElement => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const dispatch = useDispatch();
@@ -52,4 +52,6 @@ export default function DeleteDialog(props: Props) {
       </Dialog>
     </div>
   );
-}
+};
+
+export default DeleteDialog;

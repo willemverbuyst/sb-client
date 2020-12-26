@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -11,12 +11,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { optionsRoundSelector } from '../../utils/selectorFunctions';
 
-export default function RoundSelector() {
+const RoundSelector: React.FC = (): ReactElement => {
   const [open, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
-
   const options = optionsRoundSelector(+id);
 
   const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
@@ -76,4 +75,6 @@ export default function RoundSelector() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default RoundSelector;

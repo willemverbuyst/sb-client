@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const replaceUnderScore = (name: string): string => name.replace('_', ' ');
 
-export default function UserDisplay() {
+const UserDisplay: React.FC = (): ReactElement => {
   const classes = useStyles();
   const user = useSelector(selectUser);
 
@@ -52,4 +52,6 @@ export default function UserDisplay() {
       )}
     </Grid>
   );
-}
+};
+
+export default UserDisplay;
