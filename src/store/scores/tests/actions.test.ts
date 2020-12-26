@@ -19,6 +19,7 @@ import {
 import {
   fetchScoresFixture,
   fetchScoresRound,
+  fetchScoresTotalToto,
   removeAllScores,
   scoresFixtureFetched,
   scoresRoundFetched,
@@ -233,6 +234,34 @@ describe('#fetchScoresRound', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(scoresRoundFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#fetchScoresTotalToto', () => {
+  it('calls axios and returns a round with scores', async () => {
+    const totalTotoScores: UserWithScore[] = [
+      {
+        id: 1,
+        score: 1,
+        user: 'test_user',
+      },
+    ];
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: totalTotoScores };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchScoresTotalToto()(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(
+      scoresTotalTotoFetched(response.data)
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
