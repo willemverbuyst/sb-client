@@ -279,11 +279,12 @@ describe('#getUserWithStoredToken', () => {
     };
     const dispatch = jest.fn();
     const getState = jest.fn();
+    const extraArg = 'extra';
     const response = { data: user };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await getUserWithStoredToken(dispatch, getState);
+    await getUserWithStoredToken()(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());

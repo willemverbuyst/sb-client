@@ -13,7 +13,7 @@ import {
   RemoveAllFixtures,
   UpdatePrediction,
 } from './types';
-import { GetState, StoreState } from '../types';
+import { StoreState } from '../types';
 import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';

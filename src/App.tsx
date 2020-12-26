@@ -49,7 +49,7 @@ const App: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserWithStoredToken);
+    dispatch(getUserWithStoredToken());
   }, [dispatch]);
 
   return (

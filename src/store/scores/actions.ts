@@ -16,7 +16,7 @@ import {
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
 } from './types';
-import { GetState, StoreState } from '../types';
+import { StoreState } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { ThunkAction } from 'redux-thunk';
 

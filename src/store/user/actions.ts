@@ -11,7 +11,7 @@ import {
   TokenUserStillValid,
   UpdateUserProfile,
 } from './types';
-import { GetState, StoreState } from '../types';
+import { StoreState } from '../types';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
@@ -135,7 +135,7 @@ export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, Sto
   };
 };
 
-export const userLogOut = () => (dispatch: Dispatch) => {
+export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispatch) => {
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(removeAllScores());
@@ -144,7 +144,9 @@ export const userLogOut = () => (dispatch: Dispatch) => {
   dispatch(removeAllTeams());
 };
 
-export const getUserWithStoredToken = async (dispatch: Dispatch, _getState: GetState) => {
+export const getUserWithStoredToken = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+) => {
   dispatch(appLoading());
   try {
     // if token check if valid

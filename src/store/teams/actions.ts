@@ -2,7 +2,7 @@ import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ALL_TEAMS_FETCHED, REMOVE_ALL_TEAMS, AllTeamsFetched, RemoveAllTeams } from './types';
-import { GetState, StoreState } from '../types';
+import { StoreState } from '../types';
 import { ITeam } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { ThunkAction } from 'redux-thunk';
