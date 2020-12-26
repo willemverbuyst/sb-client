@@ -15,7 +15,7 @@ const initialState: ScoresState = {
   totoRoundScores: null,
 };
 
-const scoresReducer = (state = initialState, action: ScoresActionTypes) => {
+const scoresReducer = (state = initialState, action: ScoresActionTypes): ScoresState => {
   switch (action.type) {
     case REMOVE_ALL_SCORES:
       return {

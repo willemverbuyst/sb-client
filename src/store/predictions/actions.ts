@@ -1,6 +1,6 @@
 import { apiUrl } from '../../config/constants';
 import axios from 'axios';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
 import {
   ALL_FIXTURES_FETCHED,
   CURRENT_ROUND_FETCHED,
@@ -13,10 +13,11 @@ import {
   RemoveAllFixtures,
   UpdatePrediction,
 } from './types';
-import { GetState } from '../types';
+import { GetState, StoreState } from '../types';
 import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { ThunkAction } from 'redux-thunk';
 
 export const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
   return {
@@ -52,7 +53,11 @@ export const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
   };
 };
 
-export const changePrediction = ({ pGoalsHomeTeam, pGoalsAwayTeam, fixtureId }: IPrediction) => async (
+export const changePrediction = ({
+  pGoalsHomeTeam,
+  pGoalsAwayTeam,
+  fixtureId,
+}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: any,
   _getState: GetState,
 ) => {
@@ -85,7 +90,10 @@ export const changePrediction = ({ pGoalsHomeTeam, pGoalsAwayTeam, fixtureId }: 
   }
 };
 
-export const fetchAllFixtures = () => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -108,7 +116,10 @@ export const fetchAllFixtures = () => async (dispatch: Dispatch, _getState: GetS
   }
 };
 
-export const fetchCurrentRound = () => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchCurrentRound = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -131,8 +142,12 @@ export const fetchCurrentRound = () => async (dispatch: Dispatch, _getState: Get
   }
 };
 
-export const postNewPrediction = ({ pGoalsHomeTeam, pGoalsAwayTeam, fixtureId }: IPrediction) => async (
-  dispatch: any,
+export const postNewPrediction = ({
+  pGoalsHomeTeam,
+  pGoalsAwayTeam,
+  fixtureId,
+}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
   _getState: GetState,
 ) => {
   dispatch(appLoading());

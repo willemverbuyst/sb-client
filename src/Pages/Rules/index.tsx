@@ -22,9 +22,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Accordion = withStyles((theme) => ({
+const Accordion = withStyles(() => ({
   root: {
-    // border: '1px solid rgba(0, 0, 0, .125)',
     boxShadow: 'none',
     '&:before': {
       display: 'none',
@@ -36,7 +35,7 @@ const Accordion = withStyles((theme) => ({
   expanded: {},
 }))(MuiAccordion);
 
-const AccordionSummary = withStyles((theme) => ({
+const AccordionSummary = withStyles(() => ({
   root: {
     backgroundColor: '#f1f1f1',
     borderBottom: '2px solid #EA9C3B',

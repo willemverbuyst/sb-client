@@ -4,7 +4,7 @@ const initialState: TeamsState = {
   teams: null,
 };
 
-const teamReducer = (state = initialState, action: TeamsActionTypes) => {
+const teamReducer = (state = initialState, action: TeamsActionTypes): TeamsState => {
   switch (action.type) {
     case ALL_TEAMS_FETCHED:
       return { ...state, teams: action.teams };

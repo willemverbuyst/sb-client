@@ -1,6 +1,6 @@
 import { apiUrl } from '../../config/constants';
 import axios from 'axios';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
 import {
   REMOVE_ALL_SCORES,
   SCORES_FIXTURE_FETCHED,
@@ -16,8 +16,9 @@ import {
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
 } from './types';
-import { GetState } from '../types';
+import { GetState, StoreState } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { ThunkAction } from 'redux-thunk';
 
 export const removeAllScores = (): RemoveAllScores => {
   return {
@@ -53,7 +54,10 @@ export const scoresTotoRoundFetched = (totoRound: Scores): ScoresTotoRoundFetche
   };
 };
 
-export const fetchScoresFixture = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -76,7 +80,10 @@ export const fetchScoresFixture = (id: number) => async (dispatch: Dispatch, _ge
   }
 };
 
-export const fetchScoresRound = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -99,7 +106,10 @@ export const fetchScoresRound = (id: number) => async (dispatch: Dispatch, _getS
   }
 };
 
-export const fetchScoresTotalToto = () => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -122,7 +132,10 @@ export const fetchScoresTotalToto = () => async (dispatch: Dispatch, _getState: 
   }
 };
 
-export const fetchScoresTotoRound = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchScoresTotoRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

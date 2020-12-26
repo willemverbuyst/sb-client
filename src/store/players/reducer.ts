@@ -16,7 +16,7 @@ const initialState: PlayersState = {
   scoresPlayer: null,
 };
 
-const playersReducer = (state = initialState, action: PlayersActionTypes) => {
+const playersReducer = (state = initialState, action: PlayersActionTypes): PlayersState => {
   switch (action.type) {
     case ADD_NEW_PLAYER:
       return {

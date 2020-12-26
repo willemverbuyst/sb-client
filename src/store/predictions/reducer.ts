@@ -13,7 +13,7 @@ const initialState: PredictionsState = {
   allFixtures: null,
 };
 
-const predictionsReducer = (state = initialState, action: PredictionActionTypes) => {
+const predictionsReducer = (state = initialState, action: PredictionActionTypes): PredictionsState => {
   switch (action.type) {
     case CURRENT_ROUND_FETCHED:
       return { ...state, currentRound: action.currentRound };

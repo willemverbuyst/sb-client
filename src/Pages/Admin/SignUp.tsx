@@ -92,7 +92,7 @@ export default function SignUp() {
 
   useEffect(() => {
     if (!teams) {
-      dispatch(fetchAllTeams);
+      dispatch(fetchAllTeams());
     }
   }, [dispatch, teams]);
 

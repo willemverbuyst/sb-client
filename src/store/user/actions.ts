@@ -11,7 +11,7 @@ import {
   TokenUserStillValid,
   UpdateUserProfile,
 } from './types';
-import { GetState } from '../types';
+import { GetState, StoreState } from '../types';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
@@ -19,6 +19,8 @@ import { removeAllPlayers } from '../players/actions';
 import { removeAllFixtures } from '../predictions/actions';
 import { removeAllTeams } from '../teams/actions';
 import { removeAllScores } from '../scores/actions';
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
 
 export const logInSuccessUser = (user: IUser): LogInSuccessUser => {
   return {
@@ -41,7 +43,7 @@ export const updateUserProfile = (user: IUser): UpdateUserProfile => ({
   user,
 });
 
-export const changePassword = (newPassword: string) => {
+export const changePassword = (newPassword: string): ThunkAction<void, StoreState, unknown, Action<string>> => {
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
     try {
@@ -68,7 +70,9 @@ export const changePassword = (newPassword: string) => {
   };
 };
 
-export const editUserProfile = (profileDetails: IProfileDetails) => {
+export const editUserProfile = (
+  profileDetails: IProfileDetails,
+): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { userName, firstName, lastName, email, phoneNumber, admin, totaalToto, teamId } = profileDetails;
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
@@ -105,7 +109,7 @@ export const editUserProfile = (profileDetails: IProfileDetails) => {
   };
 };
 
-export const userLogIn = (credentials: ILogInCredentials) => {
+export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { email, password } = credentials;
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());

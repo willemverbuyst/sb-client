@@ -64,7 +64,7 @@ export default function EditProfileForm(props: Prop) {
 
   useEffect(() => {
     if (!teams) {
-      dispatch(fetchAllTeams);
+      dispatch(fetchAllTeams());
     }
   }, [dispatch, teams]);
 

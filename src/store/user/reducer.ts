@@ -14,7 +14,7 @@ const initialState: UserState = {
   user: null,
 };
 
-const userReducer = (state = initialState, action: UserActionTypes) => {
+const userReducer = (state = initialState, action: UserActionTypes): UserState => {
   switch (action.type) {
     case LOG_IN_SUCCESS_USER:
       const userToken = action.user.token;

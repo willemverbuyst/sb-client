@@ -13,8 +13,6 @@ const monthsLocal = [
   'december',
 ];
 
-const monthsLocalShort = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
-
 const daysLocal = ['zondag', 'maaandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
 
 export const getTimeFromTimeStamp = (timeStamp: number): string => {

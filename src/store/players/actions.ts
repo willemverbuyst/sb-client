@@ -1,6 +1,6 @@
 import { apiUrl } from '../../config/constants';
 import axios from 'axios';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
 import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
@@ -17,10 +17,11 @@ import {
   DeletePlayer,
   DELETE_PLAYER,
 } from './types';
-import { GetState } from '../types';
+import { GetState, StoreState } from '../types';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { IPlayer, IPlayerProfile } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { ThunkAction } from 'redux-thunk';
 
 export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
   return {
@@ -68,7 +69,9 @@ export const updateAdminStatus = (player: IPlayer): UpdateAdminStatus => {
   };
 };
 
-export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
+export const addPlayer = (
+  signUpCredentials: ISignUpCredentials,
+): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { userName, firstName, lastName, email, password, phoneNumber, admin, totaalToto, teamId } = signUpCredentials;
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
@@ -106,7 +109,10 @@ export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
   };
 };
 
-export const fetchAllPlayers = () => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -129,7 +135,10 @@ export const fetchAllPlayers = () => async (dispatch: Dispatch, _getState: GetSt
   }
 };
 
-export const fetchPlayerProfile = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -152,7 +161,10 @@ export const fetchPlayerProfile = (id: number) => async (dispatch: Dispatch, _ge
   }
 };
 
-export const fetchPlayerScores = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -175,7 +187,10 @@ export const fetchPlayerScores = (id: number) => async (dispatch: Dispatch, _get
   }
 };
 
-export const playerDelete = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
+export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -198,10 +213,10 @@ export const playerDelete = (id: number) => async (dispatch: Dispatch, _getState
   }
 };
 
-export const updatePlayerAdminStatus = (id: number, admin: boolean) => async (
-  dispatch: Dispatch,
-  _getState: GetState,
-) => {
+export const updatePlayerAdminStatus = (
+  id: number,
+  admin: boolean,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

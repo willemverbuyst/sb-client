@@ -5,7 +5,7 @@ const initialState: AppState = {
   message: null,
 };
 
-const appStateReducer = (state = initialState, action: AppStateTypes) => {
+const appStateReducer = (state = initialState, action: AppStateTypes): AppState => {
   switch (action.type) {
     case APP_LOADING:
       return { ...state, loading: true };

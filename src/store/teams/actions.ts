@@ -2,9 +2,11 @@ import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ALL_TEAMS_FETCHED, REMOVE_ALL_TEAMS, AllTeamsFetched, RemoveAllTeams } from './types';
-import { GetState } from '../types';
+import { GetState, StoreState } from '../types';
 import { ITeam } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
 
 export const allTeamsFetched = (teams: ITeam[]): AllTeamsFetched => {
   return {
@@ -19,7 +21,10 @@ export const removeAllTeams = (): RemoveAllTeams => {
   };
 };
 
-export const fetchAllTeams = async (dispatch: Dispatch, _getState: GetState) => {
+export const fetchAllTeams = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
