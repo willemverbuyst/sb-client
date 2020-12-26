@@ -8,6 +8,7 @@ import {
   fetchAllPlayers,
   fetchPlayerProfile,
   fetchPlayerScores,
+  playerDelete,
   playerProfileFetched,
   playerScoresFetched,
   removeAllPlayers,
@@ -348,5 +349,28 @@ describe('#fetchPlayerScores', () => {
     expect(dispatch).toHaveBeenCalledWith(playerScoresFetched(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#fplayerDelete', () => {
+  it('calls axios and returns a succes message', async () => {
+    const id = 1;
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: { message: 'ok' } };
+
+    mockAxios.delete.mockImplementationOnce(() => Promise.resolve(response));
+
+    await playerDelete(id)(dispatch, getState);
+
+    expect(mockAxios.delete).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(deletePlayer(id));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
