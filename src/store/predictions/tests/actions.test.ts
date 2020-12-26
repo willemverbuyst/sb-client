@@ -69,6 +69,7 @@ describe('#predictionsState', () => {
       type: ALL_FIXTURES_FETCHED,
       allFixtures: totoRound,
     };
+
     test('returns an action w/ type ALL_FIXTURES_FETCHED and fixtures as payload', () => {
       expect(allFixturesFetched(totoRound)).toEqual(expected);
       expect(allFixturesFetched(totoRound).allFixtures.length).toBeGreaterThan(
@@ -76,6 +77,7 @@ describe('#predictionsState', () => {
       );
     });
   });
+
   describe('#currentRoundFetched', () => {
     const fixtures: IFixtureWithScoreAndPredictions[] = [
       {
@@ -109,6 +111,7 @@ describe('#predictionsState', () => {
       type: CURRENT_ROUND_FETCHED,
       currentRound,
     };
+
     test('returns an action w/ type CURRENT_ROUND_FETCHED and current round as payload', () => {
       expect(currentRoundFetched(currentRound)).toEqual(expected);
       expect(currentRoundFetched(currentRound).currentRound).toEqual(
@@ -117,6 +120,7 @@ describe('#predictionsState', () => {
       expect(currentRoundFetched(currentRound)).toHaveProperty('currentRound');
     });
   });
+
   describe('#postPrediction', () => {
     const prediction: IPrediction = {
       pGoalsAwayTeam: 1,
@@ -127,21 +131,25 @@ describe('#predictionsState', () => {
       type: POST_PREDICTION,
       prediction,
     };
+
     test('returns an action w/ type POST_PREDICTION, and prediction as payload', () => {
       expect(postPrediction(prediction)).toEqual(expected);
       expect(postPrediction(prediction).prediction).toEqual(prediction);
       expect(postPrediction(prediction)).toHaveProperty('prediction');
     });
   });
+
   describe('#removeAllFixtures', () => {
     const expected: RemoveAllFixtures = {
       type: REMOVE_ALL_FIXTURES,
     };
+
     test('returns an action w/ type REMOVE_ALL_FIXTURES, and no payload', () => {
       expect(removeAllFixtures()).toEqual(expected);
       expect(removeAllFixtures()).not.toHaveProperty('fixgtures');
     });
   });
+
   describe('#updatePrediction', () => {
     const prediction: IPrediction = {
       pGoalsAwayTeam: 1,
@@ -152,6 +160,7 @@ describe('#predictionsState', () => {
       type: UPDATE_PREDICTION,
       prediction,
     };
+
     test('returns an action w/ type UPDATE_PREDICTION, and prediction as payload', () => {
       expect(updatePrediction(prediction)).toEqual(expected);
       expect(updatePrediction(prediction).prediction).toEqual(prediction);
@@ -278,7 +287,7 @@ describe('#fetchCurrentRound', () => {
   });
 });
 
-describe('#postPrediction', () => {
+describe('#postNewPrediction', () => {
   it('calls axios and add a prediction', async () => {
     const prediction: IPrediction = {
       pGoalsAwayTeam: 1,
