@@ -11,6 +11,9 @@ import {
   DeletePlayer,
   PlayerProfileFetched,
   RemoveAllPlayers,
+  PLAYER_SCORES_FETCHED,
+  PlayerScoresFetched,
+  ScoresPlayer,
 } from '../types';
 import { IPlayer, IPlayerProfile } from '../../../models/player.model';
 
@@ -227,6 +230,34 @@ describe('#playersStateReducer', () => {
       expect(newState.players?.length).toBe(state.players!.length - 1);
       expect(newState.players).toEqual([player1]);
       expect(newState.players).not.toEqual([player1, player2]);
+    });
+  });
+
+  describe('if given PLAYER_SCORES_FETCHED action type and initialState', () => {
+    const scoresPlayer: ScoresPlayer = {
+      scores: [
+        [1, 2],
+        [3, 4],
+      ],
+      userName: 'string',
+      id: 1,
+    };
+    const initialState: PlayersState = {
+      players: null,
+      playerProfile: null,
+      scoresPlayer: null,
+    };
+    const action: PlayerScoresFetched = {
+      type: PLAYER_SCORES_FETCHED,
+      scoresPlayer,
+    };
+    const newState: PlayersState = reducer(initialState, action);
+
+    test('returns a new state with a player scores', () => {
+      expect(newState.playerProfile).toBeNull;
+      expect(newState.players).toBeNull;
+      expect(newState.scoresPlayer).not.toBeNull;
+      expect(newState.scoresPlayer).toEqual(scoresPlayer);
     });
   });
 
