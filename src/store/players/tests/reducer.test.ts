@@ -2,11 +2,13 @@ import reducer from '../reducer';
 import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
+  DELETE_PLAYER,
   PLAYER_PROFILE_FETCHED,
   REMOVE_ALL_PLAYERS,
   PlayersState,
   AddNewPlayer,
   AllPlayersFetched,
+  DeletePlayer,
   PlayerProfileFetched,
   RemoveAllPlayers,
 } from '../types';
@@ -48,10 +50,11 @@ describe('#playersStateReducer', () => {
       });
       expect(newState.playerProfile).toBeNull;
       expect(newState.players).toBeNull;
-      expect(newState.scoresPlayer).tobeNull;
+      expect(newState.scoresPlayer).toBeNull;
       expect(newState).toEqual(initialState);
     });
   });
+
   describe('if given ADD_NEW_PLAYER action type and a state with players', () => {
     const player: IPlayer = {
       admin: false,
@@ -85,41 +88,43 @@ describe('#playersStateReducer', () => {
       expect(newState.players).toEqual([player, player]);
     });
   });
-  describe('if given ALL_PLAYERS_FETCHED action type and initialState', () => {
-    test('returns a new state with players', () => {
-      const players: IPlayer[] = [
-        {
-          admin: false,
-          email: 'test@test.com',
-          firstName: 'test_player',
-          id: 1,
-          lastName: 'tst_player',
-          phoneNumber: '123',
-          team: {
-            id: 1,
-            logo: 'test_logo',
-            name: 'test_name',
-          },
-          totaalToto: true,
-          userName: 'TEST',
-        },
-      ];
-      const initialState: PlayersState = {
-        players: null,
-        playerProfile: null,
-        scoresPlayer: null,
-      };
-      const action: AllPlayersFetched = {
-        type: ALL_PLAYERS_FETCHED,
-        players,
-      };
-      const newState: PlayersState = reducer(initialState, action);
 
+  describe('if given ALL_PLAYERS_FETCHED action type and initialState', () => {
+    const players: IPlayer[] = [
+      {
+        admin: false,
+        email: 'test@test.com',
+        firstName: 'test_player',
+        id: 1,
+        lastName: 'tst_player',
+        phoneNumber: '123',
+        team: {
+          id: 1,
+          logo: 'test_logo',
+          name: 'test_name',
+        },
+        totaalToto: true,
+        userName: 'TEST',
+      },
+    ];
+    const initialState: PlayersState = {
+      players: null,
+      playerProfile: null,
+      scoresPlayer: null,
+    };
+    const action: AllPlayersFetched = {
+      type: ALL_PLAYERS_FETCHED,
+      players,
+    };
+    const newState: PlayersState = reducer(initialState, action);
+
+    test('returns a new state with players', () => {
       expect(newState.playerProfile).toBeNull;
       expect(newState.players?.length).toBe(players.length);
       expect(newState.players).toEqual(players);
     });
   });
+
   describe('if given ALL_PLAYERS_FETCHED action type and a state with players', () => {
     const players1: IPlayer[] = [
       {
@@ -173,6 +178,58 @@ describe('#playersStateReducer', () => {
       expect(newState.players).not.toEqual(players1);
     });
   });
+
+  describe('w/ DELETE_PLAYER action type', () => {
+    const player1: IPlayer = {
+      admin: false,
+      email: 'test@test.com',
+      firstName: 'test_player1',
+      id: 1,
+      lastName: 'tst_player',
+      phoneNumber: '123',
+      team: {
+        id: 1,
+        logo: 'test_logo',
+        name: 'test_name',
+      },
+      totaalToto: true,
+      userName: 'TEST',
+    };
+    const player2: IPlayer = {
+      admin: false,
+      email: 'test@test.com',
+      firstName: 'test_player2',
+      id: 2,
+      lastName: 'tst_player',
+      phoneNumber: '123',
+      team: {
+        id: 1,
+        logo: 'test_logo',
+        name: 'test_name',
+      },
+      totaalToto: true,
+      userName: 'TEST',
+    };
+    const state: PlayersState = {
+      players: [player1, player2],
+      playerProfile: null,
+      scoresPlayer: null,
+    };
+    const action: DeletePlayer = {
+      type: DELETE_PLAYER,
+      playerId: player2.id,
+    };
+    const newState: PlayersState = reducer(state, action);
+
+    test('returns a state without the deleted player', () => {
+      expect(newState.playerProfile).toBeNull;
+      expect(newState.scoresPlayer).toBeNull;
+      expect(newState.players?.length).toBe(state.players!.length - 1);
+      expect(newState.players).toEqual([player1]);
+      expect(newState.players).not.toEqual([player1, player2]);
+    });
+  });
+
   describe('if given PLAYER_PROFILE_FETCHED action type and initialState', () => {
     const playerProfile: IPlayerProfile = {
       admin: false,
@@ -206,6 +263,7 @@ describe('#playersStateReducer', () => {
       expect(newState.players).toBeNull;
     });
   });
+
   describe('if given PLAYER_PROFILE_FETCHED action type and a state with a profile', () => {
     const players: IPlayer[] = [
       {
@@ -275,6 +333,7 @@ describe('#playersStateReducer', () => {
       expect(newState.players).toEqual(players);
     });
   });
+
   describe('if given REMOVE_ALL_PLAYERS action type and a state', () => {
     const players: IPlayer[] = [
       {

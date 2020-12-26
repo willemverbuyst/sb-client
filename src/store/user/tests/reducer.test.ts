@@ -40,7 +40,7 @@ describe('#userReducer', () => {
       type: LOG_IN_SUCCESS_USER,
       user,
     };
-    const newState = reducer(initialState, action);
+    const newState: UserState = reducer(initialState, action);
 
     test('returns the new state with user', () => {
       expect(newState.token).not.toBeNull();
@@ -59,8 +59,8 @@ describe('#userReducer', () => {
     const action: LogOutUser = {
       type: LOG_OUT_USER,
     };
-    const newState = reducer(initialState, action);
-    const newerState = reducer({ token: 'x', user: null }, action);
+    const newState: UserState = reducer(initialState, action);
+    const newerState: UserState = reducer({ token: 'x', user: null }, action);
 
     test('returns the initial state', () => {
       expect(newState).toEqual(initialState);
@@ -103,7 +103,7 @@ describe('#userReducer', () => {
       type: TOKEN_STILL_VALID_USER,
       user,
     };
-    const newState = reducer(state, action);
+    const newState: UserState = reducer(state, action);
 
     test('returns the new state with student', () => {
       expect(newState.token).not.toBeNull();
@@ -151,7 +151,7 @@ describe('#userReducer', () => {
         type: UPDATE_USER_PROFILE,
         user: userUpdated,
       };
-      const newState = reducer(state, action);
+      const newState: UserState = reducer(state, action);
 
       test('returns the new state with student', () => {
         expect(newState.token).not.toBeNull();

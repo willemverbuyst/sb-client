@@ -19,9 +19,10 @@ const initialState: PlayersState = {
 const playersReducer = (state = initialState, action: PlayersActionTypes) => {
   switch (action.type) {
     case ADD_NEW_PLAYER:
-      if (state.players)
-        return { ...state, players: [...state.players, action.player] };
-      else return state;
+      return {
+        ...state,
+        players: state.players ? [...state.players, action.player] : null,
+      };
 
     case ALL_PLAYERS_FETCHED:
       return { ...state, players: [...action.players] };
@@ -29,9 +30,9 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
     case DELETE_PLAYER:
       return {
         ...state,
-        players: state.players?.filter(
-          (player) => player.id !== action.playerId
-        ),
+        players: state.players
+          ? state.players.filter((player) => player.id !== action.playerId)
+          : null,
       };
 
     case PLAYER_PROFILE_FETCHED:
@@ -48,20 +49,20 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
       };
 
     case UPDATE_ADMIN_STATUS:
-      if (state.players) {
-        return {
-          ...state,
-          players: [
-            ...state.players.map((player) => {
-              if (player.id === action.player.id) {
-                return action.player;
-              } else {
-                return player;
-              }
-            }),
-          ],
-        };
-      } else return state;
+      return {
+        ...state,
+        players: state.players
+          ? [
+              ...state.players.map((player) => {
+                if (player.id === action.player.id) {
+                  return action.player;
+                } else {
+                  return player;
+                }
+              }),
+            ]
+          : null,
+      };
 
     default:
       return state;
