@@ -16,6 +16,7 @@ import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
+import { roundByTotoRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -68,7 +69,7 @@ export default function Predictions() {
   }, [dispatch, fixtures]);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
-    r = value * 3 - 2;
+    r = roundByTotoRound(value)
     history.push(`/voorspellingen/${value}/${r}`);
   };
 
