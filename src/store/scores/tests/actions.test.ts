@@ -21,6 +21,7 @@ import {
   removeAllScores,
   scoresFixtureFetched,
   scoresRoundFetched,
+  scoresTotalTotoFetched,
 } from '../actions';
 
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
@@ -100,10 +101,33 @@ describe('#scoressState', () => {
       round: roundScores,
     };
 
-    test('returns an action w/ type SCORES_FIXTURE_FETCHED and a fixture as payload', () => {
+    test('returns an action w/ type SCORES_ROUND_FETCHED and a round with scores as payload', () => {
       expect(scoresRoundFetched(roundScores)).toEqual(expected);
       expect(scoresRoundFetched(roundScores).round).not.toBe(undefined);
       expect(scoresRoundFetched(roundScores).type).toBe(SCORES_ROUND_FETCHED);
+    });
+  });
+
+  describe('#scoresTotalTotoFetched w/ sores', () => {
+    const totalToto: UserWithScore[] = [
+      {
+        score: 10,
+        user: 'test_user',
+        id: 1,
+      },
+    ];
+
+    const expected: ScoresTotalTotoFetched = {
+      type: SCORES_TOTAL_TOTO_FETCHED,
+      totalToto,
+    };
+
+    test('returns an action w/ type SCORES_TOTAL_TOTO_FETCHED and totalToto scores as payload', () => {
+      expect(scoresTotalTotoFetched(totalToto)).toEqual(expected);
+      expect(scoresTotalTotoFetched(totalToto).totalToto).not.toBe(undefined);
+      expect(scoresTotalTotoFetched(totalToto).type).toBe(
+        SCORES_TOTAL_TOTO_FETCHED
+      );
     });
   });
 });
