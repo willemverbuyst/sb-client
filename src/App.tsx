@@ -21,18 +21,13 @@ import ScoresUser from './Pages/Scores/ScoresUser';
 import SignUp from './Pages/Admin/SignUp';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
-import { 
-  createStyles, 
-  makeStyles, 
-  MuiThemeProvider, 
-  Theme 
-} from '@material-ui/core/styles';
+import { createStyles, makeStyles, MuiThemeProvider, Theme } from '@material-ui/core/styles';
 import { Box, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     contentWrapper: {
-      marginTop: theme.spacing(2)
+      marginTop: theme.spacing(2),
     },
     content: {
       borderRadius: '4px',
@@ -45,8 +40,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     user: {
       marginRight: theme.spacing(5),
-    }
-  })
+    },
+  }),
 );
 
 function App() {
@@ -59,12 +54,9 @@ function App() {
 
   return (
     <MuiThemeProvider theme={IceBlueGold}>
-      <Toast/>
-      <Header/> 
-      <Grid
-        container
-        className={classes.contentWrapper}
-        >
+      <Toast />
+      <Header />
+      <Grid container className={classes.contentWrapper}>
         <Grid item md={11} xs={12}>
           <Box className={classes.content}>
             <Switch>
@@ -81,11 +73,7 @@ function App() {
               <Route exact path="/scores" component={ScoresUser} />
               <Route exact path="/spelers" component={ListOfPlayers} />
               <Route exact path="/spelers/:id/scores" component={ScoresPlayer} />
-              <Route 
-                exact 
-                path="/spelers/:id/voorspellingen/:totoronde/:ronde" 
-                component={PredictionsPlayer} 
-              />
+              <Route exact path="/spelers/:id/voorspellingen/:totoronde/:ronde" component={PredictionsPlayer} />
               <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
               <Route exact path="/wedstrijd/:id" component={Fixture} />
               <Redirect path="/" to="/page-not-found" />
@@ -94,7 +82,7 @@ function App() {
         </Grid>
         <Grid item md={1} xs={12}>
           <Box className={classes.user}>
-            <UserDisplay/>
+            <UserDisplay />
           </Box>
         </Grid>
       </Grid>

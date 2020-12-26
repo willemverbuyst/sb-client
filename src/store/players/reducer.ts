@@ -30,9 +30,7 @@ const playersReducer = (state = initialState, action: PlayersActionTypes) => {
     case DELETE_PLAYER:
       return {
         ...state,
-        players: state.players
-          ? state.players.filter((player) => player.id !== action.playerId)
-          : null,
+        players: state.players ? state.players.filter((player) => player.id !== action.playerId) : null,
       };
 
     case PLAYER_PROFILE_FETCHED:

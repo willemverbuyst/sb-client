@@ -1,21 +1,9 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors'
-import { 
-  createStyles, 
-  makeStyles,
-  Theme,
-  withStyles
-} from '@material-ui/core/styles';
-import { 
-  Box,
-  Grid,
-  List, 
-  ListItem, 
-  ListItemText,
-  Typography
-} from '@material-ui/core';
+import { selectToken } from '../../store/user/selectors';
+import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
+import { Box, Grid, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
@@ -26,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       fontWeight: 'bold',
       marginBottom: theme.spacing(1),
-      color: theme.palette.secondary.main
+      color: theme.palette.secondary.main,
     },
     content: {
       marginTop: theme.spacing(6),
@@ -34,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Accordion = withStyles((theme)=>({
+const Accordion = withStyles((theme) => ({
   root: {
     // border: '1px solid rgba(0, 0, 0, .125)',
     boxShadow: 'none',
@@ -78,7 +66,7 @@ export default function Rules() {
   const history = useHistory();
 
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   return (
@@ -93,116 +81,100 @@ export default function Rules() {
       <Grid container justify="center" className={classes.content}>
         <Grid item xs={12} md={8}>
           <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
               <Typography variant="overline">Hoeveel punten kan ik verdienen per wedstrijd?</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <List>
-                  <ListItem>
-                    <ListItemText primary="Het aantal goals per team goed voorspeld: 2 punten (dus 2x 2
-                    punten te verdienen)"/>
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Een winner of gelijkspel goed voorspeld: 5 punten"/>
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="Een volledige uitslag goed voorspeld: 1 punt"/>
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="De punten tellen op, dus als de gehele uitslag goed is
-                      voorspeld verdien je in totaal 10 punten."/>
-                  </ListItem>
-                </List>
+              <List>
+                <ListItem>
+                  <ListItemText
+                    primary="Het aantal goals per team goed voorspeld: 2 punten (dus 2x 2
+                    punten te verdienen)"
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Een winner of gelijkspel goed voorspeld: 5 punten" />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Een volledige uitslag goed voorspeld: 1 punt" />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary="De punten tellen op, dus als de gehele uitslag goed is
+                      voorspeld verdien je in totaal 10 punten."
+                  />
+                </ListItem>
+              </List>
             </AccordionDetails>
           </Accordion>
           <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
               <Typography variant="overline">Hoeveel totorondes worden er gespeeld?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <List>
                 <ListItem>
-                  <ListItemText primary="Er worden in totaal 11 totorondes per seizoen gespeeld."/>
+                  <ListItemText primary="Er worden in totaal 11 totorondes per seizoen gespeeld." />
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary="Elke totoronde duurt 3 speelrondes."/>
+                  <ListItemText primary="Elke totoronde duurt 3 speelrondes." />
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary="Behalve de laatste totoronde, die bestaat uit 4 speelrondes."/>
+                  <ListItemText primary="Behalve de laatste totoronde, die bestaat uit 4 speelrondes." />
                 </ListItem>
               </List>
             </AccordionDetails>
           </Accordion>
           <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel3a-content"
-              id="panel3a-header"
-            >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3a-content" id="panel3a-header">
               <Typography variant="overline">Wat is de totaaltoto?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <List>
                 <ListItem>
-                  <ListItemText primary="Naast de reguliere totorondes, is er ook een Totaaltoto."/>
+                  <ListItemText primary="Naast de reguliere totorondes, is er ook een Totaaltoto." />
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary="Dit is een aparte toto dat bestaat uit alle 34 speelrondes."/>
+                  <ListItemText primary="Dit is een aparte toto dat bestaat uit alle 34 speelrondes." />
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary="Degene die aan het eind de meeste punten heeft verdiend, wint de Totaaltoto."/>
+                  <ListItemText primary="Degene die aan het eind de meeste punten heeft verdiend, wint de Totaaltoto." />
                 </ListItem>
               </List>
             </AccordionDetails>
           </Accordion>
           <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel4a-content"
-              id="panel4a-header"
-            >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4a-content" id="panel4a-header">
               <Typography variant="overline">Wanneer ben je de winnaar van de toto?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <List>
                 <ListItem>
-                  <ListItemText primary="Na afloop van de laatste speelronde van een spel worden alle punten bij elkaar opgeteld."/>
+                  <ListItemText primary="Na afloop van de laatste speelronde van een spel worden alle punten bij elkaar opgeteld." />
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary="Degene met de meeste punten wint."/>
+                  <ListItemText primary="Degene met de meeste punten wint." />
                 </ListItem>
               </List>
             </AccordionDetails>
           </Accordion>
           <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel4a-content"
-              id="panel4a-header"
-            >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4a-content" id="panel4a-header">
               <Typography variant="overline">Wat gebeurt er als ik mijn punten niet heb ingezet?</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <List>
                 <ListItem>
-                  <ListItemText primary="Wanneer een speler geen voorspelling heeft gedaan dan wordt er géén score genoteerd."/>
+                  <ListItemText primary="Wanneer een speler geen voorspelling heeft gedaan dan wordt er géén score genoteerd." />
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary="Er zijn dan ook geen punten te behalen op deze wedstrijd."/>
+                  <ListItemText primary="Er zijn dan ook geen punten te behalen op deze wedstrijd." />
                 </ListItem>
               </List>
             </AccordionDetails>
           </Accordion>
         </Grid>
       </Grid>
-    </Box> 
+    </Box>
   );
 }

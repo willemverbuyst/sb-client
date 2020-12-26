@@ -1,21 +1,11 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectToken, selectUser } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
-import ball from "../../assets/ball.png";
-import { 
-  createStyles, 
-  makeStyles, 
-  Theme 
-} from '@material-ui/core/styles';
-import { 
-  Box,
-  IconButton, 
-  Toolbar, 
-  Tooltip,
-  Typography,
-} from '@material-ui/core';
+import ball from '../../assets/ball.png';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { Box, IconButton, Toolbar, Tooltip, Typography } from '@material-ui/core';
 import Face from '@material-ui/icons/Face';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -33,62 +23,73 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     text: {
       marginRight: theme.spacing(3),
-      fontSize: 20
+      fontSize: 20,
     },
     header: {
       backgroundColor: theme.palette.primary.main,
-      color: '#fff'
+      color: '#fff',
     },
   }),
 );
 
 export default function Header() {
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
 
   const gotoLogin = () => {
-    dispatch(userLogOut())
-    history.push("/login")
-  }
+    dispatch(userLogOut());
+    history.push('/login');
+  };
 
-  const gotoMyScores = () =>  history.push("/scores")
+  const gotoMyScores = () => history.push('/scores');
 
-  const gotoPlayers = () => history.push("/spelers")
+  const gotoPlayers = () => history.push('/spelers');
 
-  const gotoPredictions = () => history.push("/voorspellingen/1/1");
+  const gotoPredictions = () => history.push('/voorspellingen/1/1');
 
-  const gotoProfile = () => history.push("/profiel");
+  const gotoProfile = () => history.push('/profiel');
 
-  const gotoProgram = () => history.push("/programma");
+  const gotoProgram = () => history.push('/programma');
 
-  const gotoRules = () => history.push("/regels");
+  const gotoRules = () => history.push('/regels');
 
-  const gotoSignUp = () => history.push("/admin/signup")
+  const gotoSignUp = () => history.push('/admin/signup');
 
-  const gotoTotalToto= () => history.push("/klassement/totaaltoto");
-  
+  const gotoTotalToto = () => history.push('/klassement/totaaltoto');
+
   return (
     <Box className={classes.header}>
-      { token ? (
+      {token ? (
         <Toolbar>
-          
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoProgram}>
+          <IconButton
+            edge="start"
+            className={classes.icon}
+            color="inherit"
+            aria-label="account circle"
+            onClick={gotoProgram}
+          >
             <Tooltip title="Programma" arrow>
               <Weekend />
             </Tooltip>
           </IconButton>
-          
+
           <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoPredictions}>
             <Tooltip title="Voorspellingen" arrow>
               <SportsSoccerIcon />
             </Tooltip>
           </IconButton>
 
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoMyScores}>
-            <Tooltip title="Scores" arrow>  
+          <IconButton
+            edge="start"
+            className={classes.icon}
+            color="inherit"
+            aria-label="account circle"
+            onClick={gotoMyScores}
+          >
+            <Tooltip title="Scores" arrow>
               <EmojiEvents />
             </Tooltip>
           </IconButton>
@@ -104,46 +105,51 @@ export default function Header() {
               <FormatListNumberedIcon />
             </Tooltip>
           </IconButton>
-        
-          { user && user.admin ? (
+
+          {user && user.admin ? (
             <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSignUp}>
               <Tooltip title="Sign up" arrow>
                 <PersonAdd />
               </Tooltip>
             </IconButton>
-          ) : ('')}   
-             
-          <IconButton 
-            edge="start" 
-            className={classes.icon} 
-            color="inherit" 
-            aria-label="account circle" 
+          ) : (
+            ''
+          )}
+
+          <IconButton
+            edge="start"
+            className={classes.icon}
+            color="inherit"
+            aria-label="account circle"
             onClick={gotoProfile}
           >
-            <Tooltip title="Profiel"  arrow>
+            <Tooltip title="Profiel" arrow>
               <Face />
             </Tooltip>
           </IconButton>
-      
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="account circle" onClick={gotoRules}>
+
+          <IconButton
+            edge="start"
+            className={classes.icon}
+            color="inherit"
+            aria-label="account circle"
+            onClick={gotoRules}
+          >
             <Tooltip title="Regels" arrow>
               <HelpOutline />
             </Tooltip>
           </IconButton>
 
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={gotoLogin} >
+          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={gotoLogin}>
             <Tooltip title="Log Out" arrow>
               <ExitToAppIcon />
             </Tooltip>
           </IconButton>
-       
         </Toolbar>
-        ) : (
+      ) : (
         <Toolbar>
-          <img src={ball} style={{ width: "40px", margin: "0 10px 0 0" }} alt="soccer ball" />
-          <Typography variant="h6">
-            Sport Betting App
-          </Typography>
+          <img src={ball} style={{ width: '40px', margin: '0 10px 0 0' }} alt="soccer ball" />
+          <Typography variant="h6">Sport Betting App</Typography>
         </Toolbar>
       )}
     </Box>

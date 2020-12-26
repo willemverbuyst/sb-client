@@ -1,10 +1,4 @@
-import {
-  APP_LOADING,
-  APP_DONE_LOADING,
-  SET_MESSAGE,
-  AppState,
-  AppStateTypes,
-} from './types';
+import { APP_LOADING, APP_DONE_LOADING, SET_MESSAGE, AppState, AppStateTypes } from './types';
 
 const initialState: AppState = {
   loading: false,

@@ -7,22 +7,22 @@ import { ScoresPlayer } from '../../store/players/types';
 import { selectUser } from '../../store/user/selectors';
 
 type Color = {
-  color1: string, 
-  color2: string, 
-  color3: string, 
+  color1: string;
+  color2: string;
+  color3: string;
   color4: string;
-}
+};
 
 type Prop = {
   scoresPlayer: ScoresPlayer;
   colorMain: Color;
   colorHover: Color;
   loggedInUser: boolean;
-}
+};
 
-export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover, loggedInUser}: Prop) {
+export default function ScoresStackedChart({ scoresPlayer, colorMain, colorHover, loggedInUser }: Prop) {
   const history = useHistory();
-  const user = useSelector(selectUser)
+  const user = useSelector(selectUser);
 
   let colorPrimary;
   let colorSecondary;
@@ -36,11 +36,12 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
   }
 
   const gotoTotoRound = (id: number) => {
-    loggedInUser ? history.push(`/voorspellingen/${id}/${id * 3 - 2}`)
-      : history.push(`/spelers/${scoresPlayer.id}/voorspellingen/${id}/${id * 3 - 2}`)
-  }
+    loggedInUser
+      ? history.push(`/voorspellingen/${id}/${id * 3 - 2}`)
+      : history.push(`/spelers/${scoresPlayer.id}/voorspellingen/${id}/${id * 3 - 2}`);
+  };
 
-  const totals = scoresPlayer.scores.map((totoround) => totoround.reduce((a, b)=> a + b));
+  const totals = scoresPlayer.scores.map((totoround) => totoround.reduce((a, b) => a + b));
 
   const chartData = {
     labels: scoresPlayer.scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
@@ -50,7 +51,7 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
         label: 'part1',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scoresPlayer.scores.map(totoRound => totoRound[0] ? totoRound[0] : 0 ),
+        data: scoresPlayer.scores.map((totoRound) => (totoRound[0] ? totoRound[0] : 0)),
         backgroundColor: colorPrimary.color1,
         hoverBackgroundColor: colorSecondary.color1,
       },
@@ -59,7 +60,7 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
         label: 'part2',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scoresPlayer.scores.map(totoRound => totoRound[1] ? totoRound[1] : 0 ),
+        data: scoresPlayer.scores.map((totoRound) => (totoRound[1] ? totoRound[1] : 0)),
         backgroundColor: colorPrimary.color2,
         hoverBackgroundColor: colorSecondary.color2,
       },
@@ -68,7 +69,7 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
         label: 'part3',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scoresPlayer.scores.map(totoRound => totoRound[2] ? totoRound[2] : 0 ),
+        data: scoresPlayer.scores.map((totoRound) => (totoRound[2] ? totoRound[2] : 0)),
         backgroundColor: colorPrimary.color3,
         hoverBackgroundColor: colorSecondary.color3,
       },
@@ -77,19 +78,19 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
         label: 'part4',
         borderWidth: 2,
         borderColor: '#f1f1f1',
-        data: scoresPlayer.scores.map(totoRound => totoRound[3] ? totoRound[3] : 0 ),
+        data: scoresPlayer.scores.map((totoRound) => (totoRound[3] ? totoRound[3] : 0)),
         backgroundColor: colorPrimary.color4,
         hoverBackgroundColor: colorSecondary.color4,
-      }
-    ]
-  }
+      },
+    ],
+  };
 
   return (
     <Bar
       data={chartData}
       options={{
         tooltips: {
-          enabled: true,  
+          enabled: true,
           callbacks: {
             title: (tooltipItem, _chartData) => `Scores: ${scoresPlayer.scores[tooltipItem[0].index!]}`,
             label: (_tooltipItem, _chartData) => ``,
@@ -103,7 +104,7 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
           yAxes: [
             {
               ticks: {
-                display: false
+                display: false,
               },
               gridLines: {
                 display: false,
@@ -125,15 +126,17 @@ export default function ScoresStackedChart({scoresPlayer, colorMain, colorHover,
         },
         plugins: {
           datalabels: {
-            display: (ctx) =>  ctx.datasetIndex === 3,
+            display: (ctx) => ctx.datasetIndex === 3,
             formatter: (_value, ctx) => totals[ctx.dataIndex],
             anchor: 'end',
             align: 'end',
             color: '#000',
-          }
-        }
+          },
+        },
       }}
-      onElementsClick={(e) => {if (e[0] !== undefined ) gotoTotoRound(e[0]._index + 1 )}}
+      onElementsClick={(e) => {
+        if (e[0] !== undefined) gotoTotoRound(e[0]._index + 1);
+      }}
     />
   );
 }

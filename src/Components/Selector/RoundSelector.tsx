@@ -17,7 +17,7 @@ export default function RoundSelector() {
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
 
-  const options = optionsRoundSelector(+id) 
+  const options = optionsRoundSelector(+id);
 
   const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
@@ -26,12 +26,9 @@ export default function RoundSelector() {
     setOpen(false);
   };
 
-  const handleMenuItemClick = (
-    _event: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    index: number,
-  ) => {
+  const handleMenuItemClick = (_event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
     setOpen(false);
-    history.push(`/klassement/ronde/${(+id - 1 ) * 3 + index + 1}`)
+    history.push(`/klassement/ronde/${(+id - 1) * 3 + index + 1}`);
   };
 
   const handleToggle = () => {
@@ -66,10 +63,7 @@ export default function RoundSelector() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList id="split-button-menu">
                     {options.map((option, index) => (
-                      <MenuItem
-                        key={option}
-                        onClick={(event) => handleMenuItemClick(event, index)}
-                      >
+                      <MenuItem key={option} onClick={(event) => handleMenuItemClick(event, index)}>
                         {option}
                       </MenuItem>
                     ))}

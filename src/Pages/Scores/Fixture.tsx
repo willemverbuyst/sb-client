@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Avatar,
-  Box,
-  Button, 
-  Divider,
-  Grid, 
-  Typography 
-} from '@material-ui/core';
+import { Avatar, Box, Button, Divider, Grid, Typography } from '@material-ui/core';
 import { selectFixture } from '../../store/scores/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
@@ -23,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
   },
   fixture: {
     marginBottom: theme.spacing(6),
@@ -40,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 
 export default function Fixture() {
@@ -53,16 +46,17 @@ export default function Fixture() {
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   useEffect(() => {
-    dispatch(fetchScoresFixture(+id))
-  }, [dispatch, id])
+    dispatch(fetchScoresFixture(+id));
+  }, [dispatch, id]);
 
-
-  const scoresSortedByName: PredictionWithScorePerUser[] = fixture && fixture.scores ? [...fixture.scores]
-    .sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase())) : []
+  const scoresSortedByName: PredictionWithScorePerUser[] =
+    fixture && fixture.scores
+      ? [...fixture.scores].sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
+      : [];
 
   return (
     <Box>
@@ -73,36 +67,27 @@ export default function Fixture() {
           </Typography>
         </Grid>
         <Grid>
-          <Button
-            variant="contained" 
-            size="small" 
-            color="primary" 
-            disableElevation 
-            onClick={()=> history.goBack()}
-          >
+          <Button variant="contained" size="small" color="primary" disableElevation onClick={() => history.goBack()}>
             TERUG
           </Button>
         </Grid>
       </Grid>
 
-      {isLoading ? 
+      {isLoading ? (
         <Box className={classes.progress}>
-          <ProgressLinear/> 
+          <ProgressLinear />
         </Box>
-      :
-      fixture ? 
+      ) : fixture ? (
         <>
-          <Grid className={classes.fixture}>       
+          <Grid className={classes.fixture}>
             <Grid item xs={12} container justify="center" className={classes.date}>
               <Typography variant="overline">
-                 {timeStampFormattedToLocalDate(fixture.fixture.eventTimeStamp)}
+                {timeStampFormattedToLocalDate(fixture.fixture.eventTimeStamp)}
               </Typography>
-            </Grid> 
+            </Grid>
             <Grid item xs={12} container justify="center">
               <Grid item xs={3} container justify="flex-end" alignItems="center">
-                <Typography variant="h4">
-                   {fixture.fixture.homeTeamName}
-                </Typography>
+                <Typography variant="h4">{fixture.fixture.homeTeamName}</Typography>
               </Grid>
 
               <Grid item xs={1} container justify="center">
@@ -118,35 +103,26 @@ export default function Fixture() {
               </Grid>
 
               <Grid item xs={3} container justify="flex-start" alignItems="center">
-                <Typography variant="h4">
-                  {fixture.fixture.awayTeamName}
-                </Typography>
+                <Typography variant="h4">{fixture.fixture.awayTeamName}</Typography>
               </Grid>
-            </Grid> 
+            </Grid>
           </Grid>
 
-          <Divider className={classes.divider}/>
+          <Divider className={classes.divider} />
         </>
-      : null }
+      ) : null}
 
-      { !isLoading && fixture && fixture.scores ?
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
+      {!isLoading && fixture && fixture.scores ? (
+        <Grid container direction="row" justify="center" alignItems="center">
           <Grid item xs={12} md={6} container justify="center">
-            <ScoresFixtureBarChart scores={scoresSortedByName}/>
+            <ScoresFixtureBarChart scores={scoresSortedByName} />
           </Grid>
         </Grid>
-      : !isLoading && fixture && !fixture.scores ?
+      ) : !isLoading && fixture && !fixture.scores ? (
         <Grid container justify="center">
-          <Typography variant="overline">
-            Geen scores
-          </Typography>
-        </Grid> 
-      : null }
+          <Typography variant="overline">Geen scores</Typography>
+        </Grid>
+      ) : null}
     </Box>
-  )
+  );
 }

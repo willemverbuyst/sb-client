@@ -148,9 +148,7 @@ describe('#changePassword', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -196,9 +194,7 @@ describe('#editUserProfile', () => {
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toBeCalledWith(updateUserProfile(response.data.userData));
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -237,12 +233,8 @@ describe('#userLogIn', () => {
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(
-      logInSuccessUser(response.data.userData)
-    );
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(logInSuccessUser(response.data.userData));
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

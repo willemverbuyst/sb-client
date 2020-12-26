@@ -12,10 +12,7 @@ import {
   UpdateUserProfile,
 } from './types';
 import { GetState } from '../types';
-import {
-  ILogInCredentials,
-  IProfileDetails,
-} from '../../models/credentials.model';
+import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 import { removeAllPlayers } from '../players/actions';
@@ -54,7 +51,7 @@ export const changePassword = (newPassword: string) => {
         {
           newPassword,
         },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
@@ -72,16 +69,7 @@ export const changePassword = (newPassword: string) => {
 };
 
 export const editUserProfile = (profileDetails: IProfileDetails) => {
-  const {
-    userName,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    admin,
-    totaalToto,
-    teamId,
-  } = profileDetails;
+  const { userName, firstName, lastName, email, phoneNumber, admin, totaalToto, teamId } = profileDetails;
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
     try {
@@ -98,7 +86,7 @@ export const editUserProfile = (profileDetails: IProfileDetails) => {
           totaalToto,
           teamId,
         },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
 
       dispatch(updateUserProfile(response.data.userData));
@@ -152,10 +140,7 @@ export const userLogOut = () => (dispatch: Dispatch) => {
   dispatch(removeAllTeams());
 };
 
-export const getUserWithStoredToken = async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const getUserWithStoredToken = async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     // if token check if valid

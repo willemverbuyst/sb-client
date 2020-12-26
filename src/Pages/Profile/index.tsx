@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors'
+import { selectToken } from '../../store/user/selectors';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { 
-  Box, 
-  Button, 
-  Grid, 
-  Typography 
-} from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@material-ui/core';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
@@ -18,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
   },
   passwordBtn: {
     marginLeft: theme.spacing(1),
@@ -36,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
- }));
+}));
 
 export default function Profile() {
   const classes = useStyles();
@@ -46,12 +41,12 @@ export default function Profile() {
   const [editProfile, setEditProfile] = useState(true);
 
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   const handleEditProfile = () => {
-    setEditProfile(!editProfile)
-  }
+    setEditProfile(!editProfile);
+  };
 
   return (
     <Box>
@@ -62,27 +57,21 @@ export default function Profile() {
           </Typography>
         </Grid>
         <Grid>
-          <Button
-            variant="contained" 
-            size="small" 
-            color="secondary" 
-            disableElevation 
-            onClick={handleEditProfile}
-          >
+          <Button variant="contained" size="small" color="secondary" disableElevation onClick={handleEditProfile}>
             {!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
           </Button>
         </Grid>
       </Grid>
 
-      { isLoading ?
-          <Box className={classes.progress}>
-            <ProgressLinear/> 
-          </Box>
-        : editProfile ? 
-          <EditProfileForm handleSubmit={() => setEditProfile(true)}/>
-        : 
-          <ChangePasswordForm handleSubmit={() => setEditProfile(true)}/>
-        }
+      {isLoading ? (
+        <Box className={classes.progress}>
+          <ProgressLinear />
+        </Box>
+      ) : editProfile ? (
+        <EditProfileForm handleSubmit={() => setEditProfile(true)} />
+      ) : (
+        <ChangePasswordForm handleSubmit={() => setEditProfile(true)} />
+      )}
     </Box>
-  )
+  );
 }

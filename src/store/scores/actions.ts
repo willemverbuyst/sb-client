@@ -25,9 +25,7 @@ export const removeAllScores = (): RemoveAllScores => {
   };
 };
 
-export const scoresFixtureFetched = (
-  fixture: FixtureWithScores
-): ScoresFixtureFetched => {
+export const scoresFixtureFetched = (fixture: FixtureWithScores): ScoresFixtureFetched => {
   return {
     type: SCORES_FIXTURE_FETCHED,
     fixture,
@@ -41,28 +39,21 @@ export const scoresRoundFetched = (round: Scores): ScoresRoundFetched => {
   };
 };
 
-export const scoresTotalTotoFetched = (
-  totalToto: UserWithScore[]
-): ScoresTotalTotoFetched => {
+export const scoresTotalTotoFetched = (totalToto: UserWithScore[]): ScoresTotalTotoFetched => {
   return {
     type: SCORES_TOTAL_TOTO_FETCHED,
     totalToto,
   };
 };
 
-export const scoresTotoRoundFetched = (
-  totoRound: Scores
-): ScoresTotoRoundFetched => {
+export const scoresTotoRoundFetched = (totoRound: Scores): ScoresTotoRoundFetched => {
   return {
     type: SCORES_TOTO_ROUND_FETCHED,
     totoRound,
   };
 };
 
-export const fetchScoresFixture = (id: number) => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchScoresFixture = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -85,10 +76,7 @@ export const fetchScoresFixture = (id: number) => async (
   }
 };
 
-export const fetchScoresRound = (id: number) => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchScoresRound = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -111,10 +99,7 @@ export const fetchScoresRound = (id: number) => async (
   }
 };
 
-export const fetchScoresTotalToto = () => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchScoresTotalToto = () => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -137,10 +122,7 @@ export const fetchScoresTotalToto = () => async (
   }
 };
 
-export const fetchScoresTotoRound = (id: number) => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchScoresTotoRound = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

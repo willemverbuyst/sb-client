@@ -1,9 +1,5 @@
 import React from 'react';
-import { 
-  createStyles, 
-  makeStyles, 
-  Theme 
-} from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -20,10 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function ProgressCircular() {
   const classes = useStyles();
 
-
   return (
     <div className={classes.root}>
-      <CircularProgress color="secondary"/>
+      <CircularProgress color="secondary" />
     </div>
   );
 }

@@ -10,7 +10,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 
-const options = [...Array(11)].map((_u, i) => `Toto ronde ${i + 1}`)
+const options = [...Array(11)].map((_u, i) => `Toto ronde ${i + 1}`);
 
 export default function TotoRoundSelector() {
   const [open, setOpen] = useState(false);
@@ -24,12 +24,9 @@ export default function TotoRoundSelector() {
     setOpen(false);
   };
 
-  const handleMenuItemClick = (
-    _event: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    index: number,
-  ) => {
+  const handleMenuItemClick = (_event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
     setOpen(false);
-    history.push(`/klassement/totoronde/${index + 1}`)
+    history.push(`/klassement/totoronde/${index + 1}`);
   };
 
   const handleToggle = () => {
@@ -64,10 +61,7 @@ export default function TotoRoundSelector() {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList id="split-button-menu">
                     {options.map((option, index) => (
-                      <MenuItem
-                        key={option}
-                        onClick={(event) => handleMenuItemClick(event, index)}
-                      >
+                      <MenuItem key={option} onClick={(event) => handleMenuItemClick(event, index)}>
                         {option}
                       </MenuItem>
                     ))}

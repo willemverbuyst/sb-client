@@ -137,9 +137,7 @@ describe('#playersState', () => {
 
     test('returns an action w/ type PLAYER_PROFILE_FETCHED and a profile as payload', () => {
       expect(playerProfileFetched(playerProfile)).toEqual(expected);
-      expect(playerProfileFetched(playerProfile)?.playerProfile.firstName).toBe(
-        'test_player'
-      );
+      expect(playerProfileFetched(playerProfile)?.playerProfile.firstName).toBe('test_player');
     });
   });
 
@@ -159,9 +157,7 @@ describe('#playersState', () => {
 
     test('returns an action w/ type PLAYER_SCORES_FETCHED and scores as payload', () => {
       expect(playerScoresFetched(scoresPlayer)).toEqual(expected);
-      expect(
-        playerScoresFetched(scoresPlayer)?.scoresPlayer.scores.length
-      ).toBe(2);
+      expect(playerScoresFetched(scoresPlayer)?.scoresPlayer.scores.length).toBe(2);
     });
   });
 
@@ -245,9 +241,7 @@ describe('#addPlayer', () => {
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(addNewPlayer(response.data.userData));
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -368,9 +362,7 @@ describe('#fplayerDelete', () => {
     expect(mockAxios.delete).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(deletePlayer(id));
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -407,12 +399,8 @@ describe('#updatePlayerAdminStatus', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(
-      updateAdminStatus(response.data.updatedUser)
-    );
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(updateAdminStatus(response.data.updatedUser));
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

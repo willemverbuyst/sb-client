@@ -23,15 +23,15 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-    <Router>
-      <Provider store={store}>
+  <Router>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <App />
-        </ThemeProvider>
-      </Provider>
-    </Router>,
-  document.getElementById('root')
+      </ThemeProvider>
+    </Provider>
+  </Router>,
+  document.getElementById('root'),
 );
 
 reportWebVitals();

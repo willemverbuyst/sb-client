@@ -31,25 +31,22 @@ export default function Toast() {
   };
 
   useEffect(() => {
-    setOpen(!!message)
-  }, [message])
- 
+    setOpen(!!message);
+  }, [message]);
 
   return message ? (
     <div className={classes.root}>
-      <Snackbar 
+      <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={open} 
-        autoHideDuration={3000} 
+        open={open}
+        autoHideDuration={3000}
         onClose={handleClose}
       >
-        <Alert severity={message.severity}>
-          {message.text}
-        </Alert>
+        <Alert severity={message.severity}>{message.text}</Alert>
       </Snackbar>
-    </div>) : null;
+    </div>
+  ) : null;
 }
-

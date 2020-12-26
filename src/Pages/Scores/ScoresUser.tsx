@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken, selectUser } from '../../store/user/selectors'
+import { selectToken, selectUser } from '../../store/user/selectors';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { 
-  Box, 
-  Button, 
-  Divider, 
-  Grid, 
-  Typography 
-} from '@material-ui/core';
+import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { fetchPlayerScores } from '../../store/players/actions';
@@ -21,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
   },
   divider: {
     marginBottom: theme.spacing(6),
@@ -37,9 +31,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   btn: {
-    marginTop: theme.spacing(1)
-  }
- }));
+    marginTop: theme.spacing(1),
+  },
+}));
 
 export default function ScoresUser() {
   const classes = useStyles();
@@ -51,7 +45,7 @@ export default function ScoresUser() {
   const scoresPlayer = useSelector(selectPlayerScores);
 
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   useEffect(() => {
@@ -70,67 +64,54 @@ export default function ScoresUser() {
           </Typography>
         </Grid>
 
-        { isLoading ? null :
+        {isLoading ? null : (
           <Grid>
             <Grid>
               <Button
                 fullWidth
-                variant="contained" 
-                size="small" 
-                color="primary" 
-                disableElevation 
-                onClick={()=> history.push(`/voorspellingen/1/1`)}
+                variant="contained"
+                size="small"
+                color="primary"
+                disableElevation
+                onClick={() => history.push(`/voorspellingen/1/1`)}
               >
                 VOORSPELLINGEN
               </Button>
             </Grid>
           </Grid>
-        }
+        )}
       </Grid>
 
-      { isLoading ?
-          <Box className={classes.progress}>
-            <ProgressLinear/> 
-          </Box>
-      : scoresPlayer ? 
+      {isLoading ? (
+        <Box className={classes.progress}>
+          <ProgressLinear />
+        </Box>
+      ) : scoresPlayer ? (
         <>
-          <Grid 
-            item xs={12} 
-            container justify="center" 
-            className={classes.totoRound}
-          >
-            <Typography variant="h4">
-              MIJN TOTO RONDES
-            </Typography>
+          <Grid item xs={12} container justify="center" className={classes.totoRound}>
+            <Typography variant="h4">MIJN TOTO RONDES</Typography>
           </Grid>
 
           <Grid className={classes.divider}>
-            <Divider/>
+            <Divider />
           </Grid>
-          
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-          >
+
+          <Grid container direction="row" justify="center" alignItems="center">
             <Grid item xs={12} md={6} container justify="center">
-              <ScoresStackedChart 
-                scoresPlayer={scoresPlayer} 
+              <ScoresStackedChart
+                scoresPlayer={scoresPlayer}
                 colorMain={colorPrimary}
                 colorHover={colorSecondary}
                 loggedInUser={true}
               />
             </Grid>
           </Grid>
-        </>  
-      : 
+        </>
+      ) : (
         <Grid>
-          <Typography variant="overline">
-            Je hebt nog geen scores
-          </Typography>
-        </Grid> 
-      }
+          <Typography variant="overline">Je hebt nog geen scores</Typography>
+        </Grid>
+      )}
     </Box>
-  )
+  );
 }

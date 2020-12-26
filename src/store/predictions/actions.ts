@@ -18,18 +18,14 @@ import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
 
-export const allFixturesFetched = (
-  allFixtures: TotoRound[]
-): AllFixturesFetched => {
+export const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
   return {
     type: ALL_FIXTURES_FETCHED,
     allFixtures,
   };
 };
 
-export const currentRoundFetched = (
-  currentRound: ICurrentRound
-): CurrentRoundFetched => {
+export const currentRoundFetched = (currentRound: ICurrentRound): CurrentRoundFetched => {
   return {
     type: CURRENT_ROUND_FETCHED,
     currentRound,
@@ -56,11 +52,10 @@ export const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
   };
 };
 
-export const changePrediction = ({
-  pGoalsHomeTeam,
-  pGoalsAwayTeam,
-  fixtureId,
-}: IPrediction) => async (dispatch: any, _getState: GetState) => {
+export const changePrediction = ({ pGoalsHomeTeam, pGoalsAwayTeam, fixtureId }: IPrediction) => async (
+  dispatch: any,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -72,7 +67,7 @@ export const changePrediction = ({
       },
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
 
     dispatch(setMessage('success', response.data.message));
@@ -90,10 +85,7 @@ export const changePrediction = ({
   }
 };
 
-export const fetchAllFixtures = () => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchAllFixtures = () => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -116,10 +108,7 @@ export const fetchAllFixtures = () => async (
   }
 };
 
-export const fetchCurrentRound = () => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchCurrentRound = () => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -142,11 +131,10 @@ export const fetchCurrentRound = () => async (
   }
 };
 
-export const postNewPrediction = ({
-  pGoalsHomeTeam,
-  pGoalsAwayTeam,
-  fixtureId,
-}: IPrediction) => async (dispatch: any, _getState: GetState) => {
+export const postNewPrediction = ({ pGoalsHomeTeam, pGoalsAwayTeam, fixtureId }: IPrediction) => async (
+  dispatch: any,
+  _getState: GetState,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -159,7 +147,7 @@ export const postNewPrediction = ({
       },
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
 
     dispatch(setMessage('success', response.data.message));

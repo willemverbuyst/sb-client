@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
@@ -8,11 +8,7 @@ import { selectToken } from '../../store/user/selectors';
 import MatchCard from '../../Components/Card/MatchCard';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Box, 
-  Grid, 
-  Typography } 
-from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -22,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subTitle: {
     marginBottom: theme.spacing(1),
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   progress: {
     minHeight: '70vh',
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 
 export default function Program() {
@@ -42,12 +38,12 @@ export default function Program() {
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   useEffect(() => {
     if (!currentRound) {
-      dispatch(fetchCurrentRound())
+      dispatch(fetchCurrentRound());
     }
   }, [dispatch, currentRound]);
 
@@ -56,26 +52,24 @@ export default function Program() {
       <Grid container>
         <Grid>
           <Typography variant="h3" className={classes.title}>
-          Programma
+            Programma
           </Typography>
         </Grid>
       </Grid>
 
-      { isLoading ?
+      {isLoading ? (
         <Box className={classes.progress}>
-          <ProgressLinear/> 
+          <ProgressLinear />
         </Box>
-      : currentRound ?
+      ) : currentRound ? (
         <Grid item xs={12} container justify="center">
-          {currentRound.fixtures.map((wedstrijd, i) => 
+          {currentRound.fixtures.map((wedstrijd, i) => (
             <Grid item key={i} lg={4} md={6} xs={12}>
-              <MatchCard 
-                wedstrijdMetVoorspellingen={wedstrijd}
-                display="Home"
-              />
-            </Grid>)}
+              <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display="Home" />
+            </Grid>
+          ))}
         </Grid>
-      :  null }
+      ) : null}
     </Box>
-  )
+  );
 }

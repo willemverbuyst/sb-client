@@ -43,18 +43,14 @@ export const deletePlayer = (playerId: number): DeletePlayer => {
   };
 };
 
-export const playerProfileFetched = (
-  playerProfile: IPlayerProfile
-): PlayerProfileFetched => {
+export const playerProfileFetched = (playerProfile: IPlayerProfile): PlayerProfileFetched => {
   return {
     type: PLAYER_PROFILE_FETCHED,
     playerProfile,
   };
 };
 
-export const playerScoresFetched = (
-  scoresPlayer: ScoresPlayer
-): PlayerScoresFetched => ({
+export const playerScoresFetched = (scoresPlayer: ScoresPlayer): PlayerScoresFetched => ({
   type: PLAYER_SCORES_FETCHED,
   scoresPlayer,
 });
@@ -73,17 +69,7 @@ export const updateAdminStatus = (player: IPlayer): UpdateAdminStatus => {
 };
 
 export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
-  const {
-    userName,
-    firstName,
-    lastName,
-    email,
-    password,
-    phoneNumber,
-    admin,
-    totaalToto,
-    teamId,
-  } = signUpCredentials;
+  const { userName, firstName, lastName, email, password, phoneNumber, admin, totaalToto, teamId } = signUpCredentials;
   return async (dispatch: Dispatch, _getState: GetState) => {
     dispatch(appLoading());
     try {
@@ -101,7 +87,7 @@ export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
           totaalToto,
           teamId,
         },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
 
       dispatch(addNewPlayer(response.data.userData));
@@ -120,10 +106,7 @@ export const addPlayer = (signUpCredentials: ISignUpCredentials) => {
   };
 };
 
-export const fetchAllPlayers = () => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchAllPlayers = () => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -146,10 +129,7 @@ export const fetchAllPlayers = () => async (
   }
 };
 
-export const fetchPlayerProfile = (id: number) => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchPlayerProfile = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -172,10 +152,7 @@ export const fetchPlayerProfile = (id: number) => async (
   }
 };
 
-export const fetchPlayerScores = (id: number) => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const fetchPlayerScores = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -198,10 +175,7 @@ export const fetchPlayerScores = (id: number) => async (
   }
 };
 
-export const playerDelete = (id: number) => async (
-  dispatch: Dispatch,
-  _getState: GetState
-) => {
+export const playerDelete = (id: number) => async (dispatch: Dispatch, _getState: GetState) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -226,7 +200,7 @@ export const playerDelete = (id: number) => async (
 
 export const updatePlayerAdminStatus = (id: number, admin: boolean) => async (
   dispatch: Dispatch,
-  _getState: GetState
+  _getState: GetState,
 ) => {
   dispatch(appLoading());
   try {
@@ -236,7 +210,7 @@ export const updatePlayerAdminStatus = (id: number, admin: boolean) => async (
       { admin },
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
     const player = response.data.updatedUser;
 

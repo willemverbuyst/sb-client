@@ -29,8 +29,4 @@ export type UpdateUserProfile = {
   user: IUser;
 };
 
-export type UserActionTypes =
-  | LogInSuccessUser
-  | LogOutUser
-  | TokenUserStillValid
-  | UpdateUserProfile;
+export type UserActionTypes = LogInSuccessUser | LogOutUser | TokenUserStillValid | UpdateUserProfile;

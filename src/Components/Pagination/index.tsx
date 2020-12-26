@@ -8,7 +8,7 @@ type Props = {
   count: number;
   color: 'primary' | 'secondary' | 'standard';
   onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
-}
+};
 
 export default function PaginationComponent(props: Props) {
   return (
@@ -22,14 +22,9 @@ export default function PaginationComponent(props: Props) {
       </Grid>
       <Grid item xs={12}>
         <Grid container justify="center">
-          <Pagination 
-            page={props.page} 
-            count={props.count} 
-            color={props.color} 
-            onChange={props.onChange} 
-          />
+          <Pagination page={props.page} count={props.count} color={props.color} onChange={props.onChange} />
         </Grid>
-      </Grid>  
-    </>  
-  )
+      </Grid>
+    </>
+  );
 }

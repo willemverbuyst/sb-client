@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { addPlayer } from '../../store/players/actions';
 import { fetchAllTeams } from '../../store/teams/actions';
-import { selectTeams } from '../../store/teams/selectors'; 
+import { selectTeams } from '../../store/teams/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { selectUser } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Box, 
+import {
+  Box,
   Button,
-  Checkbox, 
+  Checkbox,
   Container,
-  FormControl, 
-  FormControlLabel, 
-  Grid, 
-  InputLabel, 
-  MenuItem, 
+  FormControl,
+  FormControlLabel,
+  Grid,
+  InputLabel,
+  MenuItem,
   Select,
-  TextField, 
-  Typography 
+  TextField,
+  Typography,
 } from '@material-ui/core';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
   },
   paper: {
     marginTop: theme.spacing(2),
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   select: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 
 export default function SignUp() {
@@ -81,42 +81,42 @@ export default function SignUp() {
     totaalToto: true,
     teamId: '',
   });
- 
+
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   useEffect(() => {
-    if (user && !user.admin) history.push("/page-not-found");
-  })
+    if (user && !user.admin) history.push('/page-not-found');
+  });
 
   useEffect(() => {
     if (!teams) {
-      dispatch(fetchAllTeams)
+      dispatch(fetchAllTeams);
     }
-  },[dispatch, teams]);
+  }, [dispatch, teams]);
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
 
-    dispatch(addPlayer(signUpCredentials))
-    
+    dispatch(addPlayer(signUpCredentials));
+
     setSignUpCredentials({
-      userName:'',
-      firstName:'',
-      lastName:'',
-      email:'',
-      password:'',
-      phoneNumber:'',
+      userName: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      phoneNumber: '',
       admin: false,
       totaalToto: true,
-      teamId:'',
-    })
+      teamId: '',
+    });
 
-    history.push('/spelers')
+    history.push('/spelers');
   };
 
-  return ( 
+  return (
     <Grid container>
       <Grid container>
         <Typography variant="h3" className={classes.title}>
@@ -124,11 +124,11 @@ export default function SignUp() {
         </Typography>
       </Grid>
 
-      { isLoading ?
+      {isLoading ? (
         <Box className={classes.progress}>
-          <ProgressLinear/> 
+          <ProgressLinear />
         </Box>
-      : teams ? 
+      ) : teams ? (
         <Container component="main" maxWidth="xs">
           <div className={classes.paper}>
             <form className={classes.form} noValidate>
@@ -229,52 +229,60 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControlLabel
-                    control={<Checkbox checked={signUpCredentials.admin} color="primary" onChange={(e) =>
-                      setSignUpCredentials({
-                        ...signUpCredentials,
-                        admin: e.target.checked,
-                      })
-                    }/>}
+                    control={
+                      <Checkbox
+                        checked={signUpCredentials.admin}
+                        color="primary"
+                        onChange={(e) =>
+                          setSignUpCredentials({
+                            ...signUpCredentials,
+                            admin: e.target.checked,
+                          })
+                        }
+                      />
+                    }
                     label="Admin"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControlLabel
-                    control={<Checkbox checked={signUpCredentials.totaalToto} color="primary" onChange={(e) =>
-                      setSignUpCredentials({
-                        ...signUpCredentials,
-                        totaalToto: e.target.checked,
-                      })
-                    } />}
+                    control={
+                      <Checkbox
+                        checked={signUpCredentials.totaalToto}
+                        color="primary"
+                        onChange={(e) =>
+                          setSignUpCredentials({
+                            ...signUpCredentials,
+                            totaalToto: e.target.checked,
+                          })
+                        }
+                      />
+                    }
                     label="Totaal Toto"
                   />
                 </Grid>
               </Grid>
               <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="phoneNumber"
-                    label="phomeNumber"
-                    type="text"
-                    id="phoneNumber"
-                    value={signUpCredentials.phoneNumber}
-                    onChange={(e) =>
-                      setSignUpCredentials({
-                        ...signUpCredentials,
-                        phoneNumber: e.target.value,
-                      })
-                    }
-                  />
-                </Grid>
-              <Grid item xs={12} className={classes.select}>
-             
-                <FormControl 
+                <TextField
                   variant="outlined"
+                  margin="normal"
+                  required
                   fullWidth
-                >
+                  name="phoneNumber"
+                  label="phomeNumber"
+                  type="text"
+                  id="phoneNumber"
+                  value={signUpCredentials.phoneNumber}
+                  onChange={(e) =>
+                    setSignUpCredentials({
+                      ...signUpCredentials,
+                      phoneNumber: e.target.value,
+                    })
+                  }
+                />
+              </Grid>
+              <Grid item xs={12} className={classes.select}>
+                <FormControl variant="outlined" fullWidth>
                   <InputLabel id="favTeam">Team</InputLabel>
                   <Select
                     labelId="favTeam"
@@ -284,18 +292,23 @@ export default function SignUp() {
                       setSignUpCredentials({
                         ...signUpCredentials,
                         teamId: e.target.value as number,
-                      })}
+                      })
+                    }
                     label="Team"
                   >
-                    {[...teams].sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
-                      .map((team, i) => <MenuItem key={i} value={team.id}>{team.name}</MenuItem>)}
+                    {[...teams]
+                      .sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
+                      .map((team, i) => (
+                        <MenuItem key={i} value={team.id}>
+                          {team.name}
+                        </MenuItem>
+                      ))}
                   </Select>
-                </FormControl> 
-                
+                </FormControl>
               </Grid>
               <Button
                 type="submit"
-                disableElevation 
+                disableElevation
                 fullWidth
                 variant="contained"
                 color="primary"
@@ -303,11 +316,11 @@ export default function SignUp() {
                 onClick={submitForm}
               >
                 Sign Up
-              </Button>        
+              </Button>
             </form>
           </div>
         </Container>
-      : null }
+      ) : null}
     </Grid>
-  )
+  );
 }

@@ -1,10 +1,6 @@
 import axios from 'axios';
 import { IPrediction } from '../../../models/predictions.model';
-import {
-  ICurrentRound,
-  IFixtureWithScoreAndPredictions,
-  TotoRound,
-} from '../../../models/toto.models';
+import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
 import {
   allFixturesFetched,
   changePrediction,
@@ -72,9 +68,7 @@ describe('#predictionsState', () => {
 
     test('returns an action w/ type ALL_FIXTURES_FETCHED and fixtures as payload', () => {
       expect(allFixturesFetched(totoRound)).toEqual(expected);
-      expect(allFixturesFetched(totoRound).allFixtures.length).toBeGreaterThan(
-        0
-      );
+      expect(allFixturesFetched(totoRound).allFixtures.length).toBeGreaterThan(0);
     });
   });
 
@@ -114,9 +108,7 @@ describe('#predictionsState', () => {
 
     test('returns an action w/ type CURRENT_ROUND_FETCHED and current round as payload', () => {
       expect(currentRoundFetched(currentRound)).toEqual(expected);
-      expect(currentRoundFetched(currentRound).currentRound).toEqual(
-        currentRound
-      );
+      expect(currentRoundFetched(currentRound).currentRound).toEqual(currentRound);
       expect(currentRoundFetched(currentRound)).toHaveProperty('currentRound');
     });
   });
@@ -188,9 +180,7 @@ describe('#changePrediction', () => {
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(updatePrediction(prediction));
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -306,9 +296,7 @@ describe('#postNewPrediction', () => {
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(postPrediction(prediction));
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message)
-    );
+    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

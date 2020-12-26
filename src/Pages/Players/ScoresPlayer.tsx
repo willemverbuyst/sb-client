@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors'
+import { selectToken } from '../../store/user/selectors';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { 
-  Box, 
-  Button, 
-  Divider, 
-  Grid, 
-  Typography 
-} from '@material-ui/core';
+import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { fetchPlayerScores } from '../../store/players/actions';
@@ -21,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main
+    color: theme.palette.secondary.main,
   },
   divider: {
     marginBottom: theme.spacing(6),
@@ -48,7 +42,7 @@ export default function ScoresPlayer() {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    if (!token) history.push("/login");
+    if (!token) history.push('/login');
   });
 
   useEffect(() => {
@@ -56,84 +50,69 @@ export default function ScoresPlayer() {
     dispatch(fetchPlayerScores(+id));
   }, [dispatch, id]);
 
-  return (
-    isLoading ?
-      <Box>
-        <Grid container >
-          <Grid>
-            <Typography variant="h3" className={classes.title}>
-              Wacht op scores
-            </Typography>
-          </Grid>
+  return isLoading ? (
+    <Box>
+      <Grid container>
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
+            Wacht op scores
+          </Typography>
         </Grid>
-        <Box className={classes.progress}>
-          <ProgressLinear/> 
-        </Box>
+      </Grid>
+      <Box className={classes.progress}>
+        <ProgressLinear />
       </Box>
-    : scoresPlayer ?
-      <Box>
-        <Grid container justify="space-between">
-          <Grid>
-            <Typography variant="h3" className={classes.title}>
+    </Box>
+  ) : scoresPlayer ? (
+    <Box>
+      <Grid container justify="space-between">
+        <Grid>
+          <Typography variant="h3" className={classes.title}>
             {scoresPlayer.userName}
-            </Typography>
-          </Grid>
+          </Typography>
+        </Grid>
+        <Grid>
           <Grid>
-            <Grid>
-              <Button
-                fullWidth
-                variant="contained" 
-                size="small" 
-                color="secondary" 
-                disableElevation 
-                onClick={()=> history.push(`/spelers/${id}/voorspellingen/1/1`)}
-              >
-                VOORSPELLINGEN
-              </Button>
-            </Grid>
+            <Button
+              fullWidth
+              variant="contained"
+              size="small"
+              color="secondary"
+              disableElevation
+              onClick={() => history.push(`/spelers/${id}/voorspellingen/1/1`)}
+            >
+              VOORSPELLINGEN
+            </Button>
           </Grid>
         </Grid>
+      </Grid>
 
-        { scoresPlayer ? 
-          <>
-            <Grid 
-              item xs={12} 
-              container justify="center" 
-              className={classes.totoRound}
-            >
-              <Typography variant="h4">
-                TOTO RONDES
-              </Typography>
-            </Grid>
+      {scoresPlayer ? (
+        <>
+          <Grid item xs={12} container justify="center" className={classes.totoRound}>
+            <Typography variant="h4">TOTO RONDES</Typography>
+          </Grid>
 
-            <Grid className={classes.divider}>
-              <Divider/>
+          <Grid className={classes.divider}>
+            <Divider />
+          </Grid>
+
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Grid item xs={12} md={6} container justify="center">
+              <ScoresStackedChart
+                scoresPlayer={scoresPlayer}
+                colorMain={colorSecondary}
+                colorHover={colorPrimary}
+                loggedInUser={false}
+              />
             </Grid>
-            
-            <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-              <Grid item xs={12} md={6} container justify="center">
-                <ScoresStackedChart 
-                  scoresPlayer={scoresPlayer}
-                  colorMain={colorSecondary}
-                  colorHover={colorPrimary}
-                  loggedInUser={false}
-                />
-              </Grid>
-            </Grid>
-          </>  
-        : 
-          <Grid>
-            <Typography variant="overline">
-              Nog geen scores
-            </Typography>
-          </Grid> 
-        } 
-      </Box>
-    : null 
-  )
+          </Grid>
+        </>
+      ) : (
+        <Grid>
+          <Typography variant="overline">Nog geen scores</Typography>
+        </Grid>
+      )}
+    </Box>
+  ) : null;
 }

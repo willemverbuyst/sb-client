@@ -13,8 +13,8 @@ import { IPlayer } from '../../models/player.model';
 
 type Props = {
   playerToDelete: IPlayer;
-  closeDialog: () =>  void;
-}
+  closeDialog: () => void;
+};
 
 export default function DeleteDialog(props: Props) {
   const theme = useTheme();
@@ -22,26 +22,22 @@ export default function DeleteDialog(props: Props) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(playerDelete(+props.playerToDelete.id))
-    props.closeDialog()
-  }
+    dispatch(playerDelete(+props.playerToDelete.id));
+    props.closeDialog();
+  };
 
   const handleCancel = () => {
-    props.closeDialog()
-  }
+    props.closeDialog();
+  };
 
   return (
     <div>
-      <Dialog
-        open={true}
-        fullScreen={fullScreen}
-        aria-labelledby="responsive-dialog-title"
-      >
+      <Dialog open={true} fullScreen={fullScreen} aria-labelledby="responsive-dialog-title">
         <DialogTitle id="responsive-dialog-title">{`Weet je zeker dat je ${props.playerToDelete.firstName} ${props.playerToDelete.lastName} wilt verwijderen?`}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Wanneer je deze speler verwijderd, wordt alle data uit de database gewist.
-            <br/>
+            <br />
             Er is dan geen weg terug...
           </DialogContentText>
         </DialogContent>
@@ -57,4 +53,3 @@ export default function DeleteDialog(props: Props) {
     </div>
   );
 }
-

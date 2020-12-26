@@ -13,10 +13,7 @@ const initialState: PredictionsState = {
   allFixtures: null,
 };
 
-const predictionsReducer = (
-  state = initialState,
-  action: PredictionActionTypes
-) => {
+const predictionsReducer = (state = initialState, action: PredictionActionTypes) => {
   switch (action.type) {
     case CURRENT_ROUND_FETCHED:
       return { ...state, currentRound: action.currentRound };
@@ -39,9 +36,9 @@ const predictionsReducer = (
                           pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
                         },
                       }
-                    : fixture
-                )
-              )
+                    : fixture,
+                ),
+              ),
             )
           : null,
         currentRound: state.currentRound
@@ -56,7 +53,7 @@ const predictionsReducer = (
                         pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
                       },
                     }
-                  : fixture
+                  : fixture,
               ),
             }
           : null,
@@ -80,9 +77,9 @@ const predictionsReducer = (
                           pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
                         },
                       }
-                    : fixture
-                )
-              )
+                    : fixture,
+                ),
+              ),
             )
           : null,
         currentRound: state.currentRound
@@ -97,7 +94,7 @@ const predictionsReducer = (
                         pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
                       },
                     }
-                  : fixture
+                  : fixture,
               ),
             }
           : null,

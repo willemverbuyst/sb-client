@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { userLogIn } from '../../store/user/actions';
-import { selectToken } from '../../store/user/selectors'
+import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Avatar, 
-  Box,
-  Button, 
-  Container, 
-  TextField 
-} from '@material-ui/core';
+import { Avatar, Box, Button, Container, TextField } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 
 export default function LogIn() {
@@ -57,24 +50,23 @@ export default function LogIn() {
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
-    if (token) history.push("/programma");
+    if (token) history.push('/programma');
   }, [token, history]);
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
-    dispatch(userLogIn(logInCredentials))
+    dispatch(userLogIn(logInCredentials));
     setLogInCredentials({
       email: '',
       password: '',
     });
   };
 
-  return (
-    isLoading ?
-      <Box className={classes.progress}>
-        <ProgressLinear/> 
-      </Box>
-    : 
+  return isLoading ? (
+    <Box className={classes.progress}>
+      <ProgressLinear />
+    </Box>
+  ) : (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -129,7 +121,6 @@ export default function LogIn() {
           </Button>
         </form>
       </div>
-    </Container> 
+    </Container>
   );
 }
-

@@ -1,13 +1,7 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Card, 
-  CardContent, 
-  Chip,
-  Grid,
-  Typography,
-} from '@material-ui/core';
+import { Card, CardContent, Chip, Grid, Typography } from '@material-ui/core';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
@@ -37,12 +31,12 @@ const useStyles = makeStyles({
     right: 5,
     top: 5,
     transform: 'rotate(12deg)',
-    color: '#c5c5c5', 
+    color: '#c5c5c5',
     border: 'none',
-  }
+  },
 });
 
-type Prop = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions, display: string }
+type Prop = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions; display: string };
 
 export default function MatchCard({ wedstrijdMetVoorspellingen, display }: Prop) {
   const classes = useStyles();
@@ -51,75 +45,74 @@ export default function MatchCard({ wedstrijdMetVoorspellingen, display }: Prop)
   return (
     <Card className={classes.card}>
       <CardContent>
-        { wedstrijdMetVoorspellingen.status === 'Match Finished' ?
-          <Chip 
+        {wedstrijdMetVoorspellingen.status === 'Match Finished' ? (
+          <Chip
             size="small"
             className={classes.chip}
-            label={`${wedstrijdMetVoorspellingen.score} pt.`} 
+            label={`${wedstrijdMetVoorspellingen.score} pt.`}
             variant="outlined"
           />
-        :null }
+        ) : null}
 
         <Typography variant="overline" color="textSecondary">
-        {timeStampFormattedToLocalDate(wedstrijdMetVoorspellingen.eventTimeStamp)} 
+          {timeStampFormattedToLocalDate(wedstrijdMetVoorspellingen.eventTimeStamp)}
         </Typography>
-        
-        <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" 
-          onClick={()=> history.push(`/wedstrijd/${wedstrijdMetVoorspellingen.id}`)}>
+
+        <Grid
+          item
+          xs={12}
+          className={classes.match}
+          container
+          justify="center"
+          alignItems="center"
+          onClick={() => history.push(`/wedstrijd/${wedstrijdMetVoorspellingen.id}`)}
+        >
           <Grid item xs={4} container justify="flex-end" alignItems="center">
-            <Typography>
-              {wedstrijdMetVoorspellingen.homeTeamName}
-            </Typography>
+            <Typography>{wedstrijdMetVoorspellingen.homeTeamName}</Typography>
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
-            <img 
-              className={classes.logo} 
-              alt={wedstrijdMetVoorspellingen.homeTeamLogo} 
-              src={wedstrijdMetVoorspellingen.homeTeamLogo} 
+            <img
+              className={classes.logo}
+              alt={wedstrijdMetVoorspellingen.homeTeamLogo}
+              src={wedstrijdMetVoorspellingen.homeTeamLogo}
             />
           </Grid>
 
           <Grid item xs={2} container justify="center" alignItems="center">
-            { wedstrijdMetVoorspellingen.status === 'Time to be defined' ? 
-                <Typography>
-                  t.b.a.
-                </Typography> 
-              : wedstrijdMetVoorspellingen.status === 'Match Finished' ? 
-                <Typography>
-                  {wedstrijdMetVoorspellingen.goalsHomeTeam} - {wedstrijdMetVoorspellingen.goalsAwayTeam}
-                </Typography> 
-              :
-                <Typography>
-                  {getTimeFromTimeStamp(wedstrijdMetVoorspellingen.eventTimeStamp)} 
-                </Typography>
-             }
+            {wedstrijdMetVoorspellingen.status === 'Time to be defined' ? (
+              <Typography>t.b.a.</Typography>
+            ) : wedstrijdMetVoorspellingen.status === 'Match Finished' ? (
+              <Typography>
+                {wedstrijdMetVoorspellingen.goalsHomeTeam} - {wedstrijdMetVoorspellingen.goalsAwayTeam}
+              </Typography>
+            ) : (
+              <Typography>{getTimeFromTimeStamp(wedstrijdMetVoorspellingen.eventTimeStamp)}</Typography>
+            )}
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
-            <img 
-              className={classes.logo} 
-              alt={wedstrijdMetVoorspellingen.awayTeamLogo} 
-              src={wedstrijdMetVoorspellingen.awayTeamLogo} 
+            <img
+              className={classes.logo}
+              alt={wedstrijdMetVoorspellingen.awayTeamLogo}
+              src={wedstrijdMetVoorspellingen.awayTeamLogo}
             />
           </Grid>
 
           <Grid item xs={4} container justify="flex-start" alignItems="center">
-            <Typography>
-              {wedstrijdMetVoorspellingen.awayTeamName}
-            </Typography>
+            <Typography>{wedstrijdMetVoorspellingen.awayTeamName}</Typography>
           </Grid>
         </Grid>
 
         <Grid item xs={12} container justify="center">
-          { display === 'public' ? 
-            <PublicPredictions fixtureWithPrediction={wedstrijdMetVoorspellingen}/>
-          : display === 'Predictions' ?
-            <PredictionsField fixtureWithPrediction={wedstrijdMetVoorspellingen}/>
-          : <PredictionsHome fixtureWithPrediction={wedstrijdMetVoorspellingen}/>
-          }
+          {display === 'public' ? (
+            <PublicPredictions fixtureWithPrediction={wedstrijdMetVoorspellingen} />
+          ) : display === 'Predictions' ? (
+            <PredictionsField fixtureWithPrediction={wedstrijdMetVoorspellingen} />
+          ) : (
+            <PredictionsHome fixtureWithPrediction={wedstrijdMetVoorspellingen} />
+          )}
         </Grid>
-
       </CardContent>
     </Card>
   );

@@ -129,9 +129,7 @@ describe('#scoressState', () => {
     test('returns an action w/ type SCORES_TOTAL_TOTO_FETCHED and totalToto scores as payload', () => {
       expect(scoresTotalTotoFetched(totalToto)).toEqual(expected);
       expect(scoresTotalTotoFetched(totalToto).totalToto).not.toBe(undefined);
-      expect(scoresTotalTotoFetched(totalToto).type).toBe(
-        SCORES_TOTAL_TOTO_FETCHED
-      );
+      expect(scoresTotalTotoFetched(totalToto).type).toBe(SCORES_TOTAL_TOTO_FETCHED);
     });
   });
 
@@ -153,12 +151,8 @@ describe('#scoressState', () => {
 
     test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
       expect(scoresTotoRoundFetched(totoRoundScores)).toEqual(expected);
-      expect(scoresTotoRoundFetched(totoRoundScores).totoRound).not.toBe(
-        undefined
-      );
-      expect(scoresTotoRoundFetched(totoRoundScores).type).toBe(
-        SCORES_TOTO_ROUND_FETCHED
-      );
+      expect(scoresTotoRoundFetched(totoRoundScores).totoRound).not.toBe(undefined);
+      expect(scoresTotoRoundFetched(totoRoundScores).type).toBe(SCORES_TOTO_ROUND_FETCHED);
     });
   });
 });
@@ -260,9 +254,7 @@ describe('#fetchScoresTotalToto', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(
-      scoresTotalTotoFetched(response.data)
-    );
+    expect(dispatch).toHaveBeenCalledWith(scoresTotalTotoFetched(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -292,9 +284,7 @@ describe('#fetchScoresTotoRound', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(
-      scoresTotoRoundFetched(response.data)
-    );
+    expect(dispatch).toHaveBeenCalledWith(scoresTotoRoundFetched(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
