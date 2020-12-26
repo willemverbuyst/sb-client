@@ -17,6 +17,7 @@ import {
   Scores,
 } from '../types';
 import {
+  fetchScoresFixture,
   removeAllScores,
   scoresFixtureFetched,
   scoresRoundFetched,
@@ -156,5 +157,52 @@ describe('#scoressState', () => {
         SCORES_TOTO_ROUND_FETCHED
       );
     });
+  });
+});
+
+describe('#fetchScoresFixture', () => {
+  it('calls axios and returns a fixture with scores', async () => {
+    const id = 1;
+    const fixture: IFixture = {
+      awayTeamId: 1,
+      awayTeamLogo: 'test',
+      awayTeamName: 'test',
+      createdAt: 'test',
+      eventTimeStamp: 1,
+      goalsAwayTeam: null,
+      goalsHomeTeam: null,
+      homeTeamId: 1,
+      homeTeamLogo: 'test',
+      homeTeamName: 'test',
+      id: 1,
+      round: 'test',
+      status: 'test',
+      updatedAt: 'test',
+    };
+    const predictionWithScorePerUser: PredictionWithScorePerUser = {
+      pGoalsAwayTeam: 1,
+      pGoalsHomeTeam: 1,
+      score: 10,
+      user: 'test_user',
+      userId: 1,
+    };
+    const fixtureScores: FixtureWithScores = {
+      fixture,
+      scores: [predictionWithScorePerUser],
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: fixtureScores };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchScoresFixture(id)(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(scoresFixtureFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });

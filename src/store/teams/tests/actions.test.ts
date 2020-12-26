@@ -55,6 +55,7 @@ describe('#fetchAllTeams', () => {
         logo: 'test_logo',
       },
     ];
+
     const dispatch = jest.fn();
     const getState = jest.fn();
     const response = { data: teams };
