@@ -10,6 +10,7 @@ import {
   playerProfileFetched,
   playerScoresFetched,
   removeAllPlayers,
+  updateAdminStatus,
 } from '../actions';
 import {
   ADD_NEW_PLAYER,
@@ -25,6 +26,8 @@ import {
   ScoresPlayer,
   PlayerScoresFetched,
   PLAYER_SCORES_FETCHED,
+  UPDATE_ADMIN_STATUS,
+  UpdateAdminStatus,
 } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 import { ISignUpCredentials } from '../../../models/credentials.model';
@@ -151,7 +154,7 @@ describe('#playersState', () => {
       scoresPlayer,
     };
 
-    test('returns an action w/ type PLAYER_PROFILE_FETCHED and a profile as payload', () => {
+    test('returns an action w/ type PLAYER_SCORES_FETCHED and scores as payload', () => {
       expect(playerScoresFetched(scoresPlayer)).toEqual(expected);
       expect(
         playerScoresFetched(scoresPlayer)?.scoresPlayer.scores.length
@@ -168,6 +171,33 @@ describe('#playersState', () => {
       expect(removeAllPlayers()).toEqual(expected);
       expect(removeAllPlayers()).not.toHaveProperty('payload');
       expect(removeAllPlayers()).toHaveProperty('type');
+    });
+  });
+
+  describe('#updateAdminStatus w/ player', () => {
+    const player: IPlayer = {
+      admin: false,
+      email: 'test@test.com',
+      firstName: 'test_player1',
+      id: 1,
+      lastName: 'tst_player',
+      phoneNumber: '123',
+      team: {
+        id: 1,
+        logo: 'test_logo',
+        name: 'test_name',
+      },
+      totaalToto: true,
+      userName: 'TEST',
+    };
+    const expected: UpdateAdminStatus = {
+      type: UPDATE_ADMIN_STATUS,
+      player,
+    };
+
+    test('returns an action w/ type UPDATE_ADMIN_STATUS and a player as payload', () => {
+      expect(updateAdminStatus(player)).toEqual(expected);
+      expect(updateAdminStatus(player)).toHaveProperty('player');
     });
   });
 });
