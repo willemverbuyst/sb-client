@@ -112,9 +112,26 @@ router.get('/:id', authMiddleware, async (req, res) => {
       fixturesWithPredictionAndScore
     );
 
-    // FILTER OUT PREDICTIONS AND SCORE WHEN NOT STATUS MATCH FINISHED
-
-    user.pastFixturesWithScores = fixturesGroupedByTotoRounds;
+    // Set predictions to null when match is not played yet
+    const fixturesWithHiddenPredictions = fixturesGroupedByTotoRounds.map(
+      (totoround) =>
+        totoround.map((round) =>
+          round.map((fixture) => {
+            if (fixture.status !== 'Match Finished') {
+              return {
+                ...fixture,
+                predictions: {
+                  pGoalsAwayTeam: null,
+                  pGoalsHomeTeam: null,
+                },
+              };
+            } else {
+              return fixture;
+            }
+          })
+        )
+    );
+    user.pastFixturesWithScores = fixturesWithHiddenPredictions;
 
     res.status(200).send(user);
   } catch (error) {
