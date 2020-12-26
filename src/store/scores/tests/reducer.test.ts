@@ -3,12 +3,14 @@ import reducer from '../reducer';
 import {
   REMOVE_ALL_SCORES,
   SCORES_FIXTURE_FETCHED,
+  SCORES_ROUND_FETCHED,
   SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
   FixtureWithScores,
   UserWithScore,
   RemoveAllScores,
   ScoresFixtureFetched,
+  ScoresRoundFetched,
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
   ScoresState,
@@ -97,6 +99,7 @@ describe('#scoresStateReducer', () => {
       expect(newState.totoRoundScores).toBeNull();
     });
   });
+
   describe('if given SCORES_FIXTURE_FETCHED action type and a payload with fixtures', () => {
     const initialState: ScoresState = {
       fixtureScores: null,
@@ -151,6 +154,43 @@ describe('#scoresStateReducer', () => {
       expect(newState.fixtureScores?.fixture).not.toBeNull();
     });
   });
+
+  describe('if given SCORES_ROUND_FETCHED action type and a payload with a round', () => {
+    const initialState: ScoresState = {
+      fixtureScores: null,
+      roundScores: null,
+      totalTotoScores: null,
+      totoRoundScores: null,
+    };
+    const round: Scores = {
+      usersWithScores: [
+        {
+          score: 10,
+          user: 'test_user',
+          id: 1,
+        },
+      ],
+      id: 1,
+    };
+
+    const action: ScoresRoundFetched = {
+      type: SCORES_ROUND_FETCHED,
+      round,
+    };
+    const newState: ScoresState = reducer(initialState, action);
+
+    test('returns a state w/ a totoRoundScores', () => {
+      expect(newState).not.toEqual(initialState);
+      expect(newState.fixtureScores).toBeNull();
+      expect(newState.totoRoundScores).toBeNull();
+      expect(newState.totalTotoScores).toBeNull();
+      expect(newState.roundScores).not.toBeNull();
+      expect(newState).toHaveProperty('totoRoundScores');
+      expect(newState.roundScores?.usersWithScores.length).toBeGreaterThan(0);
+      expect(newState.roundScores?.usersWithScores.length).toBeLessThan(2);
+    });
+  });
+
   describe('if given SCORES_TOTAL_TOTO_FETCHED action type and a payload with totalToto', () => {
     const initialState: ScoresState = {
       fixtureScores: null,
@@ -182,6 +222,7 @@ describe('#scoresStateReducer', () => {
       expect(newState.totalTotoScores?.length).toBeLessThan(2);
     });
   });
+
   describe('if given SCORES_TOTO_ROUND_FETCHED action type and a payload with totoRound', () => {
     const initialState: ScoresState = {
       fixtureScores: null,
