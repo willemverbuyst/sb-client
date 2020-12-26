@@ -105,13 +105,15 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
     <Grid item xs={12} container justify="center">
       {showInput ? (
         renderInput()
-      ) : (fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) &&
+      ) : (Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
+          Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam)) &&
         fixtureWithPrediction.status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
           Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} -{' '}
           {fixtureWithPrediction.predictions.pGoalsAwayTeam}
         </Typography>
-      ) : fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam ? (
+      ) : Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
+        Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam) ? (
         <Tooltip title="Je voorspelling veranderen?" arrow>
           <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
             {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam}
