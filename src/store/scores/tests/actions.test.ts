@@ -18,6 +18,7 @@ import {
 } from '../types';
 import {
   fetchScoresFixture,
+  fetchScoresRound,
   removeAllScores,
   scoresFixtureFetched,
   scoresRoundFetched,
@@ -25,7 +26,7 @@ import {
   scoresTotoRoundFetched,
 } from '../actions';
 
-import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
+import { appLoading, appDoneLoading } from '../../appState/actions';
 import { IFixture } from '../../../models/toto.models';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -202,6 +203,36 @@ describe('#fetchScoresFixture', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(scoresFixtureFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#fetchScoresRound', () => {
+  it('calls axios and returns a round with scores', async () => {
+    const id = 1;
+    const roundScores: Scores = {
+      usersWithScores: [
+        {
+          id: 1,
+          score: 1,
+          user: 'test_user',
+        },
+      ],
+      id: 1,
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: roundScores };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchScoresRound(id)(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(scoresRoundFetched(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
