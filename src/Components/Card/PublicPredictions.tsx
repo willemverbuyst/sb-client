@@ -7,7 +7,8 @@ type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
 const PublicPredictions: React.FC<Props> = ({ fixtureWithPrediction }: Props): ReactElement => {
   return (
     <Grid item xs={12} container justify="center">
-      {(fixtureWithPrediction.predictions.pGoalsHomeTeam || fixtureWithPrediction.predictions.pGoalsAwayTeam) &&
+      {(Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
+        Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam)) &&
       fixtureWithPrediction.status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
           Voorspelling: {fixtureWithPrediction.predictions.pGoalsHomeTeam} -{' '}
