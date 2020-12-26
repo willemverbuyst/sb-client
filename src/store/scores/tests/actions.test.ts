@@ -20,6 +20,7 @@ import {
   fetchScoresFixture,
   fetchScoresRound,
   fetchScoresTotalToto,
+  fetchScoresTotoRound,
   removeAllScores,
   scoresFixtureFetched,
   scoresRoundFetched,
@@ -240,7 +241,7 @@ describe('#fetchScoresRound', () => {
 });
 
 describe('#fetchScoresTotalToto', () => {
-  it('calls axios and returns a round with scores', async () => {
+  it('calls axios and returns the totalToto', async () => {
     const totalTotoScores: UserWithScore[] = [
       {
         id: 1,
@@ -261,6 +262,38 @@ describe('#fetchScoresTotalToto', () => {
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(
       scoresTotalTotoFetched(response.data)
+    );
+    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe('#fetchScoresTotoRound', () => {
+  it('calls axios and returns a totoRound with scores', async () => {
+    const id = 1;
+    const totoRoundScores: Scores = {
+      usersWithScores: [
+        {
+          id: 1,
+          score: 1,
+          user: 'test_user',
+        },
+      ],
+      id: 1,
+    };
+
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    const response = { data: totoRoundScores };
+
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
+
+    await fetchScoresTotoRound(id)(dispatch, getState);
+
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(
+      scoresTotoRoundFetched(response.data)
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
