@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function Profile() {
+const Profile: React.FC = (): ReactElement => {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -74,4 +74,6 @@ export default function Profile() {
       )}
     </Box>
   );
-}
+};
+
+export default Profile;

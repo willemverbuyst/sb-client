@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllFixtures } from '../../store/predictions/actions';
 import { selectFixtures } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Grid, Theme, Typography } from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -13,7 +13,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(3),
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Predictions() {
+const Predictions: React.FC = (): ReactElement => {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -137,4 +137,6 @@ export default function Predictions() {
       ) : null}
     </Box>
   );
-}
+};
+
+export default Predictions;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
@@ -53,13 +53,13 @@ const AccordionSummary = withStyles(() => ({
   expanded: {},
 }))(MuiAccordionSummary);
 
-const AccordionDetails = withStyles((theme) => ({
+const AccordionDetails = withStyles((theme: Theme) => ({
   root: {
     padding: theme.spacing(2),
   },
 }))(MuiAccordionDetails);
 
-export default function Rules() {
+const Rules: React.FC = (): ReactElement => {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -176,4 +176,6 @@ export default function Rules() {
       </Grid>
     </Box>
   );
-}
+};
+
+export default Rules;

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Breadcrumbs, Button, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -13,7 +13,7 @@ import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TotalToto() {
+const TotalToto: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
@@ -115,4 +115,6 @@ export default function TotalToto() {
       </Grid>
     </Box>
   );
-}
+};
+
+export default TotalToto;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function PredictionsPlayer() {
+const PredictionsPlayer: React.FC = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
@@ -131,5 +131,9 @@ export default function PredictionsPlayer() {
         </>
       ) : null}
     </Box>
-  ) : null;
-}
+  ) : (
+    <></>
+  );
+};
+
+export default PredictionsPlayer;

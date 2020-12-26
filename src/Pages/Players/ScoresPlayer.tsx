@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function ScoresPlayer() {
+const ScoresPlayer: React.FC = (): ReactElement => {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -114,5 +114,9 @@ export default function ScoresPlayer() {
         </Grid>
       )}
     </Box>
-  ) : null;
-}
+  ) : (
+    <></>
+  );
+};
+
+export default ScoresPlayer;

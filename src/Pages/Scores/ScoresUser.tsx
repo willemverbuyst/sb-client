@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken, selectUser } from '../../store/user/selectors';
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function ScoresUser() {
+const ScoresUser: React.FC = (): ReactElement => {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -114,4 +114,6 @@ export default function ScoresUser() {
       )}
     </Box>
   );
-}
+};
+
+export default ScoresUser;

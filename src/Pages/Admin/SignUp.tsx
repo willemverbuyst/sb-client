@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -20,13 +20,14 @@ import {
   MenuItem,
   Select,
   TextField,
+  Theme,
   Typography,
 } from '@material-ui/core';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
@@ -61,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp: React.FC = (): ReactElement => {
   const classes = useStyles();
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
@@ -323,4 +324,6 @@ export default function SignUp() {
       ) : null}
     </Grid>
   );
-}
+};
+
+export default SignUp;

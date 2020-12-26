@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Box, Button, Divider, Grid, Typography } from '@material-ui/core';
+import { Avatar, Box, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
 import { selectFixture } from '../../store/scores/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
@@ -12,7 +12,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Fixture() {
+const Fixture: React.FC = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -125,4 +125,6 @@ export default function Fixture() {
       ) : null}
     </Box>
   );
-}
+};
+
+export default Fixture;

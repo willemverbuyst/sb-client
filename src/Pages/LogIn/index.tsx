@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { userLogIn } from '../../store/user/actions';
 import { selectToken } from '../../store/user/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Box, Button, Container, TextField } from '@material-ui/core';
+import { Avatar, Box, Button, Container, TextField, Theme } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LogIn() {
+const LogIn: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [logInCredentials, setLogInCredentials] = useState<ILogInCredentials>({
@@ -123,4 +123,6 @@ export default function LogIn() {
       </div>
     </Container>
   );
-}
+};
+
+export default LogIn;

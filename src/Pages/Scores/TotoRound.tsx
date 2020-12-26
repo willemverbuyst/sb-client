@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { fetchScoresTotoRound } from '../../store/scores/actions';
 import { selectTotoRound } from '../../store/scores/selectors';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Breadcrumbs, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Breadcrumbs, Divider, Grid, Typography, Theme } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -13,7 +13,7 @@ import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
 import RoundSelector from '../../Components/Selector/RoundSelector';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   title: {
     fontWeight: 'bold',
     color: theme.palette.secondary.main,
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TotoRound() {
+const TotoRound: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
@@ -119,4 +119,6 @@ export default function TotoRound() {
       </Grid>
     </Box>
   );
-}
+};
+
+export default TotoRound;

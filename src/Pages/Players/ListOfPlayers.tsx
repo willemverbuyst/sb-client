@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function ListOfPlayers() {
+const ListOfPlayers: React.FC = (): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -90,4 +90,6 @@ export default function ListOfPlayers() {
       ) : null}
     </Box>
   );
-}
+};
+
+export default ListOfPlayers;
