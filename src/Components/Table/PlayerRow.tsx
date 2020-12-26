@@ -46,7 +46,7 @@ type Props = {
   player: IPlayer;
   userIsAdmin: boolean;
   updateStatus: boolean;
-  onChange: () => void;
+  onChange: (player: IPlayer) => void;
 }
 
 export default function PlayerRow(props: Props) {
@@ -124,7 +124,7 @@ export default function PlayerRow(props: Props) {
 
       { props.userIsAdmin && props.updateStatus ? 
       <TableCell align="left">
-        <ColorButton size="small" onClick={props.onChange}>
+        <ColorButton size="small" onClick={() => props.onChange(props.player)}>
           DELETE
         </ColorButton>
       </TableCell>

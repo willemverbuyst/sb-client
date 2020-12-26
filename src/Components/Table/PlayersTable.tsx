@@ -24,8 +24,15 @@ type Prop = {
 export default function PlayersTable({players, changeStatus}: Prop) {
   const user = useSelector(selectUser);
   const [showDialog, setShowDialog] = useState(false)
+  const [player, setPlayer] = useState<IPlayer | null>(null);
 
-  const handleChange = () => setShowDialog(!showDialog)
+  const handleChange = () => {
+    setShowDialog(!showDialog)}
+
+  const handleBtnClick = (player: IPlayer) => {
+    setPlayer(player)
+    setShowDialog(!showDialog)
+  }
 
   return (
     <>
@@ -51,13 +58,13 @@ export default function PlayersTable({players, changeStatus}: Prop) {
               player={player}
               userIsAdmin={user.admin}
               updateStatus={changeStatus}
-              onChange={handleChange}
+              onChange={handleBtnClick}
             /> 
           )}
         </TableBody>
       </Table>
     </TableContainer>
-    { showDialog ? <DeleteDialog closeDialog={handleChange}/> : null }
+    { showDialog && player ? <DeleteDialog closeDialog={handleChange} playerToDelete={player}/> : null }
     </>
   );
 }
