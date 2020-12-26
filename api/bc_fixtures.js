@@ -38,6 +38,8 @@ const getFixtures = async () => {
       'eventTimeStamp',
     ],
   });
+
+  setInterval(getFixtures, 60 * 60 * 1000);
 };
 
 exports.getFixtures = getFixtures;
