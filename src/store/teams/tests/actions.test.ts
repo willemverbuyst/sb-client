@@ -11,6 +11,10 @@ import { appLoading, appDoneLoading } from '../../appState/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
+beforeEach(() => {
+  jest.resetAllMocks();
+});
+
 describe('#teamsState', () => {
   describe('#allTeamsFetched w/ teams', () => {
     const teams: ITeam[] = [
@@ -24,6 +28,7 @@ describe('#teamsState', () => {
       type: ALL_TEAMS_FETCHED,
       teams,
     };
+
     test('returns an action w/ type ALL_TEAMS_FETCHED and teams as payload', () => {
       expect(allTeamsFetched(teams)).toEqual(expected);
       expect(allTeamsFetched(teams).teams.length).toBe(1);
@@ -33,6 +38,7 @@ describe('#teamsState', () => {
     const expected: RemoveAllTeams = {
       type: REMOVE_ALL_TEAMS,
     };
+
     test('returns an action w/ type REMOVE_ALL_TEAMS and no payload', () => {
       expect(removeAllTeams()).toEqual(expected);
       expect(removeAllTeams().type).toBe(expected.type);
@@ -58,7 +64,6 @@ describe('#fetchAllTeams', () => {
     await fetchAllTeams(dispatch, getState);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
-
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(allTeamsFetched(teams));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
