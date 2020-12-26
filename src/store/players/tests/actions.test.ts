@@ -8,6 +8,7 @@ import {
   fetchAllPlayers,
   fetchPlayerProfile,
   playerProfileFetched,
+  playerScoresFetched,
   removeAllPlayers,
 } from '../actions';
 import {
@@ -21,6 +22,9 @@ import {
   DeletePlayer,
   PlayerProfileFetched,
   RemoveAllPlayers,
+  ScoresPlayer,
+  PlayerScoresFetched,
+  PLAYER_SCORES_FETCHED,
 } from '../types';
 import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 import { ISignUpCredentials } from '../../../models/credentials.model';
@@ -130,6 +134,28 @@ describe('#playersState', () => {
       expect(playerProfileFetched(playerProfile)?.playerProfile.firstName).toBe(
         'test_player'
       );
+    });
+  });
+
+  describe('#playerScoresFetched w/ scores', () => {
+    const scoresPlayer: ScoresPlayer = {
+      scores: [
+        [1, 2],
+        [3, 4],
+      ],
+      userName: 'string',
+      id: 1,
+    };
+    const expected: PlayerScoresFetched = {
+      type: PLAYER_SCORES_FETCHED,
+      scoresPlayer,
+    };
+
+    test('returns an action w/ type PLAYER_PROFILE_FETCHED and a profile as payload', () => {
+      expect(playerScoresFetched(scoresPlayer)).toEqual(expected);
+      expect(
+        playerScoresFetched(scoresPlayer)?.scoresPlayer.scores.length
+      ).toBe(2);
     });
   });
 
