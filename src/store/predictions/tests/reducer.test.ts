@@ -65,6 +65,7 @@ describe('#predictionsStateReducer', () => {
       expect(newState).not.toEqual(initialState);
     });
   });
+
   describe('if given ALL_FIXTURES_FETCHED action type and intialState', () => {
     const totoRound: TotoRound[] = [
       [
@@ -110,41 +111,42 @@ describe('#predictionsStateReducer', () => {
       expect(newState).not.toEqual(initialState);
     });
   });
+
   describe('if given POST_PREDICTION action type and a state', () => {
-    const totoRound: TotoRound[] = [
-      [
-        [
-          {
-            awayTeamId: 1,
-            awayTeamLogo: 'test',
-            awayTeamName: 'test',
-            createdAt: 'test',
-            eventTimeStamp: 1,
-            goalsAwayTeam: null,
-            goalsHomeTeam: null,
-            homeTeamId: 1,
-            homeTeamLogo: 'test',
-            homeTeamName: 'test',
-            id: 1,
-            round: 'test',
-            status: 'test',
-            updatedAt: 'test',
-            score: 'scores',
-            predictions: {
-              pGoalsAwayTeam: null,
-              pGoalsHomeTeam: null,
-            },
-          },
-        ],
-      ],
-    ];
+    const fixture: IFixtureWithScoreAndPredictions = {
+      awayTeamId: 1,
+      awayTeamLogo: 'test',
+      awayTeamName: 'test',
+      createdAt: 'test',
+      eventTimeStamp: 1,
+      goalsAwayTeam: null,
+      goalsHomeTeam: null,
+      homeTeamId: 1,
+      homeTeamLogo: 'test',
+      homeTeamName: 'test',
+      id: 1,
+      round: 'test',
+      status: 'test',
+      updatedAt: 'test',
+      score: 'scores',
+      predictions: {
+        pGoalsAwayTeam: null,
+        pGoalsHomeTeam: null,
+      },
+    };
+    const totoRound: TotoRound[] = [[[fixture]]];
+    const currentRound: ICurrentRound = {
+      roundNumber: 1,
+      totoRoundNumber: 1,
+      fixtures: [fixture],
+    };
     const prediction: IPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 4,
       fixtureId: 1,
     };
     const state: PredictionsState = {
-      currentRound: null,
+      currentRound,
       allFixtures: totoRound,
     };
     const action: PostPrediction = {
@@ -156,67 +158,46 @@ describe('#predictionsStateReducer', () => {
     test('returns the state with prediction added', () => {
       expect(newState.allFixtures).not.toBeNull;
       expect(newState.allFixtures?.length).toBe(totoRound.length);
-      expect(newState.currentRound).toBeNull;
       expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).toBe(4);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam
+      ).toBe(1);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam
+      ).toBe(4);
     });
   });
+
   describe('if given REMOVE_ALL_FIXTURES action type and a state', () => {
-    const fixtures: IFixtureWithScoreAndPredictions[] = [
-      {
-        awayTeamId: 1,
-        awayTeamLogo: 'test',
-        awayTeamName: 'test',
-        createdAt: 'test',
-        eventTimeStamp: 1,
-        goalsAwayTeam: null,
-        goalsHomeTeam: null,
-        homeTeamId: 1,
-        homeTeamLogo: 'test',
-        homeTeamName: 'test',
-        id: 1,
-        round: 'test',
-        status: 'test',
-        updatedAt: 'test',
-        score: 'scores',
-        predictions: {
-          pGoalsAwayTeam: null,
-          pGoalsHomeTeam: null,
-        },
+    const fixture: IFixtureWithScoreAndPredictions = {
+      awayTeamId: 1,
+      awayTeamLogo: 'test',
+      awayTeamName: 'test',
+      createdAt: 'test',
+      eventTimeStamp: 1,
+      goalsAwayTeam: null,
+      goalsHomeTeam: null,
+      homeTeamId: 1,
+      homeTeamLogo: 'test',
+      homeTeamName: 'test',
+      id: 1,
+      round: 'test',
+      status: 'test',
+      updatedAt: 'test',
+      score: 'scores',
+      predictions: {
+        pGoalsAwayTeam: null,
+        pGoalsHomeTeam: null,
       },
-    ];
+    };
+    const fixtures: IFixtureWithScoreAndPredictions[] = [fixture];
     const currentRound: ICurrentRound = {
       fixtures,
       roundNumber: 1,
       totoRoundNumber: 1,
     };
-    const totoRound: TotoRound[] = [
-      [
-        [
-          {
-            awayTeamId: 1,
-            awayTeamLogo: 'test',
-            awayTeamName: 'test',
-            createdAt: 'test',
-            eventTimeStamp: 1,
-            goalsAwayTeam: null,
-            goalsHomeTeam: null,
-            homeTeamId: 1,
-            homeTeamLogo: 'test',
-            homeTeamName: 'test',
-            id: 1,
-            round: 'test',
-            status: 'test',
-            updatedAt: 'test',
-            score: 'scores',
-            predictions: {
-              pGoalsAwayTeam: null,
-              pGoalsHomeTeam: null,
-            },
-          },
-        ],
-      ],
-    ];
+    const totoRound: TotoRound[] = [[[fixture]]];
     const initialState: PredictionsState = {
       currentRound: null,
       allFixtures: null,
@@ -236,41 +217,42 @@ describe('#predictionsStateReducer', () => {
       expect(newState).toEqual(initialState);
     });
   });
+
   describe('if given UPDATE_PREDICTION action type and a state', () => {
-    const totoRound: TotoRound[] = [
-      [
-        [
-          {
-            awayTeamId: 1,
-            awayTeamLogo: 'test',
-            awayTeamName: 'test',
-            createdAt: 'test',
-            eventTimeStamp: 1,
-            goalsAwayTeam: null,
-            goalsHomeTeam: null,
-            homeTeamId: 1,
-            homeTeamLogo: 'test',
-            homeTeamName: 'test',
-            id: 1,
-            round: 'test',
-            status: 'test',
-            updatedAt: 'test',
-            score: 'scores',
-            predictions: {
-              pGoalsAwayTeam: 5,
-              pGoalsHomeTeam: 7,
-            },
-          },
-        ],
-      ],
-    ];
+    const fixture: IFixtureWithScoreAndPredictions = {
+      awayTeamId: 1,
+      awayTeamLogo: 'test',
+      awayTeamName: 'test',
+      createdAt: 'test',
+      eventTimeStamp: 1,
+      goalsAwayTeam: null,
+      goalsHomeTeam: null,
+      homeTeamId: 1,
+      homeTeamLogo: 'test',
+      homeTeamName: 'test',
+      id: 1,
+      round: 'test',
+      status: 'test',
+      updatedAt: 'test',
+      score: 'scores',
+      predictions: {
+        pGoalsAwayTeam: null,
+        pGoalsHomeTeam: null,
+      },
+    };
+    const totoRound: TotoRound[] = [[[fixture]]];
+    const currentRound: ICurrentRound = {
+      roundNumber: 1,
+      totoRoundNumber: 1,
+      fixtures: [fixture],
+    };
     const prediction: IPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 4,
       fixtureId: 1,
     };
     const state: PredictionsState = {
-      currentRound: null,
+      currentRound,
       allFixtures: totoRound,
     };
     const action: UpdatePrediction = {
@@ -291,6 +273,12 @@ describe('#predictionsStateReducer', () => {
       expect(
         newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam
       ).not.toBe(7);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam
+      ).toBe(1);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam
+      ).toBe(4);
     });
   });
 });
