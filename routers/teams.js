@@ -10,7 +10,7 @@ router.get('/', authMiddleware, async (_req, res) => {
     const teams = await Team.findAll();
     return res.status(200).send(teams);
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 

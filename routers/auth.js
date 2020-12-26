@@ -13,9 +13,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password)
-    return res
-      .status(400)
-      .send({ message: 'Please provide both email and password' });
+    return res.status(400).send({ message: 'Vul email en wachtwoord in!' });
 
   try {
     const user = await User.findOne({
@@ -25,7 +23,8 @@ router.post('/login', async (req, res) => {
 
     if (!user || !bcrypt.compareSync(password, user.password))
       return res.status(400).send({
-        message: 'User with that email not found or password incorrect',
+        message:
+          'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
       });
 
     delete user.dataValues['password'];
@@ -38,7 +37,7 @@ router.post('/login', async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -59,7 +58,7 @@ router.post('/signup', authMiddleware, async (req, res) => {
   if (!req.user.admin)
     res
       .status(401)
-      .send({ message: 'You must be an adminstrator for this request' });
+      .send({ message: 'Je moet een admin zijn voor dit verzoek!' });
 
   if (
     !userName ||
@@ -70,7 +69,9 @@ router.post('/signup', authMiddleware, async (req, res) => {
     !phoneNumber ||
     !teamId
   ) {
-    return res.status(400).send({ message: 'Please provide all the details' });
+    return res
+      .status(400)
+      .send({ message: 'Details ontbreken, probeer opnieuw!' });
   }
 
   try {
@@ -89,6 +90,7 @@ router.post('/signup', authMiddleware, async (req, res) => {
     const newUser = await User.findOne({
       where: { email },
       attributes: [
+        'id',
         'userName',
         'firstName',
         'lastName',
@@ -102,15 +104,15 @@ router.post('/signup', authMiddleware, async (req, res) => {
 
     res.status(201).json({
       userData: newUser,
-      message: `A new user profile has been created for ${newUser.dataValues.userName}`,
+      message: `Er is een nieuw account gemaakt voor ${newUser.dataValues.userName}.`,
     });
   } catch (error) {
     if (error.name === 'SequelizeUniqueConstraintError')
       return res
         .status(400)
-        .send({ message: 'There is an existing account with this email' });
+        .send({ message: 'Er is al een account met dit emailadres.' });
 
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -120,7 +122,7 @@ router.get('/me', authMiddleware, async (req, res) => {
     delete req.user.dataValues['password'];
     res.status(200).send({ ...req.user.dataValues });
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -129,12 +131,12 @@ router.patch('/me/password', authMiddleware, async (req, res) => {
   const { newPassword } = req.body;
 
   if (!newPassword)
-    return res.status(400).send({ message: 'Please provide new password' });
+    return res.status(400).send({ message: 'Vul nieuw wachtwoord in!' });
 
   if (bcrypt.compareSync(newPassword, req.user.password))
-    return res
-      .status(400)
-      .send({ message: 'You new new password must differ from the old one!' });
+    return res.status(400).send({
+      message: 'Je oude en nieuwe wachtwoord mag niet hetzelfde zijn!',
+    });
 
   try {
     const user = req.user;
@@ -143,11 +145,11 @@ router.patch('/me/password', authMiddleware, async (req, res) => {
     });
 
     return res.status(200).send({
-      message: 'Your has password has been changed',
+      message: 'Je wachtwoord is gewijzigd.',
     });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -172,14 +174,17 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
     !phoneNumber ||
     !favteamId
   )
-    return res.status(400).send('Some data is missing, please try again');
+    return res
+      .status(400)
+      .send({ message: 'Details ontbreken, probeer opnieuw!' });
 
   try {
     const userToUpdate = req.user;
 
     if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password))
       return res.status(400).send({
-        message: 'User with that email not found or password incorrect',
+        message:
+          'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
       });
 
     await userToUpdate.update({
@@ -207,11 +212,11 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
         token,
         ...user.dataValues,
       },
-      message: 'Your user profile has been updated',
+      message: 'Je profiel is gewijzigd.',
     });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 

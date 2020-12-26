@@ -63,13 +63,13 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
           return res.status(200).send({ fixture, scores: null });
         }
       } catch (error) {
-        return res.status(400).send({ message: 'Something went wrong, sorry' });
+        return res.status(400).send({ message: 'Er ging iets is mis, sorry.' });
       }
     } else {
       return res.status(200).send({ fixture, scores: null });
     }
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -126,7 +126,7 @@ router.get('/all', authMiddleware, async (_req, res) => {
       return res.status(200).send({ predictions });
     }
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -198,7 +198,7 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
       return res.status(200).send(totoRound);
     }
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -267,7 +267,7 @@ router.get('/rounds/:id', authMiddleware, async (req, res) => {
       return res.status(200).send(round);
     }
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -348,7 +348,7 @@ router.get('/players/:id', authMiddleware, async (req, res) => {
       return res.status(200).send(round);
     }
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 

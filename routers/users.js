@@ -36,7 +36,7 @@ router.get('/', authMiddleware, async (_req, res) => {
     });
     return res.status(200).send(users);
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er gaat iets mis, sorry.' });
   }
 });
 
@@ -118,7 +118,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
 
     res.status(200).send(user);
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er gaat iets mis, sorry.' });
   }
 });
 
@@ -129,18 +129,20 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
   const userId = req.user.id;
 
   if (!typeof admin === 'boolean')
-    return res.status(400).send('Admin status is missing, please try again');
+    return res
+      .status(400)
+      .send({ message: 'De admin status ontbreekt, probeer opnieuw.' });
 
   if (+userId === +id)
     return res
       .status(400)
-      .send({ message: 'You cannot change your own admin status!' });
+      .send({ message: 'Je kan je eigen admin status niet wijzigen!' });
 
   try {
     if (!req.user.admin)
       res
         .status(401)
-        .send({ message: 'You must be an adminstrator for this request' });
+        .send({ message: 'Je moet een admin zijn voor dit verzoek!' });
     else {
       try {
         const userToUpdate = await User.findOne({ where: { id: +id } });
@@ -171,14 +173,14 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
 
         return res.status(200).send({
           updatedUser,
-          message: 'The user profile has been updated',
+          message: 'De admin status van de speler is gewijzigd.',
         });
       } catch (error) {
-        return res.status(400).send({ message: 'Something went wrong, sorry' });
+        return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
       }
     }
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 
@@ -189,9 +191,9 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     await User.destroy({ where: { id } });
     await Prediction.destroy({ where: { userId: id } });
 
-    return res.status(200).send({ message: 'Player has been deleted!' });
+    return res.status(200).send({ message: 'Speler is verwijderd!' });
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }
 });
 

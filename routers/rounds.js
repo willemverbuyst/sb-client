@@ -63,7 +63,7 @@ router.get('/current', authMiddleware, async (req, res) => {
 
     res.status(200).send(currentRound);
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry' });
   }
 });
 
@@ -104,7 +104,7 @@ router.get('/all', authMiddleware, async (req, res) => {
 
     res.status(200).send(fixturesGroupedByTotoRounds);
   } catch (error) {
-    return res.status(400).send({ message: 'Something went wrong, sorry' });
+    return res.status(400).send({ message: 'Er ging iets mis, sorry' });
   }
 });
 

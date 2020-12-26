@@ -15,14 +15,16 @@ router.post('/', authMiddleware, async (req, res) => {
     typeof pGoalsAwayTeam !== 'number' ||
     !fixtureId
   )
-    return res.status(400).send('Details are missing, please try again!');
+    return res
+      .status(400)
+      .send({ message: 'Details ontbreken, probeer opnieuw!' });
 
   try {
     const fixture = await Fixture.findOne({ where: { id: +fixtureId } });
     if (fixture.status === 'Matched Finished')
-      return res
-        .status(404)
-        .json({ message: "You can't predict the outcome of a finished match" });
+      return res.status(404).send({
+        message: 'Je kan de uitslag van een afgelopen wedstrijd niet wijzigen!',
+      });
 
     const createdPrediction = await Prediction.create({
       pGoalsHomeTeam: +pGoalsHomeTeam,
@@ -39,7 +41,7 @@ router.post('/', authMiddleware, async (req, res) => {
 
     return res
       .status(201)
-      .json({ prediction, message: 'Je voorspelling is geplaatst.' });
+      .send({ prediction, message: 'Je voorspelling is geplaatst.' });
   } catch (error) {
     return res.status(400).send({ message: 'Er gaat iets mis, sorry' });
   }
@@ -56,13 +58,15 @@ router.patch('/:id', authMiddleware, async (req, res) => {
     typeof pGoalsAwayTeam !== 'number' ||
     !fixtureId
   )
-    return res.status(400).send('Details are missing, please try again!');
+    return res
+      .status(400)
+      .send({ message: 'Details ontbreken, probeer opnieuw!' });
 
   try {
     const fixture = await Fixture.findOne({ where: { id: fixtureId } });
     if (fixture.status === 'Matched Finished')
-      return res.status(404).json({
-        message: "You can't change the prediction for a finished match!",
+      return res.status(404).send({
+        message: 'Je kan de uitslag van een afgelopen wedstrijd niet wijzigen!',
       });
 
     const predictionToUpdate = await Prediction.findOne({
@@ -82,7 +86,7 @@ router.patch('/:id', authMiddleware, async (req, res) => {
 
     return res
       .status(201)
-      .json({ prediction, message: 'Je voorspelling is aangepast.' });
+      .send({ prediction, message: 'Je voorspelling is aangepast.' });
   } catch (error) {
     return res.status(400).send({ message: 'Er gaat iets mis, sorry' });
   }
