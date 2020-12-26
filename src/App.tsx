@@ -27,7 +27,7 @@ import {
   MuiThemeProvider, 
   Theme 
 } from '@material-ui/core/styles';
-import { Grid, Box } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

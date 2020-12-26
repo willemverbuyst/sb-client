@@ -4,6 +4,7 @@ import {
   addNewPlayer,
   addPlayer,
   allPlayersFetched,
+  deletePlayer,
   fetchAllPlayers,
   fetchPlayerProfile,
   playerProfileFetched,
@@ -12,10 +13,12 @@ import {
 import {
   ADD_NEW_PLAYER,
   ALL_PLAYERS_FETCHED,
+  DELETE_PLAYER,
   PLAYER_PROFILE_FETCHED,
   REMOVE_ALL_PLAYERS,
   AddNewPlayer,
   AllPlayersFetched,
+  DeletePlayer,
   PlayerProfileFetched,
   RemoveAllPlayers,
 } from '../types';
@@ -49,11 +52,13 @@ describe('#playersState', () => {
       type: ADD_NEW_PLAYER,
       player,
     };
+
     test('returns an action w/ type ADD_NEW_PLAYER and player as payload', () => {
       expect(addNewPlayer(player)).toEqual(expected);
       expect(addNewPlayer(player).player).not.toBe(undefined);
     });
   });
+
   describe('#allPlayersFetched w/ players', () => {
     const players: IPlayer[] = [
       {
@@ -76,12 +81,28 @@ describe('#playersState', () => {
       type: ALL_PLAYERS_FETCHED,
       players,
     };
+
     test('returns an action w/ type ALL_PLAYERS_FETCHED and players as payload', () => {
       expect(allPlayersFetched(players)).toEqual(expected);
       expect(allPlayersFetched(players).players.length).toBe(1);
       expect(allPlayersFetched(players).players).not.toBe(undefined);
     });
   });
+
+  describe('#deletePlayer w/ players', () => {
+    const playerId = 1;
+    const expected: DeletePlayer = {
+      type: DELETE_PLAYER,
+      playerId,
+    };
+
+    test('returns an action w/ type DELETE_PLAYER and a playerId as payload', () => {
+      expect(deletePlayer(playerId)).toEqual(expected);
+      expect(deletePlayer(playerId).playerId).toBe(1);
+      expect(deletePlayer(playerId).playerId).not.toBe(undefined);
+    });
+  });
+
   describe('#playerProfileFetched w/ profile', () => {
     const playerProfile: IPlayerProfile = {
       admin: false,
@@ -103,6 +124,7 @@ describe('#playersState', () => {
       type: PLAYER_PROFILE_FETCHED,
       playerProfile,
     };
+
     test('returns an action w/ type PLAYER_PROFILE_FETCHED and a profile as payload', () => {
       expect(playerProfileFetched(playerProfile)).toEqual(expected);
       expect(playerProfileFetched(playerProfile)?.playerProfile.firstName).toBe(
@@ -110,10 +132,12 @@ describe('#playersState', () => {
       );
     });
   });
+
   describe('#removeAllPlayers', () => {
     const expected: RemoveAllPlayers = {
       type: REMOVE_ALL_PLAYERS,
     };
+
     test('returns an action w/ type REMOVE_ALL_PLAYERS and no payload', () => {
       expect(removeAllPlayers()).toEqual(expected);
       expect(removeAllPlayers()).not.toHaveProperty('payload');
