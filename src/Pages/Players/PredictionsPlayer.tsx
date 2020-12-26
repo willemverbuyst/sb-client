@@ -19,8 +19,7 @@ import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
-import { TOTAL_ROUNDS } from '../../constants/setupGame';
-import { roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
+import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -122,7 +121,7 @@ export default function PredictionsPlayer() {
         { playerProfile && playerProfile.pastFixturesWithScores ?
           <>
             <Grid item xs={12} container justify="center">
-              { playerProfile.pastFixturesWithScores ? [...playerProfile.pastFixturesWithScores[t-1][r !== TOTAL_ROUNDS ? (r + 2) % 3 : (r % 3) + 2 ]]
+              { playerProfile.pastFixturesWithScores ? [...playerProfile.pastFixturesWithScores[t-1][calculateIndex(r)]]
                 .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
                 .map((wedstrijd, i) => 
                   <Grid item key={i} lg={4} md={6} xs={12}>
