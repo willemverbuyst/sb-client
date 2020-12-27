@@ -47,6 +47,7 @@ const ScoresStackedChart: React.FC<Props> = ({
   };
 
   const totals = scoresPlayer.scores.map((totoround) => totoround.reduce((a, b) => a + b));
+  const max = Math.max(...totals) * 1.2;
 
   const chartData = {
     labels: scoresPlayer.scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
@@ -112,7 +113,10 @@ const ScoresStackedChart: React.FC<Props> = ({
           yAxes: [
             {
               ticks: {
+                beginAtZero: true,
                 display: false,
+                suggestedMin: 0,
+                suggestedMax: max,
               },
               gridLines: {
                 display: false,

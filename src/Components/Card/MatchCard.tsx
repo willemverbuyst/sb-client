@@ -5,8 +5,8 @@ import { Card, CardContent, Chip, Grid, Typography } from '@material-ui/core';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
-import PublicPredictions from './PublicPredictions';
 import PredictionsHome from './PredictionsHome';
+import PublicPredictions from './PublicPredictions';
 
 const useStyles = makeStyles({
   card: {
@@ -18,9 +18,6 @@ const useStyles = makeStyles({
     height: 20,
     width: 20,
     objectFit: 'contain',
-  },
-  title: {
-    fontSize: 14,
   },
   match: {
     cursor: 'pointer',
