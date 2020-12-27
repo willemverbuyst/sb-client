@@ -153,11 +153,13 @@ describe('#predictionsStateReducer', () => {
 
     test('returns the state with prediction added', () => {
       expect(newState.allFixtures).not.toBeNull;
+      /*eslint-disable */
       expect(newState.allFixtures?.length).toBe(totoRound.length);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).toBe(4);
       expect(newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam).toBe(4);
+      /*eslint-enable */
     });
   });
 
@@ -257,12 +259,14 @@ describe('#predictionsStateReducer', () => {
       expect(newState.allFixtures).not.toBeNull;
       expect(newState.allFixtures?.length).toBe(totoRound.length);
       expect(newState.currentRound).toBeNull;
+      /*eslint-disable */
       expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).toBe(4);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).not.toBe(5);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).not.toBe(7);
       expect(newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam).toBe(4);
+      /*eslint-enable */
     });
   });
 });

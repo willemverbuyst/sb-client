@@ -229,7 +229,9 @@ describe('#playersStateReducer', () => {
     test('returns a state without the deleted player', () => {
       expect(newState.playerProfile).toBeNull;
       expect(newState.scoresPlayer).toBeNull;
+      /*eslint-disable */
       expect(newState.players?.length).toBe(state.players!.length - 1);
+      /*eslint-enable */
       expect(newState.players).toEqual([player1]);
       expect(newState.players).not.toEqual([player1, player2]);
     });
