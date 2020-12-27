@@ -46,7 +46,6 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   });
 
   useEffect(() => {
-    //  adjust logic to prevent refetching
     dispatch(fetchPlayerScores(+id));
   }, [dispatch, id]);
 
