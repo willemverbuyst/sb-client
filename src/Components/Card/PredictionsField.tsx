@@ -23,18 +23,24 @@ type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
 const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [pGoalsHomeTeam, setPGoalsHomeTeam] = useState<number>(0);
-  const [pGoalsAwayTeam, setPGoalsAwayTeam] = useState<number>(0);
+  const [pGoalsHT, setpGoalsHT] = useState<number>(0);
+  const [pGoalsAT, setpGoalsAT] = useState<number>(0);
   const [showInput, setShowInput] = useState<boolean>(false);
+  const {
+    id,
+    eventTimeStamp,
+    predictions: { pGoalsAwayTeam, pGoalsHomeTeam },
+    status,
+  } = fixtureWithPrediction;
 
   const handleSubmit = () => {
     const prediction: IPrediction = {
-      pGoalsHomeTeam,
-      pGoalsAwayTeam,
-      fixtureId: fixtureWithPrediction.id,
+      pGoalsHomeTeam: pGoalsHT,
+      pGoalsAwayTeam: pGoalsAT,
+      fixtureId: id,
     };
 
-    fixtureWithPrediction.predictions.pGoalsAwayTeam || fixtureWithPrediction.predictions.pGoalsHomeTeam
+    Number.isInteger(pGoalsAwayTeam) || Number.isInteger(pGoalsHomeTeam)
       ? dispatch(changePrediction(prediction))
       : dispatch(postNewPrediction(prediction));
 
@@ -42,11 +48,11 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
   };
 
   const handleGoalsHomeTeam = (value: number) => {
-    setPGoalsHomeTeam(value);
+    setpGoalsHT(value);
   };
 
   const handleGoalsAwayTeam = (value: number) => {
-    setPGoalsAwayTeam(value);
+    setpGoalsAT(value);
   };
 
   const renderInput = () => {
@@ -67,7 +73,7 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
           <TextField
             id="outlined-number"
             type="number"
-            defaultValue={fixtureWithPrediction.predictions.pGoalsHomeTeam || 0}
+            defaultValue={pGoalsHomeTeam || 0}
             onChange={(e) => handleGoalsHomeTeam(+e.target.value)}
             InputProps={{
               classes: {
@@ -83,7 +89,7 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
           <TextField
             id="outlined-number"
             type="number"
-            defaultValue={fixtureWithPrediction.predictions.pGoalsAwayTeam || 0}
+            defaultValue={pGoalsAwayTeam || 0}
             onChange={(e) => handleGoalsAwayTeam(+e.target.value)}
             InputProps={{
               classes: {
@@ -110,33 +116,26 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
     <Grid item xs={12} container justify="center">
       {showInput ? (
         renderInput()
-      ) : (Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
-          Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam)) &&
-        fixtureWithPrediction.status === 'Match Finished' ? (
+      ) : (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
-          Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} -{' '}
-          {fixtureWithPrediction.predictions.pGoalsAwayTeam}
+          Je voorspelling was {pGoalsHomeTeam} - {pGoalsAwayTeam}
         </Typography>
-      ) : fixtureWithPrediction.status === 'Match Finished' ? (
+      ) : status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
           Geen voorspelling
         </Typography>
-      ) : Math.floor(Date.now() / 1000) > fixtureWithPrediction.eventTimeStamp - 5 * 60 ? (
+      ) : Math.floor(Date.now() / 1000) > eventTimeStamp - 5 * 60 ? (
         <Typography variant="overline" color="textSecondary">
           Voorspelling{' '}
           <span className={classes.span}>
-            {Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam)
-              ? `[${fixtureWithPrediction.predictions.pGoalsHomeTeam} - 
-          ${fixtureWithPrediction.predictions.pGoalsAwayTeam}]`
-              : '[geen]'}
+            {Number.isInteger(pGoalsAwayTeam) ? `[${pGoalsHomeTeam} - ${pGoalsAwayTeam}]` : '[geen]'}
           </span>{' '}
           gesloten
         </Typography>
-      ) : Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
-        Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam) ? (
+      ) : Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam) ? (
         <Tooltip title="Je voorspelling veranderen?" arrow>
           <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-            {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam}
+            {pGoalsHomeTeam} - {pGoalsAwayTeam}
           </Button>
         </Tooltip>
       ) : (

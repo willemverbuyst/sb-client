@@ -5,16 +5,18 @@ import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
 
 const PublicPredictions: React.FC<Props> = ({ fixtureWithPrediction }: Props): ReactElement => {
+  const {
+    predictions: { pGoalsAwayTeam, pGoalsHomeTeam },
+    status,
+  } = fixtureWithPrediction;
+
   return (
     <Grid item xs={12} container justify="center">
-      {(Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
-        Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam)) &&
-      fixtureWithPrediction.status === 'Match Finished' ? (
+      {(Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
-          Voorspelling: {fixtureWithPrediction.predictions.pGoalsHomeTeam} -{' '}
-          {fixtureWithPrediction.predictions.pGoalsAwayTeam}
+          Voorspelling: {pGoalsHomeTeam} - {pGoalsAwayTeam}
         </Typography>
-      ) : fixtureWithPrediction.status === 'Match Finished' ? (
+      ) : status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
           Geen voorspelling
         </Typography>
