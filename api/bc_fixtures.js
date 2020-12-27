@@ -1,8 +1,8 @@
 const Axios = require('axios');
-const Fixture = require('../models').fixture;
 const apiKey = require('../config/constants').apiKey;
 const apiUrl = require('../config/constants').apiUrl;
-const league_id = 2673;
+const { league_id } = require('../constants/set-up-game');
+const Fixture = require('../models').fixture;
 
 const getFixtures = async () => {
   const response = await Axios.get(`${apiUrl}/fixtures/league/${league_id}`, {

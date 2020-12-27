@@ -126,7 +126,7 @@ router.get('/me', authMiddleware, async (req, res) => {
   }
 });
 
-/*** CHANGE PASSWORD ***/
+/*** CHANGE PASSWORD BY USER ***/
 router.patch('/me/password', authMiddleware, async (req, res) => {
   const { newPassword } = req.body;
 
@@ -153,7 +153,7 @@ router.patch('/me/password', authMiddleware, async (req, res) => {
   }
 });
 
-/*** UPDATE USER DETAILS ***/
+/*** UPDATE USER DETAILS BY USER ***/
 router.patch('/me/profile', authMiddleware, async (req, res) => {
   const {
     userName,

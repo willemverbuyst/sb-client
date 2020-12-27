@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const authMiddleware = require('../auth/authMiddleware');
-const Prediction = require('../models').prediction;
 const Fixture = require('../models').fixture;
+const Prediction = require('../models').prediction;
 
 const router = new Router();
 

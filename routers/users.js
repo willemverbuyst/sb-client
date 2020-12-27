@@ -112,7 +112,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
       fixturesWithPredictionAndScore
     );
 
-    // Set predictions to null when match is not played yet
+    // Public: set predictions to null when match is not played yet
     const fixturesWithHiddenPredictions = fixturesGroupedByTotoRounds.map(
       (totoround) =>
         totoround.map((round) =>

@@ -18,8 +18,8 @@ const bodyParserMiddleWare = express.json();
 // teams.getTeams();
 
 /* Call getTFixtures to get all the fixtures and seed the fixtures_table */
-// const fixtures = require('./api/bc_fixtures');
-// fixtures.getFixtures();
+const fixtures = require('./api/bc_fixtures');
+fixtures.getFixtures();
 
 app.use(loggerMiddleWare('dev'));
 app.use(bodyParserMiddleWare);

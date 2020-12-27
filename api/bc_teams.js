@@ -11,6 +11,7 @@ const getTeams = async () => {
   });
 
   const allTeams = response.data.api;
+
   const fixtures = allTeams.teams.map((team) => {
     return {
       id: team.team_id,

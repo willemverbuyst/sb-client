@@ -73,7 +73,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
   }
 });
 
-/*** GET THE TOTAL SCORE OF EACH USER FOR ALL PAST FIXTURES (TOTAL TOTO) ***/
+/*** GET THE TOTAL TOTO SCORE OF EACH USER ***/
 /*** PUBLIC ***/
 router.get('/all', authMiddleware, async (_req, res) => {
   try {
@@ -130,7 +130,7 @@ router.get('/all', authMiddleware, async (_req, res) => {
   }
 });
 
-/*** GET THE TOTAL SCORE OF EACH USER FOR A SPECIFIC PAST TOTOROUND ***/
+/*** GET THE TOTAAL SCORE FOR A SPECIFIC PAST TOTOROUND OF EACH USER ***/
 /*** PUBLIC ***/
 router.get('/totorounds/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
@@ -202,7 +202,7 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
   }
 });
 
-/*** GET THE TOTAL SCORE OF EACH USER FOR A SPECIFIC PAST ROUND ***/
+/*** GET THE TOTAL SCORE FOR A SPECIFIC PAST ROUND OF EACH USER ***/
 /*** PUBLIC ***/
 router.get('/rounds/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
