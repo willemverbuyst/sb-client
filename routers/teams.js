@@ -5,7 +5,7 @@ const Team = require('../models').team;
 const router = new Router();
 
 /*** GET ALL TEAMS ***/
-router.get('/', async (_req, res) => {
+router.get('/', authMiddleware, async (_req, res) => {
   try {
     const teams = await Team.findAll();
     return res.status(200).send(teams);
