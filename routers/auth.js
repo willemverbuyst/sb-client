@@ -220,4 +220,12 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
   }
 });
 
+router.get('/test', async (_req, res) => {
+  try {
+    return res.status(200).send({ message: 'testing' });
+  } catch (error) {
+    return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
+  }
+});
+
 module.exports = router;
