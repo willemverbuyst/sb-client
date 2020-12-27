@@ -1,17 +1,22 @@
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, Grid, TextField, Typography, Tooltip, makeStyles } from '@material-ui/core';
+import { Button, Grid, TextField, Theme, Typography, Tooltip, makeStyles } from '@material-ui/core';
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../store/predictions/actions';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   inputBox: {
     width: 40,
     padding: '3px',
     textAlign: 'right',
   },
-});
+  span: {
+    fontWeight: 'bold',
+    color: theme.palette.primary.main,
+    letterSpacing: '3px',
+  },
+}));
 
 type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
 
@@ -112,6 +117,21 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
           Je voorspelling was {fixtureWithPrediction.predictions.pGoalsHomeTeam} -{' '}
           {fixtureWithPrediction.predictions.pGoalsAwayTeam}
         </Typography>
+      ) : fixtureWithPrediction.status === 'Match Finished' ? (
+        <Typography variant="overline" color="textSecondary">
+          Geen voorspelling
+        </Typography>
+      ) : Math.floor(Date.now() / 1000) > fixtureWithPrediction.eventTimeStamp - 5 * 60 ? (
+        <Typography variant="overline" color="textSecondary">
+          Voorspelling{' '}
+          <span className={classes.span}>
+            {Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam)
+              ? `[${fixtureWithPrediction.predictions.pGoalsHomeTeam} - 
+          ${fixtureWithPrediction.predictions.pGoalsAwayTeam}]`
+              : '[geen]'}
+          </span>{' '}
+          gesloten
+        </Typography>
       ) : Number.isInteger(fixtureWithPrediction.predictions.pGoalsHomeTeam) ||
         Number.isInteger(fixtureWithPrediction.predictions.pGoalsAwayTeam) ? (
         <Tooltip title="Je voorspelling veranderen?" arrow>
@@ -119,10 +139,6 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
             {fixtureWithPrediction.predictions.pGoalsHomeTeam} - {fixtureWithPrediction.predictions.pGoalsAwayTeam}
           </Button>
         </Tooltip>
-      ) : fixtureWithPrediction.status === 'Match Finished' ? (
-        <Typography variant="overline" color="textSecondary">
-          Geen voorspelling
-        </Typography>
       ) : (
         <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
           Plaats voorspelling

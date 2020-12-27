@@ -18,7 +18,7 @@ const daysLocal = ['zondag', 'maaandag', 'dinsdag', 'woensdag', 'donderdag', 'vr
 export const getTimeFromTimeStamp = (timeStamp: number): string => {
   const date = new Date(timeStamp * 1000);
   const hours = date.getHours();
-  const minutes = date.getMinutes() === 0 ? '00' : date.getMinutes();
+  const minutes = date.getMinutes() === 0 ? '00' : date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
 
   return `${hours}:${minutes}`;
 };
