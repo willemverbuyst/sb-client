@@ -25,7 +25,7 @@ In config/constants.js and config/config.js the process.env variables are listed
 4. Get an api key from api-football.
 5. Update process.env variables with your credentials.
 6. Migrate tables and relations. `npx sequelize-cli db:migrate`
-7. Uncomment line 18/19/23/24 in index.js and start server with `npm run dev`. This to fetch the teams for the favteam table and all the fixtures.
+7. Uncomment line 18/19 in index.js and start server with `npm run dev`. This to fetch the teams for the favteam table and all the fixtures.
 8. Once fetched comment out these lines to prevent refetching during development. Shut down the server.
 9. Seed the tables with seeders. `npx sequelize-cli db:seed:all`
 10. Start server. `npm run dev`

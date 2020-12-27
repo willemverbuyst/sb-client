@@ -13,6 +13,8 @@ const userRouter = require('./routers/users');
 const app = express();
 const bodyParserMiddleWare = express.json();
 
+app.use(corsMiddleWare());
+
 /* Call getTeams once, to get all the teams and seed the team_table */
 // const teams = require('./api/bc_teams');
 // teams.getTeams();
@@ -23,7 +25,6 @@ fixtures.getFixtures();
 
 app.use(loggerMiddleWare('dev'));
 app.use(bodyParserMiddleWare);
-app.use(corsMiddleWare());
 
 if (process.env.DELAY)
   app.use((_req, _res, next) => {
