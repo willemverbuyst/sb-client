@@ -1,0 +1,155 @@
+import { apiUrl } from '../../config/constants';
+import axios from 'axios';
+import { Action, Dispatch } from 'redux';
+import {
+  REMOVE_ALL_SCORES,
+  SCORES_FIXTURE_FETCHED,
+  SCORES_ROUND_FETCHED,
+  SCORES_TOTAL_TOTO_FETCHED,
+  SCORES_TOTO_ROUND_FETCHED,
+  FixtureWithScores,
+  Scores,
+  UserWithScore,
+  RemoveAllScores,
+  ScoresFixtureFetched,
+  ScoresRoundFetched,
+  ScoresTotalTotoFetched,
+  ScoresTotoRoundFetched,
+} from './types';
+import { StoreState } from '../types';
+import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
+import { ThunkAction } from 'redux-thunk';
+
+export const removeAllScores = (): RemoveAllScores => {
+  return {
+    type: REMOVE_ALL_SCORES,
+  };
+};
+
+export const scoresFixtureFetched = (fixture: FixtureWithScores): ScoresFixtureFetched => {
+  return {
+    type: SCORES_FIXTURE_FETCHED,
+    fixture,
+  };
+};
+
+export const scoresRoundFetched = (round: Scores): ScoresRoundFetched => {
+  return {
+    type: SCORES_ROUND_FETCHED,
+    round,
+  };
+};
+
+export const scoresTotalTotoFetched = (totalToto: UserWithScore[]): ScoresTotalTotoFetched => {
+  return {
+    type: SCORES_TOTAL_TOTO_FETCHED,
+    totalToto,
+  };
+};
+
+export const scoresTotoRoundFetched = (totoRound: Scores): ScoresTotoRoundFetched => {
+  return {
+    type: SCORES_TOTO_ROUND_FETCHED,
+    totoRound,
+  };
+};
+
+export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/fixtures/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const fixture = response.data;
+
+    dispatch(scoresFixtureFetched(fixture));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/rounds/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const round = response.data;
+
+    dispatch(scoresRoundFetched(round));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/all`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const totalToto = response.data;
+
+    dispatch(scoresTotalTotoFetched(totalToto));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchScoresTotoRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch,
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${apiUrl}/scores/totorounds/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const totoRound = response.data;
+
+    dispatch(scoresTotoRoundFetched(totoRound));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
