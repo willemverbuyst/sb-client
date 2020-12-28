@@ -32,20 +32,16 @@ const useStyles = makeStyles((theme: Theme) =>
         padding: 0,
       },
     },
-    contentWrapper: {
-      // marginTop: theme.spacing(2),
-    },
     content: {
       borderRadius: '4px',
       padding: '1rem 2rem',
-      // minHeight: '100vh',
+      minHeight: 'calc(100vh - 6.6rem)',
       backgroundColor: '#f1f1f1',
       [theme.breakpoints.down('sm')]: {
         borderRadius: '0px',
+        padding: '1rem 1rem',
+        minHeight: '100%',
       },
-    },
-    user: {
-      // marginRight: theme.spacing(5),
     },
   }),
 );
@@ -63,7 +59,7 @@ const App: React.FC = (): ReactElement => {
       <Grid container className={classes.mainWrapper}>
         <Toast />
         <Header />
-        <Grid container className={classes.contentWrapper}>
+        <Grid container>
           <Grid item md={11} xs={12}>
             <Box className={classes.content}>
               <Switch>
@@ -88,9 +84,7 @@ const App: React.FC = (): ReactElement => {
             </Box>
           </Grid>
           <Grid item md={1} xs={12}>
-            <Box className={classes.user}>
-              <UserDisplay />
-            </Box>
+            <UserDisplay />
           </Grid>
         </Grid>
       </Grid>
