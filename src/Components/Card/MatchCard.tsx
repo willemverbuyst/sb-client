@@ -72,7 +72,7 @@ const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Pro
           onClick={() => history.push(`/wedstrijd/${id}`)}
         >
           <Grid item xs={4} container justify="flex-end" alignItems="center">
-            <Typography>{homeTeamName}</Typography>
+            <Typography style={{ textAlign: 'right' }}>{homeTeamName}</Typography>
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">
