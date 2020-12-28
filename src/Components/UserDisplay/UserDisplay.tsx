@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       writingMode: 'horizontal-tb',
       justifyContent: 'center',
       fontSize: '2.5rem',
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(2),
     },
     writingMode: 'vertical-rl',
     textOrientation: 'mixed',

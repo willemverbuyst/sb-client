@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down('sm')]: {
         borderRadius: '0px',
         padding: '1rem 1rem',
-        minHeight: '100%',
+        minHeight: '60vh',
       },
     },
   }),
