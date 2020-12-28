@@ -11,30 +11,38 @@ import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
+    topSection: {
+      [theme.breakpoints.down('xs')]: {
+        flexDirection: 'column-reverse',
+        alignItems: 'center',
+      },
+      justifyContent: 'space-between',
     },
-    control: {
-      padding: theme.spacing(2),
+    wait: {
+      [theme.breakpoints.down('xs')]: {
+        marginTop: theme.spacing(2),
+        fontSize: '1rem',
+      },
+      fontWeight: 'bold',
+      color: theme.palette.secondary.main,
+      marginBottom: theme.spacing(1),
     },
     title: {
+      [theme.breakpoints.down('xs')]: {
+        marginTop: theme.spacing(2),
+        fontSize: '2.5rem',
+      },
       fontWeight: 'bold',
-      marginBottom: theme.spacing(3),
       color: theme.palette.secondary.main,
-    },
-    logo: {
-      height: 50,
-      marginLeft: 10,
+      marginBottom: theme.spacing(1),
     },
     progress: {
-      minHeight: '70vh',
       width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
     },
   }),
 );
@@ -51,6 +59,8 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { ronde } = useParams<{ ronde: string }>();
   let t = +totoronde;
   let r = +ronde;
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -75,9 +85,9 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
   return isLoading ? (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant="h3" className={classes.wait}>
             Wacht op voorspellingen
           </Typography>
         </Grid>
@@ -88,14 +98,21 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     </Box>
   ) : playerProfile ? (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             {playerProfile.userName}
           </Typography>
         </Grid>
         <Grid>
-          <Button fullWidth variant="contained" size="small" color="secondary" disableElevation onClick={gotoScores}>
+          <Button
+            fullWidth
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="secondary"
+            disableElevation
+            onClick={gotoScores}
+          >
             SCORES
           </Button>
         </Grid>
