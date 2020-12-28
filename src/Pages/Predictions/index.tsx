@@ -14,20 +14,21 @@ import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('sm')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(3),
     color: theme.palette.secondary.main,
-  },
-  subTitle: {
-    marginBottom: theme.spacing(1),
-    color: theme.palette.primary.main,
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
   },
   pagination: {
     padding: theme.spacing(2),
@@ -78,7 +79,7 @@ const Predictions: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Voorspellingen
@@ -99,7 +100,9 @@ const Predictions: React.FC = (): ReactElement => {
               </Button>
             </Grid>
           </Grid>
-        ) : null}
+        ) : (
+          <></>
+        )}
       </Grid>
 
       {isLoading ? (
