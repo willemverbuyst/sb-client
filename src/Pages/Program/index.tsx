@@ -69,7 +69,11 @@ const Program: React.FC = (): ReactElement => {
             </Grid>
           ))}
         </Grid>
-      ) : null}
+      ) : (
+        <Grid>
+          <Typography variant="overline">Er staan voor deze week geen wedstrijden gepland.</Typography>
+        </Grid>
+      )}
     </Box>
   );
 };
