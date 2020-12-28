@@ -11,6 +11,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Theme, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
   title: {
     fontWeight: 'bold',
     marginBottom: theme.spacing(3),
@@ -21,11 +26,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.primary.main,
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
   },
 }));
 
@@ -49,7 +55,7 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Programma
@@ -69,7 +75,11 @@ const Program: React.FC = (): ReactElement => {
             </Grid>
           ))}
         </Grid>
-      ) : null}
+      ) : (
+        <Grid container className={classes.message}>
+          <Typography variant="overline">Er staan voor deze week geen wedstrijden gepland.</Typography>
+        </Grid>
+      )}
     </Box>
   );
 };

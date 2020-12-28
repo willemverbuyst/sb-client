@@ -10,28 +10,51 @@ import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main,
   },
-  divider: {
-    marginBottom: theme.spacing(6),
+  subTitle: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      opacity: '0.7',
+    },
   },
   totoRound: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
     marginBottom: theme.spacing(6),
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  btn: {
-    marginTop: theme.spacing(1),
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
   },
 }));
 
@@ -43,6 +66,8 @@ const ScoresUser: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const user = useSelector(selectUser);
   const scoresPlayer = useSelector(selectPlayerScores);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -57,7 +82,7 @@ const ScoresUser: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Scores
@@ -69,7 +94,7 @@ const ScoresUser: React.FC = (): ReactElement => {
             <Grid>
               <Button
                 fullWidth
-                variant="contained"
+                variant={btnVariant ? 'contained' : 'outlined'}
                 size="small"
                 color="primary"
                 disableElevation
@@ -89,7 +114,9 @@ const ScoresUser: React.FC = (): ReactElement => {
       ) : scoresPlayer ? (
         <>
           <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">MIJN TOTO RONDES</Typography>
+            <Typography variant="h4" className={classes.subTitle}>
+              MIJN TOTO RONDES
+            </Typography>
           </Grid>
 
           <Grid className={classes.divider}>
@@ -109,7 +136,9 @@ const ScoresUser: React.FC = (): ReactElement => {
         </>
       ) : (
         <Grid>
-          <Typography variant="overline">Je hebt nog geen scores</Typography>
+          <Typography variant="overline" className={classes.message}>
+            Je hebt nog geen scores
+          </Typography>
         </Grid>
       )}
     </Box>

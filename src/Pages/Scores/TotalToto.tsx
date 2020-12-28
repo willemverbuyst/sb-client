@@ -12,31 +12,57 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main,
   },
-  divider: {
-    marginBottom: theme.spacing(6),
+  subTitle: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      opacity: '0.7',
+    },
   },
   totoRound: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
     marginBottom: theme.spacing(6),
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   selector: {
     marginTop: theme.spacing(6),
   },
   breadCrumbs: {
     marginTop: theme.spacing(6),
+  },
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
   },
 }));
 
@@ -47,6 +73,8 @@ const TotalToto: React.FC = (): ReactElement => {
   const history = useHistory();
   const totalToto = useSelector(selectTotalToto);
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -66,14 +94,20 @@ const TotalToto: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Klassement
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={gotoTotoRound}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={gotoTotoRound}
+          >
             MIJN VOORSPELLINGEN
           </Button>
         </Grid>
@@ -86,7 +120,9 @@ const TotalToto: React.FC = (): ReactElement => {
       ) : totalToto && totalToto.length > 0 ? (
         <>
           <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">TOTAAL TOTO</Typography>
+            <Typography variant="h4" className={classes.subTitle}>
+              TOTAAL TOTO
+            </Typography>
           </Grid>
 
           <Divider className={classes.divider} />
@@ -99,7 +135,9 @@ const TotalToto: React.FC = (): ReactElement => {
         </>
       ) : (
         <Grid>
-          <Typography variant="overline">Nog geen scores voor totalToto</Typography>
+          <Typography variant="overline" className={classes.message}>
+            Nog geen scores voor totalToto
+          </Typography>
         </Grid>
       )}
       <Grid container justify="center" className={classes.breadCrumbs}>

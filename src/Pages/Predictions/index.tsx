@@ -12,32 +12,31 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(3),
     color: theme.palette.secondary.main,
-  },
-  subTitle: {
-    marginBottom: theme.spacing(1),
-    color: theme.palette.primary.main,
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
   },
   pagination: {
     padding: theme.spacing(2),
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 }));
 
@@ -52,6 +51,8 @@ const Predictions: React.FC = (): ReactElement => {
   let t = +totoronde;
   let r = +ronde;
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -78,7 +79,7 @@ const Predictions: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Voorspellingen
@@ -89,7 +90,7 @@ const Predictions: React.FC = (): ReactElement => {
             <Grid>
               <Button
                 fullWidth
-                variant="contained"
+                variant={btnVariant ? 'contained' : 'outlined'}
                 size="small"
                 color="secondary"
                 disableElevation
@@ -99,7 +100,9 @@ const Predictions: React.FC = (): ReactElement => {
               </Button>
             </Grid>
           </Grid>
-        ) : null}
+        ) : (
+          <></>
+        )}
       </Grid>
 
       {isLoading ? (

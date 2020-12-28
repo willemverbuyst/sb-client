@@ -7,28 +7,39 @@ import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
 import PlayersTable from '../../Components/Table/PlayersTable';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    title: {
-      fontWeight: 'bold',
-      marginBottom: theme.spacing(1),
-      color: theme.palette.secondary.main,
-    },
-    progress: {
-      minHeight: '70vh',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
+const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
       alignItems: 'center',
     },
-    playersTable: {
-      marginTop: theme.spacing(6),
+    justifyContent: 'space-between',
+  },
+  title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
     },
-  }),
-);
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
+    marginBottom: theme.spacing(1),
+  },
+  progress: {
+    width: '100%',
+  },
+
+  playersTable: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+    },
+    marginTop: theme.spacing(6),
+  },
+}));
 
 const ListOfPlayers: React.FC = (): ReactElement => {
   const classes = useStyles();
@@ -39,6 +50,8 @@ const ListOfPlayers: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const user = useSelector(selectUser);
   const [update, setUpdate] = useState<boolean>(false);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -54,7 +67,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Spelers
@@ -65,7 +78,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
           <Grid>
             <Button
               fullWidth
-              variant="contained"
+              variant={btnVariant ? 'contained' : 'outlined'}
               size="small"
               color="secondary"
               disableElevation

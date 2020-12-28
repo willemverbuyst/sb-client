@@ -11,28 +11,60 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main,
   },
+  totoRound: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
+    marginBottom: theme.spacing(6),
+  },
+  progress: {
+    width: '100%',
+  },
   fixture: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
     marginBottom: theme.spacing(6),
   },
   date: {
     marginBottom: theme.spacing(2),
   },
-  divider: {
-    marginBottom: theme.spacing(6),
+  text: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      margin: '0.5rem',
+    },
   },
-  progress: {
-    minHeight: '70vh',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+  avatar: {
+    [theme.breakpoints.down('xs')]: {
+      transform: 'scale(0.8)',
+    },
   },
 }));
 
@@ -44,6 +76,8 @@ const Fixture: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const fixture = useSelector(selectFixture);
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -60,14 +94,20 @@ const Fixture: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Uitslag
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={() => history.goBack()}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={() => history.goBack()}
+          >
             TERUG
           </Button>
         </Grid>
@@ -87,23 +127,35 @@ const Fixture: React.FC = (): ReactElement => {
             </Grid>
             <Grid item xs={12} container justify="center">
               <Grid item xs={3} container justify="flex-end" alignItems="center">
-                <Typography variant="h4">{fixture.fixture.homeTeamName}</Typography>
+                <Typography variant="h4" className={classes.text} style={{ textAlign: 'right' }}>
+                  {fixture.fixture.homeTeamName}
+                </Typography>
               </Grid>
 
-              <Grid item xs={1} container justify="center">
-                <Avatar alt={fixture.fixture.homeTeamName} src={fixture.fixture.homeTeamLogo} />
+              <Grid item xs={1} container justify="center" alignItems="center">
+                <Avatar
+                  alt={fixture.fixture.homeTeamName}
+                  src={fixture.fixture.homeTeamLogo}
+                  className={classes.avatar}
+                />
               </Grid>
-              <Grid item xs={1} container justify="center">
-                <Typography variant="h4">
+              <Grid item xs={2} sm={1} container justify="center" alignItems="center">
+                <Typography variant="h4" className={classes.text}>
                   {fixture.fixture.goalsHomeTeam} - {fixture.fixture.goalsAwayTeam}
                 </Typography>
               </Grid>
-              <Grid item xs={1} container justify="center">
-                <Avatar alt={fixture.fixture.awayTeamName} src={fixture.fixture.awayTeamLogo} />
+              <Grid item xs={1} container justify="center" alignItems="center">
+                <Avatar
+                  alt={fixture.fixture.awayTeamName}
+                  src={fixture.fixture.awayTeamLogo}
+                  className={classes.avatar}
+                />
               </Grid>
 
               <Grid item xs={3} container justify="flex-start" alignItems="center">
-                <Typography variant="h4">{fixture.fixture.awayTeamName}</Typography>
+                <Typography variant="h4" className={classes.text}>
+                  {fixture.fixture.awayTeamName}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>

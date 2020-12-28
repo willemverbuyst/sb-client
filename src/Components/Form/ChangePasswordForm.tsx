@@ -1,21 +1,20 @@
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, Container, TextField } from '@material-ui/core';
+import { Button, Grid, TextField } from '@material-ui/core';
 import { ButtonEvent } from '../../models/events.model';
 import { changePassword } from '../../store/user/actions';
 import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(1),
+    },
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -55,8 +54,8 @@ const ChangePasswordForm: React.FC<Props> = (prop: Props): ReactElement => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
+    <Grid container justify="center">
+      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
@@ -88,6 +87,7 @@ const ChangePasswordForm: React.FC<Props> = (prop: Props): ReactElement => {
             type="submit"
             fullWidth
             variant="contained"
+            disableElevation
             color="primary"
             className={classes.margin}
             onClick={submitForm}
@@ -100,8 +100,8 @@ const ChangePasswordForm: React.FC<Props> = (prop: Props): ReactElement => {
             </Alert>
           ) : null}
         </form>
-      </div>
-    </Container>
+      </Grid>
+    </Grid>
   );
 };
 

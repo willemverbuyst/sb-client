@@ -8,28 +8,28 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main,
   },
-  passwordBtn: {
-    marginLeft: theme.spacing(1),
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
-  },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 }));
 
@@ -39,6 +39,8 @@ const Profile: React.FC = (): ReactElement => {
   const history = useHistory();
   const isLoading = useSelector(selectAppLoading);
   const [editProfile, setEditProfile] = useState(true);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -50,14 +52,20 @@ const Profile: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Profiel
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="secondary" disableElevation onClick={handleEditProfile}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="secondary"
+            disableElevation
+            onClick={handleEditProfile}
+          >
             {!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
           </Button>
         </Grid>
