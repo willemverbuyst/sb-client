@@ -59,6 +59,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   breadCrumbs: {
     marginTop: theme.spacing(6),
   },
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
 }));
 
 const TotoRound: React.FC = (): ReactElement => {
@@ -134,7 +139,9 @@ const TotoRound: React.FC = (): ReactElement => {
         </>
       ) : (
         <Grid>
-          <Typography variant="overline">Nog geen scores voor toto ronde {id}</Typography>
+          <Typography variant="overline" className={classes.message}>
+            Nog geen scores voor toto ronde {id}
+          </Typography>
         </Grid>
       )}
       <Grid container justify="center" className={classes.breadCrumbs}>

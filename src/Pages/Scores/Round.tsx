@@ -56,6 +56,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   breadCrumbs: {
     marginTop: theme.spacing(6),
   },
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
 }));
 
 const Round: React.FC = (): ReactElement => {
@@ -143,7 +148,9 @@ const Round: React.FC = (): ReactElement => {
         </>
       ) : (
         <Grid>
-          <Typography variant="overline">Nog geen scores voor deze ronde</Typography>
+          <Typography variant="overline" className={classes.message}>
+            Nog geen scores voor deze ronde
+          </Typography>
         </Grid>
       )}
 

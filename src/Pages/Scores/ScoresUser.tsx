@@ -51,6 +51,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   progress: {
     width: '100%',
   },
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
 }));
 
 const ScoresUser: React.FC = (): ReactElement => {
@@ -131,7 +136,9 @@ const ScoresUser: React.FC = (): ReactElement => {
         </>
       ) : (
         <Grid>
-          <Typography variant="overline">Je hebt nog geen scores</Typography>
+          <Typography variant="overline" className={classes.message}>
+            Je hebt nog geen scores
+          </Typography>
         </Grid>
       )}
     </Box>

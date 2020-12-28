@@ -10,25 +10,60 @@ import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main,
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
   },
-  divider: {
-    marginBottom: theme.spacing(6),
+  wait: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '1rem',
+    },
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
+    marginBottom: theme.spacing(1),
+  },
+  title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
+    marginBottom: theme.spacing(1),
+  },
+  subTitle: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      opacity: '0.7',
+    },
   },
   totoRound: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
     marginBottom: theme.spacing(6),
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
   },
 }));
 
@@ -40,6 +75,8 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const scoresPlayer = useSelector(selectPlayerScores);
   const { id } = useParams<{ id: string }>();
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -51,9 +88,9 @@ const ScoresPlayer: React.FC = (): ReactElement => {
 
   return isLoading ? (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant="h3" className={classes.wait}>
             Wacht op scores
           </Typography>
         </Grid>
@@ -64,7 +101,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
     </Box>
   ) : scoresPlayer ? (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             {scoresPlayer.userName}
@@ -74,7 +111,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
           <Grid>
             <Button
               fullWidth
-              variant="contained"
+              variant={btnVariant ? 'contained' : 'outlined'}
               size="small"
               color="secondary"
               disableElevation
@@ -89,7 +126,9 @@ const ScoresPlayer: React.FC = (): ReactElement => {
       {scoresPlayer ? (
         <>
           <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">TOTO RONDES</Typography>
+            <Typography variant="h4" className={classes.subTitle}>
+              TOTO RONDES
+            </Typography>
           </Grid>
 
           <Grid className={classes.divider}>
@@ -109,7 +148,9 @@ const ScoresPlayer: React.FC = (): ReactElement => {
         </>
       ) : (
         <Grid>
-          <Typography variant="overline">Nog geen scores</Typography>
+          <Typography variant="overline" className={classes.message}>
+            Nog geen scores
+          </Typography>
         </Grid>
       )}
     </Box>
