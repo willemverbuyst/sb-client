@@ -11,13 +11,21 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    topSection: {
+      [theme.breakpoints.down('sm')]: {
+        justifyContent: 'center',
+      },
+    },
     title: {
       fontWeight: 'bold',
-      marginBottom: theme.spacing(1),
+      marginBottom: theme.spacing(3),
       color: theme.palette.secondary.main,
     },
     content: {
-      marginTop: theme.spacing(6),
+      [theme.breakpoints.down('sm')]: {
+        marginTop: theme.spacing(0),
+      },
+      marginTop: theme.spacing(4),
     },
   }),
 );
@@ -70,7 +78,7 @@ const Rules: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Regels
