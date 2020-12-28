@@ -5,7 +5,7 @@ import { selectToken, selectUser } from '../../store/user/selectors';
 import { userLogOut } from '../../store/user/actions';
 import ball from '../../assets/ball.png';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Box, IconButton, Toolbar, Tooltip, Typography } from '@material-ui/core';
+import { Grid, IconButton, Tooltip, Typography } from '@material-ui/core';
 import Face from '@material-ui/icons/Face';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -19,15 +19,19 @@ import { Weekend } from '@material-ui/icons';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icon: {
-      marginRight: theme.spacing(2),
-    },
-    text: {
-      marginRight: theme.spacing(3),
-      fontSize: 20,
+      fontSize: '1.8rem',
+      marginLeft: '0.5rem',
+      marginRight: '0.5rem',
     },
     header: {
+      [theme.breakpoints.down('sm')]: {
+        justifyContent: 'center',
+        height: '100%',
+      },
       backgroundColor: theme.palette.primary.main,
       color: '#fff',
+      height: '3.6rem',
+      marginBottom: '1rem',
     },
   }),
 );
@@ -61,98 +65,74 @@ const Header: React.FC = (): ReactElement => {
   const gotoTotalToto = () => history.push('/klassement/totaaltoto');
 
   return (
-    <Box className={classes.header}>
+    <Grid container justify="center">
       {token ? (
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.icon}
-            color="inherit"
-            aria-label="account circle"
-            onClick={gotoProgram}
-          >
+        <Grid container className={classes.header} alignItems="center">
+          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoProgram}>
             <Tooltip title="Programma" arrow>
-              <Weekend />
+              <Weekend className={classes.icon} />
             </Tooltip>
           </IconButton>
 
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoPredictions}>
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoPredictions}>
             <Tooltip title="Voorspellingen" arrow>
-              <SportsSoccerIcon />
+              <SportsSoccerIcon className={classes.icon} />
             </Tooltip>
           </IconButton>
 
-          <IconButton
-            edge="start"
-            className={classes.icon}
-            color="inherit"
-            aria-label="account circle"
-            onClick={gotoMyScores}
-          >
+          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoMyScores}>
             <Tooltip title="Scores" arrow>
-              <EmojiEvents />
+              <EmojiEvents className={classes.icon} />
             </Tooltip>
           </IconButton>
 
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoPlayers}>
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoPlayers}>
             <Tooltip title="Spelers" arrow>
-              <Group />
+              <Group className={classes.icon} />
             </Tooltip>
           </IconButton>
 
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoTotalToto}>
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoTotalToto}>
             <Tooltip title="Klassement" arrow>
-              <FormatListNumberedIcon />
+              <FormatListNumberedIcon className={classes.icon} />
             </Tooltip>
           </IconButton>
 
           {user && user.admin ? (
-            <IconButton edge="start" className={classes.icon} color="inherit" aria-label="menu" onClick={gotoSignUp}>
+            <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoSignUp}>
               <Tooltip title="Sign up" arrow>
-                <PersonAdd />
+                <PersonAdd className={classes.icon} />
               </Tooltip>
             </IconButton>
           ) : (
             ''
           )}
 
-          <IconButton
-            edge="start"
-            className={classes.icon}
-            color="inherit"
-            aria-label="account circle"
-            onClick={gotoProfile}
-          >
+          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoProfile}>
             <Tooltip title="Profiel" arrow>
-              <Face />
+              <Face className={classes.icon} />
             </Tooltip>
           </IconButton>
 
-          <IconButton
-            edge="start"
-            className={classes.icon}
-            color="inherit"
-            aria-label="account circle"
-            onClick={gotoRules}
-          >
+          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoRules}>
             <Tooltip title="Regels" arrow>
-              <HelpOutline />
+              <HelpOutline className={classes.icon} />
             </Tooltip>
           </IconButton>
 
-          <IconButton edge="start" className={classes.icon} color="inherit" aria-label="log out" onClick={gotoLogin}>
+          <IconButton edge="start" color="inherit" aria-label="log out" onClick={gotoLogin}>
             <Tooltip title="Log Out" arrow>
-              <ExitToAppIcon />
+              <ExitToAppIcon className={classes.icon} />
             </Tooltip>
           </IconButton>
-        </Toolbar>
+        </Grid>
       ) : (
-        <Toolbar>
+        <Grid>
           <img src={ball} style={{ width: '40px', margin: '0 10px 0 0' }} alt="soccer ball" />
           <Typography variant="h6">Sport Betting App</Typography>
-        </Toolbar>
+        </Grid>
       )}
-    </Box>
+    </Grid>
   );
 };
 
