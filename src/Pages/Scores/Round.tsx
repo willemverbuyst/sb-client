@@ -14,23 +14,42 @@ import { UserWithScore } from '../../store/scores/types';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
     color: theme.palette.secondary.main,
   },
-  divider: {
-    marginBottom: theme.spacing(6),
+  subTitle: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      opacity: '0.7',
+    },
   },
   totoRound: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
     marginBottom: theme.spacing(6),
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   breadCrumbs: {
     marginTop: theme.spacing(6),
@@ -79,7 +98,7 @@ const Round: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Klassement
@@ -99,7 +118,9 @@ const Round: React.FC = (): ReactElement => {
       ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
         <>
           <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">RONDE {id}</Typography>
+            <Typography variant="h4" className={classes.subTitle}>
+              RONDE {id}
+            </Typography>
           </Grid>
 
           <Divider className={classes.divider} />
