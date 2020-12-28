@@ -27,9 +27,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   progress: {
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   message: {
     [theme.breakpoints.down('sm')]: {

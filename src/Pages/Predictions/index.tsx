@@ -34,11 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(2),
   },
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 }));
 

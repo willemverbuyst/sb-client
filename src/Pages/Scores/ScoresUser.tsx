@@ -46,16 +46,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     marginBottom: theme.spacing(6),
   },
-
   progress: {
-    minHeight: '70vh',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btn: {
-    marginTop: theme.spacing(1),
   },
 }));
 
