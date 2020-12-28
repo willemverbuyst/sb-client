@@ -8,6 +8,8 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -37,6 +39,8 @@ const Profile: React.FC = (): ReactElement => {
   const history = useHistory();
   const isLoading = useSelector(selectAppLoading);
   const [editProfile, setEditProfile] = useState(true);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -55,7 +59,13 @@ const Profile: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="secondary" disableElevation onClick={handleEditProfile}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="secondary"
+            disableElevation
+            onClick={handleEditProfile}
+          >
             {!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
           </Button>
         </Grid>

@@ -10,6 +10,8 @@ import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -59,6 +61,8 @@ const ScoresUser: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const user = useSelector(selectUser);
   const scoresPlayer = useSelector(selectPlayerScores);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -85,7 +89,7 @@ const ScoresUser: React.FC = (): ReactElement => {
             <Grid>
               <Button
                 fullWidth
-                variant="contained"
+                variant={btnVariant ? 'contained' : 'outlined'}
                 size="small"
                 color="primary"
                 disableElevation

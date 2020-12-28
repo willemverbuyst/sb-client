@@ -12,6 +12,8 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -64,6 +66,8 @@ const Round: React.FC = (): ReactElement => {
   const round = useSelector(selectRound);
   const isLoading = useSelector(selectAppLoading);
   const { id } = useParams<{ id: string }>();
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -105,7 +109,13 @@ const Round: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={gotoPredictions}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={gotoPredictions}
+          >
             MIJN VOORSPELLINGEN
           </Button>
         </Grid>

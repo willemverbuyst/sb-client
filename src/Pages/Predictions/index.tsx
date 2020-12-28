@@ -12,6 +12,8 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -49,6 +51,8 @@ const Predictions: React.FC = (): ReactElement => {
   let t = +totoronde;
   let r = +ronde;
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -86,7 +90,7 @@ const Predictions: React.FC = (): ReactElement => {
             <Grid>
               <Button
                 fullWidth
-                variant="contained"
+                variant={btnVariant ? 'contained' : 'outlined'}
                 size="small"
                 color="secondary"
                 disableElevation

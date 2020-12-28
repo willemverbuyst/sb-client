@@ -12,6 +12,8 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -66,6 +68,8 @@ const TotalToto: React.FC = (): ReactElement => {
   const history = useHistory();
   const totalToto = useSelector(selectTotalToto);
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -92,7 +96,13 @@ const TotalToto: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={gotoTotoRound}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={gotoTotoRound}
+          >
             MIJN VOORSPELLINGEN
           </Button>
         </Grid>

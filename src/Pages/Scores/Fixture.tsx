@@ -11,6 +11,8 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -74,6 +76,8 @@ const Fixture: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const fixture = useSelector(selectFixture);
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -97,7 +101,13 @@ const Fixture: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={() => history.goBack()}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={() => history.goBack()}
+          >
             TERUG
           </Button>
         </Grid>
