@@ -5,7 +5,6 @@ import { selectUser } from '../../store/user/selectors';
 import {
   Button,
   Checkbox,
-  Container,
   FormControl,
   FormControlLabel,
   Grid,
@@ -21,7 +20,11 @@ import { selectTeams } from '../../store/teams/selectors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(1),
+    },
     marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -85,8 +88,8 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
+    <Grid container justify="center">
+      <Grid item xs={12} sm={6} lg={4} className={classes.paper}>
         <form className={classes.form} noValidate>
           <Grid container spacing={1}>
             <Grid item xs={12}>
@@ -256,8 +259,8 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
             UPDATE PROFIEL
           </Button>
         </form>
-      </div>
-    </Container>
+      </Grid>
+    </Grid>
   );
 };
 
