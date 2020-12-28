@@ -1,15 +1,18 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Chip, Grid, Typography } from '@material-ui/core';
+import { Card, CardContent, Chip, Grid, Theme, Typography } from '@material-ui/core';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
 import PredictionsHome from './PredictionsHome';
 import PublicPredictions from './PublicPredictions';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   card: {
+    [theme.breakpoints.down('xs')]: {
+      margin: '10px -5px',
+    },
     textAlign: 'center',
     margin: '10px',
     position: 'relative',
@@ -31,7 +34,7 @@ const useStyles = makeStyles({
     color: '#c5c5c5',
     border: 'none',
   },
-});
+}));
 
 type Props = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions; display: string };
 
