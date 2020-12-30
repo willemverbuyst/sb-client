@@ -1,0 +1,80 @@
+import { Theme } from '@material-ui/core';
+import {
+  IBreadCrumbs,
+  IDivider,
+  IMessage,
+  IProgress,
+  ISubTitle,
+  ISubTitleSection,
+  ITitle,
+  ITopSection,
+} from './ISharedClasses';
+
+export const breadCrumbs = (theme: Theme): IBreadCrumbs => ({
+  breadCrumbs: {
+    marginTop: theme.spacing(6),
+  },
+});
+
+export const divider = (theme: Theme): IDivider => ({
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
+    marginBottom: theme.spacing(6),
+  },
+});
+
+export const message = (theme: Theme): IMessage => ({
+  message: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
+});
+
+export const progress = (): IProgress => ({
+  progress: {
+    width: '100%',
+  },
+});
+
+export const subTitle = (theme: Theme): ISubTitle => ({
+  subTitle: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      opacity: '0.7',
+    },
+  },
+});
+
+export const subTitleSection = (theme: Theme): ISubTitleSection => ({
+  subTitleSection: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+});
+
+export const title = (theme: Theme): ITitle => ({
+  title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
+    fontWeight: 'bold',
+    marginBottom: theme.spacing(1),
+    color: theme.palette.secondary.main,
+  },
+});
+
+export const topSection = (theme: Theme): ITopSection => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
+});

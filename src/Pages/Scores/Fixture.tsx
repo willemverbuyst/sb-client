@@ -13,39 +13,13 @@ import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart'
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { divider, progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  topSection: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'center',
-    },
-    justifyContent: 'space-between',
-  },
-  title: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      fontSize: '2.5rem',
-    },
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main,
-  },
-  totoRound: {
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: theme.spacing(0),
-    },
-    marginBottom: theme.spacing(6),
-  },
-  divider: {
-    [theme.breakpoints.down('sm')]: {
-      visibility: 'hidden',
-    },
-    marginBottom: theme.spacing(6),
-  },
-  progress: {
-    width: '100%',
-  },
+  ...divider(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
   fixture: {
     [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(0),
