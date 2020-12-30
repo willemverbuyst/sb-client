@@ -63,7 +63,9 @@ router.get('/current', authMiddleware, async (req, res) => {
 
     res.status(200).send(currentRound);
   } catch (error) {
-    return res.status(400).send({ message: 'Er ging iets mis, sorry' });
+    return res
+      .status(400)
+      .send({ currentRound: null, message: 'Geen programma voor deze week' });
   }
 });
 
