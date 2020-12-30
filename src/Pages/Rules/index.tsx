@@ -8,24 +8,18 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    topSection: {
-      [theme.breakpoints.down('sm')]: {
-        justifyContent: 'center',
-      },
-    },
-    title: {
-      fontWeight: 'bold',
-      marginBottom: theme.spacing(3),
-      color: theme.palette.secondary.main,
-    },
+    ...title(theme),
+    ...topSection(theme),
+
     content: {
       [theme.breakpoints.down('sm')]: {
-        marginTop: theme.spacing(0),
+        marginTop: theme.spacing(2),
       },
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(6),
     },
   }),
 );
