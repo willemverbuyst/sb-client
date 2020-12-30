@@ -46,3 +46,7 @@ export interface ITitle {
 export interface ITopSection {
   topSection: ClassProperties;
 }
+
+export interface IWaitMessage {
+  waitMessage: ClassProperties;
+}

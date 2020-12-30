@@ -12,59 +12,26 @@ import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import {
+  divider,
+  message,
+  progress,
+  title,
+  subTitle,
+  subTitleSection,
+  topSection,
+  waitMessage,
+} from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  topSection: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'center',
-    },
-    justifyContent: 'space-between',
-  },
-  wait: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      fontSize: '1rem',
-    },
-    fontWeight: 'bold',
-    color: theme.palette.secondary.main,
-    marginBottom: theme.spacing(1),
-  },
-  title: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      fontSize: '2.5rem',
-    },
-    fontWeight: 'bold',
-    color: theme.palette.secondary.main,
-    marginBottom: theme.spacing(1),
-  },
-  subTitle: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '1rem',
-      opacity: '0.7',
-    },
-  },
-  totoRound: {
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: theme.spacing(0),
-    },
-    marginBottom: theme.spacing(6),
-  },
-  divider: {
-    [theme.breakpoints.down('sm')]: {
-      visibility: 'hidden',
-    },
-    marginBottom: theme.spacing(6),
-  },
-  progress: {
-    width: '100%',
-  },
-  message: {
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
-  },
+  ...divider(theme),
+  ...message(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...subTitle(theme),
+  ...subTitleSection(theme),
+  ...title(theme),
+  ...waitMessage(theme),
 }));
 
 const ScoresPlayer: React.FC = (): ReactElement => {
@@ -90,7 +57,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <Grid>
-          <Typography variant="h3" className={classes.wait}>
+          <Typography variant="h3" className={classes.waitMessage}>
             Wacht op scores
           </Typography>
         </Grid>
@@ -125,7 +92,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
 
       {scoresPlayer ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.totoRound}>
+          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
             <Typography variant="h4" className={classes.subTitle}>
               TOTO RONDES
             </Typography>

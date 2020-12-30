@@ -12,11 +12,11 @@ import { Box, Grid, Theme, Typography } from '@material-ui/core';
 import { content, message, progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  ...content(theme),
   ...message(theme),
   ...progress(),
   ...topSection(theme),
   ...title(theme),
-  ...content(theme),
 }));
 
 const Program: React.FC = (): ReactElement => {
@@ -52,7 +52,7 @@ const Program: React.FC = (): ReactElement => {
           <ProgressLinear />
         </Box>
       ) : currentRound ? (
-        <Grid item xs={12} container justify="center">
+        <Grid item xs={12} container justify="center" className={classes.content}>
           {currentRound.fixtures.map((wedstrijd, i) => (
             <Grid item key={i} lg={4} md={6} xs={12}>
               <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display="Home" />

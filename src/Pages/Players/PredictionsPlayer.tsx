@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../store/user/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
@@ -13,41 +13,16 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { pagination } from '../../ui/sharedClasses';
+import { content, pagination, progress, title, topSection, waitMessage } from '../../ui/sharedClasses';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...pagination(theme),
-    topSection: {
-      [theme.breakpoints.down('xs')]: {
-        flexDirection: 'column-reverse',
-        alignItems: 'center',
-      },
-      justifyContent: 'space-between',
-    },
-    wait: {
-      [theme.breakpoints.down('xs')]: {
-        marginTop: theme.spacing(2),
-        fontSize: '1rem',
-      },
-      fontWeight: 'bold',
-      color: theme.palette.secondary.main,
-      marginBottom: theme.spacing(1),
-    },
-    title: {
-      [theme.breakpoints.down('xs')]: {
-        marginTop: theme.spacing(2),
-        fontSize: '2.5rem',
-      },
-      fontWeight: 'bold',
-      color: theme.palette.secondary.main,
-      marginBottom: theme.spacing(1),
-    },
-    progress: {
-      width: '100%',
-    },
-  }),
-);
+const useStyles = makeStyles((theme: Theme) => ({
+  ...content(theme),
+  ...pagination(theme),
+  ...progress(),
+  ...title(theme),
+  ...topSection(theme),
+  ...waitMessage(theme),
+}));
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const classes = useStyles();
@@ -89,7 +64,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <Grid>
-          <Typography variant="h3" className={classes.wait}>
+          <Typography variant="h3" className={classes.waitMessage}>
             Wacht op voorspellingen
           </Typography>
         </Grid>
@@ -122,7 +97,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
       {playerProfile && playerProfile.pastFixturesWithScores ? (
         <>
-          <Grid item xs={12} container justify="center">
+          <Grid item xs={12} container justify="center" className={classes.content}>
             {playerProfile.pastFixturesWithScores
               ? [...playerProfile.pastFixturesWithScores[t - 1][calculateIndex(r)]]
                   .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)

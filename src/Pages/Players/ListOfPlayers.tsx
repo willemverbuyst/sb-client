@@ -11,28 +11,12 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  topSection: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'center',
-    },
-    justifyContent: 'space-between',
-  },
-  title: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      fontSize: '2.5rem',
-    },
-    fontWeight: 'bold',
-    color: theme.palette.secondary.main,
-    marginBottom: theme.spacing(1),
-  },
-  progress: {
-    width: '100%',
-  },
-
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
   playersTable: {
     [theme.breakpoints.down('xs')]: {
       marginTop: theme.spacing(2),

@@ -10,6 +10,7 @@ import {
   ISubTitleSection,
   ITitle,
   ITopSection,
+  IWaitMessage,
 } from './ISharedClasses';
 
 export const breadCrumbs = (theme: Theme): IBreadCrumbs => ({
@@ -95,5 +96,17 @@ export const topSection = (theme: Theme): ITopSection => ({
       alignItems: 'center',
     },
     justifyContent: 'space-between',
+  },
+});
+
+export const waitMessage = (theme: Theme): IWaitMessage => ({
+  waitMessage: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '1rem',
+    },
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
+    marginBottom: theme.spacing(1),
   },
 });
