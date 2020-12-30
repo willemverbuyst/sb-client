@@ -9,11 +9,6 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import LogInForm from '../../Components/Form/LogInForm';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(3),
-    color: theme.palette.secondary.main,
-  },
   progress: {
     [theme.breakpoints.down('sm')]: {
       minHeight: '60vh',
