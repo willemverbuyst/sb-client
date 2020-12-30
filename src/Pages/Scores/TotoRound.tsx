@@ -8,26 +8,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Breadcrumbs, Divider, Grid, Typography, Theme } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { selectAppLoading } from '../../store/appState/selectors';
+import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import RoundSelector from '../../Components/Selector/RoundSelector';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import RoundSelector from '../../Components/Selector/RoundSelector';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import {
-  breadCrumbs,
-  divider,
-  message,
-  progress,
-  subTitle,
-  subTitleSection,
-  title,
-  topSection,
-} from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
-  ...message(theme),
   ...progress(),
   ...topSection(theme),
   ...title(theme),
@@ -108,11 +99,7 @@ const TotoRound: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline" className={classes.message}>
-            Nog geen scores voor toto ronde {id}
-          </Typography>
-        </Grid>
+        <Message message={`Nog geen scores voor toto ronde ${id}`} />
       )}
       <Grid container justify="center" className={classes.breadCrumbs}>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">

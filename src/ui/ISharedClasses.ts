@@ -19,10 +19,6 @@ export interface IDivider {
   divider: ClassProperties;
 }
 
-export interface IMessage {
-  message: ClassProperties;
-}
-
 export interface IPagination {
   pagination: ClassProperties;
 }

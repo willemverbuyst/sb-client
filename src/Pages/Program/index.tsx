@@ -9,11 +9,11 @@ import MatchCard from '../../Components/Card/MatchCard';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Theme, Typography } from '@material-ui/core';
-import { content, message, progress, title, topSection } from '../../ui/sharedClasses';
+import { content, progress, title, topSection } from '../../ui/sharedClasses';
+import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
-  ...message(theme),
   ...progress(),
   ...topSection(theme),
   ...title(theme),
@@ -60,9 +60,7 @@ const Program: React.FC = (): ReactElement => {
           ))}
         </Grid>
       ) : (
-        <Grid container className={classes.message}>
-          <Typography variant="overline">Er staan voor deze week geen wedstrijden gepland.</Typography>
-        </Grid>
+        <Message message={`Er staan voor deze week geen wedstrijden gepland.`} />
       )}
     </Box>
   );

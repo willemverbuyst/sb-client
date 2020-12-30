@@ -12,20 +12,11 @@ import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import {
-  divider,
-  message,
-  progress,
-  title,
-  subTitle,
-  subTitleSection,
-  topSection,
-  waitMessage,
-} from '../../ui/sharedClasses';
+import { divider, progress, title, subTitle, subTitleSection, topSection, waitMessage } from '../../ui/sharedClasses';
+import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
-  ...message(theme),
   ...progress(),
   ...topSection(theme),
   ...subTitle(theme),
@@ -114,11 +105,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline" className={classes.message}>
-            Nog geen scores
-          </Typography>
-        </Grid>
+        <Message message={`Nog geen scores`} />
       )}
     </Box>
   ) : (

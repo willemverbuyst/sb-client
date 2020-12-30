@@ -14,20 +14,11 @@ import { UserWithScore } from '../../store/scores/types';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import {
-  breadCrumbs,
-  divider,
-  message,
-  progress,
-  subTitle,
-  subTitleSection,
-  title,
-  topSection,
-} from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
-  ...message(theme),
   ...progress(),
   ...topSection(theme),
   ...title(theme),
@@ -104,11 +95,7 @@ const TotalToto: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline" className={classes.message}>
-            Nog geen scores voor totalToto
-          </Typography>
-        </Grid>
+        <Message message={`Nog geen scores voor totalToto`} />
       )}
       <Grid container justify="center" className={classes.breadCrumbs}>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">

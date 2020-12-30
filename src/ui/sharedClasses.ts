@@ -3,7 +3,6 @@ import {
   IBreadCrumbs,
   IContent,
   IDivider,
-  IMessage,
   IPagination,
   IProgress,
   ISubTitle,
@@ -36,14 +35,6 @@ export const divider = (theme: Theme): IDivider => ({
       visibility: 'hidden',
     },
     marginBottom: theme.spacing(6),
-  },
-});
-
-export const message = (theme: Theme): IMessage => ({
-  message: {
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
   },
 });
 

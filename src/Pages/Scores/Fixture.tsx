@@ -14,6 +14,7 @@ import { PredictionWithScorePerUser } from '../../store/scores/types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { divider, progress, title, topSection } from '../../ui/sharedClasses';
+import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
@@ -145,9 +146,7 @@ const Fixture: React.FC = (): ReactElement => {
           </Grid>
         </Grid>
       ) : !isLoading && fixture && !fixture.scores ? (
-        <Grid container justify="center">
-          <Typography variant="overline">Geen scores</Typography>
-        </Grid>
+        <Message message={`Geen scores`} />
       ) : null}
     </Box>
   );

@@ -3,20 +3,20 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken, selectUser } from '../../store/user/selectors';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
-import { selectAppLoading } from '../../store/appState/selectors';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { fetchPlayerScores } from '../../store/players/actions';
-import { selectPlayerScores } from '../../store/players/selectors';
-import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
-import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { divider, message, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
+import { selectAppLoading } from '../../store/appState/selectors';
+import Message from '../../Components/Message';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import { fetchPlayerScores } from '../../store/players/actions';
+import { selectPlayerScores } from '../../store/players/selectors';
+import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
+import { divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
-  ...message(theme),
   ...progress(),
   ...topSection(theme),
   ...title(theme),
@@ -101,11 +101,7 @@ const ScoresUser: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline" className={classes.message}>
-            Je hebt nog geen scores
-          </Typography>
-        </Grid>
+        <Message message={`Je hebt nog geen scores`} />
       )}
     </Box>
   );

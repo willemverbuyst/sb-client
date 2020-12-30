@@ -14,20 +14,11 @@ import { UserWithScore } from '../../store/scores/types';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import {
-  breadCrumbs,
-  divider,
-  message,
-  progress,
-  subTitle,
-  subTitleSection,
-  title,
-  topSection,
-} from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
-  ...message(theme),
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
@@ -121,11 +112,7 @@ const Round: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline" className={classes.message}>
-            Nog geen scores voor deze ronde
-          </Typography>
-        </Grid>
+        <Message message={`Nog geen scores voor deze ronde`} />
       )}
 
       <Grid container justify="center" className={classes.breadCrumbs}>
