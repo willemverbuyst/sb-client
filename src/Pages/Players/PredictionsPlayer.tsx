@@ -13,9 +13,11 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { pagination } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    ...pagination(theme),
     topSection: {
       [theme.breakpoints.down('xs')]: {
         flexDirection: 'column-reverse',
@@ -131,20 +133,22 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
                   ))
               : null}
           </Grid>
-          <PaginationComponent
-            label="Totoronde"
-            page={t}
-            count={playerProfile.pastFixturesWithScores.length}
-            color="primary"
-            onChange={handleChangeTotoRounds}
-          />
-          <PaginationComponent
-            label="Speelronde"
-            page={r}
-            count={playerProfile.pastFixturesWithScores.flat().length}
-            color="secondary"
-            onChange={handleChangeRounds}
-          />
+          <Grid className={classes.pagination}>
+            <PaginationComponent
+              label="Totoronde"
+              page={t}
+              count={playerProfile.pastFixturesWithScores.length}
+              color="primary"
+              onChange={handleChangeTotoRounds}
+            />
+            <PaginationComponent
+              label="Speelronde"
+              page={r}
+              count={playerProfile.pastFixturesWithScores.flat().length}
+              color="secondary"
+              onChange={handleChangeRounds}
+            />
+          </Grid>
         </>
       ) : null}
     </Box>

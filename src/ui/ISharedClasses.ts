@@ -11,12 +11,20 @@ export interface IBreadCrumbs {
   breadCrumbs: ClassProperties;
 }
 
+export interface IContent {
+  content: ClassProperties;
+}
+
 export interface IDivider {
   divider: ClassProperties;
 }
 
 export interface IMessage {
   message: ClassProperties;
+}
+
+export interface IPagination {
+  pagination: ClassProperties;
 }
 
 export interface IProgress {

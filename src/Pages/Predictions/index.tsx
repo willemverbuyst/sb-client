@@ -14,30 +14,14 @@ import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { content, pagination, progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  topSection: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'center',
-    },
-    justifyContent: 'space-between',
-  },
-  title: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      fontSize: '2.5rem',
-    },
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(3),
-    color: theme.palette.secondary.main,
-  },
-  pagination: {
-    padding: theme.spacing(2),
-  },
-  progress: {
-    width: '100%',
-  },
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
+  ...content(theme),
+  ...pagination(theme),
 }));
 
 const Predictions: React.FC = (): ReactElement => {
@@ -111,7 +95,7 @@ const Predictions: React.FC = (): ReactElement => {
         </Box>
       ) : fixtures ? (
         <>
-          <Grid item xs={12} container justify="center">
+          <Grid item xs={12} container justify="center" className={classes.content}>
             {fixtures
               ? [...fixtures[t - 1][calculateIndex(r)]]
                   .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
@@ -122,20 +106,22 @@ const Predictions: React.FC = (): ReactElement => {
                   ))
               : null}
           </Grid>
-          <PaginationComponent
-            label="Totoronde"
-            page={t}
-            count={TOTO_ROUNDS}
-            color="primary"
-            onChange={handleChangeTotoRounds}
-          />
-          <PaginationComponent
-            label="Speelronde"
-            page={r}
-            count={TOTAL_ROUNDS}
-            color="secondary"
-            onChange={handleChangeRounds}
-          />
+          <Grid className={classes.pagination}>
+            <PaginationComponent
+              label="Totoronde"
+              page={t}
+              count={TOTO_ROUNDS}
+              color="primary"
+              onChange={handleChangeTotoRounds}
+            />
+            <PaginationComponent
+              label="Speelronde"
+              page={r}
+              count={TOTAL_ROUNDS}
+              color="secondary"
+              onChange={handleChangeRounds}
+            />
+          </Grid>
         </>
       ) : null}
     </Box>

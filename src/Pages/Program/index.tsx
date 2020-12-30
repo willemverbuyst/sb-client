@@ -9,30 +9,14 @@ import MatchCard from '../../Components/Card/MatchCard';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Theme, Typography } from '@material-ui/core';
+import { content, message, progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  topSection: {
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
-  },
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(3),
-    color: theme.palette.secondary.main,
-  },
-  subTitle: {
-    marginBottom: theme.spacing(1),
-    color: theme.palette.primary.main,
-  },
-  progress: {
-    width: '100%',
-  },
-  message: {
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
-    },
-  },
+  ...message(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
+  ...content(theme),
 }));
 
 const Program: React.FC = (): ReactElement => {
