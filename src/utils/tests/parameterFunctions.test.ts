@@ -1,5 +1,5 @@
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
-import { roundByTotoRound, totoRoundByRound, calculateIndex } from '../parameterFunctions';
+import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../parameterFunctions';
 
 describe('if given a totoRound number', () => {
   test('returns the first round of that toto round', () => {

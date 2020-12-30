@@ -1,8 +1,9 @@
+import { Avatar, Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
+
 import { selectUser } from '../../store/user/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {

@@ -1,12 +1,13 @@
-import React, { useEffect, ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Box, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import LogInForm from '../../Components/Form/LogInForm';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Theme } from '@material-ui/core';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import LogInForm from '../../Components/Form/LogInForm';
 
 const useStyles = makeStyles((theme: Theme) => ({
   progress: {

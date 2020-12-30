@@ -1,16 +1,17 @@
+import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PlayersTable from '../../Components/Table/PlayersTable';
 import { selectAppLoading } from '../../store/appState/selectors';
-import { selectToken, selectUser } from '../../store/user/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
-import PlayersTable from '../../Components/Table/PlayersTable';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Box, Button, Grid, Typography } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import { selectToken, selectUser } from '../../store/user/selectors';
 import { progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({

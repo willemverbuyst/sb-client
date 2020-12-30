@@ -1,5 +1,8 @@
 import axios from 'axios';
+
+import { ISignUpCredentials } from '../../../models/credentials.model';
 import { IPlayer, IPlayerProfile } from '../../../models/player.model';
+import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import {
   addNewPlayer,
   addPlayer,
@@ -17,23 +20,21 @@ import {
 } from '../actions';
 import {
   ADD_NEW_PLAYER,
+  AddNewPlayer,
   ALL_PLAYERS_FETCHED,
+  AllPlayersFetched,
   DELETE_PLAYER,
+  DeletePlayer,
   PLAYER_PROFILE_FETCHED,
   PLAYER_SCORES_FETCHED,
-  REMOVE_ALL_PLAYERS,
-  UPDATE_ADMIN_STATUS,
-  AddNewPlayer,
-  AllPlayersFetched,
-  DeletePlayer,
   PlayerProfileFetched,
   PlayerScoresFetched,
+  REMOVE_ALL_PLAYERS,
   RemoveAllPlayers,
   ScoresPlayer,
+  UPDATE_ADMIN_STATUS,
   UpdateAdminStatus,
 } from '../types';
-import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
-import { ISignUpCredentials } from '../../../models/credentials.model';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import appState from './appState/reducer';
 import playersState from './players/reducer';
 import predictionsState from './predictions/reducer';

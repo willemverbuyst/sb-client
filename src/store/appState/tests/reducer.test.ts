@@ -1,5 +1,5 @@
 import reducer from '../reducer';
-import { APP_LOADING, APP_DONE_LOADING, SET_MESSAGE, AppLoading, AppDoneLoading, SetMessage, AppState } from '../types';
+import { APP_DONE_LOADING, APP_LOADING, AppDoneLoading, AppLoading, AppState, SET_MESSAGE, SetMessage } from '../types';
 
 describe('#appStateReducer', () => {
   const initialState: AppState = {

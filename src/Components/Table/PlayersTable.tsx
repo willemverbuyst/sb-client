@@ -1,10 +1,11 @@
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../store/user/selectors';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+
 import { IPlayer } from '../../models/player.model';
-import PlayerRow from './PlayerRow';
+import { selectUser } from '../../store/user/selectors';
 import DeleteDialog from '../Toast/DeleteDialog';
+import PlayerRow from './PlayerRow';
 
 const sortTable = (arr: IPlayer[]): IPlayer[] =>
   [...arr].sort((player1, player2) => player1.userName.toLowerCase().localeCompare(player2.userName.toLowerCase()));

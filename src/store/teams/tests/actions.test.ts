@@ -1,8 +1,9 @@
 import axios from 'axios';
+
 import { ITeam } from '../../../models/toto.models';
-import { allTeamsFetched, removeAllTeams, fetchAllTeams } from '../actions';
-import { ALL_TEAMS_FETCHED, REMOVE_ALL_TEAMS, AllTeamsFetched, RemoveAllTeams } from '../types';
-import { appLoading, appDoneLoading } from '../../appState/actions';
+import { appDoneLoading, appLoading } from '../../appState/actions';
+import { allTeamsFetched, fetchAllTeams, removeAllTeams } from '../actions';
+import { ALL_TEAMS_FETCHED, AllTeamsFetched, REMOVE_ALL_TEAMS, RemoveAllTeams } from '../types';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

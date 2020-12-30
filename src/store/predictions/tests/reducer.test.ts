@@ -3,16 +3,16 @@ import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../..
 import reducer from '../reducer';
 import {
   ALL_FIXTURES_FETCHED,
-  CURRENT_ROUND_FETCHED,
-  POST_PREDICTION,
-  REMOVE_ALL_FIXTURES,
-  UPDATE_PREDICTION,
   AllFixturesFetched,
+  CURRENT_ROUND_FETCHED,
   CurrentRoundFetched,
+  POST_PREDICTION,
   PostPrediction,
-  RemoveAllFixtures,
-  UpdatePrediction,
   PredictionsState,
+  REMOVE_ALL_FIXTURES,
+  RemoveAllFixtures,
+  UPDATE_PREDICTION,
+  UpdatePrediction,
 } from '../types';
 
 describe('#predictionsStateReducer', () => {

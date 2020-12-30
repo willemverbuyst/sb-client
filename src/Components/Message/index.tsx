@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
 import { Grid, makeStyles, Theme, Typography } from '@material-ui/core';
+import React, { ReactElement } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   message: {

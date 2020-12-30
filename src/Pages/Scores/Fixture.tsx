@@ -1,20 +1,21 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Box, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
-import { selectFixture } from '../../store/scores/selectors';
-import { fetchScoresFixture } from '../../store/scores/actions';
-import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+
+import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
+import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
-import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
+import { fetchScoresFixture } from '../../store/scores/actions';
+import { selectFixture } from '../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import { selectToken } from '../../store/user/selectors';
 import { divider, progress, title, topSection } from '../../ui/sharedClasses';
-import Message from '../../Components/Message';
+import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),

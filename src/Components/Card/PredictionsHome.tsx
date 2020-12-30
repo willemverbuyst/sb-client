@@ -1,5 +1,6 @@
-import React, { ReactElement } from 'react';
 import { Grid, Typography } from '@material-ui/core';
+import React, { ReactElement } from 'react';
+
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 
 type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };

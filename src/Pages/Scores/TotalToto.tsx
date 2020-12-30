@@ -1,21 +1,22 @@
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
+import { useHistory } from 'react-router-dom';
+
+import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
+import Message from '../../Components/Message';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { selectAppLoading } from '../../store/appState/selectors';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import { selectToken } from '../../store/user/selectors';
 import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
-import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),

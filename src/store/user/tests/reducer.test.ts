@@ -1,17 +1,17 @@
+import { IUser } from '../../../models/player.model';
+import { ITeam } from '../../../models/toto.models';
 import reducer from '../reducer';
 import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,
-  TOKEN_STILL_VALID_USER,
-  UPDATE_USER_PROFILE,
   LogInSuccessUser,
   LogOutUser,
+  TOKEN_STILL_VALID_USER,
   TokenUserStillValid,
+  UPDATE_USER_PROFILE,
   UpdateUserProfile,
   UserState,
 } from '../types';
-import { IUser } from '../../../models/player.model';
-import { ITeam } from '../../../models/toto.models';
 
 describe('#userReducer', () => {
   describe('with initial state and LOG_IN_SUCCESS_USER action', () => {

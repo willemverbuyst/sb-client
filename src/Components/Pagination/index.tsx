@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Pagination from '@material-ui/lab/Pagination';
+import React, { ReactElement } from 'react';
 
 type Props = {
   label: string;

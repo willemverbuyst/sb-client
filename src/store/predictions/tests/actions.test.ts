@@ -1,6 +1,8 @@
 import axios from 'axios';
+
 import { IPrediction } from '../../../models/predictions.model';
 import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
+import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import {
   allFixturesFetched,
   changePrediction,
@@ -14,17 +16,16 @@ import {
 } from '../actions';
 import {
   ALL_FIXTURES_FETCHED,
-  CURRENT_ROUND_FETCHED,
-  POST_PREDICTION,
-  REMOVE_ALL_FIXTURES,
-  UPDATE_PREDICTION,
   AllFixturesFetched,
+  CURRENT_ROUND_FETCHED,
   CurrentRoundFetched,
+  POST_PREDICTION,
   PostPrediction,
+  REMOVE_ALL_FIXTURES,
   RemoveAllFixtures,
+  UPDATE_PREDICTION,
   UpdatePrediction,
 } from '../types';
-import { appLoading, appDoneLoading, setMessage } from '../../appState/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

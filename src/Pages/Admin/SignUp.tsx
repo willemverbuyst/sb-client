@@ -1,13 +1,14 @@
-import React, { useEffect, ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Box, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import SignUpForm from '../../Components/Form/SingUpForm';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { selectUser } from '../../store/user/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Grid, Theme, Typography } from '@material-ui/core';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import SignUpForm from '../../Components/Form/SingUpForm';
 import { progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({

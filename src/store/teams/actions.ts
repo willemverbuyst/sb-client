@@ -1,12 +1,13 @@
-import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ALL_TEAMS_FETCHED, REMOVE_ALL_TEAMS, AllTeamsFetched, RemoveAllTeams } from './types';
-import { StoreState } from '../types';
-import { ITeam } from '../../models/toto.models';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
+import { apiUrl } from '../../config/constants';
+import { ITeam } from '../../models/toto.models';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { StoreState } from '../types';
+import { ALL_TEAMS_FETCHED, AllTeamsFetched, REMOVE_ALL_TEAMS, RemoveAllTeams } from './types';
 
 export const allTeamsFetched = (teams: ITeam[]): AllTeamsFetched => {
   return {

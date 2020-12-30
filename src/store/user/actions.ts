@@ -1,26 +1,27 @@
-import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
+import { apiUrl } from '../../config/constants';
+import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
+import { IUser } from '../../models/player.model';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { removeAllPlayers } from '../players/actions';
+import { removeAllFixtures } from '../predictions/actions';
+import { removeAllScores } from '../scores/actions';
+import { removeAllTeams } from '../teams/actions';
+import { StoreState } from '../types';
 import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,
-  TOKEN_STILL_VALID_USER,
-  UPDATE_USER_PROFILE,
   LogInSuccessUser,
   LogOutUser,
+  TOKEN_STILL_VALID_USER,
   TokenUserStillValid,
+  UPDATE_USER_PROFILE,
   UpdateUserProfile,
 } from './types';
-import { StoreState } from '../types';
-import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
-import { IUser } from '../../models/player.model';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { removeAllPlayers } from '../players/actions';
-import { removeAllFixtures } from '../predictions/actions';
-import { removeAllTeams } from '../teams/actions';
-import { removeAllScores } from '../scores/actions';
-import { ThunkAction } from 'redux-thunk';
-import { Action } from 'redux';
 
 export const logInSuccessUser = (user: IUser): LogInSuccessUser => {
   return {

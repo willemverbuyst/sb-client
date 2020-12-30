@@ -1,10 +1,3 @@
-import React, { useState, useEffect, ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addPlayer } from '../../store/players/actions';
-import { fetchAllTeams } from '../../store/teams/actions';
-import { selectTeams } from '../../store/teams/selectors';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   Button,
   Checkbox,
@@ -17,8 +10,16 @@ import {
   TextField,
   Theme,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
+import { addPlayer } from '../../store/players/actions';
+import { fetchAllTeams } from '../../store/teams/actions';
+import { selectTeams } from '../../store/teams/selectors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginTop: theme.spacing(1),
     },
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

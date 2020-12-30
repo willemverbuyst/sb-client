@@ -3,8 +3,8 @@ import {
   LOG_OUT_USER,
   TOKEN_STILL_VALID_USER,
   UPDATE_USER_PROFILE,
-  UserState,
   UserActionTypes,
+  UserState,
 } from './types';
 
 const token = localStorage.getItem('user_token');

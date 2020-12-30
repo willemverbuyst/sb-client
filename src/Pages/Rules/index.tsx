@@ -1,13 +1,14 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { Box, Grid, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React, { ReactElement, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { selectToken } from '../../store/user/selectors';
 import { content, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) =>

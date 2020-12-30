@@ -1,20 +1,21 @@
-import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectToken, selectUser } from '../../store/user/selectors';
-import { userLogOut } from '../../store/user/actions';
-import ball from '../../assets/ball.png';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Grid, IconButton, Tooltip, Typography } from '@material-ui/core';
-import Face from '@material-ui/icons/Face';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { Weekend } from '@material-ui/icons';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Face from '@material-ui/icons/Face';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import SportsSoccerIcon from '@material-ui/icons/SportsSoccer';
-import { Weekend } from '@material-ui/icons';
+import React, { ReactElement } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import ball from '../../assets/ball.png';
+import { userLogOut } from '../../store/user/actions';
+import { selectToken, selectUser } from '../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

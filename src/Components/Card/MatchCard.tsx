@@ -1,9 +1,10 @@
+import { Card, CardContent, Chip, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Chip, Grid, Theme, Typography } from '@material-ui/core';
+
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { timeStampFormattedToLocalDate, getTimeFromTimeStamp } from '../../utils/timeFunctions';
+import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
 import PredictionsHome from './PredictionsHome';
 import PublicPredictions from './PublicPredictions';

@@ -1,8 +1,10 @@
-import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
+
+import React, { ReactElement } from 'react';
+import { Bar } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import { UserWithScore } from '../../store/scores/types';
 import { selectUser } from '../../store/user/selectors';
 

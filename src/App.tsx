@@ -1,28 +1,29 @@
+import { Box, Grid } from '@material-ui/core';
+import { createStyles, makeStyles, MuiThemeProvider, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { getUserWithStoredToken } from './store/user/actions';
-import IceBlueGold from './ui/theme';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
 import Header from './Components/Header';
 import Toast from './Components/Toast';
 import UserDisplay from './Components/UserDisplay/UserDisplay';
-import Fixture from './Pages/Scores/Fixture';
-import ListOfPlayers from './Pages/Players/ListOfPlayers';
+import SignUp from './Pages/Admin/SignUp';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
-import Predictions from './Pages/Predictions';
+import ListOfPlayers from './Pages/Players/ListOfPlayers';
 import PredictionsPlayer from './Pages/Players/PredictionsPlayer';
+import ScoresPlayer from './Pages/Players/ScoresPlayer';
+import Predictions from './Pages/Predictions';
 import Profile from './Pages/Profile';
 import Program from './Pages/Program';
 import Rules from './Pages/Rules';
+import Fixture from './Pages/Scores/Fixture';
 import Round from './Pages/Scores/Round';
-import ScoresPlayer from './Pages/Players/ScoresPlayer';
 import ScoresUser from './Pages/Scores/ScoresUser';
-import SignUp from './Pages/Admin/SignUp';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
-import { createStyles, makeStyles, MuiThemeProvider, Theme } from '@material-ui/core/styles';
-import { Box, Grid } from '@material-ui/core';
+import { getUserWithStoredToken } from './store/user/actions';
+import IceBlueGold from './ui/theme';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

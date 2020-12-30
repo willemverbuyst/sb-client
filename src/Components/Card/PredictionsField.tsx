@@ -1,6 +1,7 @@
+import { Button, Grid, makeStyles, TextField, Theme, Tooltip, Typography } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, Grid, TextField, Theme, Typography, Tooltip, makeStyles } from '@material-ui/core';
+
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../store/predictions/actions';

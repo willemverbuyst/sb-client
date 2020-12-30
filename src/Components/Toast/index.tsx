@@ -1,9 +1,10 @@
+import { Snackbar } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+
 import { selectMessage } from '../../store/appState/selectors';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Snackbar } from '@material-ui/core';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;

@@ -1,10 +1,11 @@
+import { Button, Grid, TextField } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Alert } from '@material-ui/lab';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, Grid, TextField } from '@material-ui/core';
+
 import { ButtonEvent } from '../../models/events.model';
 import { changePassword } from '../../store/user/actions';
-import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {

@@ -1,7 +1,3 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../store/user/selectors';
 import {
   Button,
   Checkbox,
@@ -13,10 +9,15 @@ import {
   Select,
   TextField,
 } from '@material-ui/core';
-import { fetchAllTeams } from '../../store/teams/actions';
-import { ButtonEvent } from '../../models/events.model';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { IProfileDetails } from '../../models/credentials.model';
+import { ButtonEvent } from '../../models/events.model';
+import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors';
+import { selectUser } from '../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginTop: theme.spacing(1),
     },
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

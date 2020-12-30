@@ -1,19 +1,20 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
-import { selectAppLoading } from '../../store/appState/selectors';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+
+import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
-import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import { selectToken } from '../../store/user/selectors';
+import { divider, progress, subTitle, subTitleSection, title, topSection, waitMessage } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import { divider, progress, title, subTitle, subTitleSection, topSection, waitMessage } from '../../ui/sharedClasses';
-import Message from '../../Components/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),

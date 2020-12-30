@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import ReduxThunk from 'redux-thunk';
+
 import reducer from './rootReducer';
 
 /*eslint-disable */

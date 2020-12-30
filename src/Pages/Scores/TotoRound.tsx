@@ -1,20 +1,21 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { fetchScoresTotoRound } from '../../store/scores/actions';
-import { selectTotoRound } from '../../store/scores/selectors';
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Breadcrumbs, Divider, Grid, Typography, Theme } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { selectAppLoading } from '../../store/appState/selectors';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+
+import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import RoundSelector from '../../Components/Selector/RoundSelector';
-import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
+import { selectAppLoading } from '../../store/appState/selectors';
+import { fetchScoresTotoRound } from '../../store/scores/actions';
+import { selectTotoRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import { selectToken } from '../../store/user/selectors';
 import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({

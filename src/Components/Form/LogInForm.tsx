@@ -1,11 +1,12 @@
-import React, { useState, ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
-import { userLogIn } from '../../store/user/actions';
-import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Grid, TextField, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import React, { ReactElement, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
+import { userLogIn } from '../../store/user/actions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {

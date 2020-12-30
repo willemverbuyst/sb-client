@@ -1,19 +1,20 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { fetchPlayerProfile } from '../../store/players/actions';
-import { selectPlayerProfile } from '../../store/players/selectors';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
-import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import { fetchPlayerProfile } from '../../store/players/actions';
+import { selectPlayerProfile } from '../../store/players/selectors';
+import { selectToken } from '../../store/user/selectors';
 import { content, pagination, progress, title, topSection, waitMessage } from '../../ui/sharedClasses';
+import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
