@@ -1,21 +1,7 @@
 import axios from 'axios';
 
-import {
-  REMOVE_ALL_SCORES,
-  SCORES_FIXTURE_FETCHED,
-  SCORES_ROUND_FETCHED,
-  SCORES_TOTAL_TOTO_FETCHED,
-  SCORES_TOTO_ROUND_FETCHED,
-  FixtureWithScores,
-  UserWithScore,
-  RemoveAllScores,
-  ScoresFixtureFetched,
-  ScoresRoundFetched,
-  ScoresTotalTotoFetched,
-  ScoresTotoRoundFetched,
-  PredictionWithScorePerUser,
-  Scores,
-} from '../types';
+import { IFixture } from '../../../models/toto.models';
+import { appDoneLoading, appLoading } from '../../appState/actions';
 import {
   fetchScoresFixture,
   fetchScoresRound,
@@ -27,9 +13,22 @@ import {
   scoresTotalTotoFetched,
   scoresTotoRoundFetched,
 } from '../actions';
-
-import { appLoading, appDoneLoading } from '../../appState/actions';
-import { IFixture } from '../../../models/toto.models';
+import {
+  FixtureWithScores,
+  PredictionWithScorePerUser,
+  REMOVE_ALL_SCORES,
+  RemoveAllScores,
+  Scores,
+  SCORES_FIXTURE_FETCHED,
+  SCORES_ROUND_FETCHED,
+  SCORES_TOTAL_TOTO_FETCHED,
+  SCORES_TOTO_ROUND_FETCHED,
+  ScoresFixtureFetched,
+  ScoresRoundFetched,
+  ScoresTotalTotoFetched,
+  ScoresTotoRoundFetched,
+  UserWithScore,
+} from '../types';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

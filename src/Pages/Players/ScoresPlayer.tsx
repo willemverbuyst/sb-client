@@ -1,35 +1,29 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
-import { selectAppLoading } from '../../store/appState/selectors';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+
+import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
-import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import { selectToken } from '../../store/user/selectors';
+import { divider, progress, subTitle, subTitleSection, title, topSection, waitMessage } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main,
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
-  },
-  progress: {
-    minHeight: '70vh',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  ...divider(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...subTitle(theme),
+  ...subTitleSection(theme),
+  ...title(theme),
+  ...waitMessage(theme),
 }));
 
 const ScoresPlayer: React.FC = (): ReactElement => {
@@ -40,6 +34,8 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const scoresPlayer = useSelector(selectPlayerScores);
   const { id } = useParams<{ id: string }>();
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -51,9 +47,9 @@ const ScoresPlayer: React.FC = (): ReactElement => {
 
   return isLoading ? (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
-          <Typography variant="h3" className={classes.title}>
+          <Typography variant="h3" className={classes.waitMessage}>
             Wacht op scores
           </Typography>
         </Grid>
@@ -64,7 +60,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
     </Box>
   ) : scoresPlayer ? (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             {scoresPlayer.userName}
@@ -74,7 +70,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
           <Grid>
             <Button
               fullWidth
-              variant="contained"
+              variant={btnVariant ? 'contained' : 'outlined'}
               size="small"
               color="secondary"
               disableElevation
@@ -88,8 +84,10 @@ const ScoresPlayer: React.FC = (): ReactElement => {
 
       {scoresPlayer ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">TOTO RONDES</Typography>
+          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
+            <Typography variant="h4" className={classes.subTitle}>
+              TOTO RONDES
+            </Typography>
           </Grid>
 
           <Grid className={classes.divider}>
@@ -108,9 +106,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline">Nog geen scores</Typography>
-        </Grid>
+        <Message message={`Nog geen scores`} />
       )}
     </Box>
   ) : (

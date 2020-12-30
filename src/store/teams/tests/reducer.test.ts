@@ -1,6 +1,6 @@
+import { ITeam } from '../../../models/toto.models';
 import reducer from '../reducer';
 import { ALL_TEAMS_FETCHED, REMOVE_ALL_TEAMS, TeamsState } from '../types';
-import { ITeam } from '../../../models/toto.models';
 
 describe('#teamsReducer', () => {
   describe('w/ initial state and ALL_TEAMS_FETCHED action type', () => {

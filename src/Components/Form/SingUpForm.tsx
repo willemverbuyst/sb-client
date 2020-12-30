@@ -8,16 +8,18 @@ import {
   MenuItem,
   Select,
   TextField,
+  Theme,
 } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { IProfileDetails } from '../../models/credentials.model';
+import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
+import { addPlayer } from '../../store/players/actions';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors';
-import { selectUser } from '../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(2),
   },
   submit: {
-    marginTop: theme.spacing(3),
+    margin: theme.spacing(3, 0, 2),
   },
   formControl: {
     margin: theme.spacing(1),
@@ -46,24 +48,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = {
-  handleSubmit: () => void;
-};
-
-const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
+const SignUpForm: React.FC = (): ReactElement => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
   const teams = useSelector(selectTeams);
-  const [profileDetails, setProfileDetails] = useState<IProfileDetails>({
-    userName: user?.userName || '',
-    firstName: user?.firstName || '',
-    lastName: user?.lastName || '',
-    email: user?.email || '',
-    phoneNumber: user?.phoneNumber || '',
-    admin: user?.admin || false,
-    totaalToto: user?.totaalToto || true,
-    teamId: user?.team.id || '',
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
+    userName: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    admin: false,
+    totaalToto: true,
+    teamId: '',
   });
 
   useEffect(() => {
@@ -74,23 +74,27 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
-    setProfileDetails({
+
+    dispatch(addPlayer(signUpCredentials));
+
+    setSignUpCredentials({
       userName: '',
       firstName: '',
       lastName: '',
       email: '',
+      password: '',
       phoneNumber: '',
       admin: false,
       totaalToto: true,
       teamId: '',
     });
 
-    props.handleSubmit();
+    history.push('/spelers');
   };
 
   return (
     <Grid container justify="center">
-      <Grid item xs={12} sm={6} lg={4} className={classes.paper}>
+      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
         <form className={classes.form} noValidate>
           <Grid container spacing={1}>
             <Grid item xs={12}>
@@ -102,10 +106,11 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
                 id="userName"
                 label="User Name"
                 name="userName"
-                value={profileDetails.userName}
+                autoFocus
+                value={signUpCredentials.userName}
                 onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
+                  setSignUpCredentials({
+                    ...signUpCredentials,
                     userName: e.target.value,
                   })
                 }
@@ -120,10 +125,10 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
                 id="firstName"
                 label="First Name"
                 name="firstName"
-                value={profileDetails.firstName}
+                value={signUpCredentials.firstName}
                 onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
+                  setSignUpCredentials({
+                    ...signUpCredentials,
                     firstName: e.target.value,
                   })
                 }
@@ -138,10 +143,10 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                value={profileDetails.lastName}
+                value={signUpCredentials.lastName}
                 onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
+                  setSignUpCredentials({
+                    ...signUpCredentials,
                     lastName: e.target.value,
                   })
                 }
@@ -157,11 +162,31 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                value={profileDetails.email}
+                value={signUpCredentials.email}
                 onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
+                  setSignUpCredentials({
+                    ...signUpCredentials,
                     email: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={signUpCredentials.password}
+                onChange={(e) =>
+                  setSignUpCredentials({
+                    ...signUpCredentials,
+                    password: e.target.value,
                   })
                 }
               />
@@ -170,11 +195,11 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={profileDetails.admin}
+                    checked={signUpCredentials.admin}
                     color="primary"
                     onChange={(e) =>
-                      setProfileDetails({
-                        ...profileDetails,
+                      setSignUpCredentials({
+                        ...signUpCredentials,
                         admin: e.target.checked,
                       })
                     }
@@ -187,11 +212,11 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={profileDetails.totaalToto}
+                    checked={signUpCredentials.totaalToto}
                     color="primary"
                     onChange={(e) =>
-                      setProfileDetails({
-                        ...profileDetails,
+                      setSignUpCredentials({
+                        ...signUpCredentials,
                         totaalToto: e.target.checked,
                       })
                     }
@@ -211,10 +236,10 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
               label="phomeNumber"
               type="text"
               id="phoneNumber"
-              value={profileDetails.phoneNumber}
+              value={signUpCredentials.phoneNumber}
               onChange={(e) =>
-                setProfileDetails({
-                  ...profileDetails,
+                setSignUpCredentials({
+                  ...signUpCredentials,
                   phoneNumber: e.target.value,
                 })
               }
@@ -227,10 +252,10 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
                 <Select
                   labelId="favTeam"
                   id="teeamId"
-                  value={profileDetails.teamId}
+                  value={signUpCredentials.teamId}
                   onChange={(e) =>
-                    setProfileDetails({
-                      ...profileDetails,
+                    setSignUpCredentials({
+                      ...signUpCredentials,
                       teamId: e.target.value as number,
                     })
                   }
@@ -250,14 +275,14 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
 
           <Button
             type="submit"
-            fullWidth
             disableElevation
+            fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             onClick={submitForm}
           >
-            UPDATE PROFIEL
+            Sign Up
           </Button>
         </form>
       </Grid>
@@ -265,4 +290,4 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
   );
 };
 
-export default EditProfileForm;
+export default SignUpForm;

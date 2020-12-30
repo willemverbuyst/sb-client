@@ -1,5 +1,5 @@
-import { appLoading, appDoneLoading, setMessage } from '../actions';
-import { APP_LOADING, APP_DONE_LOADING, SET_MESSAGE, AppLoading, AppDoneLoading, SetMessage } from '../types';
+import { appDoneLoading, appLoading, setMessage } from '../actions';
+import { APP_DONE_LOADING, APP_LOADING, AppDoneLoading, AppLoading, SET_MESSAGE, SetMessage } from '../types';
 
 describe('#appState', () => {
   describe('#setMessage with severity and text', () => {

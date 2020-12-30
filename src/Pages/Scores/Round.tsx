@@ -1,40 +1,32 @@
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
+import { useHistory, useParams } from 'react-router-dom';
+
+import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
+import Message from '../../Components/Message';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import { TOTAL_ROUNDS } from '../../constants/setupGame';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresRound } from '../../store/scores/actions';
 import { selectRound } from '../../store/scores/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { selectAppLoading } from '../../store/appState/selectors';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import { TOTAL_ROUNDS } from '../../constants/setupGame';
+import { selectToken } from '../../store/user/selectors';
+import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main,
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
-  },
-  progress: {
-    minHeight: '70vh',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  breadCrumbs: {
-    marginTop: theme.spacing(6),
-  },
+  ...divider(theme),
+  ...divider(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
+  ...subTitle(theme),
+  ...subTitleSection(theme),
+  ...breadCrumbs(theme),
 }));
 
 const Round: React.FC = (): ReactElement => {
@@ -45,6 +37,8 @@ const Round: React.FC = (): ReactElement => {
   const round = useSelector(selectRound);
   const isLoading = useSelector(selectAppLoading);
   const { id } = useParams<{ id: string }>();
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -79,14 +73,20 @@ const Round: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Klassement
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={gotoPredictions}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={gotoPredictions}
+          >
             MIJN VOORSPELLINGEN
           </Button>
         </Grid>
@@ -98,8 +98,10 @@ const Round: React.FC = (): ReactElement => {
         </Box>
       ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">RONDE {id}</Typography>
+          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
+            <Typography variant="h4" className={classes.subTitle}>
+              RONDE {id}
+            </Typography>
           </Grid>
 
           <Divider className={classes.divider} />
@@ -111,9 +113,7 @@ const Round: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline">Nog geen scores voor deze ronde</Typography>
-        </Grid>
+        <Message message={`Nog geen scores voor deze ronde`} />
       )}
 
       <Grid container justify="center" className={classes.breadCrumbs}>

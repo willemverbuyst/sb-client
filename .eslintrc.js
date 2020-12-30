@@ -27,8 +27,23 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
 
+  overrides: [
+    {
+      files: 'server/**/*.js',
+      rules: {
+        'simple-import-sort/imports': 'off',
+        'import/order': ['error', { 'newlines-between': 'always' }],
+      },
+    },
+  ],
+
+  plugins: ['simple-import-sort'],
+
   rules: {
     'no-console': 0,
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
   },

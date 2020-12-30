@@ -1,24 +1,21 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
-import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import { Box, Grid, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React, { ReactElement, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { selectToken } from '../../store/user/selectors';
+import { content, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    title: {
-      fontWeight: 'bold',
-      marginBottom: theme.spacing(1),
-      color: theme.palette.secondary.main,
-    },
-    content: {
-      marginTop: theme.spacing(6),
-    },
+    ...title(theme),
+    ...topSection(theme),
+    ...content(theme),
   }),
 );
 
@@ -70,7 +67,7 @@ const Rules: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Regels

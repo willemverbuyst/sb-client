@@ -1,43 +1,31 @@
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
+import { useHistory } from 'react-router-dom';
+
+import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
+import Message from '../../Components/Message';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
+import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { selectAppLoading } from '../../store/appState/selectors';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import { UserWithScore } from '../../store/scores/types';
-import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
+import { selectToken } from '../../store/user/selectors';
+import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main,
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
-  },
-  progress: {
-    minHeight: '70vh',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  selector: {
-    marginTop: theme.spacing(6),
-  },
-  breadCrumbs: {
-    marginTop: theme.spacing(6),
-  },
+  ...divider(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
+  ...subTitle(theme),
+  ...subTitleSection(theme),
+  ...breadCrumbs(theme),
 }));
 
 const TotalToto: React.FC = (): ReactElement => {
@@ -47,6 +35,8 @@ const TotalToto: React.FC = (): ReactElement => {
   const history = useHistory();
   const totalToto = useSelector(selectTotalToto);
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -66,14 +56,20 @@ const TotalToto: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Klassement
           </Typography>
         </Grid>
         <Grid>
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={gotoTotoRound}>
+          <Button
+            variant={btnVariant ? 'contained' : 'outlined'}
+            size="small"
+            color="primary"
+            disableElevation
+            onClick={gotoTotoRound}
+          >
             MIJN VOORSPELLINGEN
           </Button>
         </Grid>
@@ -85,8 +81,10 @@ const TotalToto: React.FC = (): ReactElement => {
         </Box>
       ) : totalToto && totalToto.length > 0 ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.totoRound}>
-            <Typography variant="h4">TOTAAL TOTO</Typography>
+          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
+            <Typography variant="h4" className={classes.subTitle}>
+              TOTAAL TOTO
+            </Typography>
           </Grid>
 
           <Divider className={classes.divider} />
@@ -98,9 +96,7 @@ const TotalToto: React.FC = (): ReactElement => {
           </Grid>
         </>
       ) : (
-        <Grid>
-          <Typography variant="overline">Nog geen scores voor totalToto</Typography>
-        </Grid>
+        <Message message={`Nog geen scores voor totalToto`} />
       )}
       <Grid container justify="center" className={classes.breadCrumbs}>
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">

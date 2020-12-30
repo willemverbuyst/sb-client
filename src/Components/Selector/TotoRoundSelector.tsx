@@ -1,14 +1,14 @@
-import React, { ReactElement, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grid from '@material-ui/core/Grid';
 import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import React, { ReactElement, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const options = [...Array(11)].map((_u, i) => `Toto ronde ${i + 1}`);
 

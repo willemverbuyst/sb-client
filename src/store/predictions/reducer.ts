@@ -1,11 +1,11 @@
 import {
-  CURRENT_ROUND_FETCHED,
   ALL_FIXTURES_FETCHED,
+  CURRENT_ROUND_FETCHED,
   POST_PREDICTION,
+  PredictionActionTypes,
+  PredictionsState,
   REMOVE_ALL_FIXTURES,
   UPDATE_PREDICTION,
-  PredictionsState,
-  PredictionActionTypes,
 } from './types';
 
 const initialState: PredictionsState = {

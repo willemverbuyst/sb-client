@@ -4,10 +4,10 @@ import {
   DELETE_PLAYER,
   PLAYER_PROFILE_FETCHED,
   PLAYER_SCORES_FETCHED,
+  PlayersActionTypes,
+  PlayersState,
   REMOVE_ALL_PLAYERS,
   UPDATE_ADMIN_STATUS,
-  PlayersState,
-  PlayersActionTypes,
 } from './types';
 
 const initialState: PlayersState = {

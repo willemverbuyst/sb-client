@@ -1,32 +1,23 @@
+import { Box, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import MatchCard from '../../Components/Card/MatchCard';
+import Message from '../../Components/Message';
+import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
-import MatchCard from '../../Components/Card/MatchCard';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Grid, Theme, Typography } from '@material-ui/core';
+import { content, progress, title, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(3),
-    color: theme.palette.secondary.main,
-  },
-  subTitle: {
-    marginBottom: theme.spacing(1),
-    color: theme.palette.primary.main,
-  },
-  progress: {
-    minHeight: '70vh',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  ...content(theme),
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
 }));
 
 const Program: React.FC = (): ReactElement => {
@@ -49,7 +40,7 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container>
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Programma
@@ -62,14 +53,16 @@ const Program: React.FC = (): ReactElement => {
           <ProgressLinear />
         </Box>
       ) : currentRound ? (
-        <Grid item xs={12} container justify="center">
+        <Grid item xs={12} container justify="center" className={classes.content}>
           {currentRound.fixtures.map((wedstrijd, i) => (
             <Grid item key={i} lg={4} md={6} xs={12}>
               <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display="Home" />
             </Grid>
           ))}
         </Grid>
-      ) : null}
+      ) : (
+        <Message message={`Er staan voor deze week geen wedstrijden gepland.`} />
+      )}
     </Box>
   );
 };

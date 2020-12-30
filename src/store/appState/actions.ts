@@ -1,4 +1,4 @@
-import { APP_LOADING, APP_DONE_LOADING, SET_MESSAGE, AppLoading, AppDoneLoading, SetMessage } from './types';
+import { APP_DONE_LOADING, APP_LOADING, AppDoneLoading, AppLoading, SET_MESSAGE, SetMessage } from './types';
 
 export const appDoneLoading = (): AppDoneLoading => ({
   type: APP_DONE_LOADING,

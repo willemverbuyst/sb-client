@@ -1,27 +1,28 @@
-import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Action, Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
+import { apiUrl } from '../../config/constants';
+import { ISignUpCredentials } from '../../models/credentials.model';
+import { IPlayer, IPlayerProfile } from '../../models/player.model';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { StoreState } from '../types';
 import {
   ADD_NEW_PLAYER,
+  AddNewPlayer,
   ALL_PLAYERS_FETCHED,
+  AllPlayersFetched,
+  DELETE_PLAYER,
+  DeletePlayer,
   PLAYER_PROFILE_FETCHED,
   PLAYER_SCORES_FETCHED,
-  REMOVE_ALL_PLAYERS,
-  AddNewPlayer,
-  AllPlayersFetched,
   PlayerProfileFetched,
   PlayerScoresFetched,
+  REMOVE_ALL_PLAYERS,
   RemoveAllPlayers,
   ScoresPlayer,
   UpdateAdminStatus,
-  DeletePlayer,
-  DELETE_PLAYER,
 } from './types';
-import { StoreState } from '../types';
-import { ISignUpCredentials } from '../../models/credentials.model';
-import { IPlayer, IPlayerProfile } from '../../models/player.model';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { ThunkAction } from 'redux-thunk';
 
 export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
   return {

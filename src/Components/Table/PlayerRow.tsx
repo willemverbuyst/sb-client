@@ -1,12 +1,13 @@
-import React, { ReactElement, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { Button, Checkbox, TableCell, TableRow } from '@material-ui/core';
+import { red } from '@material-ui/core/colors';
+import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
-import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
+import React, { ReactElement, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
-import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   avatar: {

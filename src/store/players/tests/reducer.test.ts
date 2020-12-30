@@ -1,23 +1,23 @@
+import { IPlayer, IPlayerProfile } from '../../../models/player.model';
 import reducer from '../reducer';
 import {
   ADD_NEW_PLAYER,
+  AddNewPlayer,
   ALL_PLAYERS_FETCHED,
+  AllPlayersFetched,
   DELETE_PLAYER,
+  DeletePlayer,
   PLAYER_PROFILE_FETCHED,
   PLAYER_SCORES_FETCHED,
-  REMOVE_ALL_PLAYERS,
-  UPDATE_ADMIN_STATUS,
-  PlayersState,
-  AddNewPlayer,
-  AllPlayersFetched,
-  DeletePlayer,
   PlayerProfileFetched,
   PlayerScoresFetched,
+  PlayersState,
+  REMOVE_ALL_PLAYERS,
   RemoveAllPlayers,
   ScoresPlayer,
+  UPDATE_ADMIN_STATUS,
   UpdateAdminStatus,
 } from '../types';
-import { IPlayer, IPlayerProfile } from '../../../models/player.model';
 
 describe('#playersStateReducer', () => {
   describe('if given ADD_NEW_PLAYER action type and intialState', () => {

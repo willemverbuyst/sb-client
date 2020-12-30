@@ -1,44 +1,28 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllFixtures } from '../../store/predictions/actions';
-import { selectFixtures } from '../../store/predictions/selectors';
-import { selectToken } from '../../store/user/selectors';
-import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, Theme, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import { selectAppLoading } from '../../store/appState/selectors';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
+import { selectAppLoading } from '../../store/appState/selectors';
+import { fetchAllFixtures } from '../../store/predictions/actions';
+import { selectFixtures } from '../../store/predictions/selectors';
+import { selectToken } from '../../store/user/selectors';
+import { content, pagination, progress, title, topSection } from '../../ui/sharedClasses';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    fontWeight: 'bold',
-    marginBottom: theme.spacing(3),
-    color: theme.palette.secondary.main,
-  },
-  subTitle: {
-    marginBottom: theme.spacing(1),
-    color: theme.palette.primary.main,
-  },
-  divider: {
-    marginBottom: theme.spacing(6),
-  },
-  totoRound: {
-    marginBottom: theme.spacing(6),
-  },
-  pagination: {
-    padding: theme.spacing(2),
-  },
-  progress: {
-    minHeight: '70vh',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  ...progress(),
+  ...topSection(theme),
+  ...title(theme),
+  ...content(theme),
+  ...pagination(theme),
 }));
 
 const Predictions: React.FC = (): ReactElement => {
@@ -52,6 +36,8 @@ const Predictions: React.FC = (): ReactElement => {
   let t = +totoronde;
   let r = +ronde;
   const isLoading = useSelector(selectAppLoading);
+  const theme = useTheme();
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -78,7 +64,7 @@ const Predictions: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container justify="space-between">
+      <Grid container className={classes.topSection}>
         <Grid>
           <Typography variant="h3" className={classes.title}>
             Voorspellingen
@@ -89,7 +75,7 @@ const Predictions: React.FC = (): ReactElement => {
             <Grid>
               <Button
                 fullWidth
-                variant="contained"
+                variant={btnVariant ? 'contained' : 'outlined'}
                 size="small"
                 color="secondary"
                 disableElevation
@@ -99,7 +85,9 @@ const Predictions: React.FC = (): ReactElement => {
               </Button>
             </Grid>
           </Grid>
-        ) : null}
+        ) : (
+          <></>
+        )}
       </Grid>
 
       {isLoading ? (
@@ -108,7 +96,7 @@ const Predictions: React.FC = (): ReactElement => {
         </Box>
       ) : fixtures ? (
         <>
-          <Grid item xs={12} container justify="center">
+          <Grid item xs={12} container justify="center" className={classes.content}>
             {fixtures
               ? [...fixtures[t - 1][calculateIndex(r)]]
                   .sort((f1, f2) => f1.eventTimeStamp - f2.eventTimeStamp)
@@ -119,20 +107,22 @@ const Predictions: React.FC = (): ReactElement => {
                   ))
               : null}
           </Grid>
-          <PaginationComponent
-            label="Totoronde"
-            page={t}
-            count={TOTO_ROUNDS}
-            color="primary"
-            onChange={handleChangeTotoRounds}
-          />
-          <PaginationComponent
-            label="Speelronde"
-            page={r}
-            count={TOTAL_ROUNDS}
-            color="secondary"
-            onChange={handleChangeRounds}
-          />
+          <Grid className={classes.pagination}>
+            <PaginationComponent
+              label="Totoronde"
+              page={t}
+              count={TOTO_ROUNDS}
+              color="primary"
+              onChange={handleChangeTotoRounds}
+            />
+            <PaginationComponent
+              label="Speelronde"
+              page={r}
+              count={TOTAL_ROUNDS}
+              color="secondary"
+              onChange={handleChangeRounds}
+            />
+          </Grid>
         </>
       ) : null}
     </Box>

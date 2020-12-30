@@ -1,21 +1,21 @@
 import { IFixture } from '../../../models/toto.models';
 import reducer from '../reducer';
 import {
+  FixtureWithScores,
+  PredictionWithScorePerUser,
   REMOVE_ALL_SCORES,
+  RemoveAllScores,
+  Scores,
   SCORES_FIXTURE_FETCHED,
   SCORES_ROUND_FETCHED,
   SCORES_TOTAL_TOTO_FETCHED,
   SCORES_TOTO_ROUND_FETCHED,
-  FixtureWithScores,
-  UserWithScore,
-  RemoveAllScores,
   ScoresFixtureFetched,
   ScoresRoundFetched,
+  ScoresState,
   ScoresTotalTotoFetched,
   ScoresTotoRoundFetched,
-  ScoresState,
-  PredictionWithScorePerUser,
-  Scores,
+  UserWithScore,
 } from '../types';
 
 describe('#scoresStateReducer', () => {

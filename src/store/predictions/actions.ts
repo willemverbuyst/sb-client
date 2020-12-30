@@ -1,23 +1,24 @@
-import { apiUrl } from '../../config/constants';
 import axios from 'axios';
 import { Action, Dispatch } from 'redux';
-import {
-  ALL_FIXTURES_FETCHED,
-  CURRENT_ROUND_FETCHED,
-  POST_PREDICTION,
-  REMOVE_ALL_FIXTURES,
-  UPDATE_PREDICTION,
-  AllFixturesFetched,
-  CurrentRoundFetched,
-  PostPrediction,
-  RemoveAllFixtures,
-  UpdatePrediction,
-} from './types';
-import { StoreState } from '../types';
+import { ThunkAction } from 'redux-thunk';
+
+import { apiUrl } from '../../config/constants';
 import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
-import { appLoading, appDoneLoading, setMessage } from '../appState/actions';
-import { ThunkAction } from 'redux-thunk';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { StoreState } from '../types';
+import {
+  ALL_FIXTURES_FETCHED,
+  AllFixturesFetched,
+  CURRENT_ROUND_FETCHED,
+  CurrentRoundFetched,
+  POST_PREDICTION,
+  PostPrediction,
+  REMOVE_ALL_FIXTURES,
+  RemoveAllFixtures,
+  UPDATE_PREDICTION,
+  UpdatePrediction,
+} from './types';
 
 export const allFixturesFetched = (allFixtures: TotoRound[]): AllFixturesFetched => {
   return {
