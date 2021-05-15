@@ -17,6 +17,7 @@ import { selectRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
 import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { sortValues } from '../../utils/sortFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
@@ -51,11 +52,7 @@ const Round: React.FC = (): ReactElement => {
   }, [dispatch, id, round]);
 
   const roundSortedByName: UserWithScore[] =
-    round && round.usersWithScores
-      ? [...round.usersWithScores].sort((name1, name2) =>
-          name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()),
-        )
-      : [];
+    round && round.usersWithScores ? sortValues<UserWithScore>(round.usersWithScores) : [];
 
   const gotoPredictions = () => {
     const t = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;

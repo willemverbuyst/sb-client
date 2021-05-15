@@ -15,6 +15,7 @@ import { selectFixture } from '../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
 import { divider, progress, title, topSection } from '../../ui/sharedClasses';
+import { sortValues } from '../../utils/sortFunctions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -64,9 +65,7 @@ const Fixture: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const scoresSortedByName: PredictionWithScorePerUser[] =
-    fixture && fixture.scores
-      ? [...fixture.scores].sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
-      : [];
+    fixture && fixture.scores ? sortValues<PredictionWithScorePerUser>(fixture.scores) : [];
 
   return (
     <Box>
