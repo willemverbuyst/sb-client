@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { selectToken } from '../../store/user/selectors';
-import { title, topSection } from '../../ui/sharedClasses';
+import { content, title, topSection } from '../../ui/sharedClasses';
 import AccordionWithRules from './AccordionWithRules';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    ...content(theme),
     ...title(theme),
     ...topSection(theme),
   }),
@@ -33,7 +34,11 @@ const Rules: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
       </Grid>
-      <AccordionWithRules />
+      <Grid container justify="center" className={classes.content}>
+        <Grid item xs={12} md={8}>
+          <AccordionWithRules />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
