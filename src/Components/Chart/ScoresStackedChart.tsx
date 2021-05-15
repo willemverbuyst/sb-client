@@ -1,33 +1,34 @@
 import 'chartjs-plugin-datalabels';
 
+import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { ScoresPlayer } from '../../store/players/types';
 import { selectUser } from '../../store/user/selectors';
 
-type Color = {
+interface Color {
   color1: string;
   color2: string;
   color3: string;
   color4: string;
-};
+}
 
-type Props = {
+interface IProps {
   scoresPlayer: ScoresPlayer;
   colorMain: Color;
   colorHover: Color;
   loggedInUser: boolean;
-};
+}
 
-const ScoresStackedChart: React.FC<Props> = ({
+const ScoresStackedChart: React.FC<IProps> = ({
   scoresPlayer,
   colorMain,
   colorHover,
   loggedInUser,
-}: Props): ReactElement => {
+}: IProps): ReactElement => {
   const history = useHistory();
   const user = useSelector(selectUser);
   const { id, scores } = scoresPlayer;
@@ -52,7 +53,7 @@ const ScoresStackedChart: React.FC<Props> = ({
   const totals = scores.map((totoround) => totoround.reduce((a, b) => a + b));
   const max = Math.max(...totals) * 1.2;
 
-  const chartData = {
+  const chartData: ChartData<chartjs.ChartData> = {
     labels: scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
     datasets: [
       {
@@ -94,59 +95,61 @@ const ScoresStackedChart: React.FC<Props> = ({
     ],
   };
 
+  const chartOptions: chartjs.ChartOptions = {
+    tooltips: {
+      enabled: true,
+      callbacks: {
+        title: (tooltipItem) =>
+          typeof tooltipItem[0].index === 'number' ? `Scores: ${scores[tooltipItem[0].index]}` : `Scores ???`,
+        label: () => ``,
+      },
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            display: false,
+            suggestedMin: 0,
+            suggestedMax: max,
+          },
+          gridLines: {
+            display: false,
+          },
+          stacked: true,
+        },
+      ],
+      xAxes: [
+        {
+          ticks: {
+            display: true,
+          },
+          gridLines: {
+            display: false,
+          },
+          stacked: true,
+        },
+      ],
+    },
+    plugins: {
+      datalabels: {
+        display: (ctx) => ctx.datasetIndex === 3,
+        formatter: (_value, ctx) => totals[ctx.dataIndex],
+        anchor: 'end',
+        align: 'end',
+        color: '#000',
+      },
+    },
+  };
+
   return (
     <Bar
       data={chartData}
-      options={{
-        tooltips: {
-          enabled: true,
-          callbacks: {
-            title: (tooltipItem) =>
-              typeof tooltipItem[0].index === 'number' ? `Scores: ${scores[tooltipItem[0].index]}` : `Scores ???`,
-            label: () => ``,
-          },
-        },
-        legend: {
-          display: false,
-        },
-        responsive: true,
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-                display: false,
-                suggestedMin: 0,
-                suggestedMax: max,
-              },
-              gridLines: {
-                display: false,
-              },
-              stacked: true,
-            },
-          ],
-          xAxes: [
-            {
-              ticks: {
-                display: true,
-              },
-              gridLines: {
-                display: false,
-              },
-              stacked: true,
-            },
-          ],
-        },
-        plugins: {
-          datalabels: {
-            display: (ctx) => ctx.datasetIndex === 3,
-            formatter: (_value, ctx) => totals[ctx.dataIndex],
-            anchor: 'end',
-            align: 'end',
-            color: '#000',
-          },
-        },
-      }}
+      options={chartOptions}
       onElementsClick={(e) => {
         if (e[0] !== undefined) gotoTotoRound(e[0]._index + 1);
       }}

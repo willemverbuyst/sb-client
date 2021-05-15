@@ -1,29 +1,30 @@
 import 'chartjs-plugin-datalabels';
 
+import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { IUser } from '../../models/player.model';
 import { UserWithScore } from '../../store/scores/types';
 import { selectUser } from '../../store/user/selectors';
 
-type Props = {
+interface IProps {
   scores: UserWithScore[];
-};
+}
 
-const BarChart: React.FC<Props> = ({ scores }: Props): ReactElement => {
+const BarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const labels = scores.map((player) => player.user.toLocaleUpperCase());
-  const userScores = scores.map((player) => player.score);
-  const user = useSelector(selectUser);
-  const max = Math.max(...userScores) * 1.2;
-
-  const gotoPlayer = (id: number) => history.push(`/spelers/${scores[id].id}/scores`);
-
+  const labels: string[] = scores.map((player) => player.user.toLocaleUpperCase());
+  const userScores: number[] = scores.map((player) => player.score);
+  const user: IUser | null = useSelector(selectUser);
+  const max: number = Math.max(...userScores) * 1.2;
   const hoverBackgroundColors = scores.map((score) => (score.id === user?.id ? '#1e5eb1' : '#aaa'));
 
-  const chartData = {
+  const gotoPlayer = (id: number): void => history.push(`/spelers/${scores[id].id}/scores`);
+
+  const chartData: ChartData<chartjs.ChartData> = {
     labels: labels,
     datasets: [
       {
@@ -35,47 +36,49 @@ const BarChart: React.FC<Props> = ({ scores }: Props): ReactElement => {
     ],
   };
 
+  const chartOptions: chartjs.ChartOptions = {
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            display: false,
+            suggestedMin: 0,
+            suggestedMax: max,
+          },
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        display: true,
+        color: 'black',
+      },
+    },
+  };
+
   return (
     <Bar
       data={chartData}
-      options={{
-        tooltips: {
-          enabled: false,
-        },
-        legend: {
-          display: false,
-        },
-        responsive: true,
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                display: false,
-                suggestedMin: 0,
-                suggestedMax: max,
-              },
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-          xAxes: [
-            {
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-        },
-        plugins: {
-          datalabels: {
-            anchor: 'end',
-            align: 'top',
-            display: true,
-            color: 'black',
-          },
-        },
-      }}
+      options={chartOptions}
       onElementsClick={(e) => {
         if (e[0] !== undefined) gotoPlayer(e[0]._index);
       }}
