@@ -1,6 +1,4 @@
-import { Button, Checkbox, TableCell, TableRow } from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
-import { makeStyles, Theme, withStyles } from '@material-ui/core/styles';
+import { Checkbox, TableCell, TableRow } from '@material-ui/core';
 import Check from '@material-ui/icons/Check';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -8,33 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  avatar: {
-    height: 30,
-    width: 30,
-    objectFit: 'contain',
-  },
-  checkToto: {
-    color: theme.palette.primary.main,
-  },
-  checkAdmin: {
-    color: theme.palette.secondary.main,
-  },
-  link: {
-    cursor: 'pointer',
-  },
-}));
-
-const ColorButton = withStyles((theme: Theme) => ({
-  root: {
-    color: theme.palette.getContrastText(red[500]),
-    backgroundColor: red[500],
-    '&:hover': {
-      backgroundColor: red[700],
-    },
-  },
-}))(Button);
+import { ColorButton, useStyles } from './PlayerRowStyles';
 
 type Props = {
   key: number;
