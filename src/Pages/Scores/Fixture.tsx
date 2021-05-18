@@ -65,7 +65,9 @@ const Fixture: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const scoresSortedByName: PredictionWithScorePerUser[] =
-    fixture && fixture.scores ? sortValues<PredictionWithScorePerUser>(fixture.scores) : [];
+    fixture && fixture.scores
+      ? sortValues<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(fixture.scores)
+      : [];
 
   return (
     <Box>

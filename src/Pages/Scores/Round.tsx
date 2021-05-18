@@ -52,7 +52,7 @@ const Round: React.FC = (): ReactElement => {
   }, [dispatch, id, round]);
 
   const roundSortedByName: UserWithScore[] =
-    round && round.usersWithScores ? sortValues<UserWithScore>(round.usersWithScores) : [];
+    round && round.usersWithScores ? sortValues<keyof UserWithScore, UserWithScore>('user')(round.usersWithScores) : [];
 
   const gotoPredictions = () => {
     const t = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
