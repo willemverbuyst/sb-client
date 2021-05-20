@@ -9,19 +9,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface IProps {
-  pageTitle: string;
+  text: string;
 }
 
-const Title = ({ pageTitle }: IProps): ReactElement => {
+const PageTitle = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid>
       <Typography variant="h3" className={classes.title}>
-        {pageTitle}
+        {text}
       </Typography>
     </Grid>
   );
 };
 
-export default Title;
+export default PageTitle;

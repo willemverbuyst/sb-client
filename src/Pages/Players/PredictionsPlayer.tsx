@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MatchCard from '../../Components/Card/MatchCard';
+import PageTitle from '../../Components/PageTitle';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -77,11 +78,8 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   ) : playerProfile ? (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            {playerProfile.userName}
-          </Typography>
-        </Grid>
+        <PageTitle text={playerProfile.userName} />
+
         <Grid>
           <Button
             fullWidth

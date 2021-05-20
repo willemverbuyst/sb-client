@@ -8,6 +8,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
+import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
@@ -61,11 +62,8 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   ) : scoresPlayer ? (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            {scoresPlayer.userName}
-          </Typography>
-        </Grid>
+        <PageTitle text={scoresPlayer.userName} />
+
         <Grid>
           <Grid>
             <Button
