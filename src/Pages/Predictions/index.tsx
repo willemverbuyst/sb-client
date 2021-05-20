@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Theme, Typography } from '@material-ui/core';
+import { Box, Button, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MatchCard from '../../Components/Card/MatchCard';
+import PageTitle from '../../Components/PageTitle';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
@@ -14,13 +15,12 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';
 import { selectFixtures } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { content, pagination, progress, title, topSection } from '../../ui/sharedClasses';
+import { content, pagination, progress, topSection } from '../../ui/sharedClasses';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
   ...content(theme),
   ...pagination(theme),
 }));
@@ -65,11 +65,7 @@ const Predictions: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Voorspellingen
-          </Typography>
-        </Grid>
+        <PageTitle text="Voorspellingen" />
         {fixtures ? (
           <Grid>
             <Grid>

@@ -14,14 +14,13 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { content, pagination, progress, title, topSection, waitMessage } from '../../ui/sharedClasses';
+import { content, pagination, progress, topSection, waitMessage } from '../../ui/sharedClasses';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
   ...pagination(theme),
   ...progress(),
-  ...title(theme),
   ...topSection(theme),
   ...waitMessage(theme),
 }));

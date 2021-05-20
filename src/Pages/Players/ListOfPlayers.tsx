@@ -13,12 +13,11 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
 import { selectToken, selectUser } from '../../store/user/selectors';
-import { progress, title, topSection } from '../../ui/sharedClasses';
+import { progress, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
   playersTable: {
     [theme.breakpoints.down('xs')]: {
       marginTop: theme.spacing(2),

@@ -14,7 +14,7 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { divider, progress, subTitle, subTitleSection, title, topSection, waitMessage } from '../../ui/sharedClasses';
+import { divider, progress, subTitle, subTitleSection, topSection, waitMessage } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...topSection(theme),
   ...subTitle(theme),
   ...subTitleSection(theme),
-  ...title(theme),
   ...waitMessage(theme),
 }));
 
