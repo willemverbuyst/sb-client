@@ -9,20 +9,19 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title/PageTitle';
+import SubTitle from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { divider, progress, subTitle, subTitleSection, title, topSection, waitMessage } from '../../ui/sharedClasses';
+import { divider, progress, topSection, waitMessage } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...subTitle(theme),
-  ...subTitleSection(theme),
-  ...title(theme),
   ...waitMessage(theme),
 }));
 
@@ -61,11 +60,8 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   ) : scoresPlayer ? (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            {scoresPlayer.userName}
-          </Typography>
-        </Grid>
+        <PageTitle text={scoresPlayer.userName} />
+
         <Grid>
           <Grid>
             <Button
@@ -84,12 +80,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
 
       {scoresPlayer ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
-            <Typography variant="h4" className={classes.subTitle}>
-              TOTO RONDES
-            </Typography>
-          </Grid>
-
+          <SubTitle text="TOTO RONDES" />
           <Grid className={classes.divider}>
             <Divider />
           </Grid>

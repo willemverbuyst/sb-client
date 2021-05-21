@@ -1,17 +1,17 @@
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectToken } from '../../store/user/selectors';
-import { content, title, topSection } from '../../ui/sharedClasses';
+import { content, topSection } from '../../ui/sharedClasses';
 import AccordionWithRules from './AccordionWithRules';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     ...content(theme),
-    ...title(theme),
     ...topSection(theme),
   }),
 );
@@ -28,11 +28,7 @@ const Rules: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Regels
-          </Typography>
-        </Grid>
+        <PageTitle text="Regels" />
       </Grid>
       <Grid container justify="center" className={classes.content}>
         <Grid item xs={12} md={8}>

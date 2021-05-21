@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -9,14 +9,14 @@ import { useHistory } from 'react-router-dom';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { progress, title, topSection } from '../../ui/sharedClasses';
+import { progress, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
 }));
 
 const Profile: React.FC = (): ReactElement => {
@@ -39,11 +39,8 @@ const Profile: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Profiel
-          </Typography>
-        </Grid>
+        <PageTitle text="Profiel" />
+
         <Grid>
           <Button
             variant={btnVariant ? 'contained' : 'outlined'}

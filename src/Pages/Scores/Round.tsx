@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -10,13 +10,15 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title/PageTitle';
+import SubTitle from '../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresRound } from '../../store/scores/actions';
 import { selectRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -24,9 +26,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
-  ...subTitle(theme),
-  ...subTitleSection(theme),
   ...breadCrumbs(theme),
 }));
 
@@ -71,11 +70,7 @@ const Round: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Klassement
-          </Typography>
-        </Grid>
+        <PageTitle text="Klassement" />
         <Grid>
           <Button
             variant={btnVariant ? 'contained' : 'outlined'}
@@ -95,12 +90,7 @@ const Round: React.FC = (): ReactElement => {
         </Box>
       ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
-            <Typography variant="h4" className={classes.subTitle}>
-              RONDE {id}
-            </Typography>
-          </Grid>
-
+          <SubTitle text={`RONDE ${id}`} />
           <Divider className={classes.divider} />
 
           <Grid container direction="row" justify="center" alignItems="center">

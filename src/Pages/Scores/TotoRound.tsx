@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -11,20 +11,19 @@ import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import RoundSelector from '../../Components/Selector/RoundSelector';
+import PageTitle from '../../Components/Title/PageTitle';
+import SubTitle from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotoRound } from '../../store/scores/actions';
 import { selectTotoRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
-  ...subTitle(theme),
-  ...subTitleSection(theme),
   ...breadCrumbs(theme),
 }));
 
@@ -61,11 +60,7 @@ const TotoRound: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Klassement
-          </Typography>
-        </Grid>
+        <PageTitle text="Klassement" />
         <Grid>
           <Button
             variant={btnVariant ? 'contained' : 'outlined'}
@@ -85,11 +80,7 @@ const TotoRound: React.FC = (): ReactElement => {
         </Box>
       ) : totoRound && totoRound.usersWithScores && totoRound.usersWithScores.length > 0 ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
-            <Typography variant="h4" className={classes.subTitle}>
-              TOTO RONDE {id}
-            </Typography>
-          </Grid>
+          <SubTitle text={`TOTO RONDE ${id}`} />
 
           <Divider className={classes.divider} />
 

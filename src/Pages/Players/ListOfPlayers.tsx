@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -8,16 +8,16 @@ import { useHistory } from 'react-router-dom';
 
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PlayersTable from '../../Components/Table/PlayersTable';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
 import { selectToken, selectUser } from '../../store/user/selectors';
-import { progress, title, topSection } from '../../ui/sharedClasses';
+import { progress, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
   playersTable: {
     [theme.breakpoints.down('xs')]: {
       marginTop: theme.spacing(2),
@@ -53,11 +53,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Spelers
-          </Typography>
-        </Grid>
+        <PageTitle text="Spelers" />
 
         {user && user.admin ? (
           <Grid>

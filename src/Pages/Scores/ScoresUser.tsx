@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Divider, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -9,20 +9,19 @@ import { useHistory } from 'react-router-dom';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title/PageTitle';
+import SubTitle from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken, selectUser } from '../../store/user/selectors';
-import { divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { divider, progress, topSection } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
-  ...subTitle(theme),
-  ...subTitleSection(theme),
 }));
 
 const ScoresUser: React.FC = (): ReactElement => {
@@ -50,12 +49,7 @@ const ScoresUser: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Scores
-          </Typography>
-        </Grid>
-
+        <PageTitle text="Scores" />
         {isLoading ? null : (
           <Grid>
             <Grid>
@@ -80,12 +74,7 @@ const ScoresUser: React.FC = (): ReactElement => {
         </Box>
       ) : scoresPlayer ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
-            <Typography variant="h4" className={classes.subTitle}>
-              MIJN TOTO RONDES
-            </Typography>
-          </Grid>
-
+          <SubTitle text="MIJN TOTO RONDES" />
           <Grid className={classes.divider}>
             <Divider />
           </Grid>

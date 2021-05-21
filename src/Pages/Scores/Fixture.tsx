@@ -9,12 +9,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { selectFixture } from '../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { divider, progress, title, topSection } from '../../ui/sharedClasses';
+import { divider, progress, topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 
@@ -22,7 +23,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
   fixture: {
     [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(0),
@@ -72,11 +72,7 @@ const Fixture: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Uitslag
-          </Typography>
-        </Grid>
+        <PageTitle text="Uitslag" />
         <Grid>
           <Button
             variant={btnVariant ? 'contained' : 'outlined'}

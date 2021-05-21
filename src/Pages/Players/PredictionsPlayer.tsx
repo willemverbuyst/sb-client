@@ -9,18 +9,18 @@ import { useHistory, useParams } from 'react-router-dom';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { content, pagination, progress, title, topSection, waitMessage } from '../../ui/sharedClasses';
+import { content, pagination, progress, topSection, waitMessage } from '../../ui/sharedClasses';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
   ...pagination(theme),
   ...progress(),
-  ...title(theme),
   ...topSection(theme),
   ...waitMessage(theme),
 }));
@@ -77,11 +77,8 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   ) : playerProfile ? (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            {playerProfile.userName}
-          </Typography>
-        </Grid>
+        <PageTitle text={playerProfile.userName} />
+
         <Grid>
           <Button
             fullWidth
