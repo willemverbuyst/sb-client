@@ -15,12 +15,11 @@ import { fetchScoresFixture } from '../../store/scores/actions';
 import { selectFixture } from '../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { progress, topSection } from '../../ui/sharedClasses';
+import { topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   fixture: {
     [theme.breakpoints.down('sm')]: {
@@ -74,9 +73,7 @@ const Fixture: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : fixture ? (
         <>
           <Grid className={classes.fixture}>

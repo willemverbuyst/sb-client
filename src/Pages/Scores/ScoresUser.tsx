@@ -9,7 +9,7 @@ import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import SubTitle from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
@@ -45,7 +45,7 @@ const ScoresUser: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text="Scores" />
+        <PageTitleComponent text="Scores" />
         {isLoading ? null : (
           <ButtonComponent
             caption="VOORSPELLINGEN"

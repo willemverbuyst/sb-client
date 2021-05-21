@@ -8,7 +8,7 @@ import ButtonComponent from '../../Components/Button';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { topSection } from '../../ui/sharedClasses';
@@ -35,7 +35,7 @@ const Profile: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text="Profiel" />
+        <PageTitleComponent text="Profiel" />
         <Grid>
           <ButtonComponent
             caption={!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}

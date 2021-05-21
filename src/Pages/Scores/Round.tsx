@@ -10,7 +10,7 @@ import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import SubTitle from '../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -65,7 +65,7 @@ const Round: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text="Klassement" />
+        <PageTitleComponent text="Klassement" />
         <ButtonComponent caption="MIJN VOORSPELLINGEN" color="primary" handleClick={gotoPredictions} />
       </Grid>
 

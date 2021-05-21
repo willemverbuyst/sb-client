@@ -18,7 +18,7 @@ interface IProps {
   text: string;
 }
 
-const PageTitle = ({ text }: IProps): ReactElement => {
+const PageTitleComponent = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -30,4 +30,4 @@ const PageTitle = ({ text }: IProps): ReactElement => {
   );
 };
 
-export default PageTitle;
+export default PageTitleComponent;

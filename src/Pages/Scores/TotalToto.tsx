@@ -11,7 +11,7 @@ import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import SubTitle from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
@@ -52,7 +52,7 @@ const TotalToto: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text="Klassement" />
+        <PageTitleComponent text="Klassement" />
         <ButtonComponent caption="MIJN VOORSPELLINGEN" color="primary" handleClick={gotoTotoRound} />
       </Grid>
 

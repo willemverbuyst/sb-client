@@ -8,7 +8,7 @@ import ButtonComponent from '../../Components/Button';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';
@@ -62,7 +62,7 @@ const Predictions: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text="Voorspellingen" />
+        <PageTitleComponent text="Voorspellingen" />
         {fixtures ? <ButtonComponent caption="KLASSEMENT" color="secondary" handleClick={gotoRanking} /> : null}
       </Grid>
 

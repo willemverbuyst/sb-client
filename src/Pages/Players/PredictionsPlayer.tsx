@@ -8,7 +8,7 @@ import ButtonComponent from '../../Components/Button';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';
@@ -74,7 +74,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   ) : playerProfile ? (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text={playerProfile.userName} />
+        <PageTitleComponent text={playerProfile.userName} />
         <ButtonComponent caption="SCORES" color="secondary" handleClick={gotoScores} />
       </Grid>
 
