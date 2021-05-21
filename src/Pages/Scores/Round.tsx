@@ -18,11 +18,10 @@ import { fetchScoresRound } from '../../store/scores/actions';
 import { selectRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, progress, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   ...breadCrumbs(theme),
 }));
@@ -71,9 +70,7 @@ const Round: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
         <>
           <SubTitle text={`RONDE ${id}`} />

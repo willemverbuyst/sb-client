@@ -10,10 +10,9 @@ import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { selectUser } from '../../store/user/selectors';
-import { progress, topSection } from '../../ui/sharedClasses';
+import { topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
 }));
 
@@ -36,15 +35,8 @@ const SignUp: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text="Sign Up" />
-
-        {isLoading ? (
-          <Box className={classes.progress}>
-            <ProgressLinear />
-          </Box>
-        ) : (
-          <SignUpForm />
-        )}
       </Grid>
+      {isLoading ? <ProgressLinear /> : <SignUpForm />}
     </Box>
   );
 };

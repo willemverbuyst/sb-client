@@ -15,11 +15,10 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken, selectUser } from '../../store/user/selectors';
-import { progress, topSection } from '../../ui/sharedClasses';
+import { topSection } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
 }));
 
@@ -57,9 +56,7 @@ const ScoresUser: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : scoresPlayer ? (
         <>
           <SubTitle text="MIJN TOTO RONDES" />

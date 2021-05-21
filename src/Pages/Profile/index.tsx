@@ -11,10 +11,9 @@ import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { progress, topSection } from '../../ui/sharedClasses';
+import { topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
 }));
 
@@ -47,9 +46,7 @@ const Profile: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : editProfile ? (
         <EditProfileForm handleSubmit={() => setEditProfile(true)} />
       ) : (

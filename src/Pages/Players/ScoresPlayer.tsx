@@ -15,11 +15,10 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { progress, topSection, waitMessage } from '../../ui/sharedClasses';
+import { topSection, waitMessage } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   ...waitMessage(theme),
 }));
@@ -52,9 +51,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
       </Grid>
-      <Box className={classes.progress}>
-        <ProgressLinear />
-      </Box>
+      <ProgressLinear />
     </Box>
   ) : scoresPlayer ? (
     <Box>

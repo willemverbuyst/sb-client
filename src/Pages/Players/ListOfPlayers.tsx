@@ -12,10 +12,9 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';
 import { selectToken, selectUser } from '../../store/user/selectors';
-import { progress, topSection } from '../../ui/sharedClasses';
+import { topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   playersTable: {
     [theme.breakpoints.down('xs')]: {
@@ -58,9 +57,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : players ? (
         <Grid container justify="center">
           <Grid item xs={10} className={classes.playersTable}>

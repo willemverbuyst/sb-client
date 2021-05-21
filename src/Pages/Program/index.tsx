@@ -12,11 +12,10 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { content, progress, topSection } from '../../ui/sharedClasses';
+import { content, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
-  ...progress(),
   ...topSection(theme),
 }));
 
@@ -45,9 +44,7 @@ const Program: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : currentRound ? (
         <Grid item xs={12} container justify="center" className={classes.content}>
           {currentRound.fixtures.map((wedstrijd, i) => (

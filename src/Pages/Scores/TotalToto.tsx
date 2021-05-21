@@ -18,10 +18,9 @@ import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, progress, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   ...breadCrumbs(theme),
 }));
@@ -58,9 +57,7 @@ const TotalToto: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : totalToto && totalToto.length > 0 ? (
         <>
           <SubTitle text="TOTAAL TOTO" />

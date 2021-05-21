@@ -18,10 +18,9 @@ import { fetchScoresTotoRound } from '../../store/scores/actions';
 import { selectTotoRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, progress, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   ...breadCrumbs(theme),
 }));
@@ -62,9 +61,7 @@ const TotoRound: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressLinear />
-        </Box>
+        <ProgressLinear />
       ) : totoRound && totoRound.usersWithScores && totoRound.usersWithScores.length > 0 ? (
         <>
           <SubTitle text={`TOTO RONDE ${id}`} />
