@@ -8,19 +8,19 @@ import { useHistory } from 'react-router-dom';
 
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
+import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken, selectUser } from '../../store/user/selectors';
-import { divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { divider, progress, subTitle, subTitleSection, topSection } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
   ...subTitle(theme),
   ...subTitleSection(theme),
 }));
@@ -50,12 +50,7 @@ const ScoresUser: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Scores
-          </Typography>
-        </Grid>
-
+        <PageTitle text="Scores" />
         {isLoading ? null : (
           <Grid>
             <Grid>

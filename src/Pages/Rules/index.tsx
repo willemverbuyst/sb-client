@@ -6,13 +6,12 @@ import { useHistory } from 'react-router-dom';
 
 import PageTitle from '../../Components/PageTitle';
 import { selectToken } from '../../store/user/selectors';
-import { content, title, topSection } from '../../ui/sharedClasses';
+import { content, topSection } from '../../ui/sharedClasses';
 import AccordionWithRules from './AccordionWithRules';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     ...content(theme),
-    ...title(theme),
     ...topSection(theme),
   }),
 );

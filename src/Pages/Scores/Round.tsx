@@ -9,6 +9,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
+import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -16,7 +17,7 @@ import { fetchScoresRound } from '../../store/scores/actions';
 import { selectRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, divider, progress, subTitle, subTitleSection, title, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, subTitle, subTitleSection, topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -24,7 +25,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...title(theme),
   ...subTitle(theme),
   ...subTitleSection(theme),
   ...breadCrumbs(theme),
@@ -71,11 +71,7 @@ const Round: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <Grid>
-          <Typography variant="h3" className={classes.title}>
-            Klassement
-          </Typography>
-        </Grid>
+        <PageTitle text="Klassement" />
         <Grid>
           <Button
             variant={btnVariant ? 'contained' : 'outlined'}
