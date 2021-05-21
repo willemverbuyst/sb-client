@@ -12,7 +12,7 @@ import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import RoundSelector from '../../Components/Selector/RoundSelector';
 import PageTitleComponent from '../../Components/Title/PageTitle';
-import SubTitle from '../../Components/Title/SubTitle';
+import SubTitleComponent from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotoRound } from '../../store/scores/actions';
 import { selectTotoRound } from '../../store/scores/selectors';
@@ -64,7 +64,7 @@ const TotoRound: React.FC = (): ReactElement => {
         <ProgressLinear />
       ) : totoRound && totoRound.usersWithScores && totoRound.usersWithScores.length > 0 ? (
         <>
-          <SubTitle text={`TOTO RONDE ${id}`} />
+          <SubTitleComponent text={`TOTO RONDE ${id}`} />
           <DividerComponent />
 
           <Grid container direction="row" justify="center" alignItems="center">

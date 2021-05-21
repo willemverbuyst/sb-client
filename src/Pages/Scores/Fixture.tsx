@@ -9,7 +9,7 @@ import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart'
 import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title/PageTitle';
+import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { selectFixture } from '../../store/scores/selectors';
@@ -68,7 +68,7 @@ const Fixture: React.FC = (): ReactElement => {
   return (
     <Box>
       <Grid container className={classes.topSection}>
-        <PageTitle text="Uitslag" />
+        <PageTitleComponent text="Uitslag" />
         <ButtonComponent caption="TERUG" color="primary" handleClick={() => history.goBack()} />
       </Grid>
 

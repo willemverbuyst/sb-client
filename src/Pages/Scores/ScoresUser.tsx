@@ -10,7 +10,7 @@ import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PageTitleComponent from '../../Components/Title/PageTitle';
-import SubTitle from '../../Components/Title/SubTitle';
+import SubTitleComponent from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
@@ -59,7 +59,7 @@ const ScoresUser: React.FC = (): ReactElement => {
         <ProgressLinear />
       ) : scoresPlayer ? (
         <>
-          <SubTitle text="MIJN TOTO RONDES" />
+          <SubTitleComponent text="MIJN TOTO RONDES" />
           <DividerComponent />
 
           <Grid container direction="row" justify="center" alignItems="center">

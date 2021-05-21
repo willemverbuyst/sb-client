@@ -12,7 +12,7 @@ import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
 import PageTitleComponent from '../../Components/Title/PageTitle';
-import SubTitle from '../../Components/Title/SubTitle';
+import SubTitleComponent from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
@@ -60,7 +60,7 @@ const TotalToto: React.FC = (): ReactElement => {
         <ProgressLinear />
       ) : totalToto && totalToto.length > 0 ? (
         <>
-          <SubTitle text="TOTAAL TOTO" />
+          <SubTitleComponent text="TOTAAL TOTO" />
           <DividerComponent />
 
           <Grid container direction="row" justify="center" alignItems="center">

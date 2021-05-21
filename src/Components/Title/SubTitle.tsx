@@ -21,7 +21,7 @@ interface IProps {
   text: string;
 }
 
-const SubTitle = ({ text }: IProps): ReactElement => {
+const SubTitleComponent = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -33,4 +33,4 @@ const SubTitle = ({ text }: IProps): ReactElement => {
   );
 };
 
-export default SubTitle;
+export default SubTitleComponent;

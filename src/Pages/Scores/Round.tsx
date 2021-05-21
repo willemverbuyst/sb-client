@@ -11,7 +11,7 @@ import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PageTitleComponent from '../../Components/Title/PageTitle';
-import SubTitle from '../../Components/Title/SubTitle';
+import SubTitleComponent from '../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresRound } from '../../store/scores/actions';
@@ -73,7 +73,7 @@ const Round: React.FC = (): ReactElement => {
         <ProgressLinear />
       ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
         <>
-          <SubTitle text={`RONDE ${id}`} />
+          <SubTitleComponent text={`RONDE ${id}`} />
           <DividerComponent />
 
           <Grid container direction="row" justify="center" alignItems="center">
