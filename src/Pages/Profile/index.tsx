@@ -37,7 +37,6 @@ const Profile: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text="Profiel" />
-
         <Grid>
           <ButtonComponent
             caption={!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
