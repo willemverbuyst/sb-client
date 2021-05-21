@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { progress, topSection } from '../../ui/sharedClasses';

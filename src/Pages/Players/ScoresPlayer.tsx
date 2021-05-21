@@ -9,7 +9,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';

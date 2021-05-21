@@ -9,7 +9,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';

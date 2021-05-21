@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PlayersTable from '../../Components/Table/PlayersTable';
-import PageTitle from '../../Components/Title';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllPlayers } from '../../store/players/actions';
 import { selectPlayers } from '../../store/players/selectors';

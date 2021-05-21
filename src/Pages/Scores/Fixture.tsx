@@ -9,7 +9,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
-import PageTitle from '../../Components/Title';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { selectFixture } from '../../store/scores/selectors';

@@ -11,7 +11,7 @@ import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
-import PageTitle from '../../Components/Title';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
