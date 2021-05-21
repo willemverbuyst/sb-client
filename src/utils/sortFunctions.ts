@@ -14,7 +14,7 @@ export const sortValues = <U extends keyof T, T extends { [key: string]: any }>(
       return value1[prop] - value2[prop];
     }
   });
-  console.log(returnValue); // for testing
+  // console.log(returnValue); // for testing
   return returnValue;
 };
 
