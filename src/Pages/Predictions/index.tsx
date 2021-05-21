@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MatchCard from '../../Components/Card/MatchCard';
-import PageTitle from '../../Components/PageTitle';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';

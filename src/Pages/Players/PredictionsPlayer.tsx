@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MatchCard from '../../Components/Card/MatchCard';
-import PageTitle from '../../Components/PageTitle';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
 import { selectPlayerProfile } from '../../store/players/selectors';

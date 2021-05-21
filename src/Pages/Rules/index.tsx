@@ -4,7 +4,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import PageTitle from '../../Components/PageTitle';
+import PageTitle from '../../Components/Title';
 import { selectToken } from '../../store/user/selectors';
 import { content, topSection } from '../../ui/sharedClasses';
 import AccordionWithRules from './AccordionWithRules';

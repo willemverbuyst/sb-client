@@ -9,8 +9,8 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
-import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title';
 import { TOTAL_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresRound } from '../../store/scores/actions';

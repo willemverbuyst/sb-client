@@ -8,8 +8,8 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import Message from '../../Components/Message';
-import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
 import { selectFixture } from '../../store/scores/selectors';

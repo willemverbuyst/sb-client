@@ -9,9 +9,9 @@ import { useHistory } from 'react-router-dom';
 
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
-import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
+import PageTitle from '../../Components/Title';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';

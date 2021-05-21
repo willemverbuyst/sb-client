@@ -6,8 +6,8 @@ import { useHistory } from 'react-router-dom';
 
 import MatchCard from '../../Components/Card/MatchCard';
 import Message from '../../Components/Message';
-import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';

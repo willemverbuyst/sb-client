@@ -8,8 +8,8 @@ import { useHistory } from 'react-router-dom';
 
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
-import PageTitle from '../../Components/PageTitle';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import PageTitle from '../../Components/Title';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
