@@ -1,11 +1,10 @@
-import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Divider, Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -33,8 +32,6 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const scoresPlayer = useSelector(selectPlayerScores);
   const { id } = useParams<{ id: string }>();
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -43,6 +40,8 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   useEffect(() => {
     dispatch(fetchPlayerScores(+id));
   }, [dispatch, id]);
+
+  const gotoPredictions = () => history.push(`/spelers/${id}/voorspellingen/1/1`);
 
   return isLoading ? (
     <Box>
@@ -61,21 +60,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text={scoresPlayer.userName} />
-
-        <Grid>
-          <Grid>
-            <Button
-              fullWidth
-              variant={btnVariant ? 'contained' : 'outlined'}
-              size="small"
-              color="secondary"
-              disableElevation
-              onClick={() => history.push(`/spelers/${id}/voorspellingen/1/1`)}
-            >
-              VOORSPELLINGEN
-            </Button>
-          </Grid>
-        </Grid>
+        <ButtonComponent caption="VOORSPELLINGEN" color="secondary" handleClick={gotoPredictions} />
       </Grid>
 
       {scoresPlayer ? (

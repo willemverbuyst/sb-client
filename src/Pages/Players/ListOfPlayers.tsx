@@ -1,11 +1,10 @@
-import { Box, Button, Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PlayersTable from '../../Components/Table/PlayersTable';
 import PageTitle from '../../Components/Title/PageTitle';
@@ -35,8 +34,6 @@ const ListOfPlayers: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const user = useSelector(selectUser);
   const [update, setUpdate] = useState<boolean>(false);
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -56,18 +53,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
         <PageTitle text="Spelers" />
 
         {user && user.admin ? (
-          <Grid>
-            <Button
-              fullWidth
-              variant={btnVariant ? 'contained' : 'outlined'}
-              size="small"
-              color="secondary"
-              disableElevation
-              onClick={editAdminStatus}
-            >
-              {update ? 'KLAAR' : 'EDIT SPELER'}
-            </Button>
-          </Grid>
+          <ButtonComponent caption={update ? 'KLAAR' : 'EDIT SPELER'} color="secondary" handleClick={editAdminStatus} />
         ) : null}
       </Grid>
 

@@ -1,11 +1,10 @@
-import { Avatar, Box, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { Avatar, Box, Divider, Grid, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -53,8 +52,6 @@ const Fixture: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const fixture = useSelector(selectFixture);
   const isLoading = useSelector(selectAppLoading);
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -73,17 +70,7 @@ const Fixture: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text="Uitslag" />
-        <Grid>
-          <Button
-            variant={btnVariant ? 'contained' : 'outlined'}
-            size="small"
-            color="primary"
-            disableElevation
-            onClick={() => history.goBack()}
-          >
-            TERUG
-          </Button>
-        </Grid>
+        <ButtonComponent caption="TERUG" color="primary" handleClick={() => history.goBack()} />
       </Grid>
 
       {isLoading ? (

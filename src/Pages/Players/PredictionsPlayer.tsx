@@ -1,11 +1,10 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -37,8 +36,6 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { ronde } = useParams<{ ronde: string }>();
   let t = +totoronde;
   let r = +ronde;
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -78,19 +75,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text={playerProfile.userName} />
-
-        <Grid>
-          <Button
-            fullWidth
-            variant={btnVariant ? 'contained' : 'outlined'}
-            size="small"
-            color="secondary"
-            disableElevation
-            onClick={gotoScores}
-          >
-            SCORES
-          </Button>
-        </Grid>
+        <ButtonComponent caption="SCORES" color="secondary" handleClick={gotoScores} />
       </Grid>
 
       {playerProfile && playerProfile.pastFixturesWithScores ? (

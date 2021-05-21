@@ -1,11 +1,10 @@
-import { Box, Button, Grid, Theme } from '@material-ui/core';
+import { Box, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -36,8 +35,6 @@ const Predictions: React.FC = (): ReactElement => {
   let t = +totoronde;
   let r = +ronde;
   const isLoading = useSelector(selectAppLoading);
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -66,24 +63,7 @@ const Predictions: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text="Voorspellingen" />
-        {fixtures ? (
-          <Grid>
-            <Grid>
-              <Button
-                fullWidth
-                variant={btnVariant ? 'contained' : 'outlined'}
-                size="small"
-                color="secondary"
-                disableElevation
-                onClick={gotoRanking}
-              >
-                KLASSEMENT
-              </Button>
-            </Grid>
-          </Grid>
-        ) : (
-          <></>
-        )}
+        {fixtures ? <ButtonComponent caption="KLASSEMENT" color="secondary" handleClick={gotoRanking} /> : null}
       </Grid>
 
       {isLoading ? (
