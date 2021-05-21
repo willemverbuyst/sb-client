@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { Box, Breadcrumbs, Button, Divider, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -12,19 +12,18 @@ import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
 import PageTitle from '../../Components/Title/PageTitle';
+import SubTitle from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresTotalToto } from '../../store/scores/actions';
 import { selectTotalToto } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, divider, progress, subTitle, subTitleSection, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, divider, progress, topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...divider(theme),
   ...progress(),
   ...topSection(theme),
-  ...subTitle(theme),
-  ...subTitleSection(theme),
   ...breadCrumbs(theme),
 }));
 
@@ -77,12 +76,7 @@ const TotalToto: React.FC = (): ReactElement => {
         </Box>
       ) : totalToto && totalToto.length > 0 ? (
         <>
-          <Grid item xs={12} container justify="center" className={classes.subTitleSection}>
-            <Typography variant="h4" className={classes.subTitle}>
-              TOTAAL TOTO
-            </Typography>
-          </Grid>
-
+          <SubTitle text="TOTAAL TOTO" />
           <Divider className={classes.divider} />
 
           <Grid container direction="row" justify="center" alignItems="center">
