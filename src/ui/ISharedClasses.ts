@@ -15,28 +15,12 @@ export interface IContent {
   content: ClassProperties;
 }
 
-export interface IDivider {
-  divider: ClassProperties;
-}
-
 export interface IPagination {
   pagination: ClassProperties;
 }
 
 export interface IProgress {
   progress: ClassProperties;
-}
-
-export interface ISubTitle {
-  subTitle: ClassProperties;
-}
-
-export interface ISubTitleSection {
-  subTitleSection: ClassProperties;
-}
-
-export interface ITitle {
-  title: ClassProperties;
 }
 
 export interface ITopSection {

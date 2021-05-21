@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import { withStyles } from '@material-ui/core/styles';
@@ -41,7 +41,7 @@ const AccordionSummary = withStyles(() => ({
 
 const AccordionWithRules: React.FC = (): ReactElement => {
   return (
-    <>
+    <Grid item xs={12} md={8}>
       {listOfRules.map((rule, i) => (
         <Accordion key={i}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
@@ -50,7 +50,7 @@ const AccordionWithRules: React.FC = (): ReactElement => {
           <AccordionAnswers answers={rule.answers} />
         </Accordion>
       ))}
-    </>
+    </Grid>
   );
 };
 

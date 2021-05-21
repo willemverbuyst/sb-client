@@ -2,11 +2,19 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import { subTitle, subTitleSection } from '../../ui/sharedClasses';
-
 const useStyles = makeStyles((theme: Theme) => ({
-  ...subTitle(theme),
-  ...subTitleSection(theme),
+  subTitleSection: {
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: theme.spacing(0),
+    },
+    marginBottom: theme.spacing(6),
+  },
+  subTitle: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
+      opacity: '0.7',
+    },
+  },
 }));
 
 interface IProps {

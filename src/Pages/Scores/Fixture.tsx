@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Grid, Theme, Typography } from '@material-ui/core';
+import { Avatar, Box, Grid, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ButtonComponent from '../../Components/Button';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
+import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PageTitle from '../../Components/Title/PageTitle';
@@ -14,12 +15,11 @@ import { fetchScoresFixture } from '../../store/scores/actions';
 import { selectFixture } from '../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { divider, progress, topSection } from '../../ui/sharedClasses';
+import { progress, topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...divider(theme),
   ...progress(),
   ...topSection(theme),
   fixture: {
@@ -120,7 +120,7 @@ const Fixture: React.FC = (): ReactElement => {
             </Grid>
           </Grid>
 
-          <Divider className={classes.divider} />
+          <DividerComponent />
         </>
       ) : null}
 

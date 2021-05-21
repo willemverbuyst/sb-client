@@ -2,10 +2,16 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import { title } from '../../ui/sharedClasses';
-
 const useStyles = makeStyles((theme: Theme) => ({
-  ...title(theme),
+  title: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      fontSize: '2.5rem',
+    },
+    fontWeight: 'bold',
+    marginBottom: theme.spacing(1),
+    color: theme.palette.secondary.main,
+  },
 }));
 
 interface IProps {

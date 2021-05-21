@@ -2,10 +2,13 @@ import { Divider, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import { divider } from '../../ui/sharedClasses';
-
 const useStyles = makeStyles((theme: Theme) => ({
-  ...divider(theme),
+  divider: {
+    [theme.breakpoints.down('sm')]: {
+      visibility: 'hidden',
+    },
+    marginBottom: theme.spacing(6),
+  },
 }));
 
 const DividerComponent = (): ReactElement => {

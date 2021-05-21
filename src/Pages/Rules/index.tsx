@@ -31,9 +31,7 @@ const Rules: React.FC = (): ReactElement => {
         <PageTitle text="Regels" />
       </Grid>
       <Grid container justify="center" className={classes.content}>
-        <Grid item xs={12} md={8}>
-          <AccordionWithRules />
-        </Grid>
+        <AccordionWithRules />
       </Grid>
     </Box>
   );
