@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Button, Divider, Grid, Theme } from '@material-ui/core';
+import { Box, Breadcrumbs, Button, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement, useEffect } from 'react';
@@ -7,6 +7,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ButtonComponent from '../../Components/Button';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
+import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PageTitle from '../../Components/Title/PageTitle';
@@ -17,11 +18,10 @@ import { fetchScoresRound } from '../../store/scores/actions';
 import { selectRound } from '../../store/scores/selectors';
 import { UserWithScore } from '../../store/scores/types';
 import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, divider, progress, topSection } from '../../ui/sharedClasses';
+import { breadCrumbs, progress, topSection } from '../../ui/sharedClasses';
 import { sortValues } from '../../utils/sortFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...divider(theme),
   ...progress(),
   ...topSection(theme),
   ...breadCrumbs(theme),
@@ -77,7 +77,7 @@ const Round: React.FC = (): ReactElement => {
       ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
         <>
           <SubTitle text={`RONDE ${id}`} />
-          <Divider className={classes.divider} />
+          <DividerComponent />
 
           <Grid container direction="row" justify="center" alignItems="center">
             <Grid item xs={12} md={6} container justify="center">

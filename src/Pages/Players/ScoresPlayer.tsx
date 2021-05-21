@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ButtonComponent from '../../Components/Button';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
+import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
 import PageTitle from '../../Components/Title/PageTitle';
@@ -14,11 +15,10 @@ import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerScores } from '../../store/players/actions';
 import { selectPlayerScores } from '../../store/players/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { divider, progress, topSection, waitMessage } from '../../ui/sharedClasses';
+import { progress, topSection, waitMessage } from '../../ui/sharedClasses';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...divider(theme),
   ...progress(),
   ...topSection(theme),
   ...waitMessage(theme),
@@ -66,9 +66,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
       {scoresPlayer ? (
         <>
           <SubTitle text="TOTO RONDES" />
-          <Grid className={classes.divider}>
-            <Divider />
-          </Grid>
+          <DividerComponent />
 
           <Grid container direction="row" justify="center" alignItems="center">
             <Grid item xs={12} md={6} container justify="center">
