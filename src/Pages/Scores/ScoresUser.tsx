@@ -1,11 +1,10 @@
-import { Box, Button, Divider, Grid } from '@material-ui/core';
+import { Box, Divider, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -32,8 +31,6 @@ const ScoresUser: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const user = useSelector(selectUser);
   const scoresPlayer = useSelector(selectPlayerScores);
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -51,20 +48,11 @@ const ScoresUser: React.FC = (): ReactElement => {
       <Grid container className={classes.topSection}>
         <PageTitle text="Scores" />
         {isLoading ? null : (
-          <Grid>
-            <Grid>
-              <Button
-                fullWidth
-                variant={btnVariant ? 'contained' : 'outlined'}
-                size="small"
-                color="primary"
-                disableElevation
-                onClick={() => history.push(`/voorspellingen/1/1`)}
-              >
-                VOORSPELLINGEN
-              </Button>
-            </Grid>
-          </Grid>
+          <ButtonComponent
+            caption="VOORSPELLINGEN"
+            color="primary"
+            handleClick={() => history.push(`/voorspellingen/1/1`)}
+          />
         )}
       </Grid>
 

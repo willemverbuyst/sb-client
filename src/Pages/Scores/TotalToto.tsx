@@ -1,12 +1,11 @@
 import { Box, Breadcrumbs, Button, Divider, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import Message from '../../Components/Message';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -34,8 +33,6 @@ const TotalToto: React.FC = (): ReactElement => {
   const history = useHistory();
   const totalToto = useSelector(selectTotalToto);
   const isLoading = useSelector(selectAppLoading);
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -57,17 +54,7 @@ const TotalToto: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitle text="Klassement" />
-        <Grid>
-          <Button
-            variant={btnVariant ? 'contained' : 'outlined'}
-            size="small"
-            color="primary"
-            disableElevation
-            onClick={gotoTotoRound}
-          >
-            MIJN VOORSPELLINGEN
-          </Button>
-        </Grid>
+        <ButtonComponent caption="MIJN VOORSPELLINGEN" color="primary" handleClick={gotoTotoRound} />
       </Grid>
 
       {isLoading ? (
