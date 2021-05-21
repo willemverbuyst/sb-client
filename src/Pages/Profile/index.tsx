@@ -1,11 +1,10 @@
-import { Box, Button, Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import ButtonComponent from '../../Components/Button';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 import ProgressLinear from '../../Components/Progress/ProgressLinear';
@@ -25,8 +24,6 @@ const Profile: React.FC = (): ReactElement => {
   const history = useHistory();
   const isLoading = useSelector(selectAppLoading);
   const [editProfile, setEditProfile] = useState(true);
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -42,15 +39,11 @@ const Profile: React.FC = (): ReactElement => {
         <PageTitle text="Profiel" />
 
         <Grid>
-          <Button
-            variant={btnVariant ? 'contained' : 'outlined'}
-            size="small"
+          <ButtonComponent
+            caption={!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
             color="secondary"
-            disableElevation
-            onClick={handleEditProfile}
-          >
-            {!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
-          </Button>
+            handleClick={handleEditProfile}
+          />
         </Grid>
       </Grid>
 
