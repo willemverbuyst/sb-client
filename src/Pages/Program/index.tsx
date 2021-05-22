@@ -1,31 +1,23 @@
-import { Box, Grid, Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import MatchCard from '../../Components/Card/MatchCard';
 import Message from '../../Components/Message';
 import ProgressComponent from '../../Components/Progress';
-import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { content, topSection } from '../../ui/sharedClasses';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  ...content(theme),
-  ...topSection(theme),
-}));
+import FixturesSection from './FixturesSection';
+import TopSection from './TopSection';
 
 const Program: React.FC = (): ReactElement => {
-  const classes = useStyles();
-  const token = useSelector(selectToken);
-  const history = useHistory();
   const dispatch = useDispatch();
+  const history = useHistory();
   const currentRound = useSelector(selectCurrentRound);
   const isLoading = useSelector(selectAppLoading);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -39,20 +31,12 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container className={classes.topSection}>
-        <PageTitleComponent text="Programma" />
-      </Grid>
+      <TopSection />
 
       {isLoading ? (
         <ProgressComponent />
       ) : currentRound ? (
-        <Grid item xs={12} container justify="center" className={classes.content}>
-          {currentRound.fixtures.map((wedstrijd, i) => (
-            <Grid item key={i} lg={4} md={6} xs={12}>
-              <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display="Home" />
-            </Grid>
-          ))}
-        </Grid>
+        <FixturesSection currentRound={currentRound} />
       ) : (
         <Message message={`Er staan voor deze week geen wedstrijden gepland.`} />
       )}
