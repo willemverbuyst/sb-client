@@ -1,28 +1,26 @@
-import { Box, Breadcrumbs, Button, Grid, Theme } from '@material-ui/core';
+import { Box, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ButtonComponent from '../../Components/Button';
-import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
-import DividerComponent from '../../Components/Divider';
-import Message from '../../Components/Message';
-import ProgressComponent from '../../Components/Progress';
-import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
-import PageTitleComponent from '../../Components/Title/PageTitle';
-import SubTitleComponent from '../../Components/Title/SubTitle';
-import { selectAppLoading } from '../../store/appState/selectors';
-import { fetchScoresTotalToto } from '../../store/scores/actions';
-import { selectTotalToto } from '../../store/scores/selectors';
-import { UserWithScore } from '../../store/scores/types';
-import { selectToken } from '../../store/user/selectors';
-import { breadCrumbs, topSection } from '../../ui/sharedClasses';
+import ButtonComponent from '../../../Components/Button';
+import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
+import DividerComponent from '../../../Components/Divider';
+import Message from '../../../Components/Message';
+import ProgressComponent from '../../../Components/Progress';
+import PageTitleComponent from '../../../Components/Title/PageTitle';
+import SubTitleComponent from '../../../Components/Title/SubTitle';
+import { selectAppLoading } from '../../../store/appState/selectors';
+import { fetchScoresTotalToto } from '../../../store/scores/actions';
+import { selectTotalToto } from '../../../store/scores/selectors';
+import { UserWithScore } from '../../../store/scores/types';
+import { selectToken } from '../../../store/user/selectors';
+import { topSection } from '../../../ui/sharedClasses';
+import BreadCrumbsSection from './BreadCrumbsSection';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...topSection(theme),
-  ...breadCrumbs(theme),
 }));
 
 const TotalToto: React.FC = (): ReactElement => {
@@ -72,17 +70,7 @@ const TotalToto: React.FC = (): ReactElement => {
       ) : (
         <Message message={`Nog geen scores voor totalToto`} />
       )}
-      <Grid container justify="center" className={classes.breadCrumbs}>
-        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-          <Button color="primary" disabled>
-            Totaal Toto
-          </Button>
-          <TotoRoundSelector />
-          <Button color="primary" disabled>
-            Ronde
-          </Button>
-        </Breadcrumbs>
-      </Grid>
+      <BreadCrumbsSection />
     </Box>
   );
 };
