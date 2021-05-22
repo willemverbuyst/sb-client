@@ -31,7 +31,7 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection />
+      <TopSection text="Programma" />
 
       {isLoading ? (
         <ProgressComponent />

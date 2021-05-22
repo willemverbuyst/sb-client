@@ -17,7 +17,7 @@ const Rules: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection />
+      <TopSection text="Regels" />
       <AccordionWithRules />
     </Box>
   );

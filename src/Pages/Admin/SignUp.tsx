@@ -26,7 +26,7 @@ const SignUp: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection />
+      <TopSection text="Sign Up" />
       {isLoading ? <ProgressComponent /> : <SignUpForm />}
     </Box>
   );

@@ -9,12 +9,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...topSection(theme),
 }));
 
-const TopSection: React.FC = (): ReactElement => {
+interface IProps {
+  text: string;
+}
+
+const TopSection: React.FC<IProps> = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.topSection}>
-      <PageTitleComponent text="Login" />
+      <PageTitleComponent text={text} />
     </Grid>
   );
 };

@@ -1,5 +1,5 @@
-import { Grid } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Grid, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 import PageTitleComponent from '../../Components/Title/PageTitle';
@@ -9,13 +9,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   ...topSection(theme),
 }));
 
-const TopSection: React.FC = (): ReactElement => {
+interface IProps {
+  text: string;
+}
+
+const TopSection: React.FC<IProps> = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.topSection}>
-      <PageTitleComponent text="Programma" />
+      <PageTitleComponent text={text} />
     </Grid>
   );
 };
+
 export default TopSection;

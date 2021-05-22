@@ -20,7 +20,7 @@ const LogIn: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection />
+      <TopSection text="Login" />
       {isLoading ? <ProgressComponent /> : <LogInForm />}
     </Box>
   );
