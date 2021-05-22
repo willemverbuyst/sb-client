@@ -6,22 +6,19 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ButtonComponent from '../../Components/Button';
 import MatchCard from '../../Components/Card/MatchCard';
-import PaginationComponent from '../../Components/Pagination';
 import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
-import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';
 import { selectFixtures } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { content, pagination, progress, topSection } from '../../ui/sharedClasses';
-import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
+import { content, topSection } from '../../ui/sharedClasses';
+import { calculateIndex } from '../../utils/parameterFunctions';
+import PaginationSection from './PaginationSection';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...progress(),
   ...topSection(theme),
   ...content(theme),
-  ...pagination(theme),
 }));
 
 const Predictions: React.FC = (): ReactElement => {
@@ -32,8 +29,8 @@ const Predictions: React.FC = (): ReactElement => {
   const fixtures = useSelector(selectFixtures);
   const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
-  let t = +totoronde;
-  let r = +ronde;
+  const t = +totoronde;
+  const r = +ronde;
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
@@ -46,17 +43,6 @@ const Predictions: React.FC = (): ReactElement => {
     }
   }, [dispatch, fixtures]);
 
-  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
-    r = roundByTotoRound(value);
-    history.push(`/voorspellingen/${value}/${r}`);
-  };
-
-  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
-    t = totoRoundByRound(value);
-
-    history.push(`/voorspellingen/${t}/${value}`);
-  };
-
   const gotoRanking = () => history.push(`/klassement/ronde/${r}`);
 
   return (
@@ -67,9 +53,7 @@ const Predictions: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <Box className={classes.progress}>
-          <ProgressComponent />
-        </Box>
+        <ProgressComponent />
       ) : fixtures ? (
         <>
           <Grid item xs={12} container justify="center" className={classes.content}>
@@ -83,22 +67,7 @@ const Predictions: React.FC = (): ReactElement => {
                   ))
               : null}
           </Grid>
-          <Grid className={classes.pagination}>
-            <PaginationComponent
-              label="Totoronde"
-              page={t}
-              count={TOTO_ROUNDS}
-              color="primary"
-              onChange={handleChangeTotoRounds}
-            />
-            <PaginationComponent
-              label="Speelronde"
-              page={r}
-              count={TOTAL_ROUNDS}
-              color="secondary"
-              onChange={handleChangeRounds}
-            />
-          </Grid>
+          <PaginationSection totoronde={totoronde} ronde={ronde} />
         </>
       ) : null}
     </Box>
