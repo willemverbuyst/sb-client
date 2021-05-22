@@ -6,8 +6,10 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../../Components/Divider';
 import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
+import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresRound } from '../../../store/scores/actions';
 import { selectRound } from '../../../store/scores/selectors';
@@ -15,7 +17,6 @@ import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import { sortValues } from '../../../utils/sortFunctions';
 import BreadCrumbsSection from './BreadCrumbsSection';
-import TopSection from './TopSection';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -38,9 +39,20 @@ const Round: React.FC = (): ReactElement => {
   const roundSortedByName: UserWithScore[] =
     round && round.usersWithScores ? sortValues<keyof UserWithScore, UserWithScore>('user')(round.usersWithScores) : [];
 
+  const gotoPredictions = () => {
+    const t = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
+
+    history.push(`/voorspellingen/${t}/${+id}`);
+  };
+
   return (
     <Box>
-      <TopSection id={id} />
+      <PageHeaderWithButton
+        title="Klassement"
+        captionBtn="MIJN VOORSPELLINGEN"
+        colorBtn="primary"
+        handleClick={gotoPredictions}
+      />
 
       {isLoading ? (
         <ProgressComponent />

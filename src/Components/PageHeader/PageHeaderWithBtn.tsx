@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 import { topSection } from '../../ui/sharedClasses';
+import ButtonComponent from '../Button';
 import PageTitleComponent from '../Title/PageTitle';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -10,17 +11,21 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface IProps {
-  text: string;
+  title: string;
+  captionBtn: string;
+  colorBtn: 'primary' | 'secondary';
+  handleClick: () => void;
 }
 
-const PageHeaderWithoutButton: React.FC<IProps> = ({ text }: IProps): ReactElement => {
+const PageHeaderWithButton: React.FC<IProps> = ({ title, captionBtn, colorBtn, handleClick }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.topSection}>
-      <PageTitleComponent text={text} />
+      <PageTitleComponent text={title} />
+      <ButtonComponent caption={captionBtn} color={colorBtn} handleClick={handleClick} />
     </Grid>
   );
 };
 
-export default PageHeaderWithoutButton;
+export default PageHeaderWithButton;
