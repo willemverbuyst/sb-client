@@ -7,7 +7,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ButtonComponent from '../../Components/Button';
 import MatchCard from '../../Components/Card/MatchCard';
 import PaginationComponent from '../../Components/Pagination';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../store/players/actions';
@@ -68,7 +68,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
         </Grid>
       </Grid>
       <Box className={classes.progress}>
-        <ProgressLinear />
+        <ProgressComponent />
       </Box>
     </Box>
   ) : playerProfile ? (

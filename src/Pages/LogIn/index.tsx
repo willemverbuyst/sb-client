@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import LogInForm from '../../Components/Form/LogInForm';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 
@@ -37,7 +37,7 @@ const LogIn: React.FC = (): ReactElement => {
     <Box>
       {isLoading ? (
         <Box className={classes.progress}>
-          <ProgressLinear />
+          <ProgressComponent />
         </Box>
       ) : (
         <LogInForm />

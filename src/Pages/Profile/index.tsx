@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import ButtonComponent from '../../Components/Button';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
@@ -46,7 +46,7 @@ const Profile: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <ProgressLinear />
+        <ProgressComponent />
       ) : editProfile ? (
         <EditProfileForm handleSubmit={() => setEditProfile(true)} />
       ) : (

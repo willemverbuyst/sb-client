@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 //   },
 // });
 
-const ProgressLinear: React.FC = (): ReactElement => {
+const ProgressComponent: React.FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -31,4 +31,4 @@ const ProgressLinear: React.FC = (): ReactElement => {
   );
 };
 
-export default ProgressLinear;
+export default ProgressComponent;

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import SignUpForm from '../../Components/Form/SingUpForm';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
@@ -36,7 +36,7 @@ const SignUp: React.FC = (): ReactElement => {
       <Grid container className={classes.topSection}>
         <PageTitleComponent text="Sign Up" />
       </Grid>
-      {isLoading ? <ProgressLinear /> : <SignUpForm />}
+      {isLoading ? <ProgressComponent /> : <SignUpForm />}
     </Box>
   );
 };

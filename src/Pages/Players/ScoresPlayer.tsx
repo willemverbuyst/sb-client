@@ -8,7 +8,7 @@ import ButtonComponent from '../../Components/Button';
 import ScoresStackedChart from '../../Components/Chart/ScoresStackedChart';
 import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import SubTitleComponent from '../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -51,7 +51,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
           </Typography>
         </Grid>
       </Grid>
-      <ProgressLinear />
+      <ProgressComponent />
     </Box>
   ) : scoresPlayer ? (
     <Box>

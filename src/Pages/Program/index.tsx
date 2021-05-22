@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import MatchCard from '../../Components/Card/MatchCard';
 import Message from '../../Components/Message';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
@@ -44,7 +44,7 @@ const Program: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <ProgressLinear />
+        <ProgressComponent />
       ) : currentRound ? (
         <Grid item xs={12} container justify="center" className={classes.content}>
           {currentRound.fixtures.map((wedstrijd, i) => (

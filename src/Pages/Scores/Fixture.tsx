@@ -8,7 +8,7 @@ import ButtonComponent from '../../Components/Button';
 import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
 import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchScoresFixture } from '../../store/scores/actions';
@@ -73,7 +73,7 @@ const Fixture: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <ProgressLinear />
+        <ProgressComponent />
       ) : fixture ? (
         <>
           <Grid className={classes.fixture}>

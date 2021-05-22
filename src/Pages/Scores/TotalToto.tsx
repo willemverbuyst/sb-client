@@ -9,7 +9,7 @@ import ButtonComponent from '../../Components/Button';
 import ScoresBarChart from '../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../Components/Divider';
 import Message from '../../Components/Message';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import TotoRoundSelector from '../../Components/Selector/TotoRoundSelector';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import SubTitleComponent from '../../Components/Title/SubTitle';
@@ -57,7 +57,7 @@ const TotalToto: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <ProgressLinear />
+        <ProgressComponent />
       ) : totalToto && totalToto.length > 0 ? (
         <>
           <SubTitleComponent text="TOTAAL TOTO" />

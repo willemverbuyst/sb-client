@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import ButtonComponent from '../../Components/Button';
-import ProgressLinear from '../../Components/Progress/ProgressLinear';
+import ProgressComponent from '../../Components/Progress';
 import PlayersTable from '../../Components/Table/PlayersTable';
 import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
@@ -57,7 +57,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
       </Grid>
 
       {isLoading ? (
-        <ProgressLinear />
+        <ProgressComponent />
       ) : players ? (
         <Grid container justify="center">
           <Grid item xs={10} className={classes.playersTable}>
