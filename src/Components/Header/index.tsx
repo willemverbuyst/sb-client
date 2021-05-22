@@ -1,4 +1,4 @@
-import { Grid, IconButton, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Weekend } from '@material-ui/icons';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
@@ -16,6 +16,7 @@ import { useHistory } from 'react-router-dom';
 import ball from '../../assets/ball.png';
 import { userLogOut } from '../../store/user/actions';
 import { selectToken, selectUser } from '../../store/user/selectors';
+import NavIcon from './NavIcon';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -64,64 +65,29 @@ const Header: React.FC = (): ReactElement => {
   };
 
   const gotoMyScores = () => history.push('/scores');
-
   const gotoPlayers = () => history.push('/spelers');
-
   const gotoPredictions = () => history.push('/voorspellingen/1/1');
-
   const gotoProfile = () => history.push('/profiel');
-
   const gotoProgram = () => history.push('/programma');
-
   const gotoRules = () => history.push('/regels');
-
   const gotoSignUp = () => history.push('/admin/signup');
-
   const gotoTotalToto = () => history.push('/klassement/totaaltoto');
 
   return (
     <Grid container justify="center">
       {token ? (
         <Grid container className={classes.header} alignItems="center">
-          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoProgram}>
-            <Weekend className={classes.icon} />
-          </IconButton>
-
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoPredictions}>
-            <SportsSoccerIcon className={classes.icon} />
-          </IconButton>
-
-          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoMyScores}>
-            <EmojiEvents className={classes.icon} />
-          </IconButton>
-
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoPlayers}>
-            <Group className={classes.icon} />
-          </IconButton>
-
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoTotalToto}>
-            <FormatListNumberedIcon className={classes.icon} />
-          </IconButton>
-
+          <NavIcon label="program" goto={gotoProgram} icon={<Weekend className={classes.icon} />} />
+          <NavIcon label="prediction" goto={gotoPredictions} icon={<SportsSoccerIcon className={classes.icon} />} />
+          <NavIcon label="my scores" goto={gotoMyScores} icon={<EmojiEvents className={classes.icon} />} />
+          <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
+          <NavIcon label="total toto" goto={gotoTotalToto} icon={<FormatListNumberedIcon className={classes.icon} />} />
           {user && user.admin ? (
-            <IconButton edge="start" color="inherit" aria-label="menu" onClick={gotoSignUp}>
-              <PersonAdd className={classes.icon} />
-            </IconButton>
-          ) : (
-            ''
-          )}
-
-          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoProfile}>
-            <Face className={classes.icon} />
-          </IconButton>
-
-          <IconButton edge="start" color="inherit" aria-label="account circle" onClick={gotoRules}>
-            <HelpOutline className={classes.icon} />
-          </IconButton>
-
-          <IconButton edge="start" color="inherit" aria-label="log out" onClick={gotoLogin}>
-            <ExitToAppIcon className={classes.icon} />
-          </IconButton>
+            <NavIcon label="sign up" goto={gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
+          ) : null}
+          <NavIcon label="profile" goto={gotoProfile} icon={<Face className={classes.icon} />} />
+          <NavIcon label="rules" goto={gotoRules} icon={<HelpOutline className={classes.icon} />} />
+          <NavIcon label="sign out" goto={gotoLogin} icon={<ExitToAppIcon className={classes.icon} />} />
         </Grid>
       ) : (
         <Grid container className={classes.brand} alignItems="center">
