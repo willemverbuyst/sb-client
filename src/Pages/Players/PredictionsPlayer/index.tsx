@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../../store/players/actions';
 import { selectPlayerProfile } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
 import FixturesSection from './FixturesSection';
-import TopSection from './TopSection';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const history = useHistory();
@@ -31,10 +31,11 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const gotoScores = () => history.push(`/spelers/${id}/scores`);
+  const name = playerProfile ? playerProfile.userName : 'Speler...';
 
   return (
     <Box>
-      <TopSection name={playerProfile ? playerProfile.userName : 'Speler...'} gotoScores={gotoScores} />
+      <PageHeaderWithButton title={name} captionBtn="SCORES" colorBtn="secondary" handleClick={gotoScores} />
 
       {isLoading ? (
         <ProgressComponent />

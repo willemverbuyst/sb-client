@@ -14,12 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-// export const progress = (): IProgress => ({
-//   progress: {
-//     width: '100%',
-//   },
-// });
-
 const ProgressComponent: React.FC = (): ReactElement => {
   const classes = useStyles();
 

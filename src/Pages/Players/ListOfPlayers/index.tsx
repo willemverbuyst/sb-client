@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
+import PageHeaderWithoutButton from '../../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../../Components/Progress';
 import PlayersTable from '../../../Components/Table/PlayersTable';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchAllPlayers } from '../../../store/players/actions';
 import { selectPlayers } from '../../../store/players/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
-import TopSection from './TopSection';
 
 const ListOfPlayers: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -32,11 +33,16 @@ const ListOfPlayers: React.FC = (): ReactElement => {
   }, [dispatch, players]);
 
   const editAdminStatus = () => setUpdate(!update);
-  const displayButton = user && user.admin ? true : false;
+  const userIsAdmin = user && user.admin ? true : false;
+  const caption = update ? 'KLAAR' : 'EDIT SPELER';
 
   return (
     <Box>
-      <TopSection displayButton={displayButton} update={update} editAdminStatus={editAdminStatus} />
+      {userIsAdmin ? (
+        <PageHeaderWithButton title="Spelers" captionBtn={caption} colorBtn="secondary" handleClick={editAdminStatus} />
+      ) : (
+        <PageHeaderWithoutButton title="Spelers" />
+      )}
 
       {isLoading ? (
         <ProgressComponent />

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Message';
+import PageHeaderWithButton from '../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';
@@ -11,7 +12,6 @@ import { selectFixtures } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import FixturesSection from './FixturesSection';
 import PaginationSection from './PaginationSection';
-import TopSection from './TopSection';
 
 const Predictions: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -32,9 +32,16 @@ const Predictions: React.FC = (): ReactElement => {
     }
   }, [dispatch, fixtures]);
 
+  const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
+
   return (
     <Box>
-      <TopSection ronde={ronde} />
+      <PageHeaderWithButton
+        title="Voorspellingen"
+        captionBtn="KLASSEMENT"
+        colorBtn="secondary"
+        handleClick={gotoRanking}
+      />
 
       {isLoading ? (
         <ProgressComponent />

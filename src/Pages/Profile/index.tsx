@@ -5,10 +5,10 @@ import { useHistory } from 'react-router-dom';
 
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
+import PageHeaderWithButton from '../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import TopSection from './TopSection';
 
 const Profile: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
@@ -29,7 +29,7 @@ const Profile: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection caption={caption} handleEditProfile={handleEditProfile} />
+      <PageHeaderWithButton title="Profiel" captionBtn={caption} colorBtn="secondary" handleClick={handleEditProfile} />
 
       {isLoading ? (
         <ProgressComponent />
