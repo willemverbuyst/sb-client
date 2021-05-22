@@ -16,12 +16,6 @@ import { topSection } from '../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...topSection(theme),
-  playersTable: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-    },
-    marginTop: theme.spacing(6),
-  },
 }));
 
 const ListOfPlayers: React.FC = (): ReactElement => {
@@ -60,9 +54,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
         <ProgressComponent />
       ) : players ? (
         <Grid container justify="center">
-          <Grid item xs={10} className={classes.playersTable}>
-            <PlayersTable players={players} changeStatus={update} />
-          </Grid>
+          <PlayersTable players={players} changeStatus={update} />
         </Grid>
       ) : null}
     </Box>

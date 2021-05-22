@@ -1,4 +1,5 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -6,6 +7,15 @@ import { IPlayer } from '../../models/player.model';
 import { selectUser } from '../../store/user/selectors';
 import DeleteDialog from '../Toast/DeleteDialog';
 import PlayerRow from './PlayerRow';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  playersTable: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+    },
+    marginTop: theme.spacing(6),
+  },
+}));
 
 const sortTable = (arr: IPlayer[]): IPlayer[] =>
   [...arr].sort((player1, player2) => player1.userName.toLowerCase().localeCompare(player2.userName.toLowerCase()));
@@ -16,6 +26,7 @@ type Props = {
 };
 
 const PlayersTable: React.FC<Props> = ({ players, changeStatus }: Props): ReactElement => {
+  const classes = useStyles();
   const user = useSelector(selectUser);
   const [showDialog, setShowDialog] = useState(false);
   const [player, setPlayer] = useState<IPlayer | null>(null);
@@ -30,7 +41,7 @@ const PlayersTable: React.FC<Props> = ({ players, changeStatus }: Props): ReactE
   };
 
   return (
-    <>
+    <Grid item xs={10} className={classes.playersTable}>
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -61,7 +72,7 @@ const PlayersTable: React.FC<Props> = ({ players, changeStatus }: Props): ReactE
         </Table>
       </TableContainer>
       {showDialog && player ? <DeleteDialog closeDialog={handleChange} playerToDelete={player} /> : null}
-    </>
+    </Grid>
   );
 };
 
