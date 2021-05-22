@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresFixtureBarChart from '../../../Components/Chart/ScoresFixtureBarChart';
 import DividerComponent from '../../../Components/Divider';
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresFixture } from '../../../store/scores/actions';
@@ -47,10 +47,14 @@ const Fixture: React.FC = (): ReactElement => {
         <>
           <FixtureSection fixture={fixture} />
           <DividerComponent />
-          {fixture.scores ? <ScoresFixtureBarChart scores={scoresSortedByName} /> : <Message message={`Geen scores`} />}
+          {fixture.scores ? (
+            <ScoresFixtureBarChart scores={scoresSortedByName} />
+          ) : (
+            <MessageComponent message={`Geen scores`} />
+          )}
         </>
       ) : (
-        <Message message={`Geen wedstrijd gevonden`} />
+        <MessageComponent message={`Geen wedstrijd gevonden`} />
       )}
     </Box>
   );

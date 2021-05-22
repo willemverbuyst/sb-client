@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import Message from '../../Components/Message';
+import MessageComponent from '../../Components/Message';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';
@@ -44,7 +44,7 @@ const Predictions: React.FC = (): ReactElement => {
           <PaginationSection totoronde={totoronde} ronde={ronde} />
         </>
       ) : (
-        <Message message={`Geen voorspellingen gevonden`} />
+        <MessageComponent message={`Geen voorspellingen gevonden`} />
       )}
     </Box>
   );

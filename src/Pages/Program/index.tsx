@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import Message from '../../Components/Message';
+import MessageComponent from '../../Components/Message';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
@@ -38,7 +38,7 @@ const Program: React.FC = (): ReactElement => {
       ) : currentRound ? (
         <FixturesSection currentRound={currentRound} />
       ) : (
-        <Message message={`Er staan voor deze week geen wedstrijden gepland.`} />
+        <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
       )}
     </Box>
   );

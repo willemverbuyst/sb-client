@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../../store/players/actions';
@@ -41,7 +41,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
       ) : playerProfile && playerProfile.pastFixturesWithScores ? (
         <FixturesSection playerProfile={playerProfile} totoronde={totoronde} ronde={ronde} id={id} />
       ) : (
-        <Message message={`Geen voorspellingen voor gevonden`} />
+        <MessageComponent message={`Geen voorspellingen voor gevonden`} />
       )}
     </Box>
   );

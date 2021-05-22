@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../../Components/Divider';
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
@@ -52,7 +52,7 @@ const Round: React.FC = (): ReactElement => {
           <BreadCrumbsSection id={id} />
         </>
       ) : (
-        <Message message={`Nog geen scores voor deze ronde`} />
+        <MessageComponent message={`Nog geen scores voor deze ronde`} />
       )}
     </Box>
   );
