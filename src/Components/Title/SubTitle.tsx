@@ -21,7 +21,7 @@ interface IProps {
   text: string;
 }
 
-const SubTitleComponent = ({ text }: IProps): ReactElement => {
+const SubTitleComponent: React.FC<IProps> = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

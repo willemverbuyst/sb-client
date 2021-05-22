@@ -18,7 +18,7 @@ interface IProps {
   text: string;
 }
 
-const PageTitleComponent = ({ text }: IProps): ReactElement => {
+const PageTitleComponent: React.FC<IProps> = ({ text }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

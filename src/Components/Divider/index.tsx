@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const DividerComponent = (): ReactElement => {
+const DividerComponent: React.FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
