@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import LogInForm from '../../Components/Form/LogInForm';
+import PageHeaderWithoutButton from '../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import TopSection from './TopSection';
 
 const LogIn: React.FC = (): ReactElement => {
   const history = useHistory();
@@ -20,7 +20,7 @@ const LogIn: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection text="Login" />
+      <PageHeaderWithoutButton text="Login" />
       {isLoading ? <ProgressComponent /> : <LogInForm />}
     </Box>
   );

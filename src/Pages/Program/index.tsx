@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Message';
+import PageHeaderWithoutButton from '../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import FixturesSection from './FixturesSection';
-import TopSection from './TopSection';
 
 const Program: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection text="Programma" />
+      <PageHeaderWithoutButton text="Programma" />
 
       {isLoading ? (
         <ProgressComponent />
