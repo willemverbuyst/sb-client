@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import SignUpForm from '../../Components/Form/SingUpForm';
+import PageHeaderWithoutButton from '../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import { selectUser } from '../../store/user/selectors';
-import TopSection from './TopSection';
 
 const SignUp: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
@@ -26,7 +26,7 @@ const SignUp: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection />
+      <PageHeaderWithoutButton text="Sign Up" />
       {isLoading ? <ProgressComponent /> : <SignUpForm />}
     </Box>
   );

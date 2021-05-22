@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 import ScoresStackedChart from '../../../Components/Chart/ScoresStackedChart';
 import DividerComponent from '../../../Components/Divider';
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
@@ -13,7 +14,6 @@ import { fetchPlayerScores } from '../../../store/players/actions';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
-import TopSection from './TopSection';
 
 const ScoresUser: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
@@ -34,9 +34,11 @@ const ScoresUser: React.FC = (): ReactElement => {
     }
   });
 
+  const goto = () => history.push(`/voorspellingen/1/1`);
+
   return (
     <Box>
-      <TopSection />
+      <PageHeaderWithButton title="Scores" captionBtn="VOORSPELLINGEN" colorBtn="primary" handleClick={goto} />
 
       {isLoading ? (
         <ProgressComponent />
@@ -52,7 +54,7 @@ const ScoresUser: React.FC = (): ReactElement => {
           />
         </>
       ) : (
-        <Message message={`Je hebt nog geen scores`} />
+        <MessageComponent message={`Je hebt nog geen scores`} />
       )}
     </Box>
   );

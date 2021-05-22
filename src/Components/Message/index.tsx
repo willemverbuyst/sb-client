@@ -13,7 +13,7 @@ type Props = {
   message: string;
 };
 
-const Message: React.FC<Props> = (props: Props): ReactElement => {
+const MessageComponent: React.FC<Props> = (props: Props): ReactElement => {
   const classes = useStyles();
   return (
     <Grid>
@@ -24,4 +24,4 @@ const Message: React.FC<Props> = (props: Props): ReactElement => {
   );
 };
 
-export default Message;
+export default MessageComponent;

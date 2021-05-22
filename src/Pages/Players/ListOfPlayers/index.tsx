@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
 import ProgressComponent from '../../../Components/Progress';
 import PlayersTable from '../../../Components/Table/PlayersTable';
 import { selectAppLoading } from '../../../store/appState/selectors';
@@ -43,7 +43,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
       ) : players ? (
         <PlayersTable players={players} changeStatus={update} />
       ) : (
-        <Message message={`Geen speleres gevonden`} />
+        <MessageComponent message={`Geen speleres gevonden`} />
       )}
     </Box>
   );

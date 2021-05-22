@@ -5,7 +5,8 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../../Components/Divider';
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
@@ -14,15 +15,14 @@ import { selectTotoRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import BreadCrumbsSection from './BreadCrumbsSection';
-import TopSection from './TopSection';
 
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const { id } = useParams<{ id: string }>();
-  const token = useSelector(selectToken);
   const history = useHistory();
-  const totoRound = useSelector(selectTotoRound);
   const isLoading = useSelector(selectAppLoading);
+  const token = useSelector(selectToken);
+  const totoRound = useSelector(selectTotoRound);
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -41,9 +41,16 @@ const TotoRound: React.FC = (): ReactElement => {
         )
       : [];
 
+  const gotoTotoRound = () => history.push(`/voorspellingen/${id}/${+id * 3 - 2}`);
+
   return (
     <Box>
-      <TopSection id={id} />
+      <PageHeaderWithButton
+        title="Klassement"
+        captionBtn="MIJN VOORSPELLINGEN"
+        colorBtn="primary"
+        handleClick={gotoTotoRound}
+      />
 
       {isLoading ? (
         <ProgressComponent />
@@ -55,7 +62,7 @@ const TotoRound: React.FC = (): ReactElement => {
           <BreadCrumbsSection id={id} />
         </>
       ) : (
-        <Message message={`Nog geen scores voor toto ronde ${id}`} />
+        <MessageComponent message={`Nog geen scores voor toto ronde ${id}`} />
       )}
     </Box>
   );

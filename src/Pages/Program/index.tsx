@@ -3,14 +3,14 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import Message from '../../Components/Message';
+import MessageComponent from '../../Components/Message';
+import PageHeaderWithoutButton from '../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
 import FixturesSection from './FixturesSection';
-import TopSection from './TopSection';
 
 const Program: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -31,14 +31,14 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <TopSection />
+      <PageHeaderWithoutButton text="Programma" />
 
       {isLoading ? (
         <ProgressComponent />
       ) : currentRound ? (
         <FixturesSection currentRound={currentRound} />
       ) : (
-        <Message message={`Er staan voor deze week geen wedstrijden gepland.`} />
+        <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
       )}
     </Box>
   );

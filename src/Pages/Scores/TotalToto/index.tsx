@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../../Components/Divider';
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
@@ -14,7 +15,6 @@ import { selectTotalToto } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import BreadCrumbsSection from './BreadCrumbsSection';
-import TopSection from './TopSection';
 
 const TotalToto: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -37,9 +37,16 @@ const TotalToto: React.FC = (): ReactElement => {
     ? [...totalToto].sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
     : [];
 
+  const gotoTotoRound = () => history.push(`/voorspellingen/1/1`);
+
   return (
     <Box>
-      <TopSection />
+      <PageHeaderWithButton
+        title="Klassement"
+        captionBtn="MIJN VOORSPELLINGEN"
+        colorBtn="primary"
+        handleClick={gotoTotoRound}
+      />
 
       {isLoading ? (
         <ProgressComponent />
@@ -51,7 +58,7 @@ const TotalToto: React.FC = (): ReactElement => {
           <BreadCrumbsSection />
         </>
       ) : (
-        <Message message={`Nog geen scores voor totalToto`} />
+        <MessageComponent message={`Nog geen scores voor totalToto`} />
       )}
     </Box>
   );

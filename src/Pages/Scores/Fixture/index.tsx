@@ -5,7 +5,8 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import ScoresFixtureBarChart from '../../../Components/Chart/ScoresFixtureBarChart';
 import DividerComponent from '../../../Components/Divider';
-import Message from '../../../Components/Message';
+import MessageComponent from '../../../Components/Message';
+import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresFixture } from '../../../store/scores/actions';
@@ -14,7 +15,6 @@ import { PredictionWithScorePerUser } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import { sortValues } from '../../../utils/sortFunctions';
 import FixtureSection from './FixtureSection';
-import TopSection from './TopSection';
 
 const Fixture: React.FC = (): ReactElement => {
   const history = useHistory();
@@ -37,9 +37,11 @@ const Fixture: React.FC = (): ReactElement => {
       ? sortValues<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(fixture.scores)
       : [];
 
+  const goBack = () => history.goBack();
+
   return (
     <Box>
-      <TopSection />
+      <PageHeaderWithButton title="Uitslag" captionBtn="TERUG" colorBtn="primary" handleClick={goBack} />
 
       {isLoading ? (
         <ProgressComponent />
@@ -47,10 +49,14 @@ const Fixture: React.FC = (): ReactElement => {
         <>
           <FixtureSection fixture={fixture} />
           <DividerComponent />
-          {fixture.scores ? <ScoresFixtureBarChart scores={scoresSortedByName} /> : <Message message={`Geen scores`} />}
+          {fixture.scores ? (
+            <ScoresFixtureBarChart scores={scoresSortedByName} />
+          ) : (
+            <MessageComponent message={`Geen scores`} />
+          )}
         </>
       ) : (
-        <Message message={`Geen wedstrijd gevonden`} />
+        <MessageComponent message={`Geen wedstrijd gevonden`} />
       )}
     </Box>
   );
