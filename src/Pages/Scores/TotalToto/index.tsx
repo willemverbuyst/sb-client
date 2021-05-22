@@ -66,11 +66,11 @@ const TotalToto: React.FC = (): ReactElement => {
               <ScoresBarChart scores={totalTotoSortedByUserName} />
             </Grid>
           </Grid>
+          <BreadCrumbsSection />
         </>
       ) : (
         <Message message={`Nog geen scores voor totalToto`} />
       )}
-      <BreadCrumbsSection />
     </Box>
   );
 };

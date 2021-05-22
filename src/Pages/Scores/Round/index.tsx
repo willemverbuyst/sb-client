@@ -72,11 +72,11 @@ const Round: React.FC = (): ReactElement => {
               <ScoresBarChart scores={roundSortedByName} />
             </Grid>
           </Grid>
+          <BreadCrumbsSection id={id} />
         </>
       ) : (
         <Message message={`Nog geen scores voor deze ronde`} />
       )}
-      <BreadCrumbsSection id={id} />
     </Box>
   );
 };

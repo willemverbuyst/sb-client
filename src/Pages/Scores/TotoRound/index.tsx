@@ -70,11 +70,11 @@ const TotoRound: React.FC = (): ReactElement => {
               <ScoresBarChart scores={totoRoundSortedByUserName} />
             </Grid>
           </Grid>
+          <BreadCrumbsSection id={id} />
         </>
       ) : (
         <Message message={`Nog geen scores voor toto ronde ${id}`} />
       )}
-      <BreadCrumbsSection id={id} />
     </Box>
   );
 };
