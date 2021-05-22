@@ -1,4 +1,4 @@
-import { Box, Grid } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -48,12 +48,7 @@ const Round: React.FC = (): ReactElement => {
         <>
           <SubTitleComponent text={`RONDE ${id}`} />
           <DividerComponent />
-
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs={12} md={6} container justify="center">
-              <ScoresBarChart scores={roundSortedByName} />
-            </Grid>
-          </Grid>
+          <ScoresBarChart scores={roundSortedByName} />
           <BreadCrumbsSection id={id} />
         </>
       ) : (
