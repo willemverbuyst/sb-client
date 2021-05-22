@@ -41,37 +41,39 @@ const PlayersTable: React.FC<Props> = ({ players, changeStatus }: Props): ReactE
   };
 
   return (
-    <Grid item xs={10} className={classes.playersTable}>
-      <TableContainer>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">admin</TableCell>
-              <TableCell align="left">user name</TableCell>
-              <TableCell align="left">team</TableCell>
-              <TableCell align="left">naam</TableCell>
-              {user && user.admin ? <TableCell align="left">achternaam</TableCell> : null}
-              <TableCell align="center">totaal-toto</TableCell>
-              {user && user.admin ? <TableCell align="left">telefoon</TableCell> : null}
-              {user && user.admin ? <TableCell align="left">email</TableCell> : null}
-              {user && user.admin && changeStatus ? <TableCell align="left"></TableCell> : null}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {user &&
-              sortTable(players).map((player, i) => (
-                <PlayerRow
-                  key={i}
-                  player={player}
-                  userIsAdmin={user.admin}
-                  updateStatus={changeStatus}
-                  onChange={handleBtnClick}
-                />
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {showDialog && player ? <DeleteDialog closeDialog={handleChange} playerToDelete={player} /> : null}
+    <Grid container justify="center">
+      <Grid item xs={10} className={classes.playersTable}>
+        <TableContainer>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">admin</TableCell>
+                <TableCell align="left">user name</TableCell>
+                <TableCell align="left">team</TableCell>
+                <TableCell align="left">naam</TableCell>
+                {user && user.admin ? <TableCell align="left">achternaam</TableCell> : null}
+                <TableCell align="center">totaal-toto</TableCell>
+                {user && user.admin ? <TableCell align="left">telefoon</TableCell> : null}
+                {user && user.admin ? <TableCell align="left">email</TableCell> : null}
+                {user && user.admin && changeStatus ? <TableCell align="left"></TableCell> : null}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {user &&
+                sortTable(players).map((player, i) => (
+                  <PlayerRow
+                    key={i}
+                    player={player}
+                    userIsAdmin={user.admin}
+                    updateStatus={changeStatus}
+                    onChange={handleBtnClick}
+                  />
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {showDialog && player ? <DeleteDialog closeDialog={handleChange} playerToDelete={player} /> : null}
+      </Grid>
     </Grid>
   );
 };
