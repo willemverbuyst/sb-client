@@ -1,32 +1,23 @@
-import { Box, Grid, Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Box, Grid } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import ButtonComponent from '../../../Components/Button';
 import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
 import DividerComponent from '../../../Components/Divider';
 import Message from '../../../Components/Message';
 import ProgressComponent from '../../../Components/Progress';
-import PageTitleComponent from '../../../Components/Title/PageTitle';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
-import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresRound } from '../../../store/scores/actions';
 import { selectRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
-import { topSection } from '../../../ui/sharedClasses';
 import { sortValues } from '../../../utils/sortFunctions';
 import BreadCrumbsSection from './BreadCrumbsSection';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  ...topSection(theme),
-}));
+import TopSection from './TopSection';
 
 const Round: React.FC = (): ReactElement => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -47,18 +38,9 @@ const Round: React.FC = (): ReactElement => {
   const roundSortedByName: UserWithScore[] =
     round && round.usersWithScores ? sortValues<keyof UserWithScore, UserWithScore>('user')(round.usersWithScores) : [];
 
-  const gotoPredictions = () => {
-    const t = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
-
-    history.push(`/voorspellingen/${t}/${+id}`);
-  };
-
   return (
     <Box>
-      <Grid container className={classes.topSection}>
-        <PageTitleComponent text="Klassement" />
-        <ButtonComponent caption="MIJN VOORSPELLINGEN" color="primary" handleClick={gotoPredictions} />
-      </Grid>
+      <TopSection id={id} />
 
       {isLoading ? (
         <ProgressComponent />
