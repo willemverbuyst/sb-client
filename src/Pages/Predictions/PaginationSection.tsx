@@ -21,8 +21,8 @@ const PaginationSection: React.FC<IProps> = ({ totoronde, ronde }: IProps): Reac
   const classes = useStyles();
   const history = useHistory();
 
-  let t = +totoronde;
-  let r = +ronde;
+  let t = Number(totoronde);
+  let r = Number(ronde);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
     r = roundByTotoRound(value);
