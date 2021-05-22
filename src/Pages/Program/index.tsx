@@ -31,7 +31,7 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <PageHeaderWithoutButton text="Programma" />
+      <PageHeaderWithoutButton title="Programma" />
 
       {isLoading ? (
         <ProgressComponent />

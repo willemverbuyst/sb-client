@@ -26,7 +26,7 @@ const SignUp: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <PageHeaderWithoutButton text="Sign Up" />
+      <PageHeaderWithoutButton title="Sign Up" />
       {isLoading ? <ProgressComponent /> : <SignUpForm />}
     </Box>
   );

@@ -10,15 +10,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface IProps {
-  text: string;
+  title: string;
 }
 
-const PageHeaderWithoutButton: React.FC<IProps> = ({ text }: IProps): ReactElement => {
+const PageHeaderWithoutButton: React.FC<IProps> = ({ title }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.topSection}>
-      <PageTitleComponent text={text} />
+      <PageTitleComponent text={title} />
     </Grid>
   );
 };

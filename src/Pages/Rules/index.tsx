@@ -17,7 +17,7 @@ const Rules: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <PageHeaderWithoutButton text="Regels" />
+      <PageHeaderWithoutButton title="Regels" />
       <AccordionWithRules />
     </Box>
   );

@@ -20,7 +20,7 @@ const LogIn: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <PageHeaderWithoutButton text="Login" />
+      <PageHeaderWithoutButton title="Login" />
       {isLoading ? <ProgressComponent /> : <LogInForm />}
     </Box>
   );
