@@ -4,23 +4,20 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import ButtonComponent from '../../Components/Button';
-import ScoresFixtureBarChart from '../../Components/Chart/ScoresFixtureBarChart';
-import DividerComponent from '../../Components/Divider';
-import Message from '../../Components/Message';
-import ProgressComponent from '../../Components/Progress';
-import PageTitleComponent from '../../Components/Title/PageTitle';
-import { selectAppLoading } from '../../store/appState/selectors';
-import { fetchScoresFixture } from '../../store/scores/actions';
-import { selectFixture } from '../../store/scores/selectors';
-import { PredictionWithScorePerUser } from '../../store/scores/types';
-import { selectToken } from '../../store/user/selectors';
-import { topSection } from '../../ui/sharedClasses';
-import { sortValues } from '../../utils/sortFunctions';
-import { timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
+import ScoresFixtureBarChart from '../../../Components/Chart/ScoresFixtureBarChart';
+import DividerComponent from '../../../Components/Divider';
+import Message from '../../../Components/Message';
+import ProgressComponent from '../../../Components/Progress';
+import { selectAppLoading } from '../../../store/appState/selectors';
+import { fetchScoresFixture } from '../../../store/scores/actions';
+import { selectFixture } from '../../../store/scores/selectors';
+import { PredictionWithScorePerUser } from '../../../store/scores/types';
+import { selectToken } from '../../../store/user/selectors';
+import { sortValues } from '../../../utils/sortFunctions';
+import { timeStampFormattedToLocalDate } from '../../../utils/timeFunctions';
+import TopSection from './TopSection';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...topSection(theme),
   fixture: {
     [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(0),
@@ -67,10 +64,7 @@ const Fixture: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <Grid container className={classes.topSection}>
-        <PageTitleComponent text="Uitslag" />
-        <ButtonComponent caption="TERUG" color="primary" handleClick={() => history.goBack()} />
-      </Grid>
+      <TopSection />
 
       {isLoading ? (
         <ProgressComponent />
@@ -118,17 +112,13 @@ const Fixture: React.FC = (): ReactElement => {
           </Grid>
 
           <DividerComponent />
-        </>
-      ) : null}
 
-      {!isLoading && fixture && fixture.scores ? (
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item xs={12} md={6} container justify="center">
+          {fixture && fixture.scores ? (
             <ScoresFixtureBarChart scores={scoresSortedByName} />
-          </Grid>
-        </Grid>
-      ) : !isLoading && fixture && !fixture.scores ? (
-        <Message message={`Geen scores`} />
+          ) : fixture && !fixture.scores ? (
+            <Message message={`Geen scores`} />
+          ) : null}
+        </>
       ) : null}
     </Box>
   );
