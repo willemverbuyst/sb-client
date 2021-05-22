@@ -36,13 +36,11 @@ const Profile: React.FC = (): ReactElement => {
     <Box>
       <Grid container className={classes.topSection}>
         <PageTitleComponent text="Profiel" />
-        <Grid>
-          <ButtonComponent
-            caption={!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
-            color="secondary"
-            handleClick={handleEditProfile}
-          />
-        </Grid>
+        <ButtonComponent
+          caption={!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
+          color="secondary"
+          handleClick={handleEditProfile}
+        />
       </Grid>
 
       {isLoading ? (
