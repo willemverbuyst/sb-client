@@ -1,24 +1,16 @@
-import { Box, Grid } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ButtonComponent from '../../Components/Button';
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
 import EditProfileForm from '../../Components/Form/EditProfileForm';
 import ProgressComponent from '../../Components/Progress';
-import PageTitleComponent from '../../Components/Title/PageTitle';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import { topSection } from '../../ui/sharedClasses';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  ...topSection(theme),
-}));
+import TopSection from './TopSection';
 
 const Profile: React.FC = (): ReactElement => {
-  const classes = useStyles();
   const token = useSelector(selectToken);
   const history = useHistory();
   const isLoading = useSelector(selectAppLoading);
@@ -28,27 +20,23 @@ const Profile: React.FC = (): ReactElement => {
     if (!token) history.push('/login');
   });
 
-  const handleEditProfile = () => {
+  const handleEditProfile = (): void => {
     setEditProfile(!editProfile);
   };
+  const changeProfile = (): void => setEditProfile(true);
+  const changePassword = (): void => setEditProfile(true);
+  const caption: string = !editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD';
 
   return (
     <Box>
-      <Grid container className={classes.topSection}>
-        <PageTitleComponent text="Profiel" />
-        <ButtonComponent
-          caption={!editProfile ? 'EDIT PROFIEL' : 'CHANGE PASSWORD'}
-          color="secondary"
-          handleClick={handleEditProfile}
-        />
-      </Grid>
+      <TopSection caption={caption} handleEditProfile={handleEditProfile} />
 
       {isLoading ? (
         <ProgressComponent />
       ) : editProfile ? (
-        <EditProfileForm handleSubmit={() => setEditProfile(true)} />
+        <EditProfileForm handleSubmit={changeProfile} />
       ) : (
-        <ChangePasswordForm handleSubmit={() => setEditProfile(true)} />
+        <ChangePasswordForm handleSubmit={changePassword} />
       )}
     </Box>
   );
