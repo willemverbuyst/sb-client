@@ -1,8 +1,3 @@
-type User = {
-  name: string;
-  id: number;
-};
-
 export const sortArrayWithObjects = <U extends keyof T, T extends { [key: string]: number | string }>(prop: U) => (
   arrayWithObjects: T[],
 ): T[] => {
@@ -21,11 +16,17 @@ export const sortArrayWithObjects = <U extends keyof T, T extends { [key: string
   return sortedArrayWithObjects;
 };
 
-const arrayWithFakeUsers: User[] = [
-  { name: 'Sjaak3', id: 1 },
-  { name: 'Sjaak1', id: 3 },
-  { name: 'Sjaak2', id: 2 },
-];
+// TO TEST SORT FUNCTION
+// type User = {
+//   name: string;
+//   id: number;
+// };
 
-sortArrayWithObjects<keyof User, User>('name')(arrayWithFakeUsers);
-sortArrayWithObjects<keyof User, User>('id')(arrayWithFakeUsers);
+// const arrayWithFakeUsers: User[] = [
+//   { name: 'Sjaak3', id: 1 },
+//   { name: 'Sjaak1', id: 3 },
+//   { name: 'Sjaak2', id: 2 },
+// ];
+
+// sortArrayWithObjects<keyof User, User>('name')(arrayWithFakeUsers);
+// sortArrayWithObjects<keyof User, User>('id')(arrayWithFakeUsers);
