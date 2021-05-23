@@ -13,7 +13,7 @@ import { fetchScoresFixture } from '../../../store/scores/actions';
 import { selectFixture } from '../../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
-import { sortValues } from '../../../utils/sortFunctions';
+import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import FixtureSection from './FixtureSection';
 
 const Fixture: React.FC = (): ReactElement => {
@@ -34,7 +34,7 @@ const Fixture: React.FC = (): ReactElement => {
 
   const scoresSortedByName: PredictionWithScorePerUser[] =
     fixture && fixture.scores
-      ? sortValues<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(fixture.scores)
+      ? sortArrayWithObjects<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(fixture.scores)
       : [];
 
   const goBack = () => history.goBack();

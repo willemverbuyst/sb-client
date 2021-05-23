@@ -1,28 +1,31 @@
-// type User = {
-//   name: string;
-//   id: number;
-// };
-
-// eslint-disable-next-line
-export const sortValues = <U extends keyof T, T extends { [key: string]: any }>(prop: U) => (
-  arrayWithValues: T[],
-): T[] => {
-  const returnValue = [...arrayWithValues].sort((value1, value2) => {
-    if (typeof value1[prop] === 'string') {
-      return value1[prop].toLowerCase().localeCompare(value2[prop].toLowerCase());
-    } else {
-      return value1[prop] - value2[prop];
-    }
-  });
-  // console.log(returnValue); // for testing
-  return returnValue;
+type User = {
+  name: string;
+  id: number;
 };
 
-// const arrayWithFakeUsers: User[] = [
-//   { name: 'Sjaak3', id: 1 },
-//   { name: 'Sjaak1', id: 3 },
-//   { name: 'Sjaak2', id: 2 },
-// ];
+export const sortArrayWithObjects = <U extends keyof T, T extends { [key: string]: number | string }>(prop: U) => (
+  arrayWithObjects: T[],
+): T[] => {
+  const sortedArrayWithObjects = [...arrayWithObjects].sort((object1, object2): number => {
+    const value1 = object1[prop];
+    const value2 = object2[prop];
+    if (typeof value1 === 'string' && typeof value2 === 'string') {
+      return value1.toLowerCase().localeCompare(value2.toLowerCase());
+    } else if (typeof value1 === 'number' && typeof value2 === 'number') {
+      return value1 - value2;
+    } else {
+      return 1;
+    }
+  });
+  console.log(sortedArrayWithObjects); // for testing
+  return sortedArrayWithObjects;
+};
 
-// sortValues<keyof User, User>('name')(arrayWithFakeUsers);
-// sortValues<keyof User, User>('id')(arrayWithFakeUsers);
+const arrayWithFakeUsers: User[] = [
+  { name: 'Sjaak3', id: 1 },
+  { name: 'Sjaak1', id: 3 },
+  { name: 'Sjaak2', id: 2 },
+];
+
+sortArrayWithObjects<keyof User, User>('name')(arrayWithFakeUsers);
+sortArrayWithObjects<keyof User, User>('id')(arrayWithFakeUsers);

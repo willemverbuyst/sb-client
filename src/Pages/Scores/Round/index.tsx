@@ -15,7 +15,7 @@ import { fetchScoresRound } from '../../../store/scores/actions';
 import { selectRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
-import { sortValues } from '../../../utils/sortFunctions';
+import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
 const Round: React.FC = (): ReactElement => {
@@ -37,7 +37,9 @@ const Round: React.FC = (): ReactElement => {
   }, [dispatch, id, round]);
 
   const roundSortedByName: UserWithScore[] =
-    round && round.usersWithScores ? sortValues<keyof UserWithScore, UserWithScore>('user')(round.usersWithScores) : [];
+    round && round.usersWithScores
+      ? sortArrayWithObjects<keyof UserWithScore, UserWithScore>('user')(round.usersWithScores)
+      : [];
 
   const gotoPredictions = () => {
     const t = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
