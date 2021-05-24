@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
-import RowButtons from './RowButtons';
+import TableCellsAdmin from './TableCellsAdmin';
 
 export const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
@@ -28,11 +28,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
 
 type IProps = {
   player: IPlayer;
-  userIsAdmin: boolean;
   onChange: (player: IPlayer) => void;
 };
 
-const RowWithPlayer: React.FC<IProps> = ({ player, userIsAdmin, onChange }: IProps): ReactElement => {
+const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -56,33 +55,23 @@ const RowWithPlayer: React.FC<IProps> = ({ player, userIsAdmin, onChange }: IPro
           <Check className={classes.checkAdmin} />
         ) : null}
       </TableCell>
-
       <TableCell align="left" className={classes.link} onClick={gotoPredictions}>
         {player.userName}
       </TableCell>
-
       <TableCell align="left">
         <img className={classes.avatar} alt={player.team.name} src={player.team.logo} />
       </TableCell>
-
       <TableCell className={classes.checkToto} align="center">
         {player.totaalToto ? <Check /> : null}
       </TableCell>
-
       <TableCell align="left">{player.firstName}</TableCell>
 
-      {userIsAdmin ? (
-        <>
-          <TableCell align="left">{player.lastName}</TableCell>
-          <TableCell align="left">{player.phoneNumber}</TableCell>
-          <TableCell align="left">{player.email}</TableCell>
-          <RowButtons
-            editModus={editModus}
-            changeEditModus={() => setEditModus(!editModus)}
-            deletePlayer={deletePlayer}
-          />
-        </>
-      ) : null}
+      <TableCellsAdmin
+        player={player}
+        editModus={editModus}
+        changeEditModus={() => setEditModus(!editModus)}
+        deletePlayer={deletePlayer}
+      />
     </TableRow>
   );
 };
