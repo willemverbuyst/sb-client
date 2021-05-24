@@ -46,15 +46,16 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
   const gotoPredictions = (): void => history.push(`/spelers/${player.id}/voorspellingen/1/1`);
   const deletePlayer = (): void => onChange(player);
 
+  const isAdminTableCell = (): ReactElement | null =>
+    editModus ? (
+      <Checkbox checked={isAdmin} onChange={handleChange} inputProps={{ 'aria-label': 'primary checkbox' }} />
+    ) : player.admin ? (
+      <Check className={classes.checkAdmin} />
+    ) : null;
+
   return (
     <TableRow>
-      <TableCell align="center">
-        {editModus ? (
-          <Checkbox checked={isAdmin} onChange={handleChange} inputProps={{ 'aria-label': 'primary checkbox' }} />
-        ) : player.admin ? (
-          <Check className={classes.checkAdmin} />
-        ) : null}
-      </TableCell>
+      <TableCell align="center">{isAdminTableCell()}</TableCell>
       <TableCell align="left" className={classes.link} onClick={gotoPredictions}>
         {player.userName}
       </TableCell>

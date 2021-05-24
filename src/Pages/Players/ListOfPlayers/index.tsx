@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import MessageComponent from '../../../Components/Message';
 import PageHeaderWithoutButton from '../../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../../Components/Progress';
-import PlayersTable from '../../../Components/Table/PlayersTable';
+import PlayersTable from '../../../Components/Table';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchAllPlayers } from '../../../store/players/actions';
 import { selectPlayers } from '../../../store/players/selectors';
