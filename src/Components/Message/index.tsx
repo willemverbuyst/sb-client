@@ -9,12 +9,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = {
+type IProps = {
   message: string;
 };
 
-const MessageComponent: React.FC<Props> = (props: Props): ReactElement => {
+const MessageComponent: React.FC<IProps> = (props: IProps): ReactElement => {
   const classes = useStyles();
+
   return (
     <Grid>
       <Typography variant="overline" className={classes.message}>

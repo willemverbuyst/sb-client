@@ -10,24 +10,19 @@ const UserDisplay: React.FC = (): ReactElement => {
   const classes = useStyles();
   const user = useSelector(selectUser);
 
+  const name = user ? replaceUnderscore(user.userName) : 'Who are you?';
+  const logo = user ? <Avatar alt={user.team.name} src={user.team.logo} className={classes.avatar} /> : null;
+
   return (
     <Grid container justify="center">
-      {user ? (
-        <Grid container className={classes.wrapper}>
-          <Grid container justify="center">
-            <Typography className={classes.userName}>{replaceUnderscore(user.userName)}</Typography>
-          </Grid>
-          <Grid container justify="center" className={classes.team}>
-            <Avatar alt={user.team.name} src={user.team.logo} className={classes.avatar} />
-          </Grid>
+      <Grid container className={classes.wrapper}>
+        <Grid container justify="center">
+          <Typography className={classes.userName}>{name}</Typography>
         </Grid>
-      ) : (
-        <Grid container className={classes.wrapper}>
-          <Grid container justify="center">
-            <Typography className={classes.userName}>Who are you?</Typography>
-          </Grid>
+        <Grid container justify="center" className={classes.team}>
+          {logo}
         </Grid>
-      )}
+      </Grid>
     </Grid>
   );
 };

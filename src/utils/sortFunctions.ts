@@ -12,7 +12,7 @@ export const sortArrayWithObjects = <U extends keyof T, T extends { [key: string
       return 1;
     }
   });
-  console.log(sortedArrayWithObjects); // for testing
+  // console.log(sortedArrayWithObjects); // for testing
   return sortedArrayWithObjects;
 };
 
