@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { IPlayer } from '../../models/player.model';
 import { selectUser } from '../../store/user/selectors';
-import RowButtons from './RowButtons';
+import TableButton from './TableButton';
 
 type IProps = {
   player: IPlayer;
@@ -26,7 +26,14 @@ const TableCellsAdmin: React.FC<IProps> = ({
       <TableCell align="left">{player.lastName}</TableCell>
       <TableCell align="left">{player.phoneNumber}</TableCell>
       <TableCell align="left">{player.email}</TableCell>
-      <RowButtons editModus={editModus} changeEditModus={changeEditModus} deletePlayer={deletePlayer} />
+      {editModus ? (
+        <>
+          <TableButton caption="DELETE" color="secondary" handleClick={deletePlayer} />
+          <TableButton caption="CANCEL" color="primary" handleClick={changeEditModus} />
+        </>
+      ) : (
+        <TableButton caption="EDIT" color="primary" handleClick={changeEditModus} />
+      )}
     </>
   ) : null;
 };
