@@ -12,46 +12,45 @@ import { useDispatch } from 'react-redux';
 import { IPlayer } from '../../models/player.model';
 import { playerDelete } from '../../store/players/actions';
 
-type Props = {
+type IProps = {
   playerToDelete: IPlayer;
   closeDialog: () => void;
 };
 
-const DeleteDialog: React.FC<Props> = (props: Props): ReactElement => {
+const DeleteDialog: React.FC<IProps> = ({ playerToDelete, closeDialog }: IProps): ReactElement => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const dispatch = useDispatch();
+  const nameOfUser = `${playerToDelete.firstName} ${playerToDelete.lastName}`;
 
   const handleDelete = () => {
-    dispatch(playerDelete(+props.playerToDelete.id));
-    props.closeDialog();
+    dispatch(playerDelete(Number(playerToDelete.id)));
+    closeDialog();
   };
 
   const handleCancel = () => {
-    props.closeDialog();
+    closeDialog();
   };
 
   return (
-    <div>
-      <Dialog open={true} fullScreen={fullScreen} aria-labelledby="responsive-dialog-title">
-        <DialogTitle id="responsive-dialog-title">{`Weet je zeker dat je ${props.playerToDelete.firstName} ${props.playerToDelete.lastName} wilt verwijderen?`}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Wanneer je deze speler verwijderd, wordt alle data uit de database gewist.
-            <br />
-            Er is dan geen weg terug...
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleCancel} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleDelete} color="primary" autoFocus>
-            Verwijder
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <Dialog open={true} fullScreen={fullScreen} aria-labelledby="responsive-dialog-title">
+      <DialogTitle id="responsive-dialog-title">{`Weet je zeker dat je ${nameOfUser} wilt verwijderen?`}</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          Wanneer je deze speler verwijderd, wordt alle data uit de database gewist.
+          <br />
+          Er is dan geen weg terug...
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button autoFocus onClick={handleCancel} color="primary">
+          Cancel
+        </Button>
+        <Button onClick={handleDelete} color="primary">
+          Verwijder
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

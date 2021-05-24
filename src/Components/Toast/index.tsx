@@ -1,28 +1,17 @@
 import { Snackbar } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectMessage } from '../../store/appState/selectors';
 
-function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Alert: React.FC<AlertProps> = (props: AlertProps): ReactElement => (
+  <MuiAlert elevation={6} variant="filled" {...props} />
+);
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
-
-const Toast: React.FC = (): ReactElement => {
+const Toast: React.FC = (): ReactElement | null => {
   const message = useSelector(selectMessage);
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClose = (_event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -36,22 +25,18 @@ const Toast: React.FC = (): ReactElement => {
   }, [message]);
 
   return message ? (
-    <div className={classes.root}>
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-      >
-        <Alert severity={message.severity}>{message.text}</Alert>
-      </Snackbar>
-    </div>
-  ) : (
-    <></>
-  );
+    <Snackbar
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      open={open}
+      autoHideDuration={3000}
+      onClose={handleClose}
+    >
+      <Alert severity={message.severity}>{message.text}</Alert>
+    </Snackbar>
+  ) : null;
 };
 
 export default Toast;
