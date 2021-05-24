@@ -1,4 +1,5 @@
-import { Button, Checkbox, TableCell, TableRow } from '@material-ui/core';
+import { Checkbox, TableCell, TableRow } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,7 +7,24 @@ import { useHistory } from 'react-router-dom';
 
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
-import { RedButton, useStyles } from './PlayerRowStyles';
+import RowButtons from './RowButtons';
+
+export const useStyles = makeStyles((theme: Theme) => ({
+  avatar: {
+    height: 30,
+    width: 30,
+    objectFit: 'contain',
+  },
+  checkToto: {
+    color: theme.palette.primary.main,
+  },
+  checkAdmin: {
+    color: theme.palette.secondary.main,
+  },
+  link: {
+    cursor: 'pointer',
+  },
+}));
 
 type IProps = {
   player: IPlayer;
@@ -14,7 +32,7 @@ type IProps = {
   onChange: (player: IPlayer) => void;
 };
 
-const PlayerRow: React.FC<IProps> = ({ player, userIsAdmin, onChange }: IProps): ReactElement => {
+const RowWithPlayer: React.FC<IProps> = ({ player, userIsAdmin, onChange }: IProps): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -58,30 +76,15 @@ const PlayerRow: React.FC<IProps> = ({ player, userIsAdmin, onChange }: IProps):
           <TableCell align="left">{player.lastName}</TableCell>
           <TableCell align="left">{player.phoneNumber}</TableCell>
           <TableCell align="left">{player.email}</TableCell>
-          {editModus ? (
-            <>
-              <TableCell align="left">
-                <RedButton size="small" onClick={deletePlayer}>
-                  DELETE
-                </RedButton>
-              </TableCell>
-              <TableCell align="left">
-                <Button size="small" variant="contained" color="primary" onClick={() => setEditModus(false)}>
-                  CANCEL
-                </Button>
-              </TableCell>
-            </>
-          ) : (
-            <TableCell align="left">
-              <Button size="small" variant="outlined" color="primary" onClick={() => setEditModus(true)}>
-                Edit
-              </Button>
-            </TableCell>
-          )}
+          <RowButtons
+            editModus={editModus}
+            changeEditModus={() => setEditModus(!editModus)}
+            deletePlayer={deletePlayer}
+          />
         </>
       ) : null}
     </TableRow>
   );
 };
 
-export default PlayerRow;
+export default RowWithPlayer;
