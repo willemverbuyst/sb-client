@@ -1,4 +1,5 @@
-export const sortArrayWithObjects = <U extends keyof T, T extends { [key: string]: number | string }>(prop: U) => (
+// eslint-disable-next-line
+export const sortArrayWithObjects = <U extends keyof T, T extends { [key: string]: any }>(prop: U) => (
   arrayWithObjects: T[],
 ): T[] => {
   const sortedArrayWithObjects = [...arrayWithObjects].sort((object1, object2): number => {

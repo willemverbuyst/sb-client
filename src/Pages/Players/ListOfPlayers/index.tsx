@@ -1,17 +1,16 @@
 import { Box } from '@material-ui/core';
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Message';
-import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import PageHeaderWithoutButton from '../../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../../Components/Progress';
 import PlayersTable from '../../../Components/Table/PlayersTable';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchAllPlayers } from '../../../store/players/actions';
 import { selectPlayers } from '../../../store/players/selectors';
-import { selectToken, selectUser } from '../../../store/user/selectors';
+import { selectToken } from '../../../store/user/selectors';
 
 const ListOfPlayers: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -19,8 +18,6 @@ const ListOfPlayers: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const players = useSelector(selectPlayers);
   const token = useSelector(selectToken);
-  const user = useSelector(selectUser);
-  const [update, setUpdate] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -32,22 +29,14 @@ const ListOfPlayers: React.FC = (): ReactElement => {
     }
   }, [dispatch, players]);
 
-  const editAdminStatus = () => setUpdate(!update);
-  const userIsAdmin = user && user.admin ? true : false;
-  const caption = update ? 'KLAAR' : 'EDIT SPELER';
-
   return (
     <Box>
-      {userIsAdmin ? (
-        <PageHeaderWithButton title="Spelers" captionBtn={caption} colorBtn="secondary" handleClick={editAdminStatus} />
-      ) : (
-        <PageHeaderWithoutButton title="Spelers" />
-      )}
+      <PageHeaderWithoutButton title="Spelers" />
 
       {isLoading ? (
         <ProgressComponent />
       ) : players ? (
-        <PlayersTable players={players} changeStatus={update} />
+        <PlayersTable players={players} />
       ) : (
         <MessageComponent message={`Geen speleres gevonden`} />
       )}

@@ -13,13 +13,13 @@ type IProps = {
   message: string;
 };
 
-const MessageComponent: React.FC<IProps> = (props: IProps): ReactElement => {
+const MessageComponent: React.FC<IProps> = ({ message }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid>
       <Typography variant="overline" className={classes.message}>
-        {props.message}
+        {message}
       </Typography>
     </Grid>
   );

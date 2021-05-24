@@ -1,4 +1,4 @@
-import { Checkbox, TableCell, TableRow } from '@material-ui/core';
+import { Button, Checkbox, TableCell, TableRow } from '@material-ui/core';
 import Check from '@material-ui/icons/Check';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,67 +6,79 @@ import { useHistory } from 'react-router-dom';
 
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
-import { ColorButton, useStyles } from './PlayerRowStyles';
+import { RedButton, useStyles } from './PlayerRowStyles';
 
-type Props = {
-  key: number;
+type IProps = {
   player: IPlayer;
   userIsAdmin: boolean;
-  updateStatus: boolean;
   onChange: (player: IPlayer) => void;
 };
 
-const PlayerRow: React.FC<Props> = (props: Props): ReactElement => {
+const PlayerRow: React.FC<IProps> = ({ player, userIsAdmin, onChange }: IProps): ReactElement => {
   const classes = useStyles();
-  const history = useHistory();
   const dispatch = useDispatch();
-  const [isAdmin, setIsAdmin] = useState<boolean>(props.player.admin);
+  const history = useHistory();
+  const [isAdmin, setIsAdmin] = useState<boolean>(player.admin);
+  const [editModus, setEditModus] = useState<boolean>(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setIsAdmin(!isAdmin);
-    dispatch(updatePlayerAdminStatus(props.player.id, e.target.checked));
+    dispatch(updatePlayerAdminStatus(player.id, e.target.checked));
   };
 
-  const gotoPredictions = () => history.push(`/spelers/${props.player.id}/voorspellingen/1/1`);
+  const gotoPredictions = (): void => history.push(`/spelers/${player.id}/voorspellingen/1/1`);
+  const deletePlayer = (): void => onChange(player);
 
   return (
     <TableRow>
-      {props.updateStatus ? (
-        <TableCell>
+      <TableCell align="center">
+        {editModus ? (
           <Checkbox checked={isAdmin} onChange={handleChange} inputProps={{ 'aria-label': 'primary checkbox' }} />
-        </TableCell>
-      ) : (
-        <TableCell className={classes.checkAdmin} align="center">
-          {props.player.admin ? <Check /> : null}
-        </TableCell>
-      )}
+        ) : player.admin ? (
+          <Check className={classes.checkAdmin} />
+        ) : null}
+      </TableCell>
 
       <TableCell align="left" className={classes.link} onClick={gotoPredictions}>
-        {props.player.userName}
+        {player.userName}
       </TableCell>
 
       <TableCell align="left">
-        <img className={classes.avatar} alt={props.player.team.name} src={props.player.team.logo} />
+        <img className={classes.avatar} alt={player.team.name} src={player.team.logo} />
       </TableCell>
-
-      <TableCell align="left">{props.player.firstName}</TableCell>
-
-      {props.userIsAdmin ? <TableCell align="left">{props.player.lastName}</TableCell> : null}
 
       <TableCell className={classes.checkToto} align="center">
-        {props.player.totaalToto ? <Check /> : null}
+        {player.totaalToto ? <Check /> : null}
       </TableCell>
 
-      {props.userIsAdmin ? <TableCell align="left">{props.player.phoneNumber}</TableCell> : null}
+      <TableCell align="left">{player.firstName}</TableCell>
 
-      {props.userIsAdmin ? <TableCell align="left">{props.player.email}</TableCell> : null}
-
-      {props.userIsAdmin && props.updateStatus ? (
-        <TableCell align="left">
-          <ColorButton size="small" onClick={() => props.onChange(props.player)}>
-            DELETE
-          </ColorButton>
-        </TableCell>
+      {userIsAdmin ? (
+        <>
+          <TableCell align="left">{player.lastName}</TableCell>
+          <TableCell align="left">{player.phoneNumber}</TableCell>
+          <TableCell align="left">{player.email}</TableCell>
+          {editModus ? (
+            <>
+              <TableCell align="left">
+                <RedButton size="small" onClick={deletePlayer}>
+                  DELETE
+                </RedButton>
+              </TableCell>
+              <TableCell align="left">
+                <Button size="small" variant="contained" color="primary" onClick={() => setEditModus(false)}>
+                  CANCEL
+                </Button>
+              </TableCell>
+            </>
+          ) : (
+            <TableCell align="left">
+              <Button size="small" variant="outlined" color="primary" onClick={() => setEditModus(true)}>
+                Edit
+              </Button>
+            </TableCell>
+          )}
+        </>
       ) : null}
     </TableRow>
   );
