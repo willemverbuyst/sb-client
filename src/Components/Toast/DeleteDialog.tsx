@@ -7,43 +7,26 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { IPlayer } from '../../models/player.model';
-import { playerDelete } from '../../store/players/actions';
-
-type IProps = {
-  playerToDelete: IPlayer;
+interface IProps {
+  title: string;
+  content: string;
   closeDialog: () => void;
-};
+  handleDelete: () => void;
+}
 
-const DeleteDialog: React.FC<IProps> = ({ playerToDelete, closeDialog }: IProps): ReactElement => {
+const DeleteDialog: React.FC<IProps> = ({ title, content, closeDialog, handleDelete }: IProps): ReactElement => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const dispatch = useDispatch();
-  const nameOfUser = `${playerToDelete.firstName} ${playerToDelete.lastName}`;
-
-  const handleDelete = () => {
-    dispatch(playerDelete(Number(playerToDelete.id)));
-    closeDialog();
-  };
-
-  const handleCancel = () => {
-    closeDialog();
-  };
 
   return (
     <Dialog open={true} fullScreen={fullScreen} aria-labelledby="responsive-dialog-title">
-      <DialogTitle id="responsive-dialog-title">{`Weet je zeker dat je ${nameOfUser} wilt verwijderen?`}</DialogTitle>
+      <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          Wanneer je deze speler verwijderd, wordt alle data uit de database gewist.
-          <br />
-          Er is dan geen weg terug...
-        </DialogContentText>
+        <DialogContentText>{content}</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button autoFocus onClick={handleCancel} color="primary">
+        <Button autoFocus onClick={closeDialog} color="primary">
           Cancel
         </Button>
         <Button onClick={handleDelete} color="primary">
