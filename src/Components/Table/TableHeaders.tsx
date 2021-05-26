@@ -1,18 +1,21 @@
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
-import TableHeadersAdmin from './TableHeadersAdmin';
+type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
 
-const TableHeaders: React.FC = (): ReactElement => {
+interface IProps {
+  headers: [string, Align][];
+}
+
+const TableHeaders: React.FC<IProps> = ({ headers }: IProps): ReactElement => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell align="center">admin</TableCell>
-        <TableCell align="left">user name</TableCell>
-        <TableCell align="left">team</TableCell>
-        <TableCell align="center">totaal-toto</TableCell>
-        <TableCell align="left">naam</TableCell>
-        <TableHeadersAdmin />
+        {headers.map((header, i) => (
+          <TableCell key={i} align={header[1]}>
+            {header[0]}
+          </TableCell>
+        ))}
       </TableRow>
     </TableHead>
   );

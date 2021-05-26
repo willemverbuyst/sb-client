@@ -1,10 +1,11 @@
 import { Grid, Table, TableContainer } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { IPlayer } from '../../models/player.model';
 import { playerDelete } from '../../store/players/actions';
+import { selectUser } from '../../store/user/selectors';
 import DeleteDialog from '../Toast/DeleteDialog';
 import TableContent from './TableContent';
 import TableHeaders from './TableHeaders';
@@ -25,6 +26,7 @@ type IProps = {
 const PlayersTable: React.FC<IProps> = ({ players }: IProps): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const [showDialog, setShowDialog] = useState(false);
   const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null);
 
@@ -54,12 +56,31 @@ const PlayersTable: React.FC<IProps> = ({ players }: IProps): ReactElement => {
     }
   };
 
+  type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
+
+  const renderTableHeaders = () => {
+    const headersRegularUser: [string, Align][] = [
+      ['admin', 'center'],
+      ['user name', 'left'],
+      ['team', 'left'],
+      ['totaal-toto', 'center'],
+      ['naam', 'left'],
+    ];
+    const headersAdmin: [string, Align][] = [
+      ...headersRegularUser,
+      ['achternaam', 'left'],
+      ['telefoon', 'left'],
+      ['email', 'left'],
+    ];
+    return <TableHeaders headers={user && user.admin ? headersAdmin : headersRegularUser} />;
+  };
+
   return (
     <Grid container justify="center">
       <Grid item xs={10} className={classes.playersTable}>
         <TableContainer>
           <Table aria-label="simple table">
-            <TableHeaders />
+            {renderTableHeaders()}
             <TableContent players={players} handleBtnClick={handleBtnClick} />
           </Table>
         </TableContainer>
