@@ -2,12 +2,14 @@ import { Checkbox, TableCell, TableRow } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
 import React, { ReactElement, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
-import TableCellsAdmin from './TableCellsAdmin';
+import { selectUser } from '../../store/user/selectors';
+import TableButton from './TableButton';
+import TableEditCancelButtons from './TableEditCancelButtons';
 
 export const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
@@ -35,6 +37,7 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector(selectUser);
   const [isAdmin, setIsAdmin] = useState<boolean>(player.admin);
   const [editModus, setEditModus] = useState<boolean>(false);
 
@@ -53,28 +56,61 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
       <Check className={classes.checkAdmin} />
     ) : null;
 
-  return (
-    <TableRow>
-      <TableCell align="center">{isAdminTableCell()}</TableCell>
-      <TableCell align="left" className={classes.link} onClick={gotoPredictions}>
-        {player.userName}
-      </TableCell>
-      <TableCell align="left">
-        <img className={classes.avatar} alt={player.team.name} src={player.team.logo} />
-      </TableCell>
-      <TableCell className={classes.checkToto} align="center">
-        {player.totaalToto ? <Check /> : null}
-      </TableCell>
-      <TableCell align="left">{player.firstName}</TableCell>
+  type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
+  type CellValue = string | JSX.Element | null;
 
-      <TableCellsAdmin
-        player={player}
+  const renderTableCells = () => {
+    const playerTotalToto: JSX.Element | null = player.totaalToto ? <Check className={classes.checkToto} /> : null;
+    const playerIsAdmin: JSX.Element | null = isAdminTableCell();
+    const playerTeamLogo: JSX.Element = (
+      <img key={player.team.name} className={classes.avatar} alt={player.team.name} src={player.team.logo} />
+    );
+    const playerUserName: JSX.Element | null = (
+      <TableButton color="primary" handleClick={gotoPredictions} caption={player.userName} />
+    );
+
+    const editCancelButtonsForAdmin: JSX.Element = (
+      <TableEditCancelButtons
         editModus={editModus}
         changeEditModus={() => setEditModus(!editModus)}
-        deletePlayer={deletePlayer}
+        handleDelete={deletePlayer}
       />
-    </TableRow>
-  );
+    );
+    const playerFirstName: string = player.firstName;
+    const playerLastName: string = player.lastName;
+    const playerPhoneNumber: string = player.phoneNumber;
+    const playerEmail: string = player.email;
+
+    const cellsRegularUser: [CellValue, Align][] = [
+      [playerIsAdmin, 'center'],
+      [playerUserName, 'left'],
+      [playerTeamLogo, 'left'],
+      [playerTotalToto, 'center'],
+      [playerFirstName, 'left'],
+    ];
+
+    const cellsAdmin: [CellValue, Align][] = [
+      ...cellsRegularUser,
+      [playerLastName, 'left'],
+      [playerPhoneNumber, 'left'],
+      [playerEmail, 'left'],
+      [editCancelButtonsForAdmin, 'center'],
+    ];
+
+    return user && user.admin
+      ? cellsAdmin.map((cell, i) => (
+          <TableCell key={i} align={cell[1]}>
+            {cell[0]}
+          </TableCell>
+        ))
+      : cellsRegularUser.map((cell, i) => (
+          <TableCell key={i} align={cell[1]}>
+            {cell[0]}
+          </TableCell>
+        ));
+  };
+
+  return <TableRow>{renderTableCells()}</TableRow>;
 };
 
 export default RowWithPlayer;

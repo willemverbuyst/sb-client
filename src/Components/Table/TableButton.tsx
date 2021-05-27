@@ -1,4 +1,4 @@
-import { Button, TableCell } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 interface ITableButtonProps {
@@ -8,11 +8,9 @@ interface ITableButtonProps {
 }
 
 const TableButton: React.FC<ITableButtonProps> = ({ caption, color, handleClick }: ITableButtonProps): ReactElement => (
-  <TableCell align="left">
-    <Button size="small" variant="text" color={color} onClick={handleClick}>
-      {caption}
-    </Button>
-  </TableCell>
+  <Button size="small" variant="text" color={color} onClick={handleClick}>
+    {caption}
+  </Button>
 );
 
 export default TableButton;
