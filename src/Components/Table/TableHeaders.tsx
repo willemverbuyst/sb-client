@@ -1,7 +1,7 @@
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
-type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
+import { Align } from './types';
 
 interface IProps {
   headers: [string, Align][];

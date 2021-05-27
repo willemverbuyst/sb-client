@@ -10,6 +10,7 @@ import { updatePlayerAdminStatus } from '../../store/players/actions';
 import { selectUser } from '../../store/user/selectors';
 import TableButton from './TableButton';
 import TableEditCancelButtons from './TableEditCancelButtons';
+import { Align, CellValue } from './types';
 
 export const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
@@ -55,9 +56,6 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
     ) : player.admin ? (
       <Check className={classes.checkAdmin} />
     ) : null;
-
-  type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
-  type CellValue = string | JSX.Element | null;
 
   const renderTableCells = () => {
     const playerTotalToto: JSX.Element | null = player.totaalToto ? <Check className={classes.checkToto} /> : null;

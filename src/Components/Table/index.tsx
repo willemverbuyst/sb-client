@@ -9,6 +9,7 @@ import { selectUser } from '../../store/user/selectors';
 import DeleteDialog from '../Toast/DeleteDialog';
 import TableContent from './TableContent';
 import TableHeaders from './TableHeaders';
+import { Align } from './types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   playersTable: {
@@ -55,8 +56,6 @@ const PlayersTable: React.FC<IProps> = ({ players }: IProps): ReactElement => {
       return null;
     }
   };
-
-  type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
 
   const renderTableHeaders = () => {
     const headersRegularUser: [string, Align][] = [

@@ -1,8 +1,7 @@
 import { TableCell, TableRow } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
-type Align = 'inherit' | 'left' | 'center' | 'right' | 'justify';
-type CellValue = string | JSX.Element | null;
+import { Align, CellValue } from './types';
 
 interface IProps {
   cells: [CellValue, Align][];
