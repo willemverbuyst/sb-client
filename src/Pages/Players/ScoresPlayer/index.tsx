@@ -3,17 +3,14 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import ScoresStackedChart from '../../../Components/Chart/ScoresStackedChart';
-import DividerComponent from '../../../Components/Divider';
 import MessageComponent from '../../../Components/Message';
 import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
-import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchPlayerScores } from '../../../store/players/actions';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
-import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
+import ScoresSection from './ScoresSection';
 
 const ScoresPlayer: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
@@ -46,16 +43,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
       {isLoading ? (
         <ProgressComponent />
       ) : scoresPlayer ? (
-        <>
-          <SubTitleComponent text="TOTO RONDES" />
-          <DividerComponent />
-          <ScoresStackedChart
-            scoresPlayer={scoresPlayer}
-            colorMain={colorSecondary}
-            colorHover={colorPrimary}
-            loggedInUser={false}
-          />
-        </>
+        <ScoresSection scoresPlayer={scoresPlayer} />
       ) : (
         <MessageComponent message={`Nog geen scores`} />
       )}
