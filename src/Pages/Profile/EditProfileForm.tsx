@@ -1,8 +1,9 @@
-import { Button, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import TextFieldComponent from '../../Components/Form/TextFieldComponent';
 import { IProfileDetails } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
@@ -208,17 +209,7 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
             </Grid>
           ) : null}
 
-          <Button
-            type="submit"
-            fullWidth
-            disableElevation
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={submitForm}
-          >
-            UPDATE PROFIEL
-          </Button>
+          <SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />
         </form>
       </Grid>
     </Grid>
