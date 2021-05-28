@@ -1,9 +1,10 @@
-import { Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { FormControl, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
+import CheckBoxComponent from '../../Components/Form/CheckBoxComponent';
 import TextFieldComponent from '../../Components/Form/TextFieldComponent';
 import { IProfileDetails } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
@@ -110,6 +111,18 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
       phoneNumber: e.target.value,
     });
 
+  const updateAdminStatus = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      admin: !!e.target.value,
+    });
+
+  const updateTotalTotoStatus = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      totaalToto: !!e.target.value,
+    });
+
   return (
     <Grid container justify="center">
       <Grid item xs={12} sm={6} lg={4} className={classes.paper}>
@@ -139,40 +152,12 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
               value={profileDetails.email}
               onChange={updateEmailAddress}
             />
-            <Grid item xs={12} sm={6}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={profileDetails.admin}
-                    color="primary"
-                    onChange={(e) =>
-                      setProfileDetails({
-                        ...profileDetails,
-                        admin: e.target.checked,
-                      })
-                    }
-                  />
-                }
-                label="Admin"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={profileDetails.totaalToto}
-                    color="primary"
-                    onChange={(e) =>
-                      setProfileDetails({
-                        ...profileDetails,
-                        totaalToto: e.target.checked,
-                      })
-                    }
-                  />
-                }
-                label="Totaal Toto"
-              />
-            </Grid>
+            <CheckBoxComponent checked={profileDetails.admin} onChange={updateAdminStatus} label="Admin" />
+            <CheckBoxComponent
+              checked={profileDetails.totaalToto}
+              onChange={updateTotalTotoStatus}
+              label="Totaal Toto"
+            />
           </Grid>
           <TextFieldComponent
             id="phoneNumber"
