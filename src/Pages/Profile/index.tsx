@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import ChangePasswordForm from '../../Components/Form/ChangePasswordForm';
-import EditProfileForm from '../../Components/Form/EditProfileForm';
 import PageHeaderWithButton from '../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
+import EditProfileForm from './EditProfileForm';
 
 const Profile: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
