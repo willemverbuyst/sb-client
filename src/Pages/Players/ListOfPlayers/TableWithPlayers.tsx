@@ -1,16 +1,14 @@
 import { TableBody } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import TableComponent from '../../../Components/Table';
-import RowWithPlayer from '../../../Components/Table/RowWithPlayer';
-import TableHeaders from '../../../Components/Table/TableHeaders';
-import { Align } from '../../../Components/Table/types';
 import DeleteDialog from '../../../Components/Toast/DeleteDialog';
 import { IPlayer } from '../../../models/player.model';
 import { playerDelete } from '../../../store/players/actions';
-import { selectUser } from '../../../store/user/selectors';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
+import RowWithPlayer from './RowWithPlayer';
+import TableWithPlayersHeaders from './TableWithPlayersHeaders';
 
 type IProps = {
   players: IPlayer[];
@@ -18,7 +16,6 @@ type IProps = {
 
 const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
   const [showDialog, setShowDialog] = useState(false);
   const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null);
 
@@ -29,23 +26,6 @@ const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement =
   const handleBtnClick = (player: IPlayer): void => {
     setPlayerToDelete(player);
     setShowDialog(true);
-  };
-
-  const renderTableHeaders = () => {
-    const headersRegularUser: [string, Align][] = [
-      ['admin', 'center'],
-      ['user name', 'left'],
-      ['team', 'left'],
-      ['totaal-toto', 'center'],
-      ['naam', 'left'],
-    ];
-    const headersAdmin: [string, Align][] = [
-      ...headersRegularUser,
-      ['achternaam', 'left'],
-      ['telefoon', 'left'],
-      ['email', 'left'],
-    ];
-    return <TableHeaders headers={user && user.admin ? headersAdmin : headersRegularUser} />;
   };
 
   const RenderTableContent = (): ReactElement => {
@@ -76,7 +56,11 @@ const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement =
   };
 
   return (
-    <TableComponent tableHeaders={renderTableHeaders()} tableContent={RenderTableContent()} dialog={renderDialog()} />
+    <TableComponent
+      tableHeaders={<TableWithPlayersHeaders />}
+      tableContent={RenderTableContent()}
+      dialog={renderDialog()}
+    />
   );
 };
 

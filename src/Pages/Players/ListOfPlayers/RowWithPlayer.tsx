@@ -5,13 +5,13 @@ import React, { ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { IPlayer } from '../../models/player.model';
-import { updatePlayerAdminStatus } from '../../store/players/actions';
-import { selectUser } from '../../store/user/selectors';
-import TableButton from './TableButton';
-import TableCellsOneRow from './TableCellsOneRow';
-import TableEditCancelButtons from './TableEditCancelButtons';
-import { Align, CellValue } from './types';
+import TableButton from '../../../Components/Table/TableButton';
+import TableCellsOneRow from '../../../Components/Table/TableCellsOneRow';
+import TableEditCancelButtons from '../../../Components/Table/TableEditCancelButtons';
+import { Align, CellValue } from '../../../Components/Table/types';
+import { IPlayer } from '../../../models/player.model';
+import { updatePlayerAdminStatus } from '../../../store/players/actions';
+import { selectUser } from '../../../store/user/selectors';
 
 export const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
