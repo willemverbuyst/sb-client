@@ -16,4 +16,4 @@ const renderTotalTotoCheck = (player: IPlayer): ReactElement | null => {
   return player.totaalToto ? <Check className={classes.checkToto} /> : null;
 };
 
-export default renderTotalTotoCheck;
+export { renderTotalTotoCheck };

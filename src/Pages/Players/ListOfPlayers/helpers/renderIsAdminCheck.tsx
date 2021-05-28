@@ -26,4 +26,4 @@ const renderIsAdminCheck = (
   ) : null;
 };
 
-export default renderIsAdminCheck;
+export { renderIsAdminCheck };

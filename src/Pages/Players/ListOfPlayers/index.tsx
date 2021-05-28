@@ -38,7 +38,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
       ) : players ? (
         <TableWithPlayers players={players} />
       ) : (
-        <MessageComponent message={`Geen speleres gevonden`} />
+        <MessageComponent message={`Geen spelers gevonden`} />
       )}
     </Box>
   );

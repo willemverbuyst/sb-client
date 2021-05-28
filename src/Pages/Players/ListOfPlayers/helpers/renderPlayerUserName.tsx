@@ -12,4 +12,4 @@ const renderPlayerUserName = (player: IPlayer): ReactElement => {
   return <TableButton color="primary" handleClick={gotoPredictions} caption={player.userName} />;
 };
 
-export default renderPlayerUserName;
+export { renderPlayerUserName };

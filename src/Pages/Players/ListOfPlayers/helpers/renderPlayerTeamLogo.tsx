@@ -17,4 +17,4 @@ const renderPlayerTeamLogo = (player: IPlayer): ReactElement => {
   return <img key={player.team.name} className={classes.avatar} alt={player.team.name} src={player.team.logo} />;
 };
 
-export default renderPlayerTeamLogo;
+export { renderPlayerTeamLogo };

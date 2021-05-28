@@ -10,4 +10,4 @@ const renderButtonsForAdmin = (
   return <TableEditCancelButtons editModus={editModus} changeEditModus={toggleEditModus} handleDelete={deletePlayer} />;
 };
 
-export default renderButtonsForAdmin;
+export { renderButtonsForAdmin };
