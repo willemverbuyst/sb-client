@@ -1,18 +1,9 @@
-import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from '@material-ui/core';
+import { Button, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import TextFieldComponent from '../../Components/Form/TextFieldComponent';
 import { IProfileDetails } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { fetchAllTeams } from '../../store/teams/actions';
@@ -88,84 +79,65 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
     props.handleSubmit();
   };
 
+  const updateUserName = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      userName: e.target.value,
+    });
+
+  const updateFirstName = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      firstName: e.target.value,
+    });
+
+  const updateLastName = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      lastName: e.target.value,
+    });
+
+  const updateEmailAddress = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      email: e.target.value,
+    });
+
+  const updatePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setProfileDetails({
+      ...profileDetails,
+      phoneNumber: e.target.value,
+    });
+
   return (
     <Grid container justify="center">
       <Grid item xs={12} sm={6} lg={4} className={classes.paper}>
         <form className={classes.form} noValidate>
           <Grid container spacing={1}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="userName"
-                label="User Name"
-                name="userName"
-                value={profileDetails.userName}
-                onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
-                    userName: e.target.value,
-                  })
-                }
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                name="firstName"
-                value={profileDetails.firstName}
-                onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
-                    firstName: e.target.value,
-                  })
-                }
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                value={profileDetails.lastName}
-                onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
-                    lastName: e.target.value,
-                  })
-                }
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={profileDetails.email}
-                onChange={(e) =>
-                  setProfileDetails({
-                    ...profileDetails,
-                    email: e.target.value,
-                  })
-                }
-              />
-            </Grid>
+            <TextFieldComponent
+              id="userName"
+              label="User Name"
+              value={profileDetails.userName}
+              onChange={updateUserName}
+            />
+            <TextFieldComponent
+              id="firstName"
+              label="First Name"
+              value={profileDetails.firstName}
+              onChange={updateFirstName}
+            />
+            <TextFieldComponent
+              id="lastName"
+              label="Last Name"
+              value={profileDetails.lastName}
+              onChange={updateLastName}
+            />
+            <TextFieldComponent
+              id="email"
+              label="Email Address"
+              value={profileDetails.email}
+              onChange={updateEmailAddress}
+            />
             <Grid item xs={12} sm={6}>
               <FormControlLabel
                 control={
@@ -201,25 +173,13 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
               />
             </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="phoneNumber"
-              label="phomeNumber"
-              type="text"
-              id="phoneNumber"
-              value={profileDetails.phoneNumber}
-              onChange={(e) =>
-                setProfileDetails({
-                  ...profileDetails,
-                  phoneNumber: e.target.value,
-                })
-              }
-            />
-          </Grid>
+          <TextFieldComponent
+            id="phoneNumber"
+            label="Phone Number"
+            value={profileDetails.phoneNumber}
+            onChange={updatePhoneNumber}
+          />
+
           {teams ? (
             <Grid item xs={12} className={classes.select}>
               <FormControl variant="outlined" fullWidth>
