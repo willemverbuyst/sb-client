@@ -1,4 +1,3 @@
-import { TableBody } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -6,8 +5,7 @@ import TableComponent from '../../../Components/Table';
 import DeleteDialog from '../../../Components/Toast/DeleteDialog';
 import { IPlayer } from '../../../models/player.model';
 import { playerDelete } from '../../../store/players/actions';
-import { sortArrayWithObjects } from '../../../utils/sortFunctions';
-import RowWithPlayer from './RowWithPlayer';
+import TableWithPlayersContent from './TableWithPlayersContent';
 import TableWithPlayersHeaders from './TableWithPlayersHeaders';
 
 type IProps = {
@@ -26,16 +24,6 @@ const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement =
   const handleBtnClick = (player: IPlayer): void => {
     setPlayerToDelete(player);
     setShowDialog(true);
-  };
-
-  const RenderTableContent = (): ReactElement => {
-    const sortTable = (players: IPlayer[]): IPlayer[] =>
-      sortArrayWithObjects<keyof IPlayer, IPlayer>('userName')(players);
-
-    const tableContent = (): ReactElement[] =>
-      sortTable(players).map((player, i) => <RowWithPlayer key={i} player={player} onChange={handleBtnClick} />);
-
-    return <TableBody>{tableContent()}</TableBody>;
   };
 
   const renderDialog = (): ReactElement | null => {
@@ -58,7 +46,7 @@ const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement =
   return (
     <TableComponent
       tableHeaders={<TableWithPlayersHeaders />}
-      tableContent={RenderTableContent()}
+      tableContent={<TableWithPlayersContent players={players} handleBtnClick={handleBtnClick} />}
       dialog={renderDialog()}
     />
   );
