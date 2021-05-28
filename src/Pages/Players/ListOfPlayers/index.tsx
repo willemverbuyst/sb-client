@@ -6,11 +6,11 @@ import { useHistory } from 'react-router-dom';
 import MessageComponent from '../../../Components/Message';
 import PageHeaderWithoutButton from '../../../Components/PageHeader/PageHeaderWithoutBtn';
 import ProgressComponent from '../../../Components/Progress';
-import PlayersTable from '../../../Components/Table';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchAllPlayers } from '../../../store/players/actions';
 import { selectPlayers } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
+import TableWithPlayers from './TableWithPlayers';
 
 const ListOfPlayers: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
       {isLoading ? (
         <ProgressComponent />
       ) : players ? (
-        <PlayersTable players={players} />
+        <TableWithPlayers players={players} />
       ) : (
         <MessageComponent message={`Geen speleres gevonden`} />
       )}

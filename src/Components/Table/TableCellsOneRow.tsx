@@ -7,7 +7,7 @@ interface IProps {
   cells: [CellValue, Align][];
 }
 
-const TableCells: React.FC<IProps> = ({ cells }: IProps): ReactElement => {
+const TableCellsOneRow: React.FC<IProps> = ({ cells }: IProps): ReactElement => {
   return (
     <TableRow>
       {cells.map((cell, i) => (
@@ -19,4 +19,4 @@ const TableCells: React.FC<IProps> = ({ cells }: IProps): ReactElement => {
   );
 };
 
-export default TableCells;
+export default TableCellsOneRow;

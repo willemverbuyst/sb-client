@@ -1,4 +1,4 @@
-import { Checkbox, TableCell, TableRow } from '@material-ui/core';
+import { Checkbox } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
 import React, { ReactElement, useState } from 'react';
@@ -9,6 +9,7 @@ import { IPlayer } from '../../models/player.model';
 import { updatePlayerAdminStatus } from '../../store/players/actions';
 import { selectUser } from '../../store/user/selectors';
 import TableButton from './TableButton';
+import TableCellsOneRow from './TableCellsOneRow';
 import TableEditCancelButtons from './TableEditCancelButtons';
 import { Align, CellValue } from './types';
 
@@ -56,59 +57,43 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
     ) : player.admin ? (
       <Check className={classes.checkAdmin} />
     ) : null;
+  const playerTotalToto: JSX.Element | null = player.totaalToto ? <Check className={classes.checkToto} /> : null;
+  const playerIsAdmin: JSX.Element | null = isAdminTableCell();
+  const playerTeamLogo: JSX.Element = (
+    <img key={player.team.name} className={classes.avatar} alt={player.team.name} src={player.team.logo} />
+  );
+  const playerUserName: JSX.Element | null = (
+    <TableButton color="primary" handleClick={gotoPredictions} caption={player.userName} />
+  );
+  const editCancelButtonsForAdmin: JSX.Element = (
+    <TableEditCancelButtons
+      editModus={editModus}
+      changeEditModus={() => setEditModus(!editModus)}
+      handleDelete={deletePlayer}
+    />
+  );
+  const playerFirstName: string = player.firstName;
+  const playerLastName: string = player.lastName;
+  const playerPhoneNumber: string = player.phoneNumber;
+  const playerEmail: string = player.email;
 
-  const renderTableCells = () => {
-    const playerTotalToto: JSX.Element | null = player.totaalToto ? <Check className={classes.checkToto} /> : null;
-    const playerIsAdmin: JSX.Element | null = isAdminTableCell();
-    const playerTeamLogo: JSX.Element = (
-      <img key={player.team.name} className={classes.avatar} alt={player.team.name} src={player.team.logo} />
-    );
-    const playerUserName: JSX.Element | null = (
-      <TableButton color="primary" handleClick={gotoPredictions} caption={player.userName} />
-    );
+  const cellsRegularUser: [CellValue, Align][] = [
+    [playerIsAdmin, 'center'],
+    [playerUserName, 'left'],
+    [playerTeamLogo, 'left'],
+    [playerTotalToto, 'center'],
+    [playerFirstName, 'left'],
+  ];
 
-    const editCancelButtonsForAdmin: JSX.Element = (
-      <TableEditCancelButtons
-        editModus={editModus}
-        changeEditModus={() => setEditModus(!editModus)}
-        handleDelete={deletePlayer}
-      />
-    );
-    const playerFirstName: string = player.firstName;
-    const playerLastName: string = player.lastName;
-    const playerPhoneNumber: string = player.phoneNumber;
-    const playerEmail: string = player.email;
+  const cellsAdmin: [CellValue, Align][] = [
+    ...cellsRegularUser,
+    [playerLastName, 'left'],
+    [playerPhoneNumber, 'left'],
+    [playerEmail, 'left'],
+    [editCancelButtonsForAdmin, 'center'],
+  ];
 
-    const cellsRegularUser: [CellValue, Align][] = [
-      [playerIsAdmin, 'center'],
-      [playerUserName, 'left'],
-      [playerTeamLogo, 'left'],
-      [playerTotalToto, 'center'],
-      [playerFirstName, 'left'],
-    ];
-
-    const cellsAdmin: [CellValue, Align][] = [
-      ...cellsRegularUser,
-      [playerLastName, 'left'],
-      [playerPhoneNumber, 'left'],
-      [playerEmail, 'left'],
-      [editCancelButtonsForAdmin, 'center'],
-    ];
-
-    return user && user.admin
-      ? cellsAdmin.map((cell, i) => (
-          <TableCell key={i} align={cell[1]}>
-            {cell[0]}
-          </TableCell>
-        ))
-      : cellsRegularUser.map((cell, i) => (
-          <TableCell key={i} align={cell[1]}>
-            {cell[0]}
-          </TableCell>
-        ));
-  };
-
-  return <TableRow>{renderTableCells()}</TableRow>;
+  return <TableCellsOneRow cells={user && user.admin ? cellsAdmin : cellsRegularUser} />;
 };
 
 export default RowWithPlayer;
