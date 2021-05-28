@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 
 import { IPlayer } from '../../../models/player.model';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
-import RowWithPlayer from './RowWithPlayer';
+import TableWithPlayersRow from './TableWithPlayersRow';
 
 type IProps = {
   players: IPlayer[];
@@ -15,7 +15,7 @@ const TableWithPlayersContent = ({ players, handleBtnClick }: IProps): ReactElem
     sortArrayWithObjects<keyof IPlayer, IPlayer>('userName')(playersToSort);
 
   const tableContent = (): ReactElement[] =>
-    sortTable(players).map((player, i) => <RowWithPlayer key={i} player={player} onChange={handleBtnClick} />);
+    sortTable(players).map((player, i) => <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />);
 
   return <TableBody>{tableContent()}</TableBody>;
 };

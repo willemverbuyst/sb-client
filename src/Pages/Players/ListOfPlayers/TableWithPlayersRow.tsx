@@ -19,14 +19,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: 30,
     objectFit: 'contain',
   },
-  checkToto: {
-    color: theme.palette.primary.main,
-  },
   checkAdmin: {
     color: theme.palette.secondary.main,
   },
-  link: {
-    cursor: 'pointer',
+  checkToto: {
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -35,7 +32,7 @@ type IProps = {
   onChange: (player: IPlayer) => void;
 };
 
-const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactElement => {
+const TableWithPlayersRow: React.FC<IProps> = ({ player, onChange }: IProps): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -51,27 +48,36 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
   const gotoPredictions = (): void => history.push(`/spelers/${player.id}/voorspellingen/1/1`);
   const deletePlayer = (): void => onChange(player);
 
-  const isAdminTableCell = (): ReactElement | null =>
+  const getIsAdmin = (): ReactElement | null =>
     editModus ? (
       <Checkbox checked={isAdmin} onChange={handleChange} inputProps={{ 'aria-label': 'primary checkbox' }} />
     ) : player.admin ? (
       <Check className={classes.checkAdmin} />
     ) : null;
-  const playerTotalToto: JSX.Element | null = player.totaalToto ? <Check className={classes.checkToto} /> : null;
-  const playerIsAdmin: JSX.Element | null = isAdminTableCell();
-  const playerTeamLogo: JSX.Element = (
+
+  const getTotalToto = (): ReactElement | null => (player.totaalToto ? <Check className={classes.checkToto} /> : null);
+
+  const getPlayerTeamLogo = (): ReactElement => (
     <img key={player.team.name} className={classes.avatar} alt={player.team.name} src={player.team.logo} />
   );
-  const playerUserName: JSX.Element | null = (
+
+  const getPlayerUserName = (): ReactElement => (
     <TableButton color="primary" handleClick={gotoPredictions} caption={player.userName} />
   );
-  const editCancelButtonsForAdmin: JSX.Element = (
+
+  const getEditCancelButtonsForAdmin = (): ReactElement => (
     <TableEditCancelButtons
       editModus={editModus}
       changeEditModus={() => setEditModus(!editModus)}
       handleDelete={deletePlayer}
     />
   );
+
+  const playerTotalToto: JSX.Element | null = getTotalToto();
+  const playerIsAdmin: JSX.Element | null = getIsAdmin();
+  const playerTeamLogo: JSX.Element = getPlayerTeamLogo();
+  const playerUserName: JSX.Element = getPlayerUserName();
+  const editCancelButtonsForAdmin: JSX.Element = getEditCancelButtonsForAdmin();
   const playerFirstName: string = player.firstName;
   const playerLastName: string = player.lastName;
   const playerPhoneNumber: string = player.phoneNumber;
@@ -96,4 +102,4 @@ const RowWithPlayer: React.FC<IProps> = ({ player, onChange }: IProps): ReactEle
   return <TableCellsOneRow cells={user && user.admin ? cellsAdmin : cellsRegularUser} />;
 };
 
-export default RowWithPlayer;
+export default TableWithPlayersRow;
