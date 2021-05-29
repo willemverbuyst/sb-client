@@ -13,6 +13,7 @@ import {
   FetchAllPlayers,
   FetchPlayerProfile,
   FetchPlayerScores,
+  ResetPlayers,
   UpdateAdminStatus,
 } from './actions';
 
@@ -54,6 +55,10 @@ export const addPlayer = (
       dispatch(appDoneLoading());
     }
   };
+};
+
+export const resetPlayers = (): ResetPlayers => {
+  return { type: ActionType.RESET_PLAYERS };
 };
 
 export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (

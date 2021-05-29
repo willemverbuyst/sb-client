@@ -26,6 +26,10 @@ export type FetchPlayerScores = {
   payload: IScoresPlayer;
 };
 
+export type ResetPlayers = {
+  type: ActionType.RESET_PLAYERS;
+};
+
 export type UpdateAdminStatus = {
   type: ActionType.UPDATE_ADMIN_STATUS;
   payload: IPlayer;
@@ -37,4 +41,5 @@ export type PlayersActionTypes =
   | FetchAllPlayers
   | FetchPlayerProfile
   | FetchPlayerScores
+  | ResetPlayers
   | UpdateAdminStatus;

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
-import { ScoresPlayer } from '../../../store/players/types';
+import { IScoresPlayer } from '../../../models/player.model';
 import { selectUser } from '../../../store/user/selectors';
 
 interface Color {
@@ -18,7 +18,7 @@ interface Color {
 }
 
 interface IProps {
-  scoresPlayer: ScoresPlayer;
+  scoresPlayer: IScoresPlayer;
   colorMain: Color;
   colorHover: Color;
   loggedInUser: boolean;

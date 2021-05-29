@@ -2,7 +2,7 @@ import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.mode
 import { ActionType } from './action-types';
 import { PlayersActionTypes } from './actions';
 
-interface IPlayersState {
+export interface IPlayersState {
   players: IPlayer[] | null;
   playerProfile: IPlayerProfile | null;
   scoresPlayer: IScoresPlayer | null;
@@ -24,6 +24,12 @@ const playersReducer = (state = initialState, action: PlayersActionTypes): IPlay
 
     case ActionType.FETCH_ALL_PLAYERS:
       return { ...state, players: [...action.payload] };
+
+    case ActionType.RESET_PLAYERS:
+      return {
+        ...state,
+        players: null,
+      };
 
     case ActionType.DELETE_PLAYER:
       return {
