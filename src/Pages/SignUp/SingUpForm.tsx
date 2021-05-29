@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
-import CheckBoxComponent from '../../Components/Form/CheckBoxComponent';
+import CheckBoxComponent from '../../Components/Form/CheckBox';
 import FormContainer from '../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import SelectorComponent from '../../Components/Form/Selector';
-import TextFieldComponent from '../../Components/Form/TextFieldComponent';
+import TextFieldComponent from '../../Components/Form/TextField';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { addPlayer } from '../../store/players/actions';

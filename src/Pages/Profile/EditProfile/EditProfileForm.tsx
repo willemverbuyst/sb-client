@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
-import CheckBoxComponent from '../../../Components/Form/CheckBoxComponent';
+import CheckBoxComponent from '../../../Components/Form/CheckBox';
 import FormContainer from '../../../Components/Form/FormContainer';
 import SelectorComponent from '../../../Components/Form/Selector';
-import TextFieldComponent from '../../../Components/Form/TextFieldComponent';
+import TextFieldComponent from '../../../Components/Form/TextField';
 import { IProfileDetails } from '../../../models/credentials.model';
 import { ButtonEvent } from '../../../models/events.model';
 import { fetchAllTeams } from '../../../store/teams/actions';

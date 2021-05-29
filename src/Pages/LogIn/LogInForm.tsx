@@ -6,7 +6,7 @@ import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import FormContainer from '../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../Components/Form/PasswordField';
-import TextFieldComponent from '../../Components/Form/TextFieldComponent';
+import TextFieldComponent from '../../Components/Form/TextField';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { userLogIn } from '../../store/user/actions';

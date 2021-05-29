@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import TableButton from '../../../../Components/Table/TableButton';
+import TableButton from '../../../../Components/Button/TableButton';
 import { IPlayer } from '../../../../models/player.model';
 
 const renderPlayerUserName = (player: IPlayer): ReactElement => {

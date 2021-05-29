@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import TableButton from './TableButton';
+import TableButton from '../Button/TableButton';
 
 type IProps = {
   editModus: boolean;
