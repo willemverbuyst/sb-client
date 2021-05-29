@@ -3,6 +3,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import CheckBoxComponent from '../../Components/Form/CheckBoxComponent';
@@ -151,6 +152,7 @@ const EditProfileForm: React.FC<IProps> = ({ handleSubmit }: IProps): ReactEleme
           ) : null}
 
           <SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />
+          <Link to="/profiel/password">Change Password</Link>
         </form>
       </Grid>
     </Grid>

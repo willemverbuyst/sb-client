@@ -10,6 +10,7 @@ import PredictionsPlayer from './Pages/Players/PredictionsPlayer';
 import ScoresPlayer from './Pages/Players/ScoresPlayer';
 import Predictions from './Pages/Predictions';
 import Profile from './Pages/Profile';
+import EditPassword from './Pages/Profile/EditPassword';
 import Program from './Pages/Program';
 import Rules from './Pages/Rules';
 import Fixture from './Pages/Scores/Fixture';
@@ -29,6 +30,7 @@ const AppRouter = (): JSX.Element => {
       <Route exact path={ROUTES.LOGIN} component={LogIn} />
       <Route exact path={ROUTES.PAGE_NOT_FOUND} component={PageNotFound} />
       <Route exact path={ROUTES.PROFILE} component={Profile} />
+      <Route exact path={ROUTES.EDIT_PASSWORD} component={EditPassword} />
       <Route exact path={ROUTES.PROGRAM} component={Program} />
       <Route exact path={ROUTES.RULES} component={Rules} />
       <Route exact path={ROUTES.SCORES_USER} component={ScoresUser} />
