@@ -17,16 +17,22 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface IProps {
-  formContent: JSX.Element;
+  inputFields: JSX.Element;
+  submitButton: JSX.Element;
 }
 
-const FormContainer: React.FC<IProps> = ({ formContent }: IProps): ReactElement => {
+const FormContainer: React.FC<IProps> = ({ inputFields, submitButton }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid container justify="center">
       <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
-        <form className={classes.form}>{formContent}</form>
+        <form className={classes.form}>
+          <Grid container spacing={1}>
+            {inputFields}
+          </Grid>
+          {submitButton}
+        </form>
       </Grid>
     </Grid>
   );

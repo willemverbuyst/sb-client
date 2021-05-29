@@ -1,11 +1,10 @@
-import { Grid, Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import CheckBoxComponent from '../../Components/Form/CheckBoxComponent';
+import FormContainer from '../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import SelectorComponent from '../../Components/Form/Selector';
 import TextFieldComponent from '../../Components/Form/TextFieldComponent';
@@ -16,32 +15,7 @@ import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors';
 import * as HELPERS from '../Profile/EditProfile/helpers';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(1),
-    },
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  select: {
-    marginTop: theme.spacing(2),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-}));
-
 const SignUpForm: React.FC = (): ReactElement => {
-  const classes = useStyles();
   const teams = useSelector(selectTeams);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -106,67 +80,65 @@ const SignUpForm: React.FC = (): ReactElement => {
   };
 
   return (
-    <Grid container justify="center">
-      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={1}>
-            <TextFieldComponent
-              id="userName"
-              label="User Name"
-              value={signUpCredentials.userName}
-              onChange={updateSignUpCredentials}
+    <FormContainer
+      inputFields={
+        <>
+          <TextFieldComponent
+            id="userName"
+            label="User Name"
+            value={signUpCredentials.userName}
+            onChange={updateSignUpCredentials}
+          />
+          <TextFieldComponent
+            id="firstName"
+            label="First Name"
+            value={signUpCredentials.firstName}
+            onChange={updateSignUpCredentials}
+          />
+          <TextFieldComponent
+            id="lastName"
+            label="Last Name"
+            value={signUpCredentials.lastName}
+            onChange={updateSignUpCredentials}
+          />
+          <TextFieldComponent
+            id="email"
+            label="Email Address"
+            value={signUpCredentials.email}
+            onChange={updateSignUpCredentials}
+          />
+          <CheckBoxComponent checked={signUpCredentials.admin} onChange={updateSignUpCredentials} label="Admin" />
+          <CheckBoxComponent
+            checked={signUpCredentials.totaalToto}
+            onChange={updateSignUpCredentials}
+            label="Totaal Toto"
+          />
+          <PasswordFieldComponent
+            id="password"
+            label="Password"
+            value={signUpCredentials.password}
+            onChange={updateSignUpCredentials}
+          />
+          <TextFieldComponent
+            id="phoneNumber"
+            label="Phone Number"
+            value={signUpCredentials.phoneNumber}
+            onChange={updateSignUpCredentials}
+          />
+          {teamsForSelector ? (
+            <SelectorComponent
+              label="Team"
+              labelId="favTeam"
+              id="teamId"
+              value={signUpCredentials.teamId}
+              onChange={updateFavoriteTeam}
+              options={teamsForSelector}
             />
-            <TextFieldComponent
-              id="firstName"
-              label="First Name"
-              value={signUpCredentials.firstName}
-              onChange={updateSignUpCredentials}
-            />
-            <TextFieldComponent
-              id="lastName"
-              label="Last Name"
-              value={signUpCredentials.lastName}
-              onChange={updateSignUpCredentials}
-            />
-            <TextFieldComponent
-              id="email"
-              label="Email Address"
-              value={signUpCredentials.email}
-              onChange={updateSignUpCredentials}
-            />
-            <CheckBoxComponent checked={signUpCredentials.admin} onChange={updateSignUpCredentials} label="Admin" />
-            <CheckBoxComponent
-              checked={signUpCredentials.totaalToto}
-              onChange={updateSignUpCredentials}
-              label="Totaal Toto"
-            />
-            <PasswordFieldComponent
-              id="password"
-              label="Password"
-              value={signUpCredentials.password}
-              onChange={updateSignUpCredentials}
-            />
-            <TextFieldComponent
-              id="phoneNumber"
-              label="Phone Number"
-              value={signUpCredentials.phoneNumber}
-              onChange={updateSignUpCredentials}
-            />
-            {teamsForSelector ? (
-              <SelectorComponent
-                label="Team"
-                labelId="favTeam"
-                id="teamId"
-                value={signUpCredentials.teamId}
-                onChange={updateFavoriteTeam}
-                options={teamsForSelector}
-              />
-            ) : null}
-          </Grid>
-          <SubmitButtonComponent caption="SIGN UP" color="primary" handleClick={submitForm} />
-        </form>
-      </Grid>
-    </Grid>
+          ) : null}
+        </>
+      }
+      submitButton={<SubmitButtonComponent caption="SIGN UP" color="primary" handleClick={submitForm} />}
+    />
   );
 };
 

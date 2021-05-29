@@ -45,7 +45,7 @@ const LogInForm: React.FC = (): ReactElement => {
 
   return (
     <FormContainer
-      formContent={
+      inputFields={
         <>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -62,9 +62,9 @@ const LogInForm: React.FC = (): ReactElement => {
             value={logInCredentials.password}
             onChange={updateLoginCredentials}
           />
-          <SubmitButtonComponent caption="LOG IN" color="primary" handleClick={submitForm} />
         </>
       }
+      submitButton={<SubmitButtonComponent caption="LOG IN" color="primary" handleClick={submitForm} />}
     />
   );
 };
