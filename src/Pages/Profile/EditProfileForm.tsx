@@ -12,7 +12,9 @@ import { IProfileDetails } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors';
+import { editUserProfile } from '../../store/user/actions';
 import { selectUser } from '../../store/user/selectors';
+import * as HELPERS from './helpers';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -31,11 +33,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = {
+type IProps = {
   handleSubmit: () => void;
 };
 
-const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
+const EditProfileForm: React.FC<IProps> = ({ handleSubmit }: IProps): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -50,6 +52,7 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
     totaalToto: user?.totaalToto || true,
     teamId: user?.team.id || '',
   });
+  const teamsForSelector = teams ? HELPERS.getTeamsForSelector(teams) : null;
 
   useEffect(() => {
     if (!teams) {
@@ -59,6 +62,8 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
+    console.log(profileDetails);
+    dispatch(editUserProfile(profileDetails));
     setProfileDetails({
       userName: '',
       firstName: '',
@@ -69,8 +74,7 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
       totaalToto: true,
       teamId: '',
     });
-
-    props.handleSubmit();
+    handleSubmit();
   };
 
   const updateProfileDetails = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -135,41 +139,16 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
             onChange={updateProfileDetails}
           />
 
-          {teams ? (
+          {teamsForSelector ? (
             <SelectorComponent
               label="Team"
               labelId="favTeam"
               id="teamId"
               value={profileDetails.teamId}
               onChange={updateFavoriteTeam}
-              options={teams}
+              options={teamsForSelector}
             />
-          ) : // <Grid item xs={12} className={classes.select}>
-          //   <FormControl variant="outlined" fullWidth>
-          //     <InputLabel id="favTeam">Team</InputLabel>
-          //     <Select
-          //       labelId="favTeam"
-          //       id="teeamId"
-          //       value={profileDetails.teamId}
-          //       onChange={(e) =>
-          //         setProfileDetails({
-          //           ...profileDetails,
-          //           teamId: e.target.value as number,
-          //         })
-          //       }
-          //       label="Team"
-          //     >
-          //       {[...teams]
-          //         .sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
-          //         .map((team, i) => (
-          //           <MenuItem key={i} value={team.id}>
-          //             {team.name}
-          //           </MenuItem>
-          //         ))}
-          //     </Select>
-          //   </FormControl>
-          // </Grid>
-          null}
+          ) : null}
 
           <SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />
         </form>

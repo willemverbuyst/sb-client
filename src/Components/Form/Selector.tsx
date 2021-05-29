@@ -1,8 +1,6 @@
 import { FormControl, Grid, InputLabel, makeStyles, MenuItem, Select, Theme } from '@material-ui/core';
 import React, { ChangeEvent } from 'react';
 
-import { ITeam } from '../../models/toto.models';
-
 const useStyles = makeStyles((theme: Theme) => ({
   select: {
     marginTop: theme.spacing(2),
@@ -13,13 +11,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+interface IOptionsForSelector {
+  name: string;
+  id: number;
+}
+
 interface IProps {
   label: string;
   labelId: string;
   id: string;
   value: number | '';
   onChange: (event: ChangeEvent<{ name?: string | undefined; value: unknown }>) => void;
-  options: ITeam[];
+  options: IOptionsForSelector[];
 }
 
 const SelectorComponent: React.FC<IProps> = ({ label, labelId, id, value, onChange, options }: IProps) => {
