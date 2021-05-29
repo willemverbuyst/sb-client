@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
-import DeleteDialog from '../../../Components/Toast/DeleteDialog';
+import DeleteDialog from '../../../Components/Communication/DeleteDialog';
 import { IPlayer } from '../../../models/player.model';
 import { playerDelete } from '../../../store/players/actions';
 

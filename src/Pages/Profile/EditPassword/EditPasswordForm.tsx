@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
+import ShowAlertComponent from '../../../Components/Communication/Alert';
 import PasswordFieldComponent from '../../../Components/Form/PasswordField';
-import ShowAlertComponent from '../../../Components/Toast/Alert';
 import { ButtonEvent } from '../../../models/events.model';
 import { changePassword } from '../../../store/user/actions';
 

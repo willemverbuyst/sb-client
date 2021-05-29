@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import ScoresStackedChart from '../../../Components/Chart/ScoresStackedChart';
+import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
-import MessageComponent from '../../../Components/Message';
 import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
