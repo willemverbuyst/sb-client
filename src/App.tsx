@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 
 import AppRouter from './AppRouter';
 import Toast from './Components/Communication/Toast';
-import UserDisplay from './Components/UserDisplay/UserDisplay';
 import Header from './Pages/Header';
+import UserDisplay from './Pages/UserDisplay/UserDisplay';
 import { getUserWithStoredToken } from './store/user/actions';
 import IceBlueGold from './ui/theme';
 
