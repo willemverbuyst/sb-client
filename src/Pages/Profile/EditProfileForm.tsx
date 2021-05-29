@@ -81,47 +81,14 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
     props.handleSubmit();
   };
 
-  const updateUserName = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProfileDetails({
-      ...profileDetails,
-      userName: e.target.value,
-    });
+  const updateProfileDetails = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.id === 'admin' || e.target.id === 'totaalToto' ? !!e.target.value : e.target.value;
 
-  const updateFirstName = (e: React.ChangeEvent<HTMLInputElement>) =>
     setProfileDetails({
       ...profileDetails,
-      firstName: e.target.value,
+      [e.target.id]: newValue,
     });
-
-  const updateLastName = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProfileDetails({
-      ...profileDetails,
-      lastName: e.target.value,
-    });
-
-  const updateEmailAddress = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProfileDetails({
-      ...profileDetails,
-      email: e.target.value,
-    });
-
-  const updatePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProfileDetails({
-      ...profileDetails,
-      phoneNumber: e.target.value,
-    });
-
-  const updateAdminStatus = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProfileDetails({
-      ...profileDetails,
-      admin: !!e.target.value,
-    });
-
-  const updateTotalTotoStatus = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setProfileDetails({
-      ...profileDetails,
-      totaalToto: !!e.target.value,
-    });
+  };
 
   return (
     <Grid container justify="center">
@@ -132,30 +99,30 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
               id="userName"
               label="User Name"
               value={profileDetails.userName}
-              onChange={updateUserName}
+              onChange={updateProfileDetails}
             />
             <TextFieldComponent
               id="firstName"
               label="First Name"
               value={profileDetails.firstName}
-              onChange={updateFirstName}
+              onChange={updateProfileDetails}
             />
             <TextFieldComponent
               id="lastName"
               label="Last Name"
               value={profileDetails.lastName}
-              onChange={updateLastName}
+              onChange={updateProfileDetails}
             />
             <TextFieldComponent
               id="email"
               label="Email Address"
               value={profileDetails.email}
-              onChange={updateEmailAddress}
+              onChange={updateProfileDetails}
             />
-            <CheckBoxComponent checked={profileDetails.admin} onChange={updateAdminStatus} label="Admin" />
+            <CheckBoxComponent checked={profileDetails.admin} onChange={updateProfileDetails} label="Admin" />
             <CheckBoxComponent
               checked={profileDetails.totaalToto}
-              onChange={updateTotalTotoStatus}
+              onChange={updateProfileDetails}
               label="Totaal Toto"
             />
           </Grid>
@@ -163,7 +130,7 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
             id="phoneNumber"
             label="Phone Number"
             value={profileDetails.phoneNumber}
-            onChange={updatePhoneNumber}
+            onChange={updateProfileDetails}
           />
 
           {teams ? (

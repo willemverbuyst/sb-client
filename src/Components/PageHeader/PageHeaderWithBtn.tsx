@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 import { topSection } from '../../ui/sharedClasses';
-import ButtonComponent from '../Button';
+import ButtonComponent from '../Button/Button';
 import PageTitleComponent from '../Title/PageTitle';
 
 const useStyles = makeStyles((theme: Theme) => ({
