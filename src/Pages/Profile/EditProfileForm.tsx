@@ -1,10 +1,12 @@
-import { FormControl, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import CheckBoxComponent from '../../Components/Form/CheckBoxComponent';
+import SelectorComponent from '../../Components/Form/Selector';
 import TextFieldComponent from '../../Components/Form/TextFieldComponent';
 import { IProfileDetails } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
@@ -26,16 +28,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-  },
-  select: {
-    marginTop: theme.spacing(2),
-  },
-  submit: {
-    marginTop: theme.spacing(3),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
   },
 }));
 
@@ -81,13 +73,23 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
     props.handleSubmit();
   };
 
-  const updateProfileDetails = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.id === 'admin' || e.target.id === 'totaalToto' ? !!e.target.value : e.target.value;
+  const updateProfileDetails = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const newValue =
+      event.target.id === 'admin' || event.target.id === 'totaalToto' ? !!event.target.value : event.target.value;
 
     setProfileDetails({
       ...profileDetails,
-      [e.target.id]: newValue,
+      [event.target.id]: newValue,
     });
+  };
+
+  const updateFavoriteTeam = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>): void => {
+    if (typeof event.target.value === 'number' || event.target.value === '') {
+      setProfileDetails({
+        ...profileDetails,
+        teamId: event.target.value,
+      });
+    }
   };
 
   return (
@@ -134,32 +136,40 @@ const EditProfileForm: React.FC<Props> = (props: Props): ReactElement => {
           />
 
           {teams ? (
-            <Grid item xs={12} className={classes.select}>
-              <FormControl variant="outlined" fullWidth>
-                <InputLabel id="favTeam">Team</InputLabel>
-                <Select
-                  labelId="favTeam"
-                  id="teeamId"
-                  value={profileDetails.teamId}
-                  onChange={(e) =>
-                    setProfileDetails({
-                      ...profileDetails,
-                      teamId: e.target.value as number,
-                    })
-                  }
-                  label="Team"
-                >
-                  {[...teams]
-                    .sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
-                    .map((team, i) => (
-                      <MenuItem key={i} value={team.id}>
-                        {team.name}
-                      </MenuItem>
-                    ))}
-                </Select>
-              </FormControl>
-            </Grid>
-          ) : null}
+            <SelectorComponent
+              label="Team"
+              labelId="favTeam"
+              id="teamId"
+              value={profileDetails.teamId}
+              onChange={updateFavoriteTeam}
+              options={teams}
+            />
+          ) : // <Grid item xs={12} className={classes.select}>
+          //   <FormControl variant="outlined" fullWidth>
+          //     <InputLabel id="favTeam">Team</InputLabel>
+          //     <Select
+          //       labelId="favTeam"
+          //       id="teeamId"
+          //       value={profileDetails.teamId}
+          //       onChange={(e) =>
+          //         setProfileDetails({
+          //           ...profileDetails,
+          //           teamId: e.target.value as number,
+          //         })
+          //       }
+          //       label="Team"
+          //     >
+          //       {[...teams]
+          //         .sort((teamA, teamB) => teamA.name.localeCompare(teamB.name))
+          //         .map((team, i) => (
+          //           <MenuItem key={i} value={team.id}>
+          //             {team.name}
+          //           </MenuItem>
+          //         ))}
+          //     </Select>
+          //   </FormControl>
+          // </Grid>
+          null}
 
           <SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />
         </form>
