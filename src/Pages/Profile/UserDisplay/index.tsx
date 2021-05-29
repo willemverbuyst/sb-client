@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
-import AvatarLargeComponent from '../../../Components/Avatar/AvatarLargeComponent';
+import AvatarLargeComponent from '../../../Components/Avatar/AvatarLarge';
 import { selectUser } from '../../../store/user/selectors';
 import { replaceUnderscore } from '../../../utils/formatFunctions';
 
