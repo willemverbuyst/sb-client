@@ -13,10 +13,10 @@ import React, { ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ball from '../../assets/ball.png';
-import NavIcon from '../../Components/Header/NavIcon';
-import { userLogOut } from '../../store/user/actions';
-import { selectToken, selectUser } from '../../store/user/selectors';
+import ball from '../../../assets/ball.png';
+import NavIcon from '../../../Components/Header/NavIcon';
+import { userLogOut } from '../../../store/user/actions';
+import { selectToken, selectUser } from '../../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -11,7 +11,7 @@ import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
 import { userLogIn } from '../../store/user/actions';
 
-const LogInForm: React.FC = (): ReactElement => {
+const LoginForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const [logInCredentials, setLogInCredentials] = useState<ILogInCredentials>({
     email: '',
@@ -57,4 +57,4 @@ const LogInForm: React.FC = (): ReactElement => {
   );
 };
 
-export default LogInForm;
+export default LoginForm;

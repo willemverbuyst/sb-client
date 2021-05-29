@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import * as ROUTES from './constants/routes';
-import LogIn from './Pages/LogIn';
+import LogIn from './Pages/Login';
 import PageNotFound from './Pages/PageNotFound';
 import ListOfPlayers from './Pages/Players/ListOfPlayers';
 import PredictionsPlayer from './Pages/Players/PredictionsPlayer';

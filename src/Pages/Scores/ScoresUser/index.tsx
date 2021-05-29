@@ -13,7 +13,7 @@ import { fetchPlayerScores } from '../../../store/players/actions';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
-import ScoresStackedChart from '../../Charts/ScoresStackedChart';
+import ScoresStackedChart from '../../Sections/Charts/ScoresStackedChart';
 
 const ScoresUser: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);

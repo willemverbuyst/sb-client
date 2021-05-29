@@ -15,7 +15,7 @@ import { selectRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
-import ScoresBarChart from '../../Charts/ScoresBarChart';
+import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
 const Round: React.FC = (): ReactElement => {

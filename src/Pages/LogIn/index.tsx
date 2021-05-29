@@ -7,7 +7,7 @@ import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBt
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
-import LogInForm from './LogInForm';
+import LoginForm from './LoginForm';
 
 const LogIn: React.FC = (): ReactElement => {
   const history = useHistory();
@@ -21,7 +21,7 @@ const LogIn: React.FC = (): ReactElement => {
   return (
     <Box>
       <PageHeaderWithoutButton title="Login" />
-      {isLoading ? <ProgressComponent /> : <LogInForm />}
+      {isLoading ? <ProgressComponent /> : <LoginForm />}
     </Box>
   );
 };

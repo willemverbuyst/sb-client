@@ -6,10 +6,10 @@ import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import BarChart from '../../Components/Chart/BarChart';
-import { IUser } from '../../models/player.model';
-import { UserWithScore } from '../../store/scores/types';
-import { selectUser } from '../../store/user/selectors';
+import BarChart from '../../../Components/Chart/BarChart';
+import { IUser } from '../../../models/player.model';
+import { UserWithScore } from '../../../store/scores/types';
+import { selectUser } from '../../../store/user/selectors';
 
 interface IProps {
   scores: UserWithScore[];

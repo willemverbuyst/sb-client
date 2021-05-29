@@ -13,7 +13,7 @@ import { fetchScoresTotoRound } from '../../../store/scores/actions';
 import { selectTotoRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
-import ScoresBarChart from '../../Charts/ScoresBarChart';
+import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
 const TotoRound: React.FC = (): ReactElement => {
