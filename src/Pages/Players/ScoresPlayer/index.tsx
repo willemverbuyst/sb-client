@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
+import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
+import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchPlayerScores } from '../../../store/players/actions';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
-import ScoresSection from './ScoresSection';
+import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
+import ScoresStackedChart from '../../Charts/ScoresStackedChart';
 
 const ScoresPlayer: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
@@ -43,7 +46,16 @@ const ScoresPlayer: React.FC = (): ReactElement => {
       {isLoading ? (
         <ProgressComponent />
       ) : scoresPlayer ? (
-        <ScoresSection scoresPlayer={scoresPlayer} />
+        <>
+          <SubTitleComponent text="TOTO RONDES" />
+          <DividerComponent />
+          <ScoresStackedChart
+            scoresPlayer={scoresPlayer}
+            colorMain={colorSecondary}
+            colorHover={colorPrimary}
+            loggedInUser={false}
+          />
+        </>
       ) : (
         <MessageComponent message={`Nog geen scores`} />
       )}
