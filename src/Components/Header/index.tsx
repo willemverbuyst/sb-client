@@ -70,7 +70,7 @@ const Header: React.FC = (): ReactElement => {
   const gotoProfile = () => history.push('/profiel/edit');
   const gotoProgram = () => history.push('/programma');
   const gotoRules = () => history.push('/regels');
-  const gotoSignUp = () => history.push('/admin/signup');
+  const gotoSignUp = () => history.push('/signup');
   const gotoTotalToto = () => history.push('/klassement/totaaltoto');
 
   return (

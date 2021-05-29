@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import * as ROUTES from './constants/routes';
-import SignUp from './Pages/Admin/SignUp';
 import LogIn from './Pages/LogIn';
 import PageNotFound from './Pages/PageNotFound';
 import ListOfPlayers from './Pages/Players/ListOfPlayers';
@@ -18,6 +17,7 @@ import Round from './Pages/Scores/Round';
 import ScoresUser from './Pages/Scores/ScoresUser';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
+import SignUp from './Pages/SignUp';
 
 const AppRouter = (): JSX.Element => {
   return (
