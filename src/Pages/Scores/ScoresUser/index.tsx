@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import ScoresStackedChart from '../../../Components/Chart/ScoresStackedChart';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
-import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
+import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';

@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import PageHeaderWithoutButton from '../../Components/PageHeader/PageHeaderWithoutBtn';
+import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';

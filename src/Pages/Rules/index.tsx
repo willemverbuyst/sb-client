@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import PageHeaderWithoutButton from '../../Components/PageHeader/PageHeaderWithoutBtn';
+import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
 import { selectToken } from '../../store/user/selectors';
 import AccordionWithRules from './AccordionWithRules';
 

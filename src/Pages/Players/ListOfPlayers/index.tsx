@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/PageHeader/PageHeaderWithoutBtn';
+import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchAllPlayers } from '../../../store/players/actions';

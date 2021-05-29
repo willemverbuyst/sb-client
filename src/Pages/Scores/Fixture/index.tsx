@@ -6,7 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import ScoresFixtureBarChart from '../../../Components/Chart/ScoresFixtureBarChart';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
-import PageHeaderWithButton from '../../../Components/PageHeader/PageHeaderWithBtn';
+import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresFixture } from '../../../store/scores/actions';

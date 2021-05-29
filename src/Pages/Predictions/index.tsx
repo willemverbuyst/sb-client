@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
-import PageHeaderWithButton from '../../Components/PageHeader/PageHeaderWithBtn';
+import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../Components/Progress';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchAllFixtures } from '../../store/predictions/actions';
