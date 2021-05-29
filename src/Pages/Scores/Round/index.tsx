@@ -3,7 +3,6 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import ScoresBarChart from '../../../Components/Chart/ScoresBarChart';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
@@ -16,6 +15,7 @@ import { selectRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
+import ScoresBarChart from '../../Charts/ScoresBarChart';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
 const Round: React.FC = (): ReactElement => {
