@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 import { apiUrl } from '../../config/constants';
 import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
 import {
   ALL_FIXTURES_FETCHED,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { ITeam } from '../../../models/toto.models';
-import { appDoneLoading, appLoading } from '../../appState/actions';
+import { appDoneLoading, appLoading } from '../../appState/actions-creators';
 import { allTeamsFetched, fetchAllTeams, removeAllTeams } from '../actions';
 import { ALL_TEAMS_FETCHED, AllTeamsFetched, REMOVE_ALL_TEAMS, RemoveAllTeams } from '../types';
 

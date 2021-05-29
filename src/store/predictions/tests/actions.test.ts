@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { IPrediction } from '../../../models/predictions.model';
 import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
-import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
+import { appDoneLoading, appLoading, setMessage } from '../../appState/actions-creators';
 import {
   allFixturesFetched,
   changePrediction,

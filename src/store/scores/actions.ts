@@ -3,7 +3,7 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { apiUrl } from '../../config/constants';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
 import {
   FixtureWithScores,

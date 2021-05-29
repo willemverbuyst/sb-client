@@ -1,6 +1,6 @@
+import { IMessage } from '../../models/app.models';
 import { StoreState } from '../types';
-import { Message } from './types';
 
 export const selectAppLoading = (state: StoreState): boolean => state.appState.loading;
 
-export const selectMessage = (state: StoreState): Message | null => state.appState.message;
+export const selectMessage = (state: StoreState): IMessage | null => state.appState.message;

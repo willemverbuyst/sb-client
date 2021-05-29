@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { ISignUpCredentials } from '../../../models/credentials.model';
 import { IPlayer, IPlayerProfile } from '../../../models/player.model';
-import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
+import { appDoneLoading, appLoading, setMessage } from '../../appState/actions-creators';
 import {
   addNewPlayer,
   addPlayer,

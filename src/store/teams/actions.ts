@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 
 import { apiUrl } from '../../config/constants';
 import { ITeam } from '../../models/toto.models';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
 import { ALL_TEAMS_FETCHED, AllTeamsFetched, REMOVE_ALL_TEAMS, RemoveAllTeams } from './types';
 

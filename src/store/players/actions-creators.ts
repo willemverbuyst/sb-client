@@ -4,7 +4,7 @@ import { ThunkAction } from 'redux-thunk';
 
 import { apiUrl } from '../../config/constants';
 import { ISignUpCredentials } from '../../models/credentials.model';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
 import { ActionType } from './action-types';
 import {
