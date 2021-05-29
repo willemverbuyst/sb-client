@@ -21,7 +21,7 @@ const Fixture: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const { id } = useParams<{ id: string }>();
-  const fixture = useSelector(selectFixture);
+  const fixtureWithScores = useSelector(selectFixture);
   const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
@@ -33,8 +33,10 @@ const Fixture: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const scoresSortedByName: PredictionWithScorePerUser[] =
-    fixture && fixture.scores
-      ? sortArrayWithObjects<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(fixture.scores)
+    fixtureWithScores && fixtureWithScores.scores
+      ? sortArrayWithObjects<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(
+          fixtureWithScores.scores,
+        )
       : [];
 
   const goBack = () => history.goBack();
@@ -45,11 +47,11 @@ const Fixture: React.FC = (): ReactElement => {
 
       {isLoading ? (
         <ProgressComponent />
-      ) : fixture ? (
+      ) : fixtureWithScores ? (
         <>
-          <FixtureSection fixture={fixture} />
+          <FixtureSection fixture={fixtureWithScores.fixture} />
           <DividerComponent />
-          {fixture.scores ? (
+          {fixtureWithScores.scores ? (
             <ScoresFixtureBarChart scores={scoresSortedByName} />
           ) : (
             <MessageComponent message={`Nog geen scores`} />

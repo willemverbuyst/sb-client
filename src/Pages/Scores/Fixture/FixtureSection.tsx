@@ -1,9 +1,11 @@
-import { Avatar, Grid, Theme, Typography } from '@material-ui/core';
+import { Grid, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import { FixtureWithScores } from '../../../store/scores/types';
+import AvatarMediumComponent from '../../../Components/Avatar/AvatarMedium';
+import { IFixture } from '../../../models/toto.models';
 import { timeStampFormattedToLocalDate } from '../../../utils/timeFunctions';
+import TextComponent from './Text';
 
 const useStyles = makeStyles((theme: Theme) => ({
   fixture: {
@@ -15,54 +17,36 @@ const useStyles = makeStyles((theme: Theme) => ({
   date: {
     marginBottom: theme.spacing(2),
   },
-  text: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '1rem',
-      margin: '0.5rem',
-    },
-  },
-  avatar: {
-    [theme.breakpoints.down('xs')]: {
-      transform: 'scale(0.8)',
-    },
-  },
 }));
 
 interface IProps {
-  fixture: FixtureWithScores;
+  fixture: IFixture;
 }
 
 const FixtureSection: React.FC<IProps> = ({ fixture }: IProps): ReactElement => {
   const classes = useStyles();
+  const {
+    eventTimeStamp,
+    homeTeamName,
+    homeTeamLogo,
+    goalsHomeTeam,
+    goalsAwayTeam,
+    awayTeamName,
+    awayTeamLogo,
+  } = fixture;
+  const formattedDate = timeStampFormattedToLocalDate(eventTimeStamp);
+
   return (
     <Grid className={classes.fixture}>
       <Grid item xs={12} container justify="center" className={classes.date}>
-        <Typography variant="overline">{timeStampFormattedToLocalDate(fixture.fixture.eventTimeStamp)}</Typography>
+        <Typography variant="overline">{formattedDate}</Typography>
       </Grid>
       <Grid item xs={12} container justify="center">
-        <Grid item xs={3} container justify="flex-end" alignItems="center">
-          <Typography variant="h4" className={classes.text} style={{ textAlign: 'right' }}>
-            {fixture.fixture.homeTeamName}
-          </Typography>
-        </Grid>
-
-        <Grid item xs={1} container justify="center" alignItems="center">
-          <Avatar alt={fixture.fixture.homeTeamName} src={fixture.fixture.homeTeamLogo} className={classes.avatar} />
-        </Grid>
-        <Grid item xs={2} sm={1} container justify="center" alignItems="center">
-          <Typography variant="h4" className={classes.text}>
-            {fixture.fixture.goalsHomeTeam} - {fixture.fixture.goalsAwayTeam}
-          </Typography>
-        </Grid>
-        <Grid item xs={1} container justify="center" alignItems="center">
-          <Avatar alt={fixture.fixture.awayTeamName} src={fixture.fixture.awayTeamLogo} className={classes.avatar} />
-        </Grid>
-
-        <Grid item xs={3} container justify="flex-start" alignItems="center">
-          <Typography variant="h4" className={classes.text}>
-            {fixture.fixture.awayTeamName}
-          </Typography>
-        </Grid>
+        <TextComponent xs={3} sm={3} content={homeTeamName} justify="flex-end" />
+        <AvatarMediumComponent alt={homeTeamName} source={homeTeamLogo} />
+        <TextComponent xs={3} sm={1} content={`${goalsHomeTeam} - ${goalsAwayTeam}`} justify="center" />
+        <AvatarMediumComponent alt={awayTeamName} source={awayTeamLogo} />
+        <TextComponent xs={3} sm={3} content={awayTeamName} justify="flex-start" />
       </Grid>
     </Grid>
   );
