@@ -7,7 +7,7 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
-import { fetchPlayerProfile } from '../../../store/players/actions';
+import { fetchPlayerProfile } from '../../../store/players/actions-creators';
 import { selectPlayerProfile } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
 import FixturesSection from './FixturesSection';

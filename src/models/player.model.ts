@@ -16,6 +16,12 @@ export interface IPlayerProfile extends IPlayer {
   pastFixturesWithScores: TotoRound[] | null;
 }
 
+export interface IScoresPlayer {
+  scores: number[][];
+  userName: string;
+  id: number;
+}
+
 export interface IUser extends IPlayer {
   token: string;
 }

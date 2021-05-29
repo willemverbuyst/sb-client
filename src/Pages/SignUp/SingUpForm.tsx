@@ -10,7 +10,7 @@ import SelectorComponent from '../../Components/Form/Selector';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
-import { addPlayer } from '../../store/players/actions';
+import { addPlayer } from '../../store/players/actions-creators';
 import { fetchAllTeams } from '../../store/teams/actions';
 import { selectTeams } from '../../store/teams/selectors';
 import * as HELPERS from '../Profile/EditProfile/helpers';

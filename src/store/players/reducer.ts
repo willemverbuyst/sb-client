@@ -1,59 +1,50 @@
-import {
-  ADD_NEW_PLAYER,
-  ALL_PLAYERS_FETCHED,
-  DELETE_PLAYER,
-  PLAYER_PROFILE_FETCHED,
-  PLAYER_SCORES_FETCHED,
-  PlayersActionTypes,
-  PlayersState,
-  REMOVE_ALL_PLAYERS,
-  UPDATE_ADMIN_STATUS,
-} from './types';
+import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.model';
+import { ActionType } from './action-types';
+import { PlayersActionTypes } from './actions';
 
-const initialState: PlayersState = {
+interface IPlayersState {
+  players: IPlayer[] | null;
+  playerProfile: IPlayerProfile | null;
+  scoresPlayer: IScoresPlayer | null;
+}
+
+const initialState: IPlayersState = {
   players: null,
   playerProfile: null,
   scoresPlayer: null,
 };
 
-const playersReducer = (state = initialState, action: PlayersActionTypes): PlayersState => {
+const playersReducer = (state = initialState, action: PlayersActionTypes): IPlayersState => {
   switch (action.type) {
-    case ADD_NEW_PLAYER:
+    case ActionType.ADD_NEW_PLAYER:
       return {
         ...state,
-        players: state.players ? [...state.players, action.player] : null,
+        players: state.players ? [...state.players, action.payload] : null,
       };
 
-    case ALL_PLAYERS_FETCHED:
-      return { ...state, players: [...action.players] };
+    case ActionType.FETCH_ALL_PLAYERS:
+      return { ...state, players: [...action.payload] };
 
-    case DELETE_PLAYER:
+    case ActionType.DELETE_PLAYER:
       return {
         ...state,
-        players: state.players ? state.players.filter((player) => player.id !== action.playerId) : null,
+        players: state.players ? state.players.filter((player) => player.id !== action.payload) : null,
       };
 
-    case PLAYER_PROFILE_FETCHED:
-      return { ...state, playerProfile: action.playerProfile };
+    case ActionType.FETCH_PLAYER_PROFILE:
+      return { ...state, playerProfile: action.payload };
 
-    case PLAYER_SCORES_FETCHED:
-      return { ...state, scoresPlayer: action.scoresPlayer };
+    case ActionType.FETCH_PLAYER_SCORES:
+      return { ...state, scoresPlayer: action.payload };
 
-    case REMOVE_ALL_PLAYERS:
-      return {
-        players: null,
-        playerProfile: null,
-        scoresPlayer: null,
-      };
-
-    case UPDATE_ADMIN_STATUS:
+    case ActionType.UPDATE_ADMIN_STATUS:
       return {
         ...state,
         players: state.players
           ? [
               ...state.players.map((player) => {
-                if (player.id === action.player.id) {
-                  return action.player;
+                if (player.id === action.payload.id) {
+                  return action.payload;
                 } else {
                   return player;
                 }

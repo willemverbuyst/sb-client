@@ -7,7 +7,7 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
-import { fetchAllPlayers } from '../../../store/players/actions';
+import { fetchAllPlayers } from '../../../store/players/actions-creators';
 import { selectPlayers } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
 import TableWithPlayers from './TableWithPlayers';

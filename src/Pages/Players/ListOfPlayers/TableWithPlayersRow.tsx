@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TableCellsOneRow from '../../../Components/Table/TableCellsOneRow';
 import { Align, CellValue } from '../../../Components/Table/types';
 import { IPlayer } from '../../../models/player.model';
-import { updatePlayerAdminStatus } from '../../../store/players/actions';
+import { updatePlayerAdminStatus } from '../../../store/players/actions-creators';
 import { selectUser } from '../../../store/user/selectors';
 import * as HELPERS from './helpers';
 

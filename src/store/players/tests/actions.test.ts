@@ -17,7 +17,7 @@ import {
   removeAllPlayers,
   updateAdminStatus,
   updatePlayerAdminStatus,
-} from '../actions';
+} from '../actions-creators';
 import {
   ADD_NEW_PLAYER,
   AddNewPlayer,

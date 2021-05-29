@@ -9,7 +9,7 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { selectAppLoading } from '../../../store/appState/selectors';
-import { fetchPlayerScores } from '../../../store/players/actions';
+import { fetchPlayerScores } from '../../../store/players/actions-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
