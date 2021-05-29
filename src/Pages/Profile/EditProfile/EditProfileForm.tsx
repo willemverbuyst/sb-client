@@ -126,25 +126,24 @@ const EditProfileForm: React.FC = (): ReactElement => {
               onChange={updateProfileDetails}
               label="Totaal Toto"
             />
-          </Grid>
-          <TextFieldComponent
-            id="phoneNumber"
-            label="Phone Number"
-            value={profileDetails.phoneNumber}
-            onChange={updateProfileDetails}
-          />
 
-          {teamsForSelector ? (
-            <SelectorComponent
-              label="Team"
-              labelId="favTeam"
-              id="teamId"
-              value={profileDetails.teamId}
-              onChange={updateFavoriteTeam}
-              options={teamsForSelector}
+            <TextFieldComponent
+              id="phoneNumber"
+              label="Phone Number"
+              value={profileDetails.phoneNumber}
+              onChange={updateProfileDetails}
             />
-          ) : null}
-
+            {teamsForSelector ? (
+              <SelectorComponent
+                label="Team"
+                labelId="favTeam"
+                id="teamId"
+                value={profileDetails.teamId}
+                onChange={updateFavoriteTeam}
+                options={teamsForSelector}
+              />
+            ) : null}
+          </Grid>
           <SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />
           <Link to="/profiel/password">Change Password</Link>
         </form>
