@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface IProps {
   inputFields: JSX.Element;
   submitButton: JSX.Element;
+  link?: JSX.Element | null;
 }
 
-const FormContainer: React.FC<IProps> = ({ inputFields, submitButton }: IProps): ReactElement => {
+const FormContainer: React.FC<IProps> = ({ inputFields, submitButton, link = null }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -32,6 +33,7 @@ const FormContainer: React.FC<IProps> = ({ inputFields, submitButton }: IProps):
             {inputFields}
           </Grid>
           {submitButton}
+          {link}
         </form>
       </Grid>
     </Grid>

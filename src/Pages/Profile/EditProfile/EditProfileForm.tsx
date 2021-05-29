@@ -1,5 +1,3 @@
-import { Grid } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import CheckBoxComponent from '../../../Components/Form/CheckBoxComponent';
+import FormContainer from '../../../Components/Form/FormContainer';
 import SelectorComponent from '../../../Components/Form/Selector';
 import TextFieldComponent from '../../../Components/Form/TextFieldComponent';
 import { IProfileDetails } from '../../../models/credentials.model';
@@ -17,25 +16,7 @@ import { editUserProfile } from '../../../store/user/actions';
 import { selectUser } from '../../../store/user/selectors';
 import * as HELPERS from './helpers';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(1),
-    },
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-}));
-
 const EditProfileForm: React.FC = (): ReactElement => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const teams = useSelector(selectTeams);
@@ -92,63 +73,57 @@ const EditProfileForm: React.FC = (): ReactElement => {
   };
 
   return (
-    <Grid container justify="center">
-      <Grid item xs={12} sm={6} lg={4} className={classes.paper}>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={1}>
-            <TextFieldComponent
-              id="userName"
-              label="User Name"
-              value={profileDetails.userName}
-              onChange={updateProfileDetails}
-            />
-            <TextFieldComponent
-              id="firstName"
-              label="First Name"
-              value={profileDetails.firstName}
-              onChange={updateProfileDetails}
-            />
-            <TextFieldComponent
-              id="lastName"
-              label="Last Name"
-              value={profileDetails.lastName}
-              onChange={updateProfileDetails}
-            />
-            <TextFieldComponent
-              id="email"
-              label="Email Address"
-              value={profileDetails.email}
-              onChange={updateProfileDetails}
-            />
-            <CheckBoxComponent checked={profileDetails.admin} onChange={updateProfileDetails} label="Admin" />
-            <CheckBoxComponent
-              checked={profileDetails.totaalToto}
-              onChange={updateProfileDetails}
-              label="Totaal Toto"
-            />
+    <FormContainer
+      inputFields={
+        <>
+          <TextFieldComponent
+            id="userName"
+            label="User Name"
+            value={profileDetails.userName}
+            onChange={updateProfileDetails}
+          />
+          <TextFieldComponent
+            id="firstName"
+            label="First Name"
+            value={profileDetails.firstName}
+            onChange={updateProfileDetails}
+          />
+          <TextFieldComponent
+            id="lastName"
+            label="Last Name"
+            value={profileDetails.lastName}
+            onChange={updateProfileDetails}
+          />
+          <TextFieldComponent
+            id="email"
+            label="Email Address"
+            value={profileDetails.email}
+            onChange={updateProfileDetails}
+          />
+          <CheckBoxComponent checked={profileDetails.admin} onChange={updateProfileDetails} label="Admin" />
+          <CheckBoxComponent checked={profileDetails.totaalToto} onChange={updateProfileDetails} label="Totaal Toto" />
 
-            <TextFieldComponent
-              id="phoneNumber"
-              label="Phone Number"
-              value={profileDetails.phoneNumber}
-              onChange={updateProfileDetails}
+          <TextFieldComponent
+            id="phoneNumber"
+            label="Phone Number"
+            value={profileDetails.phoneNumber}
+            onChange={updateProfileDetails}
+          />
+          {teamsForSelector ? (
+            <SelectorComponent
+              label="Team"
+              labelId="favTeam"
+              id="teamId"
+              value={profileDetails.teamId}
+              onChange={updateFavoriteTeam}
+              options={teamsForSelector}
             />
-            {teamsForSelector ? (
-              <SelectorComponent
-                label="Team"
-                labelId="favTeam"
-                id="teamId"
-                value={profileDetails.teamId}
-                onChange={updateFavoriteTeam}
-                options={teamsForSelector}
-              />
-            ) : null}
-          </Grid>
-          <SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />
-          <Link to="/profiel/password">Change Password</Link>
-        </form>
-      </Grid>
-    </Grid>
+          ) : null}
+        </>
+      }
+      submitButton={<SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />}
+      link={<Link to="/profiel/password">Change Password</Link>}
+    />
   );
 };
 
