@@ -3,7 +3,6 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ScoresStackedChart from '../../../Components/Chart/ScoresStackedChart';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
@@ -14,6 +13,7 @@ import { fetchPlayerScores } from '../../../store/players/actions';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
+import ScoresStackedChart from '../../Charts/ScoresStackedChart';
 
 const ScoresUser: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);

@@ -1,15 +1,15 @@
 import 'chartjs-plugin-datalabels';
 
-import { Grid } from '@material-ui/core';
 import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
-import { Bar, ChartData } from 'react-chartjs-2';
+import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { IUser } from '../../models/player.model';
-import { PredictionWithScorePerUser } from '../../store/scores/types';
-import { selectUser } from '../../store/user/selectors';
+import BarChart from '../../../Components/Chart/BarChart';
+import { IUser } from '../../../models/player.model';
+import { PredictionWithScorePerUser } from '../../../store/scores/types';
+import { selectUser } from '../../../store/user/selectors';
 
 interface IProps {
   scores: PredictionWithScorePerUser[];
@@ -87,17 +87,18 @@ const ScoresFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEleme
   };
 
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
-      <Grid item xs={12} md={6} container justify="center">
-        <Bar
-          data={chartData}
-          options={chartOptions}
-          onElementsClick={(e) => {
-            if (e[0] !== undefined) gotoPlayer(e[0]._index);
-          }}
-        />
-      </Grid>
-    </Grid>
+    <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoPlayer} />
+    // <Grid container direction="row" justify="center" alignItems="center">
+    //   <Grid item xs={12} md={6} container justify="center">
+    //     <Bar
+    //       data={chartData}
+    //       options={chartOptions}
+    //       onElementsClick={(e) => {
+    //         if (e[0] !== undefined) gotoPlayer(e[0]._index);
+    //       }}
+    //     />
+    //   </Grid>
+    // </Grid>
   );
 };
 

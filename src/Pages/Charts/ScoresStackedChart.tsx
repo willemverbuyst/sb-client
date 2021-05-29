@@ -6,9 +6,9 @@ import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import BarChart from '../../../Components/Chart/BarChart';
-import { ScoresPlayer } from '../../../store/players/types';
-import { selectUser } from '../../../store/user/selectors';
+import BarChart from '../../Components/Chart/BarChart';
+import { ScoresPlayer } from '../../store/players/types';
+import { selectUser } from '../../store/user/selectors';
 
 interface Color {
   color1: string;

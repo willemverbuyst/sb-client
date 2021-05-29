@@ -3,7 +3,6 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import ScoresFixtureBarChart from '../../../Components/Chart/ScoresFixtureBarChart';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
@@ -15,6 +14,7 @@ import { PredictionWithScorePerUser } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import FixtureSection from './FixtureSection';
+import ScoresFixtureBarChart from './ScoresFixtureBarChart';
 
 const Fixture: React.FC = (): ReactElement => {
   const history = useHistory();

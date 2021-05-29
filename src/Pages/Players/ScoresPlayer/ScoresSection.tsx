@@ -4,7 +4,7 @@ import DividerComponent from '../../../Components/Divider';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { ScoresPlayer } from '../../../store/players/types';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
-import ScoresStackedChart from './ScoresStackedChart';
+import ScoresStackedChart from '../../Charts/ScoresStackedChart';
 
 interface IProps {
   scoresPlayer: ScoresPlayer;
