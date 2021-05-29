@@ -1,12 +1,12 @@
 import { Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Alert } from '@material-ui/lab';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import PasswordFieldComponent from '../../../Components/Form/PasswordField';
+import ShowAlertComponent from '../../../Components/Toast/Alert';
 import { ButtonEvent } from '../../../models/events.model';
 import { changePassword } from '../../../store/user/actions';
 
@@ -23,9 +23,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-  },
-  margin: {
-    margin: theme.spacing(3, 0, 2),
   },
 }));
 
@@ -63,12 +60,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
           <PasswordFieldComponent id="password2" label="Password" value={password2} onChange={updatePassword2} />
           <SubmitButtonComponent caption="CHANGE PASSWORD" color="primary" handleClick={submitForm} />
           <Link to="/profiel/edit">Edit Profile</Link>
-
-          {showAlert ? (
-            <Alert onClose={closeAlert} severity="error" variant="outlined" className={classes.margin}>
-              Passwords are not the same
-            </Alert>
-          ) : null}
+          <ShowAlertComponent message="Passwords are not the same" displayAlert={showAlert} closeAlert={closeAlert} />
         </form>
       </Grid>
     </Grid>
