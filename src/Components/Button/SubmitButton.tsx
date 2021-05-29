@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   submit: {
-    marginTop: theme.spacing(3),
+    margin: theme.spacing(3, 0, 2),
   },
 }));
 
@@ -27,7 +27,6 @@ const SubmitButtonComponent: React.FC<IProps> = ({ caption, color, handleClick }
         fullWidth
         className={classes.submit}
         variant={btnVariant ? 'contained' : 'outlined'}
-        size="small"
         color={color}
         disableElevation
         onClick={handleClick}

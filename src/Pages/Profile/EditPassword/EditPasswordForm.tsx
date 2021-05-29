@@ -1,9 +1,11 @@
-import { Button, Grid, TextField } from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Alert } from '@material-ui/lab';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import { ButtonEvent } from '../../../models/events.model';
 import { changePassword } from '../../../store/user/actions';
 
@@ -79,17 +81,9 @@ const EditPasswordForm: React.FC = (): ReactElement => {
             value={password2}
             onChange={(e) => setPassword2(e.target.value)}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            disableElevation
-            color="primary"
-            className={classes.margin}
-            onClick={submitForm}
-          >
-            CHANGE PASSWORD
-          </Button>
+          <SubmitButtonComponent caption="CHANGE PASSWORD" color="primary" handleClick={submitForm} />
+
+          <Link to="/profiel/edit">Edit Profile</Link>
           {showAlert ? (
             <Alert onClose={closeAlert} severity="error" variant="outlined" className={classes.margin}>
               Passwords are not the same
