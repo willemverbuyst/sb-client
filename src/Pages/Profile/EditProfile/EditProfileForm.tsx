@@ -5,16 +5,16 @@ import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import SubmitButtonComponent from '../../Components/Button/SubmitButton';
-import CheckBoxComponent from '../../Components/Form/CheckBoxComponent';
-import SelectorComponent from '../../Components/Form/Selector';
-import TextFieldComponent from '../../Components/Form/TextFieldComponent';
-import { IProfileDetails } from '../../models/credentials.model';
-import { ButtonEvent } from '../../models/events.model';
-import { fetchAllTeams } from '../../store/teams/actions';
-import { selectTeams } from '../../store/teams/selectors';
-import { editUserProfile } from '../../store/user/actions';
-import { selectUser } from '../../store/user/selectors';
+import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
+import CheckBoxComponent from '../../../Components/Form/CheckBoxComponent';
+import SelectorComponent from '../../../Components/Form/Selector';
+import TextFieldComponent from '../../../Components/Form/TextFieldComponent';
+import { IProfileDetails } from '../../../models/credentials.model';
+import { ButtonEvent } from '../../../models/events.model';
+import { fetchAllTeams } from '../../../store/teams/actions';
+import { selectTeams } from '../../../store/teams/selectors';
+import { editUserProfile } from '../../../store/user/actions';
+import { selectUser } from '../../../store/user/selectors';
 import * as HELPERS from './helpers';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -34,11 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type IProps = {
-  handleSubmit: () => void;
-};
-
-const EditProfileForm: React.FC<IProps> = ({ handleSubmit }: IProps): ReactElement => {
+const EditProfileForm: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -63,7 +59,6 @@ const EditProfileForm: React.FC<IProps> = ({ handleSubmit }: IProps): ReactEleme
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
-    console.log(profileDetails);
     dispatch(editUserProfile(profileDetails));
     setProfileDetails({
       userName: '',
@@ -75,7 +70,6 @@ const EditProfileForm: React.FC<IProps> = ({ handleSubmit }: IProps): ReactEleme
       totaalToto: true,
       teamId: '',
     });
-    handleSubmit();
   };
 
   const updateProfileDetails = (event: React.ChangeEvent<HTMLInputElement>): void => {

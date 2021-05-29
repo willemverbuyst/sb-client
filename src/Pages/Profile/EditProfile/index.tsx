@@ -7,9 +7,9 @@ import PageHeaderWithoutButton from '../../../Components/PageHeader/PageHeaderWi
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { selectToken } from '../../../store/user/selectors';
-import EditPasswordForm from './EditPasswordForm';
+import EditProfileForm from './EditProfileForm';
 
-const EditPassword: React.FC = (): ReactElement => {
+const EditProfile: React.FC = (): ReactElement => {
   const token = useSelector(selectToken);
   const history = useHistory();
   const isLoading = useSelector(selectAppLoading);
@@ -22,9 +22,9 @@ const EditPassword: React.FC = (): ReactElement => {
     <Box>
       <PageHeaderWithoutButton title="Profiel" />
 
-      {isLoading ? <ProgressComponent /> : <EditPasswordForm />}
+      {isLoading ? <ProgressComponent /> : <EditProfileForm />}
     </Box>
   );
 };
 
-export default EditPassword;
+export default EditProfile;

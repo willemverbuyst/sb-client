@@ -1,5 +1,5 @@
-import { ITeam } from '../../../models/toto.models';
-import { sortArrayWithObjects } from '../../../utils/sortFunctions';
+import { ITeam } from '../../../../models/toto.models';
+import { sortArrayWithObjects } from '../../../../utils/sortFunctions';
 
 interface IOptionsForSelector {
   name: string;
