@@ -1,4 +1,6 @@
 export interface IMessage {
-  severity: 'success' | 'info' | 'warning' | 'error';
+  severity: Severity;
   text: string;
 }
+
+export type Severity = 'success' | 'info' | 'warning' | 'error';
