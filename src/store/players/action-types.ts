@@ -1,13 +1,13 @@
 import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.model';
 
 export enum ActionType {
-  ADD_NEW_PLAYER = 'add new player',
-  DELETE_PLAYER = 'delete player',
-  RESET_PLAYERS = 'reset players',
-  STORE_ALL_PLAYERS = 'store all players',
-  STORE_PLAYER_PROFILE = 'store player profile',
-  STORE_PLAYER_SCORES = 'store player scores',
-  UPDATE_ADMIN_STATUS = 'update admin status',
+  ADD_NEW_PLAYER,
+  DELETE_PLAYER,
+  RESET_PLAYERS,
+  STORE_ALL_PLAYERS,
+  STORE_PLAYER_PROFILE,
+  STORE_PLAYER_SCORES,
+  UPDATE_ADMIN_STATUS,
 }
 
 export type AddNewPlayer = {
