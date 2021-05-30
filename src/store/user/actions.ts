@@ -11,7 +11,7 @@ import { ActionTypePlayers } from '../players/action-types';
 import { PlayersActions } from '../players/actions';
 import { removeAllFixtures } from '../predictions/actions';
 import { removeAllScores } from '../scores/actions';
-import { removeAllTeams } from '../teams/actions';
+import { ActionTypeTeams, TeamsActions } from '../teams/action-types';
 import { StoreState } from '../types';
 import {
   LOG_IN_SUCCESS_USER,
@@ -143,7 +143,7 @@ export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispa
   dispatch(removeAllScores());
   dispatch<PlayersActions>({ type: ActionTypePlayers.RESET_PLAYERS });
   dispatch(removeAllFixtures());
-  dispatch(removeAllTeams());
+  dispatch<TeamsActions>({ type: ActionTypeTeams.RESET_ALL_TEAMS });
 };
 
 export const getUserWithStoredToken = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (

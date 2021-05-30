@@ -7,7 +7,7 @@ import { appDoneLoading, appLoading, setMessage } from '../../appState/actions-c
 import { removeAllPlayers } from '../../players/actions-creators';
 import { removeAllFixtures } from '../../predictions/actions';
 import { removeAllScores } from '../../scores/actions';
-import { removeAllTeams } from '../../teams/actions';
+import { removeAllTeams } from '../../teams/action-creators';
 import {
   changePassword,
   editUserProfile,

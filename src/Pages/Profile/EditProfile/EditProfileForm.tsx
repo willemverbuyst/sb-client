@@ -10,7 +10,7 @@ import SelectorComponent from '../../../Components/Form/Selector';
 import TextFieldComponent from '../../../Components/Form/TextField';
 import { IProfileDetails } from '../../../models/credentials.model';
 import { ButtonEvent } from '../../../models/events.model';
-import { fetchAllTeams } from '../../../store/teams/actions';
+import { fetchAllTeams } from '../../../store/teams/action-creators';
 import { selectTeams } from '../../../store/teams/selectors';
 import { editUserProfile } from '../../../store/user/actions';
 import { selectUser } from '../../../store/user/selectors';

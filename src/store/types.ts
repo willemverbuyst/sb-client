@@ -2,7 +2,7 @@ import { IAppState } from './appState/reducer';
 import { IPlayersState } from './players/reducer';
 import { PredictionsState } from './predictions/types';
 import { ScoresState } from './scores/types';
-import { TeamsState } from './teams/types';
+import { ITeamsState } from './teams/reducer';
 import { UserState } from './user/types';
 
 export type StoreState = {
@@ -10,7 +10,7 @@ export type StoreState = {
   playersState: IPlayersState;
   predictionsState: PredictionsState;
   scoresState: ScoresState;
-  teamsState: TeamsState;
+  teamsState: ITeamsState;
   userState: UserState;
 };
 
