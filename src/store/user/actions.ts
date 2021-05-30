@@ -6,7 +6,7 @@ import { ThunkAction } from 'redux-thunk';
 import { API_URL } from '../../config/constants';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
+import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { ActionTypePlayers } from '../players/action-types';
 import { PlayersActions } from '../players/actions';
 import { removeAllFixtures } from '../predictions/actions';

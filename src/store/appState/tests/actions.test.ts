@@ -1,4 +1,4 @@
-import { appDoneLoading, appLoading, setMessage } from '../actions-creators';
+import { appDoneLoading, appLoading, setMessage } from '../actions';
 import { APP_DONE_LOADING, APP_LOADING, AppDoneLoading, AppLoading, SET_MESSAGE, SetMessage } from '../types';
 
 describe('#appState', () => {

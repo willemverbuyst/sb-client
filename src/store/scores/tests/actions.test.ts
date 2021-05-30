@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { IFixture } from '../../../models/toto.models';
-import { appDoneLoading, appLoading } from '../../appState/actions-creators';
+import { appDoneLoading, appLoading } from '../../appState/actions';
 import {
   fetchScoresFixture,
   fetchScoresRound,

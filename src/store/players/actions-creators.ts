@@ -6,7 +6,7 @@ import { API_URL } from '../../config/constants';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ActionTypeAppState } from '../appState/action-types';
 import { AppStateActions } from '../appState/actions';
-import { setMessage } from '../appState/actions-creators';
+import { setMessage } from '../appState/actions';
 import { handleError } from '../error-handler';
 import { StoreState } from '../types';
 import { ActionTypePlayers } from './action-types';

@@ -4,8 +4,8 @@ import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { API_URL } from '../../config/constants';
-import { AppStateActions } from '../appState/actions';
-import { appDoneLoading, appLoading } from '../appState/actions-creators';
+import { AppStateActions } from '../appState/action-types';
+import { appDoneLoading, appLoading } from '../appState/actions';
 import { handleError } from '../error-handler';
 import { StoreState } from '../types';
 import { TeamsActions } from './action-types';

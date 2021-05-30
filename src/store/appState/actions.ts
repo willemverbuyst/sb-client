@@ -1,17 +1,19 @@
-import { IMessage } from '../../models/app.models';
-import { ActionTypeAppState } from './action-types';
+import { Severity } from '../../models/app.models';
+import { ActionType } from './action-types';
+import { AppDoneLoading, AppLoading, SetMessage } from './action-types';
 
-export type AppDoneLoading = {
-  type: ActionTypeAppState.APP_DONE_LOADING;
+export const appDoneLoading = (): AppDoneLoading => ({
+  type: ActionType.APP_DONE_LOADING,
+});
+
+export const appLoading = (): AppLoading => ({ type: ActionType.APP_LOADING });
+
+export const setMessage = (severity: Severity, text: string): SetMessage => {
+  return {
+    type: ActionType.SET_MESSAGE,
+    payload: {
+      severity,
+      text,
+    },
+  };
 };
-
-export type AppLoading = {
-  type: ActionTypeAppState.APP_LOADING;
-};
-
-export type SetMessage = {
-  type: ActionTypeAppState.SET_MESSAGE;
-  payload: IMessage;
-};
-
-export type AppStateActions = AppDoneLoading | AppLoading | SetMessage;

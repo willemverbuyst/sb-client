@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ILogInCredentials } from '../../../models/credentials.model';
 import { IUser } from '../../../models/player.model';
 import { ITeam } from '../../../models/toto.models';
-import { appDoneLoading, appLoading, setMessage } from '../../appState/actions-creators';
+import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/actions-creators';
 import { removeAllFixtures } from '../../predictions/actions';
 import { removeAllScores } from '../../scores/actions';
