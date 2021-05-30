@@ -33,6 +33,7 @@ const Predictions: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Voorspellingen"
       content={
         fixtures ? (
           <>

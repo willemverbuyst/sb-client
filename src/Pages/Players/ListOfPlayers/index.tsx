@@ -28,6 +28,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Spelers"
       content={
         players ? (
           <>

@@ -38,6 +38,7 @@ const TotalToto: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Klassement"
       content={
         totalToto && totalToto.length > 0 ? (
           <>

@@ -17,6 +17,7 @@ const LogIn: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Login"
       content={
         <>
           <PageHeaderWithoutButton title="Login" />

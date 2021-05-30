@@ -3,6 +3,8 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
+import PageTitleComponent from '../Title/PageTitle';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -14,11 +16,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const ProgressComponent: React.FC = (): ReactElement => {
+interface IProps {
+  loadingText: string;
+}
+
+const ProgressComponent: React.FC<IProps> = ({ loadingText }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
+      <PageTitleComponent text={loadingText} />
       <LinearProgress color="secondary" />
       <LinearProgress color="primary" />
     </Box>

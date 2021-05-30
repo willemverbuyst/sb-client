@@ -42,6 +42,7 @@ const TotoRound: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Klassement"
       content={
         totoRound && totoRound.usersWithScores && totoRound.usersWithScores.length > 0 ? (
           <>

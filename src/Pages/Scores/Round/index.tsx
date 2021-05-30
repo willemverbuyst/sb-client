@@ -46,6 +46,7 @@ const Round: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Klassement"
       content={
         round && round.usersWithScores && round.usersWithScores.length > 0 ? (
           <>

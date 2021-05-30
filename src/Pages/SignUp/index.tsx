@@ -23,6 +23,7 @@ const SignUp: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Sign Up"
       content={
         <>
           <PageHeaderWithoutButton title="Sign Up" />

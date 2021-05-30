@@ -17,6 +17,7 @@ const EditProfile: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Profiel"
       content={
         <>
           <PageHeaderWithoutButton title="Profiel" />

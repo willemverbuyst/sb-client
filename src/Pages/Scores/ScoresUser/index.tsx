@@ -35,6 +35,7 @@ const ScoresUser: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Scores"
       content={
         scoresPlayer ? (
           <>

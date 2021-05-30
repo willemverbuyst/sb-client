@@ -40,6 +40,7 @@ const Fixture: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Uitslag"
       content={
         fixtureWithScores ? (
           <>

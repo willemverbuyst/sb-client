@@ -28,6 +28,7 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Programma"
       content={
         currentRound ? (
           <>

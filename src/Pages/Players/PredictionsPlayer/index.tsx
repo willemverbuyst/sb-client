@@ -35,6 +35,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
   return (
     <PageContent
+      loadingText="Speler..."
       content={
         pastFixturesWithScores ? (
           <>
