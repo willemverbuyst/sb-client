@@ -1,22 +1,19 @@
-import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
-import ProgressComponent from '../../Components/Progress';
-import { selectAppLoading } from '../../store/appState/selectors';
 import { fetchCurrentRound } from '../../store/predictions/actions';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import { selectToken } from '../../store/user/selectors';
+import PageContent from '../Sections/PageContent';
 import FixturesSection from './FixturesSection';
 
 const Program: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentRound = useSelector(selectCurrentRound);
-  const isLoading = useSelector(selectAppLoading);
   const token = useSelector(selectToken);
 
   useEffect(() => {
@@ -30,17 +27,18 @@ const Program: React.FC = (): ReactElement => {
   }, [dispatch, currentRound]);
 
   return (
-    <Box>
-      <PageHeaderWithoutButton title="Programma" />
-
-      {isLoading ? (
-        <ProgressComponent />
-      ) : currentRound ? (
-        <FixturesSection currentRound={currentRound} />
-      ) : (
-        <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
-      )}
-    </Box>
+    <PageContent
+      content={
+        currentRound ? (
+          <>
+            <PageHeaderWithoutButton title="Programma" />
+            <FixturesSection currentRound={currentRound} />
+          </>
+        ) : (
+          <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
+        )
+      }
+    />
   );
 };
 

@@ -1,4 +1,3 @@
-import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -6,25 +5,23 @@ import { useHistory, useParams } from 'react-router-dom';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import ProgressComponent from '../../../Components/Progress';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
-import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresRound } from '../../../store/scores/actions';
 import { selectRound } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import { selectToken } from '../../../store/user/selectors';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
+import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
+  const { id } = useParams<{ id: string }>();
   const token = useSelector(selectToken);
   const history = useHistory();
   const round = useSelector(selectRound);
-  const isLoading = useSelector(selectAppLoading);
-  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (!token) history.push('/login');
@@ -48,27 +45,26 @@ const Round: React.FC = (): ReactElement => {
   };
 
   return (
-    <Box>
-      <PageHeaderWithButton
-        title="Klassement"
-        captionBtn="MIJN VOORSPELLINGEN"
-        colorBtn="primary"
-        handleClick={gotoPredictions}
-      />
-
-      {isLoading ? (
-        <ProgressComponent />
-      ) : round && round.usersWithScores && round.usersWithScores.length > 0 ? (
-        <>
-          <SubTitleComponent text={`RONDE ${id}`} />
-          <DividerComponent />
-          <ScoresBarChart scores={roundSortedByName} />
-          <BreadCrumbsSection id={id} />
-        </>
-      ) : (
-        <MessageComponent message={`Nog geen scores voor deze ronde`} />
-      )}
-    </Box>
+    <PageContent
+      content={
+        round && round.usersWithScores && round.usersWithScores.length > 0 ? (
+          <>
+            <PageHeaderWithButton
+              title="Klassement"
+              captionBtn="MIJN VOORSPELLINGEN"
+              colorBtn="primary"
+              handleClick={gotoPredictions}
+            />
+            <SubTitleComponent text={`RONDE ${id}`} />
+            <DividerComponent />
+            <ScoresBarChart scores={roundSortedByName} />
+            <BreadCrumbsSection id={id} />
+          </>
+        ) : (
+          <MessageComponent message={`Nog geen scores voor deze ronde`} />
+        )
+      }
+    />
   );
 };
 
