@@ -8,31 +8,33 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import ProgressComponent from '../../../Components/Progress';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchPlayerProfile } from '../../../store/players/actions-creators';
-import { selectPlayerProfile } from '../../../store/players/selectors';
+import { selectPastFixturesWithScoresPlayer, selectUserNamePlayer } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
 import FixturesSection from './FixturesSection';
 import PaginationSection from './PaginationSection';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const playerProfile = useSelector(selectPlayerProfile);
-  const isLoading = useSelector(selectAppLoading);
-  const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
+  const { totoronde } = useParams<{ totoronde: string }>();
+  const token = useSelector(selectToken);
+  const userNamePlayer = useSelector(selectUserNamePlayer);
+  const pastFixturesWithScores = useSelector(selectPastFixturesWithScoresPlayer);
+  const isLoading = useSelector(selectAppLoading);
+
+  const name = userNamePlayer ? userNamePlayer : 'Speler...';
 
   useEffect(() => {
     if (!token) history.push('/login');
   });
 
   useEffect(() => {
-    dispatch(fetchPlayerProfile(+id));
+    dispatch(fetchPlayerProfile(Number(id)));
   }, [dispatch, id]);
 
   const gotoScores = () => history.push(`/spelers/${id}/scores`);
-  const name = playerProfile ? playerProfile.userName : 'Speler...';
 
   return (
     <Box>
@@ -40,13 +42,13 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
       {isLoading ? (
         <ProgressComponent />
-      ) : playerProfile && playerProfile.pastFixturesWithScores ? (
+      ) : pastFixturesWithScores ? (
         <>
-          <FixturesSection playerProfile={playerProfile} totoronde={totoronde} ronde={ronde} />
+          <FixturesSection pastFixturesWithScores={pastFixturesWithScores} totoronde={totoronde} ronde={ronde} />
           <PaginationSection
             totoronde={totoronde}
             ronde={ronde}
-            pastFixturesWithScores={playerProfile.pastFixturesWithScores}
+            pastFixturesWithScores={pastFixturesWithScores}
             id={id}
           />
         </>
