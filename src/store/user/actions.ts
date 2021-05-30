@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { apiUrl } from '../../config/constants';
+import { API_URL } from '../../config/constants';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
@@ -51,7 +51,7 @@ export const changePassword = (newPassword: string): ThunkAction<void, StoreStat
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${apiUrl}/me/password`,
+        `${API_URL}/me/password`,
         {
           newPassword,
         },
@@ -81,7 +81,7 @@ export const editUserProfile = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${apiUrl}/me/profile`,
+        `${API_URL}/me/profile`,
         {
           userName,
           firstName,
@@ -116,7 +116,7 @@ export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, Sto
   return async (dispatch: Dispatch) => {
     dispatch(appLoading());
     try {
-      const response = await axios.post(`${apiUrl}/login`, {
+      const response = await axios.post(`${API_URL}/login`, {
         email,
         password,
       });
@@ -153,7 +153,7 @@ export const getUserWithStoredToken = (): ThunkAction<void, StoreState, unknown,
   try {
     // if token check if valid
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/me`, {
+    const response = await axios.get(`${API_URL}/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch(tokenUserStillValid(response.data));

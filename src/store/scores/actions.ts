@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { apiUrl } from '../../config/constants';
+import { API_URL } from '../../config/constants';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
 import {
@@ -61,7 +61,7 @@ export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, un
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/scores/fixtures/${id}`, {
+    const response = await axios.get(`${API_URL}/scores/fixtures/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const fixture = response.data;
@@ -86,7 +86,7 @@ export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unkn
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/scores/rounds/${id}`, {
+    const response = await axios.get(`${API_URL}/scores/rounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const round = response.data;
@@ -111,7 +111,7 @@ export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, A
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/scores/all`, {
+    const response = await axios.get(`${API_URL}/scores/all`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const totalToto = response.data;
@@ -136,7 +136,7 @@ export const fetchScoresTotoRound = (id: number): ThunkAction<void, StoreState, 
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/scores/totorounds/${id}`, {
+    const response = await axios.get(`${API_URL}/scores/totorounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const totoRound = response.data;

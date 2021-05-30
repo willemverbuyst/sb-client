@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { apiUrl } from '../../config/constants';
+import { API_URL } from '../../config/constants';
 import { IPrediction } from '../../models/predictions.model';
 import { ICurrentRound, TotoRound } from '../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
@@ -63,7 +63,7 @@ export const changePrediction = ({
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.patch(
-      `${apiUrl}/predictions/${fixtureId}`,
+      `${API_URL}/predictions/${fixtureId}`,
       {
         pGoalsHomeTeam,
         pGoalsAwayTeam,
@@ -94,7 +94,7 @@ export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Actio
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/rounds/all`, {
+    const response = await axios.get(`${API_URL}/rounds/all`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const allFixtures = response.data;
@@ -119,7 +119,7 @@ export const fetchCurrentRound = (): ThunkAction<void, StoreState, unknown, Acti
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/rounds/current`, {
+    const response = await axios.get(`${API_URL}/rounds/current`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const currentRound = response.data;
@@ -147,7 +147,7 @@ export const postNewPrediction = ({
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.post(
-      `${apiUrl}/predictions`,
+      `${API_URL}/predictions`,
       {
         pGoalsHomeTeam,
         pGoalsAwayTeam,

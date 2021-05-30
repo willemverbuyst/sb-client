@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { apiUrl } from '../../config/constants';
+import { API_URL } from '../../config/constants';
 import { ITeam } from '../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
@@ -28,7 +28,7 @@ export const fetchAllTeams = (): ThunkAction<void, StoreState, unknown, Action<s
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${apiUrl}/teams`, {
+    const response = await axios.get(`${API_URL}/teams`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const teams = response.data;
