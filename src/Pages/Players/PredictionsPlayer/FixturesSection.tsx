@@ -4,16 +4,13 @@ import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import MatchCard from '../../../Components/Card/MatchCard';
-import PaginationComponent from '../../../Components/Pagination';
 import { IPlayerProfile } from '../../../models/player.model';
 import { content } from '../../../ui/sharedClasses';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../../utils/parameterFunctions';
+import Pagination from '../../Sections/Pagination';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
-  paginationContainer: {
-    marginBottom: theme.spacing(2),
-  },
 }));
 
 interface IProps {
@@ -29,12 +26,12 @@ const FixturesSection: React.FC<IProps> = ({ playerProfile, totoronde, ronde, id
   let t = Number(totoronde);
   let r = Number(ronde);
 
-  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
     r = roundByTotoRound(value);
     history.push(`/spelers/${id}/voorspellingen/${value}/${r}`);
   };
 
-  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
     t = totoRoundByRound(value);
 
     history.push(`/spelers/${id}/voorspellingen/${t}/${value}`);
@@ -54,22 +51,14 @@ const FixturesSection: React.FC<IProps> = ({ playerProfile, totoronde, ronde, id
           : null}
       </Grid>
       {playerProfile.pastFixturesWithScores ? (
-        <Grid className={classes.paginationContainer}>
-          <PaginationComponent
-            label="Totoronde"
-            page={t}
-            count={playerProfile.pastFixturesWithScores.length}
-            color="primary"
-            onChange={handleChangeTotoRounds}
-          />
-          <PaginationComponent
-            label="Speelronde"
-            page={r}
-            count={playerProfile.pastFixturesWithScores.flat().length}
-            color="secondary"
-            onChange={handleChangeRounds}
-          />
-        </Grid>
+        <Pagination
+          totoRound={totoronde}
+          round={ronde}
+          countTotoRound={playerProfile.pastFixturesWithScores.length}
+          countRound={playerProfile.pastFixturesWithScores.flat().length}
+          handleChangeRounds={handleChangeRounds}
+          handleChangeTotoRounds={handleChangeTotoRounds}
+        />
       ) : null}
     </>
   );
