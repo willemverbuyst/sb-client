@@ -1,21 +1,23 @@
-import reducer from '../reducer';
-import { APP_DONE_LOADING, APP_LOADING, AppDoneLoading, AppLoading, AppState, SET_MESSAGE, SetMessage } from '../types';
+import { Severity } from '../../../models/app.models';
+import { ActionType, AppDoneLoading, AppLoading, SetMessage } from '../action-types';
+import reducer, { IAppState } from '../reducer';
 
 describe('#appStateReducer', () => {
-  const initialState: AppState = {
-    loading: false,
-    message: null,
-  };
-  describe('if given SET_MESSAGE action type', () => {
-    const severity = 'success';
+  describe('w/ initial state and SET_MESSAGE action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+    const severity: Severity = 'success';
     const text = 'test_message';
     const action: SetMessage = {
-      type: SET_MESSAGE,
+      type: ActionType.SET_MESSAGE,
       payload: { severity, text },
     };
-    const newState: AppState = reducer(initialState, action);
+    const newState: IAppState = reducer(initialState, action);
 
-    test('returns a new state with the payload containing correct values', () => {
+    test('returns a state', () => {
+      expect(newState).not.toEqual(initialState);
       expect(newState).toEqual({
         loading: false,
         message: action.payload,
@@ -25,22 +27,30 @@ describe('#appStateReducer', () => {
     });
   });
 
-  describe('if given APP_LOADING action type', () => {
-    const action: AppLoading = { type: APP_LOADING };
-    const newState: AppState = reducer(initialState, action);
+  describe('w/ initial state and APP_LOADING action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+    const action: AppLoading = { type: ActionType.APP_LOADING };
+    const newState: IAppState = reducer(initialState, action);
 
     test('returns a new state with loading set to true', () => {
-      expect(newState).toEqual({ loading: true, message: null });
+      expect(newState).not.toEqual(initialState);
       expect(newState.loading).toBe(true);
     });
   });
 
-  describe('if given APP_DONE_LOADING action type', () => {
-    const action: AppDoneLoading = { type: APP_DONE_LOADING };
-    const newState: AppState = reducer(initialState, action);
+  describe('w/ state and APP_DONE_LOADING action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+    const action: AppDoneLoading = { type: ActionType.APP_DONE_LOADING };
+    const newState: IAppState = reducer(initialState, action);
 
     test('returns a new state with loading set to false', () => {
-      expect(newState).toEqual({ loading: false, message: null });
+      expect(newState).toEqual(initialState);
       expect(newState.loading).toBe(false);
     });
   });
