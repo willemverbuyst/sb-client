@@ -8,10 +8,8 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { fetchScoresRound } from '../../../store/scores/actions';
-import { selectRound } from '../../../store/scores/selectors';
-import { UserWithScore } from '../../../store/scores/types';
+import { selectRoundId, selectSortedUsersWithScores } from '../../../store/scores/selectors';
 import { selectToken } from '../../../store/user/selectors';
-import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -21,22 +19,18 @@ const Round: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const token = useSelector(selectToken);
   const history = useHistory();
-  const round = useSelector(selectRound);
+  const roundId = useSelector(selectRoundId);
+  const sortedUsersWithScores = useSelector(selectSortedUsersWithScores);
 
   useEffect(() => {
     if (!token) history.push('/login');
   });
 
   useEffect(() => {
-    if (!round || (round && +id !== +round.id)) {
+    if (!roundId || Number(id) !== roundId) {
       dispatch(fetchScoresRound(+id));
     }
-  }, [dispatch, id, round]);
-
-  const roundSortedByName: UserWithScore[] =
-    round && round.usersWithScores
-      ? sortArrayWithObjects<keyof UserWithScore, UserWithScore>('user')(round.usersWithScores)
-      : [];
+  }, [dispatch, id, roundId]);
 
   const gotoPredictions = () => {
     const t = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
@@ -48,7 +42,7 @@ const Round: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Klassement"
       content={
-        round && round.usersWithScores && round.usersWithScores.length > 0 ? (
+        sortedUsersWithScores ? (
           <>
             <PageHeaderWithButton
               title="Klassement"
@@ -58,7 +52,7 @@ const Round: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text={`RONDE ${id}`} />
             <DividerComponent />
-            <ScoresBarChart scores={roundSortedByName} />
+            <ScoresBarChart scores={sortedUsersWithScores} />
             <BreadCrumbsSection id={id} />
           </>
         ) : (
