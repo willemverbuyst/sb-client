@@ -8,21 +8,16 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchPlayerScores } from '../../../store/players/actions-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
-import { selectToken, selectUser } from '../../../store/user/selectors';
+import { selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
 import ScoresStackedChart from '../../Sections/Charts/ScoresStackedChart';
 import PageContent from '../../Sections/PageContent';
 
 const ScoresUser: React.FC = (): ReactElement => {
-  const token = useSelector(selectToken);
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const scoresPlayer = useSelector(selectPlayerScores);
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     // update logic!

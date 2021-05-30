@@ -6,7 +6,6 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import { fetchPlayerProfile } from '../../../store/players/actions-creators';
 import { selectPastFixturesWithScoresPlayer, selectUserNamePlayer } from '../../../store/players/selectors';
-import { selectToken } from '../../../store/user/selectors';
 import PageContent from '../../Sections/PageContent';
 import FixturesSection from './FixturesSection';
 import PaginationSection from './PaginationSection';
@@ -17,15 +16,10 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
-  const token = useSelector(selectToken);
   const userNamePlayer = useSelector(selectUserNamePlayer);
   const pastFixturesWithScores = useSelector(selectPastFixturesWithScoresPlayer);
 
   const name = userNamePlayer ? userNamePlayer : 'Speler...';
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     dispatch(fetchPlayerProfile(Number(id)));

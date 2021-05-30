@@ -8,7 +8,6 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import { fetchScoresFixture } from '../../../store/scores/actions';
 import { selectFixture } from '../../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../../store/scores/types';
-import { selectToken } from '../../../store/user/selectors';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import PageContent from '../../Sections/PageContent';
 import FixtureSection from './FixtureSection';
@@ -17,13 +16,9 @@ import ScoresFixtureBarChart from './ScoresFixtureBarChart';
 const Fixture: React.FC = (): ReactElement => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
+
   const { id } = useParams<{ id: string }>();
   const fixtureWithScores = useSelector(selectFixture);
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     dispatch(fetchScoresFixture(+id));

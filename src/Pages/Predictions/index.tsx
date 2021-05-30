@@ -6,7 +6,6 @@ import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
 import { fetchAllFixtures } from '../../store/predictions/actions';
 import { selectFixtures } from '../../store/predictions/selectors';
-import { selectToken } from '../../store/user/selectors';
 import PageContent from '../Sections/PageContent';
 import FixturesSection from './FixturesSection';
 import PaginationSection from './PaginationSection';
@@ -15,13 +14,8 @@ const Predictions: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
   const fixtures = useSelector(selectFixtures);
-  const token = useSelector(selectToken);
   const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     if (!fixtures) {

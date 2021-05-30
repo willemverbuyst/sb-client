@@ -8,7 +8,6 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchPlayerScores } from '../../../store/players/actions-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
-import { selectToken } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
 import ScoresStackedChart from '../../Sections/Charts/ScoresStackedChart';
 import PageContent from '../../Sections/PageContent';
@@ -18,12 +17,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
   const scoresPlayer = useSelector(selectPlayerScores);
-  const token = useSelector(selectToken);
   const name = scoresPlayer ? scoresPlayer.userName : 'Speler...';
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     dispatch(fetchPlayerScores(+id));

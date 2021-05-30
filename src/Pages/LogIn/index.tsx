@@ -4,10 +4,9 @@ import { useHistory } from 'react-router-dom';
 
 import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
 import { selectToken } from '../../store/user/selectors';
-import PageContent from '../Sections/PageContent';
 import LoginForm from './LoginForm';
 
-const LogIn: React.FC = (): ReactElement => {
+const Login: React.FC = (): ReactElement => {
   const history = useHistory();
   const token = useSelector(selectToken);
 
@@ -16,16 +15,11 @@ const LogIn: React.FC = (): ReactElement => {
   }, [token, history]);
 
   return (
-    <PageContent
-      loadingText="Login"
-      content={
-        <>
-          <PageHeaderWithoutButton title="Login" />
-          <LoginForm />
-        </>
-      }
-    />
+    <>
+      <PageHeaderWithoutButton title="Login" />
+      <LoginForm />
+    </>
   );
 };
 
-export default LogIn;
+export default Login;

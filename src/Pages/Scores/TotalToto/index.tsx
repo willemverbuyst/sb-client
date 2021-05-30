@@ -9,20 +9,14 @@ import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchScoresTotalToto } from '../../../store/scores/actions';
 import { selectTotalToto } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
-import { selectToken } from '../../../store/user/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
 const TotalToto: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
   const history = useHistory();
   const totalToto = useSelector(selectTotalToto);
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     if (!totalToto) {

@@ -9,7 +9,6 @@ import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { fetchScoresRound } from '../../../store/scores/actions';
 import { selectRoundId, selectSortedUsersWithScores } from '../../../store/scores/selectors';
-import { selectToken } from '../../../store/user/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -17,14 +16,9 @@ import BreadCrumbsSection from './BreadCrumbsSection';
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
-  const token = useSelector(selectToken);
   const history = useHistory();
   const roundId = useSelector(selectRoundId);
   const sortedUsersWithScores = useSelector(selectSortedUsersWithScores);
-
-  useEffect(() => {
-    if (!token) history.push('/login');
-  });
 
   useEffect(() => {
     if (!roundId || Number(id) !== roundId) {
