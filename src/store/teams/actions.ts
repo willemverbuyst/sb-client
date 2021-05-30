@@ -1,15 +1,15 @@
 import { ITeam } from '../../models/toto.models';
-import { ActionTypeTeams, FetchAllTeams, ResetAllTeams } from './action-types';
+import { ActionType, ResetAllTeams, StoreAllTeams } from './action-types';
 
-export const allTeamsFetched = (teams: ITeam[]): FetchAllTeams => {
+export const storeAllTeams = (teams: ITeam[]): StoreAllTeams => {
   return {
-    type: ActionTypeTeams.FETCH_ALL_TEAMS,
+    type: ActionType.STORE_ALL_TEAMS,
     payload: teams,
   };
 };
 
 export const resetAllTeams = (): ResetAllTeams => {
   return {
-    type: ActionTypeTeams.RESET_ALL_TEAMS,
+    type: ActionType.RESET_ALL_TEAMS,
   };
 };

@@ -4,12 +4,15 @@ import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { API_URL } from '../../config/constants';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
+import { AppStateActions } from '../appState/actions';
+import { appDoneLoading, appLoading } from '../appState/actions-creators';
+import { handleError } from '../error-handler';
 import { StoreState } from '../types';
-import { allTeamsFetched } from './actions';
+import { TeamsActions } from './action-types';
+import { storeAllTeams } from './actions';
 
 export const fetchAllTeams = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
+  dispatch: Dispatch<AppStateActions | TeamsActions>,
 ) => {
   dispatch(appLoading());
   try {
@@ -19,16 +22,9 @@ export const fetchAllTeams = (): ThunkAction<void, StoreState, unknown, Action<s
     });
     const teams = response.data;
 
-    dispatch(allTeamsFetched(teams));
+    dispatch(storeAllTeams(teams));
     dispatch(appDoneLoading());
   } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
+    handleError(error);
   }
 };
