@@ -1,4 +1,4 @@
-type ClassProperties = {
+export type ClassProperties = {
   [key: string]:
     | {
         [key: string]: string | number;
@@ -17,14 +17,6 @@ export interface IContent {
 
 export interface IPagination {
   pagination: ClassProperties;
-}
-
-export interface IProgress {
-  progress: ClassProperties;
-}
-
-export interface ITopSection {
-  topSection: ClassProperties;
 }
 
 export interface IWaitMessage {

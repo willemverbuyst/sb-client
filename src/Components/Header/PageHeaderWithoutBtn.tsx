@@ -2,8 +2,8 @@ import { Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import { topSection } from '../../ui/sharedClasses';
 import PageTitleComponent from '../Title/PageTitle';
+import { topSection } from './styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...topSection(theme),

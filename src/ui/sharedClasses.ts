@@ -1,6 +1,6 @@
 import { Theme } from '@material-ui/core';
 
-import { IBreadCrumbs, IContent, IPagination, IProgress, ITopSection, IWaitMessage } from './ISharedClasses';
+import { IBreadCrumbs, IContent, IPagination, IWaitMessage } from './styles.models';
 
 export const breadCrumbs = (theme: Theme): IBreadCrumbs => ({
   breadCrumbs: {
@@ -22,22 +22,6 @@ export const content = (theme: Theme): IContent => ({
 export const pagination = (theme: Theme): IPagination => ({
   pagination: {
     marginBottom: theme.spacing(2),
-  },
-});
-
-export const progress = (): IProgress => ({
-  progress: {
-    width: '100%',
-  },
-});
-
-export const topSection = (theme: Theme): ITopSection => ({
-  topSection: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'center',
-    },
-    justifyContent: 'space-between',
   },
 });
 
