@@ -11,6 +11,7 @@ import { fetchPlayerProfile } from '../../../store/players/actions-creators';
 import { selectPlayerProfile } from '../../../store/players/selectors';
 import { selectToken } from '../../../store/user/selectors';
 import FixturesSection from './FixturesSection';
+import PaginationSection from './PaginationSection';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const history = useHistory();
@@ -40,7 +41,15 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
       {isLoading ? (
         <ProgressComponent />
       ) : playerProfile && playerProfile.pastFixturesWithScores ? (
-        <FixturesSection playerProfile={playerProfile} totoronde={totoronde} ronde={ronde} id={id} />
+        <>
+          <FixturesSection playerProfile={playerProfile} totoronde={totoronde} ronde={ronde} />
+          <PaginationSection
+            totoronde={totoronde}
+            ronde={ronde}
+            pastFixturesWithScores={playerProfile.pastFixturesWithScores}
+            id={id}
+          />
+        </>
       ) : (
         <MessageComponent message={`Geen voorspellingen voor gevonden`} />
       )}

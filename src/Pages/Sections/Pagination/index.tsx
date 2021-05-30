@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 import PaginationComponent from '../../../Components/Pagination';
+import { roundByTotoRound, totoRoundByRound } from '../../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paginationContainer: {
@@ -15,8 +16,8 @@ interface IProps {
   round: string;
   countTotoRound: number;
   countRound: number;
-  handleChangeTotoRounds: (_event: React.ChangeEvent<unknown>, value: number) => void;
-  handleChangeRounds: (_event: React.ChangeEvent<unknown>, value: number) => void;
+  gotoTotoRound: (value: number, r: number) => void;
+  gotoRound: (value: number, t: number) => void;
 }
 
 const Pagination: React.FC<IProps> = ({
@@ -24,13 +25,23 @@ const Pagination: React.FC<IProps> = ({
   round,
   countTotoRound,
   countRound,
-  handleChangeTotoRounds,
-  handleChangeRounds,
+  gotoTotoRound,
+  gotoRound,
 }: IProps): ReactElement => {
   const classes = useStyles();
 
-  const t = Number(totoRound);
-  const r = Number(round);
+  let t = Number(totoRound);
+  let r = Number(round);
+
+  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
+    r = roundByTotoRound(value);
+    gotoTotoRound(value, r);
+  };
+
+  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
+    t = totoRoundByRound(value);
+    gotoRound(value, t);
+  };
 
   return (
     <Grid className={classes.paginationContainer}>
