@@ -2,8 +2,8 @@ import { Dispatch } from 'react';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { ActionTypeAppState } from './appState/action-types';
-import { AppStateActions } from './appState/actions';
+import { AppStateActions } from './appState/action-types';
+import { appDoneLoading, setMessage } from './appState/actions';
 import { StoreState } from './types';
 
 interface IError {
@@ -16,24 +16,10 @@ export const handleError = (error: IError): ThunkAction<void, StoreState, unknow
 ) => {
   if (error.response) {
     console.log(error.response.data.message);
-    dispatch({
-      type: ActionTypeAppState.SET_MESSAGE,
-      payload: {
-        severity: 'error',
-        text: error.response.data.message,
-      },
-    });
+    dispatch(setMessage('error', error.response.data.message));
   } else {
     console.log(error.message);
-    dispatch({
-      type: ActionTypeAppState.SET_MESSAGE,
-      payload: {
-        severity: 'error',
-        text: error.message,
-      },
-    });
+    dispatch(setMessage('error', error.message));
   }
-  dispatch({
-    type: ActionTypeAppState.APP_DONE_LOADING,
-  });
+  dispatch(appDoneLoading());
 };
