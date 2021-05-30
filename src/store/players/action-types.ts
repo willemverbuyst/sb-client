@@ -1,4 +1,4 @@
-export enum ActionType {
+export enum ActionTypePlayers {
   ADD_NEW_PLAYER = 'add new player',
   DELETE_PLAYER = 'delete player',
   FETCH_ALL_PLAYERS = 'fetch all players',

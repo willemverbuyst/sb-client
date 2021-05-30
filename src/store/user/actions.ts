@@ -7,7 +7,8 @@ import { apiUrl } from '../../config/constants';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { IUser } from '../../models/player.model';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
-import { resetPlayers } from '../players/actions-creators';
+import { ActionTypePlayers } from '../players/action-types';
+import { PlayersActions } from '../players/actions';
 import { removeAllFixtures } from '../predictions/actions';
 import { removeAllScores } from '../scores/actions';
 import { removeAllTeams } from '../teams/actions';
@@ -140,7 +141,7 @@ export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispa
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(removeAllScores());
-  dispatch(resetPlayers());
+  dispatch<PlayersActions>({ type: ActionTypePlayers.RESET_PLAYERS });
   dispatch(removeAllFixtures());
   dispatch(removeAllTeams());
 };

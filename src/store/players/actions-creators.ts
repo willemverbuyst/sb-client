@@ -4,15 +4,17 @@ import { ThunkAction } from 'redux-thunk';
 
 import { apiUrl } from '../../config/constants';
 import { ISignUpCredentials } from '../../models/credentials.model';
+import { ActionTypeAppState } from '../appState/action-types';
+import { AppStateActions } from '../appState/actions';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
-import { ActionType } from './action-types';
+import { ActionTypePlayers } from './action-types';
 import {
   AddNewPlayer,
   DeletePlayer,
-  FetchAllPlayers,
   FetchPlayerProfile,
   FetchPlayerScores,
+  PlayersActions,
   ResetPlayers,
   UpdateAdminStatus,
 } from './actions';
@@ -41,7 +43,7 @@ export const addPlayer = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch<AddNewPlayer>({ type: ActionType.ADD_NEW_PLAYER, payload: response.data.userData });
+      dispatch<AddNewPlayer>({ type: ActionTypePlayers.ADD_NEW_PLAYER, payload: response.data.userData });
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -57,14 +59,16 @@ export const addPlayer = (
   };
 };
 
-export const resetPlayers = (): ResetPlayers => {
-  return { type: ActionType.RESET_PLAYERS };
+export const resetPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch<ResetPlayers>,
+) => {
+  dispatch({ type: ActionTypePlayers.RESET_PLAYERS });
 };
 
 export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
+  dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch(appLoading());
+  dispatch({ type: ActionTypeAppState.APP_LOADING });
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.get(`${apiUrl}/users`, {
@@ -72,8 +76,10 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
     });
     const players = response.data;
 
-    dispatch<FetchAllPlayers>({ type: ActionType.FETCH_ALL_PLAYERS, payload: players });
-    dispatch(appDoneLoading());
+    dispatch({ type: ActionTypePlayers.FETCH_ALL_PLAYERS, payload: players });
+    dispatch({
+      type: ActionTypeAppState.APP_DONE_LOADING,
+    });
   } catch (error) {
     if (error.response) {
       console.log(error.response.data.message);
@@ -97,7 +103,7 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
     });
     const playerProfile = response.data;
 
-    dispatch<FetchPlayerProfile>({ type: ActionType.FETCH_PLAYER_PROFILE, payload: playerProfile });
+    dispatch<FetchPlayerProfile>({ type: ActionTypePlayers.FETCH_PLAYER_PROFILE, payload: playerProfile });
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -122,7 +128,7 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
     });
     const scoresPlayer = response.data;
 
-    dispatch<FetchPlayerScores>({ type: ActionType.FETCH_PLAYER_SCORES, payload: scoresPlayer });
+    dispatch<FetchPlayerScores>({ type: ActionTypePlayers.FETCH_PLAYER_SCORES, payload: scoresPlayer });
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -146,7 +152,7 @@ export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown,
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch<DeletePlayer>({ type: ActionType.DELETE_PLAYER, payload: id });
+    dispatch<DeletePlayer>({ type: ActionTypePlayers.DELETE_PLAYER, payload: id });
     dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
@@ -177,7 +183,7 @@ export const updatePlayerAdminStatus = (
     );
     const player = response.data.updatedUser;
 
-    dispatch<UpdateAdminStatus>({ type: ActionType.UPDATE_ADMIN_STATUS, payload: player });
+    dispatch<UpdateAdminStatus>({ type: ActionTypePlayers.UPDATE_ADMIN_STATUS, payload: player });
     dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {

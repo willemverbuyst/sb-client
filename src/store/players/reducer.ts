@@ -1,6 +1,6 @@
 import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.model';
-import { ActionType } from './action-types';
-import { PlayersActionTypes } from './actions';
+import { ActionTypePlayers } from './action-types';
+import { PlayersActions } from './actions';
 
 export interface IPlayersState {
   players: IPlayer[] | null;
@@ -14,36 +14,36 @@ const initialState: IPlayersState = {
   scoresPlayer: null,
 };
 
-const playersReducer = (state = initialState, action: PlayersActionTypes): IPlayersState => {
+const playersReducer = (state = initialState, action: PlayersActions): IPlayersState => {
   switch (action.type) {
-    case ActionType.ADD_NEW_PLAYER:
+    case ActionTypePlayers.ADD_NEW_PLAYER:
       return {
         ...state,
         players: state.players ? [...state.players, action.payload] : null,
       };
 
-    case ActionType.FETCH_ALL_PLAYERS:
+    case ActionTypePlayers.FETCH_ALL_PLAYERS:
       return { ...state, players: [...action.payload] };
 
-    case ActionType.RESET_PLAYERS:
+    case ActionTypePlayers.RESET_PLAYERS:
       return {
         ...state,
         players: null,
       };
 
-    case ActionType.DELETE_PLAYER:
+    case ActionTypePlayers.DELETE_PLAYER:
       return {
         ...state,
         players: state.players ? state.players.filter((player) => player.id !== action.payload) : null,
       };
 
-    case ActionType.FETCH_PLAYER_PROFILE:
+    case ActionTypePlayers.FETCH_PLAYER_PROFILE:
       return { ...state, playerProfile: action.payload };
 
-    case ActionType.FETCH_PLAYER_SCORES:
+    case ActionTypePlayers.FETCH_PLAYER_SCORES:
       return { ...state, scoresPlayer: action.payload };
 
-    case ActionType.UPDATE_ADMIN_STATUS:
+    case ActionTypePlayers.UPDATE_ADMIN_STATUS:
       return {
         ...state,
         players: state.players
