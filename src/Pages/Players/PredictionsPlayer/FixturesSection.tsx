@@ -6,12 +6,14 @@ import { useHistory } from 'react-router-dom';
 import MatchCard from '../../../Components/Card/MatchCard';
 import PaginationComponent from '../../../Components/Pagination';
 import { IPlayerProfile } from '../../../models/player.model';
-import { content, pagination } from '../../../ui/sharedClasses';
+import { content } from '../../../ui/sharedClasses';
 import { calculateIndex, roundByTotoRound, totoRoundByRound } from '../../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),
-  ...pagination(theme),
+  paginationContainer: {
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 interface IProps {
@@ -52,7 +54,7 @@ const FixturesSection: React.FC<IProps> = ({ playerProfile, totoronde, ronde, id
           : null}
       </Grid>
       {playerProfile.pastFixturesWithScores ? (
-        <Grid className={classes.pagination}>
+        <Grid className={classes.paginationContainer}>
           <PaginationComponent
             label="Totoronde"
             page={t}

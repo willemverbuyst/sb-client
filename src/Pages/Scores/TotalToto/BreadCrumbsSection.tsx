@@ -4,17 +4,17 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement } from 'react';
 
 import TotoRoundSelector from '../../../Components/Selector/TotoRoundSelector';
-import { breadCrumbs } from '../../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...breadCrumbs(theme),
+  breadCrumbsContainer: {
+    marginTop: theme.spacing(6),
+  },
 }));
-
 const BreadCrumbsSection: React.FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <Grid container justify="center" className={classes.breadCrumbs}>
+    <Grid container justify="center" className={classes.breadCrumbsContainer}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
         <Button color="primary" disabled>
           Totaal Toto

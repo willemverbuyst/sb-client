@@ -5,11 +5,12 @@ import { useHistory } from 'react-router-dom';
 
 import PaginationComponent from '../../Components/Pagination';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
-import { pagination } from '../../ui/sharedClasses';
 import { roundByTotoRound, totoRoundByRound } from '../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...pagination(theme),
+  paginationContainer: {
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 interface IProps {
@@ -36,7 +37,7 @@ const PaginationSection: React.FC<IProps> = ({ totoronde, ronde }: IProps): Reac
   };
 
   return (
-    <Grid className={classes.pagination}>
+    <Grid className={classes.paginationContainer}>
       <PaginationComponent
         label="Totoronde"
         page={t}

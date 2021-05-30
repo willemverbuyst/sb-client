@@ -1,12 +1,10 @@
 import { Theme } from '@material-ui/core';
 
-import { IBreadCrumbs, IContent, IPagination, IWaitMessage } from './styles.models';
+import { ClassProperties } from './styles.models';
 
-export const breadCrumbs = (theme: Theme): IBreadCrumbs => ({
-  breadCrumbs: {
-    marginTop: theme.spacing(6),
-  },
-});
+interface IContent {
+  content: ClassProperties;
+}
 
 export const content = (theme: Theme): IContent => ({
   content: {
@@ -16,23 +14,5 @@ export const content = (theme: Theme): IContent => ({
     },
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
-  },
-});
-
-export const pagination = (theme: Theme): IPagination => ({
-  pagination: {
-    marginBottom: theme.spacing(2),
-  },
-});
-
-export const waitMessage = (theme: Theme): IWaitMessage => ({
-  waitMessage: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      fontSize: '1rem',
-    },
-    fontWeight: 'bold',
-    color: theme.palette.secondary.main,
-    marginBottom: theme.spacing(1),
   },
 });

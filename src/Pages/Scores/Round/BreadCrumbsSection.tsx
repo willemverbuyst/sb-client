@@ -5,10 +5,11 @@ import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
-import { breadCrumbs } from '../../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...breadCrumbs(theme),
+  breadCrumbsContainer: {
+    marginTop: theme.spacing(6),
+  },
 }));
 
 interface IProps {
@@ -30,7 +31,7 @@ const BreadCrumbsSection: React.FC<IProps> = ({ id }: IProps): ReactElement => {
   const idTotoRonde = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
 
   return (
-    <Grid container justify="center" className={classes.breadCrumbs}>
+    <Grid container justify="center" className={classes.breadCrumbsContainer}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
         <Button color="primary" onClick={gotoTotalToto}>
           Totaal Toto

@@ -5,10 +5,11 @@ import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import RoundSelector from '../../../Components/Selector/RoundSelector';
-import { breadCrumbs } from '../../../ui/sharedClasses';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  ...breadCrumbs(theme),
+  breadCrumbsContainer: {
+    marginTop: theme.spacing(6),
+  },
 }));
 
 interface IProps {
@@ -22,7 +23,7 @@ const BreadCrumbsSection: React.FC<IProps> = ({ id }: IProps): ReactElement => {
   const goto = () => history.push('/klassement/totaaltoto');
 
   return (
-    <Grid container justify="center" className={classes.breadCrumbs}>
+    <Grid container justify="center" className={classes.breadCrumbsContainer}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
         <Button color="primary" onClick={goto}>
           Totaal Toto
