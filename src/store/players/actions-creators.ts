@@ -4,20 +4,27 @@ import { ThunkAction } from 'redux-thunk';
 
 import { API_URL } from '../../config/constants';
 import { ISignUpCredentials } from '../../models/credentials.model';
-import { ActionTypeAppState } from '../appState/action-types';
-import { AppStateActions } from '../appState/actions';
+import { AppStateActions } from '../appState/action-types';
+import { appDoneLoading, appLoading } from '../appState/actions';
 import { setMessage } from '../appState/actions';
 import { handleError } from '../error-handler';
 import { StoreState } from '../types';
-import { ActionTypePlayers } from './action-types';
-import { PlayersActions, ResetPlayers } from './actions';
+import { PlayersActions } from './action-types';
+import {
+  addNewPlayer,
+  deletePlayer,
+  storeAllPlayers,
+  storePlayerProfile,
+  storePlayerScores,
+  updateAdminStatus,
+} from './actions';
 
 export const addPlayer = (
   signUpCredentials: ISignUpCredentials,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { userName, firstName, lastName, email, password, phoneNumber, admin, totaalToto, teamId } = signUpCredentials;
   return async (dispatch: Dispatch<PlayersActions | AppStateActions>) => {
-    dispatch({ type: ActionTypeAppState.APP_LOADING });
+    dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.post(
@@ -36,33 +43,19 @@ export const addPlayer = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch({ type: ActionTypePlayers.ADD_NEW_PLAYER, payload: response.data.userData });
-      dispatch({
-        type: ActionTypeAppState.SET_MESSAGE,
-        payload: {
-          severity: 'success',
-          text: response.data.message,
-        },
-      });
-      dispatch({
-        type: ActionTypeAppState.APP_DONE_LOADING,
-      });
+      dispatch(addNewPlayer(response.data.userData));
+      dispatch(setMessage('success', response.data.message));
+      dispatch(appDoneLoading());
     } catch (error) {
       handleError(error);
     }
   };
 };
 
-export const resetPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<ResetPlayers>,
-) => {
-  dispatch({ type: ActionTypePlayers.RESET_PLAYERS });
-};
-
 export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch({ type: ActionTypeAppState.APP_LOADING });
+  dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.get(`${API_URL}/users`, {
@@ -70,10 +63,8 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
     });
     const players = response.data;
 
-    dispatch({ type: ActionTypePlayers.FETCH_ALL_PLAYERS, payload: players });
-    dispatch({
-      type: ActionTypeAppState.APP_DONE_LOADING,
-    });
+    dispatch(storeAllPlayers(players));
+    dispatch(appDoneLoading());
   } catch (error) {
     handleError(error);
   }
@@ -82,7 +73,7 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
 export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch({ type: ActionTypeAppState.APP_LOADING });
+  dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.get(`${API_URL}/users/${id}`, {
@@ -90,10 +81,8 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
     });
     const playerProfile = response.data;
 
-    dispatch({ type: ActionTypePlayers.FETCH_PLAYER_PROFILE, payload: playerProfile });
-    dispatch({
-      type: ActionTypeAppState.APP_DONE_LOADING,
-    });
+    dispatch(storePlayerProfile(playerProfile));
+    dispatch(appDoneLoading());
   } catch (error) {
     handleError(error);
   }
@@ -102,7 +91,7 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
 export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch({ type: ActionTypeAppState.APP_LOADING });
+  dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.get(`${API_URL}/scores/players/${id}`, {
@@ -110,10 +99,8 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
     });
     const scoresPlayer = response.data;
 
-    dispatch({ type: ActionTypePlayers.FETCH_PLAYER_SCORES, payload: scoresPlayer });
-    dispatch({
-      type: ActionTypeAppState.APP_DONE_LOADING,
-    });
+    dispatch(storePlayerScores(scoresPlayer));
+    dispatch(appDoneLoading());
   } catch (error) {
     handleError(error);
   }
@@ -122,18 +109,16 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
 export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch({ type: ActionTypeAppState.APP_LOADING });
+  dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.delete(`${API_URL}/users/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch({ type: ActionTypePlayers.DELETE_PLAYER, payload: id });
+    dispatch(deletePlayer(id));
     dispatch(setMessage('success', response.data.message));
-    dispatch({
-      type: ActionTypeAppState.APP_DONE_LOADING,
-    });
+    dispatch(appDoneLoading());
   } catch (error) {
     handleError(error);
   }
@@ -145,7 +130,7 @@ export const updatePlayerAdminStatus = (
 ): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch({ type: ActionTypeAppState.APP_LOADING });
+  dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.patch(
@@ -157,11 +142,9 @@ export const updatePlayerAdminStatus = (
     );
     const player = response.data.updatedUser;
 
-    dispatch({ type: ActionTypePlayers.UPDATE_ADMIN_STATUS, payload: player });
+    dispatch(updateAdminStatus(player));
     dispatch(setMessage('success', response.data.message));
-    dispatch({
-      type: ActionTypeAppState.APP_DONE_LOADING,
-    });
+    dispatch(appDoneLoading());
   } catch (error) {
     handleError(error);
   }

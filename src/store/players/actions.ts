@@ -1,45 +1,57 @@
 import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.model';
-import { ActionTypePlayers } from './action-types';
+import {
+  ActionType,
+  AddNewPlayer,
+  DeletePlayer,
+  ResetPlayers,
+  StoreAllPlayers,
+  StorePlayerProfile,
+  StorePlayerScores,
+  UpdateAdminStatus,
+} from './action-types';
 
-export type AddNewPlayer = {
-  type: ActionTypePlayers.ADD_NEW_PLAYER;
-  payload: IPlayer;
+export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
+  return {
+    type: ActionType.ADD_NEW_PLAYER,
+    payload: player,
+  };
 };
 
-export type DeletePlayer = {
-  type: ActionTypePlayers.DELETE_PLAYER;
-  payload: number;
+export const storeAllPlayers = (players: IPlayer[]): StoreAllPlayers => {
+  return {
+    type: ActionType.STORE_ALL_PLAYERS,
+    payload: players,
+  };
 };
 
-export type FetchAllPlayers = {
-  type: ActionTypePlayers.FETCH_ALL_PLAYERS;
-  payload: IPlayer[];
+export const deletePlayer = (playerId: number): DeletePlayer => {
+  return {
+    type: ActionType.DELETE_PLAYER,
+    payload: playerId,
+  };
 };
 
-export type FetchPlayerProfile = {
-  type: ActionTypePlayers.FETCH_PLAYER_PROFILE;
-  payload: IPlayerProfile;
+export const storePlayerProfile = (playerProfile: IPlayerProfile): StorePlayerProfile => {
+  return {
+    type: ActionType.STORE_PLAYER_PROFILE,
+    payload: playerProfile,
+  };
 };
 
-export type FetchPlayerScores = {
-  type: ActionTypePlayers.FETCH_PLAYER_SCORES;
-  payload: IScoresPlayer;
+export const storePlayerScores = (scoresPlayer: IScoresPlayer): StorePlayerScores => ({
+  type: ActionType.STORE_PLAYER_SCORES,
+  payload: scoresPlayer,
+});
+
+export const resetPlayers = (): ResetPlayers => {
+  return {
+    type: ActionType.RESET_PLAYERS,
+  };
 };
 
-export type ResetPlayers = {
-  type: ActionTypePlayers.RESET_PLAYERS;
+export const updateAdminStatus = (player: IPlayer): UpdateAdminStatus => {
+  return {
+    type: ActionType.UPDATE_ADMIN_STATUS,
+    payload: player,
+  };
 };
-
-export type UpdateAdminStatus = {
-  type: ActionTypePlayers.UPDATE_ADMIN_STATUS;
-  payload: IPlayer;
-};
-
-export type PlayersActions =
-  | AddNewPlayer
-  | DeletePlayer
-  | FetchAllPlayers
-  | FetchPlayerProfile
-  | FetchPlayerScores
-  | ResetPlayers
-  | UpdateAdminStatus;
