@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
-import { fetchAllFixtures } from '../../store/predictions/actions';
+import { fetchAllFixtures } from '../../store/predictions/action-creators';
 import { selectFixtures } from '../../store/predictions/selectors';
 import PageContent from '../Sections/PageContent';
 import FixturesSection from './FixturesSection';

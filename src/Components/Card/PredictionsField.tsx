@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { changePrediction, postNewPrediction } from '../../store/predictions/actions';
+import { changePrediction, postNewPrediction } from '../../store/predictions/action-creators';
 
 const useStyles = makeStyles((theme: Theme) => ({
   inputBox: {

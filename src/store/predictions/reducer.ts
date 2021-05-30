@@ -1,39 +1,37 @@
-import {
-  ALL_FIXTURES_FETCHED,
-  CURRENT_ROUND_FETCHED,
-  POST_PREDICTION,
-  PredictionActionTypes,
-  PredictionsState,
-  REMOVE_ALL_FIXTURES,
-  UPDATE_PREDICTION,
-} from './types';
+import { ICurrentRound, TotoRound } from '../../models/toto.models';
+import { ActionType, PredictionActions } from './action-types';
 
-const initialState: PredictionsState = {
+export interface IPredictionsState {
+  currentRound: ICurrentRound | null;
+  allFixtures: TotoRound[] | null;
+}
+
+const initialState: IPredictionsState = {
   currentRound: null,
   allFixtures: null,
 };
 
-const predictionsReducer = (state = initialState, action: PredictionActionTypes): PredictionsState => {
+const predictionsReducer = (state = initialState, action: PredictionActions): IPredictionsState => {
   switch (action.type) {
-    case CURRENT_ROUND_FETCHED:
-      return { ...state, currentRound: action.currentRound };
+    case ActionType.STORE_CURRENT_ROUND:
+      return { ...state, currentRound: action.payload };
 
-    case ALL_FIXTURES_FETCHED:
-      return { ...state, allFixtures: action.allFixtures };
+    case ActionType.STORE_ALL_FIXTURES:
+      return { ...state, allFixtures: action.payload };
 
-    case POST_PREDICTION:
+    case ActionType.POST_PREDICTION:
       return {
         ...state,
         allFixtures: state.allFixtures
           ? state.allFixtures.map((totoRound) =>
               totoRound.map((round) =>
                 round.map((fixture) =>
-                  fixture.id === action.prediction.fixtureId
+                  fixture.id === action.payload.fixtureId
                     ? {
                         ...fixture,
                         predictions: {
-                          pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
-                          pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+                          pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
+                          pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
                         },
                       }
                     : fixture,
@@ -45,12 +43,12 @@ const predictionsReducer = (state = initialState, action: PredictionActionTypes)
           ? {
               ...state.currentRound,
               fixtures: state.currentRound.fixtures.map((fixture) =>
-                fixture.id === action.prediction.fixtureId
+                fixture.id === action.payload.fixtureId
                   ? {
                       ...fixture,
                       predictions: {
-                        pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
-                        pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+                        pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
+                        pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
                       },
                     }
                   : fixture,
@@ -59,22 +57,22 @@ const predictionsReducer = (state = initialState, action: PredictionActionTypes)
           : null,
       };
 
-    case REMOVE_ALL_FIXTURES:
+    case ActionType.RESET_ALL_FIXTURES:
       return { allFixtures: null, currentRound: null };
 
-    case UPDATE_PREDICTION:
+    case ActionType.UPDATE_PREDICTION:
       return {
         ...state,
         allFixtures: state.allFixtures
           ? state.allFixtures.map((totoRound) =>
               totoRound.map((round) =>
                 round.map((fixture) =>
-                  fixture.id === action.prediction.fixtureId
+                  fixture.id === action.payload.fixtureId
                     ? {
                         ...fixture,
                         predictions: {
-                          pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
-                          pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+                          pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
+                          pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
                         },
                       }
                     : fixture,
@@ -86,12 +84,12 @@ const predictionsReducer = (state = initialState, action: PredictionActionTypes)
           ? {
               ...state.currentRound,
               fixtures: state.currentRound.fixtures.map((fixture) =>
-                fixture.id === action.prediction.fixtureId
+                fixture.id === action.payload.fixtureId
                   ? {
                       ...fixture,
                       predictions: {
-                        pGoalsHomeTeam: action.prediction.pGoalsHomeTeam,
-                        pGoalsAwayTeam: action.prediction.pGoalsAwayTeam,
+                        pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
+                        pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
                       },
                     }
                   : fixture,

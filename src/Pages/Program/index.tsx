@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
-import { fetchCurrentRound } from '../../store/predictions/actions';
+import { fetchCurrentRound } from '../../store/predictions/action-creators';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import PageContent from '../Sections/PageContent';
 import FixturesSection from './FixturesSection';

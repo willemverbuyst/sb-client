@@ -8,7 +8,7 @@ import { ILogInCredentials, IProfileDetails } from '../../models/credentials.mod
 import { IUser } from '../../models/player.model';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { resetPlayers } from '../players/actions';
-import { removeAllFixtures } from '../predictions/actions';
+import { removeAllFixtures } from '../predictions/action-creators';
 import { removeAllScores } from '../scores/actions';
 import { resetAllTeams } from '../teams/actions';
 import { StoreState } from '../types';

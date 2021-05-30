@@ -5,7 +5,7 @@ import { IUser } from '../../../models/player.model';
 import { ITeam } from '../../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/actions-creators';
-import { removeAllFixtures } from '../../predictions/actions';
+import { removeAllFixtures } from '../../predictions/action-creators';
 import { removeAllScores } from '../../scores/actions';
 import { removeAllTeams } from '../../teams/action-creators';
 import {
