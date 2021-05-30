@@ -6,25 +6,17 @@ import { apiUrl } from '../../config/constants';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { ActionTypeAppState } from '../appState/action-types';
 import { AppStateActions } from '../appState/actions';
-import { appDoneLoading, appLoading, setMessage } from '../appState/actions-creators';
+import { setMessage } from '../appState/actions-creators';
 import { StoreState } from '../types';
 import { ActionTypePlayers } from './action-types';
-import {
-  AddNewPlayer,
-  DeletePlayer,
-  FetchPlayerProfile,
-  FetchPlayerScores,
-  PlayersActions,
-  ResetPlayers,
-  UpdateAdminStatus,
-} from './actions';
+import { PlayersActions, ResetPlayers } from './actions';
 
 export const addPlayer = (
   signUpCredentials: ISignUpCredentials,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const { userName, firstName, lastName, email, password, phoneNumber, admin, totaalToto, teamId } = signUpCredentials;
-  return async (dispatch: Dispatch) => {
-    dispatch(appLoading());
+  return async (dispatch: Dispatch<PlayersActions | AppStateActions>) => {
+    dispatch({ type: ActionTypeAppState.APP_LOADING });
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.post(
@@ -43,18 +35,19 @@ export const addPlayer = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch<AddNewPlayer>({ type: ActionTypePlayers.ADD_NEW_PLAYER, payload: response.data.userData });
-      dispatch(setMessage('success', response.data.message));
-      dispatch(appDoneLoading());
+      dispatch({ type: ActionTypePlayers.ADD_NEW_PLAYER, payload: response.data.userData });
+      dispatch({
+        type: ActionTypeAppState.SET_MESSAGE,
+        payload: {
+          severity: 'success',
+          text: response.data.message,
+        },
+      });
+      dispatch({
+        type: ActionTypeAppState.APP_DONE_LOADING,
+      });
     } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      dispatch(appDoneLoading());
+      handleError(error);
     }
   };
 };
@@ -81,21 +74,14 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
       type: ActionTypeAppState.APP_DONE_LOADING,
     });
   } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
+    handleError(error);
   }
 };
 
 export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
+  dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch(appLoading());
+  dispatch({ type: ActionTypeAppState.APP_LOADING });
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.get(`${apiUrl}/users/${id}`, {
@@ -103,24 +89,19 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
     });
     const playerProfile = response.data;
 
-    dispatch<FetchPlayerProfile>({ type: ActionTypePlayers.FETCH_PLAYER_PROFILE, payload: playerProfile });
-    dispatch(appDoneLoading());
+    dispatch({ type: ActionTypePlayers.FETCH_PLAYER_PROFILE, payload: playerProfile });
+    dispatch({
+      type: ActionTypeAppState.APP_DONE_LOADING,
+    });
   } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
+    handleError(error);
   }
 };
 
 export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
+  dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch(appLoading());
+  dispatch({ type: ActionTypeAppState.APP_LOADING });
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.get(`${apiUrl}/scores/players/${id}`, {
@@ -128,50 +109,42 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
     });
     const scoresPlayer = response.data;
 
-    dispatch<FetchPlayerScores>({ type: ActionTypePlayers.FETCH_PLAYER_SCORES, payload: scoresPlayer });
-    dispatch(appDoneLoading());
+    dispatch({ type: ActionTypePlayers.FETCH_PLAYER_SCORES, payload: scoresPlayer });
+    dispatch({
+      type: ActionTypeAppState.APP_DONE_LOADING,
+    });
   } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
+    handleError(error);
   }
 };
 
 export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch,
+  dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
-  dispatch(appLoading());
+  dispatch({ type: ActionTypeAppState.APP_LOADING });
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.delete(`${apiUrl}/users/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch<DeletePlayer>({ type: ActionTypePlayers.DELETE_PLAYER, payload: id });
+    dispatch({ type: ActionTypePlayers.DELETE_PLAYER, payload: id });
     dispatch(setMessage('success', response.data.message));
-    dispatch(appDoneLoading());
+    dispatch({
+      type: ActionTypeAppState.APP_DONE_LOADING,
+    });
   } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
+    handleError(error);
   }
 };
 
 export const updatePlayerAdminStatus = (
   id: number,
   admin: boolean,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch) => {
-  dispatch(appLoading());
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch<PlayersActions | AppStateActions>,
+) => {
+  dispatch({ type: ActionTypeAppState.APP_LOADING });
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.patch(
@@ -183,17 +156,40 @@ export const updatePlayerAdminStatus = (
     );
     const player = response.data.updatedUser;
 
-    dispatch<UpdateAdminStatus>({ type: ActionTypePlayers.UPDATE_ADMIN_STATUS, payload: player });
+    dispatch({ type: ActionTypePlayers.UPDATE_ADMIN_STATUS, payload: player });
     dispatch(setMessage('success', response.data.message));
-    dispatch(appDoneLoading());
+    dispatch({
+      type: ActionTypeAppState.APP_DONE_LOADING,
+    });
   } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
+    handleError(error);
   }
+};
+
+const handleError = (error: {
+  response: { data: { message: string } };
+  message: string;
+}): ThunkAction<void, StoreState, unknown, Action<string>> => async (dispatch: Dispatch<AppStateActions>) => {
+  if (error.response) {
+    console.log(error.response.data.message);
+    dispatch({
+      type: ActionTypeAppState.SET_MESSAGE,
+      payload: {
+        severity: 'error',
+        text: error.response.data.message,
+      },
+    });
+  } else {
+    console.log(error.message);
+    dispatch({
+      type: ActionTypeAppState.SET_MESSAGE,
+      payload: {
+        severity: 'error',
+        text: error.message,
+      },
+    });
+  }
+  dispatch({
+    type: ActionTypeAppState.APP_DONE_LOADING,
+  });
 };
