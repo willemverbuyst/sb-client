@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import DeleteDialog from '../../../Components/Communication/DeleteDialog';
 import { IPlayer } from '../../../models/player.model';
-import { playerDelete } from '../../../store/players/actions-creators';
+import { playerDelete } from '../../../store/players/action-creators';
 
 interface IProps {
   playerToDelete: IPlayer;

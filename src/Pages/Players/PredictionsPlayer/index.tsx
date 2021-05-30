@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import { fetchPlayerProfile } from '../../../store/players/actions-creators';
+import { fetchPlayerProfile } from '../../../store/players/action-creators';
 import { selectPastFixturesWithScoresPlayer, selectUserNamePlayer } from '../../../store/players/selectors';
 import PageContent from '../../Sections/PageContent';
 import FixturesSection from './FixturesSection';

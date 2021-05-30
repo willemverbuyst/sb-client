@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
-import { fetchAllPlayers } from '../../../store/players/actions-creators';
+import { fetchAllPlayers } from '../../../store/players/action-creators';
 import { selectPlayers } from '../../../store/players/selectors';
 import PageContent from '../../Sections/PageContent';
 import TableWithPlayers from './TableWithPlayers';
