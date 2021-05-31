@@ -1,8 +1,8 @@
 import { ITeam } from '../../models/toto.models';
 
 export enum ActionType {
-  RESET_ALL_TEAMS = 'reset all teams',
-  STORE_ALL_TEAMS = 'fetch all teams',
+  RESET_ALL_TEAMS = 'RESET_ALL_TEAMS',
+  STORE_ALL_TEAMS = 'fSTORE_ALL_TEAMS',
 }
 
 export type StoreAllTeams = {

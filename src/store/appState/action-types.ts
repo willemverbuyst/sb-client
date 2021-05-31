@@ -1,9 +1,9 @@
 import { IMessage } from '../../models/app.models';
 
 export enum ActionType {
-  APP_LOADING,
-  APP_DONE_LOADING,
-  SET_MESSAGE,
+  APP_LOADING = 'APP_LOADING',
+  APP_DONE_LOADING = 'APP_DONE_LOADING',
+  SET_MESSAGE = 'SET_MESSAGE',
 }
 
 export type AppDoneLoading = {

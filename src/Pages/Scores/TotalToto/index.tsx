@@ -6,9 +6,9 @@ import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
+import { IUserWithScore } from '../../../models/scores.models';
 import { fetchScoresTotalToto } from '../../../store/scores/action-creators';
 import { selectTotalToto } from '../../../store/scores/selectors';
-import { UserWithScore } from '../../../store/scores/types';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -24,7 +24,7 @@ const TotalToto: React.FC = (): ReactElement => {
     }
   }, [dispatch, totalToto]);
 
-  const totalTotoSortedByUserName: UserWithScore[] = totalToto
+  const totalTotoSortedByUserName: IUserWithScore[] = totalToto
     ? [...totalToto].sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
     : [];
 

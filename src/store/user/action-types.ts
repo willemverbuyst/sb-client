@@ -1,10 +1,10 @@
 import { IUser } from '../../models/player.model';
 
 export enum ActionType {
-  LOG_IN_SUCCESS_USER,
-  LOG_OUT_USER,
-  TOKEN_STILL_VALID_USER,
-  UPDATE_USER_PROFILE,
+  LOG_IN_SUCCESS_USER = 'LOG_IN_SUCCESS_USER',
+  LOG_OUT_USER = 'LOG_OUT_USER',
+  TOKEN_STILL_VALID_USER = 'TOKEN_STILL_VALID_USER',
+  UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE',
 }
 
 export type LogInSuccessUser = {

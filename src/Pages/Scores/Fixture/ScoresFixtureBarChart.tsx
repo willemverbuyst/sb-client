@@ -8,11 +8,11 @@ import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
-import { PredictionWithScorePerUser } from '../../../store/scores/types';
+import { IPredictionWithScorePerUser } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
 
 interface IProps {
-  scores: PredictionWithScorePerUser[];
+  scores: IPredictionWithScorePerUser[];
 }
 
 const ScoresFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {

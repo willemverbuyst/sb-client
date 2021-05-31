@@ -69,10 +69,10 @@ export const editUserProfile = (
 };
 
 export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, StoreState, unknown, Action<string>> => {
-  const { email, password } = credentials;
   return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
     dispatch(appLoading());
     try {
+      const { email, password } = credentials;
       const response = await axios.post(`${API_URL}/login`, {
         email,
         password,
@@ -88,6 +88,7 @@ export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, Sto
 };
 
 export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispatch) => {
+  console.log('llogin out');
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(resetAllScores());

@@ -6,9 +6,9 @@ import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
+import { IUserWithScore } from '../../../models/scores.models';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
 import { selectTotoRound } from '../../../store/scores/selectors';
-import { UserWithScore } from '../../../store/scores/types';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -25,7 +25,7 @@ const TotoRound: React.FC = (): ReactElement => {
     }
   }, [dispatch, id, totoRound]);
 
-  const totoRoundSortedByUserName: UserWithScore[] =
+  const totoRoundSortedByUserName: IUserWithScore[] =
     totoRound && totoRound.usersWithScores
       ? [...totoRound.usersWithScores].sort((name1, name2) =>
           name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()),

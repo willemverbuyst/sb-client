@@ -5,9 +5,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
+import { IPredictionWithScorePerUser } from '../../../models/scores.models';
 import { fetchScoresFixture } from '../../../store/scores/action-creators';
 import { selectFixture } from '../../../store/scores/selectors';
-import { PredictionWithScorePerUser } from '../../../store/scores/types';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import PageContent from '../../Sections/PageContent';
 import FixtureSection from './FixtureSection';
@@ -24,9 +24,9 @@ const Fixture: React.FC = (): ReactElement => {
     dispatch(fetchScoresFixture(+id));
   }, [dispatch, id]);
 
-  const scoresSortedByName: PredictionWithScorePerUser[] =
+  const scoresSortedByName: IPredictionWithScorePerUser[] =
     fixtureWithScores && fixtureWithScores.scores
-      ? sortArrayWithObjects<keyof PredictionWithScorePerUser, PredictionWithScorePerUser>('user')(
+      ? sortArrayWithObjects<keyof IPredictionWithScorePerUser, IPredictionWithScorePerUser>('user')(
           fixtureWithScores.scores,
         )
       : [];
