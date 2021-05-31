@@ -7,7 +7,7 @@ import AppRouter from './AppRouter';
 import Toast from './Components/Communication/Toast';
 import Header from './Pages/Sections/Header';
 import UserDisplay from './Pages/Sections/UserDisplay';
-import { getUserWithStoredToken } from './store/user/actions';
+import { getUserWithStoredToken } from './store/user/action-creators';
 import IceBlueGold from './ui/theme';
 
 const useStyles = makeStyles((theme: Theme) =>

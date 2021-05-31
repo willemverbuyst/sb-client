@@ -18,7 +18,7 @@ import {
   updateUserProfile,
   userLogIn,
   userLogOut,
-} from '../actions';
+} from '../action-creators';
 import {
   LOG_IN_SUCCESS_USER,
   LOG_OUT_USER,

@@ -7,7 +7,7 @@ import ShowAlertComponent from '../../../Components/Communication/Alert';
 import FormContainer from '../../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../../Components/Form/PasswordField';
 import { ButtonEvent } from '../../../models/events.model';
-import { changePassword } from '../../../store/user/actions';
+import { changePassword } from '../../../store/user/action-creators';
 
 const EditPasswordForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();

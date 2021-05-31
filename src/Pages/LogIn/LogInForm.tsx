@@ -9,7 +9,7 @@ import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { ButtonEvent } from '../../models/events.model';
-import { userLogIn } from '../../store/user/actions';
+import { userLogIn } from '../../store/user/action-creators';
 
 const LoginForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();

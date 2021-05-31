@@ -12,7 +12,7 @@ import { IProfileDetails } from '../../../models/credentials.model';
 import { ButtonEvent } from '../../../models/events.model';
 import { fetchAllTeams } from '../../../store/teams/action-creators';
 import { selectTeams } from '../../../store/teams/selectors';
-import { editUserProfile } from '../../../store/user/actions';
+import { editUserProfile } from '../../../store/user/action-creators';
 import { selectUser } from '../../../store/user/selectors';
 import * as HELPERS from './helpers';
 

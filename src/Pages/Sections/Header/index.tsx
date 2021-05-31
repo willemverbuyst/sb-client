@@ -15,7 +15,7 @@ import { useHistory } from 'react-router-dom';
 
 import ball from '../../../assets/ball.png';
 import NavIcon from '../../../Components/Header/NavIcon';
-import { userLogOut } from '../../../store/user/actions';
+import { userLogOut } from '../../../store/user/action-creators';
 import { selectToken, selectUser } from '../../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>

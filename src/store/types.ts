@@ -3,7 +3,7 @@ import { IPlayersState } from './players/reducer';
 import { IPredictionsState } from './predictions/reducer';
 import { IScoresState } from './scores/reducer';
 import { ITeamsState } from './teams/reducer';
-import { UserState } from './user/types';
+import { IUserState } from './user/reducer';
 
 export type StoreState = {
   appState: IAppState;
@@ -11,7 +11,7 @@ export type StoreState = {
   predictionsState: IPredictionsState;
   scoresState: IScoresState;
   teamsState: ITeamsState;
-  userState: UserState;
+  userState: IUserState;
 };
 
 export type GetState = () => StoreState;

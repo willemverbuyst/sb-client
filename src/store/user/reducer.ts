@@ -1,35 +1,35 @@
-import {
-  LOG_IN_SUCCESS_USER,
-  LOG_OUT_USER,
-  TOKEN_STILL_VALID_USER,
-  UPDATE_USER_PROFILE,
-  UserActionTypes,
-  UserState,
-} from './types';
+import { IUser } from '../../models/player.model';
+import { ActionType } from './action-types';
+import { UserActions } from './action-types';
+
+export interface IUserState {
+  token: string | null;
+  user: IUser | null;
+}
 
 const token = localStorage.getItem('user_token');
 
-const initialState: UserState = {
+const initialState: IUserState = {
   token: token,
   user: null,
 };
 
-const userReducer = (state = initialState, action: UserActionTypes): UserState => {
+const userReducer = (state = initialState, action: UserActions): IUserState => {
   switch (action.type) {
-    case LOG_IN_SUCCESS_USER:
-      const userToken = action.user.token;
+    case ActionType.LOG_IN_SUCCESS_USER:
+      const userToken = action.payload.token;
       userToken && localStorage.setItem('user_token', userToken);
-      return { ...state, user: action.user, token: userToken };
+      return { ...state, user: action.payload, token: userToken };
 
-    case LOG_OUT_USER:
+    case ActionType.LOG_OUT_USER:
       localStorage.removeItem('user_token');
       return { ...initialState, token: null, user: null };
 
-    case TOKEN_STILL_VALID_USER:
-      return { ...state, user: action.user };
+    case ActionType.TOKEN_STILL_VALID_USER:
+      return { ...state, user: action.payload };
 
-    case UPDATE_USER_PROFILE:
-      return { ...state, user: action.user };
+    case ActionType.UPDATE_USER_PROFILE:
+      return { ...state, user: action.payload };
 
     default:
       return state;
