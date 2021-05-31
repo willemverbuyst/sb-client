@@ -15,7 +15,7 @@ interface IProps {
   scores: IPredictionWithScorePerUser[];
 }
 
-const ScoresFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
+const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
   const labels: string[] = scores.map((player) => player.user.toLocaleUpperCase());
   const userScores: number[] = scores.map((player) => player.score + 0.1);
@@ -86,20 +86,7 @@ const ScoresFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEleme
     },
   };
 
-  return (
-    <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoPlayer} />
-    // <Grid container direction="row" justify="center" alignItems="center">
-    //   <Grid item xs={12} md={6} container justify="center">
-    //     <Bar
-    //       data={chartData}
-    //       options={chartOptions}
-    //       onElementsClick={(e) => {
-    //         if (e[0] !== undefined) gotoPlayer(e[0]._index);
-    //       }}
-    //     />
-    //   </Grid>
-    // </Grid>
-  );
+  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoPlayer} />;
 };
 
-export default ScoresFixtureBarChart;
+export default ScoresForFixtureBarChart;

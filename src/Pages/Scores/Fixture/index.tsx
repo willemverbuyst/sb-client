@@ -5,31 +5,23 @@ import { useHistory, useParams } from 'react-router-dom';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import { IPredictionWithScorePerUser } from '../../../models/scores.models';
 import { fetchScoresFixture } from '../../../store/scores/action-creators';
-import { selectFixture } from '../../../store/scores/selectors';
-import { sortArrayWithObjects } from '../../../utils/sortFunctions';
+import { selectFixture, selectScoresForFixtureSortedByName } from '../../../store/scores/selectors';
 import PageContent from '../../Sections/PageContent';
 import FixtureSection from './FixtureSection';
-import ScoresFixtureBarChart from './ScoresFixtureBarChart';
+import ScoresForFixtureBarChart from './ScoresFixtureBarChart';
 
 const Fixture: React.FC = (): ReactElement => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const { id } = useParams<{ id: string }>();
-  const fixtureWithScores = useSelector(selectFixture);
+  const fixture = useSelector(selectFixture);
+  const scoresFixtureSortedByName = useSelector(selectScoresForFixtureSortedByName);
 
   useEffect(() => {
     dispatch(fetchScoresFixture(+id));
   }, [dispatch, id]);
-
-  const scoresSortedByName: IPredictionWithScorePerUser[] =
-    fixtureWithScores && fixtureWithScores.scores
-      ? sortArrayWithObjects<keyof IPredictionWithScorePerUser, IPredictionWithScorePerUser>('user')(
-          fixtureWithScores.scores,
-        )
-      : [];
 
   const goBack = () => history.goBack();
 
@@ -37,13 +29,13 @@ const Fixture: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Uitslag"
       content={
-        fixtureWithScores ? (
+        fixture ? (
           <>
             <PageHeaderWithButton title="Uitslag" captionBtn="TERUG" colorBtn="primary" handleClick={goBack} />
-            <FixtureSection fixture={fixtureWithScores.fixture} />
+            <FixtureSection fixture={fixture} />
             <DividerComponent />
-            {fixtureWithScores.scores ? (
-              <ScoresFixtureBarChart scores={scoresSortedByName} />
+            {scoresFixtureSortedByName ? (
+              <ScoresForFixtureBarChart scores={scoresFixtureSortedByName} />
             ) : (
               <MessageComponent message={`Nog geen scores`} />
             )}

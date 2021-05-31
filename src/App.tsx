@@ -36,9 +36,9 @@ const App: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserWithStoredToken());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUserWithStoredToken());
+  // }, []);
 
   return (
     <MuiThemeProvider theme={IceBlueGold}>

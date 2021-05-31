@@ -1,8 +1,33 @@
-import { IFixtureWithScores, IScores, IUserWithScore } from '../../models/scores.models';
+import { IPredictionWithScorePerUser, IScores, IUserWithScore } from '../../models/scores.models';
+import { IFixture } from '../../models/toto.models';
 import { sortArrayWithObjects } from '../../utils/sortFunctions';
 import { StoreState } from '../types';
 
-export const selectFixture = (state: StoreState): IFixtureWithScores | null => state.scoresState.fixtureScores;
+export const selectFixture = (state: StoreState): IFixture | null => {
+  if (state.scoresState.fixtureScores) {
+    return state.scoresState.fixtureScores.fixture;
+  } else {
+    return null;
+  }
+};
+
+export const selectScoresForFixtureSortedByName = (state: StoreState): IPredictionWithScorePerUser[] | null => {
+  if (
+    state.scoresState.fixtureScores &&
+    state.scoresState.fixtureScores.scores &&
+    state.scoresState.fixtureScores.scores.length > 0
+  ) {
+    const fixtureWithScores = state.scoresState.fixtureScores.scores;
+    const scoresSortedByName: IPredictionWithScorePerUser[] = sortArrayWithObjects<
+      keyof IPredictionWithScorePerUser,
+      IPredictionWithScorePerUser
+    >('user')(fixtureWithScores);
+
+    return scoresSortedByName;
+  } else {
+    return null;
+  }
+};
 
 export const selectRound = (state: StoreState): IScores | null => state.scoresState.roundScores;
 
