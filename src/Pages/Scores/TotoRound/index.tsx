@@ -6,9 +6,8 @@ import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
-import { IUserWithScore } from '../../../models/scores.models';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
-import { selectTotoRound } from '../../../store/scores/selectors';
+import { selectScoresRoundSortedByName, selectTotoRoundId } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -16,21 +15,15 @@ import BreadCrumbsSection from './BreadCrumbsSection';
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const totoRound = useSelector(selectTotoRound);
+  const totoRoundId = useSelector(selectTotoRoundId);
+  const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    if (!totoRound || (totoRound && +id !== +totoRound.id)) {
+    if (!totoRoundId || Number(id) !== totoRoundId) {
       dispatch(fetchScoresTotoRound(+id));
     }
-  }, [dispatch, id, totoRound]);
-
-  const totoRoundSortedByUserName: IUserWithScore[] =
-    totoRound && totoRound.usersWithScores
-      ? [...totoRound.usersWithScores].sort((name1, name2) =>
-          name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()),
-        )
-      : [];
+  }, [dispatch, id, totoRoundId]);
 
   const gotoTotoRound = () => history.push(`/voorspellingen/${id}/${+id * 3 - 2}`);
 
@@ -38,7 +31,7 @@ const TotoRound: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Klassement"
       content={
-        totoRound && totoRound.usersWithScores && totoRound.usersWithScores.length > 0 ? (
+        scoresRoundSortedByName ? (
           <>
             <PageHeaderWithButton
               title="Klassement"
@@ -48,7 +41,7 @@ const TotoRound: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text={`TOTO RONDE ${id}`} />
             <DividerComponent />
-            <ScoresBarChart scores={totoRoundSortedByUserName} />
+            <ScoresBarChart scores={scoresRoundSortedByName} />
             <BreadCrumbsSection id={id} />
           </>
         ) : (
