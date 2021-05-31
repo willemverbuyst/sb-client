@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import { fetchScoresFixture } from '../../../store/scores/actions';
+import { fetchScoresFixture } from '../../../store/scores/action-creators';
 import { selectFixture } from '../../../store/scores/selectors';
 import { PredictionWithScorePerUser } from '../../../store/scores/types';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';

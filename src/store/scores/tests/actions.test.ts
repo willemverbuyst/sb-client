@@ -12,7 +12,7 @@ import {
   scoresRoundFetched,
   scoresTotalTotoFetched,
   scoresTotoRoundFetched,
-} from '../actions';
+} from '../action-creators';
 import {
   FixtureWithScores,
   PredictionWithScorePerUser,

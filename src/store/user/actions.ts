@@ -9,7 +9,7 @@ import { IUser } from '../../models/player.model';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { resetPlayers } from '../players/actions';
 import { removeAllFixtures } from '../predictions/action-creators';
-import { removeAllScores } from '../scores/actions';
+import { removeAllScores } from '../scores/action-creators';
 import { resetAllTeams } from '../teams/actions';
 import { StoreState } from '../types';
 import {

@@ -6,7 +6,7 @@ import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
-import { fetchScoresTotalToto } from '../../../store/scores/actions';
+import { fetchScoresTotalToto } from '../../../store/scores/action-creators';
 import { selectTotalToto } from '../../../store/scores/selectors';
 import { UserWithScore } from '../../../store/scores/types';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';

@@ -1,23 +1,23 @@
-import {
-  REMOVE_ALL_SCORES,
-  SCORES_FIXTURE_FETCHED,
-  SCORES_ROUND_FETCHED,
-  SCORES_TOTAL_TOTO_FETCHED,
-  SCORES_TOTO_ROUND_FETCHED,
-  ScoresActionTypes,
-  ScoresState,
-} from './types';
+import { IFixtureWithScores, IScores, IUserWithScore } from '../../models/scores.models';
+import { ActionType, ScoresActions } from './action-types';
 
-const initialState: ScoresState = {
+export interface IScoresState {
+  fixtureScores: IFixtureWithScores | null;
+  roundScores: IScores | null;
+  totalTotoScores: IUserWithScore[] | null;
+  totoRoundScores: IScores | null;
+}
+
+const initialState: IScoresState = {
   fixtureScores: null,
   roundScores: null,
   totalTotoScores: null,
   totoRoundScores: null,
 };
 
-const scoresReducer = (state = initialState, action: ScoresActionTypes): ScoresState => {
+const scoresReducer = (state = initialState, action: ScoresActions): IScoresState => {
   switch (action.type) {
-    case REMOVE_ALL_SCORES:
+    case ActionType.RESET_ALL_SCORES:
       return {
         fixtureScores: null,
         roundScores: null,
@@ -25,17 +25,17 @@ const scoresReducer = (state = initialState, action: ScoresActionTypes): ScoresS
         totoRoundScores: null,
       };
 
-    case SCORES_FIXTURE_FETCHED:
-      return { ...state, fixtureScores: action.fixture };
+    case ActionType.STORE_SCORES_FIXTURE:
+      return { ...state, fixtureScores: action.payload };
 
-    case SCORES_ROUND_FETCHED:
-      return { ...state, roundScores: action.round };
+    case ActionType.STORE_SCORES_ROUND:
+      return { ...state, roundScores: action.payload };
 
-    case SCORES_TOTAL_TOTO_FETCHED:
-      return { ...state, totalTotoScores: action.totalToto };
+    case ActionType.STORE_SCORES_TOTAL_TOTO:
+      return { ...state, totalTotoScores: action.payload };
 
-    case SCORES_TOTO_ROUND_FETCHED:
-      return { ...state, totoRoundScores: action.totoRound };
+    case ActionType.STORE_SCORES_TOTO_ROUND:
+      return { ...state, totoRoundScores: action.payload };
 
     default:
       return state;

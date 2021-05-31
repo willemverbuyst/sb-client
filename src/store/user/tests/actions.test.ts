@@ -6,7 +6,7 @@ import { ITeam } from '../../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import { removeAllPlayers } from '../../players/action-creators';
 import { removeAllFixtures } from '../../predictions/action-creators';
-import { removeAllScores } from '../../scores/actions';
+import { removeAllScores } from '../../scores/action-creators';
 import { removeAllTeams } from '../../teams/action-creators';
 import {
   changePassword,

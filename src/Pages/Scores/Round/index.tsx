@@ -7,7 +7,7 @@ import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
-import { fetchScoresRound } from '../../../store/scores/actions';
+import { fetchScoresRound } from '../../../store/scores/action-creators';
 import { selectRoundId, selectSortedUsersWithScores } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
