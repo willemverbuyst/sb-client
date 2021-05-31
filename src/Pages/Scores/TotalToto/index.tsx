@@ -6,9 +6,8 @@ import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
-import { IUserWithScore } from '../../../models/scores.models';
 import { fetchScoresTotalToto } from '../../../store/scores/action-creators';
-import { selectTotalToto } from '../../../store/scores/selectors';
+import { selectScoresTotalTotoSortedByName } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -16,17 +15,13 @@ import BreadCrumbsSection from './BreadCrumbsSection';
 const TotalToto: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const totalToto = useSelector(selectTotalToto);
+  const scoresTotalTotoSortedByName = useSelector(selectScoresTotalTotoSortedByName);
 
   useEffect(() => {
-    if (!totalToto) {
+    if (!scoresTotalTotoSortedByName) {
       dispatch(fetchScoresTotalToto());
     }
-  }, [dispatch, totalToto]);
-
-  const totalTotoSortedByUserName: IUserWithScore[] = totalToto
-    ? [...totalToto].sort((name1, name2) => name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()))
-    : [];
+  }, [dispatch, scoresTotalTotoSortedByName]);
 
   const gotoTotoRound = () => history.push(`/voorspellingen/1/1`);
 
@@ -34,7 +29,7 @@ const TotalToto: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Klassement"
       content={
-        totalToto && totalToto.length > 0 ? (
+        scoresTotalTotoSortedByName ? (
           <>
             <PageHeaderWithButton
               title="Klassement"
@@ -44,7 +39,7 @@ const TotalToto: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text="TOTAAL TOTO" />
             <DividerComponent />
-            <ScoresBarChart scores={totalTotoSortedByUserName} />
+            <ScoresBarChart scores={scoresTotalTotoSortedByName} />
             <BreadCrumbsSection />
           </>
         ) : (

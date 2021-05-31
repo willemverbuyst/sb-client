@@ -39,7 +39,17 @@ export const selectRoundId = (state: StoreState): number | null => {
   }
 };
 
-export const selectTotalToto = (state: StoreState): IUserWithScore[] | null => state.scoresState.totalTotoScores;
+export const selectScoresTotalTotoSortedByName = (state: StoreState): IUserWithScore[] | null => {
+  if (state.scoresState.totalTotoScores && state.scoresState.totalTotoScores.length > 0) {
+    const scoresTotalToto = state.scoresState.totalTotoScores;
+    const scoresTotalTotoSortedByName: IUserWithScore[] = [...scoresTotalToto].sort((name1, name2) =>
+      name1.user.toLowerCase().localeCompare(name2.user.toLowerCase()),
+    );
+    return scoresTotalTotoSortedByName;
+  } else {
+    return null;
+  }
+};
 
 export const selectTotoRound = (state: StoreState): IScores | null => state.scoresState.totoRoundScores;
 
