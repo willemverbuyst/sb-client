@@ -23,6 +23,10 @@ const Predictions: React.FC = (): ReactElement => {
     }
   }, [dispatch, fixtures]);
 
+  // no need to pass fixture round and totoround to fixtures section
+  // get the array filtered and sorted here, send the prepared array
+  // if that works try do pass round and totoround to the selector, so it passes the right arary
+
   const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
 
   return (
