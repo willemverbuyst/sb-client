@@ -1,12 +1,11 @@
-import { Button, Grid, makeStyles, Theme, Tooltip, Typography } from '@material-ui/core';
+import { Button, Grid, makeStyles, Theme, Typography } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import CardButton from '../../../Components/Button/CardButton';
-import NumberField from '../../../Components/Form/NumberField';
 import { IPrediction } from '../../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../../store/predictions/action-creators';
+import MatchCardInput from './MatchCardInput';
 
 const useStyles = makeStyles((theme: Theme) => ({
   inputBox: {
@@ -21,14 +20,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = { fixtureWithPrediction: IFixtureWithScoreAndPredictions };
+interface IProps {
+  fixtureWithPrediction: IFixtureWithScoreAndPredictions;
+}
 
-const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): ReactElement => {
+const PredictionsField: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [pGoalsHT, setpGoalsHT] = useState<number>(0);
   const [pGoalsAT, setpGoalsAT] = useState<number>(0);
   const [showInput, setShowInput] = useState<boolean>(false);
+
   const {
     id,
     eventTimeStamp,
@@ -50,40 +52,27 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
     setShowInput(false);
   };
 
-  const handleGoalsHomeTeam = (value: number) => {
-    setpGoalsHT(value);
+  const handleGoalsHomeTeam = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setpGoalsHT(Number(e.target.value));
   };
 
-  const handleGoalsAwayTeam = (value: number) => {
-    setpGoalsAT(value);
+  const handleGoalsAwayTeam = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setpGoalsAT(Number(e.target.value));
   };
 
   const setShowInputToFalse = () => setShowInput(false);
   const setShowInputToTrue = () => setShowInput(true);
 
-  const renderInput = () => {
-    return (
-      <>
-        <Grid item xs={2} container justify="center">
-          <CardButton caption="Cancel" color="secondary" handleClick={setShowInputToFalse} />
-        </Grid>
-        <Grid item xs={8} container justify="center">
-          <NumberField defaultValue={pGoalsHomeTeam || 0} onChange={(e) => handleGoalsHomeTeam(+e.target.value)} />
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          <NumberField defaultValue={pGoalsAwayTeam || 0} onChange={(e) => handleGoalsAwayTeam(+e.target.value)} />
-        </Grid>
-
-        <Grid item xs={2} container justify="center">
-          <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
-        </Grid>
-      </>
-    );
-  };
-
   return (
     <Grid item xs={12} container justify="center">
       {showInput ? (
-        renderInput()
+        <MatchCardInput
+          fixtureWithPrediction={fixtureWithPrediction}
+          hideInput={setShowInputToFalse}
+          handleGoalsAwayTeam={handleGoalsAwayTeam}
+          handleGoalsHomeTeam={handleGoalsHomeTeam}
+          handleSubmit={handleSubmit}
+        />
       ) : (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
           Je voorspelling was {pGoalsHomeTeam} - {pGoalsAwayTeam}
@@ -109,6 +98,12 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
           Nog geen voorspelling
         </Typography>
       )}
+
+      {fixtureWithPrediction.status !== 'Match Finished' ? (
+        <Button size="small" color="secondary" onClick={setShowInputToTrue}>
+          Edit
+        </Button>
+      ) : null}
     </Grid>
   );
 };

@@ -1,9 +1,8 @@
-import { Button, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import PredictionsField from './PredictionsField';
-import PredictionsHome from './PredictionsHome';
 import PublicPredictions from './PublicPredictions';
 
 interface IProps {
@@ -19,11 +18,6 @@ const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: I
       ) : (
         <>
           <PredictionsField fixtureWithPrediction={fixtureWithPrediction} />
-          {fixtureWithPrediction.status !== 'Match Finished' ? (
-            <Button size="small" color="secondary" onClick={() => console.log('edit input')}>
-              Edit
-            </Button>
-          ) : null}
         </>
       )}
     </Grid>
