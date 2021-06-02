@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import ChipComponent from '../../../Components/Card/Chip';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
@@ -58,9 +59,7 @@ const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Pro
   return (
     <Card className={classes.card}>
       <CardContent>
-        {status === 'Match Finished' ? (
-          <Chip size="small" className={classes.chip} label={`${score} pt.`} variant="outlined" />
-        ) : null}
+        {status === 'Match Finished' ? <ChipComponent score={score} /> : null}
 
         <Typography variant="overline" color="textSecondary">
           {timeStampFormattedToLocalDate(eventTimeStamp)}
