@@ -58,11 +58,14 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
     setpGoalsAT(value);
   };
 
+  const setShowInputToFalse = () => setShowInput(false);
+  const setShowInputToTrue = () => setShowInput(true);
+
   const renderInput = () => {
     return (
       <>
         <Grid item xs={2} container justify="center">
-          <CardButton caption="Cancel" color="secondary" handleClick={() => setShowInput(false)} />
+          <CardButton caption="Cancel" color="secondary" handleClick={setShowInputToFalse} />
         </Grid>
         <Grid item xs={8} container justify="center">
           <NumberField defaultValue={pGoalsHomeTeam || 0} onChange={(e) => handleGoalsHomeTeam(+e.target.value)} />
@@ -87,7 +90,7 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
         </Typography>
       ) : status === 'Match Finished' ? (
         <Typography variant="overline" color="textSecondary">
-          Geen voorspelling
+          Geen voorspelling gedaan
         </Typography>
       ) : Math.floor(Date.now() / 1000) > eventTimeStamp - 5 * 60 ? (
         <Typography variant="overline" color="textSecondary">
@@ -98,15 +101,13 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
           gesloten
         </Typography>
       ) : Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam) ? (
-        <Tooltip title="Je voorspelling veranderen?" arrow>
-          <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-            {pGoalsHomeTeam} - {pGoalsAwayTeam}
-          </Button>
-        </Tooltip>
+        <Typography variant="overline" color="textSecondary">
+          Je voorspelling is {pGoalsHomeTeam} - {pGoalsAwayTeam}
+        </Typography>
       ) : (
-        <Button variant="outlined" size="small" color="secondary" onClick={() => setShowInput(true)}>
-          Plaats voorspelling
-        </Button>
+        <Typography variant="overline" color="textSecondary">
+          Nog geen voorspelling
+        </Typography>
       )}
     </Grid>
   );

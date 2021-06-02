@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 
 import AvatarMediumComponent from '../../../Components/Avatar/AvatarMedium';
 import { IFixture } from '../../../models/toto.models';
-import { timeStampFormattedToLocalDate } from '../../../utils/timeFunctions';
+import { formatTimeStampToLocalDate } from '../../../utils/timeFunctions';
 import TextComponent from './Text';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -34,7 +34,9 @@ const FixtureSection: React.FC<IProps> = ({ fixture }: IProps): ReactElement => 
     awayTeamName,
     awayTeamLogo,
   } = fixture;
-  const formattedDate = timeStampFormattedToLocalDate(eventTimeStamp);
+  const formattedDate = formatTimeStampToLocalDate(eventTimeStamp);
+  const goals =
+    Number.isInteger(goalsAwayTeam) && Number.isInteger(goalsHomeTeam) ? `${goalsHomeTeam} - ${goalsAwayTeam}` : ` - `;
 
   return (
     <Grid className={classes.fixture}>
@@ -44,7 +46,7 @@ const FixtureSection: React.FC<IProps> = ({ fixture }: IProps): ReactElement => 
       <Grid item xs={12} container justify="center">
         <TextComponent xs={3} sm={3} content={homeTeamName} justify="flex-end" />
         <AvatarMediumComponent alt={homeTeamName} source={homeTeamLogo} />
-        <TextComponent xs={3} sm={1} content={`${goalsHomeTeam} - ${goalsAwayTeam}`} justify="center" />
+        <TextComponent xs={3} sm={1} content={goals} justify="center" />
         <AvatarMediumComponent alt={awayTeamName} source={awayTeamLogo} />
         <TextComponent xs={3} sm={3} content={awayTeamName} justify="flex-start" />
       </Grid>

@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
@@ -16,10 +16,15 @@ const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: I
     <Grid item xs={12} container justify="center">
       {display === 'public' ? (
         <PublicPredictions fixtureWithPrediction={fixtureWithPrediction} />
-      ) : display === 'Predictions' ? (
-        <PredictionsField fixtureWithPrediction={fixtureWithPrediction} />
       ) : (
-        <PredictionsHome fixtureWithPrediction={fixtureWithPrediction} />
+        <>
+          <PredictionsField fixtureWithPrediction={fixtureWithPrediction} />
+          {fixtureWithPrediction.status !== 'Match Finished' ? (
+            <Button size="small" color="secondary" onClick={() => console.log('edit input')}>
+              Edit
+            </Button>
+          ) : null}
+        </>
       )}
     </Grid>
   );
