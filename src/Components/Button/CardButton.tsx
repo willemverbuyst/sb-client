@@ -7,10 +7,10 @@ interface IProps {
   handleClick: () => void;
 }
 
-const TableButton: React.FC<IProps> = ({ caption, color, handleClick }: IProps): ReactElement => (
-  <Button size="small" variant="text" color={color} onClick={handleClick}>
+const CardButton: React.FC<IProps> = ({ caption, color, handleClick }: IProps): ReactElement => (
+  <Button variant="contained" size="small" color={color} disableElevation onClick={handleClick}>
     {caption}
   </Button>
 );
 
-export default TableButton;
+export default CardButton;

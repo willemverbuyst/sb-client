@@ -2,6 +2,7 @@ import { Button, Grid, makeStyles, Theme, Tooltip, Typography } from '@material-
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import CardButton from '../../../Components/Button/CardButton';
 import NumberField from '../../../Components/Form/NumberField';
 import { IPrediction } from '../../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
@@ -61,15 +62,7 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
     return (
       <>
         <Grid item xs={2} container justify="center">
-          <Button
-            variant="contained"
-            size="small"
-            color="secondary"
-            disableElevation
-            onClick={() => setShowInput(false)}
-          >
-            Cancel
-          </Button>
+          <CardButton caption="Cancel" color="secondary" handleClick={() => setShowInput(false)} />
         </Grid>
         <Grid item xs={8} container justify="center">
           <NumberField defaultValue={pGoalsHomeTeam || 0} onChange={(e) => handleGoalsHomeTeam(+e.target.value)} />
@@ -78,9 +71,7 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
         </Grid>
 
         <Grid item xs={2} container justify="center">
-          <Button variant="contained" size="small" color="primary" disableElevation onClick={handleSubmit}>
-            Submit
-          </Button>
+          <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
         </Grid>
       </>
     );
