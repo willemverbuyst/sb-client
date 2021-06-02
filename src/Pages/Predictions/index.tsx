@@ -4,8 +4,11 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { fetchAllFixtures } from '../../store/predictions/action-creators';
 import { selectFixtures } from '../../store/predictions/selectors';
+import { calculateIndex } from '../../utils/parameterFunctions';
+import { sortArrayWithObjects } from '../../utils/sortFunctions';
 import PageContent from '../Sections/PageContent';
 import FixturesSection from './FixturesSection';
 import PaginationSection from './PaginationSection';
@@ -17,15 +20,22 @@ const Predictions: React.FC = (): ReactElement => {
   const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
 
+  const t = Number(totoronde);
+  const r = Number(ronde);
+
   useEffect(() => {
     if (!fixtures) {
       dispatch(fetchAllFixtures());
     }
   }, [dispatch, fixtures]);
 
-  // no need to pass fixture round and totoround to fixtures section
-  // get the array filtered and sorted here, send the prepared array
-  // if that works try do pass round and totoround to the selector, so it passes the right arary
+  const filteredFixtures = fixtures ? [...fixtures[t - 1][calculateIndex(r)]] : null;
+
+  const filteredAndSortedfixtures = filteredFixtures
+    ? sortArrayWithObjects<keyof IFixtureWithScoreAndPredictions, IFixtureWithScoreAndPredictions>('eventTimeStamp')(
+        filteredFixtures,
+      )
+    : null;
 
   const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
 
@@ -33,7 +43,7 @@ const Predictions: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Voorspellingen"
       content={
-        fixtures ? (
+        filteredAndSortedfixtures ? (
           <>
             <PageHeaderWithButton
               title="Voorspellingen"
@@ -41,7 +51,7 @@ const Predictions: React.FC = (): ReactElement => {
               colorBtn="secondary"
               handleClick={gotoRanking}
             />
-            <FixturesSection fixtures={fixtures} totoronde={totoronde} ronde={ronde} />
+            <FixturesSection fixtures={filteredAndSortedfixtures} />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
           </>
         ) : (
