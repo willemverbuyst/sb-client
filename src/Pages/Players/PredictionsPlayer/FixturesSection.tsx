@@ -2,10 +2,10 @@ import { Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import MatchCard from '../../../Components/Card/MatchCard';
 import { TotoRound } from '../../../models/toto.models';
 import { content } from '../../../ui/sharedClasses';
 import { calculateIndex } from '../../../utils/parameterFunctions';
+import MatchCard from '../../Sections/Card/MatchCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),

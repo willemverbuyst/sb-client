@@ -2,9 +2,9 @@ import { Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import MatchCard from '../../Components/Card/MatchCard';
 import { ICurrentRound } from '../../models/toto.models';
 import { content } from '../../ui/sharedClasses';
+import MatchCard from '../Sections/Card/MatchCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   ...content(theme),

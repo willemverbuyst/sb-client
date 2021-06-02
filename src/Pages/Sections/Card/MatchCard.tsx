@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../../utils/timeFunctions';
+import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
+import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../../../utils/timeFunctions';
 import PredictionsField from './PredictionsField';
 import PredictionsHome from './PredictionsHome';
 import PublicPredictions from './PublicPredictions';

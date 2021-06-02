@@ -2,9 +2,9 @@ import { Button, Grid, makeStyles, TextField, Theme, Tooltip, Typography } from 
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { IPrediction } from '../../models/predictions.model';
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { changePrediction, postNewPrediction } from '../../store/predictions/action-creators';
+import { IPrediction } from '../../../models/predictions.model';
+import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
+import { changePrediction, postNewPrediction } from '../../../store/predictions/action-creators';
 
 const useStyles = makeStyles((theme: Theme) => ({
   inputBox: {
