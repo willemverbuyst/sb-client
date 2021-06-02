@@ -1,7 +1,8 @@
-import { Button, Grid, makeStyles, TextField, Theme, Tooltip, Typography } from '@material-ui/core';
+import { Button, Grid, makeStyles, Theme, Tooltip, Typography } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import NumberField from '../../../Components/Form/NumberField';
 import { IPrediction } from '../../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../../store/predictions/action-creators';
@@ -71,37 +72,9 @@ const PredictionsField: React.FC<Props> = ({ fixtureWithPrediction }: Props): Re
           </Button>
         </Grid>
         <Grid item xs={8} container justify="center">
-          <TextField
-            id="outlined-number"
-            type="number"
-            defaultValue={pGoalsHomeTeam || 0}
-            onChange={(e) => handleGoalsHomeTeam(+e.target.value)}
-            InputProps={{
-              classes: {
-                input: classes.inputBox,
-              },
-              inputProps: {
-                min: 0,
-                max: 99,
-              },
-            }}
-          />
+          <NumberField defaultValue={pGoalsHomeTeam || 0} onChange={(e) => handleGoalsHomeTeam(+e.target.value)} />
           &nbsp;&nbsp;-&nbsp;&nbsp;
-          <TextField
-            id="outlined-number"
-            type="number"
-            defaultValue={pGoalsAwayTeam || 0}
-            onChange={(e) => handleGoalsAwayTeam(+e.target.value)}
-            InputProps={{
-              classes: {
-                input: classes.inputBox,
-              },
-              inputProps: {
-                min: 0,
-                max: 99,
-              },
-            }}
-          />
+          <NumberField defaultValue={pGoalsAwayTeam || 0} onChange={(e) => handleGoalsAwayTeam(+e.target.value)} />
         </Grid>
 
         <Grid item xs={2} container justify="center">
