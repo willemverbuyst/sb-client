@@ -6,10 +6,8 @@ import { useHistory } from 'react-router-dom';
 import ChipComponent from '../../../Components/Card/Chip';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { getTimeFromTimeStamp } from '../../../utils/timeFunctions';
+import MatchCardBottom from './MatchCardBottom';
 import MatchCardTop from './MatchCardTop';
-import PredictionsField from './PredictionsField';
-import PredictionsHome from './PredictionsHome';
-import PublicPredictions from './PublicPredictions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -94,15 +92,7 @@ const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Pro
           </Grid>
         </Grid>
 
-        <Grid item xs={12} container justify="center">
-          {display === 'public' ? (
-            <PublicPredictions fixtureWithPrediction={wedstrijdMetVoorspellingen} />
-          ) : display === 'Predictions' ? (
-            <PredictionsField fixtureWithPrediction={wedstrijdMetVoorspellingen} />
-          ) : (
-            <PredictionsHome fixtureWithPrediction={wedstrijdMetVoorspellingen} />
-          )}
-        </Grid>
+        <MatchCardBottom fixtureWithPrediction={wedstrijdMetVoorspellingen} display={display} />
       </CardContent>
     </Card>
   );
