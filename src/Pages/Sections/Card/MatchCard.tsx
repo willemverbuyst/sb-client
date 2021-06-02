@@ -1,11 +1,12 @@
-import { Card, CardContent, Chip, Grid, Theme, Typography } from '@material-ui/core';
+import { Card, CardContent, Grid, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ChipComponent from '../../../Components/Card/Chip';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../../../utils/timeFunctions';
+import { getTimeFromTimeStamp } from '../../../utils/timeFunctions';
+import MatchCardTop from './MatchCardTop';
 import PredictionsField from './PredictionsField';
 import PredictionsHome from './PredictionsHome';
 import PublicPredictions from './PublicPredictions';
@@ -27,14 +28,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   match: {
     cursor: 'pointer',
     height: 60,
-  },
-  chip: {
-    position: 'absolute',
-    right: 5,
-    top: 5,
-    transform: 'rotate(12deg)',
-    color: '#c5c5c5',
-    border: 'none',
   },
 }));
 
@@ -61,9 +54,7 @@ const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Pro
       <CardContent>
         {status === 'Match Finished' ? <ChipComponent score={score} /> : null}
 
-        <Typography variant="overline" color="textSecondary">
-          {timeStampFormattedToLocalDate(eventTimeStamp)}
-        </Typography>
+        <MatchCardTop eventTimeStamp={eventTimeStamp} />
 
         <Grid
           item
