@@ -25,7 +25,7 @@ const MatchCardInput: React.FC<IProps> = ({
   } = fixtureWithPrediction;
 
   return (
-    <>
+    <Grid item xs={12} container justify="center">
       <Grid item xs={2} container justify="center">
         <CardButton caption="Cancel" color="secondary" handleClick={hideInput} />
       </Grid>
@@ -38,7 +38,7 @@ const MatchCardInput: React.FC<IProps> = ({
       <Grid item xs={2} container justify="center">
         <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
       </Grid>
-    </>
+    </Grid>
   );
 };
 

@@ -29,9 +29,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = { wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions; display: string };
+interface IProps {
+  wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions;
+  display: string;
+}
 
-const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Props): ReactElement => {
+const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IProps): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
   const {
@@ -47,10 +50,20 @@ const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Pro
     status,
   } = wedstrijdMetVoorspellingen;
 
+  const outComeText =
+    status === 'Time to be defined'
+      ? `t.b.a.`
+      : status === 'Match Finished'
+      ? `${goalsHomeTeam} - ${goalsAwayTeam}`
+      : `${getTimeFromTimeStamp(eventTimeStamp)}`;
+
+  const renderScoreChip = (): ReactElement | null =>
+    status === 'Match Finished' ? <ChipComponent score={score} /> : null;
+
   return (
     <Card className={classes.card}>
       <CardContent>
-        {status === 'Match Finished' ? <ChipComponent score={score} /> : null}
+        {renderScoreChip()}
 
         <MatchCardTop eventTimeStamp={eventTimeStamp} />
 
@@ -72,15 +85,7 @@ const MatchCard: React.FC<Props> = ({ wedstrijdMetVoorspellingen, display }: Pro
           </Grid>
 
           <Grid item xs={2} container justify="center" alignItems="center">
-            {status === 'Time to be defined' ? (
-              <Typography>t.b.a.</Typography>
-            ) : status === 'Match Finished' ? (
-              <Typography>
-                {goalsHomeTeam} - {goalsAwayTeam}
-              </Typography>
-            ) : (
-              <Typography>{getTimeFromTimeStamp(eventTimeStamp)}</Typography>
-            )}
+            <Typography>{outComeText}</Typography>
           </Grid>
 
           <Grid item xs={1} container justify="center" alignItems="center">

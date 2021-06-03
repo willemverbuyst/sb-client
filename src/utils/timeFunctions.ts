@@ -41,3 +41,6 @@ export const formatTimeStampToLocalDate = (timeStamp: number): string => {
 
   return `${day} ${date.getDate()} ${month} ${year}`;
 };
+
+// The betting closes 5 minutes before the match
+export const hasBettingClosed = (timeStamp: number): boolean => Math.floor(Date.now() / 1000) > timeStamp - 5 * 60;
