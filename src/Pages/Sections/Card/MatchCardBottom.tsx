@@ -6,8 +6,8 @@ import { IPrediction } from '../../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { changePrediction, postNewPrediction } from '../../../store/predictions/action-creators';
 import { hasBettingClosed } from '../../../utils/timeFunctions';
+import { getPrediction } from './card-functions';
 import MatchCardInput from './MatchCardInput';
-import { getPrivatePrediction, getPublicPrediction } from './prediction-functions';
 
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;
@@ -52,16 +52,11 @@ const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: I
   const setShowInputToFalse = () => setShowInput(false);
   const setShowInputToTrue = () => setShowInput(true);
 
-  const prediction =
-    display === 'private'
-      ? getPrivatePrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp)
-      : getPublicPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status);
-
   return (
     <Grid item xs={12} container justify="center">
       <Grid item xs={12} container justify="center">
         <Typography variant="overline" color="textSecondary">
-          {prediction}
+          {getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display)}
         </Typography>
       </Grid>
       <>

@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import ChipComponent from '../../../Components/Card/Chip';
 import LogoSmallComponent from '../../../Components/Logo/LogoSmall';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import { getTimeFromTimeStamp } from '../../../utils/timeFunctions';
+import { getOutCome } from './card-functions';
 import MatchCardBottom from './MatchCardBottom';
 import MatchCardTop from './MatchCardTop';
 
@@ -51,13 +51,6 @@ const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IP
     status,
   } = wedstrijdMetVoorspellingen;
 
-  const outComeText =
-    status === 'Time to be defined'
-      ? `t.b.a.`
-      : status === 'Match Finished'
-      ? `${goalsHomeTeam} - ${goalsAwayTeam}`
-      : `${getTimeFromTimeStamp(eventTimeStamp)}`;
-
   const renderScoreChip = (): ReactElement | null =>
     status === 'Match Finished' ? <ChipComponent score={score} /> : null;
 
@@ -84,7 +77,7 @@ const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IP
           <LogoSmallComponent alt={homeTeamName} source={homeTeamLogo} />
 
           <Grid item xs={2} container justify="center" alignItems="center">
-            <Typography>{outComeText}</Typography>
+            <Typography>{getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}</Typography>
           </Grid>
 
           <LogoSmallComponent alt={awayTeamName} source={awayTeamLogo} />
