@@ -4,6 +4,7 @@ import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ChipComponent from '../../../Components/Card/Chip';
+import LogoSmallComponent from '../../../Components/Logo/LogoSmall';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { getTimeFromTimeStamp } from '../../../utils/timeFunctions';
 import MatchCardBottom from './MatchCardBottom';
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface IProps {
   wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions;
-  display: string;
+  display: 'private' | 'public';
 }
 
 const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IProps): ReactElement => {
@@ -80,17 +81,13 @@ const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IP
             <Typography style={{ textAlign: 'right' }}>{homeTeamName}</Typography>
           </Grid>
 
-          <Grid item xs={1} container justify="center" alignItems="center">
-            <img className={classes.logo} alt={homeTeamLogo} src={homeTeamLogo} />
-          </Grid>
+          <LogoSmallComponent alt={homeTeamName} source={homeTeamLogo} />
 
           <Grid item xs={2} container justify="center" alignItems="center">
             <Typography>{outComeText}</Typography>
           </Grid>
 
-          <Grid item xs={1} container justify="center" alignItems="center">
-            <img className={classes.logo} alt={awayTeamLogo} src={awayTeamLogo} />
-          </Grid>
+          <LogoSmallComponent alt={awayTeamName} source={awayTeamLogo} />
 
           <Grid item xs={4} container justify="flex-start" alignItems="center">
             <Typography>{awayTeamName}</Typography>

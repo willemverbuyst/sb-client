@@ -21,7 +21,7 @@ const FixturesSection: React.FC<IProps> = ({ currentRound }: IProps): ReactEleme
     <Grid item xs={12} container justify="center" className={classes.content}>
       {currentRound.fixtures.map((wedstrijd, i) => (
         <Grid item key={i} lg={4} md={6} xs={12}>
-          <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display="Home" />
+          <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display="private" />
         </Grid>
       ))}
     </Grid>
