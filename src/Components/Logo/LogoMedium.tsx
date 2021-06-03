@@ -4,8 +4,8 @@ import React, { ReactElement } from 'react';
 
 export const useStyles = makeStyles(() => ({
   logo: {
-    height: 20,
-    width: 20,
+    height: 40,
+    width: 40,
     objectFit: 'contain',
   },
 }));
@@ -15,7 +15,7 @@ interface IProps {
   source: string;
 }
 
-const LogoSmallComponent: React.FC<IProps> = ({ alt, source }: IProps): ReactElement => {
+const LogoMediumComponent: React.FC<IProps> = ({ alt, source }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -25,4 +25,4 @@ const LogoSmallComponent: React.FC<IProps> = ({ alt, source }: IProps): ReactEle
   );
 };
 
-export default LogoSmallComponent;
+export default LogoMediumComponent;
