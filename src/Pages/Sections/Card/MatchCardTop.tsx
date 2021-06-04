@@ -1,7 +1,7 @@
-import { Grid, Typography } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 import { formatTimeStampToLocalDate } from '../../../utils/timeFunctions';
+import TextComponent from './Text';
 
 interface IProps {
   eventTimeStamp: number;
@@ -9,11 +9,13 @@ interface IProps {
 
 const MatchCardTop: React.FC<IProps> = ({ eventTimeStamp }: IProps): ReactElement => {
   return (
-    <Grid item xs={12} container justify="center">
-      <Typography variant="overline" color="textSecondary">
-        {formatTimeStampToLocalDate(eventTimeStamp)}
-      </Typography>
-    </Grid>
+    <TextComponent
+      xs={12}
+      justify="center"
+      content={formatTimeStampToLocalDate(eventTimeStamp)}
+      variant="overline"
+      color="textSecondary"
+    />
   );
 };
 

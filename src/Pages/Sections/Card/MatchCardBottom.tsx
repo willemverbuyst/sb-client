@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 
 import CardButton from '../../../Components/Button/CardButton';
@@ -6,6 +6,7 @@ import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { hasBettingClosed } from '../../../utils/timeFunctions';
 import { getPrediction } from './card-functions';
 import MatchCardInput from './MatchCardInput';
+import TextComponent from './Text';
 
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;
@@ -26,11 +27,14 @@ const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: I
 
   return (
     <Grid item xs={12} container justify="center">
-      <Grid item xs={12} container justify="center">
-        <Typography variant="overline" color="textSecondary">
-          {getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display)}
-        </Typography>
-      </Grid>
+      <TextComponent
+        xs={12}
+        justify="center"
+        content={getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display)}
+        variant="overline"
+        color="textSecondary"
+      />
+
       <>
         {status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && !showInput ? (
           <CardButton caption="Edit" color="secondary" handleClick={setShowInputToTrue} variant="text" />
