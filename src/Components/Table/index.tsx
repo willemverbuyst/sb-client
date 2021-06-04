@@ -14,10 +14,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 type IProps = {
   tableHeaders: ReactElement;
   tableContent: ReactElement;
-  dialog: ReactElement | null;
 };
 
-const TableComponent: React.FC<IProps> = ({ tableHeaders, tableContent, dialog }: IProps): ReactElement => {
+const TableComponent: React.FC<IProps> = ({ tableHeaders, tableContent }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -30,7 +29,6 @@ const TableComponent: React.FC<IProps> = ({ tableHeaders, tableContent, dialog }
           </Table>
         </TableContainer>
       </Grid>
-      {dialog}
     </Grid>
   );
 };
