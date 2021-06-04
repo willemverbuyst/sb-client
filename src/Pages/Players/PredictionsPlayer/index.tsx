@@ -10,7 +10,7 @@ import { selectPastFixturesWithScoresPlayer, selectUserNamePlayer } from '../../
 import { calculateIndex } from '../../../utils/parameterFunctions';
 import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import PageContent from '../../Sections/PageContent';
-import PredictionsSection from '../../Sections/Predictions';
+import Predictions from '../../Sections/Predictions';
 import PaginationSection from './PaginationSection';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
@@ -48,7 +48,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
         pastFixturesWithScores && filteredAndSortedfixtures ? (
           <>
             <PageHeaderWithButton title={name} captionBtn="SCORES" colorBtn="secondary" handleClick={gotoScores} />
-            <PredictionsSection fixtures={filteredAndSortedfixtures} display="public" />
+            <Predictions fixtures={filteredAndSortedfixtures} display="public" />
             <PaginationSection
               totoronde={totoronde}
               ronde={ronde}

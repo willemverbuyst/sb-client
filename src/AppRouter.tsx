@@ -7,7 +7,7 @@ import PageNotFound from './Pages/PageNotFound';
 import ListOfPlayers from './Pages/Players/ListOfPlayers';
 import PredictionsPlayer from './Pages/Players/PredictionsPlayer';
 import ScoresPlayer from './Pages/Players/ScoresPlayer';
-import Predictions from './Pages/Predictions';
+import Predictions from './Pages/PredictionsUser';
 import EditPassword from './Pages/Profile/EditPassword';
 import EditProfile from './Pages/Profile/EditProfile';
 import Program from './Pages/Program';

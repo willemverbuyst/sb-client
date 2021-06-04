@@ -6,7 +6,7 @@ import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBt
 import { fetchCurrentRound } from '../../store/predictions/action-creators';
 import { selectCurrentRound } from '../../store/predictions/selectors';
 import PageContent from '../Sections/PageContent';
-import PredictionsSection from '../Sections/Predictions';
+import Predictions from '../Sections/Predictions';
 
 const Program: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const Program: React.FC = (): ReactElement => {
         currentRound ? (
           <>
             <PageHeaderWithoutButton title="Programma" />
-            <PredictionsSection fixtures={currentRound.fixtures} display="private" />
+            <Predictions fixtures={currentRound.fixtures} display="private" />
           </>
         ) : (
           <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />

@@ -10,10 +10,10 @@ import { selectFixtures } from '../../store/predictions/selectors';
 import { calculateIndex } from '../../utils/parameterFunctions';
 import { sortArrayWithObjects } from '../../utils/sortFunctions';
 import PageContent from '../Sections/PageContent';
-import PredictionsSection from '../Sections/Predictions';
+import Predictions from '../Sections/Predictions';
 import PaginationSection from './PaginationSection';
 
-const Predictions: React.FC = (): ReactElement => {
+const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
   const fixtures = useSelector(selectFixtures);
@@ -51,7 +51,7 @@ const Predictions: React.FC = (): ReactElement => {
               colorBtn="secondary"
               handleClick={gotoRanking}
             />
-            <PredictionsSection fixtures={filteredAndSortedfixtures} display="public" />
+            <Predictions fixtures={filteredAndSortedfixtures} display="public" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
           </>
         ) : (
@@ -62,4 +62,4 @@ const Predictions: React.FC = (): ReactElement => {
   );
 };
 
-export default Predictions;
+export default PredictionsUser;

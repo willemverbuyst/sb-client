@@ -15,7 +15,7 @@ interface IProps {
   display: 'private' | 'public';
 }
 
-const PredictionsSection: React.FC<IProps> = ({ fixtures, display }: IProps): ReactElement => {
+const Predictions: React.FC<IProps> = ({ fixtures, display }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
@@ -29,4 +29,4 @@ const PredictionsSection: React.FC<IProps> = ({ fixtures, display }: IProps): Re
   );
 };
 
-export default PredictionsSection;
+export default Predictions;
