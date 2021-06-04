@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import LogoSmallComponent from '../../../Components/Logo/LogoSmall';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { getOutCome } from './card-functions';
+import TextComponent from './Text';
 
 const useStyles = makeStyles(() => ({
   match: {
@@ -33,31 +34,19 @@ const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): R
     status,
   } = fixtureWithPrediction;
 
+  const goto = () => history.push(`/wedstrijd/${id}`);
+
   return (
-    <Grid
-      item
-      xs={12}
-      className={classes.match}
-      container
-      justify="center"
-      alignItems="center"
-      onClick={() => history.push(`/wedstrijd/${id}`)}
-    >
-      <Grid item xs={4} container justify="flex-end" alignItems="center">
-        <Typography style={{ textAlign: 'right' }}>{homeTeamName}</Typography>
-      </Grid>
-
+    <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" onClick={goto}>
+      <TextComponent xs={4} content={homeTeamName} justify="flex-end" />
       <LogoSmallComponent alt={homeTeamName} source={homeTeamLogo} />
-
-      <Grid item xs={2} container justify="center" alignItems="center">
-        <Typography>{getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}</Typography>
-      </Grid>
-
+      <TextComponent
+        xs={2}
+        content={getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}
+        justify="center"
+      />
       <LogoSmallComponent alt={awayTeamName} source={awayTeamLogo} />
-
-      <Grid item xs={4} container justify="flex-start" alignItems="center">
-        <Typography>{awayTeamName}</Typography>
-      </Grid>
+      <TextComponent xs={4} content={awayTeamName} justify="flex-start" />
     </Grid>
   );
 };
