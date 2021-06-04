@@ -10,7 +10,7 @@ import { selectFixtures } from '../../store/predictions/selectors';
 import { calculateIndex } from '../../utils/parameterFunctions';
 import { sortArrayWithObjects } from '../../utils/sortFunctions';
 import PageContent from '../Sections/PageContent';
-import FixturesSection from './FixturesSection';
+import PredictionsSection from '../Sections/Predictions';
 import PaginationSection from './PaginationSection';
 
 const Predictions: React.FC = (): ReactElement => {
@@ -51,7 +51,7 @@ const Predictions: React.FC = (): ReactElement => {
               colorBtn="secondary"
               handleClick={gotoRanking}
             />
-            <FixturesSection fixtures={filteredAndSortedfixtures} />
+            <PredictionsSection fixtures={filteredAndSortedfixtures} display="public" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
           </>
         ) : (
