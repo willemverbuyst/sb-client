@@ -1,6 +1,7 @@
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 
+import CardButton from '../../../Components/Button/CardButton';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { hasBettingClosed } from '../../../utils/timeFunctions';
 import { getPrediction } from './card-functions';
@@ -32,11 +33,7 @@ const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: I
       </Grid>
       <>
         {status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && !showInput ? (
-          <Grid item xs={12} container justify="center">
-            <Button size="small" color="secondary" onClick={setShowInputToTrue}>
-              Edit
-            </Button>
-          </Grid>
+          <CardButton caption="Edit" color="secondary" handleClick={setShowInputToTrue} variant="text" />
         ) : status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && showInput ? (
           <MatchCardInput fixtureWithPrediction={fixtureWithPrediction} hideInput={setShowInputToFalse} />
         ) : null}

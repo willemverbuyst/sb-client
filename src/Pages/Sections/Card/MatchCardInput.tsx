@@ -46,9 +46,7 @@ const MatchCardInput: React.FC<IProps> = ({ fixtureWithPrediction, hideInput }: 
 
   return (
     <Grid item xs={12} container justify="center">
-      <Grid item xs={2} container justify="center">
-        <CardButton caption="Cancel" color="secondary" handleClick={hideInput} />
-      </Grid>
+      <CardButton caption="Cancel" color="secondary" handleClick={hideInput} />
 
       <Grid item xs={8} container justify="center">
         <NumberField defaultValue={pGoalsHomeTeam || 0} onChange={handleGoalsHomeTeam} />
@@ -56,9 +54,7 @@ const MatchCardInput: React.FC<IProps> = ({ fixtureWithPrediction, hideInput }: 
         <NumberField defaultValue={pGoalsAwayTeam || 0} onChange={handleGoalsAwayTeam} />
       </Grid>
 
-      <Grid item xs={2} container justify="center">
-        <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
-      </Grid>
+      <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
     </Grid>
   );
 };
