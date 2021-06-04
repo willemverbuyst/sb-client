@@ -1,22 +1,16 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { TotoRound } from '../../../models/toto.models';
+import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../../constants/setupGame';
 import Pagination from '../../Sections/Pagination';
 
 interface IProps {
-  pastFixturesWithScores: TotoRound[];
   totoronde: string;
   ronde: string;
   id: string;
 }
 
-const PaginationSection: React.FC<IProps> = ({
-  pastFixturesWithScores,
-  totoronde,
-  ronde,
-  id,
-}: IProps): ReactElement => {
+const PaginationSection: React.FC<IProps> = ({ totoronde, ronde, id }: IProps): ReactElement => {
   const history = useHistory();
 
   const gotoTotoRound = (value: number, r: number) => history.push(`/spelers/${id}/voorspellingen/${value}/${r}`);
@@ -27,8 +21,8 @@ const PaginationSection: React.FC<IProps> = ({
     <Pagination
       totoRound={totoronde}
       round={ronde}
-      countTotoRound={pastFixturesWithScores.length}
-      countRound={pastFixturesWithScores.flat().length}
+      countTotoRound={TOTO_ROUNDS}
+      countRound={TOTAL_ROUNDS}
       gotoTotoRound={gotoTotoRound}
       gotoRound={gotoRound}
     />

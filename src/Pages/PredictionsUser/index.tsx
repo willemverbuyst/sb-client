@@ -4,11 +4,9 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import { fetchAllFixtures } from '../../store/predictions/action-creators';
-import { selectFixtures } from '../../store/predictions/selectors';
+import { selectFixturesSortedByTime } from '../../store/predictions/selectors';
 import { calculateIndex } from '../../utils/parameterFunctions';
-import { sortArrayWithObjects } from '../../utils/sortFunctions';
 import PageContent from '../Sections/PageContent';
 import Predictions from '../Sections/Predictions';
 import PaginationSection from './PaginationSection';
@@ -16,7 +14,7 @@ import PaginationSection from './PaginationSection';
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const fixtures = useSelector(selectFixtures);
+  const fixturesSortedByTime = useSelector(selectFixturesSortedByTime);
   const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
 
@@ -24,18 +22,16 @@ const PredictionsUser: React.FC = (): ReactElement => {
   const r = Number(ronde);
 
   useEffect(() => {
-    if (!fixtures) {
+    if (!fixturesSortedByTime) {
       dispatch(fetchAllFixtures());
     }
-  }, [dispatch, fixtures]);
+  }, [dispatch, fixturesSortedByTime]);
 
-  const filteredFixtures = fixtures ? [...fixtures[t - 1][calculateIndex(r)]] : null;
+  // [t- 1]: as an array starts at index 0, subtract 1 from the totoround number
+  const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][calculateIndex(r)]] : null;
 
-  const filteredAndSortedfixtures = filteredFixtures
-    ? sortArrayWithObjects<keyof IFixtureWithScoreAndPredictions, IFixtureWithScoreAndPredictions>('eventTimeStamp')(
-        filteredFixtures,
-      )
-    : null;
+  console.log(fixturesSortedByTime);
+  console.log(filteredFixtures);
 
   const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
 
@@ -43,7 +39,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Voorspellingen"
       content={
-        filteredAndSortedfixtures ? (
+        filteredFixtures ? (
           <>
             <PageHeaderWithButton
               title="Voorspellingen"
@@ -51,7 +47,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
               colorBtn="secondary"
               handleClick={gotoRanking}
             />
-            <Predictions fixtures={filteredAndSortedfixtures} display="public" />
+            <Predictions fixtures={filteredFixtures} display="private" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
           </>
         ) : (
