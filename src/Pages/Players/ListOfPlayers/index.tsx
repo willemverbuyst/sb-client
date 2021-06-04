@@ -4,28 +4,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import MessageComponent from '../../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
 import { fetchAllPlayers } from '../../../store/players/action-creators';
-import { selectPlayers } from '../../../store/players/selectors';
+import { selectPlayersSortedByName } from '../../../store/players/selectors';
 import PageContent from '../../Sections/PageContent';
 import TableWithPlayers from './TableWithPlayers';
 
 const ListOfPlayers: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const players = useSelector(selectPlayers);
+  const playersSortedByName = useSelector(selectPlayersSortedByName);
 
   useEffect(() => {
-    if (!players) {
+    if (!playersSortedByName) {
       dispatch(fetchAllPlayers());
     }
-  }, [dispatch, players]);
+  }, [dispatch, playersSortedByName]);
 
   return (
     <PageContent
       loadingText="Spelers"
       content={
-        players ? (
+        playersSortedByName ? (
           <>
             <PageHeaderWithoutButton title="Spelers" />
-            <TableWithPlayers players={players} />
+            <TableWithPlayers playersSortedByName={playersSortedByName} />
           </>
         ) : (
           <MessageComponent message={`Geen spelers gevonden`} />

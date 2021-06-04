@@ -7,10 +7,10 @@ import TableWithPlayersDialog from './TableWithPlayersDialog';
 import TableWithPlayersHeaders from './TableWithPlayersHeaders';
 
 type IProps = {
-  players: IPlayer[];
+  playersSortedByName: IPlayer[];
 };
 
-const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement => {
+const TableWithPlayers: React.FC<IProps> = ({ playersSortedByName }: IProps): ReactElement => {
   const [showDialog, setShowDialog] = useState(false);
   const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null);
 
@@ -26,7 +26,9 @@ const TableWithPlayers: React.FC<IProps> = ({ players }: IProps): ReactElement =
   return (
     <TableComponent
       tableHeaders={<TableWithPlayersHeaders />}
-      tableContent={<TableWithPlayersContent players={players} handleBtnClick={handleBtnClick} />}
+      tableContent={
+        <TableWithPlayersContent playersSortedByName={playersSortedByName} handleBtnClick={handleBtnClick} />
+      }
       dialog={
         showDialog && playerToDelete ? (
           <TableWithPlayersDialog playerToDelete={playerToDelete} closeDialog={closeDialog} />

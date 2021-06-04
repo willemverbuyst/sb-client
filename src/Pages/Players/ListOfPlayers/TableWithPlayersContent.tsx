@@ -2,20 +2,16 @@ import { TableBody } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 import { IPlayer } from '../../../models/player.model';
-import { sortArrayWithObjects } from '../../../utils/sortFunctions';
 import TableWithPlayersRow from './TableWithPlayersRow';
 
 type IProps = {
-  players: IPlayer[];
+  playersSortedByName: IPlayer[];
   handleBtnClick: (player: IPlayer) => void;
 };
 
-const TableWithPlayersContent = ({ players, handleBtnClick }: IProps): ReactElement => {
-  const sortTable = (playersToSort: IPlayer[]): IPlayer[] =>
-    sortArrayWithObjects<keyof IPlayer, IPlayer>('userName')(playersToSort);
-
+const TableWithPlayersContent = ({ playersSortedByName, handleBtnClick }: IProps): ReactElement => {
   const tableContent = (): ReactElement[] =>
-    sortTable(players).map((player, i) => <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />);
+    playersSortedByName.map((player, i) => <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />);
 
   return <TableBody>{tableContent()}</TableBody>;
 };
