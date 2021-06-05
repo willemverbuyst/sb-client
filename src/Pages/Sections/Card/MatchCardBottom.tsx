@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 
 import CardButton from '../../../Components/Button/CardButton';
@@ -6,7 +6,6 @@ import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import { hasBettingClosed } from '../../../utils/timeFunctions';
 import { getPrediction } from './card-functions';
 import MatchCardInput from './MatchCardInput';
-import TextComponent from './Text';
 
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;
@@ -30,23 +29,33 @@ const MatchCardBottom: React.FC<IProps> = ({
   const setShowInputToFalse = () => setShowInput(false);
   const setShowInputToTrue = () => setShowInput(true);
 
+  const prediction = getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display, userNamePlayer);
+
+  const renderEditButton = (): ReactElement | null => {
+    return status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && !showInput ? (
+      <CardButton caption="Edit" color="secondary" handleClick={setShowInputToTrue} variant="text" />
+    ) : null;
+  };
+
+  const renderInput = (): ReactElement | null => {
+    return status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' ? (
+      <MatchCardInput fixtureWithPrediction={fixtureWithPrediction} hideInput={setShowInputToFalse} />
+    ) : null;
+  };
+
   return (
     <Grid item xs={12} container justify="center">
-      <TextComponent
-        xs={12}
-        justify="center"
-        content={getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display, userNamePlayer)}
-        variant="overline"
-        color="textSecondary"
-      />
+      {!showInput ? (
+        <Grid item xs={12} container justify="center" alignItems="center">
+          <Typography variant="overline" color="textSecondary">
+            {prediction}
+          </Typography>
 
-      <>
-        {status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && !showInput ? (
-          <CardButton caption="Edit" color="secondary" handleClick={setShowInputToTrue} variant="text" />
-        ) : status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && showInput ? (
-          <MatchCardInput fixtureWithPrediction={fixtureWithPrediction} hideInput={setShowInputToFalse} />
-        ) : null}
-      </>
+          {renderEditButton()}
+        </Grid>
+      ) : (
+        renderInput()
+      )}
     </Grid>
   );
 };
