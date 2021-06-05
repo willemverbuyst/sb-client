@@ -14,8 +14,6 @@ module.exports = {
     dialect: 'mysql',
   },
   production: {
-    url: process.env.DATABASE_PROD,
-    dialect: 'postgres',
-    operatorsAliases: '0',
+    use_env_variable: 'DATABASE_URL',
   },
 };
