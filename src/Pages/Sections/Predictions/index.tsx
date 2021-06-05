@@ -13,16 +13,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface IProps {
   fixtures: IFixtureWithScoreAndPredictions[];
   display: 'private' | 'public';
+  userNamePlayer?: string;
 }
 
-const Predictions: React.FC<IProps> = ({ fixtures, display }: IProps): ReactElement => {
+const Predictions: React.FC<IProps> = ({ fixtures, display, userNamePlayer = '' }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
     <Grid item xs={12} container justify="center" className={classes.content}>
       {fixtures.map((wedstrijd, i) => (
         <Grid item key={i} lg={4} md={6} xs={12}>
-          <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display={display} />
+          <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display={display} userNamePlayer={userNamePlayer} />
         </Grid>
       ))}
     </Grid>

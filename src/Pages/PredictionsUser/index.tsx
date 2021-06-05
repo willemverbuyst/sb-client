@@ -30,9 +30,6 @@ const PredictionsUser: React.FC = (): ReactElement => {
   // [t- 1]: as an array starts at index 0, subtract 1 from the totoround number
   const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][calculateIndex(r)]] : null;
 
-  console.log(fixturesSortedByTime);
-  console.log(filteredFixtures);
-
   const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
 
   return (

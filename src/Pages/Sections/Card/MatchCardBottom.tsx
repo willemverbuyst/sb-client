@@ -11,9 +11,14 @@ import TextComponent from './Text';
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;
   display: 'private' | 'public';
+  userNamePlayer: string;
 }
 
-const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: IProps): ReactElement => {
+const MatchCardBottom: React.FC<IProps> = ({
+  fixtureWithPrediction,
+  display,
+  userNamePlayer,
+}: IProps): ReactElement => {
   const [showInput, setShowInput] = useState<boolean>(false);
 
   const {
@@ -30,7 +35,7 @@ const MatchCardBottom: React.FC<IProps> = ({ fixtureWithPrediction, display }: I
       <TextComponent
         xs={12}
         justify="center"
-        content={getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display)}
+        content={getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display, userNamePlayer)}
         variant="overline"
         color="textSecondary"
       />

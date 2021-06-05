@@ -19,9 +19,14 @@ const getPrivatePrediction = (
     ? `Je voorspelling is ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : `Nog geen voorspelling`;
 
-const getPublicPrediction = (pGoalsHomeTeam: number | null, pGoalsAwayTeam: number | null, status: string): string =>
+const getPublicPrediction = (
+  pGoalsHomeTeam: number | null,
+  pGoalsAwayTeam: number | null,
+  status: string,
+  userNamePlayer: string,
+): string =>
   (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished'
-    ? `Voorspelling: ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
+    ? `${userNamePlayer}'s Voorspelling: ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : status === 'Match Finished'
     ? `Geen voorspelling`
     : `Wedstrijd nog niet gespeeld.`;
@@ -32,10 +37,11 @@ export const getPrediction = (
   status: string,
   eventTimeStamp: number,
   display: 'private' | 'public',
+  userNamePlayer: string,
 ): string =>
   display === 'private'
     ? getPrivatePrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp)
-    : getPublicPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status);
+    : getPublicPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, userNamePlayer);
 
 export const getOutCome = (
   status: string,

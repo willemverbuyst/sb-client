@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface IProps {
   wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions;
   display: 'private' | 'public';
+  userNamePlayer: string;
 }
 
-const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IProps): ReactElement => {
+const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display, userNamePlayer }: IProps): ReactElement => {
   const classes = useStyles();
   const { eventTimeStamp, score, status } = wedstrijdMetVoorspellingen;
 
@@ -34,7 +35,11 @@ const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display }: IP
         {status === 'Match Finished' ? <ChipComponent score={score} /> : null}
         <MatchCardTop eventTimeStamp={eventTimeStamp} />
         <MatchCardMiddle fixtureWithPrediction={wedstrijdMetVoorspellingen} />
-        <MatchCardBottom fixtureWithPrediction={wedstrijdMetVoorspellingen} display={display} />
+        <MatchCardBottom
+          fixtureWithPrediction={wedstrijdMetVoorspellingen}
+          display={display}
+          userNamePlayer={userNamePlayer}
+        />
       </CardContent>
     </Card>
   );

@@ -33,19 +33,16 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     ? [...pastFixturesWithScoresSortedByTime[t - 1][calculateIndex(r)]]
     : null;
 
-  console.log(pastFixturesWithScoresSortedByTime);
-  console.log(filteredFixtures);
-
   const gotoScores = () => history.push(`/spelers/${id}/scores`);
 
   return (
     <PageContent
       loadingText="Speler..."
       content={
-        filteredFixtures ? (
+        filteredFixtures && userNamePlayer ? (
           <>
             <PageHeaderWithButton title={name} captionBtn="SCORES" colorBtn="secondary" handleClick={gotoScores} />
-            <Predictions fixtures={filteredFixtures} display="public" />
+            <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
             <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
           </>
         ) : (
