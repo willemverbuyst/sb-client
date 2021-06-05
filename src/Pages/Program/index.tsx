@@ -4,28 +4,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
 import { fetchCurrentRound } from '../../store/predictions/action-creators';
-import { selectCurrentRound } from '../../store/predictions/selectors';
+import { selectCurrentRoundSortedByTime } from '../../store/predictions/selectors';
 import PageContent from '../Sections/PageContent';
 import Predictions from '../Sections/Predictions';
 
 const Program: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const currentRound = useSelector(selectCurrentRound);
+  const currentRoundSortedByTime = useSelector(selectCurrentRoundSortedByTime);
 
   useEffect(() => {
-    if (!currentRound) {
+    if (!currentRoundSortedByTime) {
       dispatch(fetchCurrentRound());
     }
-  }, [dispatch, currentRound]);
+  }, [dispatch, currentRoundSortedByTime]);
 
   return (
     <PageContent
       loadingText="Programma"
       content={
-        currentRound ? (
+        currentRoundSortedByTime ? (
           <>
             <PageHeaderWithoutButton title="Programma" />
-            <Predictions fixtures={currentRound.fixtures} display="private" />
+            <Predictions fixtures={currentRoundSortedByTime} display="private" />
           </>
         ) : (
           <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
