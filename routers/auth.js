@@ -163,29 +163,16 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
     phoneNumber,
     admin,
     totaalToto,
-    favteamId,
+    teamId,
   } = req.body;
 
-  if (
-    !userName ||
-    !firstName ||
-    !lastName ||
-    !email ||
-    !phoneNumber ||
-    !favteamId
-  )
+  if (!userName || !firstName || !lastName || !email || !phoneNumber || !teamId)
     return res
       .status(400)
       .send({ message: 'Details ontbreken, probeer opnieuw!' });
 
   try {
     const userToUpdate = req.user;
-
-    if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password))
-      return res.status(400).send({
-        message:
-          'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
-      });
 
     await userToUpdate.update({
       userName,
@@ -195,7 +182,7 @@ router.patch('/me/profile', authMiddleware, async (req, res) => {
       phoneNumber,
       admin,
       totaalToto,
-      favteamId,
+      teamId,
     });
 
     const user = await User.findOne({

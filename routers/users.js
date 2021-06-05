@@ -69,21 +69,33 @@ router.get('/:id', authMiddleware, async (req, res) => {
 
     const timeStampLastMonday = lastMonday();
 
-    const fixtures = await Fixture.findAll({
-      where: {
-        eventTimeStamp: {
-          [Op.lt]: [timeStampLastMonday],
-        },
-      },
-      order: [['id', 'ASC']],
-    });
+    // const fixtures = await Fixture.findAll({
+    //   where: {
+    //     eventTimeStamp: {
+    //       [Op.lt]: [timeStampLastMonday],
+    //     },
+    //   },
+    //   order: [['id', 'ASC']],
+    // });
+
+    // const fixturesWithPrediction = await Fixture.findAll({
+    //   where: {
+    //     id: {
+    //       [Op.lte]: fixtures[fixtures.length - 1].id,
+    //     },
+    //   },
+    //   include: {
+    //     model: Prediction,
+    //     where: { userId: id },
+    //     attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+    //     required: false,
+    //   },
+    //   order: [['id', 'ASC']],
+    //   raw: true,
+    //   nest: true,
+    // });
 
     const fixturesWithPrediction = await Fixture.findAll({
-      where: {
-        id: {
-          [Op.lte]: fixtures[fixtures.length - 1].id,
-        },
-      },
       include: {
         model: Prediction,
         where: { userId: id },

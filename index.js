@@ -20,16 +20,17 @@ app.use(corsMiddleWare());
 // teams.getTeams();
 
 /* Call getTFixtures to get all the fixtures and seed the fixtures_table */
-const fixtures = require('./api/bc_fixtures');
-fixtures.getFixtures();
+// const fixtures = require('./api/bc_fixtures');
+// fixtures.getFixtures();
 
 app.use(loggerMiddleWare('dev'));
 app.use(bodyParserMiddleWare);
 
-if (process.env.DELAY)
-  app.use((_req, _res, next) => {
-    setTimeout(() => next(), parseInt(process.env.DELAY));
-  });
+/* this to simulate a delay from the server during development */
+// if (process.env.DELAY)
+//   app.use((_req, _res, next) => {
+//     setTimeout(() => next(), parseInt(process.env.DELAY));
+//   });
 
 app.use('/', authRouter);
 app.use('/predictions', predictionRouter);
