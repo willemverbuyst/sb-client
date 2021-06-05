@@ -1,14 +1,16 @@
-import { APP_DONE_LOADING, APP_LOADING, AppDoneLoading, AppLoading, SET_MESSAGE, SetMessage } from './types';
+import { Severity } from '../../models/app.models';
+import { ActionType } from './action-types';
+import { AppDoneLoading, AppLoading, SetMessage } from './action-types';
 
 export const appDoneLoading = (): AppDoneLoading => ({
-  type: APP_DONE_LOADING,
+  type: ActionType.APP_DONE_LOADING,
 });
 
-export const appLoading = (): AppLoading => ({ type: APP_LOADING });
+export const appLoading = (): AppLoading => ({ type: ActionType.APP_LOADING });
 
-export const setMessage = (severity: 'success' | 'info' | 'warning' | 'error', text: string): SetMessage => {
+export const setMessage = (severity: Severity, text: string): SetMessage => {
   return {
-    type: SET_MESSAGE,
+    type: ActionType.SET_MESSAGE,
     payload: {
       severity,
       text,

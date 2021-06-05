@@ -4,15 +4,15 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Pagination from '@material-ui/lab/Pagination';
 import React, { ReactElement } from 'react';
 
-type Props = {
+interface IProps {
   label: string;
   page: number;
   count: number;
   color: 'primary' | 'secondary' | 'standard';
   onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
-};
+}
 
-const PaginationComponent: React.FC<Props> = (props: Props): ReactElement => {
+const PaginationComponent: React.FC<IProps> = (props: IProps): ReactElement => {
   const theme = useTheme();
   const pagVariant = useMediaQuery(theme.breakpoints.up('xs'));
 

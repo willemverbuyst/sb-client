@@ -1,17 +1,17 @@
-import { AppState } from './appState/types';
-import { PlayersState } from './players/types';
-import { PredictionsState } from './predictions/types';
-import { ScoresState } from './scores/types';
-import { TeamsState } from './teams/types';
-import { UserState } from './user/types';
+import { IAppState } from './appState/reducer';
+import { IPlayersState } from './players/reducer';
+import { IPredictionsState } from './predictions/reducer';
+import { IScoresState } from './scores/reducer';
+import { ITeamsState } from './teams/reducer';
+import { IUserState } from './user/reducer';
 
 export type StoreState = {
-  appState: AppState;
-  playersState: PlayersState;
-  predictionsState: PredictionsState;
-  scoresState: ScoresState;
-  teamsState: TeamsState;
-  userState: UserState;
+  appState: IAppState;
+  playersState: IPlayersState;
+  predictionsState: IPredictionsState;
+  scoresState: IScoresState;
+  teamsState: ITeamsState;
+  userState: IUserState;
 };
 
 export type GetState = () => StoreState;

@@ -13,7 +13,7 @@ import {
   postPrediction,
   removeAllFixtures,
   updatePrediction,
-} from '../actions';
+} from '../action-creators';
 import {
   ALL_FIXTURES_FETCHED,
   AllFixturesFetched,

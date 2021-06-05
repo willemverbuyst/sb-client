@@ -1,28 +1,14 @@
 import { Box, Grid } from '@material-ui/core';
 import { createStyles, makeStyles, MuiThemeProvider, Theme } from '@material-ui/core/styles';
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Header from './Components/Header';
-import Toast from './Components/Toast';
-import UserDisplay from './Components/UserDisplay/UserDisplay';
-import SignUp from './Pages/Admin/SignUp';
-import LogIn from './Pages/LogIn';
-import PageNotFound from './Pages/PageNotFound';
-import ListOfPlayers from './Pages/Players/ListOfPlayers';
-import PredictionsPlayer from './Pages/Players/PredictionsPlayer';
-import ScoresPlayer from './Pages/Players/ScoresPlayer';
-import Predictions from './Pages/Predictions';
-import Profile from './Pages/Profile';
-import Program from './Pages/Program';
-import Rules from './Pages/Rules';
-import Fixture from './Pages/Scores/Fixture';
-import Round from './Pages/Scores/Round';
-import ScoresUser from './Pages/Scores/ScoresUser';
-import TotalToto from './Pages/Scores/TotalToto';
-import TotoRound from './Pages/Scores/TotoRound';
-import { getUserWithStoredToken } from './store/user/actions';
+import AppRouter from './AppRouter';
+import Toast from './Components/Communication/Toast';
+import Header from './Pages/Sections/Header';
+import UserDisplay from './Pages/Sections/UserDisplay';
+import { getUserWithStoredToken } from './store/user/action-creators';
 import IceBlueGold from './ui/theme';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -53,7 +39,7 @@ const App: React.FC = (): ReactElement => {
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
-  }, [dispatch]);
+  }, []);
 
   return (
     <MuiThemeProvider theme={IceBlueGold}>
@@ -63,25 +49,7 @@ const App: React.FC = (): ReactElement => {
         <Grid container>
           <Grid item md={11} xs={12}>
             <Box className={classes.content}>
-              <Switch>
-                <Redirect exact path="/" to="/login" />
-                <Route exact path="/admin/signup" component={SignUp} />
-                <Route exact path="/klassement/ronde/:id" component={Round} />
-                <Route exact path="/klassement/totaaltoto" component={TotalToto} />
-                <Route exact path="/klassement/totoronde/:id" component={TotoRound} />
-                <Route exact path="/login" component={LogIn} />
-                <Route exact path="/page-not-found" component={PageNotFound} />
-                <Route exact path="/profiel" component={Profile} />
-                <Route exact path="/programma" component={Program} />
-                <Route exact path="/regels" component={Rules} />
-                <Route exact path="/scores" component={ScoresUser} />
-                <Route exact path="/spelers" component={ListOfPlayers} />
-                <Route exact path="/spelers/:id/scores" component={ScoresPlayer} />
-                <Route exact path="/spelers/:id/voorspellingen/:totoronde/:ronde" component={PredictionsPlayer} />
-                <Route exact path="/voorspellingen/:totoronde/:ronde" component={Predictions} />
-                <Route exact path="/wedstrijd/:id" component={Fixture} />
-                <Redirect path="/" to="/page-not-found" />
-              </Switch>
+              <AppRouter />
             </Box>
           </Grid>
           <Grid item md={1} xs={12}>

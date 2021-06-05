@@ -1,19 +1,26 @@
-import { APP_DONE_LOADING, APP_LOADING, AppState, AppStateTypes, SET_MESSAGE } from './types';
+import { IMessage } from '../../models/app.models';
+import { ActionType } from './action-types';
+import { AppStateActions } from './action-types';
 
-const initialState: AppState = {
+export interface IAppState {
+  loading: boolean;
+  message: IMessage | null;
+}
+
+const initialState: IAppState = {
   loading: false,
   message: null,
 };
 
-const appStateReducer = (state = initialState, action: AppStateTypes): AppState => {
+const appStateReducer = (state = initialState, action: AppStateActions): IAppState => {
   switch (action.type) {
-    case APP_LOADING:
+    case ActionType.APP_LOADING:
       return { ...state, loading: true };
 
-    case APP_DONE_LOADING:
+    case ActionType.APP_DONE_LOADING:
       return { ...state, loading: false };
 
-    case SET_MESSAGE:
+    case ActionType.SET_MESSAGE:
       return { ...state, message: { ...action.payload } };
 
     default:
