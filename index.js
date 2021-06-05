@@ -26,7 +26,7 @@ app.use(corsMiddleWare());
 app.use(loggerMiddleWare('dev'));
 app.use(bodyParserMiddleWare);
 
-// this to simulate a delay from the server during development
+/* this to simulate a delay from the server during development */
 // if (process.env.DELAY)
 //   app.use((_req, _res, next) => {
 //     setTimeout(() => next(), parseInt(process.env.DELAY));
