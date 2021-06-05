@@ -7,7 +7,6 @@ import { ISignUpCredentials } from '../../models/credentials.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading } from '../appState/actions';
 import { setMessage } from '../appState/actions';
-import { handleError } from '../error-handler';
 import { StoreState } from '../types';
 import { PlayersActions } from './action-types';
 import {
@@ -47,7 +46,14 @@ export const addPlayer = (
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
-      handleError(error);
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -66,7 +72,14 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
     dispatch(storeAllPlayers(players));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -84,7 +97,14 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
     dispatch(storePlayerProfile(playerProfile));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -102,10 +122,16 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
     dispatch(storePlayerScores(scoresPlayer));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
-
 export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
@@ -120,7 +146,14 @@ export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown,
     dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -146,6 +179,13 @@ export const updatePlayerAdminStatus = (
     dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };

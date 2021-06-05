@@ -7,7 +7,6 @@ import { API_URL } from '../../config/constants';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
-import { handleError } from '../error-handler';
 import { resetPlayers } from '../players/actions';
 import { resetAllFixtures } from '../predictions/actions';
 import { resetAllScores } from '../scores/actions';
@@ -31,7 +30,14 @@ export const changePassword = (newPassword: string): ThunkAction<void, StoreStat
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
-      handleError(error);
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -63,7 +69,14 @@ export const editUserProfile = (
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
-      handleError(error);
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -82,7 +95,14 @@ export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, Sto
       dispatch(setMessage('success', response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
-      handleError(error);
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -110,7 +130,14 @@ export const getUserWithStoredToken = (): ThunkAction<void, StoreState, unknown,
     dispatch(tokenUserStillValid(response.data));
     dispatch(appDoneLoading());
   } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
     userLogOut()(dispatch);
-    handleError(error);
+    dispatch(appDoneLoading());
   }
 };

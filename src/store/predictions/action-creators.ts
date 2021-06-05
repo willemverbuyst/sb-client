@@ -6,7 +6,6 @@ import { API_URL } from '../../config/constants';
 import { IPrediction } from '../../models/predictions.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
-import { handleError } from '../error-handler';
 import { StoreState } from '../types';
 import { PredictionActions } from './action-types';
 import { postPrediction, storeAllFixtures, storeCurrentRound, updatePrediction } from './actions';
@@ -36,7 +35,14 @@ export const changePrediction = ({
     dispatch(updatePrediction(response.data.prediction));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -54,7 +60,14 @@ export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Actio
     dispatch(storeAllFixtures(allFixtures));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -72,7 +85,14 @@ export const fetchCurrentRound = (): ThunkAction<void, StoreState, unknown, Acti
     dispatch(storeCurrentRound(currentRound));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
 
@@ -102,6 +122,13 @@ export const postNewPrediction = ({
     dispatch(postPrediction(response.data.prediction));
     dispatch(appDoneLoading());
   } catch (error) {
-    handleError(error);
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
   }
 };
