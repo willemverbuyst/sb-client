@@ -52,6 +52,19 @@ export const selectScoresTotalTotoSortedByName = (state: StoreState): IUserWithS
   }
 };
 
+export const selectScoresTotalTotoSortedByScore = (state: StoreState): IUserWithScore[] | null => {
+  if (state.scoresState.totalTotoScores && state.scoresState.totalTotoScores.length > 0) {
+    const scoresTotalToto = state.scoresState.totalTotoScores;
+    const scoresTotalTotoSortedByScore: IUserWithScore[] = sortArrayWithObjects<keyof IUserWithScore, IUserWithScore>(
+      'score',
+    )(scoresTotalToto);
+
+    return scoresTotalTotoSortedByScore;
+  } else {
+    return null;
+  }
+};
+
 export const selectScoresTotoRoundSortedByName = (state: StoreState): IUserWithScore[] | null => {
   if (state.scoresState.totoRoundScores) {
     const scoresTotoRound = state.scoresState.totoRoundScores.usersWithScores;
@@ -66,6 +79,20 @@ export const selectScoresTotoRoundSortedByName = (state: StoreState): IUserWithS
   }
 };
 
+export const selectScoresTotoRoundSortedByScore = (state: StoreState): IUserWithScore[] | null => {
+  if (state.scoresState.totoRoundScores) {
+    const scoresTotoRound = state.scoresState.totoRoundScores.usersWithScores;
+
+    const scoresTotoRoundSortedByScore: IUserWithScore[] = sortArrayWithObjects<keyof IUserWithScore, IUserWithScore>(
+      'score',
+    )(scoresTotoRound);
+
+    return scoresTotoRoundSortedByScore;
+  } else {
+    return null;
+  }
+};
+
 export const selectScoresRoundSortedByName = (state: StoreState): IUserWithScore[] | null => {
   if (state.scoresState.roundScores) {
     const scoresRound = state.scoresState.roundScores.usersWithScores;
@@ -74,6 +101,19 @@ export const selectScoresRoundSortedByName = (state: StoreState): IUserWithScore
     )(scoresRound);
 
     return scoresRoundSortedByName;
+  } else {
+    return null;
+  }
+};
+
+export const selectScoresRoundSortedByScore = (state: StoreState): IUserWithScore[] | null => {
+  if (state.scoresState.roundScores) {
+    const scoresRound = state.scoresState.roundScores.usersWithScores;
+    const scoresRoundSortedByScore: IUserWithScore[] = sortArrayWithObjects<keyof IUserWithScore, IUserWithScore>(
+      'score',
+    )(scoresRound);
+
+    return scoresRoundSortedByScore;
   } else {
     return null;
   }

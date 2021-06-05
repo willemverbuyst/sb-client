@@ -7,7 +7,7 @@ import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
-import { selectScoresRoundSortedByName, selectTotoRoundId } from '../../../store/scores/selectors';
+import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -15,8 +15,9 @@ import BreadCrumbsSection from './BreadCrumbsSection';
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
+  // const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
+  const scoresRoundSortedByScore = useSelector(selectScoresTotoRoundSortedByScore);
   const totoRoundId = useSelector(selectTotoRoundId);
-  const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const TotoRound: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Klassement"
       content={
-        scoresRoundSortedByName ? (
+        scoresRoundSortedByScore ? (
           <>
             <PageHeaderWithButton
               title="Klassement"
@@ -41,7 +42,7 @@ const TotoRound: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text={`TOTO RONDE ${id}`} />
             <DividerComponent />
-            <ScoresBarChart scores={scoresRoundSortedByName} />
+            <ScoresBarChart scores={scoresRoundSortedByScore} />
             <BreadCrumbsSection id={id} />
           </>
         ) : (

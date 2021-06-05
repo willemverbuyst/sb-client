@@ -7,7 +7,7 @@ import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchScoresTotalToto } from '../../../store/scores/action-creators';
-import { selectScoresTotalTotoSortedByName } from '../../../store/scores/selectors';
+import { selectScoresTotalTotoSortedByScore } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -15,13 +15,14 @@ import BreadCrumbsSection from './BreadCrumbsSection';
 const TotalToto: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const scoresTotalTotoSortedByName = useSelector(selectScoresTotalTotoSortedByName);
+  // const scoresTotalTotoSortedByName = useSelector(selectScoresTotalTotoSortedByName);
+  const scoresTotalTotoSortedByScore = useSelector(selectScoresTotalTotoSortedByScore);
 
   useEffect(() => {
-    if (!scoresTotalTotoSortedByName) {
+    if (!scoresTotalTotoSortedByScore) {
       dispatch(fetchScoresTotalToto());
     }
-  }, [dispatch, scoresTotalTotoSortedByName]);
+  }, [dispatch, scoresTotalTotoSortedByScore]);
 
   const gotoTotoRound = () => history.push(`/voorspellingen/1/1`);
 
@@ -29,7 +30,7 @@ const TotalToto: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Klassement"
       content={
-        scoresTotalTotoSortedByName ? (
+        scoresTotalTotoSortedByScore ? (
           <>
             <PageHeaderWithButton
               title="Klassement"
@@ -39,7 +40,7 @@ const TotalToto: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text="TOTAAL TOTO" />
             <DividerComponent />
-            <ScoresBarChart scores={scoresTotalTotoSortedByName} />
+            <ScoresBarChart scores={scoresTotalTotoSortedByScore} />
             <BreadCrumbsSection />
           </>
         ) : (

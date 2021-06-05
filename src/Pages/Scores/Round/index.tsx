@@ -8,7 +8,7 @@ import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
 import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
-import { selectRoundId, selectScoresRoundSortedByName } from '../../../store/scores/selectors';
+import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
@@ -18,7 +18,8 @@ const Round: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
   const roundId = useSelector(selectRoundId);
-  const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
+  // const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
+  const scoresRoundSortedByScore = useSelector(selectScoresRoundSortedByScore);
 
   useEffect(() => {
     if (!roundId || Number(id) !== roundId) {
@@ -36,7 +37,7 @@ const Round: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Klassement"
       content={
-        scoresRoundSortedByName ? (
+        scoresRoundSortedByScore ? (
           <>
             <PageHeaderWithButton
               title="Klassement"
@@ -46,7 +47,7 @@ const Round: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text={`RONDE ${id}`} />
             <DividerComponent />
-            <ScoresBarChart scores={scoresRoundSortedByName} />
+            <ScoresBarChart scores={scoresRoundSortedByScore} />
             <BreadCrumbsSection id={id} />
           </>
         ) : (
