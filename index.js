@@ -16,8 +16,8 @@ const bodyParserMiddleWare = express.json();
 app.use(corsMiddleWare());
 
 /* Call getTeams once, to get all the teams and seed the team_table */
-// const teams = require('./api/bc_teams');
-// teams.getTeams();
+const teams = require('./api/bc_teams');
+teams.getTeams();
 
 /* Call getTFixtures to get all the fixtures and seed the fixtures_table */
 // const fixtures = require('./api/bc_fixtures');
