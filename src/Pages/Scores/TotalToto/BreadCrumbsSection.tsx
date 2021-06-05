@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement } from 'react';
 
-import TotoRoundSelector from '../../../Components/Selector/TotoRoundSelector';
+import TotoRoundSelector from '../../Sections/BreadCrumbs/Selector/TotoRoundSelector';
 
 const useStyles = makeStyles((theme: Theme) => ({
   breadCrumbsContainer: {

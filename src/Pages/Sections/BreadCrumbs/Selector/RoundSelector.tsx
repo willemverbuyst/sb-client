@@ -12,7 +12,7 @@ import {
 import React, { ReactElement, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-import { optionsRoundSelector } from '../../utils/selectorFunctions';
+import { optionsRoundSelector } from '../../../../utils/selectorFunctions';
 
 const RoundSelector: React.FC = (): ReactElement => {
   const [open, setOpen] = useState(false);

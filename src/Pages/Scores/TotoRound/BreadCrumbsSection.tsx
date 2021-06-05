@@ -4,7 +4,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import RoundSelector from '../../../Components/Selector/RoundSelector';
+import RoundSelector from '../../Sections/BreadCrumbs/Selector/RoundSelector';
 
 const useStyles = makeStyles((theme: Theme) => ({
   breadCrumbsContainer: {
