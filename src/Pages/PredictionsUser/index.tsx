@@ -39,7 +39,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
         filteredFixtures ? (
           <>
             <PageHeaderWithButton
-              title="Voorspellingen"
+              title="Mijn voorspellingen"
               captionBtn="KLASSEMENT"
               colorBtn="secondary"
               handleClick={gotoRanking}

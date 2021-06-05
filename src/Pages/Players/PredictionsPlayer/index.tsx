@@ -37,11 +37,16 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Speler..."
+      loadingText="Voorspellingen speler..."
       content={
         filteredFixtures && userNamePlayer ? (
           <>
-            <PageHeaderWithButton title={name} captionBtn="SCORES" colorBtn="secondary" handleClick={gotoScores} />
+            <PageHeaderWithButton
+              title={`${name}'s voorspellingen`}
+              captionBtn="SCORES"
+              colorBtn="secondary"
+              handleClick={gotoScores}
+            />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
             <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
           </>

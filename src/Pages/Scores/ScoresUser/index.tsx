@@ -30,12 +30,17 @@ const ScoresUser: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Scores"
+      loadingText="Mijn scores"
       content={
         scoresPlayer ? (
           <>
-            <PageHeaderWithButton title="Scores" captionBtn="VOORSPELLINGEN" colorBtn="primary" handleClick={goto} />
-            <SubTitleComponent text="MIJN TOTO RONDES" />
+            <PageHeaderWithButton
+              title="Mijn scores"
+              captionBtn="VOORSPELLINGEN"
+              colorBtn="primary"
+              handleClick={goto}
+            />
+            <SubTitleComponent text="TOTO RONDES" />
             <DividerComponent />
             <ScoresStackedChart
               scoresPlayer={scoresPlayer}

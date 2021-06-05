@@ -32,7 +32,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
         scoresPlayer ? (
           <>
             <PageHeaderWithButton
-              title={name}
+              title={`Scores ${name}`}
               captionBtn="VOORSPELLINGEN"
               colorBtn="secondary"
               handleClick={gotoPredictions}
