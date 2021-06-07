@@ -36,3 +36,14 @@ export const selectFixturesSortedByTime = (state: StoreState): TotoRound[] | nul
   }
   return null;
 };
+
+export const selectRoundAndTotoRoundNumber = (state: StoreState): Array<number> => {
+  if (state.predictionsState.currentRound) {
+    const roundNumber = state.predictionsState.currentRound.roundNumber;
+    const totoRoundNumber = state.predictionsState.currentRound.totoRoundNumber;
+
+    return [roundNumber, totoRoundNumber];
+  } else {
+    return [1, 1];
+  }
+};

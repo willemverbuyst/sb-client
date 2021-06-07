@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 
 import ball from '../../../assets/ball.png';
 import NavIcon from '../../../Components/Header/NavIcon';
+import { selectRoundAndTotoRoundNumber } from '../../../store/predictions/selectors';
 import { userLogOut } from '../../../store/user/action-creators';
 import { selectToken, selectUser } from '../../../store/user/selectors';
 
@@ -58,6 +59,7 @@ const Header: React.FC = (): ReactElement => {
   const history = useHistory();
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
+  const [roundNumber, totoRoundNumber] = useSelector(selectRoundAndTotoRoundNumber);
 
   const gotoLogin = () => {
     dispatch(userLogOut());
@@ -66,7 +68,7 @@ const Header: React.FC = (): ReactElement => {
 
   const gotoMyScores = () => history.push('/scores');
   const gotoPlayers = () => history.push('/spelers');
-  const gotoPredictions = () => history.push('/voorspellingen/1/1');
+  const gotoPredictions = () => history.push(`/voorspellingen/${totoRoundNumber}/${roundNumber}`);
   const gotoProfile = () => history.push('/profiel/edit');
   const gotoProgram = () => history.push('/programma');
   const gotoRules = () => history.push('/regels');
