@@ -108,7 +108,6 @@ export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, Sto
 };
 
 export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispatch) => {
-  console.log('llogin out');
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(resetAllScores());
