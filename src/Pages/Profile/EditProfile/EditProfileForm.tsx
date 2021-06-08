@@ -1,3 +1,4 @@
+import { profile } from 'console';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,22 +41,23 @@ const EditProfileForm: React.FC = (): ReactElement => {
 
   const submitForm = (e: ButtonEvent): void => {
     e.preventDefault();
+    console.log(profileDetails);
     dispatch(editUserProfile(profileDetails));
-    setProfileDetails({
-      userName: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      admin: false,
-      totaalToto: true,
-      teamId: '',
-    });
+    // setProfileDetails({
+    //   userName: '',
+    //   firstName: '',
+    //   lastName: '',
+    //   email: '',
+    //   phoneNumber: '',
+    //   admin: false,
+    //   totaalToto: true,
+    //   teamId: '',
+    // });
   };
 
   const updateProfileDetails = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue =
-      event.target.id === 'admin' || event.target.id === 'totaalToto' ? !!event.target.value : event.target.value;
+      event.target.id === 'admin' || event.target.id === 'totaalToto' ? event.target.checked : event.target.value;
 
     setProfileDetails({
       ...profileDetails,
@@ -100,8 +102,13 @@ const EditProfileForm: React.FC = (): ReactElement => {
             value={profileDetails.email}
             onChange={updateProfileDetails}
           />
-          <CheckBoxComponent checked={profileDetails.admin} onChange={updateProfileDetails} label="Admin" />
-          <CheckBoxComponent checked={profileDetails.totaalToto} onChange={updateProfileDetails} label="Totaal Toto" />
+          <CheckBoxComponent id="admin" checked={profileDetails.admin} onChange={updateProfileDetails} label="Admin" />
+          <CheckBoxComponent
+            id="totaalToto"
+            checked={profileDetails.totaalToto}
+            onChange={updateProfileDetails}
+            label="Totaal Toto"
+          />
 
           <TextFieldComponent
             id="phoneNumber"
