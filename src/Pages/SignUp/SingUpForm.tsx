@@ -62,7 +62,7 @@ const SignUpForm: React.FC = (): ReactElement => {
 
   const updateSignUpCredentials = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue =
-      event.target.id === 'admin' || event.target.id === 'totaalToto' ? !!event.target.value : event.target.value;
+      event.target.id === 'admin' || event.target.id === 'totaalToto' ? event.target.checked : event.target.value;
 
     setSignUpCredentials({
       ...signUpCredentials,
