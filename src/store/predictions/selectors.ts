@@ -23,7 +23,7 @@ export const selectCurrentRoundSortedByTime = (state: StoreState): IFixtureWithS
 export const selectFixtures = (state: StoreState): TotoRound[] | null => state.predictionsState.allFixtures;
 
 export const selectFixturesSortedByTime = (state: StoreState): TotoRound[] | null => {
-  if (state.predictionsState.allFixtures) {
+  if (state.predictionsState.allFixtures && state.predictionsState.allFixtures.length > 0) {
     const allFixtures = state.predictionsState.allFixtures;
     const fixturesSortedByTime = allFixtures.map((totoRound) =>
       totoRound.map((round) =>

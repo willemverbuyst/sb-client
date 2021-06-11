@@ -1,10 +1,15 @@
 import { IUser } from '../../models/player.model';
+import { ICurrentRound } from '../../models/toto.models';
 import { ActionType } from './action-types';
 import { UserActions } from './action-types';
 
+interface IUserWithCurrentRound extends IUser {
+  currentRound: ICurrentRound;
+}
+
 export interface IUserState {
   token: string | null;
-  user: IUser | null;
+  user: IUserWithCurrentRound | null;
 }
 
 const token = localStorage.getItem('user_token');
