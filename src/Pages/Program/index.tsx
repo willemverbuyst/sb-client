@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MessageComponent from '../../Components/Communication/Message';
 import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
 import { fetchCurrentRound } from '../../store/predictions/action-creators';
-import { selectCurrentRoundSortedByTime } from '../../store/predictions/selectors';
+import { selectCurrentRoundSortedByTime } from '../../store/user/selectors';
 import PageContent from '../Sections/PageContent';
 import Predictions from '../Sections/Predictions';
 
