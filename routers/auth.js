@@ -5,6 +5,16 @@ const { SALT_ROUNDS } = require('../config/constants');
 const authMiddleware = require('../auth/authMiddleware');
 const Team = require('../models').team;
 const User = require('../models').user;
+const Fixture = require('../models').fixture;
+const Prediction = require('../models').prediction;
+const { Op } = require('sequelize');
+const {
+  lastMonday,
+  nextMonday,
+  chunkArrayTotoRounds,
+  getTotoRoundNumber,
+} = require('../utils/helper-functions');
+const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
 
@@ -31,8 +41,51 @@ router.post('/login', async (req, res) => {
 
     const token = toJWT({ userId: user.id });
 
+    const timeStampLastMonday = lastMonday();
+    const timeStampNextMonday = nextMonday();
+
+    const fixturesWithPrediction = await Fixture.findAll({
+      where: {
+        eventTimeStamp: {
+          [Op.between]: [timeStampLastMonday, timeStampNextMonday],
+        },
+        status: 'Not Started',
+      },
+      include: {
+        model: Prediction,
+        where: { userId: user.id },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
+      raw: true,
+      nest: true,
+    });
+
+    const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
+      return {
+        ...fix,
+        score: calcScores(
+          fix.status,
+          { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
+          {
+            homeTeam: fix.predictions.pGoalsHomeTeam,
+            awayTeam: fix.predictions.pGoalsAwayTeam,
+          }
+        ),
+      };
+    });
+
+    const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
+    const totoRoundNumber = getTotoRoundNumber(roundNumber);
+
+    const currentRound = {
+      roundNumber,
+      totoRoundNumber,
+      fixtures: fixturesWithPredictionAndScore,
+    };
+
     return res.status(200).send({
-      userData: { token, ...user.dataValues },
+      userData: { token, ...user.dataValues, currentRound },
       message: `Welcome back ${user.userName}`,
     });
   } catch (error) {
@@ -119,8 +172,51 @@ router.post('/signup', authMiddleware, async (req, res) => {
 /*** GET INFO USER IF THERE IS A JWT TOKEN ***/
 router.get('/me', authMiddleware, async (req, res) => {
   try {
+    const timeStampLastMonday = lastMonday();
+    const timeStampNextMonday = nextMonday();
+
+    const fixturesWithPrediction = await Fixture.findAll({
+      where: {
+        eventTimeStamp: {
+          [Op.between]: [timeStampLastMonday, timeStampNextMonday],
+        },
+        status: 'Not Started',
+      },
+      include: {
+        model: Prediction,
+        where: { userId: user.id },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
+      raw: true,
+      nest: true,
+    });
+
+    const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
+      return {
+        ...fix,
+        score: calcScores(
+          fix.status,
+          { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
+          {
+            homeTeam: fix.predictions.pGoalsHomeTeam,
+            awayTeam: fix.predictions.pGoalsAwayTeam,
+          }
+        ),
+      };
+    });
+
+    const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
+    const totoRoundNumber = getTotoRoundNumber(roundNumber);
+
+    const currentRound = {
+      roundNumber,
+      totoRoundNumber,
+      fixtures: fixturesWithPredictionAndScore,
+    };
+
     delete req.user.dataValues['password'];
-    res.status(200).send({ ...req.user.dataValues });
+    res.status(200).send({ ...req.user.dataValues, currentRound });
   } catch (error) {
     return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
   }

@@ -27,6 +27,7 @@ router.get('/current', authMiddleware, async (req, res) => {
         eventTimeStamp: {
           [Op.between]: [timeStampLastMonday, timeStampNextMonday],
         },
+        status: 'Not Started',
       },
       include: {
         model: Prediction,
