@@ -25,3 +25,14 @@ export const selectCurrentRoundSortedByTime = (state: StoreState): IFixtureWithS
   }
   return null;
 };
+
+export const selectRoundAndTotoRoundNumber = (state: StoreState): Array<number> => {
+  if (state.userState.user && state.userState.user.currentRound) {
+    const roundNumber = state.userState.user.currentRound.roundNumber;
+    const totoRoundNumber = state.userState.user.currentRound.totoRoundNumber;
+
+    return [roundNumber, totoRoundNumber];
+  } else {
+    return [1, 1];
+  }
+};

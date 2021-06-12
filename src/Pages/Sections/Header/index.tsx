@@ -15,8 +15,8 @@ import { useHistory } from 'react-router-dom';
 
 import ball from '../../../assets/ball.png';
 import NavIcon from '../../../Components/Header/NavIcon';
-import { selectRoundAndTotoRoundNumber } from '../../../store/predictions/selectors';
 import { userLogOut } from '../../../store/user/action-creators';
+import { selectRoundAndTotoRoundNumber } from '../../../store/user/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
