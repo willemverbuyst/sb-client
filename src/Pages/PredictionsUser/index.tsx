@@ -1,9 +1,10 @@
+import { Grid, Link } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
-import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
+import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
 import { fetchAllFixtures } from '../../store/predictions/action-creators';
 import { selectFixturesSortedByTime } from '../../store/predictions/selectors';
 import { calculateIndex } from '../../utils/parameterFunctions';
@@ -38,14 +39,14 @@ const PredictionsUser: React.FC = (): ReactElement => {
       content={
         filteredFixtures ? (
           <>
-            <PageHeaderWithButton
-              title={`Voorspellingen`}
-              captionBtn={`KLASSEMENT TOTORONDE ${totoronde}`}
-              colorBtn="primary"
-              handleClick={gotoRanking}
-            />
+            <PageHeaderWithoutButton title={`Voorspellingen`} />
             <Predictions fixtures={filteredFixtures} display="private" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
+            <Grid container justify="center">
+              <Link component="button" variant="body2" onClick={gotoRanking}>
+                {`Klassement totoronde ${totoronde}`}
+              </Link>
+            </Grid>
           </>
         ) : (
           <MessageComponent message={`Geen voorspellingen gevonden`} />

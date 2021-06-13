@@ -1,9 +1,10 @@
+import { Grid, Link } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
+import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
 import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
@@ -32,14 +33,14 @@ const TotoRound: React.FC = (): ReactElement => {
       content={
         scoresRoundSortedByScore ? (
           <>
-            <PageHeaderWithButton
-              title={`Totoronde  ${id}`}
-              captionBtn={`MIJN VOORSPELLINGEN TOTORONDE ${id}`}
-              colorBtn="primary"
-              handleClick={gotoTotoRound}
-            />
+            <PageHeaderWithoutButton title={`Totoronde  ${id}`} />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
             <PaginationSection totoRound={id} />
+            <Grid container justify="center">
+              <Link component="button" variant="body2" onClick={gotoTotoRound}>
+                {`Mijn voorspellingen ronde ${id}`}
+              </Link>
+            </Grid>
           </>
         ) : (
           <MessageComponent message={`Nog geen scores voor toto ronde ${id}`} />
