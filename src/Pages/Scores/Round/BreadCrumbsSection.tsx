@@ -20,8 +20,6 @@ const BreadCrumbsSection: React.FC<IProps> = ({ id }: IProps): ReactElement => {
   const classes = useStyles();
   const history = useHistory();
 
-  const gotoTotalToto = () => history.push('/klassement/totaaltoto');
-
   const gotoTotoRound = () => {
     const tr = +id !== TOTAL_ROUNDS ? Math.floor((+id - 1) / 3) + 1 : Math.floor((+id - 2) / 3) + 1;
 
@@ -33,9 +31,6 @@ const BreadCrumbsSection: React.FC<IProps> = ({ id }: IProps): ReactElement => {
   return (
     <Grid container justify="center" className={classes.breadCrumbsContainer}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-        <Button color="primary" onClick={gotoTotalToto}>
-          Totaal Toto
-        </Button>
         <Button color="primary" onClick={gotoTotoRound}>
           Totoronde {idTotoRonde}
         </Button>

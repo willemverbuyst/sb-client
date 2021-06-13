@@ -73,6 +73,7 @@ const Header: React.FC = (): ReactElement => {
   const gotoProfile = () => history.push('/profiel/edit');
   const gotoProgram = () => history.push('/programma');
   const gotoRules = () => history.push('/regels');
+  const gotoScores = () => history.push(`/klassement/totoronde/${totoRoundNumber}`);
   const gotoSignUp = () => history.push('/signup');
   const gotoTotalToto = () => history.push('/klassement/totaaltoto');
 
@@ -85,7 +86,7 @@ const Header: React.FC = (): ReactElement => {
           <NavIcon label="my scores" goto={gotoMyScores} icon={<BarChart className={classes.icon} />} />
           <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
           <NavIcon label="total toto" goto={gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
-          <NavIcon label="total toto" goto={gotoTotalToto} icon={<FormatListNumberedIcon className={classes.icon} />} />
+          <NavIcon label="total toto" goto={gotoScores} icon={<FormatListNumberedIcon className={classes.icon} />} />
           {user && user.admin ? (
             <NavIcon label="sign up" goto={gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
           ) : null}
