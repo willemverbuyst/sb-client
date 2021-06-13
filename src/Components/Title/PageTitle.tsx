@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
-    color: theme.palette.secondary.main,
   },
 }));
 

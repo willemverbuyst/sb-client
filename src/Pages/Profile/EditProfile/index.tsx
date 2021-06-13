@@ -15,7 +15,7 @@ const EditProfile: React.FC = (): ReactElement => {
       loadingText="Profiel"
       content={
         <>
-          <PageTitle title="Profiel" color="secondary" />
+          <PageTitle title="Profiel" color="primary" />
           {user ? <EditProfileForm user={user} /> : <MessageComponent message={`Geen profiel gevonden`} />}
         </>
       }

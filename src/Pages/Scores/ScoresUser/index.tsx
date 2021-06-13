@@ -24,11 +24,11 @@ const ScoresUser: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Scores"
+      loadingText="Mijn scores"
       content={
         scoresPlayer ? (
           <>
-            <PageTitle title="Scores" color="secondary" />
+            <PageTitle title="Mijn scores" color="primary" />
             <ScoresStackedChart
               scoresPlayer={scoresPlayer}
               colorMain={colorPrimary}

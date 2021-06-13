@@ -35,11 +35,11 @@ const PredictionsUser: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Voorspellingen"
+      loadingText="Mijn voorspellingen"
       content={
         filteredFixtures ? (
           <>
-            <PageTitle title={`Voorspellingen`} color="secondary" />
+            <PageTitle title={`Mijn voorspellingen`} color="primary" />
             <Predictions fixtures={filteredFixtures} display="private" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
             <Grid container justify="center">
