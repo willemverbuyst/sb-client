@@ -15,14 +15,7 @@ const ButtonComponent: React.FC<IProps> = ({ caption, color, handleClick }: IPro
 
   return (
     <Grid>
-      <Button
-        fullWidth
-        variant={btnVariant ? 'contained' : 'outlined'}
-        size="small"
-        color={color}
-        disableElevation
-        onClick={handleClick}
-      >
+      <Button fullWidth variant="text" size="small" color={color} disableElevation onClick={handleClick}>
         {caption}
       </Button>
     </Grid>

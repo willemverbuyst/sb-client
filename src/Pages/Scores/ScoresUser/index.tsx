@@ -1,9 +1,8 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
+import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
 import { fetchPlayerScores } from '../../../store/players/action-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectUser } from '../../../store/user/selectors';
@@ -12,7 +11,6 @@ import ScoresStackedChart from '../../Sections/Charts/ScoresStackedChart';
 import PageContent from '../../Sections/PageContent';
 
 const ScoresUser: React.FC = (): ReactElement => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const scoresPlayer = useSelector(selectPlayerScores);
@@ -24,20 +22,13 @@ const ScoresUser: React.FC = (): ReactElement => {
     }
   });
 
-  const goto = () => history.push(`/voorspellingen/1/1`);
-
   return (
     <PageContent
-      loadingText="Mijn scores"
+      loadingText="Scores"
       content={
         scoresPlayer ? (
           <>
-            <PageHeaderWithButton
-              title="Mijn scores"
-              captionBtn="VOORSPELLINGEN"
-              colorBtn="primary"
-              handleClick={goto}
-            />
+            <PageHeaderWithoutButton title="Scores" />
             <ScoresStackedChart
               scoresPlayer={scoresPlayer}
               colorMain={colorPrimary}

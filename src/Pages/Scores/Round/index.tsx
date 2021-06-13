@@ -39,7 +39,7 @@ const Round: React.FC = (): ReactElement => {
           <>
             <PageHeaderWithButton
               title={`Speelronde ${id}`}
-              captionBtn="MIJN VOORSPELLINGEN"
+              captionBtn={`MIJN VOORSPELLINGEN RONDE ${id}`}
               colorBtn="primary"
               handleClick={gotoPredictions}
             />

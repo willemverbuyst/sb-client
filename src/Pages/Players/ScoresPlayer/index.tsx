@@ -27,13 +27,13 @@ const ScoresPlayer: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Speler..."
+      loadingText="Scores"
       content={
         scoresPlayer ? (
           <>
             <PageHeaderWithButton
               title={`Scores ${name}`}
-              captionBtn="VOORSPELLINGEN"
+              captionBtn={`VOORSPELLINGEN ${name}`}
               colorBtn="secondary"
               handleClick={gotoPredictions}
             />

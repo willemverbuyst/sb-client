@@ -23,7 +23,7 @@ const PageHeaderWithButton: React.FC<IProps> = ({ title, captionBtn, colorBtn, h
   return (
     <Grid container className={classes.topSection}>
       <PageTitleComponent text={title} />
-      <ButtonComponent caption={captionBtn} color={colorBtn} handleClick={handleClick} />
+      <ButtonComponent caption={captionBtn} color="primary" handleClick={handleClick} />
     </Grid>
   );
 };

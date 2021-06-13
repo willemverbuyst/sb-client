@@ -37,13 +37,13 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Voorspellingen speler..."
+      loadingText="Voorspellingen"
       content={
         filteredFixtures && userNamePlayer ? (
           <>
             <PageHeaderWithButton
-              title={`${name}'s voorspellingen`}
-              captionBtn="SCORES"
+              title={`Voorspellingen ${name}`}
+              captionBtn={`SCORES ${name}`}
               colorBtn="secondary"
               handleClick={gotoScores}
             />

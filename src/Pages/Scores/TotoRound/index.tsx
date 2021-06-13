@@ -34,7 +34,7 @@ const TotoRound: React.FC = (): ReactElement => {
           <>
             <PageHeaderWithButton
               title={`Totoronde  ${id}`}
-              captionBtn="MIJN VOORSPELLINGEN"
+              captionBtn={`MIJN VOORSPELLINGEN TOTORONDE ${id}`}
               colorBtn="primary"
               handleClick={gotoTotoRound}
             />

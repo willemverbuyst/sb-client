@@ -30,7 +30,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
   // [t- 1]: as an array starts at index 0, subtract 1 from the totoround number
   const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][calculateIndex(r)]] : null;
 
-  const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
+  const gotoRanking = () => history.push(`/klassement/totoronde/${totoronde}`);
 
   return (
     <PageContent
@@ -39,9 +39,9 @@ const PredictionsUser: React.FC = (): ReactElement => {
         filteredFixtures ? (
           <>
             <PageHeaderWithButton
-              title="Mijn voorspellingen"
-              captionBtn="KLASSEMENT"
-              colorBtn="secondary"
+              title={`Voorspellingen`}
+              captionBtn={`KLASSEMENT TOTORONDE ${totoronde}`}
+              colorBtn="primary"
               handleClick={gotoRanking}
             />
             <Predictions fixtures={filteredFixtures} display="private" />
