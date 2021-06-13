@@ -22,11 +22,11 @@ const TotalToto: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Totaal Toto"
+      loadingText="Totaaltoto"
       content={
         scoresTotalTotoSortedByScore ? (
           <>
-            <PageHeaderWithoutButton title="Totaal Toto" />
+            <PageHeaderWithoutButton title="Totaaltoto" />
             <ScoresBarChart scores={scoresTotalTotoSortedByScore} />
           </>
         ) : (
