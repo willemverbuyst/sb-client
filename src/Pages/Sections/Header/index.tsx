@@ -1,6 +1,7 @@
 import { Grid, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Weekend } from '@material-ui/icons';
+import BarChart from '@material-ui/icons/BarChart';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Face from '@material-ui/icons/Face';
@@ -81,8 +82,9 @@ const Header: React.FC = (): ReactElement => {
         <Grid container className={classes.header} alignItems="center">
           <NavIcon label="program" goto={gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon label="prediction" goto={gotoPredictions} icon={<SportsSoccerIcon className={classes.icon} />} />
-          <NavIcon label="my scores" goto={gotoMyScores} icon={<EmojiEvents className={classes.icon} />} />
+          <NavIcon label="my scores" goto={gotoMyScores} icon={<BarChart className={classes.icon} />} />
           <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
+          <NavIcon label="total toto" goto={gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
           <NavIcon label="total toto" goto={gotoTotalToto} icon={<FormatListNumberedIcon className={classes.icon} />} />
           {user && user.admin ? (
             <NavIcon label="sign up" goto={gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
