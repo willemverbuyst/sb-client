@@ -46,59 +46,61 @@ const ScoresStackedChart: React.FC<IProps> = ({
   }
 
   const gotoTotoRound = (id: number) => {
+    const totoRound = id + 1;
     loggedInUser
-      ? history.push(`/voorspellingen/${id}/${id * 3 - 2}`)
-      : history.push(`/spelers/${id}/voorspellingen/${id}/${id * 3 - 2}`);
+      ? history.push(`/voorspellingen/${totoRound}/${totoRound * 3 - 2}`)
+      : history.push(`/spelers/${totoRound}/voorspellingen/${totoRound}/${totoRound * 3 - 2}`);
   };
 
   const totals = scores.map((totoround) => totoround.reduce((a, b) => a + b));
   const max = Math.max(...totals) * 1.2;
 
   const chartData: ChartData<chartjs.ChartData> = {
-    labels: scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
+    labels: scores.map(() => ``),
     datasets: [
       {
         stack: '',
         label: 'part1',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[0] ? totoRound[0] : 0)),
         backgroundColor: colorPrimary.color1,
         hoverBackgroundColor: colorSecondary.color1,
+        barPercentage: 1,
       },
       {
         stack: '',
         label: 'part2',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[1] ? totoRound[1] : 0)),
         backgroundColor: colorPrimary.color2,
         hoverBackgroundColor: colorSecondary.color2,
+        barPercentage: 1,
       },
       {
         stack: '',
         label: 'part3',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[2] ? totoRound[2] : 0)),
         backgroundColor: colorPrimary.color3,
         hoverBackgroundColor: colorSecondary.color3,
+        barPercentage: 1,
       },
       {
         stack: '',
         label: 'part4',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[3] ? totoRound[3] : 0)),
         backgroundColor: colorPrimary.color4,
         hoverBackgroundColor: colorSecondary.color4,
+        barPercentage: 1,
       },
     ],
   };
 
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
-      enabled: false,
+      enabled: true,
+      callbacks: {
+        title: (tooltipItem) =>
+          tooltipItem[0].index ? `Totoronde ${Number([tooltipItem[0].index]) + 1}` : `Totoronde 1`,
+        label: (tooltipItem) => (tooltipItem.index ? `Score:${totals[tooltipItem.index]}` : `Score:${totals[0]}`),
+      },
     },
     legend: {
       display: false,
