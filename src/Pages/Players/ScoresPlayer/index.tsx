@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchPlayerScores } from '../../../store/players/action-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
@@ -37,8 +35,6 @@ const ScoresPlayer: React.FC = (): ReactElement => {
               colorBtn="secondary"
               handleClick={gotoPredictions}
             />
-            <SubTitleComponent text="TOTO RONDES" />
-            <DividerComponent />
             <ScoresStackedChart
               scoresPlayer={scoresPlayer}
               colorMain={colorSecondary}

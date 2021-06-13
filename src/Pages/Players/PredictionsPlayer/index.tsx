@@ -33,7 +33,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     ? [...pastFixturesWithScoresSortedByTime[t - 1][calculateIndex(r)]]
     : null;
 
-  const gotoScores = () => history.push(`/spelers/${id}/scores`);
+  const gotoRanking = () => history.push(`/klassement/totoronde/${totoronde}`);
 
   return (
     <PageContent
@@ -43,9 +43,9 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
           <>
             <PageHeaderWithButton
               title={`Voorspellingen ${name}`}
-              captionBtn={`SCORES ${name}`}
+              captionBtn={`KLASSEMENT TOTORONDE ${totoronde}`}
               colorBtn="secondary"
-              handleClick={gotoScores}
+              handleClick={gotoRanking}
             />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
             <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
