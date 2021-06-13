@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import DividerComponent from '../../../Components/Divider';
 import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
 import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
-import BreadCrumbsSection from './BreadCrumbsSection';
+import PaginationSection from './PaginationSection';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -35,20 +33,18 @@ const Round: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Klassement"
+      loadingText="Speelronde"
       content={
         scoresRoundSortedByScore ? (
           <>
             <PageHeaderWithButton
-              title="Klassement"
+              title={`Speelronde ${id}`}
               captionBtn="MIJN VOORSPELLINGEN"
               colorBtn="primary"
               handleClick={gotoPredictions}
             />
-            <SubTitleComponent text={`RONDE ${id}`} />
-            <DividerComponent />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <BreadCrumbsSection id={id} />
+            <PaginationSection round={id} />
           </>
         ) : (
           <MessageComponent message={`Nog geen scores voor deze ronde`} />
