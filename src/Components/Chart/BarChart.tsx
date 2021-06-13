@@ -14,17 +14,17 @@ interface IProps {
 const BarChart: React.FC<IProps> = ({ chartData, chartOptions, goto }: IProps): ReactElement => {
   return (
     <Box mt="4rem">
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item xs={12} md={6} container justify="center">
-          <Bar
-            data={chartData}
-            options={chartOptions}
-            onElementsClick={(e) => {
-              if (e[0] !== undefined) goto(e[0]._index);
-            }}
-          />
-        </Grid>
-      </Grid>
+      {/* <Grid container direction="row" justify="center" alignItems="center"> */}
+      {/* <Grid item xs={8} md={6} container justify="center"> */}
+      <Bar
+        data={chartData}
+        options={chartOptions}
+        onElementsClick={(e) => {
+          if (e[0] !== undefined) goto(e[0]._index);
+        }}
+      />
+      {/* </Grid> */}
+      {/* </Grid> */}
     </Box>
   );
 };

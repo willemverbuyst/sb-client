@@ -1,3 +1,4 @@
+import Grid from '@material-ui/core/Grid';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -9,6 +10,7 @@ import SubTitleComponent from '../../../Components/Title/SubTitle';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
 import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
+import PinnedSubheaderList from '../../Sections/List';
 import PageContent from '../../Sections/PageContent';
 import BreadCrumbsSection from './BreadCrumbsSection';
 
@@ -42,7 +44,14 @@ const TotoRound: React.FC = (): ReactElement => {
             />
             <SubTitleComponent text={`TOTO RONDE ${id}`} />
             <DividerComponent />
-            <ScoresBarChart scores={scoresRoundSortedByScore} />
+            <Grid item xs={12} md={12} container justify="center">
+              <Grid item xs={12} md={2} justify="center">
+                <PinnedSubheaderList />
+              </Grid>
+              <Grid item xs={12} md={6} justify="center">
+                <ScoresBarChart scores={scoresRoundSortedByScore} />
+              </Grid>
+            </Grid>
             <BreadCrumbsSection id={id} />
           </>
         ) : (
