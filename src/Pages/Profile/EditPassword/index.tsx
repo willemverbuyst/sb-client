@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import PageContent from '../../Sections/PageContent';
 import EditPasswordForm from './EditPasswordForm';
 
@@ -10,7 +10,7 @@ const EditPassword: React.FC = (): ReactElement => {
       loadingText="Profiel"
       content={
         <>
-          <PageHeaderWithoutButton title="Profiel" />
+          <PageTitle title="Profiel" color="secondary" />
           <EditPasswordForm />
         </>
       }

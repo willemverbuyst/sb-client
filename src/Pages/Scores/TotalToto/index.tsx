@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchScoresTotalToto } from '../../../store/scores/action-creators';
 import { selectScoresTotalTotoSortedByScore } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
@@ -26,7 +26,7 @@ const TotalToto: React.FC = (): ReactElement => {
       content={
         scoresTotalTotoSortedByScore ? (
           <>
-            <PageHeaderWithoutButton title="Totaaltoto" />
+            <PageTitle title="Totaaltoto" color="secondary" />
             <ScoresBarChart scores={scoresTotalTotoSortedByScore} />
           </>
         ) : (

@@ -3,6 +3,13 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  topSection: {
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
+    justifyContent: 'space-between',
+  },
   title: {
     [theme.breakpoints.down('xs')]: {
       marginTop: theme.spacing(2),
@@ -15,16 +22,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface IProps {
-  text: string;
+  title: string;
+  color: 'primary' | 'secondary';
 }
 
-const PageTitleComponent: React.FC<IProps> = ({ text }: IProps): ReactElement => {
+const PageTitleComponent: React.FC<IProps> = ({ title, color }: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
-    <Grid>
-      <Typography variant="h3" className={classes.title}>
-        {text}
+    <Grid container className={classes.topSection}>
+      <Typography variant="h3" color={color} className={classes.title}>
+        {title}
       </Typography>
     </Grid>
   );

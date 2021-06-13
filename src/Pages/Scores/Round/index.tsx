@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
 import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
@@ -38,7 +38,7 @@ const Round: React.FC = (): ReactElement => {
       content={
         scoresRoundSortedByScore ? (
           <>
-            <PageHeaderWithoutButton title={`Speelronde ${id}`} />
+            <PageTitle title={`Speelronde ${id}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
             <PaginationSection round={id} />
             <Grid container justify="center">

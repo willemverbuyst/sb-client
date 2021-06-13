@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchPlayerScores } from '../../../store/players/action-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectUser } from '../../../store/user/selectors';
@@ -28,7 +28,7 @@ const ScoresUser: React.FC = (): ReactElement => {
       content={
         scoresPlayer ? (
           <>
-            <PageHeaderWithoutButton title="Scores" />
+            <PageTitle title="Scores" color="secondary" />
             <ScoresStackedChart
               scoresPlayer={scoresPlayer}
               colorMain={colorPrimary}

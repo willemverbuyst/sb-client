@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchPlayerProfile } from '../../../store/players/action-creators';
 import { selectPastFixturesWithScoresSortedByTime, selectUserNamePlayer } from '../../../store/players/selectors';
 import { calculateIndex } from '../../../utils/parameterFunctions';
@@ -42,7 +42,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
       content={
         filteredFixtures && userNamePlayer ? (
           <>
-            <PageHeaderWithoutButton title={`Voorspellingen ${name}`} />
+            <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
             <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
             <Grid container justify="center">

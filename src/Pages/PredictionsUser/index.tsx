@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../Components/Title/PageTitle';
 import { fetchAllFixtures } from '../../store/predictions/action-creators';
 import { selectFixturesSortedByTime } from '../../store/predictions/selectors';
 import { calculateIndex } from '../../utils/parameterFunctions';
@@ -39,7 +39,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
       content={
         filteredFixtures ? (
           <>
-            <PageHeaderWithoutButton title={`Voorspellingen`} />
+            <PageTitle title={`Voorspellingen`} color="secondary" />
             <Predictions fixtures={filteredFixtures} display="private" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
             <Grid container justify="center">

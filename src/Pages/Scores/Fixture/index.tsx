@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchScoresFixture } from '../../../store/scores/action-creators';
 import { selectFixture, selectScoresForFixtureSortedByName } from '../../../store/scores/selectors';
 import PageContent from '../../Sections/PageContent';
@@ -28,7 +28,7 @@ const Fixture: React.FC = (): ReactElement => {
       content={
         fixture ? (
           <>
-            <PageHeaderWithoutButton title="Uitslag" />
+            <PageTitle title="Uitslag" color="secondary" />
             <FixtureSection fixture={fixture} />
             <DividerComponent />
             {scoresFixtureSortedByName ? (

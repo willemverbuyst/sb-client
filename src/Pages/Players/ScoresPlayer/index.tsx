@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchPlayerScores } from '../../../store/players/action-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
@@ -26,7 +26,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
       content={
         scoresPlayer ? (
           <>
-            <PageHeaderWithoutButton title={`Scores ${name}`} />
+            <PageTitle title={`Scores ${name}`} color="secondary" />
             <ScoresStackedChart
               scoresPlayer={scoresPlayer}
               colorMain={colorSecondary}
