@@ -1,7 +1,6 @@
-import { Grid, Link } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
@@ -14,7 +13,6 @@ import PaginationSection from './PaginationSection';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const userNamePlayer = useSelector(selectUserNamePlayer);
   const pastFixturesWithScoresSortedByTime = useSelector(selectPastFixturesWithScoresSortedByTime);
   const { id } = useParams<{ id: string }>();
@@ -34,8 +32,6 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     ? [...pastFixturesWithScoresSortedByTime[t - 1][calculateIndex(r)]]
     : null;
 
-  const gotoRanking = () => history.push(`/klassement/totoronde/${totoronde}`);
-
   return (
     <PageContent
       loadingText="Voorspellingen"
@@ -45,11 +41,6 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
             <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
             <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
-            <Grid container justify="center">
-              <Link component="button" variant="body2" onClick={gotoRanking}>
-                {`Klassement totoronde ${totoronde}`}
-              </Link>
-            </Grid>
           </>
         ) : (
           <MessageComponent message={`Geen voorspellingen voor gevonden`} />

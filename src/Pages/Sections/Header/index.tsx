@@ -73,7 +73,7 @@ const Header: React.FC = (): ReactElement => {
   const gotoPredictions = () => history.push(`/voorspellingen/${totoRoundNumber}/${roundNumber}`);
   const gotoProfile = () => history.push('/profiel/edit');
   const gotoProgram = () => history.push('/programma');
-  const gotoRound = () => history.push(`/klassement/ronde/${roundNumber}`);
+  const gotoRound = () => history.push(`/klassement/ronde/1`);
   const gotoRules = () => history.push('/regels');
   const gotoScores = () => history.push(`/klassement/totoronde/${totoRoundNumber}`);
   const gotoSignUp = () => history.push('/signup');

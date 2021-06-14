@@ -45,11 +45,10 @@ const ScoresStackedChart: React.FC<IProps> = ({
     colorSecondary = colorHover;
   }
 
-  const gotoTotoRound = (id: number) => {
-    const totoRound = id + 1;
+  const gotoTotoRound = (totoRound: number) => {
     loggedInUser
-      ? history.push(`/voorspellingen/${totoRound}/${totoRound * 3 - 2}`)
-      : history.push(`/spelers/${totoRound}/voorspellingen/${totoRound}/${totoRound * 3 - 2}`);
+      ? history.push(`/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`)
+      : history.push(`/spelers/${id}/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`);
   };
 
   const totals = scores.map((totoround) => totoround.reduce((a, b) => a + b));
