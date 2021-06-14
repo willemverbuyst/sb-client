@@ -86,10 +86,10 @@ const Header: React.FC = (): ReactElement => {
           <NavIcon label="program" goto={gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon label="prediction" goto={gotoPredictions} icon={<SportsSoccerIcon className={classes.icon} />} />
           <NavIcon label="my scores" goto={gotoMyScores} icon={<BarChart className={classes.icon} />} />
-          <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
           <NavIcon label="total toto" goto={gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
           <NavIcon label="total toto" goto={gotoScores} icon={<FormatListNumberedIcon className={classes.icon} />} />
           <NavIcon label="total toto" goto={gotoRound} icon={<FormatListNumberedRtlIcon className={classes.icon} />} />
+          <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
           {user && user.admin ? (
             <NavIcon label="sign up" goto={gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
           ) : null}
