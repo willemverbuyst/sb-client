@@ -94,12 +94,7 @@ const ScoresStackedChart: React.FC<IProps> = ({
 
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
-      enabled: true,
-      callbacks: {
-        title: (tooltipItem) =>
-          tooltipItem[0].index ? `Totoronde ${Number([tooltipItem[0].index]) + 1}` : `Totoronde 1`,
-        label: (tooltipItem) => (tooltipItem.index ? `Score:${totals[tooltipItem.index]}` : `Score:${totals[0]}`),
-      },
+      enabled: false,
     },
     legend: {
       display: false,
