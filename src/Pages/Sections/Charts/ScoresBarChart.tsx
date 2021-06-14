@@ -23,9 +23,10 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const max: number = Math.max(...userScores) * 1.2;
   const hoverBackgroundColors = scores.map((score) => (score.id === user?.id ? '#4f8ad8' : '#aaa'));
 
-  const gotoPlayer = (id: number): void => history.push(`/spelers/${scores[id].id}/scores`);
-
   const backgroundColor = scores.map((score) => (score.id === user?.id ? '#1e5eb1' : '#EA9C3B'));
+
+  const gotoPlayer = (id: number): void =>
+    user && scores[id].id === user.id ? history.push(`/scores`) : history.push(`/spelers/${scores[id].id}/scores`);
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: labels,
