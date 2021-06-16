@@ -11,6 +11,7 @@ import { IUser } from '../../../models/player.model';
 import { IUserWithScore } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
 import { getStringsInUpperCase } from '../../../utils/stringFunctions';
+import * as HELPERS from './helpers/barchart.functions';
 
 interface IProps {
   scores: IUserWithScore[];
@@ -18,13 +19,14 @@ interface IProps {
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const labels: string[] = getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
-  const userScores: number[] = scores.map((player) => player.score);
   const user: IUser | null = useSelector(selectUser);
-  const max: number = Math.max(...userScores) * 1.2;
-  const hoverBackgroundColors = scores.map((score) => (score.id === user?.id ? '#4f8ad8' : '#aaa'));
 
-  const backgroundColor = scores.map((score) => (score.id === user?.id ? '#1e5eb1' : '#EA9C3B'));
+  const labels: string[] = getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
+  const scoresOfAllPlayes: number[] = scores.map((player) => player.score);
+
+  const max: number = HELPERS.generateMaxYAxForChart(scoresOfAllPlayes, 1.2);
+  const hoverBackgroundColors = HELPERS.getHoverBackgroundColorsBars<IUserWithScore>(scores, user?.id);
+  const backgroundColor = HELPERS.getBackgroundColorBars<IUserWithScore>(scores, user?.id);
 
   const gotoPlayer = (id: number): void =>
     user && scores[id].id === user.id ? history.push(`/scores`) : history.push(`/spelers/${scores[id].id}/scores`);
@@ -33,7 +35,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     labels: labels,
     datasets: [
       {
-        data: userScores,
+        data: scoresOfAllPlayes,
         backgroundColor: backgroundColor,
         borderWidth: 0,
         hoverBackgroundColor: hoverBackgroundColors,
