@@ -10,6 +10,7 @@ import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
 import { IUserWithScore } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
+import { getStringsInUpperCase } from '../../../utils/stringFunctions';
 
 interface IProps {
   scores: IUserWithScore[];
@@ -17,7 +18,7 @@ interface IProps {
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const labels: string[] = scores.map((player) => player.user.toLocaleUpperCase());
+  const labels: string[] = getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
   const userScores: number[] = scores.map((player) => player.score);
   const user: IUser | null = useSelector(selectUser);
   const max: number = Math.max(...userScores) * 1.2;

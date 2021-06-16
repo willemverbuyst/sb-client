@@ -10,6 +10,7 @@ import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
 import { IPredictionWithScorePerUser } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
+import { getStringsInUpperCase } from '../../../utils/stringFunctions';
 
 interface IProps {
   scores: IPredictionWithScorePerUser[];
@@ -17,7 +18,10 @@ interface IProps {
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const labels: string[] = scores.map((player) => player.user.toLocaleUpperCase());
+  const labels: string[] = getStringsInUpperCase<keyof IPredictionWithScorePerUser, IPredictionWithScorePerUser>(
+    scores,
+    'user',
+  );
   const userScores: number[] = scores.map((player) => player.score + 0.1);
   const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
   const user: IUser | null = useSelector(selectUser);

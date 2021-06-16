@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import AvatarLargeComponent from '../../../Components/Avatar/AvatarLarge';
 import { selectUser } from '../../../store/user/selectors';
-import { replaceUnderscore } from '../../../utils/formatFunctions';
+import { replaceUnderscore } from '../../../utils/stringFunctions';
 
 export const useStyles = makeStyles((theme) => ({
   wrapper: {
