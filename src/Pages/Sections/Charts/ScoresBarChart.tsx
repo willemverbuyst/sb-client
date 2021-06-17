@@ -22,10 +22,11 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const user: IUser | null = useSelector(selectUser);
 
   const labels: string[] = getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
+
   const scoresOfAllPlayes: number[] = scores.map((player) => player.score);
 
-  const max: number = HELPERS.generateMaxYAxForChart(scoresOfAllPlayes, 1.2);
-  const hoverBackgroundColors = HELPERS.getHoverBackgroundColorsBars<IUserWithScore>(scores, user?.id);
+  const max: number = HELPERS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
+  const hoverBackgroundColors = HELPERS.getHoverBackgroundColorsBars<IUserWithScore>(scores);
   const backgroundColor = HELPERS.getBackgroundColorBars<IUserWithScore>(scores, user?.id);
 
   const gotoPlayer = (id: number): void =>

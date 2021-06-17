@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import BarChart from '../../../Components/Chart/BarChart';
 import { IScoresPlayer } from '../../../models/player.model';
 import { selectUser } from '../../../store/user/selectors';
+import * as HELPERS from './helpers/barchart.functions';
 
 interface Color {
   color1: string;
@@ -52,7 +53,7 @@ const ScoresStackedChart: React.FC<IProps> = ({
   };
 
   const totals = scores.map((totoround) => totoround.reduce((a, b) => a + b));
-  const max = Math.max(...totals) * 1.2;
+  const max = HELPERS.generateMaxForChartYAx(totals, 1.2);
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: scores.map(() => ``),

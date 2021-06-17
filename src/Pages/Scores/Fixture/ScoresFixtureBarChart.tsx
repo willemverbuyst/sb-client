@@ -18,17 +18,21 @@ interface IProps {
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
+  const user: IUser | null = useSelector(selectUser);
+
   const labels: string[] = getStringsInUpperCase<keyof IPredictionWithScorePerUser, IPredictionWithScorePerUser>(
     scores,
     'user',
   );
+
   const userScores: number[] = scores.map((player) => player.score + 0.1);
-  const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
-  const user: IUser | null = useSelector(selectUser);
   const max: number = Math.max(...userScores) * 1.2;
+
   const hoverBackgroundColors = scores.map((score) => (score?.userId === user?.id ? '#4f8ad8' : '#aaa'));
 
   const backgroundColor = scores.map((score) => (score.userId === user?.id ? '#1e5eb1' : '#EA9C3B'));
+
+  const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
 
   const gotoPlayer = (id: number): void =>
     user && scores[id].userId === user.id
