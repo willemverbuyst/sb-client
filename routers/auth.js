@@ -75,14 +75,18 @@ router.post('/login', async (req, res) => {
       };
     });
 
-    const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
-    const totoRoundNumber = getTotoRoundNumber(roundNumber);
+    let currentRound = null;
 
-    const currentRound = {
-      roundNumber,
-      totoRoundNumber,
-      fixtures: fixturesWithPredictionAndScore,
-    };
+    if (fixturesWithPredictionAndScore.length > 0) {
+      const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
+      const totoRoundNumber = getTotoRoundNumber(roundNumber);
+
+      currentRound = {
+        roundNumber,
+        totoRoundNumber,
+        fixtures: fixturesWithPredictionAndScore,
+      };
+    }
 
     return res.status(200).send({
       userData: { token, ...user.dataValues, currentRound },
@@ -184,7 +188,7 @@ router.get('/me', authMiddleware, async (req, res) => {
       },
       include: {
         model: Prediction,
-        where: { userId: user.id },
+        where: { userId: req.user.dataValues.id },
         attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
         required: false,
       },
@@ -206,14 +210,18 @@ router.get('/me', authMiddleware, async (req, res) => {
       };
     });
 
-    const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
-    const totoRoundNumber = getTotoRoundNumber(roundNumber);
+    let currentRound = null;
 
-    const currentRound = {
-      roundNumber,
-      totoRoundNumber,
-      fixtures: fixturesWithPredictionAndScore,
-    };
+    if (fixturesWithPredictionAndScore.length > 0) {
+      const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
+      const totoRoundNumber = getTotoRoundNumber(roundNumber);
+
+      currentRound = {
+        roundNumber,
+        totoRoundNumber,
+        fixtures: fixturesWithPredictionAndScore,
+      };
+    }
 
     delete req.user.dataValues['password'];
     res.status(200).send({ ...req.user.dataValues, currentRound });

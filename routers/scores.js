@@ -75,6 +75,13 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
 
 /*** GET THE TOTAL TOTO SCORE OF EACH USER ***/
 /*** PUBLIC ***/
+/***
+ * [{
+ *  "userId": 1,
+ *  "user": "Pascal",
+ *  "score": 736
+ *  }]
+ ***/
 router.get('/all', authMiddleware, async (_req, res) => {
   try {
     const predictions = await Prediction.findAll({
@@ -115,7 +122,7 @@ router.get('/all', authMiddleware, async (_req, res) => {
               }
             ),
             user: pred.user.userName,
-            id: pred.user.id,
+            userId: pred.user.id,
           };
         });
 
@@ -132,6 +139,16 @@ router.get('/all', authMiddleware, async (_req, res) => {
 
 /*** GET THE TOTAAL SCORE FOR A SPECIFIC PAST TOTOROUND OF EACH USER ***/
 /*** PUBLIC ***/
+/***
+ * {
+ *  "usersWithScores": [{
+ *     "id": 1,
+ *     "user": "Pascal",
+ *     "score": 736
+ *  }],
+ *  id: 1
+ * }
+ ***/
 router.get('/totorounds/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
@@ -178,7 +195,7 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
             }
           ),
           user: pred.user.userName,
-          id: pred.user.id,
+          userId: pred.user.id,
         };
       });
 
@@ -204,6 +221,16 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
 
 /*** GET THE TOTAL SCORE FOR A SPECIFIC PAST ROUND OF EACH USER ***/
 /*** PUBLIC ***/
+/***
+ * {
+ *  "usersWithScores": [{
+ *     "id": 1,
+ *     "user": "Pascal",
+ *     "score": 736
+ *  }],
+ *  id: 1
+ * }
+ ***/
 router.get('/rounds/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
@@ -247,7 +274,7 @@ router.get('/rounds/:id', authMiddleware, async (req, res) => {
             }
           ),
           user: pred.user.userName,
-          id: pred.user.id,
+          userId: pred.user.id,
         };
       });
 
@@ -335,14 +362,14 @@ router.get('/players/:id', authMiddleware, async (req, res) => {
       const scoresPlayer = {
         scores,
         userName: user.userName,
-        id: user.id,
+        userId: user.id,
       };
 
       return res.status(200).send(scoresPlayer);
     } else {
       const round = {
         usersWithScores: fixtures,
-        id,
+        id: id,
       };
 
       return res.status(200).send(round);
