@@ -10,6 +10,8 @@ import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
 import { IUserWithScore } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
+import { getStringsInUpperCase } from '../../../utils/stringFunctions';
+import * as HELPERS from './helpers/barchart.functions';
 
 interface IProps {
   scores: IUserWithScore[];
@@ -17,20 +19,28 @@ interface IProps {
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const labels: string[] = scores.map((player) => player.user.toLocaleUpperCase());
-  const userScores: number[] = scores.map((player) => player.score);
   const user: IUser | null = useSelector(selectUser);
-  const max: number = Math.max(...userScores) * 1.2;
-  const hoverBackgroundColors = scores.map((score) => (score.id === user?.id ? '#1e5eb1' : '#aaa'));
 
-  const gotoPlayer = (id: number): void => history.push(`/spelers/${scores[id].id}/scores`);
+  const labels: string[] = getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
+
+  const scoresOfAllPlayes: number[] = scores.map((player) => player.score);
+
+  const max: number = HELPERS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
+  const hoverBackgroundColors = HELPERS.getHoverBackgroundColorsBars<IUserWithScore>(scores);
+  const backgroundColor = HELPERS.getBackgroundColorBars<IUserWithScore>(scores, user?.id);
+
+  const gotoPlayer = (index: number): void => {
+    return user && scores[index].userId === user.id
+      ? history.push(`/scores`)
+      : history.push(`/spelers/${scores[index].userId}/scores`);
+  };
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: labels,
     datasets: [
       {
-        data: userScores,
-        backgroundColor: '#EA9C3B',
+        data: scoresOfAllPlayes,
+        backgroundColor: backgroundColor,
         borderWidth: 0,
         hoverBackgroundColor: hoverBackgroundColors,
       },

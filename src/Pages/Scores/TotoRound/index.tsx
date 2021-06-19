@@ -1,20 +1,17 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import DividerComponent from '../../../Components/Divider';
-import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
-import SubTitleComponent from '../../../Components/Title/SubTitle';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
 import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
 import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../Sections/PageContent';
-import BreadCrumbsSection from './BreadCrumbsSection';
+import PaginationSection from './PaginationSection';
 
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const history = useHistory();
   // const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
   const scoresRoundSortedByScore = useSelector(selectScoresTotoRoundSortedByScore);
   const totoRoundId = useSelector(selectTotoRoundId);
@@ -26,24 +23,15 @@ const TotoRound: React.FC = (): ReactElement => {
     }
   }, [dispatch, id, totoRoundId]);
 
-  const gotoTotoRound = () => history.push(`/voorspellingen/${id}/${+id * 3 - 2}`);
-
   return (
     <PageContent
-      loadingText="Klassement"
+      loadingText="Totoronde"
       content={
         scoresRoundSortedByScore ? (
           <>
-            <PageHeaderWithButton
-              title="Klassement"
-              captionBtn="MIJN VOORSPELLINGEN"
-              colorBtn="primary"
-              handleClick={gotoTotoRound}
-            />
-            <SubTitleComponent text={`TOTO RONDE ${id}`} />
-            <DividerComponent />
+            <PageTitle title={`Totoronde  ${id}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <BreadCrumbsSection id={id} />
+            <PaginationSection totoRound={id} />
           </>
         ) : (
           <MessageComponent message={`Nog geen scores voor toto ronde ${id}`} />

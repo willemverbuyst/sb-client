@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectToken } from '../../store/user/selectors';
 import PageContent from '../Sections/PageContent';
 import LoginForm from './LoginForm';
@@ -20,7 +20,7 @@ const Login: React.FC = (): ReactElement => {
       loadingText="Login"
       content={
         <>
-          <PageHeaderWithoutButton title="Login" />
+          <PageTitle title="Login" color="secondary" />
           <LoginForm />
         </>
       }

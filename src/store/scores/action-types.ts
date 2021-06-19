@@ -1,4 +1,9 @@
-import { IFixtureWithScores, IScores, IUserWithScore } from '../../models/scores.models';
+import {
+  IFixtureWithUsersWithScoreAndPrediction,
+  IUsersWithScoreAndRoundId,
+  IUsersWithScoreAndTotoRoundId,
+  IUserWithScore,
+} from '../../models/scores.models';
 
 export enum ActionType {
   RESET_ALL_SCORES = 'RESET_ALL_SCORES ',
@@ -14,12 +19,12 @@ export type ResetAllScores = {
 
 export type StoreScoresFixture = {
   type: ActionType.STORE_SCORES_FIXTURE;
-  payload: IFixtureWithScores;
+  payload: IFixtureWithUsersWithScoreAndPrediction;
 };
 
 export type StoreScoresRound = {
   type: ActionType.STORE_SCORES_ROUND;
-  payload: IScores;
+  payload: IUsersWithScoreAndRoundId;
 };
 
 export type StoreScoresTotalToto = {
@@ -29,7 +34,7 @@ export type StoreScoresTotalToto = {
 
 export type StoreScoresTotoRound = {
   type: ActionType.STORE_SCORES_TOTO_ROUND;
-  payload: IScores;
+  payload: IUsersWithScoreAndTotoRoundId;
 };
 
 export type ScoresActions =

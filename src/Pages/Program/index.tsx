@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../Components/Title/PageTitle';
 import { fetchCurrentRound } from '../../store/predictions/action-creators';
 import { selectCurrentRoundSortedByTime } from '../../store/user/selectors';
 import PageContent from '../Sections/PageContent';
@@ -24,7 +24,7 @@ const Program: React.FC = (): ReactElement => {
       content={
         currentRoundSortedByTime ? (
           <>
-            <PageHeaderWithoutButton title="Programma" />
+            <PageTitle title="Programma" color="secondary" />
             <Predictions fixtures={currentRoundSortedByTime} display="private" />
           </>
         ) : (

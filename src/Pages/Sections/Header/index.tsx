@@ -1,10 +1,12 @@
 import { Grid, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Weekend } from '@material-ui/icons';
+import BarChart from '@material-ui/icons/BarChart';
 import EmojiEvents from '@material-ui/icons/EmojiEvents';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Face from '@material-ui/icons/Face';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
+import FormatListNumberedRtlIcon from '@material-ui/icons/FormatListNumberedRtl';
 import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
 import PersonAdd from '@material-ui/icons/PersonAdd';
@@ -71,7 +73,9 @@ const Header: React.FC = (): ReactElement => {
   const gotoPredictions = () => history.push(`/voorspellingen/${totoRoundNumber}/${roundNumber}`);
   const gotoProfile = () => history.push('/profiel/edit');
   const gotoProgram = () => history.push('/programma');
+  const gotoRound = () => history.push(`/klassement/ronde/1`);
   const gotoRules = () => history.push('/regels');
+  const gotoScores = () => history.push(`/klassement/totoronde/${totoRoundNumber}`);
   const gotoSignUp = () => history.push('/signup');
   const gotoTotalToto = () => history.push('/klassement/totaaltoto');
 
@@ -81,9 +85,11 @@ const Header: React.FC = (): ReactElement => {
         <Grid container className={classes.header} alignItems="center">
           <NavIcon label="program" goto={gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon label="prediction" goto={gotoPredictions} icon={<SportsSoccerIcon className={classes.icon} />} />
-          <NavIcon label="my scores" goto={gotoMyScores} icon={<EmojiEvents className={classes.icon} />} />
+          <NavIcon label="my scores" goto={gotoMyScores} icon={<BarChart className={classes.icon} />} />
+          <NavIcon label="total toto" goto={gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
+          <NavIcon label="total toto" goto={gotoScores} icon={<FormatListNumberedIcon className={classes.icon} />} />
+          <NavIcon label="total toto" goto={gotoRound} icon={<FormatListNumberedRtlIcon className={classes.icon} />} />
           <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
-          <NavIcon label="total toto" goto={gotoTotalToto} icon={<FormatListNumberedIcon className={classes.icon} />} />
           {user && user.admin ? (
             <NavIcon label="sign up" goto={gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
           ) : null}

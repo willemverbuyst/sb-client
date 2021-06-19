@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../Components/Title/PageTitle';
 import { selectUser } from '../../store/user/selectors';
 import PageContent from '../Sections/PageContent';
 import SignUpForm from './SingUpForm';
@@ -20,7 +20,7 @@ const SignUp: React.FC = (): ReactElement => {
       loadingText="Sign Up"
       content={
         <>
-          <PageHeaderWithoutButton title="Sign Up" />
+          <PageTitle title="Sign up" color="secondary" />
           <SignUpForm />
         </>
       }

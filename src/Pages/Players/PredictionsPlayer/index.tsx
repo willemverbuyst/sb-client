@@ -1,9 +1,9 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithButton from '../../../Components/Header/PageHeaderWithBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchPlayerProfile } from '../../../store/players/action-creators';
 import { selectPastFixturesWithScoresSortedByTime, selectUserNamePlayer } from '../../../store/players/selectors';
 import { calculateIndex } from '../../../utils/parameterFunctions';
@@ -13,7 +13,6 @@ import PaginationSection from './PaginationSection';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const userNamePlayer = useSelector(selectUserNamePlayer);
   const pastFixturesWithScoresSortedByTime = useSelector(selectPastFixturesWithScoresSortedByTime);
   const { id } = useParams<{ id: string }>();
@@ -33,20 +32,13 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     ? [...pastFixturesWithScoresSortedByTime[t - 1][calculateIndex(r)]]
     : null;
 
-  const gotoScores = () => history.push(`/spelers/${id}/scores`);
-
   return (
     <PageContent
-      loadingText="Voorspellingen speler..."
+      loadingText="Voorspellingen"
       content={
         filteredFixtures && userNamePlayer ? (
           <>
-            <PageHeaderWithButton
-              title={`${name}'s voorspellingen`}
-              captionBtn="SCORES"
-              colorBtn="secondary"
-              handleClick={gotoScores}
-            />
+            <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
             <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
           </>
