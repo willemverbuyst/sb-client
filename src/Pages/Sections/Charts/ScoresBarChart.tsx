@@ -30,7 +30,9 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const backgroundColor = HELPERS.getBackgroundColorBars<IUserWithScore>(scores, user?.id);
 
   const gotoPlayer = (id: number): void =>
-    user && scores[id].id === user.id ? history.push(`/scores`) : history.push(`/spelers/${scores[id].id}/scores`);
+    user && scores[id].userId === user.id
+      ? history.push(`/scores`)
+      : history.push(`/spelers/${scores[id].userId}/scores`);
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: labels,

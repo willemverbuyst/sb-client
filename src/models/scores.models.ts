@@ -1,25 +1,27 @@
 import { IFixture } from './toto.models';
 
-export interface IFixtureWithScores {
+export interface IFixtureWithUsersWithScoreAndPrediction {
   fixture: IFixture;
-  scores: IPredictionWithScorePerUser[] | null;
+  scores: IUserWithScoreAndPrediction[] | null;
 }
 
 export interface IUserWithScore {
-  id: number;
-  score: number;
-  user: string;
-}
-
-export interface IScores {
-  usersWithScores: IUserWithScore[];
-  id: number;
-}
-
-export interface IPredictionWithScorePerUser {
-  pGoalsAwayTeam: number;
-  pGoalsHomeTeam: number;
   score: number;
   user: string;
   userId: number;
+}
+
+export interface IUserWithScoreAndPrediction extends IUserWithScore {
+  pGoalsAwayTeam: number;
+  pGoalsHomeTeam: number;
+}
+
+export interface IUsersWithScoreAndRoundId {
+  usersWithScores: IUserWithScore[];
+  roundId: number;
+}
+
+export interface IUsersWithScoreAndTotoRoundId {
+  usersWithScores: IUserWithScore[];
+  totoRoundId: number;
 }

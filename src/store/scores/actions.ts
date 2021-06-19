@@ -1,4 +1,9 @@
-import { IFixtureWithScores, IScores, IUserWithScore } from '../../models/scores.models';
+import {
+  IFixtureWithUsersWithScoreAndPrediction,
+  IUsersWithScoreAndRoundId,
+  IUsersWithScoreAndTotoRoundId,
+  IUserWithScore,
+} from '../../models/scores.models';
 import {
   ActionType,
   ResetAllScores,
@@ -14,14 +19,14 @@ export const resetAllScores = (): ResetAllScores => {
   };
 };
 
-export const storeScoresFixture = (fixture: IFixtureWithScores): StoreScoresFixture => {
+export const storeScoresFixture = (fixture: IFixtureWithUsersWithScoreAndPrediction): StoreScoresFixture => {
   return {
     type: ActionType.STORE_SCORES_FIXTURE,
     payload: fixture,
   };
 };
 
-export const storeScoresRound = (round: IScores): StoreScoresRound => {
+export const storeScoresRound = (round: IUsersWithScoreAndRoundId): StoreScoresRound => {
   return {
     type: ActionType.STORE_SCORES_ROUND,
     payload: round,
@@ -35,7 +40,7 @@ export const storeScoresTotalToto = (totalToto: IUserWithScore[]): StoreScoresTo
   };
 };
 
-export const storeScoresTotoRound = (totoRound: IScores): StoreScoresTotoRound => {
+export const storeScoresTotoRound = (totoRound: IUsersWithScoreAndTotoRoundId): StoreScoresTotoRound => {
   return {
     type: ActionType.STORE_SCORES_TOTO_ROUND,
     payload: totoRound,

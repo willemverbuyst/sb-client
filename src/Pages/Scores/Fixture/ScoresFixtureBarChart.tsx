@@ -8,19 +8,19 @@ import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
-import { IPredictionWithScorePerUser } from '../../../models/scores.models';
+import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
 import { getStringsInUpperCase } from '../../../utils/stringFunctions';
 
 interface IProps {
-  scores: IPredictionWithScorePerUser[];
+  scores: IUserWithScoreAndPrediction[];
 }
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
   const user: IUser | null = useSelector(selectUser);
 
-  const labels: string[] = getStringsInUpperCase<keyof IPredictionWithScorePerUser, IPredictionWithScorePerUser>(
+  const labels: string[] = getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
     scores,
     'user',
   );
