@@ -28,16 +28,16 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEl
   const userScores: number[] = scores.map((player) => player.score + 0.1);
   const max: number = Math.max(...userScores) * 1.2;
 
-  const hoverBackgroundColors = scores.map((score) => (score?.userId === user?.id ? '#4f8ad8' : '#aaa'));
-
+  const hoverBackgroundColors = scores.map(() => 'grey');
   const backgroundColor = scores.map((score) => (score.userId === user?.id ? '#1e5eb1' : '#EA9C3B'));
 
   const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
 
-  const gotoPlayer = (id: number): void =>
-    user && scores[id].userId === user.id
+  const gotoPlayer = (index: number): void => {
+    return user && scores[index].userId === user.id
       ? history.push(`/scores`)
-      : history.push(`/spelers/${scores[id].userId}/scores`);
+      : history.push(`/spelers/${scores[index].userId}/scores`);
+  };
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: labels,
