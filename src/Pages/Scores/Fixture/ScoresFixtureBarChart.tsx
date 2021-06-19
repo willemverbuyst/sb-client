@@ -8,30 +8,43 @@ import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
-import { IPredictionWithScorePerUser } from '../../../models/scores.models';
+import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
+import { getStringsInUpperCase } from '../../../utils/stringFunctions';
 
 interface IProps {
-  scores: IPredictionWithScorePerUser[];
+  scores: IUserWithScoreAndPrediction[];
 }
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const labels: string[] = scores.map((player) => player.user.toLocaleUpperCase());
-  const userScores: number[] = scores.map((player) => player.score + 0.1);
-  const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
   const user: IUser | null = useSelector(selectUser);
-  const max: number = Math.max(...userScores) * 1.2;
-  const hoverBackgroundColors = scores.map((score) => (score?.userId === user?.id ? '#1e5eb1' : '#aaa'));
 
-  const gotoPlayer = (id: number): void => history.push(`/spelers/${scores[id].userId}/scores`);
+  const labels: string[] = getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
+    scores,
+    'user',
+  );
+
+  const userScores: number[] = scores.map((player) => player.score + 0.1);
+  const max: number = Math.max(...userScores) * 1.2;
+
+  const hoverBackgroundColors = scores.map(() => 'grey');
+  const backgroundColor = scores.map((score) => (score.userId === user?.id ? '#1e5eb1' : '#EA9C3B'));
+
+  const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
+
+  const gotoPlayer = (index: number): void => {
+    return user && scores[index].userId === user.id
+      ? history.push(`/scores`)
+      : history.push(`/spelers/${scores[index].userId}/scores`);
+  };
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: labels,
     datasets: [
       {
         data: userScores,
-        backgroundColor: '#EA9C3B',
+        backgroundColor: backgroundColor,
         borderWidth: 0,
         hoverBackgroundColor: hoverBackgroundColors,
       },

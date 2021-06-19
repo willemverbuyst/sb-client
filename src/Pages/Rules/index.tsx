@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import PageHeaderWithoutButton from '../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../Components/Title/PageTitle';
 import PageContent from '../Sections/PageContent';
 import AccordionWithRules from './AccordionWithRules';
 
@@ -10,7 +10,7 @@ const Rules: React.FC = (): ReactElement => {
       loadingText="Regels"
       content={
         <>
-          <PageHeaderWithoutButton title="Regels" />
+          <PageTitle title="Regels" color="secondary" />
           <AccordionWithRules />
         </>
       }

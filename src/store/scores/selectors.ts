@@ -1,4 +1,4 @@
-import { IPredictionWithScorePerUser, IScores, IUserWithScore } from '../../models/scores.models';
+import { IUsersWithScoreAndRoundId, IUserWithScore, IUserWithScoreAndPrediction } from '../../models/scores.models';
 import { IFixture } from '../../models/toto.models';
 import { sortArrayWithObjects } from '../../utils/sortFunctions';
 import { StoreState } from '../types';
@@ -11,16 +11,16 @@ export const selectFixture = (state: StoreState): IFixture | null => {
   }
 };
 
-export const selectScoresForFixtureSortedByName = (state: StoreState): IPredictionWithScorePerUser[] | null => {
+export const selectScoresForFixtureSortedByName = (state: StoreState): IUserWithScoreAndPrediction[] | null => {
   if (
     state.scoresState.fixtureScores &&
     state.scoresState.fixtureScores.scores &&
     state.scoresState.fixtureScores.scores.length > 0
   ) {
     const scoresFixture = state.scoresState.fixtureScores.scores;
-    const scoresFixtureSortedByName: IPredictionWithScorePerUser[] = sortArrayWithObjects<
-      keyof IPredictionWithScorePerUser,
-      IPredictionWithScorePerUser
+    const scoresFixtureSortedByName: IUserWithScoreAndPrediction[] = sortArrayWithObjects<
+      keyof IUserWithScoreAndPrediction,
+      IUserWithScoreAndPrediction
     >('user')(scoresFixture);
 
     return scoresFixtureSortedByName;
@@ -29,11 +29,11 @@ export const selectScoresForFixtureSortedByName = (state: StoreState): IPredicti
   }
 };
 
-export const selectRound = (state: StoreState): IScores | null => state.scoresState.roundScores;
+export const selectRound = (state: StoreState): IUsersWithScoreAndRoundId | null => state.scoresState.roundScores;
 
 export const selectRoundId = (state: StoreState): number | null => {
   if (state.scoresState.roundScores) {
-    return state.scoresState.roundScores.id;
+    return state.scoresState.roundScores.roundId;
   } else {
     return null;
   }
@@ -121,7 +121,7 @@ export const selectScoresRoundSortedByScore = (state: StoreState): IUserWithScor
 
 export const selectTotoRoundId = (state: StoreState): number | null => {
   if (state.scoresState.totoRoundScores) {
-    return state.scoresState.totoRoundScores.id;
+    return state.scoresState.totoRoundScores.totoRoundId;
   } else {
     return null;
   }

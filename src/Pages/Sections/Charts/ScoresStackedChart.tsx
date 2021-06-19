@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import BarChart from '../../../Components/Chart/BarChart';
 import { IScoresPlayer } from '../../../models/player.model';
 import { selectUser } from '../../../store/user/selectors';
+import * as HELPERS from './helpers/barchart.functions';
 
 interface Color {
   color1: string;
@@ -32,66 +33,59 @@ const ScoresStackedChart: React.FC<IProps> = ({
 }: IProps): ReactElement => {
   const history = useHistory();
   const user = useSelector(selectUser);
-  const { id, scores } = scoresPlayer;
+  const { userId, scores } = scoresPlayer;
 
   let colorPrimary;
-  let colorSecondary;
 
-  if (!loggedInUser && user?.id === id) {
+  if (!loggedInUser && user?.id === userId) {
     colorPrimary = colorHover;
-    colorSecondary = colorMain;
   } else {
     colorPrimary = colorMain;
-    colorSecondary = colorHover;
   }
 
-  const gotoTotoRound = (id: number) => {
+  const gotoTotoRound = (totoRound: number) => {
     loggedInUser
-      ? history.push(`/voorspellingen/${id}/${id * 3 - 2}`)
-      : history.push(`/spelers/${id}/voorspellingen/${id}/${id * 3 - 2}`);
+      ? history.push(`/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`)
+      : history.push(`/spelers/${userId}/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`);
   };
 
   const totals = scores.map((totoround) => totoround.reduce((a, b) => a + b));
-  const max = Math.max(...totals) * 1.2;
+  const max = HELPERS.generateMaxForChartYAx(totals, 1.2);
 
   const chartData: ChartData<chartjs.ChartData> = {
-    labels: scores.map((_totoround, i) => `TOTORONDE ${i + 1}`),
+    labels: scores.map(() => ``),
     datasets: [
       {
         stack: '',
         label: 'part1',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[0] ? totoRound[0] : 0)),
         backgroundColor: colorPrimary.color1,
-        hoverBackgroundColor: colorSecondary.color1,
+        hoverBackgroundColor: 'grey',
+        barPercentage: 1,
       },
       {
         stack: '',
         label: 'part2',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[1] ? totoRound[1] : 0)),
         backgroundColor: colorPrimary.color2,
-        hoverBackgroundColor: colorSecondary.color2,
+        hoverBackgroundColor: 'grey',
+        barPercentage: 1,
       },
       {
         stack: '',
         label: 'part3',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[2] ? totoRound[2] : 0)),
         backgroundColor: colorPrimary.color3,
-        hoverBackgroundColor: colorSecondary.color3,
+        hoverBackgroundColor: 'grey',
+        barPercentage: 1,
       },
       {
         stack: '',
         label: 'part4',
-        borderWidth: 2,
-        borderColor: '#f1f1f1',
         data: scores.map((totoRound) => (totoRound[3] ? totoRound[3] : 0)),
         backgroundColor: colorPrimary.color4,
-        hoverBackgroundColor: colorSecondary.color4,
+        hoverBackgroundColor: 'grey',
+        barPercentage: 1,
       },
     ],
   };

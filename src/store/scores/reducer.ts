@@ -1,11 +1,16 @@
-import { IFixtureWithScores, IScores, IUserWithScore } from '../../models/scores.models';
+import {
+  IFixtureWithUsersWithScoreAndPrediction,
+  IUsersWithScoreAndRoundId,
+  IUsersWithScoreAndTotoRoundId,
+  IUserWithScore,
+} from '../../models/scores.models';
 import { ActionType, ScoresActions } from './action-types';
 
 export interface IScoresState {
-  fixtureScores: IFixtureWithScores | null;
-  roundScores: IScores | null;
+  fixtureScores: IFixtureWithUsersWithScoreAndPrediction | null;
+  roundScores: IUsersWithScoreAndRoundId | null;
   totalTotoScores: IUserWithScore[] | null;
-  totoRoundScores: IScores | null;
+  totoRoundScores: IUsersWithScoreAndTotoRoundId | null;
 }
 
 const initialState: IScoresState = {

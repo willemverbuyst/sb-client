@@ -1,9 +1,9 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../Components/Communication/Message';
-import PageHeaderWithButton from '../../Components/Header/PageHeaderWithBtn';
+import PageTitle from '../../Components/Title/PageTitle';
 import { fetchAllFixtures } from '../../store/predictions/action-creators';
 import { selectFixturesSortedByTime } from '../../store/predictions/selectors';
 import { calculateIndex } from '../../utils/parameterFunctions';
@@ -13,7 +13,6 @@ import PaginationSection from './PaginationSection';
 
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const fixturesSortedByTime = useSelector(selectFixturesSortedByTime);
   const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
@@ -30,20 +29,13 @@ const PredictionsUser: React.FC = (): ReactElement => {
   // [t- 1]: as an array starts at index 0, subtract 1 from the totoround number
   const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][calculateIndex(r)]] : null;
 
-  const gotoRanking = () => history.push(`/klassement/ronde/${ronde}`);
-
   return (
     <PageContent
-      loadingText="Voorspellingen"
+      loadingText="Mijn voorspellingen"
       content={
         filteredFixtures ? (
           <>
-            <PageHeaderWithButton
-              title="Mijn voorspellingen"
-              captionBtn="KLASSEMENT"
-              colorBtn="secondary"
-              handleClick={gotoRanking}
-            />
+            <PageTitle title={`Mijn voorspellingen`} color="primary" />
             <Predictions fixtures={filteredFixtures} display="private" />
             <PaginationSection totoronde={totoronde} ronde={ronde} />
           </>

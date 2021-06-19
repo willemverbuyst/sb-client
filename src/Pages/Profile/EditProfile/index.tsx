@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { selectUser } from '../../../store/user/selectors';
 import PageContent from '../../Sections/PageContent';
 import EditProfileForm from './EditProfileForm';
@@ -15,7 +15,7 @@ const EditProfile: React.FC = (): ReactElement => {
       loadingText="Profiel"
       content={
         <>
-          <PageHeaderWithoutButton title="Profiel" />
+          <PageTitle title="Profiel" color="primary" />
           {user ? <EditProfileForm user={user} /> : <MessageComponent message={`Geen profiel gevonden`} />}
         </>
       }

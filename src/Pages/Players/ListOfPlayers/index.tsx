@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
-import PageHeaderWithoutButton from '../../../Components/Header/PageHeaderWithoutBtn';
+import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchAllPlayers } from '../../../store/players/action-creators';
 import { selectPlayersSortedByName } from '../../../store/players/selectors';
 import PageContent from '../../Sections/PageContent';
@@ -24,7 +24,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
       content={
         playersSortedByName ? (
           <>
-            <PageHeaderWithoutButton title="Spelers" />
+            <PageTitle title="Spelers" color="secondary" />
             <TableWithPlayers playersSortedByName={playersSortedByName} />
           </>
         ) : (

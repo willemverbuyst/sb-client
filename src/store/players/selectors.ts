@@ -37,20 +37,6 @@ export const selectPastFixturesWithScoresSortedByTime = (state: StoreState): Tot
 
 export const selectPlayerScores = (state: StoreState): IScoresPlayer | null => state.playersState.scoresPlayer;
 
-// export const selectPlayerScoresSortedByScore = (state: StoreState): IScoresPlayer | null => {
-//   if (
-//     state.playersState.scoresPlayer &&
-//     state.playersState.scoresPlayer.scores &&
-//     state.playersState.scoresPlayer.scores.length > 0
-//   ) {
-//     const playersScores = state.playersState.scoresPlayer;
-//     console.log(playersScores);
-
-//     return playersScores;
-//   }
-//   return null;
-// };
-
 export const selectUserNamePlayer = (state: StoreState): string | null => {
   if (state.playersState.playerProfile) {
     return state.playersState.playerProfile.userName;

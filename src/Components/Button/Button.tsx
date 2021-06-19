@@ -14,17 +14,19 @@ const ButtonComponent: React.FC<IProps> = ({ caption, color, handleClick }: IPro
   const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
-    <Grid>
-      <Button
-        fullWidth
-        variant={btnVariant ? 'contained' : 'outlined'}
-        size="small"
-        color={color}
-        disableElevation
-        onClick={handleClick}
-      >
-        {caption}
-      </Button>
+    <Grid container justify="center">
+      <Grid item xs={12} md={3}>
+        <Button
+          fullWidth
+          variant={btnVariant ? 'contained' : 'outlined'}
+          size="small"
+          color={color}
+          disableElevation
+          onClick={handleClick}
+        >
+          {caption}
+        </Button>
+      </Grid>
     </Grid>
   );
 };
