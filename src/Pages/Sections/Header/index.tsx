@@ -41,16 +41,11 @@ const useStyles = makeStyles((theme: Theme) =>
     brand: {
       [theme.breakpoints.down('sm')]: {
         justifyContent: 'center',
-        height: '3.5rem',
         marginTop: '1rem',
       },
       backgroundColor: theme.palette.primary.main,
       color: '#fff',
-      height: '3.6rem',
       marginBottom: '1rem',
-    },
-    appName: {
-      fontSize: '2rem',
     },
   }),
 );
@@ -100,7 +95,9 @@ const Header: React.FC = (): ReactElement => {
       ) : (
         <Grid container className={classes.brand} alignItems="center">
           <img src={ball} style={{ width: '40px', margin: '0 10px 0 0' }} alt="soccer ball" />
-          <Typography className={classes.appName}>Sport Betting App</Typography>
+          <Typography align="center" variant="h3">
+            Sport Betting App
+          </Typography>
         </Grid>
       )}
     </Grid>

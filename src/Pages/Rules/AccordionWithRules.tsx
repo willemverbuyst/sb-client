@@ -1,13 +1,12 @@
 import { Grid, Typography } from '@material-ui/core';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React, { ReactElement } from 'react';
 
 import { listOfRules } from '../../constants/listOfRules';
-import { content } from '../../ui/sharedClasses';
 import AccordionAnswers from './AccordionAnswers';
 
 const Accordion = withStyles(() => ({
@@ -26,8 +25,7 @@ const Accordion = withStyles(() => ({
 const AccordionSummary = withStyles(() => ({
   root: {
     backgroundColor: '#f1f1f1',
-    borderBottom: '2px solid #EA9C3B',
-    marginBottom: -1,
+    borderBottom: '1px solid #EA9C3B',
     minHeight: 56,
     '&$expanded': {
       minHeight: 56,
@@ -41,11 +39,16 @@ const AccordionSummary = withStyles(() => ({
   expanded: {},
 }))(MuiAccordionSummary);
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...content(theme),
-  }),
-);
+const useStyles = makeStyles((theme: Theme) => ({
+  content: {
+    [theme.breakpoints.down('sm')]: {
+      marginTop: theme.spacing(1),
+      marginBottom: theme.spacing(1),
+    },
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+  },
+}));
 
 const AccordionWithRules: React.FC = (): ReactElement => {
   const classes = useStyles();
