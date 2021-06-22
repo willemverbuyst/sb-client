@@ -12,7 +12,7 @@ import { ISignUpCredentials } from '../../models/credentials.model';
 import { addPlayer } from '../../store/players/action-creators';
 import { fetchAllTeams } from '../../store/teams/action-creators';
 import { selectTeams } from '../../store/teams/selectors';
-import * as HELPERS from '../Profile/EditProfile/helpers';
+import * as UTILS from '../../utils';
 
 const SignUpForm: React.FC = (): ReactElement => {
   const teams = useSelector(selectTeams);
@@ -31,7 +31,7 @@ const SignUpForm: React.FC = (): ReactElement => {
     teamId: '',
   });
 
-  const teamsForSelector = teams ? HELPERS.getTeamsForSelector(teams) : null;
+  const teamsForSelector = teams ? UTILS.getTeamsForSelector(teams) : null;
 
   useEffect(() => {
     if (!teams) {

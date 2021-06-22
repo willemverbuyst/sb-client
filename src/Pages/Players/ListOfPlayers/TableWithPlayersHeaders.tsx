@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
 import TableHeaders from '../../../Components/Table/TableHeaders';
-import { Align } from '../../../Components/Table/types';
+import { Align } from '../../../models/table.models';
 import { selectUser } from '../../../store/user/selectors';
 
 const TableWithPlayersHeaders = (): ReactElement => {
