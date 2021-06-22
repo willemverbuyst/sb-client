@@ -1,6 +1,6 @@
 import { IPlayer, IScoresPlayer } from '../../models/player.model';
 import { IFixtureWithScoreAndPredictions, TotoRound } from '../../models/toto.models';
-import { sortArrayWithObjects } from '../../utils/sortFunctions';
+import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
 export const selectPlayers = (state: StoreState): IPlayer[] | null => state.playersState.players;
@@ -8,7 +8,7 @@ export const selectPlayers = (state: StoreState): IPlayer[] | null => state.play
 export const selectPlayersSortedByName = (state: StoreState): IPlayer[] | null => {
   if (state.playersState.players && state.playersState.players.length > 0) {
     const players = state.playersState.players;
-    const playersSortedByName = sortArrayWithObjects<keyof IPlayer, IPlayer>('userName')(players);
+    const playersSortedByName = UTILS.sortArrayWithObjects<keyof IPlayer, IPlayer>('userName')(players);
     return playersSortedByName;
   }
   return null;
@@ -24,9 +24,9 @@ export const selectPastFixturesWithScoresSortedByTime = (state: StoreState): Tot
 
     const pastFixturesWithScoresSortedByTime = pastFixturesWithScores.map((totoRound) =>
       totoRound.map((round) =>
-        sortArrayWithObjects<keyof IFixtureWithScoreAndPredictions, IFixtureWithScoreAndPredictions>('eventTimeStamp')(
-          round,
-        ),
+        UTILS.sortArrayWithObjects<keyof IFixtureWithScoreAndPredictions, IFixtureWithScoreAndPredictions>(
+          'eventTimeStamp',
+        )(round),
       ),
     );
     return pastFixturesWithScoresSortedByTime;

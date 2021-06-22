@@ -1,5 +1,5 @@
 import { ITeam } from '../../../../models/toto.models';
-import { sortArrayWithObjects } from '../../../../utils/sortFunctions';
+import * as UTILS from '../../../../utils';
 
 interface IOptionsForSelector {
   name: string;
@@ -7,7 +7,7 @@ interface IOptionsForSelector {
 }
 
 const getTeamsForSelector = (teams: ITeam[]): IOptionsForSelector[] => {
-  const sortedTeams = sortArrayWithObjects<keyof ITeam, ITeam>('name')(teams);
+  const sortedTeams = UTILS.sortArrayWithObjects<keyof ITeam, ITeam>('name')(teams);
   const teamsForSelector = sortedTeams.map((team) => {
     return {
       name: team.name,

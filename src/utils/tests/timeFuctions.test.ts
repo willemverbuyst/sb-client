@@ -1,4 +1,4 @@
-import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../timeFunctions';
+import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../time.functions';
 
 describe('if given a timestamp', () => {
   const timeStampTest1 = 1610206200;

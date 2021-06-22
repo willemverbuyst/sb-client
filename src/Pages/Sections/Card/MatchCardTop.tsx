@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { formatTimeStampToLocalDate } from '../../../utils/timeFunctions';
+import * as UTILS from '../../../utils';
 import TextComponent from './Text';
 
 interface IProps {
@@ -12,7 +12,7 @@ const MatchCardTop: React.FC<IProps> = ({ eventTimeStamp }: IProps): ReactElemen
     <TextComponent
       xs={12}
       justify="center"
-      content={formatTimeStampToLocalDate(eventTimeStamp)}
+      content={UTILS.formatTimeStampToLocalDate(eventTimeStamp)}
       variant="overline"
       color="textSecondary"
     />

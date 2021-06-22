@@ -1,5 +1,5 @@
-import { IUserWithScore } from '../../../../models/scores.models';
-import { colorPrimary, colorSecondary } from '../../../../ui/theme/chartColors';
+import { IUserWithScore } from '../models/scores.models';
+import { colorPrimary, colorSecondary } from '../ui/theme/chartColors';
 
 export const getBackgroundColorBars = <T extends IUserWithScore>(array: T[], userId?: number): string[] =>
   array.map((a) => (a.userId === userId ? colorPrimary.color1 : colorSecondary.color1));

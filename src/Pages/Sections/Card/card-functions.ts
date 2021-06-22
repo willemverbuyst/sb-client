@@ -1,4 +1,4 @@
-import { getTimeFromTimeStamp, hasBettingClosed } from '../../../utils/timeFunctions';
+import { getTimeFromTimeStamp, hasBettingClosed } from '../../../utils/time.functions';
 
 const getTemporaryPrediction = (pGoalsHomeTeam: number | null, pGoalsAwayTeam: number | null): string =>
   Number.isInteger(pGoalsAwayTeam) ? ` [ ${pGoalsHomeTeam} - ${pGoalsAwayTeam} ] ` : ` [ geen ] `;

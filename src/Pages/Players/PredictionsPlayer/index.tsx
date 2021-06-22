@@ -6,7 +6,7 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchPlayerProfile } from '../../../store/players/action-creators';
 import { selectPastFixturesWithScoresSortedByTime, selectUserNamePlayer } from '../../../store/players/selectors';
-import { calculateIndex } from '../../../utils/parameterFunctions';
+import * as UTILS from '../../../utils';
 import PageContent from '../../Sections/PageContent';
 import Predictions from '../../Sections/Predictions';
 import PaginationSection from './PaginationSection';
@@ -29,7 +29,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const filteredFixtures = pastFixturesWithScoresSortedByTime
-    ? [...pastFixturesWithScoresSortedByTime[t - 1][calculateIndex(r)]]
+    ? [...pastFixturesWithScoresSortedByTime[t - 1][UTILS.calculateIndex(r)]]
     : null;
 
   return (

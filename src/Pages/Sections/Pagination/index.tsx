@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 
 import PaginationComponent from '../../../Components/Pagination';
 import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../../constants/setupGame';
-import { roundByTotoRound, totoRoundByRound } from '../../../utils/parameterFunctions';
+import * as UTILS from '../../../utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paginationContainer: {
@@ -26,12 +26,12 @@ const Pagination: React.FC<IProps> = ({ totoRound, round, gotoTotoRound, gotoRou
   let r = Number(round);
 
   const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
-    r = roundByTotoRound(value);
+    r = UTILS.roundByTotoRound(value);
     gotoTotoRound(value, r);
   };
 
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
-    t = totoRoundByRound(value);
+    t = UTILS.totoRoundByRound(value);
     gotoRound(value, t);
   };
 

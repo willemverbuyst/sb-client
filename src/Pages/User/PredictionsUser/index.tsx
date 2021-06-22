@@ -6,7 +6,7 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
 import { fetchAllFixtures } from '../../../store/predictions/action-creators';
 import { selectFixturesSortedByTime } from '../../../store/predictions/selectors';
-import { calculateIndex } from '../../../utils/parameterFunctions';
+import * as UTILS from '../../../utils';
 import PageContent from '../../Sections/PageContent';
 import Predictions from '../../Sections/Predictions';
 import PaginationSection from './PaginationSection';
@@ -27,7 +27,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
   }, [dispatch, fixturesSortedByTime]);
 
   // [t- 1]: as an array starts at index 0, subtract 1 from the totoround number
-  const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][calculateIndex(r)]] : null;
+  const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][UTILS.calculateIndex(r)]] : null;
 
   return (
     <PageContent

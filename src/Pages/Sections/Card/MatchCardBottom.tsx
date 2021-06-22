@@ -3,7 +3,7 @@ import React, { ReactElement, useState } from 'react';
 
 import CardButton from '../../../Components/Button/CardButton';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import { hasBettingClosed } from '../../../utils/timeFunctions';
+import * as UTILS from '../../../utils';
 import { getPrediction } from './card-functions';
 import MatchCardInput from './MatchCardInput';
 
@@ -32,13 +32,16 @@ const MatchCardBottom: React.FC<IProps> = ({
   const prediction = getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display, userNamePlayer);
 
   const renderEditButton = (): ReactElement | null => {
-    return status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' && !showInput ? (
+    return status !== 'Match Finished' &&
+      !UTILS.hasBettingClosed(eventTimeStamp) &&
+      display === 'private' &&
+      !showInput ? (
       <CardButton caption="Edit" color="secondary" handleClick={setShowInputToTrue} variant="text" />
     ) : null;
   };
 
   const renderInput = (): ReactElement | null => {
-    return status !== 'Match Finished' && !hasBettingClosed(eventTimeStamp) && display === 'private' ? (
+    return status !== 'Match Finished' && !UTILS.hasBettingClosed(eventTimeStamp) && display === 'private' ? (
       <MatchCardInput fixtureWithPrediction={fixtureWithPrediction} hideInput={setShowInputToFalse} />
     ) : null;
   };

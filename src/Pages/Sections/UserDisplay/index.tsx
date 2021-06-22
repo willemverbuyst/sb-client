@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import AvatarLargeComponent from '../../../Components/Avatar/AvatarLarge';
 import { selectUser } from '../../../store/user/selectors';
-import { replaceUnderscore } from '../../../utils/stringFunctions';
+import * as UTILS from '../../../utils';
 
 export const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -34,7 +34,7 @@ const UserDisplay: React.FC = (): ReactElement => {
   const classes = useStyles();
   const user = useSelector(selectUser);
 
-  const name = user ? replaceUnderscore(user.userName) : 'Who are you?';
+  const name = user ? UTILS.replaceUnderscore(user.userName) : 'Who are you?';
 
   return (
     <Grid container justify="center">

@@ -1,5 +1,5 @@
 import { IFixtureWithScoreAndPredictions, TotoRound } from '../../models/toto.models';
-import { sortArrayWithObjects } from '../../utils/sortFunctions';
+import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
 export const selectCurrentRoundSortedByTime = (state: StoreState): IFixtureWithScoreAndPredictions[] | null => {
@@ -10,7 +10,7 @@ export const selectCurrentRoundSortedByTime = (state: StoreState): IFixtureWithS
   ) {
     const fixtures = state.predictionsState.currentRound.fixtures;
 
-    const currentRoundSortedByTime = sortArrayWithObjects<
+    const currentRoundSortedByTime = UTILS.sortArrayWithObjects<
       keyof IFixtureWithScoreAndPredictions,
       IFixtureWithScoreAndPredictions
     >('eventTimeStamp')(fixtures);
@@ -27,9 +27,9 @@ export const selectFixturesSortedByTime = (state: StoreState): TotoRound[] | nul
     const allFixtures = state.predictionsState.allFixtures;
     const fixturesSortedByTime = allFixtures.map((totoRound) =>
       totoRound.map((round) =>
-        sortArrayWithObjects<keyof IFixtureWithScoreAndPredictions, IFixtureWithScoreAndPredictions>('eventTimeStamp')(
-          round,
-        ),
+        UTILS.sortArrayWithObjects<keyof IFixtureWithScoreAndPredictions, IFixtureWithScoreAndPredictions>(
+          'eventTimeStamp',
+        )(round),
       ),
     );
     return fixturesSortedByTime;

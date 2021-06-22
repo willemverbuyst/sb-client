@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 
 import LogoMediumComponent from '../../../Components/Logo/LogoMedium';
 import { IFixture } from '../../../models/toto.models';
-import { formatTimeStampToLocalDate } from '../../../utils/timeFunctions';
+import * as UTILS from '../../../utils';
 import TextComponent from './Text';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -34,7 +34,7 @@ const FixtureSection: React.FC<IProps> = ({ fixture }: IProps): ReactElement => 
     awayTeamName,
     awayTeamLogo,
   } = fixture;
-  const formattedDate = formatTimeStampToLocalDate(eventTimeStamp);
+  const formattedDate = UTILS.formatTimeStampToLocalDate(eventTimeStamp);
   const goals =
     Number.isInteger(goalsAwayTeam) && Number.isInteger(goalsHomeTeam) ? `${goalsHomeTeam} - ${goalsAwayTeam}` : ` - `;
 

@@ -1,6 +1,6 @@
 import { IUser } from '../../models/player.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { sortArrayWithObjects } from '../../utils/sortFunctions';
+import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
 export const selectToken = (state: StoreState): string | null => state.userState.token;
@@ -16,7 +16,7 @@ export const selectCurrentRoundSortedByTime = (state: StoreState): IFixtureWithS
   ) {
     const fixtures = state.userState.user.currentRound.fixtures;
 
-    const currentRoundSortedByTime = sortArrayWithObjects<
+    const currentRoundSortedByTime = UTILS.sortArrayWithObjects<
       keyof IFixtureWithScoreAndPredictions,
       IFixtureWithScoreAndPredictions
     >('eventTimeStamp')(fixtures);

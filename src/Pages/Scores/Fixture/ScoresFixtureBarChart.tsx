@@ -10,7 +10,7 @@ import BarChart from '../../../Components/Chart/BarChart';
 import { IUser } from '../../../models/player.model';
 import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
 import { selectUser } from '../../../store/user/selectors';
-import { getStringsInUpperCase } from '../../../utils/stringFunctions';
+import * as UTILS from '../../../utils';
 
 interface IProps {
   scores: IUserWithScoreAndPrediction[];
@@ -20,7 +20,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEl
   const history = useHistory();
   const user: IUser | null = useSelector(selectUser);
 
-  const labels: string[] = getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
+  const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
     scores,
     'user',
   );
