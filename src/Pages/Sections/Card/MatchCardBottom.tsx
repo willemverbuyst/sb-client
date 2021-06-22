@@ -4,7 +4,6 @@ import React, { ReactElement, useState } from 'react';
 import CardButton from '../../../Components/Button/CardButton';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import * as UTILS from '../../../utils';
-import { getPrediction } from './card-functions';
 import MatchCardInput from './MatchCardInput';
 
 interface IProps {
@@ -29,7 +28,14 @@ const MatchCardBottom: React.FC<IProps> = ({
   const setShowInputToFalse = () => setShowInput(false);
   const setShowInputToTrue = () => setShowInput(true);
 
-  const prediction = getPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp, display, userNamePlayer);
+  const prediction = UTILS.getPrediction(
+    pGoalsHomeTeam,
+    pGoalsAwayTeam,
+    status,
+    eventTimeStamp,
+    display,
+    userNamePlayer,
+  );
 
   const renderEditButton = (): ReactElement | null => {
     return status !== 'Match Finished' &&

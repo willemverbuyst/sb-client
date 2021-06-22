@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import LogoSmallComponent from '../../../Components/Logo/LogoSmall';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import { getOutCome } from './card-functions';
+import * as UTILS from '../../../utils';
 import TextComponent from './Text';
 
 const useStyles = makeStyles(() => ({
@@ -42,7 +42,7 @@ const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): R
       <LogoSmallComponent alt={homeTeamName} source={homeTeamLogo} />
       <TextComponent
         xs={2}
-        content={getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}
+        content={UTILS.getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}
         justify="center"
       />
       <LogoSmallComponent alt={awayTeamName} source={awayTeamLogo} />
