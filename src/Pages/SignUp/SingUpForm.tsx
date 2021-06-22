@@ -9,7 +9,6 @@ import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import SelectorComponent from '../../Components/Form/Selector';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ISignUpCredentials } from '../../models/credentials.model';
-import { ButtonEvent } from '../../models/events.model';
 import { addPlayer } from '../../store/players/action-creators';
 import { fetchAllTeams } from '../../store/teams/action-creators';
 import { selectTeams } from '../../store/teams/selectors';
@@ -40,8 +39,8 @@ const SignUpForm: React.FC = (): ReactElement => {
     }
   }, [dispatch, teams]);
 
-  const submitForm = (e: ButtonEvent): void => {
-    e.preventDefault();
+  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
 
     dispatch(addPlayer(signUpCredentials));
 

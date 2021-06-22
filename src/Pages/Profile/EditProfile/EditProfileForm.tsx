@@ -9,7 +9,6 @@ import FormContainer from '../../../Components/Form/FormContainer';
 import SelectorComponent from '../../../Components/Form/Selector';
 import TextFieldComponent from '../../../Components/Form/TextField';
 import { IProfileDetails } from '../../../models/credentials.model';
-import { ButtonEvent } from '../../../models/events.model';
 import { IUser } from '../../../models/player.model';
 import { fetchAllTeams } from '../../../store/teams/action-creators';
 import { selectTeams } from '../../../store/teams/selectors';
@@ -41,8 +40,8 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
     }
   }, [dispatch, teams]);
 
-  const submitForm = (e: ButtonEvent): void => {
-    e.preventDefault();
+  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
     dispatch(editUserProfile(profileDetails));
   };
 

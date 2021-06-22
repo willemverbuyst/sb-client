@@ -6,7 +6,6 @@ import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import ShowAlertComponent from '../../../Components/Communication/Alert';
 import FormContainer from '../../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../../Components/Form/PasswordField';
-import { ButtonEvent } from '../../../models/events.model';
 import { changePassword } from '../../../store/user/action-creators';
 
 const EditPasswordForm: React.FC = (): ReactElement => {
@@ -15,8 +14,8 @@ const EditPasswordForm: React.FC = (): ReactElement => {
   const [password2, setPassword2] = useState<string>('');
   const [showAlert, setShowAlert] = useState<boolean>(false);
 
-  const submitForm = (e: ButtonEvent): void => {
-    e.preventDefault();
+  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
 
     if (password1 === password2) {
       dispatch(changePassword(password1));
