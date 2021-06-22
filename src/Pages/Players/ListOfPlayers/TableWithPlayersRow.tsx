@@ -2,8 +2,8 @@ import React, { ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TableCellsOneRow from '../../../Components/Table/TableCellsOneRow';
-import { Align, CellValue } from '../../../Components/Table/types';
 import { IPlayer } from '../../../models/player.model';
+import { Align, CellValue } from '../../../models/table.models';
 import { updatePlayerAdminStatus } from '../../../store/players/action-creators';
 import { selectUser } from '../../../store/user/selectors';
 import * as HELPERS from './helpers';
