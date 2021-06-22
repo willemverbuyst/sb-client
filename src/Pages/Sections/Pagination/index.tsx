@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 import PaginationComponent from '../../../Components/Pagination';
+import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../../constants/setupGame';
 import { roundByTotoRound, totoRoundByRound } from '../../../utils/parameterFunctions';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -14,20 +15,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface IProps {
   totoRound: string;
   round: string;
-  countTotoRound: number;
-  countRound: number;
   gotoTotoRound: (value: number, r: number) => void;
   gotoRound: (value: number, t: number) => void;
 }
 
-const Pagination: React.FC<IProps> = ({
-  totoRound,
-  round,
-  countTotoRound,
-  countRound,
-  gotoTotoRound,
-  gotoRound,
-}: IProps): ReactElement => {
+const Pagination: React.FC<IProps> = ({ totoRound, round, gotoTotoRound, gotoRound }: IProps): ReactElement => {
   const classes = useStyles();
 
   let t = Number(totoRound);
@@ -48,14 +40,14 @@ const Pagination: React.FC<IProps> = ({
       <PaginationComponent
         label="Totoronde"
         page={t}
-        count={countTotoRound}
+        count={TOTO_ROUNDS}
         color="primary"
         onChange={handleChangeTotoRounds}
       />
       <PaginationComponent
         label="Speelronde"
         page={r}
-        count={countRound}
+        count={TOTAL_ROUNDS}
         color="secondary"
         onChange={handleChangeRounds}
       />
