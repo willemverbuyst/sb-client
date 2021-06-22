@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import LogoSmallComponent from '../../../Components/Logo/LogoSmall';
+import LogoComponent from '../../../Components/Logo';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import * as UTILS from '../../../utils';
 import TextComponent from './Text';
@@ -39,13 +39,13 @@ const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): R
   return (
     <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" onClick={goto}>
       <TextComponent xs={4} content={homeTeamName} justify="flex-end" />
-      <LogoSmallComponent alt={homeTeamName} source={homeTeamLogo} />
+      <LogoComponent alt={homeTeamName} source={homeTeamLogo} size="small" />
       <TextComponent
         xs={2}
         content={UTILS.getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}
         justify="center"
       />
-      <LogoSmallComponent alt={awayTeamName} source={awayTeamLogo} />
+      <LogoComponent alt={awayTeamName} source={awayTeamLogo} size="small" />
       <TextComponent xs={4} content={awayTeamName} justify="flex-start" />
     </Grid>
   );

@@ -2,7 +2,7 @@ import { Grid, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import LogoMediumComponent from '../../../Components/Logo/LogoMedium';
+import LogoComponent from '../../../Components/Logo';
 import { IFixture } from '../../../models/toto.models';
 import * as UTILS from '../../../utils';
 import TextComponent from './Text';
@@ -45,9 +45,9 @@ const FixtureSection: React.FC<IProps> = ({ fixture }: IProps): ReactElement => 
       </Grid>
       <Grid item xs={12} container justify="center">
         <TextComponent xs={3} sm={3} content={homeTeamName} justify="flex-end" />
-        <LogoMediumComponent alt={homeTeamName} source={homeTeamLogo} />
+        <LogoComponent alt={homeTeamName} source={homeTeamLogo} size="medium" />
         <TextComponent xs={3} sm={1} content={goals} justify="center" />
-        <LogoMediumComponent alt={awayTeamName} source={awayTeamLogo} />
+        <LogoComponent alt={awayTeamName} source={awayTeamLogo} size="medium" />
         <TextComponent xs={3} sm={3} content={awayTeamName} justify="flex-start" />
       </Grid>
     </Grid>
