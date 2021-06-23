@@ -7,9 +7,8 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
-import { IUser } from '../../../models/player.model';
 import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
-import { selectUser } from '../../../store/user/selectors';
+import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 
 interface IProps {
@@ -18,23 +17,20 @@ interface IProps {
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const user: IUser | null = useSelector(selectUser);
+  const userId: number | null = useSelector(selectUserId);
 
   const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
     scores,
     'user',
   );
-
-  const userScores: number[] = scores.map((player) => player.score + 0.1);
-  const max: number = Math.max(...userScores) * 1.2;
-
-  const hoverBackgroundColors = scores.map(() => 'grey');
-  const backgroundColor = scores.map((score) => (score.userId === user?.id ? '#1e5eb1' : '#EA9C3B'));
-
-  const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
+  const userScores: number[] = UTILS.displayUserScores(scores);
+  const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
+  const hoverBackgroundColors = UTILS.getHoverBackgroundColorsBars<IUserWithScoreAndPrediction>(scores);
+  const backgroundColor = UTILS.getBackgroundColorBars<IUserWithScoreAndPrediction>(scores, userId);
+  const userPredictions: string[] = UTILS.getUserPredictions(scores);
 
   const gotoPlayer = (index: number): void => {
-    return user && scores[index].userId === user.id
+    return userId && scores[index].userId === userId
       ? history.push(`/scores`)
       : history.push(`/spelers/${scores[index].userId}/scores`);
   };

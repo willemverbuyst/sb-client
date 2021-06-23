@@ -7,9 +7,8 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
-import { IUser } from '../../../models/player.model';
 import { IUserWithScore } from '../../../models/scores.models';
-import { selectUser } from '../../../store/user/selectors';
+import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 
 interface IProps {
@@ -18,18 +17,16 @@ interface IProps {
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const history = useHistory();
-  const user: IUser | null = useSelector(selectUser);
+  const userId: number | null = useSelector(selectUserId);
 
   const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
-
-  const scoresOfAllPlayes: number[] = scores.map((player) => player.score);
-
+  const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
   const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
   const hoverBackgroundColors = UTILS.getHoverBackgroundColorsBars<IUserWithScore>(scores);
-  const backgroundColor = UTILS.getBackgroundColorBars<IUserWithScore>(scores, user?.id);
+  const backgroundColor = UTILS.getBackgroundColorBars<IUserWithScore>(scores, userId);
 
   const gotoPlayer = (index: number): void => {
-    return user && scores[index].userId === user.id
+    return scores[index].userId === userId
       ? history.push(`/scores`)
       : history.push(`/spelers/${scores[index].userId}/scores`);
   };

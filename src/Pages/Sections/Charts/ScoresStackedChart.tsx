@@ -49,7 +49,7 @@ const ScoresStackedChart: React.FC<IProps> = ({
       : history.push(`/spelers/${userId}/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`);
   };
 
-  const totals = scores.map((totoround) => totoround.reduce((a, b) => a + b));
+  const totals = UTILS.getTotalsForStackedChart(scores);
   const max = UTILS.generateMaxForChartYAx(totals, 1.2);
 
   const chartData: ChartData<chartjs.ChartData> = {

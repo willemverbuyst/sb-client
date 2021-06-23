@@ -7,6 +7,9 @@ export const selectToken = (state: StoreState): string | null => state.userState
 
 export const selectUser = (state: StoreState): IUser | null => state.userState.user;
 
+export const selectUserId = (state: StoreState): number | null =>
+  state.userState.user ? state.userState.user.id : null;
+
 export const selectCurrentRoundSortedByTime = (state: StoreState): IFixtureWithScoreAndPredictions[] | null => {
   if (
     state.userState.user &&
