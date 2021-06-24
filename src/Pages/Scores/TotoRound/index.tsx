@@ -12,7 +12,6 @@ import PaginationSection from './PaginationSection';
 
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  // const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
   const scoresRoundSortedByScore = useSelector(selectScoresTotoRoundSortedByScore);
   const totoRoundId = useSelector(selectTotoRoundId);
   const { id } = useParams<{ id: string }>();

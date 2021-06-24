@@ -10,8 +10,6 @@ import PageContent from '../../Sections/PageContent';
 
 const TotalToto: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-
-  // const scoresTotalTotoSortedByName = useSelector(selectScoresTotalTotoSortedByName);
   const scoresTotalTotoSortedByScore = useSelector(selectScoresTotalTotoSortedByScore);
 
   useEffect(() => {

@@ -17,6 +17,7 @@ import { useHistory } from 'react-router-dom';
 
 import ball from '../../../assets/ball.png';
 import NavIcon from '../../../Components/Header/NavIcon';
+import * as HISTORY from '../../../history';
 import { userLogOut } from '../../../store/user/action-creators';
 import { selectRoundAndTotoRoundNumber } from '../../../store/user/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
@@ -63,33 +64,34 @@ const Header: React.FC = (): ReactElement => {
     history.push('/login');
   };
 
-  const gotoMyScores = () => history.push('/scores');
-  const gotoPlayers = () => history.push('/spelers');
-  const gotoPredictions = () => history.push(`/voorspellingen/${totoRoundNumber}/${roundNumber}`);
-  const gotoProfile = () => history.push('/profiel/edit');
-  const gotoProgram = () => history.push('/programma');
-  const gotoRound = () => history.push(`/klassement/ronde/1`);
-  const gotoRules = () => history.push('/regels');
-  const gotoScores = () => history.push(`/klassement/totoronde/${totoRoundNumber}`);
-  const gotoSignUp = () => history.push('/signup');
-  const gotoTotalToto = () => history.push('/klassement/totaaltoto');
-
   return (
     <Grid container justify="center">
       {token ? (
         <Grid container className={classes.header} alignItems="center">
-          <NavIcon label="program" goto={gotoProgram} icon={<Weekend className={classes.icon} />} />
-          <NavIcon label="prediction" goto={gotoPredictions} icon={<SportsSoccerIcon className={classes.icon} />} />
-          <NavIcon label="my scores" goto={gotoMyScores} icon={<BarChart className={classes.icon} />} />
-          <NavIcon label="total toto" goto={gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
-          <NavIcon label="total toto" goto={gotoScores} icon={<FormatListNumberedIcon className={classes.icon} />} />
-          <NavIcon label="total toto" goto={gotoRound} icon={<FormatListNumberedRtlIcon className={classes.icon} />} />
-          <NavIcon label="players" goto={gotoPlayers} icon={<Group className={classes.icon} />} />
+          <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
+          <NavIcon
+            label="prediction"
+            goto={() => HISTORY.gotoPredictions(totoRoundNumber, roundNumber)}
+            icon={<SportsSoccerIcon className={classes.icon} />}
+          />
+          <NavIcon label="my scores" goto={HISTORY.gotoMyScores} icon={<BarChart className={classes.icon} />} />
+          <NavIcon label="total toto" goto={HISTORY.gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
+          <NavIcon
+            label="total toto"
+            goto={() => HISTORY.gotoScores(totoRoundNumber)}
+            icon={<FormatListNumberedIcon className={classes.icon} />}
+          />
+          <NavIcon
+            label="total toto"
+            goto={HISTORY.gotoRound}
+            icon={<FormatListNumberedRtlIcon className={classes.icon} />}
+          />
+          <NavIcon label="players" goto={HISTORY.gotoPlayers} icon={<Group className={classes.icon} />} />
           {user && user.admin ? (
-            <NavIcon label="sign up" goto={gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
+            <NavIcon label="sign up" goto={HISTORY.gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
           ) : null}
-          <NavIcon label="profile" goto={gotoProfile} icon={<Face className={classes.icon} />} />
-          <NavIcon label="rules" goto={gotoRules} icon={<HelpOutline className={classes.icon} />} />
+          <NavIcon label="profile" goto={HISTORY.gotoProfile} icon={<Face className={classes.icon} />} />
+          <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} />
           <NavIcon label="sign out" goto={gotoLogin} icon={<ExitToAppIcon className={classes.icon} />} />
         </Grid>
       ) : (
