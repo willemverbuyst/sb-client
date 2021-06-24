@@ -12,7 +12,7 @@ interface IProps {
   onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 }
 
-const PaginationComponent: React.FC<IProps> = (props: IProps): ReactElement => {
+const PaginationComponent: React.FC<IProps> = ({ label, page, count, color, onChange }: IProps): ReactElement => {
   const theme = useTheme();
   const pagVariant = useMediaQuery(theme.breakpoints.up('xs'));
 
@@ -21,7 +21,7 @@ const PaginationComponent: React.FC<IProps> = (props: IProps): ReactElement => {
       <Grid item xs={12}>
         <Grid container justify="center">
           <Typography variant="overline" gutterBottom>
-            {props.label}
+            {label}
           </Typography>
         </Grid>
       </Grid>
@@ -29,10 +29,10 @@ const PaginationComponent: React.FC<IProps> = (props: IProps): ReactElement => {
         <Grid container justify="center">
           <Pagination
             size={pagVariant ? 'small' : 'medium'}
-            page={props.page}
-            count={props.count}
-            color={props.color}
-            onChange={props.onChange}
+            page={page}
+            count={count}
+            color={color}
+            onChange={onChange}
           />
         </Grid>
       </Grid>
