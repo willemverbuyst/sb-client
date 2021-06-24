@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 
+import * as HISTORY from '../../../history';
 import Pagination from '../../Sections/Pagination';
 
 interface IProps {
@@ -10,13 +10,14 @@ interface IProps {
 }
 
 const PaginationSection: React.FC<IProps> = ({ totoronde, ronde, id }: IProps): ReactElement => {
-  const history = useHistory();
-
-  const gotoTotoRound = (value: number, r: number) => history.push(`/spelers/${id}/voorspellingen/${value}/${r}`);
-
-  const gotoRound = (value: number, t: number) => history.push(`/spelers/${id}/voorspellingen/${t}/${value}`);
-
-  return <Pagination totoRound={totoronde} round={ronde} gotoTotoRound={gotoTotoRound} gotoRound={gotoRound} />;
+  return (
+    <Pagination
+      totoRound={totoronde}
+      round={ronde}
+      gotoTotoRound={(value, r) => HISTORY.gotoTotoRoundlayer(id, value, r)}
+      gotoRound={(value, t) => HISTORY.gotoRoundPlayer(id, value, t)}
+    />
+  );
 };
 
 export default PaginationSection;
