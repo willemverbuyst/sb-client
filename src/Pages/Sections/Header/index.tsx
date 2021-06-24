@@ -71,10 +71,10 @@ const Header: React.FC = (): ReactElement => {
           <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon
             label="prediction"
-            goto={() => HISTORY.gotoPredictions(totoRoundNumber, roundNumber)}
+            goto={() => HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)}
             icon={<SportsSoccerIcon className={classes.icon} />}
           />
-          <NavIcon label="my scores" goto={HISTORY.gotoMyScores} icon={<BarChart className={classes.icon} />} />
+          <NavIcon label="my scores" goto={HISTORY.gotoScoresUser} icon={<BarChart className={classes.icon} />} />
           <NavIcon label="total toto" goto={HISTORY.gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
           <NavIcon
             label="total toto"

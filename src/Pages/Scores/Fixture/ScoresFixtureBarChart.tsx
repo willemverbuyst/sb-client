@@ -4,9 +4,9 @@ import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
+import * as HISTORY from '../../../history';
 import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
 import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
@@ -16,23 +16,19 @@ interface IProps {
 }
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
-  const history = useHistory();
   const userId: number | null = useSelector(selectUserId);
-
   const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
     scores,
     'user',
   );
   const userScores: number[] = UTILS.displayUserScores(scores);
   const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
-  const hoverBackgroundColors = UTILS.getHoverBackgroundColorsBars<IUserWithScoreAndPrediction>(scores);
-  const backgroundColor = UTILS.getBackgroundColorBars<IUserWithScoreAndPrediction>(scores, userId);
+  const hoverBackgroundColors: string[] = UTILS.getHoverBackgroundColorsBars<IUserWithScoreAndPrediction>(scores);
+  const backgroundColor: string[] = UTILS.getBackgroundColorBars<IUserWithScoreAndPrediction>(scores, userId);
   const userPredictions: string[] = UTILS.getUserPredictions(scores);
-
-  const gotoPlayer = (index: number): void => {
-    return userId && scores[index].userId === userId
-      ? history.push(`/scores`)
-      : history.push(`/spelers/${scores[index].userId}/scores`);
+  const gotoScoresPlayer = (index: number): void => {
+    const id: number = scores[index].userId;
+    userId && userId === id ? HISTORY.gotoScoresUser() : HISTORY.gotoScoresPlayer(id);
   };
 
   const chartData: ChartData<chartjs.ChartData> = {
@@ -95,7 +91,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEl
     },
   };
 
-  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoPlayer} />;
+  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoScoresPlayer} />;
 };
 
 export default ScoresForFixtureBarChart;

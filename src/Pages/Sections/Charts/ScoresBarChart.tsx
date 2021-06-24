@@ -4,9 +4,9 @@ import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
+import * as HISTORY from '../../../history';
 import { IUserWithScore } from '../../../models/scores.models';
 import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
@@ -16,19 +16,15 @@ interface IProps {
 }
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
-  const history = useHistory();
   const userId: number | null = useSelector(selectUserId);
-
   const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
   const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
   const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
-  const hoverBackgroundColors = UTILS.getHoverBackgroundColorsBars<IUserWithScore>(scores);
-  const backgroundColor = UTILS.getBackgroundColorBars<IUserWithScore>(scores, userId);
-
-  const gotoPlayer = (index: number): void => {
-    return scores[index].userId === userId
-      ? history.push(`/scores`)
-      : history.push(`/spelers/${scores[index].userId}/scores`);
+  const hoverBackgroundColors: string[] = UTILS.getHoverBackgroundColorsBars<IUserWithScore>(scores);
+  const backgroundColor: string[] = UTILS.getBackgroundColorBars<IUserWithScore>(scores, userId);
+  const gotoScoresPlayer = (index: number): void => {
+    const id: number = scores[index].userId;
+    userId && userId === id ? HISTORY.gotoScoresUser() : HISTORY.gotoScoresPlayer(id);
   };
 
   const chartData: ChartData<chartjs.ChartData> = {
@@ -82,7 +78,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     },
   };
 
-  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoPlayer} />;
+  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoScoresPlayer} />;
 };
 
 export default ScoresBarChart;

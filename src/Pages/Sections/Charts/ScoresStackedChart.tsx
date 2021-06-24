@@ -4,9 +4,9 @@ import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
+import * as HISTORY from '../../../history';
 import { IScoresPlayer } from '../../../models/player.model';
 import { selectUser } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
@@ -31,26 +31,18 @@ const ScoresStackedChart: React.FC<IProps> = ({
   colorHover,
   loggedInUser,
 }: IProps): ReactElement => {
-  const history = useHistory();
   const user = useSelector(selectUser);
-  const { userId, scores } = scoresPlayer;
-
-  let colorPrimary;
-
-  if (!loggedInUser && user?.id === userId) {
-    colorPrimary = colorHover;
-  } else {
-    colorPrimary = colorMain;
-  }
-
-  const gotoTotoRound = (totoRound: number) => {
+  const { userId: playerId, scores } = scoresPlayer;
+  const colorPrimary = !loggedInUser && user?.id === playerId ? colorHover : colorMain;
+  const gotoTotoRound = (index: number) => {
+    const totoRoundNumber = index + 1;
+    const roundNumber = (index + 1) * 3 - 2;
     loggedInUser
-      ? history.push(`/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`)
-      : history.push(`/spelers/${userId}/voorspellingen/${totoRound + 1}/${(totoRound + 1) * 3 - 2}`);
+      ? HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)
+      : HISTORY.gotoPredictionsPlayer(playerId, totoRoundNumber, roundNumber);
   };
-
-  const totals = UTILS.getTotalsForStackedChart(scores);
-  const max = UTILS.generateMaxForChartYAx(totals, 1.2);
+  const totals: number[] = UTILS.getTotalsForStackedChart(scores);
+  const max: number = UTILS.generateMaxForChartYAx(totals, 1.2);
 
   const chartData: ChartData<chartjs.ChartData> = {
     labels: scores.map(() => ``),
