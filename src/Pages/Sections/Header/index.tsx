@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import ball from '../../../assets/ball.png';
-import NavIcon from '../../../Components/Header/NavIcon';
+import NavIcon from '../../../Components/NavIcon';
 import * as HISTORY from '../../../history';
 import { userLogOut } from '../../../store/user/action-creators';
 import { selectRoundAndTotoRoundNumber } from '../../../store/user/selectors';
