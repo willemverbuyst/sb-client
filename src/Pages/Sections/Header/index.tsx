@@ -75,15 +75,19 @@ const Header: React.FC = (): ReactElement => {
             icon={<SportsSoccerIcon className={classes.icon} />}
           />
           <NavIcon label="my scores" goto={HISTORY.gotoScoresUser} icon={<BarChart className={classes.icon} />} />
-          <NavIcon label="total toto" goto={HISTORY.gotoTotalToto} icon={<EmojiEvents className={classes.icon} />} />
           <NavIcon
             label="total toto"
-            goto={() => HISTORY.gotoScores(totoRoundNumber)}
+            goto={HISTORY.gotoRankingTotalToto}
+            icon={<EmojiEvents className={classes.icon} />}
+          />
+          <NavIcon
+            label="total toto"
+            goto={() => HISTORY.gotoRankingTotoRound(totoRoundNumber)}
             icon={<FormatListNumberedIcon className={classes.icon} />}
           />
           <NavIcon
             label="total toto"
-            goto={HISTORY.gotoRound}
+            goto={() => HISTORY.gotoRankingRound(1)}
             icon={<FormatListNumberedRtlIcon className={classes.icon} />}
           />
           <NavIcon label="players" goto={HISTORY.gotoPlayers} icon={<Group className={classes.icon} />} />

@@ -14,8 +14,8 @@ const PaginationSection: React.FC<IProps> = ({ totoronde, ronde, id }: IProps): 
     <Pagination
       totoRound={totoronde}
       round={ronde}
-      gotoTotoRound={(value, r) => HISTORY.gotoTotoRoundlayer(id, value, r)}
-      gotoRound={(value, t) => HISTORY.gotoRoundPlayer(id, value, t)}
+      gotoTotoRound={(value, r) => HISTORY.gotoPredictionsPlayer(id, value, r)}
+      gotoRound={(value, t) => HISTORY.gotoPredictionsPlayer(id, t, value)}
     />
   );
 };

@@ -1,9 +1,9 @@
 import { Grid, makeStyles, Theme } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import PaginationComponent from '../../../Components/Pagination';
 import { TOTAL_ROUNDS } from '../../../constants/setupGame';
+import * as HISTORY from '../../../history';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paginationContainer: {
@@ -16,13 +16,9 @@ interface IProps {
 }
 
 const PaginationSection: React.FC<IProps> = ({ round }: IProps): ReactElement => {
-  const history = useHistory();
   const classes = useStyles();
-
   const t = Number(round);
-
-  const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void =>
-    history.push(`/klassement/ronde/${value}`);
+  const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void => HISTORY.gotoRankingRound(value);
 
   return (
     <Grid className={classes.paginationContainer}>
