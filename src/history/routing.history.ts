@@ -1,5 +1,7 @@
 import history from './index';
 
+export const gotoFixture = (id: number): void => history.push(`/wedstrijd/${id}`);
+
 export const gotoPlayers = (): void => history.push('/spelers');
 
 export const gotoPredictionsPlayer = (id: number | string, totoRoundNumber: number, roundNumber: number): void =>

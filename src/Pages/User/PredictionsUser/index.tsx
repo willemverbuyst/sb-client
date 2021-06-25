@@ -26,7 +26,6 @@ const PredictionsUser: React.FC = (): ReactElement => {
     }
   }, [dispatch, fixturesSortedByTime]);
 
-  // [t- 1]: as an array starts at index 0, subtract 1 from the totoround number
   const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][UTILS.calculateIndex(r)]] : null;
 
   return (

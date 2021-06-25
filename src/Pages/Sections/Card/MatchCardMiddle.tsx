@@ -1,9 +1,9 @@
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import LogoComponent from '../../../Components/Logo';
+import * as HISTORY from '../../../history';
 import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
 import * as UTILS from '../../../utils';
 import TextComponent from './Text';
@@ -21,7 +21,6 @@ interface IProps {
 
 const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): ReactElement => {
   const classes = useStyles();
-  const history = useHistory();
   const {
     awayTeamLogo,
     awayTeamName,
@@ -34,10 +33,10 @@ const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): R
     status,
   } = fixtureWithPrediction;
 
-  const goto = () => history.push(`/wedstrijd/${id}`);
+  const gotoFixture = () => HISTORY.gotoFixture(id);
 
   return (
-    <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" onClick={goto}>
+    <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" onClick={gotoFixture}>
       <TextComponent xs={4} content={homeTeamName} justify="flex-end" />
       <LogoComponent alt={homeTeamName} source={homeTeamLogo} size="small" />
       <TextComponent
