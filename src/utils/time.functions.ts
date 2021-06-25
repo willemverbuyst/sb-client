@@ -23,16 +23,6 @@ export const getTimeFromTimeStamp = (timeStamp: number): string => {
   return `${hours}:${minutes}`;
 };
 
-// SHOULD BE REMOVED LATER, REPLACE ALL BY formatTimeStampToLocalDate
-export const timeStampFormattedToLocalDate = (timeStamp: number): string => {
-  const date = new Date(timeStamp * 1000);
-  const day = daysLocal[+date.getDay()];
-  const month = monthsLocal[+date.getMonth()];
-  const year = date.getFullYear().toString();
-
-  return `${day} ${date.getDate()} ${month} ${year}`;
-};
-
 export const formatTimeStampToLocalDate = (timeStamp: number): string => {
   const date = new Date(timeStamp * 1000);
   const day = daysLocal[+date.getDay()];

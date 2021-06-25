@@ -1,4 +1,4 @@
-import { getTimeFromTimeStamp, timeStampFormattedToLocalDate } from '../time.functions';
+import { formatTimeStampToLocalDate, getTimeFromTimeStamp, hasBettingClosed } from '../time.functions';
 
 describe('if given a timestamp', () => {
   const timeStampTest1 = 1610206200;
@@ -20,6 +20,16 @@ describe('if given a timestamp', () => {
   const timeStampTest = 1610206200;
 
   test('returns a formatted date', () => {
-    expect(timeStampFormattedToLocalDate(timeStampTest).toLocaleUpperCase()).toBe('ZATERDAG 9 JANUARI 2021');
+    expect(formatTimeStampToLocalDate(timeStampTest).toLocaleUpperCase()).toBe('ZATERDAG 9 JANUARI 2021');
+  });
+});
+
+describe('if given a timestamp', () => {
+  const timeStampOne = 1610206200;
+  const timeStampTwo = 1910206200;
+
+  test('returns true or false', () => {
+    expect(hasBettingClosed(timeStampOne)).toBe(true);
+    expect(hasBettingClosed(timeStampTwo)).toBe(false);
   });
 });
