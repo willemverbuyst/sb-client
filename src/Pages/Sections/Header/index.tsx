@@ -21,6 +21,7 @@ import * as HISTORY from '../../../history';
 import { userLogOut } from '../../../store/user/action-creators';
 import { selectRoundAndTotoRoundNumber } from '../../../store/user/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
+import { navIconsAdmin, navIconsRegular } from './nav-icons';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,20 +56,26 @@ const Header: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  const token = useSelector(selectToken);
+  // const token = useSelector(selectToken);
+  const token = true;
   const user = useSelector(selectUser);
   const [roundNumber, totoRoundNumber] = useSelector(selectRoundAndTotoRoundNumber);
 
-  const gotoLogin = () => {
+  const gotoLogin = (): void => {
     dispatch(userLogOut());
     history.push('/login');
   };
+
+  const icons = user && user.admin ? navIconsAdmin : navIconsRegular;
 
   return (
     <Grid container justify="center">
       {token ? (
         <Grid container className={classes.header} alignItems="center">
-          <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
+          {icons.map(({ label, goto, icon }, i) => (
+            <NavIcon key={i} label={label} goto={goto} icon={icon} />
+          ))}
+          {/* <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon
             label="prediction"
             goto={() => HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)}
@@ -79,14 +86,14 @@ const Header: React.FC = (): ReactElement => {
             label="total toto"
             goto={HISTORY.gotoRankingTotalToto}
             icon={<EmojiEvents className={classes.icon} />}
-          />
-          <NavIcon
-            label="total toto"
+          /> */}
+          {/* <NavIcon
+            label="toto round"
             goto={() => HISTORY.gotoRankingTotoRound(totoRoundNumber)}
             icon={<FormatListNumberedIcon className={classes.icon} />}
-          />
-          <NavIcon
-            label="total toto"
+          /> */}
+          {/* <NavIcon
+            label="round"
             goto={() => HISTORY.gotoRankingRound(1)}
             icon={<FormatListNumberedRtlIcon className={classes.icon} />}
           />
@@ -95,7 +102,7 @@ const Header: React.FC = (): ReactElement => {
             <NavIcon label="sign up" goto={HISTORY.gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
           ) : null}
           <NavIcon label="profile" goto={HISTORY.gotoProfile} icon={<Face className={classes.icon} />} />
-          <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} />
+          <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} /> */}
           <NavIcon label="sign out" goto={gotoLogin} icon={<ExitToAppIcon className={classes.icon} />} />
         </Grid>
       ) : (
