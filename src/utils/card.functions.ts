@@ -1,9 +1,9 @@
 import { getTimeFromTimeStamp, hasBettingClosed } from './time.functions';
 
-const getTemporaryPrediction = (pGoalsHomeTeam: number | null, pGoalsAwayTeam: number | null): string =>
+export const getTemporaryPrediction = (pGoalsHomeTeam: number | null, pGoalsAwayTeam: number | null): string =>
   Number.isInteger(pGoalsAwayTeam) ? ` [ ${pGoalsHomeTeam} - ${pGoalsAwayTeam} ] ` : ` [ geen ] `;
 
-const getPrivatePrediction = (
+export const getPrivatePrediction = (
   pGoalsHomeTeam: number | null,
   pGoalsAwayTeam: number | null,
   status: string,
@@ -14,12 +14,12 @@ const getPrivatePrediction = (
     : status === 'Match Finished'
     ? `Geen voorspelling gedaan`
     : hasBettingClosed(eventTimeStamp)
-    ? `Voorspelling ${getTemporaryPrediction(pGoalsHomeTeam, pGoalsAwayTeam)} gesloten`
+    ? `Voorspelling${getTemporaryPrediction(pGoalsHomeTeam, pGoalsAwayTeam)}gesloten`
     : Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)
     ? `Je voorspelling is ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : `Nog geen voorspelling`;
 
-const getPublicPrediction = (
+export const getPublicPrediction = (
   pGoalsHomeTeam: number | null,
   pGoalsAwayTeam: number | null,
   status: string,

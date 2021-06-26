@@ -26,6 +26,7 @@ describe('if given a timestamp', () => {
 
 describe('if given a timestamp', () => {
   const timeStampOne = 1610206200;
+  // 1910206200 = Sat Jul 13 2030
   const timeStampTwo = 1910206200;
 
   test('returns true or false', () => {
