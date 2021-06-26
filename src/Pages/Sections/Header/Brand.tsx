@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
 import ball from '../../../assets/ball.png';
+import { APP_NAME } from '../../../constants/general';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +26,7 @@ const Brand: React.FC = (): ReactElement => {
     <Grid container className={classes.brand} alignItems="center">
       <img src={ball} style={{ width: '40px', margin: '0 10px 0 0' }} alt="soccer ball" />
       <Typography align="center" variant="h3">
-        Sport Betting App
+        {APP_NAME}
       </Typography>
     </Grid>
   );
