@@ -20,7 +20,7 @@ import * as HISTORY from '../../../history';
 import { userLogOut } from '../../../store/user/action-creators';
 import { selectRoundAndTotoRoundNumber } from '../../../store/user/selectors';
 import { selectToken, selectUser } from '../../../store/user/selectors';
-import { navIconsAdmin, navIconsRegular } from './nav-icons';
+import Brand from './Brand';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,15 +55,10 @@ const Header: React.FC = (): ReactElement => {
     history.push('/login');
   };
 
-  const icons = user && user.admin ? navIconsAdmin : navIconsRegular;
-
   return (
     <Grid container justify="center">
       {token ? (
         <Grid container className={classes.header} alignItems="center">
-          {/* {icons.map(({ label, goto, icon }, i) => (
-            <NavIcon key={i} label={label} goto={goto} icon={icon} />
-          ))} */}
           <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon
             label="prediction"
@@ -94,7 +89,9 @@ const Header: React.FC = (): ReactElement => {
           <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} />
           <NavIcon label="sign out" goto={gotoLogin} icon={<ExitToAppIcon className={classes.icon} />} />
         </Grid>
-      ) : null}
+      ) : (
+        <Brand />
+      )}
     </Grid>
   );
 };
