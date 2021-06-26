@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Weekend } from '@material-ui/icons';
 import BarChart from '@material-ui/icons/BarChart';
@@ -15,7 +15,6 @@ import React, { ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ball from '../../../assets/ball.png';
 import NavIcon from '../../../Components/NavIcon';
 import * as HISTORY from '../../../history';
 import { userLogOut } from '../../../store/user/action-creators';
@@ -40,15 +39,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '3.6rem',
       marginBottom: '1rem',
     },
-    brand: {
-      [theme.breakpoints.down('sm')]: {
-        justifyContent: 'center',
-        marginTop: '1rem',
-      },
-      backgroundColor: theme.palette.primary.main,
-      color: '#fff',
-      marginBottom: '1rem',
-    },
   }),
 );
 
@@ -56,8 +46,7 @@ const Header: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  // const token = useSelector(selectToken);
-  const token = true;
+  const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const [roundNumber, totoRoundNumber] = useSelector(selectRoundAndTotoRoundNumber);
 
@@ -72,10 +61,10 @@ const Header: React.FC = (): ReactElement => {
     <Grid container justify="center">
       {token ? (
         <Grid container className={classes.header} alignItems="center">
-          {icons.map(({ label, goto, icon }, i) => (
+          {/* {icons.map(({ label, goto, icon }, i) => (
             <NavIcon key={i} label={label} goto={goto} icon={icon} />
-          ))}
-          {/* <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
+          ))} */}
+          <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
           <NavIcon
             label="prediction"
             goto={() => HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)}
@@ -86,13 +75,13 @@ const Header: React.FC = (): ReactElement => {
             label="total toto"
             goto={HISTORY.gotoRankingTotalToto}
             icon={<EmojiEvents className={classes.icon} />}
-          /> */}
-          {/* <NavIcon
+          />
+          <NavIcon
             label="toto round"
             goto={() => HISTORY.gotoRankingTotoRound(totoRoundNumber)}
             icon={<FormatListNumberedIcon className={classes.icon} />}
-          /> */}
-          {/* <NavIcon
+          />
+          <NavIcon
             label="round"
             goto={() => HISTORY.gotoRankingRound(1)}
             icon={<FormatListNumberedRtlIcon className={classes.icon} />}
@@ -102,17 +91,10 @@ const Header: React.FC = (): ReactElement => {
             <NavIcon label="sign up" goto={HISTORY.gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
           ) : null}
           <NavIcon label="profile" goto={HISTORY.gotoProfile} icon={<Face className={classes.icon} />} />
-          <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} /> */}
+          <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} />
           <NavIcon label="sign out" goto={gotoLogin} icon={<ExitToAppIcon className={classes.icon} />} />
         </Grid>
-      ) : (
-        <Grid container className={classes.brand} alignItems="center">
-          <img src={ball} style={{ width: '40px', margin: '0 10px 0 0' }} alt="soccer ball" />
-          <Typography align="center" variant="h3">
-            Sport Betting App
-          </Typography>
-        </Grid>
-      )}
+      ) : null}
     </Grid>
   );
 };
