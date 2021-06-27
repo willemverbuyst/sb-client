@@ -9,7 +9,7 @@ import Predictions from '../../../Sections/Predictions';
 import { fetchPlayerProfile } from '../../../store/players/action-creators';
 import { selectPastFixturesWithScoresSortedByTime, selectUserNamePlayer } from '../../../store/players/selectors';
 import * as UTILS from '../../../utils';
-import PaginationSection from './PaginationSection';
+import Pagination from './Pagination';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -18,10 +18,8 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
-
   const t = Number(totoronde);
   const r = Number(ronde);
-
   const name = userNamePlayer ? userNamePlayer : 'Speler...';
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
           <>
             <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
-            <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
+            <Pagination totoround={totoronde} round={ronde} id={id} />
           </>
         ) : (
           <MessageComponent message={`Geen voorspellingen voor gevonden`} />

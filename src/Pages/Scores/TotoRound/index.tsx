@@ -8,7 +8,7 @@ import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../../Sections/PageContent';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
 import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
-import PaginationSection from './PaginationSection';
+import Pagination from './Pagination';
 
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const TotoRound: React.FC = (): ReactElement => {
           <>
             <PageTitle title={`Totoronde  ${id}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <PaginationSection totoRound={id} />
+            <Pagination totoRound={id} />
           </>
         ) : (
           <MessageComponent message={`Nog geen scores voor toto ronde ${id}`} />

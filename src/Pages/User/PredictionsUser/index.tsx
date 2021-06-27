@@ -9,7 +9,7 @@ import Predictions from '../../../Sections/Predictions';
 import { fetchAllFixtures } from '../../../store/predictions/action-creators';
 import { selectFixturesSortedByTime } from '../../../store/predictions/selectors';
 import * as UTILS from '../../../utils';
-import PaginationSection from './PaginationSection';
+import Pagination from './Pagination';
 
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
           <>
             <PageTitle title={`Mijn voorspellingen`} color="primary" />
             <Predictions fixtures={filteredFixtures} display="private" />
-            <PaginationSection totoronde={totoronde} ronde={ronde} />
+            <Pagination totoround={totoronde} round={ronde} />
           </>
         ) : (
           <MessageComponent message={`Geen voorspellingen gevonden`} />

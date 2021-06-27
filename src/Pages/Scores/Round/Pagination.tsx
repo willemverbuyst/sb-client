@@ -9,15 +9,15 @@ interface IProps {
   round: string;
 }
 
-const PaginationSection: React.FC<IProps> = ({ round }: IProps): ReactElement => {
-  const t = Number(round);
+const Pagination: React.FC<IProps> = ({ round }: IProps): ReactElement => {
+  const r = Number(round);
   const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void => HISTORY.gotoRankingRound(value);
 
   return (
     <Box my={2}>
-      <PaginationComponent label="Speelronde" page={t} count={TOTAL_ROUNDS} color="secondary" onChange={gotoRound} />
+      <PaginationComponent label="Speelronde" page={r} count={TOTAL_ROUNDS} color="secondary" onChange={gotoRound} />
     </Box>
   );
 };
 
-export default PaginationSection;
+export default Pagination;

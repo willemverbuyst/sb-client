@@ -8,7 +8,7 @@ import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../../Sections/PageContent';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
 import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
-import PaginationSection from './PaginationSection';
+import Pagination from './Pagination';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Round: React.FC = (): ReactElement => {
           <>
             <PageTitle title={`Speelronde ${id}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <PaginationSection round={id} />
+            <Pagination round={id} />
           </>
         ) : (
           <MessageComponent message={`Nog geen scores voor deze ronde`} />
