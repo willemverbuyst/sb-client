@@ -13,10 +13,9 @@ import ScoresForFixtureBarChart from './ScoresFixtureBarChart';
 
 const Fixture: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-
-  const { id } = useParams<{ id: string }>();
   const fixture = useSelector(selectFixture);
   const scoresFixtureSortedByName = useSelector(selectScoresForFixtureSortedByName);
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     dispatch(fetchScoresFixture(+id));

@@ -12,11 +12,9 @@ import PaginationSection from './PaginationSection';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const { id } = useParams<{ id: string }>();
-
   const roundId = useSelector(selectRoundId);
-  // const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
   const scoresRoundSortedByScore = useSelector(selectScoresRoundSortedByScore);
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (!roundId || Number(id) !== roundId) {

@@ -15,10 +15,9 @@ import { selectTeams } from '../../store/teams/selectors';
 import * as UTILS from '../../utils';
 
 const SignUpForm: React.FC = (): ReactElement => {
-  const teams = useSelector(selectTeams);
-  const history = useHistory();
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  const teams = useSelector(selectTeams);
   const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
     userName: '',
     firstName: '',
@@ -30,7 +29,6 @@ const SignUpForm: React.FC = (): ReactElement => {
     totaalToto: true,
     teamId: '',
   });
-
   const teamsForSelector = teams ? UTILS.getTeamsForSelector(teams) : null;
 
   useEffect(() => {

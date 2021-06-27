@@ -12,8 +12,8 @@ import PageContent from '../../Sections/PageContent';
 
 const ScoresUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
   const scoresPlayer = useSelector(selectPlayerScores);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     // update logic!

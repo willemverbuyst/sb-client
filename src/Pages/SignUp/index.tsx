@@ -8,8 +8,8 @@ import PageContent from '../Sections/PageContent';
 import SignUpForm from './SingUpForm';
 
 const SignUp: React.FC = (): ReactElement => {
-  const user = useSelector(selectUser);
   const history = useHistory();
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     if (user && !user.admin) history.push('/page-not-found');

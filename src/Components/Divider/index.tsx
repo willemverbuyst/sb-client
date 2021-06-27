@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('sm')]: {
       visibility: 'hidden',
     },
-    marginBottom: theme.spacing(6),
   },
 }));
 
