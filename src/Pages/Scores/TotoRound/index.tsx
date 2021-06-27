@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
+import PageContent from '../../../Sections/PageContent';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
 import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
-import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
-import PageContent from '../../Sections/PageContent';
 import PaginationSection from './PaginationSection';
 
 const TotoRound: React.FC = (): ReactElement => {

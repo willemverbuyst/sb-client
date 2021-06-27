@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import ScoresStackedChart from '../../../Sections/Charts/ScoresStackedChart';
+import PageContent from '../../../Sections/PageContent';
 import { fetchPlayerScores } from '../../../store/players/action-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
 import { selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
-import ScoresStackedChart from '../../Sections/Charts/ScoresStackedChart';
-import PageContent from '../../Sections/PageContent';
 
 const ScoresUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();

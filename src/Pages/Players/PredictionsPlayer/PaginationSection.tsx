@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
 import * as HISTORY from '../../../history';
-import Pagination from '../../Sections/Pagination';
+import Pagination from '../../../Sections/Pagination';
 
 interface IProps {
   totoronde: string;

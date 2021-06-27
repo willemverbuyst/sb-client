@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import PageTitle from '../../Components/Title/PageTitle';
+import PageContent from '../../Sections/PageContent';
 import { selectToken } from '../../store/user/selectors';
-import PageContent from '../Sections/PageContent';
 import LoginForm from './LoginForm';
 
 const Login: React.FC = (): ReactElement => {

@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
-import AvatarLargeComponent from '../../../Components/Avatar/AvatarLarge';
-import { selectUser } from '../../../store/user/selectors';
-import * as UTILS from '../../../utils';
+import AvatarLargeComponent from '../../Components/Avatar/AvatarLarge';
+import { selectUser } from '../../store/user/selectors';
+import * as UTILS from '../../utils';
 
 export const useStyles = makeStyles((theme) => ({
   wrapper: {

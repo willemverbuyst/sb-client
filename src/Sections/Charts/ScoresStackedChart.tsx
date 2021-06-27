@@ -5,11 +5,11 @@ import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
-import BarChart from '../../../Components/Chart/BarChart';
-import * as HISTORY from '../../../history';
-import { IScoresPlayer } from '../../../models/player.model';
-import { selectUser } from '../../../store/user/selectors';
-import * as UTILS from '../../../utils';
+import BarChart from '../../Components/Chart/BarChart';
+import * as HISTORY from '../../history';
+import { IScoresPlayer } from '../../models/player.model';
+import { selectUser } from '../../store/user/selectors';
+import * as UTILS from '../../utils';
 
 interface Color {
   color1: string;

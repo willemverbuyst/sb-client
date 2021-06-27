@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import PageContent from '../../../Sections/PageContent';
 import { selectUser } from '../../../store/user/selectors';
-import PageContent from '../../Sections/PageContent';
 import EditProfileForm from './EditProfileForm';
 
 const EditProfile: React.FC = (): ReactElement => {

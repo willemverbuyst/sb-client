@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageTitle from '../../Components/Title/PageTitle';
+import PageContent from '../../Sections/PageContent';
+import Predictions from '../../Sections/Predictions';
 import { fetchCurrentRound } from '../../store/predictions/action-creators';
 import { selectCurrentRoundSortedByTime } from '../../store/user/selectors';
-import PageContent from '../Sections/PageContent';
-import Predictions from '../Sections/Predictions';
 
 const Program: React.FC = (): ReactElement => {
   const dispatch = useDispatch();

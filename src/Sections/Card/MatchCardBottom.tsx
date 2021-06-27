@@ -1,9 +1,9 @@
 import { Grid, Typography } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 
-import CardButton from '../../../Components/Button/CardButton';
-import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import * as UTILS from '../../../utils';
+import CardButton from '../../Components/Button/CardButton';
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
+import * as UTILS from '../../utils';
 import MatchCardInput from './MatchCardInput';
 
 interface IProps {

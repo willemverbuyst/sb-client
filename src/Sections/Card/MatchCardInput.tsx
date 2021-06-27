@@ -2,11 +2,11 @@ import { Grid } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import CardButton from '../../../Components/Button/CardButton';
-import NumberField from '../../../Components/Form/NumberField';
-import { IPrediction } from '../../../models/predictions.model';
-import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import { changePrediction, postNewPrediction } from '../../../store/predictions/action-creators';
+import CardButton from '../../Components/Button/CardButton';
+import NumberField from '../../Components/Form/NumberField';
+import { IPrediction } from '../../models/predictions.model';
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
+import { changePrediction, postNewPrediction } from '../../store/predictions/action-creators';
 
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;

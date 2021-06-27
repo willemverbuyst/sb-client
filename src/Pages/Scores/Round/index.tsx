@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
+import PageContent from '../../../Sections/PageContent';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
 import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
-import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
-import PageContent from '../../Sections/PageContent';
 import PaginationSection from './PaginationSection';
 
 const Round: React.FC = (): ReactElement => {

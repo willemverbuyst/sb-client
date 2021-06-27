@@ -2,8 +2,8 @@ import { Grid, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import ball from '../../../assets/ball.png';
-import { APP_NAME } from '../../../constants/general';
+import ball from '../../assets/ball.png';
+import { APP_NAME } from '../../constants/general';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import * as UTILS from '../../../utils';
+import * as UTILS from '../../utils';
 import TextComponent from './Text';
 
 interface IProps {

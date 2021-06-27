@@ -5,11 +5,11 @@ import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
-import BarChart from '../../../Components/Chart/BarChart';
-import * as HISTORY from '../../../history';
-import { IUserWithScore } from '../../../models/scores.models';
-import { selectUserId } from '../../../store/user/selectors';
-import * as UTILS from '../../../utils';
+import BarChart from '../../Components/Chart/BarChart';
+import * as HISTORY from '../../history';
+import { IUserWithScore } from '../../models/scores.models';
+import { selectUserId } from '../../store/user/selectors';
+import * as UTILS from '../../utils';
 
 interface IProps {
   scores: IUserWithScore[];

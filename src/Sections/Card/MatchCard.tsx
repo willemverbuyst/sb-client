@@ -2,8 +2,8 @@ import { Card, CardContent, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import ChipComponent from '../../../Components/Chip';
-import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
+import ChipComponent from '../../Components/Chip';
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import MatchCardBottom from './MatchCardBottom';
 import MatchCardMiddle from './MatchCardMiddle';
 import MatchCardTop from './MatchCardTop';

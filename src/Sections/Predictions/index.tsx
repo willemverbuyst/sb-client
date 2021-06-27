@@ -2,7 +2,7 @@ import { Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import MatchCard from '../Card/MatchCard';
 
 const useStyles = makeStyles((theme: Theme) => ({

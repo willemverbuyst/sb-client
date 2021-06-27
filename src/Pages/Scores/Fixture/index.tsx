@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
 import PageTitle from '../../../Components/Title/PageTitle';
+import PageContent from '../../../Sections/PageContent';
 import { fetchScoresFixture } from '../../../store/scores/action-creators';
 import { selectFixture, selectScoresForFixtureSortedByName } from '../../../store/scores/selectors';
-import PageContent from '../../Sections/PageContent';
 import FixtureSection from './FixtureSection';
 import ScoresForFixtureBarChart from './ScoresFixtureBarChart';
 

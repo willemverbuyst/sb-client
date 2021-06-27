@@ -2,9 +2,9 @@ import { Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import PaginationComponent from '../../../Components/Pagination';
-import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../../constants/setupGame';
-import * as UTILS from '../../../utils';
+import PaginationComponent from '../../Components/Pagination';
+import { TOTAL_ROUNDS, TOTO_ROUNDS } from '../../constants/setupGame';
+import * as UTILS from '../../utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paginationContainer: {

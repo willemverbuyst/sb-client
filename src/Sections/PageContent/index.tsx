@@ -3,9 +3,9 @@ import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ProgressComponent from '../../../Components/Progress';
-import { selectAppLoading } from '../../../store/appState/selectors';
-import { selectToken } from '../../../store/user/selectors';
+import ProgressComponent from '../../Components/Progress';
+import { selectAppLoading } from '../../store/appState/selectors';
+import { selectToken } from '../../store/user/selectors';
 
 interface IProps {
   loadingText: string;

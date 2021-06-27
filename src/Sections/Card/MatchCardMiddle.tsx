@@ -2,10 +2,10 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
-import LogoComponent from '../../../Components/Logo';
-import * as HISTORY from '../../../history';
-import { IFixtureWithScoreAndPredictions } from '../../../models/toto.models';
-import * as UTILS from '../../../utils';
+import LogoComponent from '../../Components/Logo';
+import * as HISTORY from '../../history';
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
+import * as UTILS from '../../utils';
 import TextComponent from './Text';
 
 const useStyles = makeStyles(() => ({

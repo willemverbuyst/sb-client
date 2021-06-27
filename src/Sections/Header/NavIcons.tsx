@@ -15,11 +15,11 @@ import React, { ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import NavIcon from '../../../Components/NavIcon';
-import * as HISTORY from '../../../history';
-import { userLogOut } from '../../../store/user/action-creators';
-import { selectRoundAndTotoRoundNumber } from '../../../store/user/selectors';
-import { selectUser } from '../../../store/user/selectors';
+import NavIcon from '../../Components/NavIcon';
+import * as HISTORY from '../../history';
+import { userLogOut } from '../../store/user/action-creators';
+import { selectRoundAndTotoRoundNumber } from '../../store/user/selectors';
+import { selectUser } from '../../store/user/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

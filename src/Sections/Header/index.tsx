@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectToken } from '../../../store/user/selectors';
+import { selectToken } from '../../store/user/selectors';
 import Brand from './Brand';
 import NavIcons from './NavIcons';
 

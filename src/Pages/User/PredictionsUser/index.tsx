@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import PageContent from '../../../Sections/PageContent';
+import Predictions from '../../../Sections/Predictions';
 import { fetchAllFixtures } from '../../../store/predictions/action-creators';
 import { selectFixturesSortedByTime } from '../../../store/predictions/selectors';
 import * as UTILS from '../../../utils';
-import PageContent from '../../Sections/PageContent';
-import Predictions from '../../Sections/Predictions';
 import PaginationSection from './PaginationSection';
 
 const PredictionsUser: React.FC = (): ReactElement => {
