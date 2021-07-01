@@ -20,8 +20,8 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
   const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
   const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
-  const hoverBackgroundColors: string[] = UTILS.getHoverBackgroundColorsBars<IUserWithScore>(scores);
-  const backgroundColor: string[] = UTILS.getBackgroundColorBars<IUserWithScore>(scores, userId);
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScore>(scores);
+  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScore>(scores, userId);
   const gotoScoresPlayer = (index: number): void => {
     const id: number = scores[index].userId;
     userId && userId === id ? HISTORY.gotoScoresUser() : HISTORY.gotoScoresPlayer(id);

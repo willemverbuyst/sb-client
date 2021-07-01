@@ -3,8 +3,8 @@ import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 import {
   displayUserScores,
   generateMaxForChartYAx,
-  getBackgroundColorBars,
-  getHoverBackgroundColorsBars,
+  getColorBars,
+  getHoverColorsBars,
   getScoresOfAllPlayes,
   getTotalsForStackedChart,
   getUserPredictions,
@@ -35,7 +35,7 @@ describe('#displayUserScores', () => {
   });
 });
 
-describe('#getBackgroundColorBars', () => {
+describe('#getColorBars', () => {
   describe('if given an array with usersWithScores and an id', () => {
     const usersWithScoreOne: IUserWithScore[] = [
       {
@@ -75,13 +75,10 @@ describe('#getBackgroundColorBars', () => {
     ];
 
     test('returns a array with colors for the charts', () => {
-      expect(getBackgroundColorBars(usersWithScoreOne, 1)).toEqual([colorPrimary.color1, colorPrimary.color1]);
-      expect(getBackgroundColorBars(usersWithScoreTwo, 1)).toEqual([colorSecondary.color1, colorSecondary.color1]);
-      expect(getBackgroundColorBars(usersWithScoreThree, 1)).toEqual([colorPrimary.color1, colorSecondary.color1]);
-      expect(getBackgroundColorBars(usersWithScoreThree, 1)).not.toEqual([
-        colorSecondary.color1,
-        colorSecondary.color1,
-      ]);
+      expect(getColorBars(usersWithScoreOne, 1)).toEqual([colorPrimary.color1, colorPrimary.color1]);
+      expect(getColorBars(usersWithScoreTwo, 1)).toEqual([colorSecondary.color1, colorSecondary.color1]);
+      expect(getColorBars(usersWithScoreThree, 1)).toEqual([colorPrimary.color1, colorSecondary.color1]);
+      expect(getColorBars(usersWithScoreThree, 1)).not.toEqual([colorSecondary.color1, colorSecondary.color1]);
     });
   });
 });
@@ -96,7 +93,7 @@ describe('#generateMaxForChartYAx', () => {
   });
 });
 
-describe('#getHoverBackgroundColorsBars', () => {
+describe('#getHoverColorsBars', () => {
   describe('if given an array with usersWithScores', () => {
     const usersWithScores: IUserWithScore[] = [
       {
@@ -112,7 +109,7 @@ describe('#getHoverBackgroundColorsBars', () => {
     ];
 
     test('returns a array with colors for the charts on hover', () => {
-      expect(getHoverBackgroundColorsBars(usersWithScores)).toEqual(['grey', 'grey']);
+      expect(getHoverColorsBars(usersWithScores)).toEqual(['grey', 'grey']);
     });
   });
 });

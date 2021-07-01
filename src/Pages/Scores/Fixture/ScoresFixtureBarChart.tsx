@@ -23,8 +23,8 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEl
   );
   const userScores: number[] = UTILS.displayUserScores(scores);
   const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
-  const hoverBackgroundColors: string[] = UTILS.getHoverBackgroundColorsBars<IUserWithScoreAndPrediction>(scores);
-  const backgroundColor: string[] = UTILS.getBackgroundColorBars<IUserWithScoreAndPrediction>(scores, userId);
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScoreAndPrediction>(scores);
+  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScoreAndPrediction>(scores, userId);
   const userPredictions: string[] = UTILS.getUserPredictions(scores);
   const gotoScoresPlayer = (index: number): void => {
     const id: number = scores[index].userId;
