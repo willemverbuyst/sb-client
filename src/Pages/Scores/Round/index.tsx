@@ -14,13 +14,14 @@ const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const roundId = useSelector(selectRoundId);
   const scoresRoundSortedByScore = useSelector(selectScoresRoundSortedByScore);
-  const { id } = useParams<{ id: string }>();
+  const { ronde } = useParams<{ ronde: string }>();
+  const round = Number(ronde);
 
   useEffect(() => {
-    if (!roundId || Number(id) !== roundId) {
-      dispatch(fetchScoresRound(+id));
+    if (!roundId || round !== roundId) {
+      dispatch(fetchScoresRound(round));
     }
-  }, [dispatch, id, roundId]);
+  }, [dispatch, round, roundId]);
 
   return (
     <PageContent
@@ -28,9 +29,9 @@ const Round: React.FC = (): ReactElement => {
       content={
         scoresRoundSortedByScore ? (
           <>
-            <PageTitle title={`Speelronde ${id}`} color="secondary" />
+            <PageTitle title={`Speelronde ${round}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <Pagination round={id} />
+            <Pagination round={round} />
           </>
         ) : (
           <MessageComponent message={`Nog geen scores voor deze ronde`} />

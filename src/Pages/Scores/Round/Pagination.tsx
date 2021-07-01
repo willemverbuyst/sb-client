@@ -6,16 +6,21 @@ import { TOTAL_ROUNDS } from '../../../constants/setupGame';
 import * as HISTORY from '../../../history';
 
 interface IProps {
-  round: string;
+  round: number;
 }
 
 const Pagination: React.FC<IProps> = ({ round }: IProps): ReactElement => {
-  const r = Number(round);
   const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void => HISTORY.gotoRankingRound(value);
 
   return (
     <Box my={2}>
-      <PaginationComponent label="Speelronde" page={r} count={TOTAL_ROUNDS} color="secondary" onChange={gotoRound} />
+      <PaginationComponent
+        label="Speelronde"
+        page={round}
+        count={TOTAL_ROUNDS}
+        color="secondary"
+        onChange={gotoRound}
+      />
     </Box>
   );
 };

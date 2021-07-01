@@ -8,14 +8,11 @@ import * as UTILS from '../../../utils';
 
 interface IProps {
   id: string;
-  round: string;
-  totoround: string;
+  round: number;
+  totoround: number;
 }
 
 const Pagination: React.FC<IProps> = ({ id, round, totoround }: IProps): ReactElement => {
-  const t = Number(totoround);
-  const r = Number(round);
-
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
     const totoRound = UTILS.totoRoundByRound(value);
     HISTORY.gotoPredictionsPlayer(id, totoRound, value);
@@ -30,14 +27,14 @@ const Pagination: React.FC<IProps> = ({ id, round, totoround }: IProps): ReactEl
     <Box my={2}>
       <PaginationComponent
         label="Totoronde"
-        page={t}
+        page={totoround}
         count={TOTO_ROUNDS}
         color="primary"
         onChange={handleChangeTotoRounds}
       />
       <PaginationComponent
         label="Speelronde"
-        page={r}
+        page={round}
         count={TOTAL_ROUNDS}
         color="secondary"
         onChange={handleChangeRounds}

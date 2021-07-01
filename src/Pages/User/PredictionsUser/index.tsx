@@ -14,11 +14,10 @@ import Pagination from './Pagination';
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const fixturesSortedByTime = useSelector(selectFixturesSortedByTime);
-  const { totoronde } = useParams<{ totoronde: string }>();
   const { ronde } = useParams<{ ronde: string }>();
-
-  const t = Number(totoronde);
-  const r = Number(ronde);
+  const { totoronde } = useParams<{ totoronde: string }>();
+  const round = Number(ronde);
+  const totoRound = Number(totoronde);
 
   useEffect(() => {
     if (!fixturesSortedByTime) {
@@ -26,7 +25,9 @@ const PredictionsUser: React.FC = (): ReactElement => {
     }
   }, [dispatch, fixturesSortedByTime]);
 
-  const filteredFixtures = fixturesSortedByTime ? [...fixturesSortedByTime[t - 1][UTILS.calculateIndex(r)]] : null;
+  const filteredFixtures = fixturesSortedByTime
+    ? [...fixturesSortedByTime[totoRound - 1][UTILS.calculateIndex(round)]]
+    : null;
 
   return (
     <PageContent
@@ -36,7 +37,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
           <>
             <PageTitle title={`Mijn voorspellingen`} color="primary" />
             <Predictions fixtures={filteredFixtures} display="private" />
-            <Pagination totoround={totoronde} round={ronde} />
+            <Pagination totoround={totoRound} round={round} />
           </>
         ) : (
           <MessageComponent message={`Geen voorspellingen gevonden`} />

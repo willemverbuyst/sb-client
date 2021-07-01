@@ -7,14 +7,11 @@ import * as HISTORY from '../../../history';
 import * as UTILS from '../../../utils';
 
 interface IProps {
-  round: string;
-  totoround: string;
+  round: number;
+  totoround: number;
 }
 
 const Pagination: React.FC<IProps> = ({ round, totoround }: IProps): ReactElement => {
-  const t = Number(totoround);
-  const r = Number(round);
-
   const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
     const totoRound = UTILS.totoRoundByRound(value);
     HISTORY.gotoPredictionsUser(totoRound, value);
@@ -29,14 +26,14 @@ const Pagination: React.FC<IProps> = ({ round, totoround }: IProps): ReactElemen
     <Box my={2}>
       <PaginationComponent
         label="Totoronde"
-        page={t}
+        page={totoround}
         count={TOTO_ROUNDS}
         color="primary"
         onChange={handleChangeTotoRounds}
       />
       <PaginationComponent
         label="Speelronde"
-        page={r}
+        page={round}
         count={TOTAL_ROUNDS}
         color="secondary"
         onChange={handleChangeRounds}

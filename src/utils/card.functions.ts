@@ -26,7 +26,7 @@ export const getPublicPrediction = (
   userNamePlayer: string,
 ): string =>
   (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished'
-    ? `${userNamePlayer}'s Voorspelling: ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
+    ? `${userNamePlayer}'s voorspelling: ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : status === 'Match Finished'
     ? `Geen voorspelling`
     : `Wedstrijd nog niet gespeeld.`;

@@ -18,8 +18,9 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
-  const t = Number(totoronde);
-  const r = Number(ronde);
+  const round = Number(ronde);
+  const totoRound = Number(totoronde);
+
   const name = userNamePlayer ? userNamePlayer : 'Speler...';
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const filteredFixtures = pastFixturesWithScoresSortedByTime
-    ? [...pastFixturesWithScoresSortedByTime[t - 1][UTILS.calculateIndex(r)]]
+    ? [...pastFixturesWithScoresSortedByTime[totoRound - 1][UTILS.calculateIndex(round)]]
     : null;
 
   return (
@@ -38,7 +39,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
           <>
             <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
             <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
-            <Pagination totoround={totoronde} round={ronde} id={id} />
+            <Pagination totoround={totoRound} round={round} id={id} />
           </>
         ) : (
           <MessageComponent message={`Geen voorspellingen voor gevonden`} />

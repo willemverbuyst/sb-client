@@ -14,13 +14,14 @@ const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const scoresRoundSortedByScore = useSelector(selectScoresTotoRoundSortedByScore);
   const totoRoundId = useSelector(selectTotoRoundId);
-  const { id } = useParams<{ id: string }>();
+  const { totoronde } = useParams<{ totoronde: string }>();
+  const totoRound = Number(totoronde);
 
   useEffect(() => {
-    if (!totoRoundId || Number(id) !== totoRoundId) {
-      dispatch(fetchScoresTotoRound(+id));
+    if (!totoRoundId || totoRound !== totoRoundId) {
+      dispatch(fetchScoresTotoRound(totoRound));
     }
-  }, [dispatch, id, totoRoundId]);
+  }, [dispatch, totoRound, totoRoundId]);
 
   return (
     <PageContent
@@ -28,12 +29,12 @@ const TotoRound: React.FC = (): ReactElement => {
       content={
         scoresRoundSortedByScore ? (
           <>
-            <PageTitle title={`Totoronde  ${id}`} color="secondary" />
+            <PageTitle title={`Totoronde  ${totoRound}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <Pagination totoRound={id} />
+            <Pagination totoRound={totoRound} />
           </>
         ) : (
-          <MessageComponent message={`Nog geen scores voor toto ronde ${id}`} />
+          <MessageComponent message={`Nog geen scores voor toto ronde ${totoRound}`} />
         )
       }
     />
