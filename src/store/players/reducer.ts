@@ -31,6 +31,8 @@ const playersReducer = (state = initialState, action: PlayersActions): IPlayersS
       return {
         ...state,
         players: null,
+        playerProfile: null,
+        scoresPlayer: null,
       };
 
     case ActionType.STORE_ALL_PLAYERS:

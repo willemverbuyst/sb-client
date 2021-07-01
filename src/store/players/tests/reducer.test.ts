@@ -1,23 +1,15 @@
-import { IPlayer, IPlayerProfile } from '../../../models/player.model';
-import reducer from '../reducer';
+import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../../models/player.model';
 import {
-  ADD_NEW_PLAYER,
+  ActionType,
   AddNewPlayer,
-  ALL_PLAYERS_FETCHED,
-  AllPlayersFetched,
-  DELETE_PLAYER,
   DeletePlayer,
-  PLAYER_PROFILE_FETCHED,
-  PLAYER_SCORES_FETCHED,
-  PlayerProfileFetched,
-  PlayerScoresFetched,
-  PlayersState,
-  REMOVE_ALL_PLAYERS,
-  RemoveAllPlayers,
-  ScoresPlayer,
-  UPDATE_ADMIN_STATUS,
+  ResetPlayers,
+  StoreAllPlayers,
+  StorePlayerProfile,
+  StorePlayerScores,
   UpdateAdminStatus,
-} from '../types';
+} from '../action-types';
+import reducer, { IPlayersState } from '../reducer';
 
 describe('#playersStateReducer', () => {
   describe('if given ADD_NEW_PLAYER action type and intialState', () => {
@@ -36,16 +28,16 @@ describe('#playersStateReducer', () => {
       totaalToto: true,
       userName: 'TEST',
     };
-    const initialState: PlayersState = {
+    const initialState: IPlayersState = {
       players: null,
       playerProfile: null,
       scoresPlayer: null,
     };
     const action: AddNewPlayer = {
-      type: ADD_NEW_PLAYER,
-      player,
+      type: ActionType.ADD_NEW_PLAYER,
+      payload: player,
     };
-    const newState: PlayersState = reducer(initialState, action);
+    const newState: IPlayersState = reducer(initialState, action);
 
     test('returns the initial state with players: null', () => {
       expect(newState).toEqual({
@@ -76,16 +68,16 @@ describe('#playersStateReducer', () => {
       totaalToto: true,
       userName: 'TEST',
     };
-    const initialState: PlayersState = {
+    const initialState: IPlayersState = {
       players: [player],
       playerProfile: null,
       scoresPlayer: null,
     };
     const action: AddNewPlayer = {
-      type: ADD_NEW_PLAYER,
-      player,
+      type: ActionType.ADD_NEW_PLAYER,
+      payload: player,
     };
-    const newState: PlayersState = reducer(initialState, action);
+    const newState: IPlayersState = reducer(initialState, action);
 
     test('returns the state with a player added to players', () => {
       expect(newState.playerProfile).toBeNull;
@@ -94,7 +86,7 @@ describe('#playersStateReducer', () => {
     });
   });
 
-  describe('if given ALL_PLAYERS_FETCHED action type and initialState', () => {
+  describe('if given STORE_ALL_PLAYERS action type and initialState', () => {
     const players: IPlayer[] = [
       {
         admin: false,
@@ -112,16 +104,16 @@ describe('#playersStateReducer', () => {
         userName: 'TEST',
       },
     ];
-    const initialState: PlayersState = {
+    const initialState: IPlayersState = {
       players: null,
       playerProfile: null,
       scoresPlayer: null,
     };
-    const action: AllPlayersFetched = {
-      type: ALL_PLAYERS_FETCHED,
-      players,
+    const action: StoreAllPlayers = {
+      type: ActionType.STORE_ALL_PLAYERS,
+      payload: players,
     };
-    const newState: PlayersState = reducer(initialState, action);
+    const newState: IPlayersState = reducer(initialState, action);
 
     test('returns a new state with players', () => {
       expect(newState.playerProfile).toBeNull;
@@ -130,7 +122,7 @@ describe('#playersStateReducer', () => {
     });
   });
 
-  describe('if given ALL_PLAYERS_FETCHED action type and a state with players', () => {
+  describe('if given STORE_ALL_PLAYERS action type and a state with players', () => {
     const players1: IPlayer[] = [
       {
         admin: false,
@@ -165,16 +157,16 @@ describe('#playersStateReducer', () => {
         userName: 'TEST',
       },
     ];
-    const state: PlayersState = {
+    const state: IPlayersState = {
       players: players1,
       playerProfile: null,
       scoresPlayer: null,
     };
-    const action: AllPlayersFetched = {
-      type: ALL_PLAYERS_FETCHED,
-      players: players2,
+    const action: StoreAllPlayers = {
+      type: ActionType.STORE_ALL_PLAYERS,
+      payload: players2,
     };
-    const newState: PlayersState = reducer(state, action);
+    const newState: IPlayersState = reducer(state, action);
 
     test('returns a state with the new fetched players', () => {
       expect(newState.playerProfile).toBeNull;
@@ -215,16 +207,16 @@ describe('#playersStateReducer', () => {
       totaalToto: true,
       userName: 'TEST',
     };
-    const state: PlayersState = {
+    const state: IPlayersState = {
       players: [player1, player2],
       playerProfile: null,
       scoresPlayer: null,
     };
     const action: DeletePlayer = {
-      type: DELETE_PLAYER,
-      playerId: player2.id,
+      type: ActionType.DELETE_PLAYER,
+      payload: player2.id,
     };
-    const newState: PlayersState = reducer(state, action);
+    const newState: IPlayersState = reducer(state, action);
 
     test('returns a state without the deleted player', () => {
       expect(newState.playerProfile).toBeNull;
@@ -237,7 +229,7 @@ describe('#playersStateReducer', () => {
     });
   });
 
-  describe('if given PLAYER_PROFILE_FETCHED action type and initialState', () => {
+  describe('if given STORE_PLAYER_PROFILE action type and initialState', () => {
     const playerProfile: IPlayerProfile = {
       admin: false,
       email: 'test@test.com',
@@ -254,16 +246,16 @@ describe('#playersStateReducer', () => {
       userName: 'TEST',
       pastFixturesWithScores: null,
     };
-    const initialState: PlayersState = {
+    const initialState: IPlayersState = {
       players: null,
       playerProfile: null,
       scoresPlayer: null,
     };
-    const action: PlayerProfileFetched = {
-      type: PLAYER_PROFILE_FETCHED,
-      playerProfile,
+    const action: StorePlayerProfile = {
+      type: ActionType.STORE_PLAYER_PROFILE,
+      payload: playerProfile,
     };
-    const newState: PlayersState = reducer(initialState, action);
+    const newState: IPlayersState = reducer(initialState, action);
 
     test('returns a new state with a player profile', () => {
       expect(newState.players).toBeNull;
@@ -272,7 +264,7 @@ describe('#playersStateReducer', () => {
     });
   });
 
-  describe('if given PLAYER_PROFILE_FETCHED action type and a state with a profile', () => {
+  describe('if given STORE_PLAYER_PROFILE action type and a state with a profile', () => {
     const players: IPlayer[] = [
       {
         admin: false,
@@ -322,16 +314,16 @@ describe('#playersStateReducer', () => {
       userName: 'TEST',
       pastFixturesWithScores: null,
     };
-    const state: PlayersState = {
+    const state: IPlayersState = {
       players,
       playerProfile: playerProfile1,
       scoresPlayer: null,
     };
-    const action: PlayerProfileFetched = {
-      type: PLAYER_PROFILE_FETCHED,
-      playerProfile: playerProfile2,
+    const action: StorePlayerProfile = {
+      type: ActionType.STORE_PLAYER_PROFILE,
+      payload: playerProfile2,
     };
-    const newState: PlayersState = reducer(state, action);
+    const newState: IPlayersState = reducer(state, action);
 
     test('returns the state with the new profile', () => {
       expect(newState.playerProfile).toEqual(playerProfile2);
@@ -342,25 +334,25 @@ describe('#playersStateReducer', () => {
     });
   });
 
-  describe('if given PLAYER_SCORES_FETCHED action type and initialState', () => {
-    const scoresPlayer: ScoresPlayer = {
+  describe('if given STORE_PLAYER_SCORES action type and initialState', () => {
+    const scoresPlayer: IScoresPlayer = {
       scores: [
         [1, 2],
         [3, 4],
       ],
       userName: 'string',
-      id: 1,
+      userId: 1,
     };
-    const initialState: PlayersState = {
+    const initialState: IPlayersState = {
       players: null,
       playerProfile: null,
       scoresPlayer: null,
     };
-    const action: PlayerScoresFetched = {
-      type: PLAYER_SCORES_FETCHED,
-      scoresPlayer,
+    const action: StorePlayerScores = {
+      type: ActionType.STORE_PLAYER_SCORES,
+      payload: scoresPlayer,
     };
-    const newState: PlayersState = reducer(initialState, action);
+    const newState: IPlayersState = reducer(initialState, action);
 
     test('returns a new state with a player scores', () => {
       expect(newState.playerProfile).toBeNull;
@@ -370,7 +362,7 @@ describe('#playersStateReducer', () => {
     });
   });
 
-  describe('if given REMOVE_ALL_PLAYERS action type and a state', () => {
+  describe('if given RESET_PLAYERS action type and a state', () => {
     const players: IPlayer[] = [
       {
         admin: false,
@@ -404,28 +396,28 @@ describe('#playersStateReducer', () => {
       userName: 'TEST',
       pastFixturesWithScores: null,
     };
-    const scoresPlayer: ScoresPlayer = {
+    const scoresPlayer: IScoresPlayer = {
       scores: [
         [1, 2],
         [3, 4],
       ],
       userName: 'string',
-      id: 1,
+      userId: 1,
     };
-    const state: PlayersState = {
+    const state: IPlayersState = {
       players,
       playerProfile,
       scoresPlayer,
     };
-    const initialState: PlayersState = {
+    const initialState: IPlayersState = {
       players: null,
       playerProfile: null,
       scoresPlayer: null,
     };
-    const action: RemoveAllPlayers = {
-      type: REMOVE_ALL_PLAYERS,
+    const action: ResetPlayers = {
+      type: ActionType.RESET_PLAYERS,
     };
-    const newState: PlayersState = reducer(state, action);
+    const newState: IPlayersState = reducer(state, action);
 
     test('returns the state with no profile and no players', () => {
       expect(newState.playerProfile).toBeNull;
@@ -481,16 +473,16 @@ describe('#playersStateReducer', () => {
       totaalToto: true,
       userName: 'TEST',
     };
-    const state: PlayersState = {
+    const state: IPlayersState = {
       players: [player1, player2],
       playerProfile: null,
       scoresPlayer: null,
     };
     const action: UpdateAdminStatus = {
-      type: UPDATE_ADMIN_STATUS,
-      player: updatedAdminPlayer,
+      type: ActionType.UPDATE_ADMIN_STATUS,
+      payload: updatedAdminPlayer,
     };
-    const newState: PlayersState = reducer(state, action);
+    const newState: IPlayersState = reducer(state, action);
 
     test('returns a state w/ one player updated', () => {
       expect(newState.playerProfile).toBeNull;
