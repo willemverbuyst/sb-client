@@ -1,22 +1,17 @@
 import { IPrediction } from '../../../models/predictions.model';
 import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
-import reducer from '../reducer';
 import {
-  ALL_FIXTURES_FETCHED,
-  AllFixturesFetched,
-  CURRENT_ROUND_FETCHED,
-  CurrentRoundFetched,
-  POST_PREDICTION,
+  ActionType,
   PostPrediction,
-  PredictionsState,
-  REMOVE_ALL_FIXTURES,
-  RemoveAllFixtures,
-  UPDATE_PREDICTION,
+  ResetAllFixtures,
+  StoreAllFixtures,
+  StoreCurrentRound,
   UpdatePrediction,
-} from '../types';
+} from '../action-types';
+import reducer, { IPredictionsState } from '../reducer';
 
-describe('#predictionsStateReducer', () => {
-  describe('if given CURRENT_ROUND_FETCHED action type and intialState', () => {
+describe('#IPredictionsStateReducer', () => {
+  describe('if given STORE_CURRENT_ROUND action type and intialState', () => {
     const fixtures: IFixtureWithScoreAndPredictions[] = [
       {
         awayTeamId: 1,
@@ -45,15 +40,15 @@ describe('#predictionsStateReducer', () => {
       roundNumber: 1,
       totoRoundNumber: 1,
     };
-    const initialState: PredictionsState = {
+    const initialState: IPredictionsState = {
       currentRound: null,
       allFixtures: null,
     };
-    const action: CurrentRoundFetched = {
-      type: CURRENT_ROUND_FETCHED,
-      currentRound,
+    const action: StoreCurrentRound = {
+      type: ActionType.STORE_CURRENT_ROUND,
+      payload: currentRound,
     };
-    const newState: PredictionsState = reducer(initialState, action);
+    const newState: IPredictionsState = reducer(initialState, action);
 
     test('returns the initial state with current round', () => {
       expect(newState.allFixtures).toBeNull;
@@ -62,7 +57,7 @@ describe('#predictionsStateReducer', () => {
     });
   });
 
-  describe('if given ALL_FIXTURES_FETCHED action type and intialState', () => {
+  describe('if given STORE_ALL_FIXTURES action type and intialState', () => {
     const totoRound: TotoRound[] = [
       [
         [
@@ -90,15 +85,15 @@ describe('#predictionsStateReducer', () => {
         ],
       ],
     ];
-    const initialState: PredictionsState = {
+    const initialState: IPredictionsState = {
       currentRound: null,
       allFixtures: null,
     };
-    const action: AllFixturesFetched = {
-      type: ALL_FIXTURES_FETCHED,
-      allFixtures: totoRound,
+    const action: StoreAllFixtures = {
+      type: ActionType.STORE_ALL_FIXTURES,
+      payload: totoRound,
     };
-    const newState: PredictionsState = reducer(initialState, action);
+    const newState: IPredictionsState = reducer(initialState, action);
 
     test('returns the initial state with all fixtures', () => {
       expect(newState.allFixtures).not.toBeNull;
@@ -141,15 +136,15 @@ describe('#predictionsStateReducer', () => {
       pGoalsHomeTeam: 4,
       fixtureId: 1,
     };
-    const state: PredictionsState = {
+    const state: IPredictionsState = {
       currentRound,
       allFixtures: totoRound,
     };
     const action: PostPrediction = {
-      type: POST_PREDICTION,
-      prediction,
+      type: ActionType.POST_PREDICTION,
+      payload: prediction,
     };
-    const newState: PredictionsState = reducer(state, action);
+    const newState: IPredictionsState = reducer(state, action);
 
     test('returns the state with prediction added', () => {
       expect(newState.allFixtures).not.toBeNull;
@@ -163,7 +158,7 @@ describe('#predictionsStateReducer', () => {
     });
   });
 
-  describe('if given REMOVE_ALL_FIXTURES action type and a state', () => {
+  describe('if given RESET_ALL_FIXTURES action type and a state', () => {
     const fixture: IFixtureWithScoreAndPredictions = {
       awayTeamId: 1,
       awayTeamLogo: 'test',
@@ -192,18 +187,18 @@ describe('#predictionsStateReducer', () => {
       totoRoundNumber: 1,
     };
     const totoRound: TotoRound[] = [[[fixture]]];
-    const initialState: PredictionsState = {
+    const initialState: IPredictionsState = {
       currentRound: null,
       allFixtures: null,
     };
-    const state: PredictionsState = {
+    const state: IPredictionsState = {
       currentRound,
       allFixtures: totoRound,
     };
-    const action: RemoveAllFixtures = {
-      type: REMOVE_ALL_FIXTURES,
+    const action: ResetAllFixtures = {
+      type: ActionType.RESET_ALL_FIXTURES,
     };
-    const newState: PredictionsState = reducer(state, action);
+    const newState: IPredictionsState = reducer(state, action);
 
     test('returns the initial state', () => {
       expect(newState.allFixtures).toBeNull;
@@ -245,15 +240,15 @@ describe('#predictionsStateReducer', () => {
       pGoalsHomeTeam: 4,
       fixtureId: 1,
     };
-    const state: PredictionsState = {
+    const state: IPredictionsState = {
       currentRound,
       allFixtures: totoRound,
     };
     const action: UpdatePrediction = {
-      type: UPDATE_PREDICTION,
-      prediction,
+      type: ActionType.UPDATE_PREDICTION,
+      payload: prediction,
     };
-    const newState: PredictionsState = reducer(state, action);
+    const newState: IPredictionsState = reducer(state, action);
 
     test('returns the state with updated prediction', () => {
       expect(newState.allFixtures).not.toBeNull;
