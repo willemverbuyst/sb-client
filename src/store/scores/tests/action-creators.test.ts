@@ -1,159 +1,21 @@
 import axios from 'axios';
 
+import {
+  IFixtureWithUsersWithScoreAndPrediction,
+  IUsersWithScoreAndRoundId,
+  IUsersWithScoreAndTotoRoundId,
+  IUserWithScore,
+  IUserWithScoreAndPrediction,
+} from '../../../models/scores.models';
 import { IFixture } from '../../../models/toto.models';
 import { appDoneLoading, appLoading } from '../../appState/actions';
-import {
-  fetchScoresFixture,
-  fetchScoresRound,
-  fetchScoresTotalToto,
-  fetchScoresTotoRound,
-  removeAllScores,
-  scoresFixtureFetched,
-  scoresRoundFetched,
-  scoresTotalTotoFetched,
-  scoresTotoRoundFetched,
-} from '../action-creators';
-import {
-  FixtureWithScores,
-  PredictionWithScorePerUser,
-  REMOVE_ALL_SCORES,
-  RemoveAllScores,
-  Scores,
-  SCORES_FIXTURE_FETCHED,
-  SCORES_ROUND_FETCHED,
-  SCORES_TOTAL_TOTO_FETCHED,
-  SCORES_TOTO_ROUND_FETCHED,
-  ScoresFixtureFetched,
-  ScoresRoundFetched,
-  ScoresTotalTotoFetched,
-  ScoresTotoRoundFetched,
-  UserWithScore,
-} from '../types';
+import { fetchScoresFixture, fetchScoresRound, fetchScoresTotalToto, fetchScoresTotoRound } from '../action-creators';
+import { storeScoresFixture, storeScoresRound, storeScoresTotalToto, storeScoresTotoRound } from '../actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
 beforeEach(() => {
   jest.resetAllMocks();
-});
-
-describe('#scoressState', () => {
-  describe('#removeAllScores', () => {
-    const expected: RemoveAllScores = {
-      type: REMOVE_ALL_SCORES,
-    };
-
-    test('returns an action w/ type REMOVE_ALL_SCORES and no payload', () => {
-      expect(removeAllScores()).toEqual(expected);
-      expect(removeAllScores()).not.toHaveProperty('payload');
-      expect(removeAllScores().type).toBe(REMOVE_ALL_SCORES);
-    });
-  });
-
-  describe('#scoresFixtureFetched w/ fixture', () => {
-    const fixture: IFixture = {
-      awayTeamId: 1,
-      awayTeamLogo: 'test',
-      awayTeamName: 'test',
-      createdAt: 'test',
-      eventTimeStamp: 1,
-      goalsAwayTeam: null,
-      goalsHomeTeam: null,
-      homeTeamId: 1,
-      homeTeamLogo: 'test',
-      homeTeamName: 'test',
-      id: 1,
-      round: 'test',
-      status: 'test',
-      updatedAt: 'test',
-    };
-    const predictionWithScorePerUser: PredictionWithScorePerUser = {
-      pGoalsAwayTeam: 1,
-      pGoalsHomeTeam: 1,
-      score: 10,
-      user: 'test_user',
-      userId: 1,
-    };
-    const fixtureScores: FixtureWithScores = {
-      fixture,
-      scores: [predictionWithScorePerUser],
-    };
-    const expected: ScoresFixtureFetched = {
-      type: SCORES_FIXTURE_FETCHED,
-      fixture: fixtureScores,
-    };
-
-    test('returns an action w/ type SCORES_FIXTURE_FETCHED and a fixture as payload', () => {
-      expect(scoresFixtureFetched(fixtureScores)).toEqual(expected);
-      expect(scoresFixtureFetched(fixtureScores).fixture).not.toBe(undefined);
-    });
-  });
-
-  describe('#scoresRoundFetched w/ sores', () => {
-    const roundScores: Scores = {
-      usersWithScores: [
-        {
-          id: 1,
-          score: 1,
-          user: 'test_user',
-        },
-      ],
-      id: 1,
-    };
-    const expected: ScoresRoundFetched = {
-      type: SCORES_ROUND_FETCHED,
-      round: roundScores,
-    };
-
-    test('returns an action w/ type SCORES_ROUND_FETCHED and a round with scores as payload', () => {
-      expect(scoresRoundFetched(roundScores)).toEqual(expected);
-      expect(scoresRoundFetched(roundScores).round).not.toBe(undefined);
-      expect(scoresRoundFetched(roundScores).type).toBe(SCORES_ROUND_FETCHED);
-    });
-  });
-
-  describe('#scoresTotalTotoFetched w/ sores', () => {
-    const totalToto: UserWithScore[] = [
-      {
-        score: 10,
-        user: 'test_user',
-        id: 1,
-      },
-    ];
-
-    const expected: ScoresTotalTotoFetched = {
-      type: SCORES_TOTAL_TOTO_FETCHED,
-      totalToto,
-    };
-
-    test('returns an action w/ type SCORES_TOTAL_TOTO_FETCHED and totalToto scores as payload', () => {
-      expect(scoresTotalTotoFetched(totalToto)).toEqual(expected);
-      expect(scoresTotalTotoFetched(totalToto).totalToto).not.toBe(undefined);
-      expect(scoresTotalTotoFetched(totalToto).type).toBe(SCORES_TOTAL_TOTO_FETCHED);
-    });
-  });
-
-  describe('#scoresTotoRoundFetched w/ sores', () => {
-    const totoRoundScores: Scores = {
-      usersWithScores: [
-        {
-          id: 1,
-          score: 1,
-          user: 'test_user',
-        },
-      ],
-      id: 1,
-    };
-    const expected: ScoresTotoRoundFetched = {
-      type: SCORES_TOTO_ROUND_FETCHED,
-      totoRound: totoRoundScores,
-    };
-
-    test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
-      expect(scoresTotoRoundFetched(totoRoundScores)).toEqual(expected);
-      expect(scoresTotoRoundFetched(totoRoundScores).totoRound).not.toBe(undefined);
-      expect(scoresTotoRoundFetched(totoRoundScores).type).toBe(SCORES_TOTO_ROUND_FETCHED);
-    });
-  });
 });
 
 describe('#fetchScoresFixture', () => {
@@ -175,14 +37,14 @@ describe('#fetchScoresFixture', () => {
       status: 'test',
       updatedAt: 'test',
     };
-    const predictionWithScorePerUser: PredictionWithScorePerUser = {
+    const predictionWithScorePerUser: IUserWithScoreAndPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 1,
       score: 10,
       user: 'test_user',
       userId: 1,
     };
-    const fixtureScores: FixtureWithScores = {
+    const fixtureScores: IFixtureWithUsersWithScoreAndPrediction = {
       fixture,
       scores: [predictionWithScorePerUser],
     };
@@ -198,7 +60,7 @@ describe('#fetchScoresFixture', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresFixtureFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(storeScoresFixture(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -207,15 +69,15 @@ describe('#fetchScoresFixture', () => {
 describe('#fetchScoresRound', () => {
   it('calls axios and returns a round with scores', async () => {
     const id = 1;
-    const roundScores: Scores = {
+    const roundScores: IUsersWithScoreAndRoundId = {
       usersWithScores: [
         {
-          id: 1,
+          userId: 1,
           score: 1,
           user: 'test_user',
         },
       ],
-      id: 1,
+      roundId: 1,
     };
 
     const dispatch = jest.fn();
@@ -229,7 +91,7 @@ describe('#fetchScoresRound', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresRoundFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(storeScoresRound(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -237,9 +99,9 @@ describe('#fetchScoresRound', () => {
 
 describe('#fetchScoresTotalToto', () => {
   it('calls axios and returns the totalToto', async () => {
-    const totalTotoScores: UserWithScore[] = [
+    const totalTotoScores: IUserWithScore[] = [
       {
-        id: 1,
+        userId: 1,
         score: 1,
         user: 'test_user',
       },
@@ -256,7 +118,7 @@ describe('#fetchScoresTotalToto', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresTotalTotoFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(storeScoresTotalToto(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -265,15 +127,15 @@ describe('#fetchScoresTotalToto', () => {
 describe('#fetchScoresTotoRound', () => {
   it('calls axios and returns a totoRound with scores', async () => {
     const id = 1;
-    const totoRoundScores: Scores = {
+    const totoRoundScores: IUsersWithScoreAndTotoRoundId = {
       usersWithScores: [
         {
-          id: 1,
+          userId: 1,
           score: 1,
           user: 'test_user',
         },
       ],
-      id: 1,
+      totoRoundId: 1,
     };
 
     const dispatch = jest.fn();
@@ -287,7 +149,7 @@ describe('#fetchScoresTotoRound', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresTotoRoundFetched(response.data));
+    expect(dispatch).toHaveBeenCalledWith(storeScoresTotoRound(response.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
