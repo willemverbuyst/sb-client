@@ -1,21 +1,10 @@
-import { IUser } from '../../../models/player.model';
-import { ITeam } from '../../../models/toto.models';
-import reducer from '../reducer';
-import {
-  LOG_IN_SUCCESS_USER,
-  LOG_OUT_USER,
-  LogInSuccessUser,
-  LogOutUser,
-  TOKEN_STILL_VALID_USER,
-  TokenUserStillValid,
-  UPDATE_USER_PROFILE,
-  UpdateUserProfile,
-  UserState,
-} from '../types';
+import { ICurrentRound, IFixtureWithScoreAndPredictions, ITeam } from '../../../models/toto.models';
+import { ActionType, LogInSuccessUser, LogOutUser, TokenUserStillValid, UpdateUserProfile } from '../action-types';
+import reducer, { IUserState, IUserWithCurrentRound } from '../reducer';
 
 describe('#userReducer', () => {
   describe('with initial state and LOG_IN_SUCCESS_USER action', () => {
-    const initialState: UserState = {
+    const initialState: IUserState = {
       token: null,
       user: null,
     };
@@ -24,7 +13,33 @@ describe('#userReducer', () => {
       name: 'test_name',
       logo: 'test_logo',
     };
-    const user: IUser = {
+    const fixture: IFixtureWithScoreAndPredictions = {
+      awayTeamId: 1,
+      awayTeamLogo: 'test',
+      awayTeamName: 'test',
+      createdAt: 'test',
+      eventTimeStamp: 1,
+      goalsAwayTeam: null,
+      goalsHomeTeam: null,
+      homeTeamId: 1,
+      homeTeamLogo: 'test',
+      homeTeamName: 'test',
+      id: 1,
+      round: 'test',
+      status: 'test',
+      updatedAt: 'test',
+      score: 'scores',
+      predictions: {
+        pGoalsAwayTeam: null,
+        pGoalsHomeTeam: null,
+      },
+    };
+    const currentRound: ICurrentRound = {
+      roundNumber: 1,
+      totoRoundNumber: 1,
+      fixtures: [fixture],
+    };
+    const user: IUserWithCurrentRound = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -35,12 +50,13 @@ describe('#userReducer', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+      currentRound,
     };
     const action: LogInSuccessUser = {
-      type: LOG_IN_SUCCESS_USER,
-      user,
+      type: ActionType.LOG_IN_SUCCESS_USER,
+      payload: user,
     };
-    const newState: UserState = reducer(initialState, action);
+    const newState: IUserState = reducer(initialState, action);
 
     test('returns the new state with user', () => {
       expect(newState.token).not.toBeNull();
@@ -52,15 +68,15 @@ describe('#userReducer', () => {
   });
 
   describe('with given state and LOG_OUT_USER action', () => {
-    const initialState: UserState = {
+    const initialState: IUserState = {
       token: null,
       user: null,
     };
     const action: LogOutUser = {
-      type: LOG_OUT_USER,
+      type: ActionType.LOG_OUT_USER,
     };
-    const newState: UserState = reducer(initialState, action);
-    const newerState: UserState = reducer({ token: 'x', user: null }, action);
+    const newState: IUserState = reducer(initialState, action);
+    const newerState: IUserState = reducer({ token: 'x', user: null }, action);
 
     test('returns the initial state', () => {
       expect(newState).toEqual(initialState);
@@ -74,11 +90,11 @@ describe('#userReducer', () => {
   });
 
   describe('on TOKEN_STILL_VALID_STUDENT action', () => {
-    const initialState: UserState = {
+    const initialState: IUserState = {
       token: null,
       user: null,
     };
-    const state: UserState = {
+    const state: IUserState = {
       token: 'test_token',
       user: null,
     };
@@ -87,7 +103,33 @@ describe('#userReducer', () => {
       name: 'test_name',
       logo: 'test_logo',
     };
-    const user: IUser = {
+    const fixture: IFixtureWithScoreAndPredictions = {
+      awayTeamId: 1,
+      awayTeamLogo: 'test',
+      awayTeamName: 'test',
+      createdAt: 'test',
+      eventTimeStamp: 1,
+      goalsAwayTeam: null,
+      goalsHomeTeam: null,
+      homeTeamId: 1,
+      homeTeamLogo: 'test',
+      homeTeamName: 'test',
+      id: 1,
+      round: 'test',
+      status: 'test',
+      updatedAt: 'test',
+      score: 'scores',
+      predictions: {
+        pGoalsAwayTeam: null,
+        pGoalsHomeTeam: null,
+      },
+    };
+    const currentRound: ICurrentRound = {
+      roundNumber: 1,
+      totoRoundNumber: 1,
+      fixtures: [fixture],
+    };
+    const user: IUserWithCurrentRound = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -98,12 +140,13 @@ describe('#userReducer', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+      currentRound,
     };
     const action: TokenUserStillValid = {
-      type: TOKEN_STILL_VALID_USER,
-      user,
+      type: ActionType.TOKEN_STILL_VALID_USER,
+      payload: user,
     };
-    const newState: UserState = reducer(state, action);
+    const newState: IUserState = reducer(state, action);
 
     test('returns the new state with student', () => {
       expect(newState.token).not.toBeNull();
@@ -119,7 +162,33 @@ describe('#userReducer', () => {
         name: 'test_name',
         logo: 'test_logo',
       };
-      const user: IUser = {
+      const fixture: IFixtureWithScoreAndPredictions = {
+        awayTeamId: 1,
+        awayTeamLogo: 'test',
+        awayTeamName: 'test',
+        createdAt: 'test',
+        eventTimeStamp: 1,
+        goalsAwayTeam: null,
+        goalsHomeTeam: null,
+        homeTeamId: 1,
+        homeTeamLogo: 'test',
+        homeTeamName: 'test',
+        id: 1,
+        round: 'test',
+        status: 'test',
+        updatedAt: 'test',
+        score: 'scores',
+        predictions: {
+          pGoalsAwayTeam: null,
+          pGoalsHomeTeam: null,
+        },
+      };
+      const currentRound: ICurrentRound = {
+        roundNumber: 1,
+        totoRoundNumber: 1,
+        fixtures: [fixture],
+      };
+      const user: IUserWithCurrentRound = {
         admin: true,
         email: 'test@test.com',
         firstName: 'test',
@@ -130,12 +199,13 @@ describe('#userReducer', () => {
         totaalToto: true,
         userName: 'test',
         token: 'test_token',
+        currentRound,
       };
-      const state: UserState = {
+      const state: IUserState = {
         token: 'test_token',
         user,
       };
-      const userUpdated: IUser = {
+      const userUpdated: IUserWithCurrentRound = {
         admin: true,
         email: 'test@test.com',
         firstName: 'test_updated',
@@ -146,12 +216,13 @@ describe('#userReducer', () => {
         totaalToto: true,
         userName: 'test',
         token: 'test_token',
+        currentRound,
       };
       const action: UpdateUserProfile = {
-        type: UPDATE_USER_PROFILE,
-        user: userUpdated,
+        type: ActionType.UPDATE_USER_PROFILE,
+        payload: userUpdated,
       };
-      const newState: UserState = reducer(state, action);
+      const newState: IUserState = reducer(state, action);
 
       test('returns the new state with student', () => {
         expect(newState.token).not.toBeNull();

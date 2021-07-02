@@ -13,16 +13,16 @@ export const logInSuccessUser = (user: IUserWithCurrentRound): LogInSuccessUser 
   };
 };
 
-export const logOutUser = (): LogOutUser => ({
-  type: ActionType.LOG_OUT_USER,
-});
+export const logOutUser = (): LogOutUser => {
+  return {
+    type: ActionType.LOG_OUT_USER,
+  };
+};
 
-export const tokenUserStillValid = (user: IUserWithCurrentRound): TokenUserStillValid => ({
-  type: ActionType.TOKEN_STILL_VALID_USER,
-  payload: user,
-});
+export const tokenUserStillValid = (user: IUserWithCurrentRound): TokenUserStillValid => {
+  return { type: ActionType.TOKEN_STILL_VALID_USER, payload: user };
+};
 
-export const updateUserProfile = (user: IUserWithCurrentRound): UpdateUserProfile => ({
-  type: ActionType.UPDATE_USER_PROFILE,
-  payload: user,
-});
+export const updateUserProfile = (user: IUserWithCurrentRound): UpdateUserProfile => {
+  return { type: ActionType.UPDATE_USER_PROFILE, payload: user };
+};

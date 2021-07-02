@@ -4,31 +4,6 @@ import { ILogInCredentials } from '../../../models/credentials.model';
 import { IUser } from '../../../models/player.model';
 import { ITeam } from '../../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
-import { removeAllPlayers } from '../../players/action-creators';
-import { removeAllFixtures } from '../../predictions/action-creators';
-import { removeAllScores } from '../../scores/action-creators';
-import { removeAllTeams } from '../../teams/action-creators';
-import {
-  changePassword,
-  editUserProfile,
-  getUserWithStoredToken,
-  logInSuccessUser,
-  logOutUser,
-  tokenUserStillValid,
-  updateUserProfile,
-  userLogIn,
-  userLogOut,
-} from '../action-creators';
-import {
-  LOG_IN_SUCCESS_USER,
-  LOG_OUT_USER,
-  LogInSuccessUser,
-  LogOutUser,
-  TOKEN_STILL_VALID_USER,
-  TokenUserStillValid,
-  UPDATE_USER_PROFILE,
-  UpdateUserProfile,
-} from '../types';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

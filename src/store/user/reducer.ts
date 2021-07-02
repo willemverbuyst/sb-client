@@ -3,7 +3,7 @@ import { ICurrentRound } from '../../models/toto.models';
 import { ActionType } from './action-types';
 import { UserActions } from './action-types';
 
-interface IUserWithCurrentRound extends IUser {
+export interface IUserWithCurrentRound extends IUser {
   currentRound: ICurrentRound;
 }
 
