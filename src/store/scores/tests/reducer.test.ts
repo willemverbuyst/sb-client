@@ -1,26 +1,24 @@
-import { IFixture } from '../../../models/toto.models';
-import reducer from '../reducer';
 import {
-  FixtureWithScores,
-  PredictionWithScorePerUser,
-  REMOVE_ALL_SCORES,
-  RemoveAllScores,
-  Scores,
-  SCORES_FIXTURE_FETCHED,
-  SCORES_ROUND_FETCHED,
-  SCORES_TOTAL_TOTO_FETCHED,
-  SCORES_TOTO_ROUND_FETCHED,
-  ScoresFixtureFetched,
-  ScoresRoundFetched,
-  ScoresState,
-  ScoresTotalTotoFetched,
-  ScoresTotoRoundFetched,
-  UserWithScore,
-} from '../types';
+  IFixtureWithUsersWithScoreAndPrediction,
+  IUsersWithScoreAndRoundId,
+  IUsersWithScoreAndTotoRoundId,
+  IUserWithScore,
+  IUserWithScoreAndPrediction,
+} from '../../../models/scores.models';
+import { IFixture } from '../../../models/toto.models';
+import {
+  ActionType,
+  ResetAllScores,
+  StoreScoresFixture,
+  StoreScoresRound,
+  StoreScoresTotalToto,
+  StoreScoresTotoRound,
+} from '../action-types';
+import reducer, { IScoresState } from '../reducer';
 
 describe('#scoresStateReducer', () => {
-  describe('if given REMOVE_ALL_SCORES action type and a state', () => {
-    const initialState: ScoresState = {
+  describe('if given RESET_ALL_SCORES action type and a state', () => {
+    const initialState: IScoresState = {
       fixtureScores: null,
       roundScores: null,
       totalTotoScores: null,
@@ -42,54 +40,54 @@ describe('#scoresStateReducer', () => {
       status: 'test',
       updatedAt: 'test',
     };
-    const predictionWithScorePerUser: PredictionWithScorePerUser = {
+    const predictionWithScorePerUser: IUserWithScoreAndPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 1,
       score: 10,
       user: 'test_user',
       userId: 1,
     };
-    const fixtureScores: FixtureWithScores = {
+    const fixtureScores: IFixtureWithUsersWithScoreAndPrediction = {
       fixture,
       scores: [predictionWithScorePerUser],
     };
-    const roundScores: Scores = {
+    const roundScores: IUsersWithScoreAndRoundId = {
       usersWithScores: [
         {
-          id: 1,
+          userId: 1,
           score: 1,
           user: 'test_user',
         },
       ],
-      id: 1,
+      roundId: 1,
     };
-    const totalTotoScores: UserWithScore[] = [
+    const totalTotoScores: IUserWithScore[] = [
       {
-        id: 1,
+        userId: 1,
         score: 1,
         user: 'test_user',
       },
     ];
-    const totoRoundScores: Scores = {
+    const totoRoundScores: IUsersWithScoreAndTotoRoundId = {
       usersWithScores: [
         {
-          id: 1,
+          userId: 1,
           score: 1,
           user: 'test_user',
         },
       ],
-      id: 1,
+      totoRoundId: 1,
     };
-    const state: ScoresState = {
+    const state: IScoresState = {
       fixtureScores,
       roundScores,
       totalTotoScores,
       totoRoundScores,
     };
-    const action: RemoveAllScores = {
-      type: REMOVE_ALL_SCORES,
+    const action: ResetAllScores = {
+      type: ActionType.RESET_ALL_SCORES,
     };
-    const newState: ScoresState = reducer(state, action);
+    const newState: IScoresState = reducer(state, action);
 
     test('returns the initial state', () => {
       expect(newState).toEqual(initialState);
@@ -100,8 +98,8 @@ describe('#scoresStateReducer', () => {
     });
   });
 
-  describe('if given SCORES_FIXTURE_FETCHED action type and a payload with fixtures', () => {
-    const initialState: ScoresState = {
+  describe('if given STORE_SCORES_FIXTURE action type and a payload with fixtures', () => {
+    const initialState: IScoresState = {
       fixtureScores: null,
       roundScores: null,
       totalTotoScores: null,
@@ -123,24 +121,24 @@ describe('#scoresStateReducer', () => {
       status: 'test',
       updatedAt: 'test',
     };
-    const predictionWithScorePerUser: PredictionWithScorePerUser = {
+    const predictionWithScorePerUser: IUserWithScoreAndPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 1,
       score: 10,
       user: 'test_user',
       userId: 1,
     };
-    const fixture: FixtureWithScores = {
+    const fixture: IFixtureWithUsersWithScoreAndPrediction = {
       fixture: fetchedFixture,
       scores: [predictionWithScorePerUser],
     };
 
-    const action: ScoresFixtureFetched = {
-      type: SCORES_FIXTURE_FETCHED,
-      fixture,
+    const action: StoreScoresFixture = {
+      type: ActionType.STORE_SCORES_FIXTURE,
+      payload: fixture,
     };
 
-    const newState: ScoresState = reducer(initialState, action);
+    const newState: IScoresState = reducer(initialState, action);
 
     test('returns a state w/ a fixture with scores', () => {
       expect(newState).not.toEqual(initialState);
@@ -155,29 +153,29 @@ describe('#scoresStateReducer', () => {
     });
   });
 
-  describe('if given SCORES_ROUND_FETCHED action type and a payload with a round', () => {
-    const initialState: ScoresState = {
+  describe('if given STORE_SCORES_ROUND action type and a payload with a round', () => {
+    const initialState: IScoresState = {
       fixtureScores: null,
       roundScores: null,
       totalTotoScores: null,
       totoRoundScores: null,
     };
-    const round: Scores = {
+    const round: IUsersWithScoreAndRoundId = {
       usersWithScores: [
         {
           score: 10,
           user: 'test_user',
-          id: 1,
+          userId: 1,
         },
       ],
-      id: 1,
+      roundId: 1,
     };
 
-    const action: ScoresRoundFetched = {
-      type: SCORES_ROUND_FETCHED,
-      round,
+    const action: StoreScoresRound = {
+      type: ActionType.STORE_SCORES_ROUND,
+      payload: round,
     };
-    const newState: ScoresState = reducer(initialState, action);
+    const newState: IScoresState = reducer(initialState, action);
 
     test('returns a state w/ a totoRoundScores', () => {
       expect(newState).not.toEqual(initialState);
@@ -191,25 +189,25 @@ describe('#scoresStateReducer', () => {
     });
   });
 
-  describe('if given SCORES_TOTAL_TOTO_FETCHED action type and a payload with totalToto', () => {
-    const initialState: ScoresState = {
+  describe('if given STORE_SCORES_TOTAL_TOTO action type and a payload with totalToto', () => {
+    const initialState: IScoresState = {
       fixtureScores: null,
       roundScores: null,
       totalTotoScores: null,
       totoRoundScores: null,
     };
-    const totalToto: UserWithScore[] = [
+    const totalToto: IUserWithScore[] = [
       {
         score: 10,
         user: 'test_user',
-        id: 1,
+        userId: 1,
       },
     ];
-    const action: ScoresTotalTotoFetched = {
-      type: SCORES_TOTAL_TOTO_FETCHED,
-      totalToto,
+    const action: StoreScoresTotalToto = {
+      type: ActionType.STORE_SCORES_TOTAL_TOTO,
+      payload: totalToto,
     };
-    const newState: ScoresState = reducer(initialState, action);
+    const newState: IScoresState = reducer(initialState, action);
 
     test('returns a state w/ a totalTotoScores', () => {
       expect(newState).not.toEqual(initialState);
@@ -223,29 +221,29 @@ describe('#scoresStateReducer', () => {
     });
   });
 
-  describe('if given SCORES_TOTO_ROUND_FETCHED action type and a payload with totoRound', () => {
-    const initialState: ScoresState = {
+  describe('if given STORE_SCORES_TOTO_ROUND action type and a payload with totoRound', () => {
+    const initialState: IScoresState = {
       fixtureScores: null,
       roundScores: null,
       totalTotoScores: null,
       totoRoundScores: null,
     };
-    const totoRound: Scores = {
+    const totoRound: IUsersWithScoreAndTotoRoundId = {
       usersWithScores: [
         {
           score: 10,
           user: 'test_user',
-          id: 1,
+          userId: 1,
         },
       ],
-      id: 1,
+      totoRoundId: 1,
     };
 
-    const action: ScoresTotoRoundFetched = {
-      type: SCORES_TOTO_ROUND_FETCHED,
-      totoRound,
+    const action: StoreScoresTotoRound = {
+      type: ActionType.STORE_SCORES_TOTO_ROUND,
+      payload: totoRound,
     };
-    const newState: ScoresState = reducer(initialState, action);
+    const newState: IScoresState = reducer(initialState, action);
 
     test('returns a state w/ a totoRoundScores', () => {
       expect(newState).not.toEqual(initialState);
