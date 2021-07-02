@@ -1,5 +1,3 @@
-import { ILogInCredentials } from '../../../models/credentials.model';
-import { IUser } from '../../../models/player.model';
 import { ICurrentRound, IFixtureWithScoreAndPredictions, ITeam } from '../../../models/toto.models';
 import { ActionType, LogInSuccessUser, LogOutUser, TokenUserStillValid, UpdateUserProfile } from '../action-types';
 import { logInSuccessUser, logOutUser, tokenUserStillValid, updateUserProfile } from '../actions';

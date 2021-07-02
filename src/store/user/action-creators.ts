@@ -120,25 +120,25 @@ export const getUserWithStoredToken = (): ThunkAction<void, StoreState, unknown,
   dispatch: Dispatch<AppStateActions | UserActions>,
 ) => {
   const token = localStorage.getItem('user_token');
-  if (token) {
-    dispatch(appLoading());
-    try {
-      // if token check if valid
-      const response = await axios.get(`${API_URL}/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(tokenUserStillValid(response.data));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.message);
-        dispatch(setMessage('error', error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage('error', error.message));
-      }
-      userLogOut()(dispatch);
-      dispatch(appDoneLoading());
+  if (!token) return;
+
+  dispatch(appLoading());
+  try {
+    // if token check if valid
+    const response = await axios.get(`${API_URL}/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(tokenUserStillValid(response.data));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
     }
+    userLogOut()(dispatch);
+    dispatch(appDoneLoading());
   }
 };
