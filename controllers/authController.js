@@ -5,13 +5,12 @@ const AppError = require('../utils/appError');
 const { toJWT } = require('../auth/jwt');
 const { getUserByEmail, createNewUser } = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/roundQuery');
+const { validateLoginInput } = require('../validators/inputValidator');
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email || !password) {
-    return next(new AppError('Vul email en wachtwoord in!'), 400);
-  }
+  validateLoginInput(email, password, next);
 
   const user = await getUserByEmail(email);
 
