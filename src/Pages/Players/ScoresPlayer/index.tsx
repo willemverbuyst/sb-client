@@ -8,7 +8,7 @@ import ScoresStackedChart from '../../../Sections/Charts/ScoresStackedChart';
 import PageContent from '../../../Sections/PageContent';
 import { fetchPlayerScores } from '../../../store/players/action-creators';
 import { selectPlayerScores } from '../../../store/players/selectors';
-import { colorPrimary, colorSecondary } from '../../../ui/theme/chartColors';
+import { colorPrimary, colorSecondary } from '../../../theme/chartColors';
 
 const ScoresPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();

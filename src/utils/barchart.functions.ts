@@ -2,7 +2,7 @@ import {
   IUserWithScore,
   IUserWithScoreAndPrediction,
 } from '../models/scores.models';
-import { colorPrimary, colorSecondary } from '../ui/theme/chartColors';
+import { colorPrimary, colorSecondary } from '../theme/chartColors';
 
 export const displayUserScores = (
   scores: IUserWithScoreAndPrediction[],
