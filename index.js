@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { PORT } = require('./config/constants');
+
 const express = require('express');
 const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
@@ -39,6 +39,4 @@ app.use('/scores', scoreRouter);
 app.use('/teams', teamRouter);
 app.use('/users', userRouter);
 
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
-});
+module.exports = app;

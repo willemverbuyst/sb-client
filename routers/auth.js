@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const { Router } = require('express');
 const { toJWT } = require('../auth/jwt');
-const { SALT_ROUNDS } = require('../config/constants');
+
 const authMiddleware = require('../auth/authMiddleware');
 const Team = require('../models').team;
 const User = require('../models').user;
@@ -14,8 +14,9 @@ const {
   chunkArrayTotoRounds,
   getTotoRoundNumber,
 } = require('../utils/helper-functions');
-const calcScores = require('../utils/calc-scores');
 
+const SALT_ROUNDS = process.env.SALT_ROUNDS;
+const calcScores = require('../utils/calc-scores');
 const router = new Router();
 
 /*** LOGIN ***/
@@ -70,7 +71,7 @@ router.post('/login', async (req, res) => {
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
             awayTeam: fix.predictions.pGoalsAwayTeam,
-          }
+          },
         ),
       };
     });
@@ -205,7 +206,7 @@ router.get('/me', authMiddleware, async (req, res) => {
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
             awayTeam: fix.predictions.pGoalsAwayTeam,
-          }
+          },
         ),
       };
     });

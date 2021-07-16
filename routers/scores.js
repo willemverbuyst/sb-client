@@ -43,7 +43,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
                 {
                   homeTeam: pred.pGoalsHomeTeam,
                   awayTeam: pred.pGoalsAwayTeam,
-                }
+                },
               ),
             };
           });
@@ -119,7 +119,7 @@ router.get('/all', authMiddleware, async (_req, res) => {
               {
                 homeTeam: pred.pGoalsHomeTeam,
                 awayTeam: pred.pGoalsAwayTeam,
-              }
+              },
             ),
             user: pred.user.userName,
             userId: pred.user.id,
@@ -192,7 +192,7 @@ router.get('/totorounds/:id', authMiddleware, async (req, res) => {
             {
               homeTeam: pred.pGoalsHomeTeam,
               awayTeam: pred.pGoalsAwayTeam,
-            }
+            },
           ),
           user: pred.user.userName,
           userId: pred.user.id,
@@ -271,7 +271,7 @@ router.get('/rounds/:id', authMiddleware, async (req, res) => {
             {
               homeTeam: pred.pGoalsHomeTeam,
               awayTeam: pred.pGoalsAwayTeam,
-            }
+            },
           ),
           user: pred.user.userName,
           userId: pred.user.id,
@@ -346,7 +346,7 @@ router.get('/players/:id', authMiddleware, async (req, res) => {
             {
               homeTeam: fixture.predictions.pGoalsHomeTeam,
               awayTeam: fixture.predictions.pGoalsAwayTeam,
-            }
+            },
           ),
         };
       });
@@ -354,7 +354,7 @@ router.get('/players/:id', authMiddleware, async (req, res) => {
       const chunkedScores = chunkArrayTotoRounds(fixturesWithScores);
 
       const scores = chunkedScores.map((totoround) =>
-        totoround.map((round) => round.reduce((a, b) => a + b.score, 0))
+        totoround.map((round) => round.reduce((a, b) => a + b.score, 0)),
       );
 
       const user = await User.findOne({ where: { id } });
