@@ -7,8 +7,8 @@ import { resetPlayers } from '../../players/actions';
 import { resetAllFixtures } from '../../predictions/actions';
 import { resetAllScores } from '../../scores/actions';
 import { resetAllTeams } from '../../teams/actions';
-import { changePassword, editUserProfile, getUserWithStoredToken, userLogIn, userLogOut } from '../action-creators';
-import { logInSuccessUser, logOutUser, tokenUserStillValid, updateUserProfile } from '../actions';
+import { changePassword, editUserProfile, userLogIn, userLogOut } from '../action-creators';
+import { logInSuccessUser, logOutUser, updateUserProfile } from '../actions';
 import { IUserWithCurrentRound } from '../reducer';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
