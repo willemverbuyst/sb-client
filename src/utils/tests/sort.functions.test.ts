@@ -20,7 +20,9 @@ describe('#sortArrayWithObjects', () => {
 
     test('returns the array with objects sorted by that key', () => {
       expect(sortArrayWithObjects('id')(testArray)).toEqual(arraySortedById);
-      expect(sortArrayWithObjects('name')(testArray)).toEqual(arraySortedByName);
+      expect(sortArrayWithObjects('name')(testArray)).toEqual(
+        arraySortedByName,
+      );
     });
   });
 });

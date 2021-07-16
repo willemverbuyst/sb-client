@@ -1,7 +1,12 @@
 import { getTimeFromTimeStamp, hasBettingClosed } from './time.functions';
 
-export const getTemporaryPrediction = (pGoalsHomeTeam: number | null, pGoalsAwayTeam: number | null): string =>
-  Number.isInteger(pGoalsAwayTeam) ? ` [ ${pGoalsHomeTeam} - ${pGoalsAwayTeam} ] ` : ` [ geen ] `;
+export const getTemporaryPrediction = (
+  pGoalsHomeTeam: number | null,
+  pGoalsAwayTeam: number | null,
+): string =>
+  Number.isInteger(pGoalsAwayTeam)
+    ? ` [ ${pGoalsHomeTeam} - ${pGoalsAwayTeam} ] `
+    : ` [ geen ] `;
 
 export const getPrivatePrediction = (
   pGoalsHomeTeam: number | null,
@@ -9,12 +14,16 @@ export const getPrivatePrediction = (
   status: string,
   eventTimeStamp: number,
 ): string =>
-  (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished'
+  (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) &&
+  status === 'Match Finished'
     ? `Je voorspelling was ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : status === 'Match Finished'
     ? `Geen voorspelling gedaan`
     : hasBettingClosed(eventTimeStamp)
-    ? `Voorspelling${getTemporaryPrediction(pGoalsHomeTeam, pGoalsAwayTeam)}gesloten`
+    ? `Voorspelling${getTemporaryPrediction(
+        pGoalsHomeTeam,
+        pGoalsAwayTeam,
+      )}gesloten`
     : Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)
     ? `Je voorspelling is ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : `Nog geen voorspelling`;
@@ -25,7 +34,8 @@ export const getPublicPrediction = (
   status: string,
   userNamePlayer: string,
 ): string =>
-  (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) && status === 'Match Finished'
+  (Number.isInteger(pGoalsHomeTeam) || Number.isInteger(pGoalsAwayTeam)) &&
+  status === 'Match Finished'
     ? `${userNamePlayer}'s voorspelling: ${pGoalsHomeTeam} - ${pGoalsAwayTeam}`
     : status === 'Match Finished'
     ? `Geen voorspelling`
@@ -40,8 +50,18 @@ export const getPrediction = (
   userNamePlayer: string,
 ): string =>
   display === 'private'
-    ? getPrivatePrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, eventTimeStamp)
-    : getPublicPrediction(pGoalsHomeTeam, pGoalsAwayTeam, status, userNamePlayer);
+    ? getPrivatePrediction(
+        pGoalsHomeTeam,
+        pGoalsAwayTeam,
+        status,
+        eventTimeStamp,
+      )
+    : getPublicPrediction(
+        pGoalsHomeTeam,
+        pGoalsAwayTeam,
+        status,
+        userNamePlayer,
+      );
 
 export const getOutCome = (
   status: string,

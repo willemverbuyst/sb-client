@@ -1,4 +1,7 @@
-import { IUserWithScore, IUserWithScoreAndPrediction } from '../../models/scores.models';
+import {
+  IUserWithScore,
+  IUserWithScoreAndPrediction,
+} from '../../models/scores.models';
 import { colorPrimary, colorSecondary } from '../../ui/theme/chartColors';
 import {
   displayUserScores,
@@ -30,7 +33,10 @@ describe('#displayUserScores', () => {
     ];
 
     test('returns a array with the scores plus 0.01', () => {
-      expect(displayUserScores(usersWithScoreAndPrediction)).toEqual([5.1, 0.1]);
+      expect(displayUserScores(usersWithScoreAndPrediction)).toEqual([
+        5.1,
+        0.1,
+      ]);
     });
   });
 });
@@ -75,10 +81,22 @@ describe('#getColorBars', () => {
     ];
 
     test('returns a array with colors for the charts', () => {
-      expect(getColorBars(usersWithScoreOne, 1)).toEqual([colorPrimary.color1, colorPrimary.color1]);
-      expect(getColorBars(usersWithScoreTwo, 1)).toEqual([colorSecondary.color1, colorSecondary.color1]);
-      expect(getColorBars(usersWithScoreThree, 1)).toEqual([colorPrimary.color1, colorSecondary.color1]);
-      expect(getColorBars(usersWithScoreThree, 1)).not.toEqual([colorSecondary.color1, colorSecondary.color1]);
+      expect(getColorBars(usersWithScoreOne, 1)).toEqual([
+        colorPrimary.color1,
+        colorPrimary.color1,
+      ]);
+      expect(getColorBars(usersWithScoreTwo, 1)).toEqual([
+        colorSecondary.color1,
+        colorSecondary.color1,
+      ]);
+      expect(getColorBars(usersWithScoreThree, 1)).toEqual([
+        colorPrimary.color1,
+        colorSecondary.color1,
+      ]);
+      expect(getColorBars(usersWithScoreThree, 1)).not.toEqual([
+        colorSecondary.color1,
+        colorSecondary.color1,
+      ]);
     });
   });
 });
@@ -168,7 +186,10 @@ describe('#getUserPredictions', () => {
     ];
 
     test('returns a array with the predictions', () => {
-      expect(getUserPredictions(usersWithScoreAndPrediction)).toEqual(['2 - 1', '8 - 4']);
+      expect(getUserPredictions(usersWithScoreAndPrediction)).toEqual([
+        '2 - 1',
+        '8 - 4',
+      ]);
     });
   });
 });

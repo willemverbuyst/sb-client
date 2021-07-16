@@ -1,4 +1,8 @@
-import { formatTimeStampToLocalDate, getTimeFromTimeStamp, hasBettingClosed } from '../time.functions';
+import {
+  formatTimeStampToLocalDate,
+  getTimeFromTimeStamp,
+  hasBettingClosed,
+} from '../time.functions';
 
 describe('#getTimeFromTimeStamp', () => {
   describe('if given a timestamp', () => {
@@ -13,7 +17,9 @@ describe('#getTimeFromTimeStamp', () => {
       expect(getTimeFromTimeStamp(timeStampTest2)).toBe('16:35');
       expect(getTimeFromTimeStamp(timeStampTest3)).toBe('16:00');
       expect(getTimeFromTimeStamp(timeStampTest4)).toBe('16:05');
-      expect(getTimeFromTimeStamp(timeStampTest5)).toBe(getTimeFromTimeStamp(timeStampTest4));
+      expect(getTimeFromTimeStamp(timeStampTest5)).toBe(
+        getTimeFromTimeStamp(timeStampTest4),
+      );
     });
   });
 });
@@ -23,7 +29,9 @@ describe('#formatTimeStampToLocalDate', () => {
     const timeStampTest = 1610206200;
 
     test('returns a formatted date', () => {
-      expect(formatTimeStampToLocalDate(timeStampTest).toLocaleUpperCase()).toBe('ZATERDAG 9 JANUARI 2021');
+      expect(
+        formatTimeStampToLocalDate(timeStampTest).toLocaleUpperCase(),
+      ).toBe('ZATERDAG 9 JANUARI 2021');
     });
   });
 });
