@@ -1,6 +1,21 @@
-import { ICurrentRound, IFixtureWithScoreAndPredictions, ITeam } from '../../../models/toto.models';
-import { ActionType, LogInSuccessUser, LogOutUser, TokenUserStillValid, UpdateUserProfile } from '../action-types';
-import { logInSuccessUser, logOutUser, tokenUserStillValid, updateUserProfile } from '../actions';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  ITeam,
+} from '../../../models/toto.models';
+import {
+  ActionType,
+  LogInSuccessUser,
+  LogOutUser,
+  TokenUserStillValid,
+  UpdateUserProfile,
+} from '../action-types';
+import {
+  logInSuccessUser,
+  logOutUser,
+  tokenUserStillValid,
+  updateUserProfile,
+} from '../actions';
 import { IUserWithCurrentRound } from '../reducer';
 
 describe('#userState', () => {
@@ -57,7 +72,9 @@ describe('#userState', () => {
     test('returns an action w/ type LOG_IN_SUCCESS_USER and user as payload', () => {
       expect(logInSuccessUser(user)).toEqual(expected);
       expect(logInSuccessUser(user).payload).toEqual(user);
-      expect(logInSuccessUser(user).type).toEqual(ActionType.LOG_IN_SUCCESS_USER);
+      expect(logInSuccessUser(user).type).toEqual(
+        ActionType.LOG_IN_SUCCESS_USER,
+      );
     });
   });
 
@@ -126,7 +143,9 @@ describe('#userState', () => {
     test('returns an action w/ type TOKEN_STILL_VALID_USER and user as payload', () => {
       expect(tokenUserStillValid(user)).toEqual(expected);
       expect(tokenUserStillValid(user).payload).toEqual(user);
-      expect(tokenUserStillValid(user).type).toEqual(ActionType.TOKEN_STILL_VALID_USER);
+      expect(tokenUserStillValid(user).type).toEqual(
+        ActionType.TOKEN_STILL_VALID_USER,
+      );
     });
   });
 
@@ -183,7 +202,9 @@ describe('#userState', () => {
     test('returns an action w/ type UPDATE_USER_PROFILE and user as payload', () => {
       expect(updateUserProfile(user)).toEqual(action);
       expect(updateUserProfile(user).payload).toEqual(user);
-      expect(updateUserProfile(user).type).toEqual(ActionType.UPDATE_USER_PROFILE);
+      expect(updateUserProfile(user).type).toEqual(
+        ActionType.UPDATE_USER_PROFILE,
+      );
     });
   });
 });

@@ -7,9 +7,16 @@ import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { StoreState } from '../types';
 import { ScoresActions } from './action-types';
-import { storeScoresFixture, storeScoresRound, storeScoresTotalToto, storeScoresTotoRound } from './actions';
+import {
+  storeScoresFixture,
+  storeScoresRound,
+  storeScoresTotalToto,
+  storeScoresTotoRound,
+} from './actions';
 
-export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+export const fetchScoresFixture = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<AppStateActions | ScoresActions>,
 ) => {
   dispatch(appLoading());
@@ -34,7 +41,9 @@ export const fetchScoresFixture = (id: number): ThunkAction<void, StoreState, un
   }
 };
 
-export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+export const fetchScoresRound = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<AppStateActions | ScoresActions>,
 ) => {
   dispatch(appLoading());
@@ -59,9 +68,12 @@ export const fetchScoresRound = (id: number): ThunkAction<void, StoreState, unkn
   }
 };
 
-export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | ScoresActions>,
-) => {
+export const fetchScoresTotalToto = (): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | ScoresActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -84,7 +96,9 @@ export const fetchScoresTotalToto = (): ThunkAction<void, StoreState, unknown, A
   }
 };
 
-export const fetchScoresTotoRound = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+export const fetchScoresTotoRound = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<AppStateActions | ScoresActions>,
 ) => {
   dispatch(appLoading());

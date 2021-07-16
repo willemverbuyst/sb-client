@@ -20,7 +20,10 @@ const initialState: IScoresState = {
   totoRoundScores: null,
 };
 
-const scoresReducer = (state = initialState, action: ScoresActions): IScoresState => {
+const scoresReducer = (
+  state = initialState,
+  action: ScoresActions,
+): IScoresState => {
   switch (action.type) {
     case ActionType.RESET_ALL_SCORES:
       return {

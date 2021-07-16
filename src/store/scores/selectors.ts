@@ -1,4 +1,8 @@
-import { IUsersWithScoreAndRoundId, IUserWithScore, IUserWithScoreAndPrediction } from '../../models/scores.models';
+import {
+  IUsersWithScoreAndRoundId,
+  IUserWithScore,
+  IUserWithScoreAndPrediction,
+} from '../../models/scores.models';
 import { IFixture } from '../../models/toto.models';
 import * as UTILS from '../../utils';
 import { StoreState } from '../types';
@@ -11,7 +15,9 @@ export const selectFixture = (state: StoreState): IFixture | null => {
   }
 };
 
-export const selectScoresForFixtureSortedByName = (state: StoreState): IUserWithScoreAndPrediction[] | null => {
+export const selectScoresForFixtureSortedByName = (
+  state: StoreState,
+): IUserWithScoreAndPrediction[] | null => {
   if (
     state.scoresState.fixtureScores &&
     state.scoresState.fixtureScores.scores &&
@@ -29,7 +35,9 @@ export const selectScoresForFixtureSortedByName = (state: StoreState): IUserWith
   }
 };
 
-export const selectRound = (state: StoreState): IUsersWithScoreAndRoundId | null => state.scoresState.roundScores;
+export const selectRound = (
+  state: StoreState,
+): IUsersWithScoreAndRoundId | null => state.scoresState.roundScores;
 
 export const selectRoundId = (state: StoreState): number | null => {
   if (state.scoresState.roundScores) {
@@ -39,8 +47,13 @@ export const selectRoundId = (state: StoreState): number | null => {
   }
 };
 
-export const selectScoresTotalTotoSortedByName = (state: StoreState): IUserWithScore[] | null => {
-  if (state.scoresState.totalTotoScores && state.scoresState.totalTotoScores.length > 0) {
+export const selectScoresTotalTotoSortedByName = (
+  state: StoreState,
+): IUserWithScore[] | null => {
+  if (
+    state.scoresState.totalTotoScores &&
+    state.scoresState.totalTotoScores.length > 0
+  ) {
     const scoresTotalToto = state.scoresState.totalTotoScores;
     const scoresTotalTotoSortedByName: IUserWithScore[] = UTILS.sortArrayWithObjects<
       keyof IUserWithScore,
@@ -53,8 +66,13 @@ export const selectScoresTotalTotoSortedByName = (state: StoreState): IUserWithS
   }
 };
 
-export const selectScoresTotalTotoSortedByScore = (state: StoreState): IUserWithScore[] | null => {
-  if (state.scoresState.totalTotoScores && state.scoresState.totalTotoScores.length > 0) {
+export const selectScoresTotalTotoSortedByScore = (
+  state: StoreState,
+): IUserWithScore[] | null => {
+  if (
+    state.scoresState.totalTotoScores &&
+    state.scoresState.totalTotoScores.length > 0
+  ) {
     const scoresTotalToto = state.scoresState.totalTotoScores;
     const scoresTotalTotoSortedByScore: IUserWithScore[] = UTILS.sortArrayWithObjects<
       keyof IUserWithScore,
@@ -67,7 +85,9 @@ export const selectScoresTotalTotoSortedByScore = (state: StoreState): IUserWith
   }
 };
 
-export const selectScoresTotoRoundSortedByName = (state: StoreState): IUserWithScore[] | null => {
+export const selectScoresTotoRoundSortedByName = (
+  state: StoreState,
+): IUserWithScore[] | null => {
   if (state.scoresState.totoRoundScores) {
     const scoresTotoRound = state.scoresState.totoRoundScores.usersWithScores;
 
@@ -82,7 +102,9 @@ export const selectScoresTotoRoundSortedByName = (state: StoreState): IUserWithS
   }
 };
 
-export const selectScoresTotoRoundSortedByScore = (state: StoreState): IUserWithScore[] | null => {
+export const selectScoresTotoRoundSortedByScore = (
+  state: StoreState,
+): IUserWithScore[] | null => {
   if (state.scoresState.totoRoundScores) {
     const scoresTotoRound = state.scoresState.totoRoundScores.usersWithScores;
 
@@ -97,13 +119,16 @@ export const selectScoresTotoRoundSortedByScore = (state: StoreState): IUserWith
   }
 };
 
-export const selectScoresRoundSortedByName = (state: StoreState): IUserWithScore[] | null => {
+export const selectScoresRoundSortedByName = (
+  state: StoreState,
+): IUserWithScore[] | null => {
   if (state.scoresState.roundScores) {
     const scoresRound = state.scoresState.roundScores.usersWithScores;
 
-    const scoresRoundSortedByName: IUserWithScore[] = UTILS.sortArrayWithObjects<keyof IUserWithScore, IUserWithScore>(
-      'user',
-    )(scoresRound);
+    const scoresRoundSortedByName: IUserWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IUserWithScore,
+      IUserWithScore
+    >('user')(scoresRound);
 
     return scoresRoundSortedByName;
   } else {
@@ -111,12 +136,15 @@ export const selectScoresRoundSortedByName = (state: StoreState): IUserWithScore
   }
 };
 
-export const selectScoresRoundSortedByScore = (state: StoreState): IUserWithScore[] | null => {
+export const selectScoresRoundSortedByScore = (
+  state: StoreState,
+): IUserWithScore[] | null => {
   if (state.scoresState.roundScores) {
     const scoresRound = state.scoresState.roundScores.usersWithScores;
-    const scoresRoundSortedByScore: IUserWithScore[] = UTILS.sortArrayWithObjects<keyof IUserWithScore, IUserWithScore>(
-      'score',
-    )(scoresRound);
+    const scoresRoundSortedByScore: IUserWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IUserWithScore,
+      IUserWithScore
+    >('score')(scoresRound);
 
     return scoresRoundSortedByScore;
   } else {

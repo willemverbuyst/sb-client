@@ -21,7 +21,17 @@ import {
 export const addPlayer = (
   signUpCredentials: ISignUpCredentials,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
-  const { userName, firstName, lastName, email, password, phoneNumber, admin, totaalToto, teamId } = signUpCredentials;
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber,
+    admin,
+    totaalToto,
+    teamId,
+  } = signUpCredentials;
   return async (dispatch: Dispatch<PlayersActions | AppStateActions>) => {
     dispatch(appLoading());
     try {
@@ -58,9 +68,12 @@ export const addPlayer = (
   };
 };
 
-export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<PlayersActions | AppStateActions>,
-) => {
+export const fetchAllPlayers = (): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<PlayersActions | AppStateActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -83,7 +96,9 @@ export const fetchAllPlayers = (): ThunkAction<void, StoreState, unknown, Action
   }
 };
 
-export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+export const fetchPlayerProfile = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
   dispatch(appLoading());
@@ -108,7 +123,9 @@ export const fetchPlayerProfile = (id: number): ThunkAction<void, StoreState, un
   }
 };
 
-export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+export const fetchPlayerScores = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
   dispatch(appLoading());
@@ -132,7 +149,9 @@ export const fetchPlayerScores = (id: number): ThunkAction<void, StoreState, unk
     dispatch(appDoneLoading());
   }
 };
-export const playerDelete = (id: number): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+export const playerDelete = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<PlayersActions | AppStateActions>,
 ) => {
   dispatch(appLoading());

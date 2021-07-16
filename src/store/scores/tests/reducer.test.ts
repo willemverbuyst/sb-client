@@ -252,7 +252,9 @@ describe('#scoresStateReducer', () => {
       expect(newState.totalTotoScores).toBeNull();
       expect(newState.totoRoundScores).not.toBeNull();
       expect(newState).toHaveProperty('totoRoundScores');
-      expect(newState.totoRoundScores?.usersWithScores.length).toBeGreaterThan(0);
+      expect(newState.totoRoundScores?.usersWithScores.length).toBeGreaterThan(
+        0,
+      );
       expect(newState.totoRoundScores?.usersWithScores.length).toBeLessThan(2);
     });
   });

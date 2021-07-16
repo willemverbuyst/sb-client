@@ -8,15 +8,23 @@ import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { StoreState } from '../types';
 import { PredictionActions } from './action-types';
-import { postPrediction, storeAllFixtures, storeCurrentRound, updatePrediction } from './actions';
+import {
+  postPrediction,
+  storeAllFixtures,
+  storeCurrentRound,
+  updatePrediction,
+} from './actions';
 
 export const changePrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,
-}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | PredictionActions>,
-) => {
+}: IPrediction): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -46,9 +54,12 @@ export const changePrediction = ({
   }
 };
 
-export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | PredictionActions>,
-) => {
+export const fetchAllFixtures = (): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -71,9 +82,12 @@ export const fetchAllFixtures = (): ThunkAction<void, StoreState, unknown, Actio
   }
 };
 
-export const fetchCurrentRound = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | PredictionActions>,
-) => {
+export const fetchCurrentRound = (): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -100,9 +114,12 @@ export const postNewPrediction = ({
   pGoalsHomeTeam,
   pGoalsAwayTeam,
   fixtureId,
-}: IPrediction): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | PredictionActions>,
-) => {
+}: IPrediction): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

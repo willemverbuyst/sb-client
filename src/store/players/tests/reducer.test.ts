@@ -1,4 +1,8 @@
-import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../../models/player.model';
+import {
+  IPlayer,
+  IPlayerProfile,
+  IScoresPlayer,
+} from '../../../models/player.model';
 import {
   ActionType,
   AddNewPlayer,

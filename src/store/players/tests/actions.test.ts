@@ -1,4 +1,8 @@
-import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../../models/player.model';
+import {
+  IPlayer,
+  IPlayerProfile,
+  IScoresPlayer,
+} from '../../../models/player.model';
 import {
   ActionType,
   AddNewPlayer,
@@ -73,7 +77,9 @@ describe('#playersState', () => {
 
     test('returns an action w/ type STORE_ALL_PLAYERS and players as payload', () => {
       expect(storeAllPlayers(players)).toEqual(expected);
-      expect(storeAllPlayers(players).type).toEqual(ActionType.STORE_ALL_PLAYERS);
+      expect(storeAllPlayers(players).type).toEqual(
+        ActionType.STORE_ALL_PLAYERS,
+      );
       expect(storeAllPlayers(players).payload).toEqual(players);
     });
   });
@@ -116,7 +122,9 @@ describe('#playersState', () => {
 
     test('returns an action w/ type STORE_PLAYER_PROFILE and a profile as payload', () => {
       expect(storePlayerProfile(playerProfile)).toEqual(expected);
-      expect(storePlayerProfile(playerProfile).type).toEqual(ActionType.STORE_PLAYER_PROFILE);
+      expect(storePlayerProfile(playerProfile).type).toEqual(
+        ActionType.STORE_PLAYER_PROFILE,
+      );
       expect(storePlayerProfile(playerProfile).payload).toEqual(playerProfile);
     });
   });
@@ -137,7 +145,9 @@ describe('#playersState', () => {
 
     test('returns an action w/ type STORE_PLAYER_SCORES and scores as payload', () => {
       expect(storePlayerScores(scoresPlayer)).toEqual(expected);
-      expect(storePlayerScores(scoresPlayer).type).toEqual(ActionType.STORE_PLAYER_SCORES);
+      expect(storePlayerScores(scoresPlayer).type).toEqual(
+        ActionType.STORE_PLAYER_SCORES,
+      );
       expect(storePlayerScores(scoresPlayer).payload).toEqual(scoresPlayer);
     });
   });
@@ -177,7 +187,9 @@ describe('#playersState', () => {
 
     test('returns an action w/ type UPDATE_ADMIN_STATUS and a player as payload', () => {
       expect(updateAdminStatus(player)).toEqual(expected);
-      expect(updateAdminStatus(player).type).toEqual(ActionType.UPDATE_ADMIN_STATUS);
+      expect(updateAdminStatus(player).type).toEqual(
+        ActionType.UPDATE_ADMIN_STATUS,
+      );
       expect(updateAdminStatus(player).payload).toEqual(player);
     });
   });

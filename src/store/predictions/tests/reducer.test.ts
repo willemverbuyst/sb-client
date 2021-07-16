@@ -1,5 +1,9 @@
 import { IPrediction } from '../../../models/predictions.model';
-import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  TotoRound,
+} from '../../../models/toto.models';
 import {
   ActionType,
   PostPrediction,
@@ -152,8 +156,12 @@ describe('#IPredictionsStateReducer', () => {
       expect(newState.allFixtures?.length).toBe(totoRound.length);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).toBe(4);
-      expect(newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam).toBe(1);
-      expect(newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam).toBe(4);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam,
+      ).toBe(1);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam,
+      ).toBe(4);
       /*eslint-enable */
     });
   });
@@ -257,10 +265,18 @@ describe('#IPredictionsStateReducer', () => {
       /*eslint-disable */
       expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).toBe(1);
       expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).toBe(4);
-      expect(newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam).not.toBe(5);
-      expect(newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam).not.toBe(7);
-      expect(newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam).toBe(1);
-      expect(newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam).toBe(4);
+      expect(
+        newState.allFixtures![0][0][0].predictions.pGoalsAwayTeam,
+      ).not.toBe(5);
+      expect(
+        newState.allFixtures![0][0][0].predictions.pGoalsHomeTeam,
+      ).not.toBe(7);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsAwayTeam,
+      ).toBe(1);
+      expect(
+        newState.currentRound!.fixtures![0].predictions.pGoalsHomeTeam,
+      ).toBe(4);
       /*eslint-enable */
     });
   });

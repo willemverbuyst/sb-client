@@ -1,5 +1,9 @@
 import { IPrediction } from '../../../models/predictions.model';
-import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  TotoRound,
+} from '../../../models/toto.models';
 import {
   ActionType,
   PostPrediction,
@@ -8,7 +12,13 @@ import {
   StoreCurrentRound,
   UpdatePrediction,
 } from '../action-types';
-import { postPrediction, resetAllFixtures, storeAllFixtures, storeCurrentRound, updatePrediction } from '../actions';
+import {
+  postPrediction,
+  resetAllFixtures,
+  storeAllFixtures,
+  storeCurrentRound,
+  updatePrediction,
+} from '../actions';
 
 describe('#predictionsState', () => {
   describe('#storeAllFixtures', () => {
@@ -47,7 +57,9 @@ describe('#predictionsState', () => {
     test('returns an action w/ type STORE_ALL_FIXTURES and fixtures as payload', () => {
       expect(storeAllFixtures(totoRound)).toEqual(expected);
       expect(storeAllFixtures(totoRound).payload).toEqual(totoRound);
-      expect(storeAllFixtures(totoRound).type).toEqual(ActionType.STORE_ALL_FIXTURES);
+      expect(storeAllFixtures(totoRound).type).toEqual(
+        ActionType.STORE_ALL_FIXTURES,
+      );
     });
   });
 
@@ -88,7 +100,9 @@ describe('#predictionsState', () => {
     test('returns an action w/ type STORE_CURRENT_ROUND and current round as payload', () => {
       expect(storeCurrentRound(currentRound)).toEqual(expected);
       expect(storeCurrentRound(currentRound).payload).toEqual(currentRound);
-      expect(storeCurrentRound(currentRound).type).toEqual(ActionType.STORE_CURRENT_ROUND);
+      expect(storeCurrentRound(currentRound).type).toEqual(
+        ActionType.STORE_CURRENT_ROUND,
+      );
     });
   });
 
@@ -106,7 +120,9 @@ describe('#predictionsState', () => {
     test('returns an action w/ type POST_PREDICTION, and prediction as payload', () => {
       expect(postPrediction(prediction)).toEqual(expected);
       expect(postPrediction(prediction).payload).toEqual(prediction);
-      expect(postPrediction(prediction).type).toEqual(ActionType.POST_PREDICTION);
+      expect(postPrediction(prediction).type).toEqual(
+        ActionType.POST_PREDICTION,
+      );
     });
   });
 
@@ -136,7 +152,9 @@ describe('#predictionsState', () => {
     test('returns an action w/ type UPDATE_PREDICTION, and prediction as payload', () => {
       expect(updatePrediction(prediction)).toEqual(expected);
       expect(updatePrediction(prediction).payload).toEqual(prediction);
-      expect(updatePrediction(prediction).type).toEqual(ActionType.UPDATE_PREDICTION);
+      expect(updatePrediction(prediction).type).toEqual(
+        ActionType.UPDATE_PREDICTION,
+      );
     });
   });
 });

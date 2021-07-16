@@ -1,4 +1,8 @@
-import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.model';
+import {
+  IPlayer,
+  IPlayerProfile,
+  IScoresPlayer,
+} from '../../models/player.model';
 import { ActionType, PlayersActions } from './action-types';
 
 export interface IPlayersState {
@@ -13,7 +17,10 @@ const initialState: IPlayersState = {
   scoresPlayer: null,
 };
 
-const playersReducer = (state = initialState, action: PlayersActions): IPlayersState => {
+const playersReducer = (
+  state = initialState,
+  action: PlayersActions,
+): IPlayersState => {
   switch (action.type) {
     case ActionType.ADD_NEW_PLAYER:
       return {
@@ -24,7 +31,9 @@ const playersReducer = (state = initialState, action: PlayersActions): IPlayersS
     case ActionType.DELETE_PLAYER:
       return {
         ...state,
-        players: state.players ? state.players.filter((player) => player.id !== action.payload) : null,
+        players: state.players
+          ? state.players.filter((player) => player.id !== action.payload)
+          : null,
       };
 
     case ActionType.RESET_PLAYERS:

@@ -1,5 +1,15 @@
-import { ICurrentRound, IFixtureWithScoreAndPredictions, ITeam } from '../../../models/toto.models';
-import { ActionType, LogInSuccessUser, LogOutUser, TokenUserStillValid, UpdateUserProfile } from '../action-types';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  ITeam,
+} from '../../../models/toto.models';
+import {
+  ActionType,
+  LogInSuccessUser,
+  LogOutUser,
+  TokenUserStillValid,
+  UpdateUserProfile,
+} from '../action-types';
 import reducer, { IUserState, IUserWithCurrentRound } from '../reducer';
 
 describe('#userReducer', () => {

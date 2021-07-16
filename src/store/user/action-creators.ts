@@ -4,7 +4,10 @@ import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { API_URL } from '../../config/apiUrl';
-import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
+import {
+  ILogInCredentials,
+  IProfileDetails,
+} from '../../models/credentials.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { resetPlayers } from '../players/actions';
@@ -13,9 +16,16 @@ import { resetAllScores } from '../scores/actions';
 import { resetAllTeams } from '../teams/actions';
 import { StoreState } from '../types';
 import { UserActions } from './action-types';
-import { logInSuccessUser, logOutUser, tokenUserStillValid, updateUserProfile } from './actions';
+import {
+  logInSuccessUser,
+  logOutUser,
+  tokenUserStillValid,
+  updateUserProfile,
+} from './actions';
 
-export const changePassword = (newPassword: string): ThunkAction<void, StoreState, unknown, Action<string>> => {
+export const changePassword = (
+  newPassword: string,
+): ThunkAction<void, StoreState, unknown, Action<string>> => {
   return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
     dispatch(appLoading());
     try {
@@ -45,7 +55,16 @@ export const changePassword = (newPassword: string): ThunkAction<void, StoreStat
 export const editUserProfile = (
   profileDetails: IProfileDetails,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
-  const { userName, firstName, lastName, email, phoneNumber, admin, totaalToto, teamId } = profileDetails;
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    admin,
+    totaalToto,
+    teamId,
+  } = profileDetails;
   return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
     dispatch(appLoading());
     try {
@@ -81,7 +100,9 @@ export const editUserProfile = (
   };
 };
 
-export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, StoreState, unknown, Action<string>> => {
+export const userLogIn = (
+  credentials: ILogInCredentials,
+): ThunkAction<void, StoreState, unknown, Action<string>> => {
   return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
     dispatch(appLoading());
     try {
@@ -107,7 +128,9 @@ export const userLogIn = (credentials: ILogInCredentials): ThunkAction<void, Sto
   };
 };
 
-export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispatch) => {
+export const userLogOut = (): ((dispatch: Dispatch) => void) => (
+  dispatch: Dispatch,
+) => {
   dispatch(logOutUser());
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(resetAllScores());
@@ -116,9 +139,12 @@ export const userLogOut = (): ((dispatch: Dispatch) => void) => (dispatch: Dispa
   dispatch(resetAllTeams());
 };
 
-export const getUserWithStoredToken = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | UserActions>,
-) => {
+export const getUserWithStoredToken = (): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | UserActions>) => {
   const token = localStorage.getItem('user_token');
   if (!token) return;
 

@@ -1,13 +1,22 @@
 import axios from 'axios';
 
 import { ILogInCredentials } from '../../../models/credentials.model';
-import { ICurrentRound, IFixtureWithScoreAndPredictions, ITeam } from '../../../models/toto.models';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  ITeam,
+} from '../../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import { resetPlayers } from '../../players/actions';
 import { resetAllFixtures } from '../../predictions/actions';
 import { resetAllScores } from '../../scores/actions';
 import { resetAllTeams } from '../../teams/actions';
-import { changePassword, editUserProfile, userLogIn, userLogOut } from '../action-creators';
+import {
+  changePassword,
+  editUserProfile,
+  userLogIn,
+  userLogOut,
+} from '../action-creators';
 import { logInSuccessUser, logOutUser, updateUserProfile } from '../actions';
 import { IUserWithCurrentRound } from '../reducer';
 
@@ -31,7 +40,9 @@ describe('#changePassword', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -105,7 +116,9 @@ describe('#editUserProfile', () => {
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toBeCalledWith(updateUserProfile(response.data.userData));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -172,8 +185,12 @@ describe('#userLogIn', () => {
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(logInSuccessUser(response.data.userData));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      logInSuccessUser(response.data.userData),
+    );
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

@@ -9,8 +9,18 @@ import {
 } from '../../../models/scores.models';
 import { IFixture } from '../../../models/toto.models';
 import { appDoneLoading, appLoading } from '../../appState/actions';
-import { fetchScoresFixture, fetchScoresRound, fetchScoresTotalToto, fetchScoresTotoRound } from '../action-creators';
-import { storeScoresFixture, storeScoresRound, storeScoresTotalToto, storeScoresTotoRound } from '../actions';
+import {
+  fetchScoresFixture,
+  fetchScoresRound,
+  fetchScoresTotalToto,
+  fetchScoresTotoRound,
+} from '../action-creators';
+import {
+  storeScoresFixture,
+  storeScoresRound,
+  storeScoresTotalToto,
+  storeScoresTotoRound,
+} from '../actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

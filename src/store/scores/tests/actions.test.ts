@@ -70,7 +70,9 @@ describe('#scoressState', () => {
 
     test('returns an action w/ type STORE_SCORES_FIXTURE and a fixture as payload', () => {
       expect(storeScoresFixture(fixtureScores)).toEqual(expected);
-      expect(storeScoresFixture(fixtureScores).type).toEqual(ActionType.STORE_SCORES_FIXTURE);
+      expect(storeScoresFixture(fixtureScores).type).toEqual(
+        ActionType.STORE_SCORES_FIXTURE,
+      );
       expect(storeScoresFixture(fixtureScores).payload).toEqual(fixtureScores);
     });
   });
@@ -94,7 +96,9 @@ describe('#scoressState', () => {
     test('returns an action w/ type STORE_SCORES_ROUND and a round with scores as payload', () => {
       expect(storeScoresRound(roundScores)).toEqual(expected);
       expect(storeScoresRound(roundScores).payload).toEqual(roundScores);
-      expect(storeScoresRound(roundScores).type).toEqual(ActionType.STORE_SCORES_ROUND);
+      expect(storeScoresRound(roundScores).type).toEqual(
+        ActionType.STORE_SCORES_ROUND,
+      );
     });
   });
 
@@ -115,7 +119,9 @@ describe('#scoressState', () => {
     test('returns an action w/ type STORE_SCORES_TOTAL_TOTO and totalToto scores as payload', () => {
       expect(storeScoresTotalToto(totalToto)).toEqual(expected);
       expect(storeScoresTotalToto(totalToto).payload).toEqual(totalToto);
-      expect(storeScoresTotalToto(totalToto).type).toBe(ActionType.STORE_SCORES_TOTAL_TOTO);
+      expect(storeScoresTotalToto(totalToto).type).toBe(
+        ActionType.STORE_SCORES_TOTAL_TOTO,
+      );
     });
   });
 
@@ -137,8 +143,12 @@ describe('#scoressState', () => {
 
     test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
       expect(storeScoresTotoRound(totoRoundScores)).toEqual(expected);
-      expect(storeScoresTotoRound(totoRoundScores).payload).toEqual(totoRoundScores);
-      expect(storeScoresTotoRound(totoRoundScores).type).toBe(ActionType.STORE_SCORES_TOTO_ROUND);
+      expect(storeScoresTotoRound(totoRoundScores).payload).toEqual(
+        totoRoundScores,
+      );
+      expect(storeScoresTotoRound(totoRoundScores).type).toBe(
+        ActionType.STORE_SCORES_TOTO_ROUND,
+      );
     });
   });
 });

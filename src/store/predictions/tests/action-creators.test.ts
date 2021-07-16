@@ -1,10 +1,24 @@
 import axios from 'axios';
 
 import { IPrediction } from '../../../models/predictions.model';
-import { ICurrentRound, IFixtureWithScoreAndPredictions, TotoRound } from '../../../models/toto.models';
+import {
+  ICurrentRound,
+  IFixtureWithScoreAndPredictions,
+  TotoRound,
+} from '../../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
-import { changePrediction, fetchAllFixtures, fetchCurrentRound, postNewPrediction } from '../action-creators';
-import { postPrediction, storeAllFixtures, storeCurrentRound, updatePrediction } from '../actions';
+import {
+  changePrediction,
+  fetchAllFixtures,
+  fetchCurrentRound,
+  postNewPrediction,
+} from '../action-creators';
+import {
+  postPrediction,
+  storeAllFixtures,
+  storeCurrentRound,
+  updatePrediction,
+} from '../actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
@@ -32,7 +46,9 @@ describe('#changePrediction', () => {
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(updatePrediction(prediction));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -151,7 +167,9 @@ describe('#postNewPrediction', () => {
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(postPrediction(prediction));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

@@ -11,7 +11,10 @@ const initialState: IPredictionsState = {
   allFixtures: null,
 };
 
-const predictionsReducer = (state = initialState, action: PredictionActions): IPredictionsState => {
+const predictionsReducer = (
+  state = initialState,
+  action: PredictionActions,
+): IPredictionsState => {
   switch (action.type) {
     case ActionType.STORE_CURRENT_ROUND:
       return { ...state, currentRound: action.payload };

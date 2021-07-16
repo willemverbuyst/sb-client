@@ -9,14 +9,18 @@ import {
   UpdatePrediction,
 } from './action-types';
 
-export const storeAllFixtures = (allFixtures: TotoRound[]): StoreAllFixtures => {
+export const storeAllFixtures = (
+  allFixtures: TotoRound[],
+): StoreAllFixtures => {
   return {
     type: ActionType.STORE_ALL_FIXTURES,
     payload: allFixtures,
   };
 };
 
-export const storeCurrentRound = (currentRound: ICurrentRound): StoreCurrentRound => {
+export const storeCurrentRound = (
+  currentRound: ICurrentRound,
+): StoreCurrentRound => {
   return {
     type: ActionType.STORE_CURRENT_ROUND,
     payload: currentRound,

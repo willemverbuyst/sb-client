@@ -10,9 +10,12 @@ import { StoreState } from '../types';
 import { TeamsActions } from './action-types';
 import { storeAllTeams } from './actions';
 
-export const fetchAllTeams = (): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<AppStateActions | TeamsActions>,
-) => {
+export const fetchAllTeams = (): ThunkAction<
+  void,
+  StoreState,
+  unknown,
+  Action<string>
+> => async (dispatch: Dispatch<AppStateActions | TeamsActions>) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

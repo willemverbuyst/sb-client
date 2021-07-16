@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 import { ISignUpCredentials } from '../../../models/credentials.model';
-import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../../models/player.model';
+import {
+  IPlayer,
+  IPlayerProfile,
+  IScoresPlayer,
+} from '../../../models/player.model';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import {
   addPlayer,
@@ -67,7 +71,9 @@ describe('#addPlayer', () => {
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(addNewPlayer(response.data.userData));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -192,7 +198,9 @@ describe('#fplayerDelete', () => {
     expect(mockAxios.delete).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(deletePlayer(id));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
@@ -230,8 +238,12 @@ describe('#updatePlayerAdminStatus', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(updateAdminStatus(response.data.updatedUser));
-    expect(dispatch).toHaveBeenCalledWith(setMessage('success', response.data.message));
+    expect(dispatch).toHaveBeenCalledWith(
+      updateAdminStatus(response.data.updatedUser),
+    );
+    expect(dispatch).toHaveBeenCalledWith(
+      setMessage('success', response.data.message),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

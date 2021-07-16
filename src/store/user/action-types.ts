@@ -31,4 +31,8 @@ export type UpdateUserProfile = {
   payload: IUserWithCurrentRound;
 };
 
-export type UserActions = LogInSuccessUser | LogOutUser | TokenUserStillValid | UpdateUserProfile;
+export type UserActions =
+  | LogInSuccessUser
+  | LogOutUser
+  | TokenUserStillValid
+  | UpdateUserProfile;

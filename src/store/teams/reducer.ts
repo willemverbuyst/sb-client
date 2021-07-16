@@ -9,7 +9,10 @@ const initialState: ITeamsState = {
   teams: null,
 };
 
-const teamReducer = (state = initialState, action: TeamsActions): ITeamsState => {
+const teamReducer = (
+  state = initialState,
+  action: TeamsActions,
+): ITeamsState => {
   switch (action.type) {
     case ActionType.STORE_ALL_TEAMS:
       return { ...state, teams: action.payload };

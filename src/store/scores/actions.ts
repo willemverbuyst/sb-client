@@ -19,28 +19,36 @@ export const resetAllScores = (): ResetAllScores => {
   };
 };
 
-export const storeScoresFixture = (fixture: IFixtureWithUsersWithScoreAndPrediction): StoreScoresFixture => {
+export const storeScoresFixture = (
+  fixture: IFixtureWithUsersWithScoreAndPrediction,
+): StoreScoresFixture => {
   return {
     type: ActionType.STORE_SCORES_FIXTURE,
     payload: fixture,
   };
 };
 
-export const storeScoresRound = (round: IUsersWithScoreAndRoundId): StoreScoresRound => {
+export const storeScoresRound = (
+  round: IUsersWithScoreAndRoundId,
+): StoreScoresRound => {
   return {
     type: ActionType.STORE_SCORES_ROUND,
     payload: round,
   };
 };
 
-export const storeScoresTotalToto = (totalToto: IUserWithScore[]): StoreScoresTotalToto => {
+export const storeScoresTotalToto = (
+  totalToto: IUserWithScore[],
+): StoreScoresTotalToto => {
   return {
     type: ActionType.STORE_SCORES_TOTAL_TOTO,
     payload: totalToto,
   };
 };
 
-export const storeScoresTotoRound = (totoRound: IUsersWithScoreAndTotoRoundId): StoreScoresTotoRound => {
+export const storeScoresTotoRound = (
+  totoRound: IUsersWithScoreAndTotoRoundId,
+): StoreScoresTotoRound => {
   return {
     type: ActionType.STORE_SCORES_TOTO_ROUND,
     payload: totoRound,
