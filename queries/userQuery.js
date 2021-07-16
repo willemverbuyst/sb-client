@@ -1,10 +1,33 @@
 const Team = require('../models').team;
 const User = require('../models').user;
 
+const createNewUser = async ({
+  userName,
+  firstName,
+  lastName,
+  email,
+  password,
+  phoneNumber,
+  admin,
+  totaalToto,
+  teamId,
+}) =>
+  await User.create({
+    userName,
+    firstName,
+    lastName,
+    email,
+    password: bcrypt.hashSync(password, process.env.SALT_ROUNDS),
+    phoneNumber,
+    admin,
+    totaalToto,
+    teamId,
+  });
+
 const getUserByEmail = async (email) =>
   await User.findOne({
     where: { email },
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
-module.exports = { getUserByEmail };
+module.exports = { createNewUser, getUserByEmail };
