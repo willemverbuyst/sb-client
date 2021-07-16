@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const AppError = require('../utils/appError');
 
 const validateLoginInput = (email, password, next) => {
@@ -7,4 +8,16 @@ const validateLoginInput = (email, password, next) => {
   return true;
 };
 
-module.exports = { validateLoginInput };
+const validatePassword = (user, password, next) => {
+  if (!user || !bcrypt.compareSync(password, user.password)) {
+    return next(
+      new AppError(
+        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
+        401,
+      ),
+    );
+  }
+  return true;
+};
+
+module.exports = { validateLoginInput, validatePassword };

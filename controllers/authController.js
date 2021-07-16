@@ -1,11 +1,13 @@
-const bcrypt = require('bcrypt');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 const { toJWT } = require('../auth/jwt');
 const { getUserByEmail, createNewUser } = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/roundQuery');
-const { validateLoginInput } = require('../validators/inputValidator');
+const {
+  validateLoginInput,
+  validatePassword,
+} = require('../validators/inputValidator');
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -14,14 +16,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   const user = await getUserByEmail(email);
 
-  if (!user || !bcrypt.compareSync(password, user.password)) {
-    return next(
-      new AppError(
-        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
-        401,
-      ),
-    );
-  }
+  validatePassword(user, password, next);
 
   const currentRound = await getCurrentRoundForUser(user.id);
   const token = toJWT({ userId: user.email });
