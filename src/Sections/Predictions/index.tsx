@@ -10,13 +10,21 @@ interface IProps {
   userNamePlayer?: string;
 }
 
-const Predictions: React.FC<IProps> = ({ fixtures, display, userNamePlayer = '' }: IProps): ReactElement => {
+const Predictions: React.FC<IProps> = ({
+  fixtures,
+  display,
+  userNamePlayer = '',
+}: IProps): ReactElement => {
   return (
     <Box my={{ sm: 1, md: 4 }}>
       <Grid item xs={12} container justify="center">
         {fixtures.map((wedstrijd, i) => (
           <Grid item key={i} lg={4} md={6} xs={12}>
-            <MatchCard wedstrijdMetVoorspellingen={wedstrijd} display={display} userNamePlayer={userNamePlayer} />
+            <MatchCard
+              wedstrijdMetVoorspellingen={wedstrijd}
+              display={display}
+              userNamePlayer={userNamePlayer}
+            />
           </Grid>
         ))}
       </Grid>

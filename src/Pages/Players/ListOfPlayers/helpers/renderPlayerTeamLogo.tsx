@@ -14,7 +14,14 @@ const useStyles = makeStyles(() => ({
 const renderPlayerTeamLogo = (player: IPlayer): ReactElement => {
   const classes = useStyles();
 
-  return <img key={player.team.name} className={classes.avatar} alt={player.team.name} src={player.team.logo} />;
+  return (
+    <img
+      key={player.team.name}
+      className={classes.avatar}
+      alt={player.team.name}
+      src={player.team.logo}
+    />
+  );
 };
 
 export { renderPlayerTeamLogo };

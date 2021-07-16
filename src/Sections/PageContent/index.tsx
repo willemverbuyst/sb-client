@@ -12,7 +12,10 @@ interface IProps {
   content: JSX.Element;
 }
 
-const PageContent: React.FC<IProps> = ({ loadingText, content }: IProps): ReactElement => {
+const PageContent: React.FC<IProps> = ({
+  loadingText,
+  content,
+}: IProps): ReactElement => {
   const history = useHistory();
   const isLoading = useSelector(selectAppLoading);
   const token = useSelector(selectToken);
@@ -21,7 +24,11 @@ const PageContent: React.FC<IProps> = ({ loadingText, content }: IProps): ReactE
     if (!token) history.push('/login');
   }, [token]);
 
-  return <Box>{isLoading ? <ProgressComponent loadingText={loadingText} /> : content}</Box>;
+  return (
+    <Box>
+      {isLoading ? <ProgressComponent loadingText={loadingText} /> : content}
+    </Box>
+  );
 };
 
 export default PageContent;

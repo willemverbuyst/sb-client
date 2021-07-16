@@ -19,7 +19,9 @@ interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;
 }
 
-const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): ReactElement => {
+const MatchCardMiddle: React.FC<IProps> = ({
+  fixtureWithPrediction,
+}: IProps): ReactElement => {
   const classes = useStyles();
   const {
     awayTeamLogo,
@@ -36,12 +38,25 @@ const MatchCardMiddle: React.FC<IProps> = ({ fixtureWithPrediction }: IProps): R
   const gotoFixture = () => HISTORY.gotoFixture(id);
 
   return (
-    <Grid item xs={12} className={classes.match} container justify="center" alignItems="center" onClick={gotoFixture}>
+    <Grid
+      item
+      xs={12}
+      className={classes.match}
+      container
+      justify="center"
+      alignItems="center"
+      onClick={gotoFixture}
+    >
       <TextComponent xs={4} content={homeTeamName} justify="flex-end" />
       <LogoComponent alt={homeTeamName} source={homeTeamLogo} size="small" />
       <TextComponent
         xs={2}
-        content={UTILS.getOutCome(status, goalsHomeTeam, goalsAwayTeam, eventTimeStamp)}
+        content={UTILS.getOutCome(
+          status,
+          goalsHomeTeam,
+          goalsAwayTeam,
+          eventTimeStamp,
+        )}
         justify="center"
       />
       <LogoComponent alt={awayTeamName} source={awayTeamLogo} size="small" />

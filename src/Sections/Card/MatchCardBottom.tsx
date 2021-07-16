@@ -42,13 +42,23 @@ const MatchCardBottom: React.FC<IProps> = ({
       !UTILS.hasBettingClosed(eventTimeStamp) &&
       display === 'private' &&
       !showInput ? (
-      <CardButton caption="Edit" color="secondary" handleClick={setShowInputToTrue} variant="text" />
+      <CardButton
+        caption="Edit"
+        color="secondary"
+        handleClick={setShowInputToTrue}
+        variant="text"
+      />
     ) : null;
   };
 
   const renderInput = (): ReactElement | null => {
-    return status !== 'Match Finished' && !UTILS.hasBettingClosed(eventTimeStamp) && display === 'private' ? (
-      <MatchCardInput fixtureWithPrediction={fixtureWithPrediction} hideInput={setShowInputToFalse} />
+    return status !== 'Match Finished' &&
+      !UTILS.hasBettingClosed(eventTimeStamp) &&
+      display === 'private' ? (
+      <MatchCardInput
+        fixtureWithPrediction={fixtureWithPrediction}
+        hideInput={setShowInputToFalse}
+      />
     ) : null;
   };
 

@@ -30,22 +30,44 @@ const EditPasswordForm: React.FC = (): ReactElement => {
     setPassword2('');
   };
 
-  const updatePassword1 = (event: React.ChangeEvent<HTMLInputElement>) => setPassword1(event.target.value);
-  const updatePassword2 = (event: React.ChangeEvent<HTMLInputElement>) => setPassword2(event.target.value);
+  const updatePassword1 = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setPassword1(event.target.value);
+  const updatePassword2 = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setPassword2(event.target.value);
 
   return (
     <>
       <FormContainer
         inputFields={
           <>
-            <PasswordFieldComponent id="password1" label="Password" value={password1} onChange={updatePassword1} />
-            <PasswordFieldComponent id="password2" label="Password" value={password2} onChange={updatePassword2} />
+            <PasswordFieldComponent
+              id="password1"
+              label="Password"
+              value={password1}
+              onChange={updatePassword1}
+            />
+            <PasswordFieldComponent
+              id="password2"
+              label="Password"
+              value={password2}
+              onChange={updatePassword2}
+            />
           </>
         }
-        submitButton={<SubmitButtonComponent caption="CHANGE PASSWORD" color="primary" handleClick={submitForm} />}
+        submitButton={
+          <SubmitButtonComponent
+            caption="CHANGE PASSWORD"
+            color="primary"
+            handleClick={submitForm}
+          />
+        }
         link={<Link to="/profiel/edit">Edit Profile</Link>}
       />
-      <ShowAlertComponent message="Passwords are not the same" displayAlert={showAlert} closeAlert={closeAlert} />
+      <ShowAlertComponent
+        message="Passwords are not the same"
+        displayAlert={showAlert}
+        closeAlert={closeAlert}
+      />
     </>
   );
 };

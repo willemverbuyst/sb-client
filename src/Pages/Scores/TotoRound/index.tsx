@@ -7,12 +7,17 @@ import PageTitle from '../../../Components/Title/PageTitle';
 import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../../Sections/PageContent';
 import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
-import { selectScoresTotoRoundSortedByScore, selectTotoRoundId } from '../../../store/scores/selectors';
+import {
+  selectScoresTotoRoundSortedByScore,
+  selectTotoRoundId,
+} from '../../../store/scores/selectors';
 import Pagination from './Pagination';
 
 const TotoRound: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const scoresRoundSortedByScore = useSelector(selectScoresTotoRoundSortedByScore);
+  const scoresRoundSortedByScore = useSelector(
+    selectScoresTotoRoundSortedByScore,
+  );
   const totoRoundId = useSelector(selectTotoRoundId);
   const { totoronde } = useParams<{ totoronde: string }>();
   const totoRound = Number(totoronde);
@@ -34,7 +39,9 @@ const TotoRound: React.FC = (): ReactElement => {
             <Pagination totoRound={totoRound} />
           </>
         ) : (
-          <MessageComponent message={`Nog geen scores voor toto ronde ${totoRound}`} />
+          <MessageComponent
+            message={`Nog geen scores voor toto ronde ${totoRound}`}
+          />
         )
       }
     />

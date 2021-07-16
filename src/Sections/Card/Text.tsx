@@ -1,4 +1,9 @@
-import { Grid, GridJustification, GridSize, Typography } from '@material-ui/core';
+import {
+  Grid,
+  GridJustification,
+  GridSize,
+  Typography,
+} from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
 import React, { ReactElement } from 'react';
 
@@ -7,7 +12,15 @@ interface IProps {
   content: string;
   justify: GridJustification;
   variant?: 'inherit' | Variant | undefined;
-  color?: 'inherit' | 'initial' | 'textSecondary' | 'primary' | 'secondary' | 'textPrimary' | 'error' | undefined;
+  color?:
+    | 'inherit'
+    | 'initial'
+    | 'textSecondary'
+    | 'primary'
+    | 'secondary'
+    | 'textPrimary'
+    | 'error'
+    | undefined;
 }
 
 const TextComponent: React.FC<IProps> = ({

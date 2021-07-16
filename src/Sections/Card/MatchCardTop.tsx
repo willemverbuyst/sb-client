@@ -7,7 +7,9 @@ interface IProps {
   eventTimeStamp: number;
 }
 
-const MatchCardTop: React.FC<IProps> = ({ eventTimeStamp }: IProps): ReactElement => {
+const MatchCardTop: React.FC<IProps> = ({
+  eventTimeStamp,
+}: IProps): ReactElement => {
   return (
     <TextComponent
       xs={12}

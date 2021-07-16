@@ -20,7 +20,11 @@ const TableWithPlayersHeaders = (): ReactElement => {
     ['telefoon', 'left'],
     ['email', 'left'],
   ];
-  return <TableHeaders headers={user && user.admin ? headersAdmin : headersRegularUser} />;
+  return (
+    <TableHeaders
+      headers={user && user.admin ? headersAdmin : headersRegularUser}
+    />
+  );
 };
 
 export default TableWithPlayersHeaders;

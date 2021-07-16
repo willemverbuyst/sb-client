@@ -46,7 +46,9 @@ const NavIcons: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(selectUser);
-  const [roundNumber, totoRoundNumber] = useSelector(selectRoundAndTotoRoundNumber);
+  const [roundNumber, totoRoundNumber] = useSelector(
+    selectRoundAndTotoRoundNumber,
+  );
 
   const gotoLogin = (): void => {
     dispatch(userLogOut());
@@ -55,14 +57,26 @@ const NavIcons: React.FC = (): ReactElement => {
 
   return (
     <Grid container className={classes.iconSet} alignItems="center">
-      <NavIcon label="program" goto={HISTORY.gotoProgram} icon={<Weekend className={classes.icon} />} />
+      <NavIcon
+        label="program"
+        goto={HISTORY.gotoProgram}
+        icon={<Weekend className={classes.icon} />}
+      />
       <NavIcon
         label="prediction"
         goto={() => HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)}
         icon={<SportsSoccerIcon className={classes.icon} />}
       />
-      <NavIcon label="my scores" goto={HISTORY.gotoScoresUser} icon={<BarChart className={classes.icon} />} />
-      <NavIcon label="total toto" goto={HISTORY.gotoRankingTotalToto} icon={<EmojiEvents className={classes.icon} />} />
+      <NavIcon
+        label="my scores"
+        goto={HISTORY.gotoScoresUser}
+        icon={<BarChart className={classes.icon} />}
+      />
+      <NavIcon
+        label="total toto"
+        goto={HISTORY.gotoRankingTotalToto}
+        icon={<EmojiEvents className={classes.icon} />}
+      />
       <NavIcon
         label="toto round"
         goto={() => HISTORY.gotoRankingTotoRound(totoRoundNumber)}
@@ -73,13 +87,33 @@ const NavIcons: React.FC = (): ReactElement => {
         goto={() => HISTORY.gotoRankingRound(1)}
         icon={<FormatListNumberedRtlIcon className={classes.icon} />}
       />
-      <NavIcon label="players" goto={HISTORY.gotoPlayers} icon={<Group className={classes.icon} />} />
+      <NavIcon
+        label="players"
+        goto={HISTORY.gotoPlayers}
+        icon={<Group className={classes.icon} />}
+      />
       {user && user.admin ? (
-        <NavIcon label="sign up" goto={HISTORY.gotoSignUp} icon={<PersonAdd className={classes.icon} />} />
+        <NavIcon
+          label="sign up"
+          goto={HISTORY.gotoSignUp}
+          icon={<PersonAdd className={classes.icon} />}
+        />
       ) : null}
-      <NavIcon label="profile" goto={HISTORY.gotoProfile} icon={<Face className={classes.icon} />} />
-      <NavIcon label="rules" goto={HISTORY.gotoRules} icon={<HelpOutline className={classes.icon} />} />
-      <NavIcon label="sign out" goto={gotoLogin} icon={<ExitToAppIcon className={classes.icon} />} />
+      <NavIcon
+        label="profile"
+        goto={HISTORY.gotoProfile}
+        icon={<Face className={classes.icon} />}
+      />
+      <NavIcon
+        label="rules"
+        goto={HISTORY.gotoRules}
+        icon={<HelpOutline className={classes.icon} />}
+      />
+      <NavIcon
+        label="sign out"
+        goto={gotoLogin}
+        icon={<ExitToAppIcon className={classes.icon} />}
+      />
     </Grid>
   );
 };

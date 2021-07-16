@@ -45,9 +45,13 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
     dispatch(editUserProfile(profileDetails));
   };
 
-  const updateProfileDetails = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const updateProfileDetails = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newValue =
-      event.target.id === 'admin' || event.target.id === 'totaalToto' ? event.target.checked : event.target.value;
+      event.target.id === 'admin' || event.target.id === 'totaalToto'
+        ? event.target.checked
+        : event.target.value;
 
     setProfileDetails({
       ...profileDetails,
@@ -55,7 +59,9 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
     });
   };
 
-  const updateFavoriteTeam = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>): void => {
+  const updateFavoriteTeam = (
+    event: ChangeEvent<{ name?: string | undefined; value: unknown }>,
+  ): void => {
     if (typeof event.target.value === 'number' || event.target.value === '') {
       setProfileDetails({
         ...profileDetails,
@@ -92,7 +98,12 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
             value={profileDetails.email}
             onChange={updateProfileDetails}
           />
-          <CheckBoxComponent id="admin" checked={profileDetails.admin} onChange={updateProfileDetails} label="Admin" />
+          <CheckBoxComponent
+            id="admin"
+            checked={profileDetails.admin}
+            onChange={updateProfileDetails}
+            label="Admin"
+          />
           <CheckBoxComponent
             id="totaalToto"
             checked={profileDetails.totaalToto}
@@ -118,7 +129,13 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
           ) : null}
         </>
       }
-      submitButton={<SubmitButtonComponent caption="UPDATE PROFIEL" color="primary" handleClick={submitForm} />}
+      submitButton={
+        <SubmitButtonComponent
+          caption="UPDATE PROFIEL"
+          color="primary"
+          handleClick={submitForm}
+        />
+      }
       link={<Link to="/profiel/password">Change Password</Link>}
     />
   );

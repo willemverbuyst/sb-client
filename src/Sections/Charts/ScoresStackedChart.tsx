@@ -33,7 +33,8 @@ const ScoresStackedChart: React.FC<IProps> = ({
 }: IProps): ReactElement => {
   const user = useSelector(selectUser);
   const { userId: playerId, scores } = scoresPlayer;
-  const colorPrimary = !loggedInUser && user?.id === playerId ? colorHover : colorMain;
+  const colorPrimary =
+    !loggedInUser && user?.id === playerId ? colorHover : colorMain;
   const gotoTotoRound = (index: number) => {
     const totoRoundNumber = index + 1;
     const roundNumber = (index + 1) * 3 - 2;
@@ -128,7 +129,13 @@ const ScoresStackedChart: React.FC<IProps> = ({
     },
   };
 
-  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoTotoRound} />;
+  return (
+    <BarChart
+      chartData={chartData}
+      chartOptions={chartOptions}
+      goto={gotoTotoRound}
+    />
+  );
 };
 
 export default ScoresStackedChart;

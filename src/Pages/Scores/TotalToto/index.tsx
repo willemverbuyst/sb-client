@@ -10,7 +10,9 @@ import { selectScoresTotalTotoSortedByScore } from '../../../store/scores/select
 
 const TotalToto: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const scoresTotalTotoSortedByScore = useSelector(selectScoresTotalTotoSortedByScore);
+  const scoresTotalTotoSortedByScore = useSelector(
+    selectScoresTotalTotoSortedByScore,
+  );
 
   useEffect(() => {
     if (!scoresTotalTotoSortedByScore) {

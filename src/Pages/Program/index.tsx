@@ -25,10 +25,15 @@ const Program: React.FC = (): ReactElement => {
         currentRoundSortedByTime ? (
           <>
             <PageTitle title="Programma" color="secondary" />
-            <Predictions fixtures={currentRoundSortedByTime} display="private" />
+            <Predictions
+              fixtures={currentRoundSortedByTime}
+              display="private"
+            />
           </>
         ) : (
-          <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
+          <MessageComponent
+            message={`Er staan voor deze week geen wedstrijden gepland.`}
+          />
         )
       }
     />

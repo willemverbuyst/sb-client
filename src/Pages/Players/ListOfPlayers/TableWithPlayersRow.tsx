@@ -13,7 +13,10 @@ type IProps = {
   onChange: (player: IPlayer) => void;
 };
 
-const TableWithPlayersRow: React.FC<IProps> = ({ player, onChange }: IProps): ReactElement => {
+const TableWithPlayersRow: React.FC<IProps> = ({
+  player,
+  onChange,
+}: IProps): ReactElement => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [isAdmin, setIsAdmin] = useState<boolean>(player.admin);
@@ -26,10 +29,17 @@ const TableWithPlayersRow: React.FC<IProps> = ({ player, onChange }: IProps): Re
   const toggleEditModus = (): void => setEditModus(!editModus);
   const deletePlayer = (): void => onChange(player);
 
-  const playerIsAdmin: JSX.Element | null = HELPERS.renderIsAdminCheck(editModus, isAdmin, handleChange, player);
+  const playerIsAdmin: JSX.Element | null = HELPERS.renderIsAdminCheck(
+    editModus,
+    isAdmin,
+    handleChange,
+    player,
+  );
   const playerUserName: JSX.Element = HELPERS.renderPlayerUserName(player);
   const playerTeamLogo: JSX.Element = HELPERS.renderPlayerTeamLogo(player);
-  const playerTotalToto: JSX.Element | null = HELPERS.renderTotalTotoCheck(player);
+  const playerTotalToto: JSX.Element | null = HELPERS.renderTotalTotoCheck(
+    player,
+  );
   const playerFirstName: string = player.firstName;
 
   const playerLastName: string = player.lastName;
@@ -57,7 +67,11 @@ const TableWithPlayersRow: React.FC<IProps> = ({ player, onChange }: IProps): Re
     [editCancelButtonsForAdmin, 'center'],
   ];
 
-  return <TableCellsOneRow cells={user && user.admin ? cellsAdmin : cellsRegularUser} />;
+  return (
+    <TableCellsOneRow
+      cells={user && user.admin ? cellsAdmin : cellsRegularUser}
+    />
+  );
 };
 
 export default TableWithPlayersRow;

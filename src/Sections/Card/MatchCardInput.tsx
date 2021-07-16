@@ -6,14 +6,20 @@ import CardButton from '../../Components/Button/CardButton';
 import NumberField from '../../Components/Form/NumberField';
 import { IPrediction } from '../../models/predictions.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import { changePrediction, postNewPrediction } from '../../store/predictions/action-creators';
+import {
+  changePrediction,
+  postNewPrediction,
+} from '../../store/predictions/action-creators';
 
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions;
   hideInput: () => void;
 }
 
-const MatchCardInput: React.FC<IProps> = ({ fixtureWithPrediction, hideInput }: IProps): ReactElement => {
+const MatchCardInput: React.FC<IProps> = ({
+  fixtureWithPrediction,
+  hideInput,
+}: IProps): ReactElement => {
   const {
     id,
     predictions: { pGoalsAwayTeam, pGoalsHomeTeam },
@@ -49,9 +55,15 @@ const MatchCardInput: React.FC<IProps> = ({ fixtureWithPrediction, hideInput }: 
       <CardButton caption="Cancel" color="secondary" handleClick={hideInput} />
 
       <Grid item xs={8} container justify="center">
-        <NumberField defaultValue={pGoalsHomeTeam || 0} onChange={handleGoalsHomeTeam} />
+        <NumberField
+          defaultValue={pGoalsHomeTeam || 0}
+          onChange={handleGoalsHomeTeam}
+        />
         &nbsp;&nbsp;-&nbsp;&nbsp;
-        <NumberField defaultValue={pGoalsAwayTeam || 0} onChange={handleGoalsAwayTeam} />
+        <NumberField
+          defaultValue={pGoalsAwayTeam || 0}
+          onChange={handleGoalsAwayTeam}
+        />
       </Grid>
 
       <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />

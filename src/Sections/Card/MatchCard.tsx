@@ -25,7 +25,11 @@ interface IProps {
   userNamePlayer: string;
 }
 
-const MatchCard: React.FC<IProps> = ({ wedstrijdMetVoorspellingen, display, userNamePlayer }: IProps): ReactElement => {
+const MatchCard: React.FC<IProps> = ({
+  wedstrijdMetVoorspellingen,
+  display,
+  userNamePlayer,
+}: IProps): ReactElement => {
   const classes = useStyles();
   const { eventTimeStamp, score, status } = wedstrijdMetVoorspellingen;
 

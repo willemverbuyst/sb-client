@@ -17,14 +17,24 @@ interface IProps {
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const userId: number | null = useSelector(selectUserId);
-  const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScore, IUserWithScore>(scores, 'user');
+  const labels: string[] = UTILS.getStringsInUpperCase<
+    keyof IUserWithScore,
+    IUserWithScore
+  >(scores, 'user');
   const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
   const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
-  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScore>(scores);
-  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScore>(scores, userId);
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScore>(
+    scores,
+  );
+  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScore>(
+    scores,
+    userId,
+  );
   const gotoScoresPlayer = (index: number): void => {
     const id: number = scores[index].userId;
-    userId && userId === id ? HISTORY.gotoScoresUser() : HISTORY.gotoScoresPlayer(id);
+    userId && userId === id
+      ? HISTORY.gotoScoresUser()
+      : HISTORY.gotoScoresPlayer(id);
   };
 
   const chartData: ChartData<chartjs.ChartData> = {
@@ -78,7 +88,13 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     },
   };
 
-  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoScoresPlayer} />;
+  return (
+    <BarChart
+      chartData={chartData}
+      chartOptions={chartOptions}
+      goto={gotoScoresPlayer}
+    />
+  );
 };
 
 export default ScoresBarChart;

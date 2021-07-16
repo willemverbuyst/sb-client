@@ -9,9 +9,13 @@ interface IProps {
   totoRound: number;
 }
 
-const PaginationSection: React.FC<IProps> = ({ totoRound }: IProps): ReactElement => {
-  const gotoTotoRound = (_event: React.ChangeEvent<unknown>, value: number): void =>
-    HISTORY.gotoRankingTotoRound(value);
+const PaginationSection: React.FC<IProps> = ({
+  totoRound,
+}: IProps): ReactElement => {
+  const gotoTotoRound = (
+    _event: React.ChangeEvent<unknown>,
+    value: number,
+  ): void => HISTORY.gotoRankingTotoRound(value);
 
   return (
     <Box my={2}>

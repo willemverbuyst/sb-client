@@ -10,7 +10,9 @@ type IProps = {
   playersSortedByName: IPlayer[];
 };
 
-const TableWithPlayersContent = ({ playersSortedByName }: IProps): ReactElement => {
+const TableWithPlayersContent = ({
+  playersSortedByName,
+}: IProps): ReactElement => {
   const [showDialog, setShowDialog] = useState(false);
   const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null);
 
@@ -28,13 +30,18 @@ const TableWithPlayersContent = ({ playersSortedByName }: IProps): ReactElement 
   };
 
   const tableContent = (): ReactElement[] =>
-    playersSortedByName.map((player, i) => <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />);
+    playersSortedByName.map((player, i) => (
+      <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />
+    ));
 
   return (
     <>
       <TableBody>{tableContent()}</TableBody>
       {showDialog && playerToDelete ? (
-        <TableWithPlayersDialog playerToDelete={playerToDelete} closeDialog={closeDialog} />
+        <TableWithPlayersDialog
+          playerToDelete={playerToDelete}
+          closeDialog={closeDialog}
+        />
       ) : null}
     </>
   );

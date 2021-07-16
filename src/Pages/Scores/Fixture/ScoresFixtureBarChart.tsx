@@ -15,20 +15,29 @@ interface IProps {
   scores: IUserWithScoreAndPrediction[];
 }
 
-const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
+const ScoresForFixtureBarChart: React.FC<IProps> = ({
+  scores,
+}: IProps): ReactElement => {
   const userId: number | null = useSelector(selectUserId);
-  const labels: string[] = UTILS.getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
-    scores,
-    'user',
-  );
+  const labels: string[] = UTILS.getStringsInUpperCase<
+    keyof IUserWithScoreAndPrediction,
+    IUserWithScoreAndPrediction
+  >(scores, 'user');
   const userScores: number[] = UTILS.displayUserScores(scores);
   const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
-  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScoreAndPrediction>(scores);
-  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScoreAndPrediction>(scores, userId);
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScoreAndPrediction>(
+    scores,
+  );
+  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScoreAndPrediction>(
+    scores,
+    userId,
+  );
   const userPredictions: string[] = UTILS.getUserPredictions(scores);
   const gotoScoresPlayer = (index: number): void => {
     const id: number = scores[index].userId;
-    userId && userId === id ? HISTORY.gotoScoresUser() : HISTORY.gotoScoresPlayer(id);
+    userId && userId === id
+      ? HISTORY.gotoScoresUser()
+      : HISTORY.gotoScoresPlayer(id);
   };
 
   const chartData: ChartData<chartjs.ChartData> = {
@@ -91,7 +100,13 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEl
     },
   };
 
-  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoScoresPlayer} />;
+  return (
+    <BarChart
+      chartData={chartData}
+      chartOptions={chartOptions}
+      goto={gotoScoresPlayer}
+    />
+  );
 };
 
 export default ScoresForFixtureBarChart;

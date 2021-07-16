@@ -10,7 +10,8 @@ interface IProps {
 }
 
 const Pagination: React.FC<IProps> = ({ round }: IProps): ReactElement => {
-  const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void => HISTORY.gotoRankingRound(value);
+  const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void =>
+    HISTORY.gotoRankingRound(value);
 
   return (
     <Box my={2}>

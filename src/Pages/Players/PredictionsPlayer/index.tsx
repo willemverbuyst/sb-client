@@ -7,14 +7,19 @@ import PageTitle from '../../../Components/Title/PageTitle';
 import PageContent from '../../../Sections/PageContent';
 import Predictions from '../../../Sections/Predictions';
 import { fetchPlayerProfile } from '../../../store/players/action-creators';
-import { selectPastFixturesWithScoresSortedByTime, selectUserNamePlayer } from '../../../store/players/selectors';
+import {
+  selectPastFixturesWithScoresSortedByTime,
+  selectUserNamePlayer,
+} from '../../../store/players/selectors';
 import * as UTILS from '../../../utils';
 import Pagination from './Pagination';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const userNamePlayer = useSelector(selectUserNamePlayer);
-  const pastFixturesWithScoresSortedByTime = useSelector(selectPastFixturesWithScoresSortedByTime);
+  const pastFixturesWithScoresSortedByTime = useSelector(
+    selectPastFixturesWithScoresSortedByTime,
+  );
   const { id } = useParams<{ id: string }>();
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
@@ -28,7 +33,11 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const filteredFixtures = pastFixturesWithScoresSortedByTime
-    ? [...pastFixturesWithScoresSortedByTime[totoRound - 1][UTILS.calculateIndex(round)]]
+    ? [
+        ...pastFixturesWithScoresSortedByTime[totoRound - 1][
+          UTILS.calculateIndex(round)
+        ],
+      ]
     : null;
 
   return (
@@ -38,7 +47,11 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
         filteredFixtures && userNamePlayer ? (
           <>
             <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
-            <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
+            <Predictions
+              fixtures={filteredFixtures}
+              display="public"
+              userNamePlayer={userNamePlayer}
+            />
             <Pagination totoround={totoRound} round={round} id={id} />
           </>
         ) : (

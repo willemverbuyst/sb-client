@@ -7,7 +7,13 @@ const renderButtonsForAdmin = (
   toggleEditModus: () => void,
   deletePlayer: () => void,
 ): ReactElement => {
-  return <TableEditCancelButtons editModus={editModus} changeEditModus={toggleEditModus} handleDelete={deletePlayer} />;
+  return (
+    <TableEditCancelButtons
+      editModus={editModus}
+      changeEditModus={toggleEditModus}
+      handleDelete={deletePlayer}
+    />
+  );
 };
 
 export { renderButtonsForAdmin };

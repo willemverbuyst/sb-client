@@ -1,4 +1,10 @@
-import { Grid, GridJustification, GridSize, Theme, Typography } from '@material-ui/core';
+import {
+  Grid,
+  GridJustification,
+  GridSize,
+  Theme,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 
@@ -18,7 +24,12 @@ interface IProps {
   justify: GridJustification;
 }
 
-const TextComponent: React.FC<IProps> = ({ xs, sm, content, justify }: IProps): ReactElement => {
+const TextComponent: React.FC<IProps> = ({
+  xs,
+  sm,
+  content,
+  justify,
+}: IProps): ReactElement => {
   const classes = useStyles();
   return (
     <Grid item xs={xs} sm={sm} container justify={justify} alignItems="center">

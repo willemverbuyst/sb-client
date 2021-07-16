@@ -7,7 +7,10 @@ import PageTitle from '../../../Components/Title/PageTitle';
 import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
 import PageContent from '../../../Sections/PageContent';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
-import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
+import {
+  selectRoundId,
+  selectScoresRoundSortedByScore,
+} from '../../../store/scores/selectors';
 import Pagination from './Pagination';
 
 const Round: React.FC = (): ReactElement => {

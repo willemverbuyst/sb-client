@@ -42,7 +42,9 @@ const UserDisplay: React.FC = (): ReactElement => {
         <Grid container justify="center">
           <Typography className={classes.userName}>{name}</Typography>
         </Grid>
-        {user ? <AvatarLargeComponent alt={user.team.name} source={user.team.logo} /> : null}
+        {user ? (
+          <AvatarLargeComponent alt={user.team.name} source={user.team.logo} />
+        ) : null}
       </Grid>
     </Grid>
   );

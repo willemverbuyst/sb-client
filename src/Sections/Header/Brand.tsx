@@ -24,7 +24,11 @@ const Brand: React.FC = (): ReactElement => {
 
   return (
     <Grid container className={classes.brand} alignItems="center">
-      <img src={ball} style={{ width: '40px', margin: '0 10px 0 0' }} alt="soccer ball" />
+      <img
+        src={ball}
+        style={{ width: '40px', margin: '0 10px 0 0' }}
+        alt="soccer ball"
+      />
       <Typography align="center" variant="h3">
         {APP_NAME}
       </Typography>

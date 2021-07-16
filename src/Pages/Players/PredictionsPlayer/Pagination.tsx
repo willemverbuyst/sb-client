@@ -12,13 +12,23 @@ interface IProps {
   totoround: number;
 }
 
-const Pagination: React.FC<IProps> = ({ id, round, totoround }: IProps): ReactElement => {
-  const handleChangeRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
+const Pagination: React.FC<IProps> = ({
+  id,
+  round,
+  totoround,
+}: IProps): ReactElement => {
+  const handleChangeRounds = (
+    _event: React.ChangeEvent<unknown>,
+    value: number,
+  ): void => {
     const totoRound = UTILS.totoRoundByRound(value);
     HISTORY.gotoPredictionsPlayer(id, totoRound, value);
   };
 
-  const handleChangeTotoRounds = (_event: React.ChangeEvent<unknown>, value: number): void => {
+  const handleChangeTotoRounds = (
+    _event: React.ChangeEvent<unknown>,
+    value: number,
+  ): void => {
     const round = UTILS.roundByTotoRound(value);
     HISTORY.gotoPredictionsPlayer(id, value, round);
   };

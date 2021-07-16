@@ -58,7 +58,11 @@ const AccordionWithRules: React.FC = (): ReactElement => {
       <Grid item xs={12} md={8}>
         {listOfRules.map((rule, i) => (
           <Accordion key={i}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
               <Typography variant="overline">{rule.question}</Typography>
             </AccordionSummary>
             <AccordionAnswers answers={rule.answers} />

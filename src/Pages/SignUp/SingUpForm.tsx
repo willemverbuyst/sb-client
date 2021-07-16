@@ -18,7 +18,10 @@ const SignUpForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
   const teams = useSelector(selectTeams);
-  const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
+  const [
+    signUpCredentials,
+    setSignUpCredentials,
+  ] = useState<ISignUpCredentials>({
     userName: '',
     firstName: '',
     lastName: '',
@@ -57,9 +60,13 @@ const SignUpForm: React.FC = (): ReactElement => {
     history.push('/spelers');
   };
 
-  const updateSignUpCredentials = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const updateSignUpCredentials = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newValue =
-      event.target.id === 'admin' || event.target.id === 'totaalToto' ? event.target.checked : event.target.value;
+      event.target.id === 'admin' || event.target.id === 'totaalToto'
+        ? event.target.checked
+        : event.target.value;
 
     setSignUpCredentials({
       ...signUpCredentials,
@@ -67,7 +74,9 @@ const SignUpForm: React.FC = (): ReactElement => {
     });
   };
 
-  const updateFavoriteTeam = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>): void => {
+  const updateFavoriteTeam = (
+    event: ChangeEvent<{ name?: string | undefined; value: unknown }>,
+  ): void => {
     if (typeof event.target.value === 'number' || event.target.value === '') {
       setSignUpCredentials({
         ...signUpCredentials,
@@ -140,7 +149,13 @@ const SignUpForm: React.FC = (): ReactElement => {
           ) : null}
         </>
       }
-      submitButton={<SubmitButtonComponent caption="SIGN UP" color="primary" handleClick={submitForm} />}
+      submitButton={
+        <SubmitButtonComponent
+          caption="SIGN UP"
+          color="primary"
+          handleClick={submitForm}
+        />
+      }
     />
   );
 };

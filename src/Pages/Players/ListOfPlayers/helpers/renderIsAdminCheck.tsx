@@ -20,7 +20,11 @@ const renderIsAdminCheck = (
   const classes = useStyles();
 
   return editModus ? (
-    <Checkbox checked={isAdmin} onChange={handleChange} inputProps={{ 'aria-label': 'primary checkbox' }} />
+    <Checkbox
+      checked={isAdmin}
+      onChange={handleChange}
+      inputProps={{ 'aria-label': 'primary checkbox' }}
+    />
   ) : player.admin ? (
     <Check className={classes.checkAdmin} />
   ) : null;
