@@ -8,11 +8,23 @@ interface IProps {
   label: string;
 }
 
-const CheckBoxComponent: React.FC<IProps> = ({ id, checked, onChange, label }: IProps) => {
+const CheckBoxComponent: React.FC<IProps> = ({
+  id,
+  checked,
+  onChange,
+  label,
+}: IProps) => {
   return (
     <Grid item xs={12} sm={6}>
       <FormControlLabel
-        control={<Checkbox id={id} checked={checked} color="primary" onChange={onChange} />}
+        control={
+          <Checkbox
+            id={id}
+            checked={checked}
+            color="primary"
+            onChange={onChange}
+          />
+        }
         label={label}
       />
     </Grid>

@@ -20,7 +20,14 @@ interface IProps {
 const ChipComponent: React.FC<IProps> = ({ score }: IProps): ReactElement => {
   const classes = useStyles();
 
-  return <Chip size="small" className={classes.chip} label={`${score} pt.`} variant="outlined" />;
+  return (
+    <Chip
+      size="small"
+      className={classes.chip}
+      label={`${score} pt.`}
+      variant="outlined"
+    />
+  );
 };
 
 export default ChipComponent;

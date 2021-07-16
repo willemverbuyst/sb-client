@@ -20,7 +20,9 @@ interface IProps {
   loadingText: string;
 }
 
-const ProgressComponent: React.FC<IProps> = ({ loadingText }: IProps): ReactElement => {
+const ProgressComponent: React.FC<IProps> = ({
+  loadingText,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

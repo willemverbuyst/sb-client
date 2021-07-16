@@ -11,7 +11,11 @@ interface IProps {
   goto: (id: number) => void;
 }
 
-const BarChart: React.FC<IProps> = ({ chartData, chartOptions, goto }: IProps): ReactElement => {
+const BarChart: React.FC<IProps> = ({
+  chartData,
+  chartOptions,
+  goto,
+}: IProps): ReactElement => {
   return (
     <Box mt="4rem">
       <Grid container direction="row" justify="center" alignItems="center">

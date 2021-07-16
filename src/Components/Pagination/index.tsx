@@ -12,7 +12,13 @@ interface IProps {
   onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 }
 
-const PaginationComponent: React.FC<IProps> = ({ label, page, count, color, onChange }: IProps): ReactElement => {
+const PaginationComponent: React.FC<IProps> = ({
+  label,
+  page,
+  count,
+  color,
+  onChange,
+}: IProps): ReactElement => {
   const theme = useTheme();
   const pagVariant = useMediaQuery(theme.breakpoints.up('xs'));
 

@@ -13,7 +13,9 @@ type IProps = {
   message: string;
 };
 
-const MessageComponent: React.FC<IProps> = ({ message }: IProps): ReactElement => {
+const MessageComponent: React.FC<IProps> = ({
+  message,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

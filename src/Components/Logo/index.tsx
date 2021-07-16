@@ -21,7 +21,11 @@ interface IProps {
   size: 'small' | 'medium';
 }
 
-const LogoComponent: React.FC<IProps> = ({ alt, source, size }: IProps): ReactElement => {
+const LogoComponent: React.FC<IProps> = ({
+  alt,
+  source,
+  size,
+}: IProps): ReactElement => {
   const classes = useStyles();
   const className = size === 'small' ? classes.small : classes.medium;
 

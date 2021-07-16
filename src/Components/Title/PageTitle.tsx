@@ -25,7 +25,10 @@ interface IProps {
   color: 'primary' | 'secondary';
 }
 
-const PageTitleComponent: React.FC<IProps> = ({ title, color }: IProps): ReactElement => {
+const PageTitleComponent: React.FC<IProps> = ({
+  title,
+  color,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

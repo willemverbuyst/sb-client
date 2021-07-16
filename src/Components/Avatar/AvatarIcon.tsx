@@ -14,7 +14,9 @@ interface IProps {
   icon: JSX.Element;
 }
 
-const AvatarIconComponent: React.FC<IProps> = ({ icon }: IProps): ReactElement => {
+const AvatarIconComponent: React.FC<IProps> = ({
+  icon,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return <Avatar className={classes.avatar}>{icon}</Avatar>;

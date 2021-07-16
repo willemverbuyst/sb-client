@@ -8,7 +8,12 @@ interface IProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextFieldComponent: React.FC<IProps> = ({ id, label, value, onChange }: IProps) => {
+const TextFieldComponent: React.FC<IProps> = ({
+  id,
+  label,
+  value,
+  onChange,
+}: IProps) => {
   return (
     <Grid item xs={12}>
       <TextField

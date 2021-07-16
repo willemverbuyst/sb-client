@@ -51,7 +51,13 @@ const LoginForm: React.FC = (): ReactElement => {
           />
         </>
       }
-      submitButton={<SubmitButtonComponent caption="LOG IN" color="primary" handleClick={submitForm} />}
+      submitButton={
+        <SubmitButtonComponent
+          caption="LOG IN"
+          color="primary"
+          handleClick={submitForm}
+        />
+      }
     />
   );
 };

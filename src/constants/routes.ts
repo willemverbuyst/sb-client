@@ -13,6 +13,7 @@ export const RULES = '/regels';
 export const SCORES_USER = '/scores';
 export const LIST_OF_PLAYERS = '/spelers';
 export const SCORES_PLAYERS = '/spelers/:id/scores';
-export const PREDICTIONS_PLAYERS = '/spelers/:id/voorspellingen/:totoronde/:ronde';
+export const PREDICTIONS_PLAYERS =
+  '/spelers/:id/voorspellingen/:totoronde/:ronde';
 export const PREDICTIONS = '/voorspellingen/:totoronde/:ronde';
 export const FIXTURES = '/wedstrijd/:id';

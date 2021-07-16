@@ -7,7 +7,11 @@ interface IProps {
   icon: ReactElement;
 }
 
-const NavIcon: React.FC<IProps> = ({ label, goto, icon }: IProps): ReactElement => {
+const NavIcon: React.FC<IProps> = ({
+  label,
+  goto,
+  icon,
+}: IProps): ReactElement => {
   return (
     <IconButton edge="start" color="inherit" aria-label={label} onClick={goto}>
       {icon}

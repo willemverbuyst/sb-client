@@ -14,11 +14,20 @@ interface IProps {
   closeAlert: () => void;
 }
 
-const ShowAlertComponent: React.FC<IProps> = ({ message, displayAlert, closeAlert }: IProps): ReactElement | null => {
+const ShowAlertComponent: React.FC<IProps> = ({
+  message,
+  displayAlert,
+  closeAlert,
+}: IProps): ReactElement | null => {
   const classes = useStyles();
 
   return displayAlert ? (
-    <Alert onClose={closeAlert} severity="error" variant="outlined" className={classes.margin}>
+    <Alert
+      onClose={closeAlert}
+      severity="error"
+      variant="outlined"
+      className={classes.margin}
+    >
       {message}
     </Alert>
   ) : null;

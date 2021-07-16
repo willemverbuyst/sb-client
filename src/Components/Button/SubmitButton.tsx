@@ -15,7 +15,11 @@ interface IProps {
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const SubmitButtonComponent: React.FC<IProps> = ({ caption, color, handleClick }: IProps): ReactElement => {
+const SubmitButtonComponent: React.FC<IProps> = ({
+  caption,
+  color,
+  handleClick,
+}: IProps): ReactElement => {
   const classes = useStyles();
   const theme = useTheme();
   const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));

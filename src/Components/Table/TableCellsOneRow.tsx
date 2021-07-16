@@ -7,7 +7,9 @@ interface IProps {
   cells: [CellValue, Align][];
 }
 
-const TableCellsOneRow: React.FC<IProps> = ({ cells }: IProps): ReactElement => {
+const TableCellsOneRow: React.FC<IProps> = ({
+  cells,
+}: IProps): ReactElement => {
   return (
     <TableRow>
       {cells.map((cell, i) => (

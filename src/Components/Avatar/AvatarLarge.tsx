@@ -25,7 +25,10 @@ interface IProps {
   source: string;
 }
 
-const AvatarLargeComponent: React.FC<IProps> = ({ alt, source }: IProps): ReactElement => {
+const AvatarLargeComponent: React.FC<IProps> = ({
+  alt,
+  source,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return (
