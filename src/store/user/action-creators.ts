@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { API_URL } from '../../config/constants';
+import { API_URL } from '../../config/apiUrl';
 import { ILogInCredentials, IProfileDetails } from '../../models/credentials.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';

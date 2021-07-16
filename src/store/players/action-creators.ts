@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import { API_URL } from '../../config/constants';
+import { API_URL } from '../../config/apiUrl';
 import { ISignUpCredentials } from '../../models/credentials.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading } from '../appState/actions';
