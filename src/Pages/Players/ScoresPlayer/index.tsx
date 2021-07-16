@@ -35,7 +35,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
             />
           </>
         ) : (
-          <MessageComponent message={`Nog geen scores`} />
+          <MessageComponent message={`Nog geen scores voor ${name}`} />
         )
       }
     />

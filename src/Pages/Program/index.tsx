@@ -31,9 +31,7 @@ const Program: React.FC = (): ReactElement => {
             />
           </>
         ) : (
-          <MessageComponent
-            message={`Er staan voor deze week geen wedstrijden gepland.`}
-          />
+          <MessageComponent message="Er staan voor deze week geen wedstrijden gepland." />
         )
       }
     />

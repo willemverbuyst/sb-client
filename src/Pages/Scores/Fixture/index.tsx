@@ -38,11 +38,11 @@ const Fixture: React.FC = (): ReactElement => {
             {scoresFixtureSortedByName ? (
               <ScoresForFixtureBarChart scores={scoresFixtureSortedByName} />
             ) : (
-              <MessageComponent message={`Nog geen scores`} />
+              <MessageComponent message="Nog geen scores" />
             )}
           </>
         ) : (
-          <MessageComponent message={`Geen wedstrijd gevonden`} />
+          <MessageComponent message="Geen wedstrijd gevonden" />
         )
       }
     />

@@ -55,7 +55,9 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
             <Pagination totoround={totoRound} round={round} id={id} />
           </>
         ) : (
-          <MessageComponent message={`Geen voorspellingen voor gevonden`} />
+          <MessageComponent
+            message={`Geen voorspellingen voor ${name} gevonden`}
+          />
         )
       }
     />

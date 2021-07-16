@@ -19,7 +19,7 @@ const EditProfile: React.FC = (): ReactElement => {
           {user ? (
             <EditProfileForm user={user} />
           ) : (
-            <MessageComponent message={`Geen profiel gevonden`} />
+            <MessageComponent message="Geen profiel gevonden" />
           )}
         </>
       }

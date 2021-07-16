@@ -37,7 +37,9 @@ const Round: React.FC = (): ReactElement => {
             <Pagination round={round} />
           </>
         ) : (
-          <MessageComponent message={`Nog geen scores voor deze ronde`} />
+          <MessageComponent
+            message={`Nog geen scores voor speelronde ${round}`}
+          />
         )
       }
     />

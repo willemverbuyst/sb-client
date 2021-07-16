@@ -37,7 +37,7 @@ const ScoresUser: React.FC = (): ReactElement => {
             />
           </>
         ) : (
-          <MessageComponent message={`Je hebt nog geen scores`} />
+          <MessageComponent message="Je hebt nog geen scores" />
         )
       }
     />

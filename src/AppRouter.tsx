@@ -36,7 +36,11 @@ const AppRouter = (): JSX.Element => {
       <Route exact path={ROUTES.SCORES_USER} component={ScoresUser} />
       <Route exact path={ROUTES.LIST_OF_PLAYERS} component={ListOfPlayers} />
       <Route exact path={ROUTES.SCORES_PLAYERS} component={ScoresPlayer} />
-      <Route exact path={ROUTES.PREDICTIONS_PLAYERS} component={PredictionsPlayer} />
+      <Route
+        exact
+        path={ROUTES.PREDICTIONS_PLAYERS}
+        component={PredictionsPlayer}
+      />
       <Route exact path={ROUTES.PREDICTIONS} component={Predictions} />
       <Route exact path={ROUTES.FIXTURES} component={Fixture} />
       <Redirect path="/" to={ROUTES.PAGE_NOT_FOUND} />

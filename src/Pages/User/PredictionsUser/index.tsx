@@ -35,12 +35,12 @@ const PredictionsUser: React.FC = (): ReactElement => {
       content={
         filteredFixtures ? (
           <>
-            <PageTitle title={`Mijn voorspellingen`} color="primary" />
+            <PageTitle title="Mijn voorspellingen" color="primary" />
             <Predictions fixtures={filteredFixtures} display="private" />
             <Pagination totoround={totoRound} round={round} />
           </>
         ) : (
-          <MessageComponent message={`Geen voorspellingen gevonden`} />
+          <MessageComponent message="Geen voorspellingen gevonden" />
         )
       }
     />

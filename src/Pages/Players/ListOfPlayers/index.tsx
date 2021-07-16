@@ -28,7 +28,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
             <TableWithPlayers playersSortedByName={playersSortedByName} />
           </>
         ) : (
-          <MessageComponent message={`Geen spelers gevonden`} />
+          <MessageComponent message="Geen spelers gevonden" />
         )
       }
     />
