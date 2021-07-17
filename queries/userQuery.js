@@ -2,6 +2,26 @@ const bcrypt = require('bcrypt');
 const Team = require('../models').team;
 const User = require('../models').user;
 
+const getAllUsers = async () =>
+  await User.findAll({
+    attributes: [
+      'id',
+      'userName',
+      'firstName',
+      'lastName',
+      'email',
+      'phoneNumber',
+      'admin',
+      'totaalToto',
+    ],
+    include: [
+      {
+        model: Team,
+        attributes: ['id', 'logo', 'name'],
+      },
+    ],
+  });
+
 const createNewUser = async ({
   userName,
   firstName,
@@ -31,4 +51,4 @@ const getUserByEmail = async (email) =>
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
-module.exports = { createNewUser, getUserByEmail };
+module.exports = { getAllUsers, createNewUser, getUserByEmail };
