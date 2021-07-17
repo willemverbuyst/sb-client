@@ -44,10 +44,6 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.signup = catchAsync(async (req, res, next) => {
-  // if (!req.user.admin) {
-  //   return next(new AppError('Je moet een admin zijn voor dit verzoek!'), 403);
-  // }
-
   if (!validateSignupInput(req.body)) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
@@ -105,6 +101,14 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
+
+exports.restrictTo = (role) => (req, res, next) => {
+  if (!req.user[role] === true) {
+    return next(new AppError('Je moet een admin zijn voor dit verzoek!', 403));
+  }
+
+  next();
+};
 
 exports.forgotPassword = (req, res, next) => {};
 exports.resetPassword = (req, res, next) => {};
