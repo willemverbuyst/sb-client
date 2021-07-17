@@ -21,16 +21,7 @@ const validatePassword = (user, password, next) => {
 };
 
 const validateSignupInput = (
-  {
-    userName,
-    firstName,
-    lastName,
-    email,
-    password,
-    phoneNumber,
-    totaalToto,
-    teamId,
-  },
+  { userName, firstName, lastName, email, password, phoneNumber, teamId },
   next,
 ) => {
   if (
@@ -40,7 +31,6 @@ const validateSignupInput = (
     !email ||
     !password ||
     !phoneNumber ||
-    !totaalToto ||
     !teamId
   ) {
     return next(new AppError('Details ontbreken, probeer opnieuw!'), 400);

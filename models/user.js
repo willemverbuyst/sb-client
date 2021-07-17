@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       userName: {
         type: DataTypes.STRING,
-        unique: true,
         allowNull: false,
       },
       firstName: {
@@ -37,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'user',
-    }
+    },
   );
   return user;
 };

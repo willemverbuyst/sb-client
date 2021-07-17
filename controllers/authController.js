@@ -41,16 +41,6 @@ exports.signup = catchAsync(async (req, res, next) => {
   validateSignupInput(req.body, next);
 
   const newUser = await createNewUser(req.body);
-
-  // } catch (error) {
-  //   if (error.name === 'SequelizeUniqueConstraintError')
-  //     return res
-  //       .status(400)
-  //       .send({ message: 'Er is al een account met dit emailadres.' });
-
-  //   return res.status(400).send({ message: 'Er ging iets mis, sorry.' });
-  // }
-
   const token = toJWT({ userId: newUser.email });
 
   res.status(201).json({
