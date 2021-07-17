@@ -5,10 +5,12 @@ const {
   deleteUserAndHisPrediction,
   getAllUsers,
   getUserById,
+  updateUserProfile,
 } = require('../queries/userQuery');
 const {
   getPredictionsAndScoresPastFixtures,
 } = require('../queries/predictionQuery');
+const { validateProfileInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
 
 exports.deleteUser = catchAsync(async (req, res, next) => {
@@ -81,3 +83,31 @@ exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
     });
   },
 );
+
+exports.updateUserProfile = catchAsync(async (req, res, next) => {
+  const userId = Number(req.params.id);
+  const loggedInUserId = Number(req.user.id);
+
+  console.log(userId, '     ', loggedInUserId);
+
+  if (userId !== loggedInUserId) {
+    return next(new AppError('Je kan alleen je eigen profiel wijzigen!', 403));
+  }
+
+  if (!validateProfileInput(req.body)) {
+    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
+  }
+
+  const user = await updateUserProfile(loggedInUserId, req.body);
+
+  // delete user.dataValues['password'];
+  // const token = toJWT({ userId: user.id });
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user: user,
+    },
+    message: 'Je profiel is gewijzigd.',
+  });
+});

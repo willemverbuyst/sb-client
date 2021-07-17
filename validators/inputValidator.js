@@ -13,6 +13,18 @@ const validatePredictionInput = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
     ? false
     : true;
 
+const validateProfileInput = ({
+  userName,
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  teamId,
+}) =>
+  !userName || !firstName || !lastName || !email || !phoneNumber || !teamId
+    ? false
+    : true;
+
 const validateSignupInput = ({
   userName,
   firstName,
@@ -35,6 +47,7 @@ const validateSignupInput = ({
 module.exports = {
   validateLoginInput,
   validatePassword,
+  validateProfileInput,
   validatePredictionInput,
   validateSignupInput,
 };

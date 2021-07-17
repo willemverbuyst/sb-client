@@ -80,10 +80,28 @@ const getUserByEmail = async (email) =>
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
+const updateUserProfile = async (
+  id,
+  { userName, firstName, lastName, email, phoneNumber, totaalToto, teamId },
+) =>
+  await User.update(
+    {
+      userName,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      totaalToto,
+      teamId,
+    },
+    { where: { id }, returning: true, plain: true },
+  );
+
 module.exports = {
   createNewUser,
   deleteUserAndHisPrediction,
   getAllUsers,
   getUserById,
   getUserByEmail,
+  updateUserProfile,
 };

@@ -24,6 +24,7 @@ router
     authController.restrictTo('admin'),
     userController.getUserById,
   )
+  .patch(authController.protect, userController.updateUserProfile)
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
