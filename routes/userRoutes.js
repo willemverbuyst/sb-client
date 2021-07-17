@@ -9,4 +9,6 @@ router.post('/signup', authController.signup);
 
 router.route('/').get(userController.getAllUsers);
 
+router.route('/:id').delete(userController.deleteUser);
+
 module.exports = router;

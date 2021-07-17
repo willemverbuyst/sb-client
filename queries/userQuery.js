@@ -1,6 +1,14 @@
 const bcrypt = require('bcrypt');
+const Prediction = require('../models').prediction;
 const Team = require('../models').team;
 const User = require('../models').user;
+
+const deleteUserAndHisPrediction = async (id) => {
+  const user = await User.destroy({ where: { id } });
+  await Prediction.destroy({ where: { userId: id } });
+
+  return user;
+};
 
 const getUsers = async () =>
   await User.findAll({
@@ -51,4 +59,9 @@ const getUserByEmail = async (email) =>
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
-module.exports = { getUsers, createNewUser, getUserByEmail };
+module.exports = {
+  deleteUserAndHisPrediction,
+  getUsers,
+  createNewUser,
+  getUserByEmail,
+};
