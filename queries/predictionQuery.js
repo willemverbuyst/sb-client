@@ -4,6 +4,19 @@ const Prediction = require('../models').prediction;
 const { chunkArrayTotoRounds } = require('../utils/helper-functions');
 const calcScores = require('../utils/calc-scores');
 
+const createPrediction = async (
+  pGoalsHomeTeam,
+  pGoalsAwayTeam,
+  userId,
+  fixtureId,
+) =>
+  await Prediction.create({
+    pGoalsHomeTeam: +pGoalsHomeTeam,
+    pGoalsAwayTeam: +pGoalsAwayTeam,
+    userId,
+    fixtureId: +fixtureId,
+  });
+
 const getPredictionsAndScoresPastFixtures = async (id) => {
   const fixturesWithPrediction = await Fixture.findAll({
     include: {
@@ -57,4 +70,4 @@ const getPredictionsAndScoresPastFixtures = async (id) => {
   return fixturesWithHiddenPredictions;
 };
 
-module.exports = { getPredictionsAndScoresPastFixtures };
+module.exports = { createPrediction, getPredictionsAndScoresPastFixtures };

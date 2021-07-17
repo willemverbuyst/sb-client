@@ -3,6 +3,7 @@ const morgan = require('morgan');
 
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
+const predictionRouter = require('./routes/predictionRoutes');
 const teamRouter = require('./routes/teamRoutes');
 const userRouter = require('./routes/userRoutes');
 
@@ -21,6 +22,7 @@ app.use((res, req, next) => {
   next();
 });
 
+app.use('/api/v1/predictions', predictionRouter);
 app.use('/api/v1/teams', teamRouter);
 app.use('/api/v1/users', userRouter);
 

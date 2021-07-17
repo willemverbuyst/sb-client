@@ -7,7 +7,7 @@ const {
 } = require('../queries/userQuery');
 const {
   getPredictionsAndScoresPastFixtures,
-} = require('../queries/predictionsQuery');
+} = require('../queries/predictionQuery');
 
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const user = await deleteUserAndHisPrediction(req.params.id);
@@ -35,7 +35,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.userWithPredictionsAndScoresPastFixtures = catchAsync(
+exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
   async (req, res, next) => {
     const user = await getUserById(req.params.id);
 

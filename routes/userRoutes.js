@@ -11,7 +11,7 @@ router.route('/').get(userController.getAllUsers);
 
 router
   .route('/:id')
-  .get(userController.userWithPredictionsAndScoresPastFixtures)
+  .get(userController.getUserWithPredictionsAndScoresPastFixtures)
   .delete(userController.deleteUser);
 
 module.exports = router;
