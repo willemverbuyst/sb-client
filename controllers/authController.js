@@ -1,3 +1,4 @@
+const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const { toJWT } = require('../auth/jwt');
 const { getUserByEmail, createNewUser } = require('../queries/userQuery');
@@ -11,11 +12,20 @@ const {
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
-  validateLoginInput(email, password, next);
+  if (!validateLoginInput(email, password)) {
+    return next(new AppError('Vul email en wachtwoord in!'), 400);
+  }
 
   const user = await getUserByEmail(email);
 
-  validatePassword(user, password, next);
+  if (!validatePassword(user, password)) {
+    return next(
+      new AppError(
+        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
+        401,
+      ),
+    );
+  }
 
   const currentRound = await getCurrentRoundForUser(user.id);
   const token = toJWT({ userId: user.email });
@@ -36,15 +46,15 @@ exports.signup = catchAsync(async (req, res, next) => {
   //   return next(new AppError('Je moet een admin zijn voor dit verzoek!'), 403);
   // }
 
-  validateSignupInput(req.body, next);
+  if (!validateSignupInput(req.body)) {
+    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
+  }
 
   const newUser = await createNewUser(req.body);
-  const token = toJWT({ userId: newUser.email });
 
   res.status(201).json({
     status: 'success',
     data: { user: newUser },
     message: `Er is een nieuw account gemaakt voor ${newUser.dataValues.userName}.`,
-    token,
   });
 });

@@ -2,31 +2,27 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const { getFixture } = require('../queries/fixtureQuery');
 const { createPrediction } = require('../queries/predictionQuery');
+const { validatePredictionInput } = require('../validators/inputValidator');
+const { validateFixtureStatus } = require('../validators/queryValidator');
 
 exports.postPrediction = catchAsync(async (req, res, next) => {
   // TODO get logged in user
   const userId = 1;
   const { pGoalsHomeTeam, pGoalsAwayTeam, fixtureId } = req.body;
 
-  if (
-    typeof pGoalsHomeTeam !== 'number' ||
-    typeof pGoalsAwayTeam !== 'number' ||
-    !fixtureId
-  ) {
-    next(new AppError('Details ontbreken, probeer opnieuw!', 404));
-    return;
+  if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
+    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
 
   const fixture = await getFixture(fixtureId);
 
-  if (fixture.status === 'Matched Finished') {
-    next(
+  if (!validateFixtureStatus(fixture.status, next)) {
+    return next(
       new AppError(
         'Je kan de uitslag van een afgelopen wedstrijd niet wijzigen!',
         404,
       ),
     );
-    return;
   }
 
   const createdPrediction = await createPrediction(

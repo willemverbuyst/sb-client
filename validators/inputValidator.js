@@ -1,41 +1,40 @@
 const bcrypt = require('bcrypt');
-const AppError = require('../utils/appError');
 
-const validateLoginInput = (email, password, next) => {
-  if (!email || !password) {
-    return next(new AppError('Vul email en wachtwoord in!'), 400);
-  }
-  return true;
+const validateLoginInput = (email, password) =>
+  !email || !password ? false : true;
+
+const validatePassword = (user, password) =>
+  !user || !bcrypt.compareSync(password, user.password) ? false : true;
+
+const validatePredictionInput = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
+  typeof pGoalsHomeTeam !== 'number' ||
+  typeof pGoalsAwayTeam !== 'number' ||
+  !fixtureId
+    ? false
+    : true;
+
+const validateSignupInput = ({
+  userName,
+  firstName,
+  lastName,
+  email,
+  password,
+  phoneNumber,
+  teamId,
+}) =>
+  !userName ||
+  !firstName ||
+  !lastName ||
+  !email ||
+  !password ||
+  !phoneNumber ||
+  !teamId
+    ? false
+    : true;
+
+module.exports = {
+  validateLoginInput,
+  validatePassword,
+  validatePredictionInput,
+  validateSignupInput,
 };
-
-const validatePassword = (user, password, next) => {
-  if (!user || !bcrypt.compareSync(password, user.password)) {
-    return next(
-      new AppError(
-        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
-        401,
-      ),
-    );
-  }
-  return true;
-};
-
-const validateSignupInput = (
-  { userName, firstName, lastName, email, password, phoneNumber, teamId },
-  next,
-) => {
-  if (
-    !userName ||
-    !firstName ||
-    !lastName ||
-    !email ||
-    !password ||
-    !phoneNumber ||
-    !teamId
-  ) {
-    return next(new AppError('Details ontbreken, probeer opnieuw!'), 400);
-  }
-  return true;
-};
-
-module.exports = { validateLoginInput, validatePassword, validateSignupInput };

@@ -1,12 +1,7 @@
 const AppError = require('../utils/appError');
 
-const handleGenericErrorDB = (err) => {
-  const message = `${err}`;
-  return new AppError(message, 400);
-};
-
-const handleDuplicateEmail = (err) => {
-  const message = 'Er is al een account met dit emailadres.';
+const handleUniqueConstraintError = (err) => {
+  const message = `Error: ${err.errors[0].message}`;
   return new AppError(message, 400);
 };
 
@@ -34,25 +29,35 @@ const sendError = (err, res) => {
   }
 };
 
+const sendErrorDev = (err, res) => {
+  res.status(err.statusCode).json({
+    status: err.status,
+    error: err,
+    message: err.message,
+    stack: err.stack,
+  });
+};
+
 module.exports = (err, req, res, next) => {
   // console.log(err.stack);
 
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-  let error = Object.create(err);
-  if (error.name === 'SequelizeDatabaseError') {
-    error = handleGenericErrorDB(error);
-  }
-  if (error.name === 'SequelizeUniqueConstraintError') {
-    error = handleDuplicateEmail(error);
-  }
-  if (error.name === 'JsonwebTokenError') {
-    error = handleJWTError();
-  }
-  if (error.name === 'TokenExpiredError') {
-    error = handleJWTExpiredError();
-  }
+  if (process.env.NODE_ENV === 'development') {
+    sendErrorDev(err, res);
+  } else if (process.env.NODE_ENV === 'production') {
+    let error = Object.create(err);
+    if (error.name === 'SequelizeUniqueConstraintError') {
+      error = handleUniqueConstraintError(error);
+    }
+    if (error.name === 'JsonwebTokenError') {
+      error = handleJWTError();
+    }
+    if (error.name === 'TokenExpiredError') {
+      error = handleJWTExpiredError();
+    }
 
-  sendError(error, res);
+    sendError(error, res);
+  }
 };

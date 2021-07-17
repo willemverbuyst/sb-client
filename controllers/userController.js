@@ -8,14 +8,13 @@ const {
 const {
   getPredictionsAndScoresPastFixtures,
 } = require('../queries/predictionQuery');
+const { validateUser } = require('../validators/queryValidator');
 
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const user = await deleteUserAndHisPrediction(req.params.id);
-  console.log('user ', user);
 
-  if (user !== 1) {
-    next(new AppError('Geen speler gevonden met deze id!', 404));
-    return;
+  if (!validateUser(user)) {
+    return next(new AppError('Geen speler gevonden met deze id!', 404));
   }
 
   res
@@ -39,9 +38,8 @@ exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
   async (req, res, next) => {
     const user = await getUserById(req.params.id);
 
-    if (!user) {
-      next(new AppError('Geen speler gevonden met deze id!', 404));
-      return;
+    if (!validateUser(user)) {
+      return next(new AppError('Geen speler gevonden met deze id!', 404));
     }
 
     user.pastFixturesWithScores = await getPredictionsAndScoresPastFixtures(

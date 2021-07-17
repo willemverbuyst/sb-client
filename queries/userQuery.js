@@ -63,7 +63,6 @@ const createNewUser = async ({
   email,
   password,
   phoneNumber,
-  admin,
   totaalToto,
   teamId,
 }) =>
@@ -74,7 +73,6 @@ const createNewUser = async ({
     email,
     password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
     phoneNumber,
-    admin,
     totaalToto,
     teamId,
   });
