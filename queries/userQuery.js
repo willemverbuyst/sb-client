@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const Team = require('../models').team;
 const User = require('../models').user;
 
@@ -17,7 +18,7 @@ const createNewUser = async ({
     firstName,
     lastName,
     email,
-    password: bcrypt.hashSync(password, process.env.SALT_ROUNDS),
+    password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
     phoneNumber,
     admin,
     totaalToto,

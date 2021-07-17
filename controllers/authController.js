@@ -7,6 +7,7 @@ const { getCurrentRoundForUser } = require('../queries/roundQuery');
 const {
   validateLoginInput,
   validatePassword,
+  validateSignupInput,
 } = require('../validators/inputValidator');
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -33,21 +34,11 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.signup = catchAsync(async (req, res, next) => {
-  if (!req.user.admin) {
-    return next(new AppError('Je moet een admin zijn voor dit verzoek!'), 403);
-  }
-
-  // if (
-  //   !userName ||
-  //   !firstName ||
-  //   !lastName ||
-  //   !email ||
-  //   !password ||
-  //   !phoneNumber ||
-  //   !teamId
-  // ) {
-  //   return next(new AppError('Details ontbreken, probeer opnieuw!'), 400);
+  // if (!req.user.admin) {
+  //   return next(new AppError('Je moet een admin zijn voor dit verzoek!'), 403);
   // }
+
+  validateSignupInput(req.body, next);
 
   const newUser = await createNewUser(req.body);
 

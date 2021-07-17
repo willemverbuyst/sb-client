@@ -20,4 +20,32 @@ const validatePassword = (user, password, next) => {
   return true;
 };
 
-module.exports = { validateLoginInput, validatePassword };
+const validateSignupInput = (
+  {
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber,
+    totaalToto,
+    teamId,
+  },
+  next,
+) => {
+  if (
+    !userName ||
+    !firstName ||
+    !lastName ||
+    !email ||
+    !password ||
+    !phoneNumber ||
+    !totaalToto ||
+    !teamId
+  ) {
+    return next(new AppError('Details ontbreken, probeer opnieuw!'), 400);
+  }
+  return true;
+};
+
+module.exports = { validateLoginInput, validatePassword, validateSignupInput };
