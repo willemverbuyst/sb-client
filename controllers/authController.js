@@ -1,6 +1,4 @@
 const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
-
 const { toJWT } = require('../auth/jwt');
 const { getUserByEmail, createNewUser } = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/roundQuery');
