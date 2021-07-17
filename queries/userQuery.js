@@ -33,7 +33,7 @@ const getUserById = async (id) =>
     nest: true,
   });
 
-const getUsers = async () =>
+const getAllUsers = async () =>
   await User.findAll({
     attributes: [
       'id',
@@ -83,7 +83,7 @@ const getUserByEmail = async (email) =>
 module.exports = {
   createNewUser,
   deleteUserAndHisPrediction,
+  getAllUsers,
   getUserById,
   getUserByEmail,
-  getUsers,
 };

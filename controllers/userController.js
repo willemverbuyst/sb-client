@@ -2,8 +2,8 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const {
   deleteUserAndHisPrediction,
+  getAllUsers,
   getUserById,
-  getUsers,
 } = require('../queries/userQuery');
 const {
   getPredictionsAndScoresPastFixtures,
@@ -23,7 +23,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 });
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await getUsers();
+  const users = await getAllUsers();
 
   res.status(200).json({
     status: 'success',

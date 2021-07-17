@@ -1,5 +1,5 @@
 const Team = require('../models').team;
 
-const getTeams = async () => await Team.findAll();
+const getAllTeams = async () => await Team.findAll();
 
-module.exports = { getTeams };
+module.exports = { getAllTeams };

@@ -1,8 +1,8 @@
 const catchAsync = require('../utils/catchAsync');
-const { getTeams } = require('../queries/teamQuery');
+const { getAllTeams } = require('../queries/teamQuery');
 
 exports.getAllTeams = catchAsync(async (req, res, next) => {
-  const teams = await getTeams();
+  const teams = await getAllTeams();
 
   res.status(200).json({
     status: 'success',

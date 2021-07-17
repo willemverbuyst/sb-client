@@ -9,8 +9,7 @@ const { validatePredictionInput } = require('../validators/inputValidator');
 const { validateFixtureStatus } = require('../validators/queryValidator');
 
 exports.postPrediction = catchAsync(async (req, res, next) => {
-  // TODO get logged in user
-  const userId = 1;
+  const userId = req.user.dataValues.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam, fixtureId } = req.body;
 
   if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
@@ -45,8 +44,7 @@ exports.postPrediction = catchAsync(async (req, res, next) => {
 });
 
 exports.updatePrediction = catchAsync(async (req, res, next) => {
-  // TODO get logged in user
-  const userId = 1;
+  const userId = req.user.dataValues.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam, fixtureId } = req.body;
 
   if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
