@@ -4,7 +4,7 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
 const { getUserByEmail, createNewUser } = require('../queries/userQuery');
-const { getCurrentRoundForUser } = require('../queries/roundQuery');
+const { getCurrentRoundForUser } = require('../queries/fixtureQuery');
 const {
   validateLoginInput,
   validatePassword,
