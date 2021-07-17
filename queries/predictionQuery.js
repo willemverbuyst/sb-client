@@ -9,13 +9,22 @@ const createPrediction = async (
   pGoalsAwayTeam,
   userId,
   fixtureId,
-) =>
+) => {
   await Prediction.create({
     pGoalsHomeTeam: +pGoalsHomeTeam,
     pGoalsAwayTeam: +pGoalsAwayTeam,
     userId,
     fixtureId: +fixtureId,
   });
+
+  const prediction = {
+    pGoalsAwayTeam: createdPrediction.pGoalsAwayTeam,
+    pGoalsHomeTeam: createdPrediction.pGoalsHomeTeam,
+    fixtureId: createdPrediction.fixtureId,
+  };
+
+  return prediction;
+};
 
 const getPredictionsAndScoresPastFixtures = async (id) => {
   const fixturesWithPrediction = await Fixture.findAll({
@@ -70,4 +79,31 @@ const getPredictionsAndScoresPastFixtures = async (id) => {
   return fixturesWithHiddenPredictions;
 };
 
-module.exports = { createPrediction, getPredictionsAndScoresPastFixtures };
+const updatePrediction = async (
+  pGoalsHomeTeam,
+  pGoalsAwayTeam,
+  fixtureId,
+  userId,
+) => {
+  const updatedPrediction = await Prediction.update(
+    {
+      pGoalsHomeTeam: pGoalsHomeTeam,
+      pGoalsAwayTeam: pGoalsAwayTeam,
+    },
+    { where: { fixtureId, userId }, returning: true, plain: true },
+  );
+
+  const prediction = {
+    pGoalsAwayTeam: updatedPrediction[1].dataValues.pGoalsAwayTeam,
+    pGoalsHomeTeam: updatedPrediction[1].dataValues.pGoalsHomeTeam,
+    fixtureId: updatedPrediction[1].dataValues.fixtureId,
+  };
+
+  return prediction;
+};
+
+module.exports = {
+  createPrediction,
+  getPredictionsAndScoresPastFixtures,
+  updatePrediction,
+};

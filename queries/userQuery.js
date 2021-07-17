@@ -1,10 +1,7 @@
 const bcrypt = require('bcrypt');
-const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const Team = require('../models').team;
 const User = require('../models').user;
-const { chunkArrayTotoRounds } = require('../utils/helper-functions');
-const calcScores = require('../utils/calc-scores');
 
 const deleteUserAndHisPrediction = async (id) => {
   const user = await User.destroy({ where: { id } });

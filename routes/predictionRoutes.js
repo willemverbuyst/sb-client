@@ -3,6 +3,9 @@ const predictionController = require('../controllers/predictionController');
 
 const router = express.Router();
 
-router.post('/', predictionController.postPrediction);
+router
+  .route('/')
+  .post(predictionController.postPrediction)
+  .patch(predictionController.updatePrediction);
 
 module.exports = router;
