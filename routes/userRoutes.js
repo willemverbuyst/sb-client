@@ -21,12 +21,24 @@ router
   .route('/:id')
   .get(
     authController.protect,
-    userController.getUserWithPredictionsAndScoresPastFixtures,
+    authController.restrictTo('admin'),
+    userController.getUserById,
   )
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
     userController.deleteUser,
   );
+
+router
+  .route('/:id/predictions')
+  .get(
+    authController.protect,
+    userController.getUserWithPredictionsAndScoresPastFixtures,
+  );
+
+router
+  .route('/me/fixtures')
+  .get(authController.protect, userController.getAllFixturesForLoggedInUser);
 
 module.exports = router;

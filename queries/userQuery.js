@@ -12,7 +12,7 @@ const deleteUserAndHisPrediction = async (id) => {
 
 const getUserById = async (id) =>
   await User.findOne({
-    where: { id: +id },
+    where: { id: id },
     attributes: [
       'id',
       'userName',

@@ -1,5 +1,6 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const { getAllFixturesForLoggedInUser } = require('../queries/fixtureQuery');
 const {
   deleteUserAndHisPrediction,
   getAllUsers,
@@ -22,8 +23,34 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
     .json({ status: 'success', data: null, message: 'Speler is verwijderd!' });
 });
 
+exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, next) => {
+  const userId = req.user.dataValues.id;
+
+  const fixtures = await getAllFixturesForLoggedInUser(userId);
+
+  res.status(200).json({
+    status: 'success',
+    result: fixtures.length,
+    data: {
+      fixtures,
+    },
+  });
+});
+
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await getAllUsers();
+
+  res.status(200).json({
+    status: 'success',
+    results: users.length,
+    data: {
+      users,
+    },
+  });
+});
+
+exports.getUserById = catchAsync(async (req, res, next) => {
+  const users = await getUserById(req.params.id);
 
   res.status(200).json({
     status: 'success',

@@ -2,7 +2,7 @@ const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const { toJWT } = require('../auth/jwt');
+
 const { getUserByEmail, createNewUser } = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/roundQuery');
 const {
@@ -10,6 +10,11 @@ const {
   validatePassword,
   validateSignupInput,
 } = require('../validators/inputValidator');
+
+const signToken = (data) =>
+  jwt.sign(data, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -30,7 +35,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const currentRound = await getCurrentRoundForUser(user.id);
-  const token = toJWT({ userId: user.email });
+  const token = signToken({ userId: user.email });
 
   res.status(200).json({
     status: 'success',
