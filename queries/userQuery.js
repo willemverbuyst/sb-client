@@ -1,7 +1,10 @@
 const bcrypt = require('bcrypt');
+const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const Team = require('../models').team;
 const User = require('../models').user;
+const { chunkArrayTotoRounds } = require('../utils/helper-functions');
+const calcScores = require('../utils/calc-scores');
 
 const deleteUserAndHisPrediction = async (id) => {
   const user = await User.destroy({ where: { id } });
@@ -9,6 +12,29 @@ const deleteUserAndHisPrediction = async (id) => {
 
   return user;
 };
+
+const getUserById = async (id) =>
+  await User.findOne({
+    where: { id: +id },
+    attributes: [
+      'id',
+      'userName',
+      'firstName',
+      'lastName',
+      'email',
+      'phoneNumber',
+      'admin',
+      'totaalToto',
+    ],
+    include: [
+      {
+        model: Team,
+        attributes: ['id', 'logo', 'name'],
+      },
+    ],
+    raw: true,
+    nest: true,
+  });
 
 const getUsers = async () =>
   await User.findAll({
@@ -60,8 +86,9 @@ const getUserByEmail = async (email) =>
   });
 
 module.exports = {
-  deleteUserAndHisPrediction,
-  getUsers,
   createNewUser,
+  deleteUserAndHisPrediction,
+  getUserById,
   getUserByEmail,
+  getUsers,
 };

@@ -2,8 +2,12 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const {
   deleteUserAndHisPrediction,
+  getUserById,
   getUsers,
 } = require('../queries/userQuery');
+const {
+  getPredictionsAndScoresPastFixtures,
+} = require('../queries/predictionsQuery');
 
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const user = await deleteUserAndHisPrediction(req.params.id);
@@ -30,3 +34,25 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.userWithPredictionsAndScoresPastFixtures = catchAsync(
+  async (req, res, next) => {
+    const user = await getUserById(req.params.id);
+
+    if (!user) {
+      next(new AppError('Geen speler gevonden met deze id!', 404));
+      return;
+    }
+
+    user.pastFixturesWithScores = await getPredictionsAndScoresPastFixtures(
+      user.id,
+    );
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        user,
+      },
+    });
+  },
+);
