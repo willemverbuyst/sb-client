@@ -1,11 +1,10 @@
 import { IPrediction } from '../../models/predictions.model';
-import { ICurrentRound, TotoRound } from '../../models/toto.models';
+import { TotoRound } from '../../models/toto.models';
 import {
   ActionType,
   PostPrediction,
   ResetAllFixtures,
   StoreAllFixtures,
-  StoreCurrentRound,
   UpdatePrediction,
 } from './action-types';
 
@@ -15,15 +14,6 @@ export const storeAllFixtures = (
   return {
     type: ActionType.STORE_ALL_FIXTURES,
     payload: allFixtures,
-  };
-};
-
-export const storeCurrentRound = (
-  currentRound: ICurrentRound,
-): StoreCurrentRound => {
-  return {
-    type: ActionType.STORE_CURRENT_ROUND,
-    payload: currentRound,
   };
 };
 

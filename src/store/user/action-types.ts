@@ -1,13 +1,14 @@
 import { IUser } from '../../models/player.model';
 import { ICurrentRound } from '../../models/toto.models';
 
-interface IUserWithCurrentRound extends IUser {
-  currentRound: ICurrentRound;
-}
-
 interface ApiResponse {
   status: string;
-  data: { user: IUserWithCurrentRound };
+  data: {
+    user: {
+      profile: IUser;
+      currentRound: ICurrentRound;
+    };
+  };
   token: string;
 }
 
@@ -29,12 +30,12 @@ export type LogOutUser = {
 
 export type TokenUserStillValid = {
   type: ActionType.TOKEN_STILL_VALID_USER;
-  payload: IUserWithCurrentRound;
+  payload: ApiResponse;
 };
 
 export type UpdateUserProfile = {
   type: ActionType.UPDATE_USER_PROFILE;
-  payload: IUserWithCurrentRound;
+  payload: ApiResponse;
 };
 
 export type UserActions =

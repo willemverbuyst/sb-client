@@ -5,26 +5,6 @@ import {
 import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
-export const selectCurrentRoundSortedByTime = (
-  state: StoreState,
-): IFixtureWithScoreAndPredictions[] | null => {
-  if (
-    state.predictionsState.currentRound &&
-    state.predictionsState.currentRound.fixtures &&
-    state.predictionsState.currentRound.fixtures.length > 0
-  ) {
-    const fixtures = state.predictionsState.currentRound.fixtures;
-
-    const currentRoundSortedByTime = UTILS.sortArrayWithObjects<
-      keyof IFixtureWithScoreAndPredictions,
-      IFixtureWithScoreAndPredictions
-    >('eventTimeStamp')(fixtures);
-
-    return currentRoundSortedByTime;
-  }
-  return null;
-};
-
 export const selectFixtures = (state: StoreState): TotoRound[] | null =>
   state.predictionsState.allFixtures;
 

@@ -9,7 +9,10 @@ export interface IUserWithCurrentRound extends IUser {
 
 export interface IUserState {
   token: string | null;
-  user: IUserWithCurrentRound | null;
+  user: {
+    profile: IUser;
+    currentRound: ICurrentRound;
+  } | null;
 }
 
 const token = localStorage.getItem('user_token');
@@ -32,10 +35,10 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
       return { ...initialState, token: null, user: null };
 
     case ActionType.TOKEN_STILL_VALID_USER:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload.data.user };
 
     case ActionType.UPDATE_USER_PROFILE:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload.data.user };
 
     default:
       return state;

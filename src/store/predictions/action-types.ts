@@ -1,5 +1,5 @@
 import { IPrediction } from '../../models/predictions.model';
-import { ICurrentRound, TotoRound } from '../../models/toto.models';
+import { TotoRound } from '../../models/toto.models';
 
 export enum ActionType {
   STORE_CURRENT_ROUND = 'STORE_CURRENT_ROUND',
@@ -23,11 +23,6 @@ export type StoreAllFixtures = {
   payload: TotoRound[];
 };
 
-export type StoreCurrentRound = {
-  type: ActionType.STORE_CURRENT_ROUND;
-  payload: ICurrentRound;
-};
-
 export type UpdatePrediction = {
   type: ActionType.UPDATE_PREDICTION;
   payload: IPrediction;
@@ -37,5 +32,4 @@ export type PredictionActions =
   | PostPrediction
   | ResetAllFixtures
   | StoreAllFixtures
-  | StoreCurrentRound
   | UpdatePrediction;

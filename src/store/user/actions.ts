@@ -8,13 +8,14 @@ import {
   UpdateUserProfile,
 } from './action-types';
 
-interface IUserWithCurrentRound extends IUser {
-  currentRound: ICurrentRound;
-}
-
 interface ApiResponse {
   status: string;
-  data: { user: IUserWithCurrentRound };
+  data: {
+    user: {
+      profile: IUser;
+      currentRound: ICurrentRound;
+    };
+  };
   token: string;
 }
 
@@ -34,13 +35,13 @@ export const logOutUser = (): LogOutUser => {
 };
 
 export const tokenUserStillValid = (
-  user: IUserWithCurrentRound,
+  apiResponse: ApiResponse,
 ): TokenUserStillValid => {
-  return { type: ActionType.TOKEN_STILL_VALID_USER, payload: user };
+  return { type: ActionType.TOKEN_STILL_VALID_USER, payload: apiResponse };
 };
 
 export const updateUserProfile = (
-  user: IUserWithCurrentRound,
+  apiResponse: ApiResponse,
 ): UpdateUserProfile => {
-  return { type: ActionType.UPDATE_USER_PROFILE, payload: user };
+  return { type: ActionType.UPDATE_USER_PROFILE, payload: apiResponse };
 };

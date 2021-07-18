@@ -16,9 +16,6 @@ const predictionsReducer = (
   action: PredictionActions,
 ): IPredictionsState => {
   switch (action.type) {
-    case ActionType.STORE_CURRENT_ROUND:
-      return { ...state, currentRound: action.payload };
-
     case ActionType.STORE_ALL_FIXTURES:
       return { ...state, allFixtures: action.payload };
 
