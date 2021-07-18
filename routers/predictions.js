@@ -5,6 +5,7 @@ const Prediction = require('../models').prediction;
 
 const router = new Router();
 
+//####REFACTORED
 /*** POST A PREDICTION FOR A SPECIFIC FIXTURE ***/
 router.post('/', authMiddleware, async (req, res) => {
   const userId = req.user.id;
@@ -47,6 +48,7 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
+//####REFACTORED
 /*** CHANGE A PREDICTION FOR A SPECIFIC FIXTURE ***/
 router.patch('/:id', authMiddleware, async (req, res) => {
   const userId = +req.user.id;

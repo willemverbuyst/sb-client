@@ -13,6 +13,7 @@ const {
 
 const router = new Router();
 
+//####REFACTORED
 /*** GET THE SCORE OF EACH USER FOR A SPECIFIC PAST FIXTURE ***/
 /*** PUBLIC ***/
 router.get('/fixtures/:id', authMiddleware, async (req, res) => {

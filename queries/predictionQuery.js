@@ -1,6 +1,6 @@
 const Prediction = require('../models').prediction;
 const User = require('../models').user;
-const calcScores = require('../utils/calc-scores');
+const calculateScores = require('../utils/calc-scores');
 
 const createPrediction = async (
   pGoalsHomeTeam,
@@ -8,7 +8,7 @@ const createPrediction = async (
   userId,
   fixtureId,
 ) => {
-  await Prediction.create({
+  const createdPrediction = await Prediction.create({
     pGoalsHomeTeam: +pGoalsHomeTeam,
     pGoalsAwayTeam: +pGoalsAwayTeam,
     userId,
@@ -36,29 +36,29 @@ const getAllPredictionsForFixture = async (fixture) => {
     return null;
   }
 
-  const predictionsWithScores = predictions.map((pred) => {
+  const predictionsWithScores = predictions.map((prediction) => {
     return {
-      ...pred,
-      score: calcScores(
+      ...prediction,
+      score: calculateScores(
         {
           homeTeam: fixture.goalsHomeTeam,
           awayTeam: fixture.goalsAwayTeam,
         },
         {
-          homeTeam: pred.pGoalsHomeTeam,
-          awayTeam: pred.pGoalsAwayTeam,
+          homeTeam: prediction.pGoalsHomeTeam,
+          awayTeam: prediction.pGoalsAwayTeam,
         },
       ),
     };
   });
 
-  const scores = predictionsWithScores.map((a) => {
+  const scores = predictionsWithScores.map((predictionsWithScore) => {
     return {
-      pGoalsHomeTeam: a.pGoalsHomeTeam,
-      pGoalsAwayTeam: a.pGoalsAwayTeam,
-      score: a.score,
-      user: a.user.userName,
-      userId: a.user.id,
+      pGoalsHomeTeam: predictionsWithScore.pGoalsHomeTeam,
+      pGoalsAwayTeam: predictionsWithScore.pGoalsAwayTeam,
+      score: predictionsWithScore.score,
+      user: predictionsWithScore.user.userName,
+      userId: predictionsWithScore.user.id,
     };
   });
 

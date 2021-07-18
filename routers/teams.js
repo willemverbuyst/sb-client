@@ -4,6 +4,7 @@ const Team = require('../models').team;
 
 const router = new Router();
 
+//####REFACTORED
 /*** GET ALL TEAMS ***/
 router.get('/', authMiddleware, async (_req, res) => {
   try {

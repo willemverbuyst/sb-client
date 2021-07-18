@@ -19,6 +19,7 @@ const SALT_ROUNDS = process.env.SALT_ROUNDS;
 const calcScores = require('../utils/calc-scores');
 const router = new Router();
 
+//####REFACTORED
 /*** LOGIN ***/
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -99,6 +100,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+//####REFACTORED
 /*** SIGNUP NEW USER BY ADMIN ***/
 router.post('/signup', authMiddleware, async (req, res) => {
   const {

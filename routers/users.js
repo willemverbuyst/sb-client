@@ -13,6 +13,7 @@ const { Op } = require('sequelize');
 
 const router = new Router();
 
+//####REFACTORED
 /*** GET ALL USERS ***/
 router.get('/', authMiddleware, async (_req, res) => {
   try {
@@ -40,6 +41,7 @@ router.get('/', authMiddleware, async (_req, res) => {
   }
 });
 
+//####REFACTORED
 /*** GET A USER INCLUDING PREDICTIONS AND SCORES FOR PAST FIXTURES ***/
 /*** PUBLIC PROFILE ***/
 router.get('/:id', authMiddleware, async (req, res) => {
@@ -115,13 +117,13 @@ router.get('/:id', authMiddleware, async (req, res) => {
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
             awayTeam: fix.predictions.pGoalsAwayTeam,
-          }
+          },
         ),
       };
     });
 
     const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
-      fixturesWithPredictionAndScore
+      fixturesWithPredictionAndScore,
     );
 
     // Public: set predictions to null when match is not played yet
@@ -140,8 +142,8 @@ router.get('/:id', authMiddleware, async (req, res) => {
             } else {
               return fixture;
             }
-          })
-        )
+          }),
+        ),
     );
     user.pastFixturesWithScores = fixturesWithHiddenPredictions;
 
@@ -151,6 +153,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+//####REFACTORED --- OBSOLETE
 /*** UPDATE USER ADMIN STATUS BY ADMIN ***/
 router.patch('/:id/admin', authMiddleware, async (req, res) => {
   const { admin } = req.body;
@@ -213,6 +216,7 @@ router.patch('/:id/admin', authMiddleware, async (req, res) => {
   }
 });
 
+//####REFACTORED
 /*** DELETE USER AND HER/HIS PREDICTIONS BY ADMIN ***/
 router.delete('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;

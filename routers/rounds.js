@@ -13,6 +13,7 @@ const calcScores = require('../utils/calc-scores');
 
 const router = new Router();
 
+//####REFACTORED --- OBSOLETE
 /*** GET CURRENT ROUND (9 FIXTURES) FOR LOGGED IN USER ***/
 /*** INCLUDING PREDICTIONS AND SCORES ***/
 router.get('/current', authMiddleware, async (req, res) => {
@@ -48,7 +49,7 @@ router.get('/current', authMiddleware, async (req, res) => {
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
             awayTeam: fix.predictions.pGoalsAwayTeam,
-          }
+          },
         ),
       };
     });
@@ -70,6 +71,7 @@ router.get('/current', authMiddleware, async (req, res) => {
   }
 });
 
+//####REFACTORED
 /*** GET ALL 34 ROUNDS (306 FIXTURES) FOR LOGGED IN USER ***/
 /*** INCLUDING PREDICTIONS AND SCORES ***/
 router.get('/all', authMiddleware, async (req, res) => {
@@ -96,13 +98,13 @@ router.get('/all', authMiddleware, async (req, res) => {
           {
             homeTeam: fix.predictions.pGoalsHomeTeam,
             awayTeam: fix.predictions.pGoalsAwayTeam,
-          }
+          },
         ),
       };
     });
 
     const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
-      fixturesWithPredictionAndScore
+      fixturesWithPredictionAndScore,
     );
 
     res.status(200).send(fixturesGroupedByTotoRounds);
