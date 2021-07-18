@@ -63,15 +63,27 @@ const createNewUser = async ({
   totaalToto,
   teamId,
 }) =>
-  await User.create({
-    userName,
-    firstName,
-    lastName,
-    email,
-    password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
-    phoneNumber,
-    totaalToto,
-    teamId,
+  await User.create(
+    {
+      userName,
+      firstName,
+      lastName,
+      email,
+      password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
+      phoneNumber,
+      totaalToto,
+      teamId,
+    },
+    {
+      include: [
+        {
+          model: Team,
+          attributes: ['id', 'logo', 'name'],
+        },
+      ],
+    },
+  ).then((createdUser) => {
+    return createdUser.reload();
   });
 
 const getUserByEmail = async (email) =>
