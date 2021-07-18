@@ -1,6 +1,6 @@
 const Prediction = require('../models').prediction;
 const User = require('../models').user;
-const calculateScores = require('../utils/calc-scores');
+const calculateScore = require('../utils/calc-scores');
 
 const createPrediction = async (
   pGoalsHomeTeam,
@@ -56,7 +56,7 @@ const getAllPredictionsForFixture = async (fixture) => {
   const predictionsWithScores = predictions.map((prediction) => {
     return {
       ...prediction,
-      score: calculateScores(
+      score: calculateScore(
         {
           homeTeam: fixture.goalsHomeTeam,
           awayTeam: fixture.goalsAwayTeam,

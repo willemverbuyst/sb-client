@@ -35,13 +35,16 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const currentRound = await getCurrentRoundForUser(user.id);
+
   const token = signToken({ userId: user.email });
 
   res.status(200).json({
     status: 'success',
     data: {
-      currentRound,
-      user,
+      user: {
+        profile: user,
+        currentRound,
+      },
     },
     message: `Welcome back ${user.userName}`,
     token,

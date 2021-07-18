@@ -1,4 +1,5 @@
 const express = require('express');
+const corsMiddleWare = require('cors');
 const morgan = require('morgan');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
@@ -8,6 +9,7 @@ const teamRouter = require('./routes/teamRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+app.use(corsMiddleWare());
 
 // For development
 console.log(`Environment: ${process.env.NODE_ENV}`);

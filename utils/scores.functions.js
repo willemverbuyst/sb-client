@@ -4,7 +4,7 @@ const addScoresTofixturesWithPrediction = (fixturesWithPrediction) =>
   fixturesWithPrediction.map((fixtureWithPrediction) => {
     return {
       ...fixtureWithPrediction,
-      score: calculateScores(
+      score: calculateScore(
         {
           homeTeam: fixtureWithPrediction.goalsHomeTeam,
           awayTeam: fixtureWithPrediction.goalsAwayTeam,
