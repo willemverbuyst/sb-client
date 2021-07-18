@@ -1,5 +1,6 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
+const User = require('../models').user;
 
 const { chunkArrayTotoRounds } = require('../utils/helper-functions');
 const calcScores = require('../utils/calc-scores');
@@ -24,6 +25,47 @@ const createPrediction = async (
   };
 
   return prediction;
+};
+
+const getAllPredictionsForFixture = async (fixture) => {
+  const predictions = await Prediction.findAll({
+    where: { fixtureId: fixture.id },
+    include: [{ model: User, attributes: ['userName', 'id'] }],
+    raw: true,
+    nest: true,
+  });
+
+  if (fixture.status !== 'Match Finished' || !(predictions.length > 0)) {
+    return null;
+  }
+
+  const predictionsWithScores = predictions.map((pred) => {
+    return {
+      ...pred,
+      score: calcScores(
+        {
+          homeTeam: fixture.goalsHomeTeam,
+          awayTeam: fixture.goalsAwayTeam,
+        },
+        {
+          homeTeam: pred.pGoalsHomeTeam,
+          awayTeam: pred.pGoalsAwayTeam,
+        },
+      ),
+    };
+  });
+
+  const scores = predictionsWithScores.map((a) => {
+    return {
+      pGoalsHomeTeam: a.pGoalsHomeTeam,
+      pGoalsAwayTeam: a.pGoalsAwayTeam,
+      score: a.score,
+      user: a.user.userName,
+      userId: a.user.id,
+    };
+  });
+
+  return scores;
 };
 
 const getPredictionsAndScoresPastFixtures = async (id) => {
@@ -104,6 +146,7 @@ const updatePrediction = async (
 
 module.exports = {
   createPrediction,
+  getAllPredictionsForFixture,
   getPredictionsAndScoresPastFixtures,
   updatePrediction,
 };
