@@ -1,14 +1,9 @@
-const getScoresContants = (score) => {
-  switch (score) {
-    case 'fullScore':
-      return 1;
-    case 'goalBonus':
-      return 2;
-    case 'totoScore':
-      return 5;
-    default:
-      return 0;
-  }
-};
+const FULL_SCORE = 1;
+const GOAL_BONUS = 2;
+const TOTO_SCORE = 5;
 
-module.exports = getScoresContants;
+module.exports = {
+  FULL_SCORE,
+  GOAL_BONUS,
+  TOTO_SCORE,
+};

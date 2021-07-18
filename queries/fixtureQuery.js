@@ -67,7 +67,6 @@ const getCurrentRoundForUser = async (id) => {
     return {
       ...fix,
       score: calcScores(
-        fix.status,
         { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
         {
           homeTeam: fix.predictions.pGoalsHomeTeam,
