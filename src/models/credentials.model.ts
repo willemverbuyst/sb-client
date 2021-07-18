@@ -9,7 +9,6 @@ export interface IProfileDetails {
   lastName: string;
   email: string;
   phoneNumber: string;
-  admin: boolean;
   totaalToto: boolean;
   teamId: number | '';
 }

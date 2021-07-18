@@ -27,7 +27,6 @@ export const addPlayer = (
     email,
     password,
     phoneNumber,
-    admin,
     totaalToto,
     teamId,
   } = signUpCredentials;
@@ -36,7 +35,7 @@ export const addPlayer = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.post(
-        `${API_URL}/signup`,
+        `${API_URL}/users/signup`,
         {
           userName,
           firstName,
@@ -44,15 +43,14 @@ export const addPlayer = (
           email,
           password,
           phoneNumber,
-          admin,
           totaalToto,
           teamId,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(addNewPlayer(response.data.userData));
-      dispatch(setMessage('success', response.data.message));
+      dispatch(addNewPlayer(response.data.user));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

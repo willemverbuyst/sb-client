@@ -22,9 +22,8 @@ export const fetchAllTeams = (): ThunkAction<
     const response = await axios.get(`${API_URL}/teams`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const teams = response.data;
 
-    dispatch(storeAllTeams(teams));
+    dispatch(storeAllTeams(response.data.data.teams));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

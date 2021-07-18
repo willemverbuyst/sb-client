@@ -61,7 +61,6 @@ export const editUserProfile = (
     lastName,
     email,
     phoneNumber,
-    admin,
     totaalToto,
     teamId,
   } = profileDetails;
@@ -77,7 +76,6 @@ export const editUserProfile = (
           lastName,
           email,
           phoneNumber,
-          admin,
           totaalToto,
           teamId,
         },
