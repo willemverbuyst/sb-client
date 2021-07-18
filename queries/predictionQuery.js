@@ -24,6 +24,7 @@ const createPrediction = async (
     return prediction;
   }
 
+  // If it does not exist, create a new prediction
   const createdPrediction = await Prediction.create({
     pGoalsHomeTeam: pGoalsHomeTeam,
     pGoalsAwayTeam: pGoalsAwayTeam,

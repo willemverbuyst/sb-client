@@ -4,6 +4,7 @@ const {
   totalFixtures,
   totoRounds,
 } = require('../constants/set-up-game');
+const calculateScores = require('./calc-scores');
 
 const lastMonday = () => {
   const date = new Date();
@@ -56,6 +57,7 @@ const getTotoRoundNumber = (seasonNumber) =>
     : Math.ceil(seasonNumber / roundsPerTotoRound);
 
 module.exports = {
+  addScoresTofixturesWithPrediction,
   lastMonday,
   nextMonday,
   chunkArray,

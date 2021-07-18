@@ -1,6 +1,5 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
-const calcScores = require('../utils/calc-scores');
 const { Op } = require('sequelize');
 const {
   chunkArrayTotoRounds,
@@ -8,9 +7,9 @@ const {
   lastMonday,
   nextMonday,
 } = require('../utils/helper-functions');
-
-const timeStampLastMonday = lastMonday();
-const timeStampNextMonday = nextMonday();
+const {
+  addScoresTofixturesWithPrediction,
+} = require('../utils/scores.functions');
 
 const getAllFixturesForLoggedInUser = async (userId) => {
   const fixturesWithPrediction = await Fixture.findAll({
@@ -25,19 +24,9 @@ const getAllFixturesForLoggedInUser = async (userId) => {
     nest: true,
   });
 
-  const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
-    return {
-      ...fix,
-      score: calcScores(
-        { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
-        {
-          homeTeam: fix.predictions.pGoalsHomeTeam,
-          awayTeam: fix.predictions.pGoalsAwayTeam,
-        },
-      ),
-    };
-  });
-
+  const fixturesWithPredictionAndScore = addScoresTofixturesWithPrediction(
+    fixturesWithPrediction,
+  );
   const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
     fixturesWithPredictionAndScore,
   );
@@ -46,6 +35,8 @@ const getAllFixturesForLoggedInUser = async (userId) => {
 };
 
 const getCurrentRoundForUser = async (id) => {
+  const timeStampLastMonday = lastMonday();
+  const timeStampNextMonday = nextMonday();
   const fixturesWithPrediction = await Fixture.findAll({
     where: {
       eventTimeStamp: {
@@ -63,18 +54,9 @@ const getCurrentRoundForUser = async (id) => {
     nest: true,
   });
 
-  const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
-    return {
-      ...fix,
-      score: calcScores(
-        { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
-        {
-          homeTeam: fix.predictions.pGoalsHomeTeam,
-          awayTeam: fix.predictions.pGoalsAwayTeam,
-        },
-      ),
-    };
-  });
+  const fixturesWithPredictionAndScore = addScoresTofixturesWithPrediction(
+    fixturesWithPrediction,
+  );
 
   let currentRound = null;
 
@@ -106,18 +88,9 @@ const getPastFixturesWithPredictionsAndScores = async (id) => {
     nest: true,
   });
 
-  const fixturesWithPredictionAndScore = fixturesWithPrediction.map((fix) => {
-    return {
-      ...fix,
-      score: calcScores(
-        { homeTeam: fix.goalsHomeTeam, awayTeam: fix.goalsAwayTeam },
-        {
-          homeTeam: fix.predictions.pGoalsHomeTeam,
-          awayTeam: fix.predictions.pGoalsAwayTeam,
-        },
-      ),
-    };
-  });
+  const fixturesWithPredictionAndScore = addScoresTofixturesWithPrediction(
+    fixturesWithPrediction,
+  );
 
   const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
     fixturesWithPredictionAndScore,
