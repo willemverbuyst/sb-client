@@ -53,22 +53,6 @@ const playersReducer = (
     case ActionType.STORE_PLAYER_SCORES:
       return { ...state, scoresPlayer: action.payload };
 
-    case ActionType.UPDATE_ADMIN_STATUS:
-      return {
-        ...state,
-        players: state.players
-          ? [
-              ...state.players.map((player) => {
-                if (player.id === action.payload.id) {
-                  return action.payload;
-                } else {
-                  return player;
-                }
-              }),
-            ]
-          : null,
-      };
-
     default:
       return state;
   }

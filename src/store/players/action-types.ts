@@ -11,7 +11,6 @@ export enum ActionType {
   STORE_ALL_PLAYERS = 'STORE_ALL_PLAYERS',
   STORE_PLAYER_PROFILE = 'STORE_PLAYER_PROFILE',
   STORE_PLAYER_SCORES = 'STORE_PLAYER_SCORES',
-  UPDATE_ADMIN_STATUS = 'UPDATE_ADMIN_STATUS',
 }
 
 export type AddNewPlayer = {
@@ -43,16 +42,10 @@ export type StorePlayerScores = {
   payload: IScoresPlayer;
 };
 
-export type UpdateAdminStatus = {
-  type: ActionType.UPDATE_ADMIN_STATUS;
-  payload: IPlayer;
-};
-
 export type PlayersActions =
   | AddNewPlayer
   | DeletePlayer
   | ResetPlayers
   | StoreAllPlayers
   | StorePlayerProfile
-  | StorePlayerScores
-  | UpdateAdminStatus;
+  | StorePlayerScores;

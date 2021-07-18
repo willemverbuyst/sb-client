@@ -15,7 +15,6 @@ import {
   storeAllPlayers,
   storePlayerProfile,
   storePlayerScores,
-  updateAdminStatus,
 } from './actions';
 
 export const addPlayer = (
@@ -162,39 +161,6 @@ export const playerDelete = (
     });
 
     dispatch(deletePlayer(id));
-    dispatch(setMessage('success', response.data.message));
-    dispatch(appDoneLoading());
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
-  }
-};
-
-export const updatePlayerAdminStatus = (
-  id: number,
-  admin: boolean,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<PlayersActions | AppStateActions>,
-) => {
-  dispatch(appLoading());
-  try {
-    const token = localStorage.getItem('user_token');
-    const response = await axios.patch(
-      `${API_URL}/users/${id}/admin`,
-      { admin },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      },
-    );
-    const player = response.data.updatedUser;
-
-    dispatch(updateAdminStatus(player));
     dispatch(setMessage('success', response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {

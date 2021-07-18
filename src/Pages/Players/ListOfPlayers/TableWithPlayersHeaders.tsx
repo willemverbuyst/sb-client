@@ -8,7 +8,6 @@ import { selectUser } from '../../../store/user/selectors';
 const TableWithPlayersHeaders = (): ReactElement => {
   const user = useSelector(selectUser);
   const headersRegularUser: [string, Align][] = [
-    ['admin', 'center'],
     ['user name', 'left'],
     ['team', 'left'],
     ['totaal-toto', 'center'],

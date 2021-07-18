@@ -11,7 +11,6 @@ import {
   StoreAllPlayers,
   StorePlayerProfile,
   StorePlayerScores,
-  UpdateAdminStatus,
 } from './action-types';
 
 export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
@@ -54,12 +53,5 @@ export const storePlayerScores = (
 export const resetPlayers = (): ResetPlayers => {
   return {
     type: ActionType.RESET_PLAYERS,
-  };
-};
-
-export const updateAdminStatus = (player: IPlayer): UpdateAdminStatus => {
-  return {
-    type: ActionType.UPDATE_ADMIN_STATUS,
-    payload: player,
   };
 };
