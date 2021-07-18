@@ -1,15 +1,16 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const { getAllFixturesForLoggedInUser } = require('../queries/fixtureQuery');
+const {
+  getAllFixturesForLoggedInUser,
+  getPastFixturesWithPredictionsAndScores,
+} = require('../queries/fixtureQuery');
 const {
   deleteUserAndHisPrediction,
   getAllUsers,
   getUserById,
   updateUserProfile,
 } = require('../queries/userQuery');
-const {
-  getPredictionsAndScoresPastFixtures,
-} = require('../queries/predictionQuery');
+
 const { validateProfileInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
 
@@ -71,7 +72,7 @@ exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
       return next(new AppError('Geen speler gevonden met deze id!', 404));
     }
 
-    user.pastFixturesWithScores = await getPredictionsAndScoresPastFixtures(
+    user.pastFixturesWithScores = await getPastFixturesWithPredictionsAndScores(
       user.id,
     );
 
