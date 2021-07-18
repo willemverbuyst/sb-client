@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import TableEditCancelButtons from '../../../../Components/Table/TableEditCancelButtons';
+import TableDeleteConfirmCancelButtons from '../../../../Components/Table/TableDeleteConfirmCancelButtons';
 
 const renderButtonsForAdmin = (
   editModus: boolean,
@@ -8,7 +8,7 @@ const renderButtonsForAdmin = (
   deletePlayer: () => void,
 ): ReactElement => {
   return (
-    <TableEditCancelButtons
+    <TableDeleteConfirmCancelButtons
       editModus={editModus}
       changeEditModus={toggleEditModus}
       handleDelete={deletePlayer}
