@@ -5,6 +5,12 @@ interface IUserWithCurrentRound extends IUser {
   currentRound: ICurrentRound;
 }
 
+interface ApiResponse {
+  status: string;
+  data: { user: IUserWithCurrentRound };
+  token: string;
+}
+
 export enum ActionType {
   LOG_IN_SUCCESS_USER = 'LOG_IN_SUCCESS_USER',
   LOG_OUT_USER = 'LOG_OUT_USER',
@@ -14,7 +20,7 @@ export enum ActionType {
 
 export type LogInSuccessUser = {
   type: ActionType.LOG_IN_SUCCESS_USER;
-  payload: IUserWithCurrentRound;
+  payload: ApiResponse;
 };
 
 export type LogOutUser = {

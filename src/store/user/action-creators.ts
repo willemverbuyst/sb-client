@@ -107,13 +107,13 @@ export const userLogIn = (
     dispatch(appLoading());
     try {
       const { email, password } = credentials;
-      const response = await axios.post(`${API_URL}/login`, {
+      const response = await axios.post(`${API_URL}/users/login`, {
         email,
         password,
       });
 
-      dispatch(logInSuccessUser(response.data.userData));
-      dispatch(setMessage('success', response.data.message));
+      dispatch(logInSuccessUser(response.data));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

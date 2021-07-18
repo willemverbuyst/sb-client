@@ -12,12 +12,18 @@ interface IUserWithCurrentRound extends IUser {
   currentRound: ICurrentRound;
 }
 
+interface ApiResponse {
+  status: string;
+  data: { user: IUserWithCurrentRound };
+  token: string;
+}
+
 export const logInSuccessUser = (
-  user: IUserWithCurrentRound,
+  apiResponse: ApiResponse,
 ): LogInSuccessUser => {
   return {
     type: ActionType.LOG_IN_SUCCESS_USER,
-    payload: user,
+    payload: apiResponse,
   };
 };
 
