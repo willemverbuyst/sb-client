@@ -5,7 +5,7 @@ const predictionController = require('../controllers/predictionController');
 const router = express.Router();
 
 router
-  .route('/')
+  .route('/:id')
   .post(authController.protect, predictionController.postPrediction)
   .patch(authController.protect, predictionController.updatePrediction);
 

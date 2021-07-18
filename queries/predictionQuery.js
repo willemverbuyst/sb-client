@@ -5,14 +5,30 @@ const calculateScores = require('../utils/calc-scores');
 const createPrediction = async (
   pGoalsHomeTeam,
   pGoalsAwayTeam,
-  userId,
   fixtureId,
+  userId,
 ) => {
+  // To prevent multiple predictions, check if it exists already
+  const predictionExists = await Prediction.findOne({
+    where: { fixtureId, userId },
+  });
+
+  // If so use updatePrediction instead
+  if (predictionExists) {
+    const prediction = await updatePrediction(
+      pGoalsHomeTeam,
+      pGoalsAwayTeam,
+      fixtureId,
+      userId,
+    );
+    return prediction;
+  }
+
   const createdPrediction = await Prediction.create({
-    pGoalsHomeTeam: +pGoalsHomeTeam,
-    pGoalsAwayTeam: +pGoalsAwayTeam,
+    pGoalsHomeTeam: pGoalsHomeTeam,
+    pGoalsAwayTeam: pGoalsAwayTeam,
     userId,
-    fixtureId: +fixtureId,
+    fixtureId: fixtureId,
   });
 
   const prediction = {

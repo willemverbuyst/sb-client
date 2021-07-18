@@ -10,7 +10,8 @@ const { validateFixtureStatus } = require('../validators/queryValidator');
 
 exports.postPrediction = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
-  const { pGoalsHomeTeam, pGoalsAwayTeam, fixtureId } = req.body;
+  const fixtureId = req.params.id;
+  const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
   if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
@@ -30,8 +31,8 @@ exports.postPrediction = catchAsync(async (req, res, next) => {
   const prediction = await createPrediction(
     pGoalsHomeTeam,
     pGoalsAwayTeam,
-    userId,
     fixtureId,
+    userId,
   );
 
   res.status(201).json({
@@ -45,7 +46,8 @@ exports.postPrediction = catchAsync(async (req, res, next) => {
 
 exports.updatePrediction = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
-  const { pGoalsHomeTeam, pGoalsAwayTeam, fixtureId } = req.body;
+  const fixtureId = req.params.id;
+  const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
   if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
