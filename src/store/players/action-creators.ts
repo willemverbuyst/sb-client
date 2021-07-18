@@ -49,7 +49,7 @@ export const addPlayer = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(addNewPlayer(response.data.user));
+      dispatch(addNewPlayer(response.data.data.user));
       dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -77,9 +77,8 @@ export const fetchAllPlayers = (): ThunkAction<
     const response = await axios.get(`${API_URL}/users`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const players = response.data;
 
-    dispatch(storeAllPlayers(players));
+    dispatch(storeAllPlayers(response.data.data.users));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -158,8 +157,10 @@ export const playerDelete = (
       headers: { Authorization: `Bearer ${token}` },
     });
 
+    console.log(response);
+
     dispatch(deletePlayer(id));
-    dispatch(setMessage('success', response.data.message));
+    dispatch(setMessage(response.data.status, response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

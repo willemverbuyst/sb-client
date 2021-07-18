@@ -25,7 +25,6 @@ const initialState: IUserState = {
 const userReducer = (state = initialState, action: UserActions): IUserState => {
   switch (action.type) {
     case ActionType.LOG_IN_SUCCESS_USER:
-      console.log(action.payload);
       const userToken = action.payload.token;
       userToken && localStorage.setItem('user_token', userToken);
       return { ...state, user: action.payload.data.user, token: userToken };
