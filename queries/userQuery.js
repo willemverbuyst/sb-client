@@ -106,7 +106,15 @@ const updateUserProfile = async (
       totaalToto,
       teamId,
     },
-    { where: { id }, returning: true, plain: true },
+    { where: { id } },
+    {
+      include: [
+        {
+          model: Team,
+          attributes: ['id', 'logo', 'name'],
+        },
+      ],
+    },
   );
 
 module.exports = {

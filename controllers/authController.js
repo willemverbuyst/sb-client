@@ -118,5 +118,25 @@ exports.restrictTo = (role) => (req, res, next) => {
   next();
 };
 
+exports.validToken = catchAsync(async (req, res, next) => {
+  const user = await getUserByEmail(req.user.email);
+
+  const currentRound = await getCurrentRoundForUser(user.id);
+
+  const token = signToken({ userId: user.email });
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user: {
+        profile: user,
+        currentRound,
+      },
+    },
+    message: `Welcome back ${user.userName}`,
+    token,
+  });
+});
+
 exports.forgotPassword = (req, res, next) => {};
 exports.resetPassword = (req, res, next) => {};

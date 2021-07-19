@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const {
@@ -13,6 +14,11 @@ const {
 
 const { validateProfileInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
+
+const signToken = (data) =>
+  jwt.sign(data, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
 
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const user = await deleteUserAndHisPrediction(req.params.id);
@@ -86,14 +92,7 @@ exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
 );
 
 exports.updateUserProfile = catchAsync(async (req, res, next) => {
-  const userId = Number(req.params.id);
   const loggedInUserId = Number(req.user.id);
-
-  console.log(userId, '     ', loggedInUserId);
-
-  if (userId !== loggedInUserId) {
-    return next(new AppError('Je kan alleen je eigen profiel wijzigen!', 403));
-  }
 
   if (!validateProfileInput(req.body)) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
@@ -102,13 +101,14 @@ exports.updateUserProfile = catchAsync(async (req, res, next) => {
   const user = await updateUserProfile(loggedInUserId, req.body);
 
   // delete user.dataValues['password'];
-  // const token = toJWT({ userId: user.id });
+  const token = signToken({ userId: user.email });
 
   res.status(200).json({
     status: 'success',
     data: {
-      user: user,
+      user,
     },
     message: 'Je profiel is gewijzigd.',
+    token,
   });
 });
