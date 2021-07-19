@@ -1,5 +1,6 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
+const User = require('../models').user;
 const { Op } = require('sequelize');
 const {
   chunkArrayTotoRounds,
@@ -11,14 +12,16 @@ const {
   addScoresTofixturesWithPrediction,
 } = require('../utils/scores.functions');
 
-const getAllFixturesForLoggedInUser = async (userId) => {
+const getAllFixturesWithPrediction = async (playerId, userId) => {
   const fixturesWithPrediction = await Fixture.findAll({
-    include: {
-      model: Prediction,
-      where: { userId },
-      attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
-      required: false,
-    },
+    include: [
+      {
+        model: Prediction,
+        where: { userId: playerId },
+        attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
+        required: false,
+      },
+    ],
     order: [['id', 'ASC']],
     raw: true,
     nest: true,
@@ -31,7 +34,31 @@ const getAllFixturesForLoggedInUser = async (userId) => {
     fixturesWithPredictionAndScore,
   );
 
-  return fixturesGroupedByTotoRounds;
+  if (Number(playerId) === Number(userId)) {
+    return fixturesGroupedByTotoRounds;
+  }
+
+  // Public: set predictions to null when match is not played yet
+  const fixturesWithHiddenPredictions = fixturesGroupedByTotoRounds.map(
+    (totoround) =>
+      totoround.map((round) =>
+        round.map((fixture) => {
+          if (fixture.status !== 'Match Finished') {
+            return {
+              ...fixture,
+              predictions: {
+                pGoalsAwayTeam: null,
+                pGoalsHomeTeam: null,
+              },
+            };
+          } else {
+            return fixture;
+          }
+        }),
+      ),
+  );
+
+  return fixturesWithHiddenPredictions;
 };
 
 const getCurrentRoundForUser = async (id) => {
@@ -75,53 +102,8 @@ const getCurrentRoundForUser = async (id) => {
 
 const getFixture = async (id) => await Fixture.findOne({ where: { id } });
 
-const getPastFixturesWithPredictionsAndScores = async (id) => {
-  const fixturesWithPrediction = await Fixture.findAll({
-    include: {
-      model: Prediction,
-      where: { userId: id },
-      attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
-      required: false,
-    },
-    order: [['id', 'ASC']],
-    raw: true,
-    nest: true,
-  });
-
-  const fixturesWithPredictionAndScore = addScoresTofixturesWithPrediction(
-    fixturesWithPrediction,
-  );
-
-  const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
-    fixturesWithPredictionAndScore,
-  );
-
-  // Public: set predictions to null when match is not played yet
-  const fixturesWithHiddenPredictions = fixturesGroupedByTotoRounds.map(
-    (totoround) =>
-      totoround.map((round) =>
-        round.map((fixture) => {
-          if (fixture.status !== 'Match Finished') {
-            return {
-              ...fixture,
-              predictions: {
-                pGoalsAwayTeam: null,
-                pGoalsHomeTeam: null,
-              },
-            };
-          } else {
-            return fixture;
-          }
-        }),
-      ),
-  );
-
-  return fixturesWithHiddenPredictions;
-};
-
 module.exports = {
-  getAllFixturesForLoggedInUser,
+  getAllFixturesWithPrediction,
   getCurrentRoundForUser,
   getFixture,
-  getPastFixturesWithPredictionsAndScores,
 };
