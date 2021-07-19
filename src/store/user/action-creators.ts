@@ -69,7 +69,7 @@ export const editUserProfile = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${API_URL}/me/profile`,
+        `${API_URL}/users/profile`,
         {
           userName,
           firstName,
@@ -82,8 +82,8 @@ export const editUserProfile = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(updateUserProfile(response.data.userData));
-      dispatch(setMessage('success', response.data.message));
+      dispatch(updateUserProfile(response.data.data));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -149,7 +149,7 @@ export const getUserWithStoredToken = (): ThunkAction<
   dispatch(appLoading());
   try {
     // if token check if valid
-    const response = await axios.get(`${API_URL}/me`, {
+    const response = await axios.get(`${API_URL}/users/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch(tokenUserStillValid(response.data));
