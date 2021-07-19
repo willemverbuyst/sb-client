@@ -4,11 +4,13 @@ import { ActionType, PredictionActions } from './action-types';
 export interface IPredictionsState {
   currentRound: ICurrentRound | null;
   allFixtures: TotoRound[] | null;
+  allPredictions: TotoRound[] | null;
 }
 
 const initialState: IPredictionsState = {
   currentRound: null,
   allFixtures: null,
+  allPredictions: null,
 };
 
 const predictionsReducer = (
@@ -18,6 +20,9 @@ const predictionsReducer = (
   switch (action.type) {
     case ActionType.STORE_ALL_FIXTURES:
       return { ...state, allFixtures: action.payload };
+
+    case ActionType.STORE_ALL_PREDICTIONS:
+      return { ...state, allPredictions: action.payload };
 
     case ActionType.POST_PREDICTION:
       return {
@@ -58,7 +63,10 @@ const predictionsReducer = (
       };
 
     case ActionType.RESET_ALL_FIXTURES:
-      return { allFixtures: null, currentRound: null };
+      return { allFixtures: null, currentRound: null, allPredictions: null };
+
+    case ActionType.RESET_ALL_PREDICTIONS:
+      return { allFixtures: null, currentRound: null, allPredictions: null };
 
     case ActionType.UPDATE_PREDICTION:
       return {

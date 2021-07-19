@@ -28,3 +28,27 @@ export const selectFixturesSortedByTime = (
   }
   return null;
 };
+
+export const selectAllPredictions = (state: StoreState): TotoRound[] | null =>
+  state.predictionsState.allPredictions;
+
+export const selectAllPredictionsSortedByTime = (
+  state: StoreState,
+): TotoRound[] | null => {
+  if (
+    state.predictionsState.allPredictions &&
+    state.predictionsState.allPredictions.length > 0
+  ) {
+    const allPredictions = state.predictionsState.allPredictions;
+    const fixturesSortedByTime = allPredictions.map((totoRound) =>
+      totoRound.map((round) =>
+        UTILS.sortArrayWithObjects<
+          keyof IFixtureWithScoreAndPredictions,
+          IFixtureWithScoreAndPredictions
+        >('eventTimeStamp')(round),
+      ),
+    );
+    return fixturesSortedByTime;
+  }
+  return null;
+};

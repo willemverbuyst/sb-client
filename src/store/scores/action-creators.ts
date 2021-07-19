@@ -22,7 +22,7 @@ export const fetchScoresFixture = (
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/scores/fixtures/${id}`, {
+    const response = await axios.get(`${API_URL}/fixtures/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const fixture = response.data;

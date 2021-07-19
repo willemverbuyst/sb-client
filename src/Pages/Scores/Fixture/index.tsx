@@ -23,7 +23,7 @@ const Fixture: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    dispatch(fetchScoresFixture(+id));
+    dispatch(fetchScoresFixture(Number(id)));
   }, [dispatch, id]);
 
   return (

@@ -4,7 +4,9 @@ import {
   ActionType,
   PostPrediction,
   ResetAllFixtures,
+  ResetAllPredictions,
   StoreAllFixtures,
+  StoreAllPredictions,
   UpdatePrediction,
 } from './action-types';
 
@@ -14,6 +16,15 @@ export const storeAllFixtures = (
   return {
     type: ActionType.STORE_ALL_FIXTURES,
     payload: allFixtures,
+  };
+};
+
+export const storeAllPredictions = (
+  allPredictions: TotoRound[],
+): StoreAllPredictions => {
+  return {
+    type: ActionType.STORE_ALL_PREDICTIONS,
+    payload: allPredictions,
   };
 };
 
@@ -27,6 +38,12 @@ export const postPrediction = (prediction: IPrediction): PostPrediction => {
 export const resetAllFixtures = (): ResetAllFixtures => {
   return {
     type: ActionType.RESET_ALL_FIXTURES,
+  };
+};
+
+export const resetAllPredictions = (): ResetAllPredictions => {
+  return {
+    type: ActionType.RESET_ALL_PREDICTIONS,
   };
 };
 

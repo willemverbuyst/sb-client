@@ -6,37 +6,39 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
 import PageContent from '../../../Sections/PageContent';
 import Predictions from '../../../Sections/Predictions';
-import { fetchAllFixtures } from '../../../store/predictions/action-creators';
-import { selectFixturesSortedByTime } from '../../../store/predictions/selectors';
+import { getAllPredictions } from '../../../store/predictions/action-creators';
+import { selectAllPredictionsSortedByTime } from '../../../store/predictions/selectors';
+import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 import Pagination from './Pagination';
 
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const fixturesSortedByTime = useSelector(selectFixturesSortedByTime);
+  const predictionsSortedByTime = useSelector(selectAllPredictionsSortedByTime);
+  const id = useSelector(selectUserId);
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
   const round = Number(ronde);
   const totoRound = Number(totoronde);
 
   useEffect(() => {
-    if (!fixturesSortedByTime) {
-      dispatch(fetchAllFixtures());
+    if (!predictionsSortedByTime && id) {
+      dispatch(getAllPredictions(id));
     }
-  }, [dispatch, fixturesSortedByTime]);
+  }, [dispatch, predictionsSortedByTime]);
 
-  const filteredFixtures = fixturesSortedByTime
-    ? [...fixturesSortedByTime[totoRound - 1][UTILS.calculateIndex(round)]]
+  const filteredPredictions = predictionsSortedByTime
+    ? [...predictionsSortedByTime[totoRound - 1][UTILS.calculateIndex(round)]]
     : null;
 
   return (
     <PageContent
       loadingText="Mijn voorspellingen"
       content={
-        filteredFixtures ? (
+        filteredPredictions ? (
           <>
             <PageTitle title="Mijn voorspellingen" color="primary" />
-            <Predictions fixtures={filteredFixtures} display="private" />
+            <Predictions fixtures={filteredPredictions} display="private" />
             <Pagination totoround={totoRound} round={round} />
           </>
         ) : (
