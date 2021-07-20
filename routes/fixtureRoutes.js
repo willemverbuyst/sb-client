@@ -6,7 +6,6 @@ const router = express.Router();
 
 router
   .route('/:id')
-  // .get(authController.protect, fixtureController.getFixtureWithScores);
-  .get(fixtureController.getFixtureWithScores);
+  .get(authController.protect, fixtureController.getFixtureWithScores);
 
 module.exports = router;
