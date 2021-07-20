@@ -47,9 +47,6 @@ const playersReducer = (
     case ActionType.STORE_ALL_PLAYERS:
       return { ...state, players: [...action.payload] };
 
-    case ActionType.STORE_PLAYER_PROFILE:
-      return { ...state, playerProfile: action.payload };
-
     case ActionType.STORE_PLAYER_SCORES:
       return { ...state, scoresPlayer: action.payload };
 

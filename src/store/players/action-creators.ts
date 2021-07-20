@@ -13,7 +13,6 @@ import {
   addNewPlayer,
   deletePlayer,
   storeAllPlayers,
-  storePlayerProfile,
   storePlayerScores,
 } from './actions';
 
@@ -79,33 +78,6 @@ export const fetchAllPlayers = (): ThunkAction<
     });
 
     dispatch(storeAllPlayers(response.data.data.users));
-    dispatch(appDoneLoading());
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
-  }
-};
-
-export const fetchPlayerProfile = (
-  id: number,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<PlayersActions | AppStateActions>,
-) => {
-  dispatch(appLoading());
-  try {
-    const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/users/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const playerProfile = response.data;
-
-    dispatch(storePlayerProfile(playerProfile));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
