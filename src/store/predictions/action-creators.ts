@@ -64,8 +64,8 @@ export const changePrediction = ({
       },
     );
 
-    dispatch(setMessage('success', response.data.message));
-    dispatch(updatePrediction(response.data.prediction));
+    dispatch(setMessage(response.data.status, response.data.message));
+    dispatch(updatePrediction(response.data.data.prediction));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -93,19 +93,18 @@ export const postNewPrediction = ({
   try {
     const token = localStorage.getItem('user_token');
     const response = await axios.post(
-      `${API_URL}/predictions}`,
+      `${API_URL}/predictions/${fixtureId}`,
       {
         pGoalsHomeTeam,
         pGoalsAwayTeam,
-        fixtureId,
       },
       {
         headers: { Authorization: `Bearer ${token}` },
       },
     );
 
-    dispatch(setMessage('success', response.data.message));
-    dispatch(postPrediction(response.data.prediction));
+    dispatch(setMessage(response.data.status, response.data.message));
+    dispatch(postPrediction(response.data.data.prediction));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
