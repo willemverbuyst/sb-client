@@ -1,6 +1,9 @@
+const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const User = require('../models').user;
 const calculateScore = require('../utils/calc-scores');
+const { Op } = require('sequelize');
+const reducer = require('../utils/reducer');
 
 const createPrediction = async (
   pGoalsHomeTeam,
@@ -105,8 +108,60 @@ const updatePrediction = async (
   return prediction;
 };
 
+const getScoresTotalToto = async () => {
+  const predictions = await Prediction.findAll({
+    attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
+    include: [
+      {
+        model: Fixture,
+        where: {
+          status: 'Match Finished',
+          goalsHomeTeam: {
+            [Op.ne]: null,
+          },
+          goalsAwayTeam: {
+            [Op.ne]: null,
+          },
+        },
+      },
+      { model: User, attributes: ['userName', 'id', 'totaalToto'] },
+    ],
+    raw: true,
+    nest: true,
+  });
+
+  if (predictions.length > 0) {
+    const predictionsWithScores = [...predictions]
+      .filter((pred) => pred.user.totaalToto)
+      .map((pred) => {
+        return {
+          ...pred,
+          score: calculateScore(
+            {
+              homeTeam: pred.fixture.goalsHomeTeam,
+              awayTeam: pred.fixture.goalsAwayTeam,
+            },
+            {
+              homeTeam: pred.pGoalsHomeTeam,
+              awayTeam: pred.pGoalsAwayTeam,
+            },
+          ),
+          user: pred.user.userName,
+          userId: pred.user.id,
+        };
+      });
+
+    let scoresTotalToto = reducer(predictionsWithScores);
+
+    return scoresTotalToto;
+  } else {
+    return [];
+  }
+};
+
 module.exports = {
   createPrediction,
   getAllPredictionsForFixture,
+  getScoresTotalToto,
   updatePrediction,
 };
