@@ -1,3 +1,4 @@
+import { IScoresPlayer } from '../../models/player.model';
 import {
   IUsersWithScoreAndRoundId,
   IUserWithScore,
@@ -159,3 +160,6 @@ export const selectTotoRoundId = (state: StoreState): number | null => {
     return null;
   }
 };
+
+export const selectPlayerScores = (state: StoreState): IScoresPlayer | null =>
+  state.scoresState.scoresPlayer;

@@ -1,20 +1,12 @@
-import {
-  IPlayer,
-  IPlayerProfile,
-  IScoresPlayer,
-} from '../../models/player.model';
+import { IPlayer } from '../../models/player.model';
 import { ActionType, PlayersActions } from './action-types';
 
 export interface IPlayersState {
   players: IPlayer[] | null;
-  playerProfile: IPlayerProfile | null;
-  scoresPlayer: IScoresPlayer | null;
 }
 
 const initialState: IPlayersState = {
   players: null,
-  playerProfile: null,
-  scoresPlayer: null,
 };
 
 const playersReducer = (
@@ -38,17 +30,11 @@ const playersReducer = (
 
     case ActionType.RESET_PLAYERS:
       return {
-        ...state,
         players: null,
-        playerProfile: null,
-        scoresPlayer: null,
       };
 
     case ActionType.STORE_ALL_PLAYERS:
       return { ...state, players: [...action.payload] };
-
-    case ActionType.STORE_PLAYER_SCORES:
-      return { ...state, scoresPlayer: action.payload };
 
     default:
       return state;

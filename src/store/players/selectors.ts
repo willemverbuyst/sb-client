@@ -1,4 +1,4 @@
-import { IPlayer, IScoresPlayer } from '../../models/player.model';
+import { IPlayer } from '../../models/player.model';
 import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
@@ -14,15 +14,4 @@ export const selectPlayersSortedByName = (
     return playersSortedByName;
   }
   return null;
-};
-
-export const selectPlayerScores = (state: StoreState): IScoresPlayer | null =>
-  state.playersState.scoresPlayer;
-
-export const selectUserNamePlayer = (state: StoreState): string | null => {
-  if (state.playersState.playerProfile) {
-    return state.playersState.playerProfile.userName;
-  } else {
-    return null;
-  }
 };

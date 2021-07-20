@@ -8,6 +8,7 @@ import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { StoreState } from '../types';
 import { ScoresActions } from './action-types';
 import {
+  storePlayerScores,
   storeScoresFixture,
   storeScoresRound,
   storeScoresTotalToto,
@@ -76,12 +77,11 @@ export const fetchScoresTotalToto = (): ThunkAction<
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/scores/all`, {
+    const response = await axios.get(`${API_URL}/scores/totaltoto`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const totalToto = response.data;
 
-    dispatch(storeScoresTotalToto(totalToto));
+    dispatch(storeScoresTotalToto(response.data.data.scoresTotalToto));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -109,6 +109,33 @@ export const fetchScoresTotoRound = (
     const totoRound = response.data;
 
     dispatch(storeScoresTotoRound(totoRound));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      dispatch(setMessage('error', error.response.data.message));
+    } else {
+      console.log(error.message);
+      dispatch(setMessage('error', error.message));
+    }
+    dispatch(appDoneLoading());
+  }
+};
+
+export const fetchPlayerScores = (
+  id: number,
+): ThunkAction<void, StoreState, unknown, Action<string>> => async (
+  dispatch: Dispatch<AppStateActions | ScoresActions>,
+) => {
+  dispatch(appLoading());
+  try {
+    const token = localStorage.getItem('user_token');
+    const response = await axios.get(`${API_URL}/scores/players/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const scoresPlayer = response.data;
+
+    dispatch(storePlayerScores(scoresPlayer));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

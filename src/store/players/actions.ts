@@ -1,11 +1,10 @@
-import { IPlayer, IScoresPlayer } from '../../models/player.model';
+import { IPlayer } from '../../models/player.model';
 import {
   ActionType,
   AddNewPlayer,
   DeletePlayer,
   ResetPlayers,
   StoreAllPlayers,
-  StorePlayerScores,
 } from './action-types';
 
 export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
@@ -28,13 +27,6 @@ export const deletePlayer = (playerId: number): DeletePlayer => {
     payload: playerId,
   };
 };
-
-export const storePlayerScores = (
-  scoresPlayer: IScoresPlayer,
-): StorePlayerScores => ({
-  type: ActionType.STORE_PLAYER_SCORES,
-  payload: scoresPlayer,
-});
 
 export const resetPlayers = (): ResetPlayers => {
   return {

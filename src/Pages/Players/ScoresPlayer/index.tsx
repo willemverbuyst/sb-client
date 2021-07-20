@@ -6,8 +6,8 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
 import ScoresStackedChart from '../../../Sections/Charts/ScoresStackedChart';
 import PageContent from '../../../Sections/PageContent';
-import { fetchPlayerScores } from '../../../store/players/action-creators';
-import { selectPlayerScores } from '../../../store/players/selectors';
+import { fetchPlayerScores } from '../../../store/scores/action-creators';
+import { selectPlayerScores } from '../../../store/scores/selectors';
 import { colorPrimary, colorSecondary } from '../../../theme/chartColors';
 
 const ScoresPlayer: React.FC = (): ReactElement => {

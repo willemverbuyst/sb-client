@@ -1,3 +1,4 @@
+import { IScoresPlayer } from '../../models/player.model';
 import {
   IFixtureWithUsersWithScoreAndPrediction,
   IUsersWithScoreAndRoundId,
@@ -11,6 +12,7 @@ export interface IScoresState {
   roundScores: IUsersWithScoreAndRoundId | null;
   totalTotoScores: IUserWithScore[] | null;
   totoRoundScores: IUsersWithScoreAndTotoRoundId | null;
+  scoresPlayer: IScoresPlayer | null;
 }
 
 const initialState: IScoresState = {
@@ -18,6 +20,7 @@ const initialState: IScoresState = {
   roundScores: null,
   totalTotoScores: null,
   totoRoundScores: null,
+  scoresPlayer: null,
 };
 
 const scoresReducer = (
@@ -31,6 +34,7 @@ const scoresReducer = (
         roundScores: null,
         totalTotoScores: null,
         totoRoundScores: null,
+        scoresPlayer: null,
       };
 
     case ActionType.STORE_SCORES_FIXTURE:
@@ -44,6 +48,9 @@ const scoresReducer = (
 
     case ActionType.STORE_SCORES_TOTO_ROUND:
       return { ...state, totoRoundScores: action.payload };
+
+    case ActionType.STORE_PLAYER_SCORES:
+      return { ...state, scoresPlayer: action.payload };
 
     default:
       return state;

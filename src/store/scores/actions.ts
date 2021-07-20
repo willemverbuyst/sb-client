@@ -1,3 +1,4 @@
+import { IScoresPlayer } from '../../models/player.model';
 import {
   IFixtureWithUsersWithScoreAndPrediction,
   IUsersWithScoreAndRoundId,
@@ -7,6 +8,7 @@ import {
 import {
   ActionType,
   ResetAllScores,
+  StorePlayerScores,
   StoreScoresFixture,
   StoreScoresRound,
   StoreScoresTotalToto,
@@ -54,3 +56,10 @@ export const storeScoresTotoRound = (
     payload: totoRound,
   };
 };
+
+export const storePlayerScores = (
+  scoresPlayer: IScoresPlayer,
+): StorePlayerScores => ({
+  type: ActionType.STORE_PLAYER_SCORES,
+  payload: scoresPlayer,
+});
