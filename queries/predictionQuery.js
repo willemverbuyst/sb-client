@@ -159,9 +159,81 @@ const getScoresTotalToto = async () => {
   }
 };
 
+const getScoresRound = async (roundNumber) => {};
+
+const getScoresTotoRound = async (totoRoundNumber) => {
+  const rounds = [
+    totoRoundNumber * 3 - 2,
+    totoRoundNumber * 3 - 1,
+    totoRoundNumber * 3,
+  ];
+  if (Number(totoRoundNumber) === 11) rounds.push(totoRoundNumber * 3 + 1);
+
+  const seasons = rounds.map((a) => `Regular Season - ${a}`);
+
+  const predictions = await Prediction.findAll({
+    attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
+    include: [
+      {
+        model: Fixture,
+        where: {
+          status: 'Match Finished',
+          goalsHomeTeam: {
+            [Op.ne]: null,
+          },
+          goalsAwayTeam: {
+            [Op.ne]: null,
+          },
+          round: { [Op.in]: seasons },
+        },
+      },
+      { model: User, attributes: ['userName', 'id'] },
+    ],
+    raw: true,
+    nest: true,
+  });
+
+  if (predictions.length > 0) {
+    const predictionsWithScores = predictions.map((pred) => {
+      return {
+        ...pred,
+        score: calculateScore(
+          {
+            homeTeam: pred.fixture.goalsHomeTeam,
+            awayTeam: pred.fixture.goalsAwayTeam,
+          },
+          {
+            homeTeam: pred.pGoalsHomeTeam,
+            awayTeam: pred.pGoalsAwayTeam,
+          },
+        ),
+        user: pred.user.userName,
+        userId: pred.user.id,
+      };
+    });
+
+    const predictionsReduced = reducer(predictionsWithScores);
+
+    const totoRound = {
+      usersWithScores: predictionsReduced,
+      totoRoundNumber,
+    };
+
+    return totoRound;
+  } else {
+    const totoRound = {
+      usersWithScores: predictions,
+      totoRoundNumber,
+    };
+    return totoRound;
+  }
+};
+
 module.exports = {
   createPrediction,
   getAllPredictionsForFixture,
+  getScoresRound,
   getScoresTotalToto,
+  getScoresTotoRound,
   updatePrediction,
 };

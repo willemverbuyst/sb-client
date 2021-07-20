@@ -1,6 +1,5 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
-const User = require('../models').user;
 const { Op } = require('sequelize');
 const {
   chunkArrayTotoRounds,

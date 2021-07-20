@@ -74,6 +74,7 @@ router.get('/fixtures/:id', authMiddleware, async (req, res) => {
   }
 });
 
+//####REFACTORED
 /*** GET THE TOTAL TOTO SCORE OF EACH USER ***/
 /*** PUBLIC ***/
 /***
