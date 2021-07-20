@@ -10,7 +10,6 @@ import { StoreState } from '../types';
 import { PredictionActions } from './action-types';
 import {
   postPrediction,
-  storeAllFixtures,
   storeAllPredictions,
   updatePrediction,
 } from './actions';
@@ -67,34 +66,6 @@ export const changePrediction = ({
 
     dispatch(setMessage('success', response.data.message));
     dispatch(updatePrediction(response.data.prediction));
-    dispatch(appDoneLoading());
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
-  }
-};
-
-export const fetchAllFixtures = (): ThunkAction<
-  void,
-  StoreState,
-  unknown,
-  Action<string>
-> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
-  dispatch(appLoading());
-  try {
-    const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/rounds/all`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const allFixtures = response.data;
-
-    dispatch(storeAllFixtures(allFixtures));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

@@ -16,7 +16,6 @@ import Pagination from './Pagination';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const userNamePlayer = 'hello';
   const nameOfPlayerOfPredicitons = useSelector(
     selectNameOfPlayerOfPredicitons,
   );
@@ -55,7 +54,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
             <Predictions
               predictions={filteredFixtures}
               display="public"
-              userNamePlayer={userNamePlayer}
+              userNamePlayer={nameOfPlayerOfPredicitons}
             />
             <Pagination totoround={totoRound} round={round} id={id} />
           </>

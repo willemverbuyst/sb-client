@@ -11,7 +11,7 @@ import {
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { resetPlayers } from '../players/actions';
-import { resetAllFixtures } from '../predictions/actions';
+import { resetAllPredictions } from '../predictions/actions';
 import { resetAllScores } from '../scores/actions';
 import { resetAllTeams } from '../teams/actions';
 import { StoreState } from '../types';
@@ -133,7 +133,7 @@ export const userLogOut = (): ((dispatch: Dispatch) => void) => (
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(resetAllScores());
   dispatch(resetPlayers());
-  dispatch(resetAllFixtures());
+  dispatch(resetAllPredictions());
   dispatch(resetAllTeams());
 };
 
