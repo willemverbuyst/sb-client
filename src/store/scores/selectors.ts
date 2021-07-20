@@ -8,8 +8,8 @@ import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
 export const selectFixture = (state: StoreState): IFixture | null => {
-  if (state.scoresState.fixtureScores) {
-    return state.scoresState.fixtureScores.fixture;
+  if (state.scoresState.fixtureWithScores) {
+    return state.scoresState.fixtureWithScores.fixture;
   } else {
     return null;
   }
@@ -19,11 +19,11 @@ export const selectScoresForFixtureSortedByName = (
   state: StoreState,
 ): IUserWithScoreAndPrediction[] | null => {
   if (
-    state.scoresState.fixtureScores &&
-    state.scoresState.fixtureScores.scores &&
-    state.scoresState.fixtureScores.scores.length > 0
+    state.scoresState.fixtureWithScores &&
+    state.scoresState.fixtureWithScores.scores &&
+    state.scoresState.fixtureWithScores.scores.length > 0
   ) {
-    const scoresFixture = state.scoresState.fixtureScores.scores;
+    const scoresFixture = state.scoresState.fixtureWithScores.scores;
     const scoresFixtureSortedByName: IUserWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
       keyof IUserWithScoreAndPrediction,
       IUserWithScoreAndPrediction

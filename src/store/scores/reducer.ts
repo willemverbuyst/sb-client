@@ -7,14 +7,14 @@ import {
 import { ActionType, ScoresActions } from './action-types';
 
 export interface IScoresState {
-  fixtureScores: IFixtureWithUsersWithScoreAndPrediction | null;
+  fixtureWithScores: IFixtureWithUsersWithScoreAndPrediction | null;
   roundScores: IUsersWithScoreAndRoundId | null;
   totalTotoScores: IUserWithScore[] | null;
   totoRoundScores: IUsersWithScoreAndTotoRoundId | null;
 }
 
 const initialState: IScoresState = {
-  fixtureScores: null,
+  fixtureWithScores: null,
   roundScores: null,
   totalTotoScores: null,
   totoRoundScores: null,
@@ -27,14 +27,14 @@ const scoresReducer = (
   switch (action.type) {
     case ActionType.RESET_ALL_SCORES:
       return {
-        fixtureScores: null,
+        fixtureWithScores: null,
         roundScores: null,
         totalTotoScores: null,
         totoRoundScores: null,
       };
 
     case ActionType.STORE_SCORES_FIXTURE:
-      return { ...state, fixtureScores: action.payload };
+      return { ...state, fixtureWithScores: action.payload };
 
     case ActionType.STORE_SCORES_ROUND:
       return { ...state, roundScores: action.payload };

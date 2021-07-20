@@ -20,11 +20,11 @@ export const resetAllScores = (): ResetAllScores => {
 };
 
 export const storeScoresFixture = (
-  fixture: IFixtureWithUsersWithScoreAndPrediction,
+  fixtureWithScores: IFixtureWithUsersWithScoreAndPrediction,
 ): StoreScoresFixture => {
   return {
     type: ActionType.STORE_SCORES_FIXTURE,
-    payload: fixture,
+    payload: fixtureWithScores,
   };
 };
 

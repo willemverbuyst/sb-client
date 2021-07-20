@@ -25,9 +25,8 @@ export const fetchScoresFixture = (
     const response = await axios.get(`${API_URL}/fixtures/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const fixture = response.data;
 
-    dispatch(storeScoresFixture(fixture));
+    dispatch(storeScoresFixture(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
