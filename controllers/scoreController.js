@@ -1,11 +1,13 @@
 const catchAsync = require('../utils/catchAsync');
 const {
+  getScoresRound,
   getScoresTotalToto,
   getScoresTotoRound,
 } = require('../queries/predictionQuery');
 
-exports.getScoresRound = catchAsync(async (req, res, next) => {
-  const scoresRound = await getScoresTotalToto();
+exports.getScoresRound = catchAsync(async (req, res, _next) => {
+  const roundNumber = req.params.id;
+  const scoresRound = await getScoresRound(roundNumber);
 
   res.status(200).json({
     status: 'success',
@@ -16,7 +18,7 @@ exports.getScoresRound = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getScoresTotalToto = catchAsync(async (req, res, next) => {
+exports.getScoresTotalToto = catchAsync(async (req, res, _next) => {
   const scoresTotalToto = await getScoresTotalToto();
 
   res.status(200).json({
@@ -28,7 +30,7 @@ exports.getScoresTotalToto = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getScoresTotoRound = catchAsync(async (req, res, next) => {
+exports.getScoresTotoRound = catchAsync(async (req, res, _next) => {
   const totoRoundNumber = req.params.id;
   const scoresTotoRound = await getScoresTotoRound(totoRoundNumber);
 

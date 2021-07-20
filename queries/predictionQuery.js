@@ -159,7 +159,66 @@ const getScoresTotalToto = async () => {
   }
 };
 
-const getScoresRound = async (roundNumber) => {};
+const getScoresRound = async (roundNumber) => {
+  const season = `Regular Season - ${roundNumber}`;
+
+  const predictions = await Prediction.findAll({
+    attributes: ['pGoalsHomeTeam', 'pGoalsAwayTeam'],
+    include: [
+      {
+        model: Fixture,
+        where: {
+          status: 'Match Finished',
+          goalsHomeTeam: {
+            [Op.ne]: null,
+          },
+          goalsAwayTeam: {
+            [Op.ne]: null,
+          },
+          round: season,
+        },
+      },
+      { model: User, attributes: ['userName', 'id'] },
+    ],
+    raw: true,
+    nest: true,
+  });
+
+  if (predictions.length > 0) {
+    const predictionsWithScores = predictions.map((pred) => {
+      return {
+        ...pred,
+        score: calculateScore(
+          {
+            homeTeam: pred.fixture.goalsHomeTeam,
+            awayTeam: pred.fixture.goalsAwayTeam,
+          },
+          {
+            homeTeam: pred.pGoalsHomeTeam,
+            awayTeam: pred.pGoalsAwayTeam,
+          },
+        ),
+        user: pred.user.userName,
+        userId: pred.user.id,
+      };
+    });
+
+    const predictionsReduced = reducer(predictionsWithScores);
+    const round = {
+      usersWithScores: predictionsReduced,
+      roundNumber,
+    };
+
+    return round;
+  } else {
+    const round = {
+      usersWithScores: predictions,
+      roundNumber,
+    };
+
+    return round;
+  }
+};
 
 const getScoresTotoRound = async (totoRoundNumber) => {
   const rounds = [

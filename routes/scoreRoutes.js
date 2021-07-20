@@ -4,11 +4,15 @@ const scoreController = require('../controllers/scoreController');
 
 const router = express.Router();
 
-router.route('/round/:id').get(scoreController.getScoresRound);
+router
+  .route('/round/:id')
+  .get(authController.protect, scoreController.getScoresRound);
 router
   .route('/totaltoto')
   .get(authController.protect, scoreController.getScoresTotalToto);
-router.route('/totoround/:id').get(scoreController.getScoresTotoRound);
+router
+  .route('/totoround/:id')
+  .get(authController.protect, scoreController.getScoresTotoRound);
 
 module.exports = router;
 //

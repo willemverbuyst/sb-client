@@ -139,6 +139,7 @@ router.get('/all', authMiddleware, async (_req, res) => {
   }
 });
 
+//####REFACTORED
 /*** GET THE TOTAAL SCORE FOR A SPECIFIC PAST TOTOROUND OF EACH USER ***/
 /*** PUBLIC ***/
 /***
