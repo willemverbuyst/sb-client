@@ -27,7 +27,7 @@ export const getAllPredictions = (
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch(storeAllPredictions(response.data.data.fixtures));
+    dispatch(storeAllPredictions(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

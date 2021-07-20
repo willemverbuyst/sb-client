@@ -14,7 +14,9 @@ import Pagination from './Pagination';
 
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const predictionsSortedByTime = useSelector(selectAllPredictionsSortedByTime);
+  const allPredictionsSortedByTime = useSelector(
+    selectAllPredictionsSortedByTime,
+  );
   const id = useSelector(selectUserId);
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
@@ -22,13 +24,17 @@ const PredictionsUser: React.FC = (): ReactElement => {
   const totoRound = Number(totoronde);
 
   useEffect(() => {
-    if (!predictionsSortedByTime && id) {
+    if (!allPredictionsSortedByTime && id) {
       dispatch(getAllPredictions(id));
     }
-  }, [dispatch, predictionsSortedByTime]);
+  }, [dispatch, allPredictionsSortedByTime]);
 
-  const filteredPredictions = predictionsSortedByTime
-    ? [...predictionsSortedByTime[totoRound - 1][UTILS.calculateIndex(round)]]
+  const filteredPredictions = allPredictionsSortedByTime
+    ? [
+        ...allPredictionsSortedByTime[totoRound - 1][
+          UTILS.calculateIndex(round)
+        ],
+      ]
     : null;
 
   return (
@@ -38,7 +44,7 @@ const PredictionsUser: React.FC = (): ReactElement => {
         filteredPredictions ? (
           <>
             <PageTitle title="Mijn voorspellingen" color="primary" />
-            <Predictions fixtures={filteredPredictions} display="private" />
+            <Predictions predictions={filteredPredictions} display="private" />
             <Pagination totoround={totoRound} round={round} />
           </>
         ) : (

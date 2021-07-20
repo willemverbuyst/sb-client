@@ -19,9 +19,10 @@ export const storeAllFixtures = (
   };
 };
 
-export const storeAllPredictions = (
-  allPredictions: TotoRound[],
-): StoreAllPredictions => {
+export const storeAllPredictions = (allPredictions: {
+  fixtures: TotoRound[];
+  player: string;
+}): StoreAllPredictions => {
   return {
     type: ActionType.STORE_ALL_PREDICTIONS,
     payload: allPredictions,

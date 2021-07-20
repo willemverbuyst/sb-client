@@ -18,7 +18,7 @@ const Program: React.FC = (): ReactElement => {
           <>
             <PageTitle title="Programma" color="secondary" />
             <Predictions
-              fixtures={currentRoundSortedByTime}
+              predictions={currentRoundSortedByTime}
               display="private"
             />
           </>

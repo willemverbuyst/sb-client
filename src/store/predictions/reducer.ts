@@ -4,7 +4,7 @@ import { ActionType, PredictionActions } from './action-types';
 export interface IPredictionsState {
   currentRound: ICurrentRound | null;
   allFixtures: TotoRound[] | null;
-  allPredictions: TotoRound[] | null;
+  allPredictions: { fixtures: TotoRound[]; player: string } | null;
 }
 
 const initialState: IPredictionsState = {

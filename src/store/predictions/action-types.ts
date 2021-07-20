@@ -31,7 +31,7 @@ export type StoreAllFixtures = {
 
 export type StoreAllPredictions = {
   type: ActionType.STORE_ALL_PREDICTIONS;
-  payload: TotoRound[];
+  payload: { fixtures: TotoRound[]; player: string };
 };
 
 export type UpdatePrediction = {

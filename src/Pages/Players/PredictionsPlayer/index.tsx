@@ -6,19 +6,22 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
 import PageContent from '../../../Sections/PageContent';
 import Predictions from '../../../Sections/Predictions';
-import { fetchPlayerProfile } from '../../../store/players/action-creators';
+import { getAllPredictions } from '../../../store/predictions/action-creators';
 import {
-  selectPastFixturesWithScoresSortedByTime,
-  selectUserNamePlayer,
-} from '../../../store/players/selectors';
+  selectAllPredictionsSortedByTime,
+  selectNameOfPlayerOfPredicitons,
+} from '../../../store/predictions/selectors';
 import * as UTILS from '../../../utils';
 import Pagination from './Pagination';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const userNamePlayer = useSelector(selectUserNamePlayer);
-  const pastFixturesWithScoresSortedByTime = useSelector(
-    selectPastFixturesWithScoresSortedByTime,
+  const userNamePlayer = 'hello';
+  const nameOfPlayerOfPredicitons = useSelector(
+    selectNameOfPlayerOfPredicitons,
+  );
+  const allPredictionsSortedByTime = useSelector(
+    selectAllPredictionsSortedByTime,
   );
   const { id } = useParams<{ id: string }>();
   const { ronde } = useParams<{ ronde: string }>();
@@ -26,15 +29,17 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const round = Number(ronde);
   const totoRound = Number(totoronde);
 
-  const name = userNamePlayer ? userNamePlayer : 'Speler...';
+  const name = nameOfPlayerOfPredicitons
+    ? nameOfPlayerOfPredicitons
+    : 'Speler...';
 
   useEffect(() => {
-    dispatch(fetchPlayerProfile(Number(id)));
+    dispatch(getAllPredictions(Number(id)));
   }, [dispatch, id]);
 
-  const filteredFixtures = pastFixturesWithScoresSortedByTime
+  const filteredFixtures = allPredictionsSortedByTime
     ? [
-        ...pastFixturesWithScoresSortedByTime[totoRound - 1][
+        ...allPredictionsSortedByTime[totoRound - 1][
           UTILS.calculateIndex(round)
         ],
       ]
@@ -44,11 +49,11 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Voorspellingen"
       content={
-        filteredFixtures && userNamePlayer ? (
+        filteredFixtures && nameOfPlayerOfPredicitons ? (
           <>
             <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
             <Predictions
-              fixtures={filteredFixtures}
+              predictions={filteredFixtures}
               display="public"
               userNamePlayer={userNamePlayer}
             />

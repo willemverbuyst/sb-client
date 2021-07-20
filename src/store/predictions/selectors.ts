@@ -29,7 +29,9 @@ export const selectFixturesSortedByTime = (
   return null;
 };
 
-export const selectAllPredictions = (state: StoreState): TotoRound[] | null =>
+export const selectAllPredictions = (
+  state: StoreState,
+): { fixtures: TotoRound[]; player: string } | null =>
   state.predictionsState.allPredictions;
 
 export const selectAllPredictionsSortedByTime = (
@@ -37,9 +39,10 @@ export const selectAllPredictionsSortedByTime = (
 ): TotoRound[] | null => {
   if (
     state.predictionsState.allPredictions &&
-    state.predictionsState.allPredictions.length > 0
+    state.predictionsState.allPredictions.fixtures &&
+    state.predictionsState.allPredictions.fixtures.length > 0
   ) {
-    const allPredictions = state.predictionsState.allPredictions;
+    const allPredictions = state.predictionsState.allPredictions.fixtures;
     const fixturesSortedByTime = allPredictions.map((totoRound) =>
       totoRound.map((round) =>
         UTILS.sortArrayWithObjects<
@@ -52,3 +55,10 @@ export const selectAllPredictionsSortedByTime = (
   }
   return null;
 };
+
+export const selectNameOfPlayerOfPredicitons = (
+  state: StoreState,
+): string | null =>
+  state.predictionsState.allPredictions
+    ? state.predictionsState.allPredictions.player
+    : null;
