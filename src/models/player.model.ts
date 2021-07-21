@@ -17,9 +17,9 @@ export interface IPlayerProfile extends IPlayer {
 }
 
 export interface IScoresPlayer {
+  id: number;
+  name: string;
   scores: number[][];
-  userName: string;
-  userId: number;
 }
 
 export interface IUser extends IPlayer {

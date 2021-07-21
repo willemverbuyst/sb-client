@@ -133,9 +133,8 @@ export const fetchPlayerScores = (
     const response = await axios.get(`${API_URL}/scores/players/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const scoresPlayer = response.data;
 
-    dispatch(storePlayerScores(scoresPlayer));
+    dispatch(storePlayerScores(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
