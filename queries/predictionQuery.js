@@ -4,6 +4,10 @@ const User = require('../models').user;
 const calculateScore = require('../utils/calc-scores');
 const { Op } = require('sequelize');
 const reducer = require('../utils/reducer');
+const {
+  chunkArrayTotoRounds,
+  lastMonday,
+} = require('../utils/helper-functions');
 
 const createPrediction = async (
   pGoalsHomeTeam,
@@ -159,6 +163,65 @@ const getScoresTotalToto = async () => {
   }
 };
 
+const getScoresPlayer = async (playerId) => {
+  const timeStampLastMonday = lastMonday();
+
+  const fixtures = await Fixture.findAll({
+    where: {
+      eventTimeStamp: {
+        [Op.lt]: [timeStampLastMonday],
+      },
+    },
+    order: [['id', 'ASC']],
+  });
+
+  const fixturesWithPredictions = await Fixture.findAll({
+    where: {
+      id: {
+        [Op.lte]: fixtures[fixtures.length - 1].id,
+      },
+    },
+    include: [
+      {
+        model: Prediction,
+        where: {
+          userId: playerId,
+        },
+        required: false,
+      },
+    ],
+    order: [['id', 'ASC']],
+    raw: true,
+    nest: true,
+  });
+
+  if (fixtures.length > 0) {
+    const fixturesWithScores = fixturesWithPredictions.map((fixture) => {
+      return {
+        score: calculateScore(
+          {
+            homeTeam: fixture.goalsHomeTeam,
+            awayTeam: fixture.goalsAwayTeam,
+          },
+          {
+            homeTeam: fixture.predictions.pGoalsHomeTeam,
+            awayTeam: fixture.predictions.pGoalsAwayTeam,
+          },
+        ),
+      };
+    });
+
+    const chunkedScores = chunkArrayTotoRounds(fixturesWithScores);
+
+    const scores = chunkedScores.map((totoround) =>
+      totoround.map((round) => round.reduce((a, b) => a + b.score, 0)),
+    );
+    return scores;
+  } else {
+    return [];
+  }
+};
+
 const getScoresRound = async (roundNumber) => {
   const season = `Regular Season - ${roundNumber}`;
 
@@ -291,6 +354,7 @@ const getScoresTotoRound = async (totoRoundNumber) => {
 module.exports = {
   createPrediction,
   getAllPredictionsForFixture,
+  getScoresPlayer,
   getScoresRound,
   getScoresTotalToto,
   getScoresTotoRound,

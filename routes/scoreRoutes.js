@@ -5,13 +5,16 @@ const scoreController = require('../controllers/scoreController');
 const router = express.Router();
 
 router
-  .route('/round/:id')
+  .route('/players/:id')
+  .get(authController.protect, scoreController.getScoresPlayer);
+router
+  .route('/rounds/:id')
   .get(authController.protect, scoreController.getScoresRound);
 router
   .route('/totaltoto')
   .get(authController.protect, scoreController.getScoresTotalToto);
 router
-  .route('/totoround/:id')
+  .route('/totorounds/:id')
   .get(authController.protect, scoreController.getScoresTotoRound);
 
 module.exports = router;
