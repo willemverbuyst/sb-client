@@ -52,9 +52,8 @@ export const fetchScoresRound = (
     const response = await axios.get(`${API_URL}/scores/rounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const round = response.data;
 
-    dispatch(storeScoresRound(round));
+    dispatch(storeScoresRound(response.data.data.scoresRound));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -106,9 +105,8 @@ export const fetchScoresTotoRound = (
     const response = await axios.get(`${API_URL}/scores/totorounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const totoRound = response.data;
 
-    dispatch(storeScoresTotoRound(totoRound));
+    dispatch(storeScoresTotoRound(response.data.data.scoresTotoRound));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

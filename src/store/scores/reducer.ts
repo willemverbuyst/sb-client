@@ -1,17 +1,17 @@
 import { IScoresPlayer } from '../../models/player.model';
 import {
-  IFixtureWithUsersWithScoreAndPrediction,
-  IUsersWithScoreAndRoundId,
-  IUsersWithScoreAndTotoRoundId,
-  IUserWithScore,
+  IFixtureWithPlayersWithScoreAndPrediction,
+  IPlayerWithScore,
+  IRoundWithPlayersWithScore,
+  ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models';
 import { ActionType, ScoresActions } from './action-types';
 
 export interface IScoresState {
-  fixtureWithScores: IFixtureWithUsersWithScoreAndPrediction | null;
-  roundScores: IUsersWithScoreAndRoundId | null;
-  totalTotoScores: IUserWithScore[] | null;
-  totoRoundScores: IUsersWithScoreAndTotoRoundId | null;
+  fixtureWithScores: IFixtureWithPlayersWithScoreAndPrediction | null;
+  roundScores: IRoundWithPlayersWithScore | null;
+  totalTotoScores: IPlayerWithScore[] | null;
+  totoRoundScores: ITotoRoundWithPlayersWithScore | null;
   scoresPlayer: IScoresPlayer | null;
 }
 

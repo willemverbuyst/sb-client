@@ -1,9 +1,9 @@
 import { IScoresPlayer } from '../../models/player.model';
 import {
-  IFixtureWithUsersWithScoreAndPrediction,
-  IUsersWithScoreAndRoundId,
-  IUsersWithScoreAndTotoRoundId,
-  IUserWithScore,
+  IFixtureWithPlayersWithScoreAndPrediction,
+  IPlayerWithScore,
+  IRoundWithPlayersWithScore,
+  ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models';
 
 export enum ActionType {
@@ -21,22 +21,22 @@ export type ResetAllScores = {
 
 export type StoreScoresFixture = {
   type: ActionType.STORE_SCORES_FIXTURE;
-  payload: IFixtureWithUsersWithScoreAndPrediction;
+  payload: IFixtureWithPlayersWithScoreAndPrediction;
 };
 
 export type StoreScoresRound = {
   type: ActionType.STORE_SCORES_ROUND;
-  payload: IUsersWithScoreAndRoundId;
+  payload: IRoundWithPlayersWithScore;
 };
 
 export type StoreScoresTotalToto = {
   type: ActionType.STORE_SCORES_TOTAL_TOTO;
-  payload: IUserWithScore[];
+  payload: IPlayerWithScore[];
 };
 
 export type StoreScoresTotoRound = {
   type: ActionType.STORE_SCORES_TOTO_ROUND;
-  payload: IUsersWithScoreAndTotoRoundId;
+  payload: ITotoRoundWithPlayersWithScore;
 };
 
 export type StorePlayerScores = {

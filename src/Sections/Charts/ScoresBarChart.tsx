@@ -7,31 +7,31 @@ import { useSelector } from 'react-redux';
 
 import BarChart from '../../Components/Chart/BarChart';
 import * as HISTORY from '../../history';
-import { IUserWithScore } from '../../models/scores.models';
+import { IPlayerWithScore } from '../../models/scores.models';
 import { selectUserId } from '../../store/user/selectors';
 import * as UTILS from '../../utils';
 
 interface IProps {
-  scores: IUserWithScore[];
+  scores: IPlayerWithScore[];
 }
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   const userId: number | null = useSelector(selectUserId);
   const labels: string[] = UTILS.getStringsInUpperCase<
-    keyof IUserWithScore,
-    IUserWithScore
-  >(scores, 'user');
+    keyof IPlayerWithScore,
+    IPlayerWithScore
+  >(scores, 'name');
   const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
   const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
-  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScore>(
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScore>(
     scores,
   );
-  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScore>(
+  const backgroundColor: string[] = UTILS.getColorBars<IPlayerWithScore>(
     scores,
     userId,
   );
   const gotoScoresPlayer = (index: number): void => {
-    const id: number = scores[index].userId;
+    const id: number = scores[index].id;
     userId && userId === id
       ? HISTORY.gotoScoresUser()
       : HISTORY.gotoScoresPlayer(id);

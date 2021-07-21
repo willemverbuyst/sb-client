@@ -25,3 +25,29 @@ export interface IUsersWithScoreAndTotoRoundId {
   usersWithScores: IUserWithScore[];
   totoRoundId: number;
 }
+
+export interface IPlayerWithScore {
+  id: number;
+  name: string;
+  score: number;
+}
+
+export interface IPlayerWithScoreAndPrediction extends IPlayerWithScore {
+  pGoalsAwayTeam: number;
+  pGoalsHomeTeam: number;
+}
+
+export interface IFixtureWithPlayersWithScoreAndPrediction {
+  fixture: IFixture;
+  scores: IPlayerWithScoreAndPrediction[];
+}
+
+export interface IRoundWithPlayersWithScore {
+  roundId: number;
+  scores: IPlayerWithScore[];
+}
+
+export interface ITotoRoundWithPlayersWithScore {
+  scores: IPlayerWithScore[];
+  totoRoundId: number;
+}

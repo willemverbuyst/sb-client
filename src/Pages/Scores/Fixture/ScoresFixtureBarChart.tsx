@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux';
 
 import BarChart from '../../../Components/Chart/BarChart';
 import * as HISTORY from '../../../history';
-import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
+import { IPlayerWithScoreAndPrediction } from '../../../models/scores.models';
 import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 
 interface IProps {
-  scores: IUserWithScoreAndPrediction[];
+  scores: IPlayerWithScoreAndPrediction[];
 }
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({
@@ -20,21 +20,21 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
 }: IProps): ReactElement => {
   const userId: number | null = useSelector(selectUserId);
   const labels: string[] = UTILS.getStringsInUpperCase<
-    keyof IUserWithScoreAndPrediction,
-    IUserWithScoreAndPrediction
-  >(scores, 'user');
+    keyof IPlayerWithScoreAndPrediction,
+    IPlayerWithScoreAndPrediction
+  >(scores, 'name');
   const userScores: number[] = UTILS.displayUserScores(scores);
   const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
-  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IUserWithScoreAndPrediction>(
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScoreAndPrediction>(
     scores,
   );
-  const backgroundColor: string[] = UTILS.getColorBars<IUserWithScoreAndPrediction>(
+  const backgroundColor: string[] = UTILS.getColorBars<IPlayerWithScoreAndPrediction>(
     scores,
     userId,
   );
   const userPredictions: string[] = UTILS.getUserPredictions(scores);
   const gotoScoresPlayer = (index: number): void => {
-    const id: number = scores[index].userId;
+    const id: number = scores[index].id;
     userId && userId === id
       ? HISTORY.gotoScoresUser()
       : HISTORY.gotoScoresPlayer(id);
