@@ -53,9 +53,10 @@ export const selectScoresTotalTotoSortedByName = (
 ): IPlayerWithScore[] | null => {
   if (
     state.scoresState.totalTotoScores &&
-    state.scoresState.totalTotoScores.length > 0
+    state.scoresState.totalTotoScores.scores &&
+    state.scoresState.totalTotoScores.scores.length > 0
   ) {
-    const scoresTotalToto = state.scoresState.totalTotoScores;
+    const scoresTotalToto = state.scoresState.totalTotoScores.scores;
     const scoresTotalTotoSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
@@ -72,9 +73,10 @@ export const selectScoresTotalTotoSortedByScore = (
 ): IPlayerWithScore[] | null => {
   if (
     state.scoresState.totalTotoScores &&
-    state.scoresState.totalTotoScores.length > 0
+    state.scoresState.totalTotoScores.scores &&
+    state.scoresState.totalTotoScores.scores.length > 0
   ) {
-    const scoresTotalToto = state.scoresState.totalTotoScores;
+    const scoresTotalToto = state.scoresState.totalTotoScores.scores;
     const scoresTotalTotoSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore

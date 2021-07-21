@@ -51,3 +51,7 @@ export interface ITotoRoundWithPlayersWithScore {
   scores: IPlayerWithScore[];
   totoRoundId: number;
 }
+
+export interface ITotalToto {
+  scores: IPlayerWithScore[];
+}

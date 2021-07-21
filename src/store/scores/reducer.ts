@@ -1,8 +1,8 @@
 import { IScoresPlayer } from '../../models/player.model';
 import {
   IFixtureWithPlayersWithScoreAndPrediction,
-  IPlayerWithScore,
   IRoundWithPlayersWithScore,
+  ITotalToto,
   ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models';
 import { ActionType, ScoresActions } from './action-types';
@@ -10,7 +10,7 @@ import { ActionType, ScoresActions } from './action-types';
 export interface IScoresState {
   fixtureWithScores: IFixtureWithPlayersWithScoreAndPrediction | null;
   roundScores: IRoundWithPlayersWithScore | null;
-  totalTotoScores: IPlayerWithScore[] | null;
+  totalTotoScores: ITotalToto | null;
   totoRoundScores: ITotoRoundWithPlayersWithScore | null;
   scoresPlayer: IScoresPlayer | null;
 }

@@ -53,7 +53,7 @@ export const fetchScoresRound = (
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch(storeScoresRound(response.data.data.scoresRound));
+    dispatch(storeScoresRound(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -80,7 +80,7 @@ export const fetchScoresTotalToto = (): ThunkAction<
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch(storeScoresTotalToto(response.data.data.scoresTotalToto));
+    dispatch(storeScoresTotalToto(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -106,7 +106,7 @@ export const fetchScoresTotoRound = (
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch(storeScoresTotoRound(response.data.data.scoresTotoRound));
+    dispatch(storeScoresTotoRound(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

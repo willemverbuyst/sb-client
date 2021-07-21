@@ -1,8 +1,8 @@
 import { IScoresPlayer } from '../../models/player.model';
 import {
   IFixtureWithPlayersWithScoreAndPrediction,
-  IPlayerWithScore,
   IRoundWithPlayersWithScore,
+  ITotalToto,
   ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models';
 import {
@@ -40,7 +40,7 @@ export const storeScoresRound = (
 };
 
 export const storeScoresTotalToto = (
-  totalToto: IPlayerWithScore[],
+  totalToto: ITotalToto,
 ): StoreScoresTotalToto => {
   return {
     type: ActionType.STORE_SCORES_TOTAL_TOTO,
