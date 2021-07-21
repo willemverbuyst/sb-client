@@ -26,38 +26,40 @@ exports.getScoresPlayer = catchAsync(async (req, res, _next) => {
 
 exports.getScoresRound = catchAsync(async (req, res, _next) => {
   const roundNumber = req.params.id;
-  const scoresRound = await getScoresRound(roundNumber);
+  const scores = await getScoresRound(roundNumber);
 
   res.status(200).json({
     status: 'success',
-    results: scoresRound.length,
+    results: scores.length,
     data: {
-      scoresRound,
+      scores,
+      roundNumber,
     },
   });
 });
 
 exports.getScoresTotalToto = catchAsync(async (req, res, _next) => {
-  const scoresTotalToto = await getScoresTotalToto();
+  const scores = await getScoresTotalToto();
 
   res.status(200).json({
     status: 'success',
-    results: scoresTotalToto.length,
+    results: scores.length,
     data: {
-      scoresTotalToto,
+      scores,
     },
   });
 });
 
 exports.getScoresTotoRound = catchAsync(async (req, res, _next) => {
   const totoRoundNumber = req.params.id;
-  const scoresTotoRound = await getScoresTotoRound(totoRoundNumber);
+  const scores = await getScoresTotoRound(totoRoundNumber);
 
   res.status(200).json({
     status: 'success',
-    results: scoresTotoRound.length,
+    results: scores.length,
     data: {
-      scoresTotoRound,
+      scores,
+      totoRoundNumber,
     },
   });
 });

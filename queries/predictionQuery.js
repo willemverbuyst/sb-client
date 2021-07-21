@@ -136,26 +136,34 @@ const getScoresTotalToto = async () => {
 
   if (predictions.length > 0) {
     const predictionsWithScores = [...predictions]
-      .filter((pred) => pred.user.totaalToto)
-      .map((pred) => {
+      .filter((prediction) => prediction.user.totaalToto)
+      .map((prediction) => {
         return {
-          ...pred,
+          ...prediction,
           score: calculateScore(
             {
-              homeTeam: pred.fixture.goalsHomeTeam,
-              awayTeam: pred.fixture.goalsAwayTeam,
+              homeTeam: prediction.fixture.goalsHomeTeam,
+              awayTeam: prediction.fixture.goalsAwayTeam,
             },
             {
-              homeTeam: pred.pGoalsHomeTeam,
-              awayTeam: pred.pGoalsAwayTeam,
+              homeTeam: prediction.pGoalsHomeTeam,
+              awayTeam: prediction.pGoalsAwayTeam,
             },
           ),
-          user: pred.user.userName,
-          userId: pred.user.id,
+          name: prediction.user.userName,
+          id: prediction.user.id,
         };
       });
 
-    let scoresTotalToto = reducer(predictionsWithScores);
+    const scoresTotalToto = reducer(predictionsWithScores);
+
+    // const updatedScores = scoresTotalToto.map((score) => {
+    //   return {
+    //     id: score.userId,
+    //     name: score.user,
+    //     score: score.score,
+    //   };
+    // });
 
     return scoresTotalToto;
   } else {
@@ -261,25 +269,15 @@ const getScoresRound = async (roundNumber) => {
             awayTeam: pred.pGoalsAwayTeam,
           },
         ),
-        user: pred.user.userName,
-        userId: pred.user.id,
+        name: pred.user.userName,
+        id: pred.user.id,
       };
     });
 
     const predictionsReduced = reducer(predictionsWithScores);
-    const round = {
-      usersWithScores: predictionsReduced,
-      roundNumber,
-    };
-
-    return round;
+    return predictionsReduced;
   } else {
-    const round = {
-      usersWithScores: predictions,
-      roundNumber,
-    };
-
-    return round;
+    return predictions;
   }
 };
 
@@ -329,25 +327,16 @@ const getScoresTotoRound = async (totoRoundNumber) => {
             awayTeam: pred.pGoalsAwayTeam,
           },
         ),
-        user: pred.user.userName,
-        userId: pred.user.id,
+        name: pred.user.userName,
+        id: pred.user.id,
       };
     });
 
     const predictionsReduced = reducer(predictionsWithScores);
 
-    const totoRound = {
-      usersWithScores: predictionsReduced,
-      totoRoundNumber,
-    };
-
-    return totoRound;
+    return predictionsReduced;
   } else {
-    const totoRound = {
-      usersWithScores: predictions,
-      totoRoundNumber,
-    };
-    return totoRound;
+    return predictions;
   }
 };
 

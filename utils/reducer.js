@@ -1,11 +1,11 @@
 const reducer = (arr) => {
   let predictionsReduced = [];
   arr.reduce((a, b) => {
-    if (!a[b.userId]) {
-      a[b.userId] = { userId: b.userId, user: b.user, score: 0 };
-      predictionsReduced.push(a[b.userId]);
+    if (!a[b.id]) {
+      a[b.id] = { id: b.id, name: b.name, score: 0 };
+      predictionsReduced.push(a[b.id]);
     }
-    a[b.userId].score += b.score;
+    a[b.id].score += b.score;
     return a;
   }, {});
   return predictionsReduced;
