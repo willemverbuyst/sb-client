@@ -3,13 +3,19 @@ const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-const { getUserByEmail, createNewUser } = require('../queries/userQuery');
+const {
+  getUserByEmail,
+  createNewUser,
+  updateUserPassword,
+} = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/fixtureQuery');
 const {
   validateLoginInput,
   validatePassword,
   validateSignupInput,
+  validateUpdatePassword,
 } = require('../validators/inputValidator');
+const { validateNewPassword } = require('../validators/queryValidator');
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -138,5 +144,28 @@ exports.validToken = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.forgotPassword = (req, res, next) => {};
-exports.resetPassword = (req, res, next) => {};
+exports.forgotPassword = catchAsync(async (req, res, next) => {});
+exports.resetPassword = catchAsync(async (req, res, next) => {});
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  const { newPassword } = req.body;
+
+  if (!validateUpdatePassword(newPassword)) {
+    return next(new AppError('Vul nieuw wachtwoord in!'), 400);
+  }
+
+  if (!validateNewPassword(newPassword, req.user.password)) {
+    return next(
+      new AppError('Je oude en nieuwe wachtwoord mag niet hetzelfde zijn!'),
+      400,
+    );
+  }
+
+  await updateUserPassword(newPassword, req.user);
+
+  return res.status(200).send({
+    status: 'success',
+    data: null,
+    message: 'Je wachtwoord is gewijzigd.',
+  });
+});

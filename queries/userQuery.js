@@ -92,6 +92,11 @@ const getUserByEmail = async (email) =>
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
+const updateUserPassword = async (newPassword, user) =>
+  await user.update({
+    password: bcrypt.hashSync(newPassword, Number(process.env.SALT_ROUNDS)),
+  });
+
 const updateUserProfile = async (
   id,
   { userName, firstName, lastName, email, phoneNumber, totaalToto, teamId },
@@ -123,5 +128,6 @@ module.exports = {
   getAllUsers,
   getUserById,
   getUserByEmail,
+  updateUserPassword,
   updateUserProfile,
 };

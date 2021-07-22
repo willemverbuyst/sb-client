@@ -44,10 +44,13 @@ const validateSignupInput = ({
     ? false
     : true;
 
+const validateUpdatePassword = (newPassword) => (!newPassword ? false : true);
+
 module.exports = {
   validateLoginInput,
   validatePassword,
   validateProfileInput,
   validatePredictionInput,
   validateSignupInput,
+  validateUpdatePassword,
 };
