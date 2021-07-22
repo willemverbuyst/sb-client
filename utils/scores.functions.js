@@ -48,7 +48,5 @@ const getWinner = (homeTeam, awayTeam) =>
   homeTeam > awayTeam ? 'homeWins' : homeTeam < awayTeam ? 'awayWins' : 'draw';
 
 module.exports = {
-  addScoresTofixturesWithPrediction,
   calculateScore,
-  calculateScores,
 };
