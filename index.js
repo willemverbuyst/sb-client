@@ -8,7 +8,6 @@ const predictionRouter = require('./routers/predictions');
 const roundRouter = require('./routers/rounds');
 const scoreRouter = require('./routers/scores');
 const teamRouter = require('./routers/teams');
-const userRouter = require('./routers/users');
 
 const app = express();
 const bodyParserMiddleWare = express.json();
@@ -37,6 +36,5 @@ app.use('/predictions', predictionRouter);
 app.use('/rounds', roundRouter);
 app.use('/scores', scoreRouter);
 app.use('/teams', teamRouter);
-app.use('/users', userRouter);
 
 module.exports = app;
