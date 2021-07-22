@@ -1,4 +1,4 @@
-import { IAllPlayers, IPlayer } from '../../models/player.model';
+import { IAllPlayers, INewPlayer } from '../../models/player.model';
 
 export enum ActionType {
   ADD_NEW_PLAYER = 'UPDATE_PREDICTION',
@@ -9,7 +9,7 @@ export enum ActionType {
 
 export type AddNewPlayer = {
   type: ActionType.ADD_NEW_PLAYER;
-  payload: IPlayer;
+  payload: INewPlayer;
 };
 
 export type DeletePlayer = {

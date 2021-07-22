@@ -17,7 +17,9 @@ const playersReducer = (
     case ActionType.ADD_NEW_PLAYER:
       return {
         ...state,
-        players: state.players ? [...state.players, action.payload] : null,
+        players: state.players
+          ? [...state.players, action.payload.player]
+          : null,
       };
 
     case ActionType.DELETE_PLAYER:

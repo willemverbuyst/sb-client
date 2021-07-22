@@ -29,7 +29,7 @@ export const addPlayer = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.post(
-        `${API_URL}/users/signup`,
+        `${API_URL}/players/signup`,
         {
           userName,
           firstName,
@@ -43,7 +43,7 @@ export const addPlayer = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(addNewPlayer(response.data.data.user));
+      dispatch(addNewPlayer(response.data.data));
       dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {

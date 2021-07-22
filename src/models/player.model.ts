@@ -29,3 +29,7 @@ export interface IUser extends IPlayer {
 export interface IAllPlayers {
   players: IPlayer[];
 }
+
+export interface INewPlayer {
+  player: IPlayer;
+}
