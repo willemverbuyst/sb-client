@@ -25,3 +25,7 @@ export interface IScoresPlayer {
 export interface IUser extends IPlayer {
   token: string;
 }
+
+export interface IAllPlayers {
+  players: IPlayer[];
+}

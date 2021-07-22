@@ -68,11 +68,11 @@ export const fetchAllPlayers = (): ThunkAction<
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/users`, {
+    const response = await axios.get(`${API_URL}/players`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch(storeAllPlayers(response.data.data.users));
+    dispatch(storeAllPlayers(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -94,7 +94,7 @@ export const playerDelete = (
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.delete(`${API_URL}/users/${id}`, {
+    const response = await axios.delete(`${API_URL}/players/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

@@ -34,7 +34,7 @@ const playersReducer = (
       };
 
     case ActionType.STORE_ALL_PLAYERS:
-      return { ...state, players: [...action.payload] };
+      return { ...state, players: action.payload.players };
 
     default:
       return state;

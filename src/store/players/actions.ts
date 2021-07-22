@@ -1,4 +1,4 @@
-import { IPlayer } from '../../models/player.model';
+import { IAllPlayers, IPlayer } from '../../models/player.model';
 import {
   ActionType,
   AddNewPlayer,
@@ -14,7 +14,7 @@ export const addNewPlayer = (player: IPlayer): AddNewPlayer => {
   };
 };
 
-export const storeAllPlayers = (players: IPlayer[]): StoreAllPlayers => {
+export const storeAllPlayers = (players: IAllPlayers): StoreAllPlayers => {
   return {
     type: ActionType.STORE_ALL_PLAYERS,
     payload: players,

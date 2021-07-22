@@ -1,4 +1,4 @@
-import { IPlayer } from '../../models/player.model';
+import { IAllPlayers, IPlayer } from '../../models/player.model';
 
 export enum ActionType {
   ADD_NEW_PLAYER = 'UPDATE_PREDICTION',
@@ -23,7 +23,7 @@ export type ResetPlayers = {
 
 export type StoreAllPlayers = {
   type: ActionType.STORE_ALL_PLAYERS;
-  payload: IPlayer[];
+  payload: IAllPlayers;
 };
 
 export type PlayersActions =
