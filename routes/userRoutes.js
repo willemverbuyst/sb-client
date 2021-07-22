@@ -5,15 +5,11 @@ const userController = require('../controllers/userController');
 const router = express.Router();
 
 router.route('/login').post(authController.login);
-router
-  .route('/signup')
-  .post(
-    authController.protect,
-    authController.restrictTo('admin'),
-    authController.signup,
-  );
+
 router.route('/forgotPassword').post(authController.forgotPassword);
+
 router.route('/resetPassword/:token').post(authController.resetPassword);
+
 router
   .route('/updatePassword')
   .patch(authController.protect, authController.updatePassword);

@@ -7,6 +7,14 @@ const router = express.Router();
 router.route('/').get(authController.protect, playerController.getAllPlayers);
 
 router
+  .route('/signup')
+  .post(
+    authController.protect,
+    authController.restrictTo('admin'),
+    playerController.signupPlayer,
+  );
+
+router
   .route('/:id')
   .delete(
     authController.protect,

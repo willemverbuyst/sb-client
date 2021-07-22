@@ -57,20 +57,6 @@ exports.login = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.signup = catchAsync(async (req, res, next) => {
-  if (!validateSignupInput(req.body)) {
-    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
-  }
-
-  const newUser = await createNewUser(req.body);
-
-  res.status(201).json({
-    status: 'success',
-    data: { user: newUser },
-    message: `Er is een nieuw account gemaakt voor ${newUser.dataValues.userName}.`,
-  });
-});
-
 exports.protect = catchAsync(async (req, res, next) => {
   // get token an check if it's there
   let token;

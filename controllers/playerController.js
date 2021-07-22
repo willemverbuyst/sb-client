@@ -1,16 +1,11 @@
-const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const {
-  getAllFixturesForLoggedInUser,
-  getPastFixturesWithPredictionsAndScores,
-} = require('../queries/fixtureQuery');
-const {
+  createNewUser,
   deleteUserAndHisPrediction,
   getAllUsers,
-  getUserById,
-  updateUserProfile,
 } = require('../queries/userQuery');
+const { validateSignupInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
 
 exports.deletePlayer = catchAsync(async (req, res, next) => {
@@ -34,5 +29,19 @@ exports.getAllPlayers = catchAsync(async (req, res, next) => {
     data: {
       players,
     },
+  });
+});
+
+exports.signupPlayer = catchAsync(async (req, res, next) => {
+  if (!validateSignupInput(req.body)) {
+    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
+  }
+
+  const newPlayer = await createNewUser(req.body);
+
+  res.status(201).json({
+    status: 'success',
+    data: { player: newPlayer },
+    message: `Er is een nieuw account gemaakt voor ${newPlayer.dataValues.userName}.`,
   });
 });
