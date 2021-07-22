@@ -112,7 +112,7 @@ const SignUpForm: React.FC = (): ReactElement => {
             onChange={updateSignUpCredentials}
           />
           <CheckBoxComponent
-            id="totaaltoto"
+            id="totaalToto"
             checked={signUpCredentials.totaalToto}
             onChange={updateSignUpCredentials}
             label="Totaal Toto"
