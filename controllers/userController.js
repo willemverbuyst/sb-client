@@ -7,11 +7,9 @@ const {
 } = require('../queries/fixtureQuery');
 const {
   deleteUserAndHisPrediction,
-  getAllUsers,
   getUserById,
   updateUserProfile,
 } = require('../queries/userQuery');
-
 const { validateProfileInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
 
@@ -19,18 +17,6 @@ const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
-
-exports.deleteUser = catchAsync(async (req, res, next) => {
-  const user = await deleteUserAndHisPrediction(req.params.id);
-
-  if (!validateUser(user)) {
-    return next(new AppError('Geen speler gevonden met deze id!', 404));
-  }
-
-  res
-    .status(204)
-    .json({ status: 'success', data: null, message: 'Speler is verwijderd!' });
-});
 
 exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
@@ -42,18 +28,6 @@ exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, next) => {
     result: fixtures.length,
     data: {
       fixtures,
-    },
-  });
-});
-
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await getAllUsers();
-
-  res.status(200).json({
-    status: 'success',
-    results: users.length,
-    data: {
-      users,
     },
   });
 });

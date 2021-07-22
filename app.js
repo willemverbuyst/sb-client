@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const fixtureRouter = require('./routes/fixtureRoutes');
+const playerRouter = require('./routes/playerRoutes');
 const predictionRouter = require('./routes/predictionRoutes');
 const scoreRouter = require('./routes/scoreRoutes');
 const teamRouter = require('./routes/teamRoutes');
@@ -27,6 +28,7 @@ app.use((res, req, next) => {
 });
 
 app.use('/api/v1/fixtures', fixtureRouter);
+app.use('/api/v1/players', playerRouter);
 app.use('/api/v1/predictions', predictionRouter);
 app.use('/api/v1/scores', scoreRouter);
 app.use('/api/v1/teams', teamRouter);
