@@ -1,10 +1,13 @@
 const catchAsync = require('../utils/catchAsync');
 const { getFixture } = require('../queries/fixtureQuery');
-const { getAllPredictionsForFixture } = require('../queries/predictionQuery');
+const {
+  getAllPredictionsAndScoresForFixture,
+} = require('../queries/predictionQuery');
 
 exports.getFixtureWithScores = catchAsync(async (req, res, _next) => {
-  const fixture = await getFixture(req.params.id);
-  const scores = await getAllPredictionsForFixture(fixture);
+  const fixtureId = req.params.id;
+  const fixture = await getFixture(fixtureId);
+  const scores = await getAllPredictionsAndScoresForFixture(fixture);
 
   res.status(200).json({
     status: 'success',

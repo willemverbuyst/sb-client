@@ -2,6 +2,7 @@ const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const User = require('../models').user;
 const calculateScore = require('../utils/calc-scores');
+const { calculateScores } = require('../utils/scores.functions');
 const { Op } = require('sequelize');
 const reducer = require('../utils/reducer');
 const {
@@ -48,7 +49,7 @@ const createPrediction = async (
   return prediction;
 };
 
-const getAllPredictionsForFixture = async (fixture) => {
+const getAllPredictionsAndScoresForFixture = async (fixture) => {
   const predictions = await Prediction.findAll({
     where: { fixtureId: fixture.id },
     include: [{ model: User, attributes: ['userName', 'id'] }],
@@ -62,31 +63,20 @@ const getAllPredictionsForFixture = async (fixture) => {
 
   const predictionsWithScores = predictions.map((prediction) => {
     return {
-      ...prediction,
-      score: calculateScore(
-        {
-          homeTeam: fixture.goalsHomeTeam,
-          awayTeam: fixture.goalsAwayTeam,
-        },
-        {
-          homeTeam: prediction.pGoalsHomeTeam,
-          awayTeam: prediction.pGoalsAwayTeam,
-        },
+      name: prediction.user.userName,
+      id: prediction.user.id,
+      pGoalsHomeTeam: prediction.pGoalsHomeTeam,
+      pGoalsAwayTeam: prediction.pGoalsAwayTeam,
+      score: calculateScores(
+        fixture.goalsHomeTeam,
+        fixture.goalsAwayTeam,
+        prediction.pGoalsHomeTeam,
+        prediction.pGoalsAwayTeam,
       ),
     };
   });
 
-  const scores = predictionsWithScores.map((predictionsWithScore) => {
-    return {
-      pGoalsHomeTeam: predictionsWithScore.pGoalsHomeTeam,
-      pGoalsAwayTeam: predictionsWithScore.pGoalsAwayTeam,
-      score: predictionsWithScore.score,
-      user: predictionsWithScore.user.userName,
-      userId: predictionsWithScore.user.id,
-    };
-  });
-
-  return scores;
+  return predictionsWithScores;
 };
 
 const updatePrediction = async (
@@ -139,16 +129,11 @@ const getScoresTotalToto = async () => {
       .filter((prediction) => prediction.user.totaalToto)
       .map((prediction) => {
         return {
-          ...prediction,
-          score: calculateScore(
-            {
-              homeTeam: prediction.fixture.goalsHomeTeam,
-              awayTeam: prediction.fixture.goalsAwayTeam,
-            },
-            {
-              homeTeam: prediction.pGoalsHomeTeam,
-              awayTeam: prediction.pGoalsAwayTeam,
-            },
+          score: calculateScores(
+            prediction.fixture.goalsHomeTeam,
+            prediction.fixture.goalsAwayTeam,
+            prediction.pGoalsHomeTeam,
+            prediction.pGoalsAwayTeam,
           ),
           name: prediction.user.userName,
           id: prediction.user.id,
@@ -156,14 +141,6 @@ const getScoresTotalToto = async () => {
       });
 
     const scoresTotalToto = reducer(predictionsWithScores);
-
-    // const updatedScores = scoresTotalToto.map((score) => {
-    //   return {
-    //     id: score.userId,
-    //     name: score.user,
-    //     score: score.score,
-    //   };
-    // });
 
     return scoresTotalToto;
   } else {
@@ -206,15 +183,11 @@ const getScoresPlayer = async (playerId) => {
   if (fixtures.length > 0) {
     const fixturesWithScores = fixturesWithPredictions.map((fixture) => {
       return {
-        score: calculateScore(
-          {
-            homeTeam: fixture.goalsHomeTeam,
-            awayTeam: fixture.goalsAwayTeam,
-          },
-          {
-            homeTeam: fixture.predictions.pGoalsHomeTeam,
-            awayTeam: fixture.predictions.pGoalsAwayTeam,
-          },
+        score: calculateScores(
+          fixture.goalsHomeTeam,
+          fixture.goalsAwayTeam,
+          fixture.predictions.pGoalsHomeTeam,
+          fixture.predictions.pGoalsAwayTeam,
         ),
       };
     });
@@ -258,16 +231,11 @@ const getScoresRound = async (roundNumber) => {
   if (predictions.length > 0) {
     const predictionsWithScores = predictions.map((pred) => {
       return {
-        ...pred,
-        score: calculateScore(
-          {
-            homeTeam: pred.fixture.goalsHomeTeam,
-            awayTeam: pred.fixture.goalsAwayTeam,
-          },
-          {
-            homeTeam: pred.pGoalsHomeTeam,
-            awayTeam: pred.pGoalsAwayTeam,
-          },
+        score: calculateScores(
+          pred.fixture.goalsHomeTeam,
+          pred.fixture.goalsAwayTeam,
+          pred.pGoalsHomeTeam,
+          pred.pGoalsAwayTeam,
         ),
         name: pred.user.userName,
         id: pred.user.id,
@@ -316,16 +284,11 @@ const getScoresTotoRound = async (totoRoundNumber) => {
   if (predictions.length > 0) {
     const predictionsWithScores = predictions.map((pred) => {
       return {
-        ...pred,
-        score: calculateScore(
-          {
-            homeTeam: pred.fixture.goalsHomeTeam,
-            awayTeam: pred.fixture.goalsAwayTeam,
-          },
-          {
-            homeTeam: pred.pGoalsHomeTeam,
-            awayTeam: pred.pGoalsAwayTeam,
-          },
+        score: calculateScores(
+          pred.fixture.goalsHomeTeam,
+          pred.fixture.goalsAwayTeam,
+          pred.pGoalsHomeTeam,
+          pred.pGoalsAwayTeam,
         ),
         name: pred.user.userName,
         id: pred.user.id,
@@ -342,7 +305,7 @@ const getScoresTotoRound = async (totoRoundNumber) => {
 
 module.exports = {
   createPrediction,
-  getAllPredictionsForFixture,
+  getAllPredictionsAndScoresForFixture,
   getScoresPlayer,
   getScoresRound,
   getScoresTotalToto,
