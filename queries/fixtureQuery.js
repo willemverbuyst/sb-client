@@ -7,9 +7,7 @@ const {
   lastMonday,
   nextMonday,
 } = require('../utils/helper-functions');
-const {
-  addScoresTofixturesWithPrediction,
-} = require('../utils/scores.functions');
+const { calculateScores } = require('../utils/scores.functions');
 
 const getAllFixturesWithPrediction = async (playerId, userId) => {
   const fixturesWithPrediction = await Fixture.findAll({
@@ -26,9 +24,20 @@ const getAllFixturesWithPrediction = async (playerId, userId) => {
     nest: true,
   });
 
-  const fixturesWithPredictionAndScore = addScoresTofixturesWithPrediction(
-    fixturesWithPrediction,
+  const fixturesWithPredictionAndScore = fixturesWithPrediction.map(
+    (fixtureWithPrediction) => {
+      return {
+        ...fixtureWithPrediction,
+        score: calculateScores(
+          fixtureWithPrediction.goalsHomeTeam,
+          fixtureWithPrediction.goalsAwayTeam,
+          fixtureWithPrediction.predictions.pGoalsHomeTeam,
+          fixtureWithPrediction.predictions.pGoalsAwayTeam,
+        ),
+      };
+    },
   );
+
   const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
     fixturesWithPredictionAndScore,
   );
@@ -80,8 +89,18 @@ const getCurrentRoundForUser = async (id) => {
     nest: true,
   });
 
-  const fixturesWithPredictionAndScore = addScoresTofixturesWithPrediction(
-    fixturesWithPrediction,
+  const fixturesWithPredictionAndScore = fixturesWithPrediction.map(
+    (fixtureWithPrediction) => {
+      return {
+        ...fixtureWithPrediction,
+        score: calculateScores(
+          fixtureWithPrediction.goalsHomeTeam,
+          fixtureWithPrediction.goalsAwayTeam,
+          fixtureWithPrediction.predictions.pGoalsHomeTeam,
+          fixtureWithPrediction.predictions.pGoalsAwayTeam,
+        ),
+      };
+    },
   );
 
   let currentRound = null;
