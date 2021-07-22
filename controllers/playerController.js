@@ -16,7 +16,7 @@ exports.deletePlayer = catchAsync(async (req, res, next) => {
   }
 
   res
-    .status(204)
+    .status(200)
     .json({ status: 'success', data: null, message: 'Speler is verwijderd!' });
 });
 
