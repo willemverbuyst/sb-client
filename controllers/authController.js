@@ -2,17 +2,11 @@ const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-
-const {
-  getUserByEmail,
-  createNewUser,
-  updateUserPassword,
-} = require('../queries/userQuery');
+const { getUserByEmail, updateUserPassword } = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/fixtureQuery');
 const {
   validateLoginInput,
   validatePassword,
-  validateSignupInput,
   validateUpdatePassword,
 } = require('../validators/inputValidator');
 const { validateNewPassword } = require('../validators/queryValidator');

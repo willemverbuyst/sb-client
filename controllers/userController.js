@@ -5,11 +5,7 @@ const {
   getAllFixturesForLoggedInUser,
   getPastFixturesWithPredictionsAndScores,
 } = require('../queries/fixtureQuery');
-const {
-  deleteUserAndHisPrediction,
-  getUserById,
-  updateUserProfile,
-} = require('../queries/userQuery');
+const { getUserById, updateUserProfile } = require('../queries/userQuery');
 const { validateProfileInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
 
@@ -28,18 +24,6 @@ exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, next) => {
     result: fixtures.length,
     data: {
       fixtures,
-    },
-  });
-});
-
-exports.getUserById = catchAsync(async (req, res, next) => {
-  const users = await getUserById(req.params.id);
-
-  res.status(200).json({
-    status: 'success',
-    results: users.length,
-    data: {
-      users,
     },
   });
 });
