@@ -4,7 +4,6 @@ const express = require('express');
 const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
 
-const predictionRouter = require('./routers/predictions');
 const roundRouter = require('./routers/rounds');
 const scoreRouter = require('./routers/scores');
 
@@ -30,7 +29,6 @@ app.use(bodyParserMiddleWare);
 //     setTimeout(() => next(), parseInt(process.env.DELAY));
 //   });
 
-app.use('/predictions', predictionRouter);
 app.use('/rounds', roundRouter);
 app.use('/scores', scoreRouter);
 
