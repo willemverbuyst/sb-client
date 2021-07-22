@@ -31,13 +31,13 @@ export const changePassword = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${API_URL}/me/password`,
+        `${API_URL}/users/updatePassword`,
         {
           newPassword,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
-      dispatch(setMessage('success', response.data.message));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
