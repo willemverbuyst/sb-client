@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Body parser middleware
 app.use(express.json());
 
 app.use((res, req, next) => {

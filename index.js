@@ -4,7 +4,6 @@ const express = require('express');
 const loggerMiddleWare = require('morgan');
 const corsMiddleWare = require('cors');
 
-const roundRouter = require('./routers/rounds');
 const scoreRouter = require('./routers/scores');
 
 const app = express();
@@ -29,7 +28,6 @@ app.use(bodyParserMiddleWare);
 //     setTimeout(() => next(), parseInt(process.env.DELAY));
 //   });
 
-app.use('/rounds', roundRouter);
 app.use('/scores', scoreRouter);
 
 module.exports = app;
