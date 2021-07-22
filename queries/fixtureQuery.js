@@ -7,7 +7,7 @@ const {
   lastMonday,
   nextMonday,
 } = require('../utils/helper-functions');
-const { calculateScores } = require('../utils/scores.functions');
+const { calculateScore } = require('../utils/scores.functions');
 
 const getAllFixturesWithPrediction = async (playerId, userId) => {
   const fixturesWithPrediction = await Fixture.findAll({
@@ -28,7 +28,7 @@ const getAllFixturesWithPrediction = async (playerId, userId) => {
     (fixtureWithPrediction) => {
       return {
         ...fixtureWithPrediction,
-        score: calculateScores(
+        score: calculateScore(
           fixtureWithPrediction.goalsHomeTeam,
           fixtureWithPrediction.goalsAwayTeam,
           fixtureWithPrediction.predictions.pGoalsHomeTeam,
@@ -93,7 +93,7 @@ const getCurrentRoundForUser = async (id) => {
     (fixtureWithPrediction) => {
       return {
         ...fixtureWithPrediction,
-        score: calculateScores(
+        score: calculateScore(
           fixtureWithPrediction.goalsHomeTeam,
           fixtureWithPrediction.goalsAwayTeam,
           fixtureWithPrediction.predictions.pGoalsHomeTeam,

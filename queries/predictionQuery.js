@@ -1,8 +1,7 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const User = require('../models').user;
-const calculateScore = require('../utils/calc-scores');
-const { calculateScores } = require('../utils/scores.functions');
+const { calculateScore } = require('../utils/scores.functions');
 const { Op } = require('sequelize');
 const reducer = require('../utils/reducer');
 const {
@@ -67,7 +66,7 @@ const getAllPredictionsAndScoresForFixture = async (fixture) => {
       id: prediction.user.id,
       pGoalsHomeTeam: prediction.pGoalsHomeTeam,
       pGoalsAwayTeam: prediction.pGoalsAwayTeam,
-      score: calculateScores(
+      score: calculateScore(
         fixture.goalsHomeTeam,
         fixture.goalsAwayTeam,
         prediction.pGoalsHomeTeam,
@@ -129,7 +128,7 @@ const getScoresTotalToto = async () => {
       .filter((prediction) => prediction.user.totaalToto)
       .map((prediction) => {
         return {
-          score: calculateScores(
+          score: calculateScore(
             prediction.fixture.goalsHomeTeam,
             prediction.fixture.goalsAwayTeam,
             prediction.pGoalsHomeTeam,
@@ -183,7 +182,7 @@ const getScoresPlayer = async (playerId) => {
   if (fixtures.length > 0) {
     const fixturesWithScores = fixturesWithPredictions.map((fixture) => {
       return {
-        score: calculateScores(
+        score: calculateScore(
           fixture.goalsHomeTeam,
           fixture.goalsAwayTeam,
           fixture.predictions.pGoalsHomeTeam,
@@ -231,7 +230,7 @@ const getScoresRound = async (roundNumber) => {
   if (predictions.length > 0) {
     const predictionsWithScores = predictions.map((pred) => {
       return {
-        score: calculateScores(
+        score: calculateScore(
           pred.fixture.goalsHomeTeam,
           pred.fixture.goalsAwayTeam,
           pred.pGoalsHomeTeam,
@@ -284,7 +283,7 @@ const getScoresTotoRound = async (totoRoundNumber) => {
   if (predictions.length > 0) {
     const predictionsWithScores = predictions.map((pred) => {
       return {
-        score: calculateScores(
+        score: calculateScore(
           pred.fixture.goalsHomeTeam,
           pred.fixture.goalsAwayTeam,
           pred.pGoalsHomeTeam,
