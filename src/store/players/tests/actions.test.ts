@@ -1,60 +1,22 @@
-import {
-  IPlayer,
-  IPlayerProfile,
-  IScoresPlayer,
-} from '../../../models/player.model';
+import { IAllPlayers, INewPlayer } from '../../../models/player.model';
 import {
   ActionType,
   AddNewPlayer,
   DeletePlayer,
   ResetPlayers,
   StoreAllPlayers,
-  StorePlayerProfile,
-  StorePlayerScores,
-  UpdateAdminStatus,
 } from '../action-types';
 import {
   addNewPlayer,
   deletePlayer,
   resetPlayers,
   storeAllPlayers,
-  storePlayerProfile,
-  storePlayerScores,
-  updateAdminStatus,
 } from '../actions';
 
 describe('#playersState', () => {
   describe('#addNewPlayer w/ player', () => {
-    const player: IPlayer = {
-      admin: false,
-      email: 'test@test.com',
-      firstName: 'test_player',
-      id: 1,
-      lastName: 'tst_player',
-      phoneNumber: '123',
-      team: {
-        id: 1,
-        logo: 'test_logo',
-        name: 'test_name',
-      },
-      totaalToto: true,
-      userName: 'TEST',
-    };
-    const expected: AddNewPlayer = {
-      type: ActionType.ADD_NEW_PLAYER,
-      payload: player,
-    };
-
-    test('returns an action w/ type ADD_NEW_PLAYER and player as payload', () => {
-      expect(addNewPlayer(player)).toEqual(expected);
-      expect(addNewPlayer(player).type).toEqual(ActionType.ADD_NEW_PLAYER);
-      expect(addNewPlayer(player).payload).toEqual(player);
-    });
-  });
-
-  describe('#storeAllPlayers w/ players', () => {
-    const players: IPlayer[] = [
-      {
+    const newPlayer: INewPlayer = {
+      player: {
         admin: false,
         email: 'test@test.com',
         firstName: 'test_player',
@@ -69,18 +31,50 @@ describe('#playersState', () => {
         totaalToto: true,
         userName: 'TEST',
       },
-    ];
+    };
+    const expected: AddNewPlayer = {
+      type: ActionType.ADD_NEW_PLAYER,
+      payload: newPlayer,
+    };
+
+    test('returns an action w/ type ADD_NEW_PLAYER and player as payload', () => {
+      expect(addNewPlayer(newPlayer)).toEqual(expected);
+      expect(addNewPlayer(newPlayer).type).toEqual(ActionType.ADD_NEW_PLAYER);
+      expect(addNewPlayer(newPlayer).payload).toEqual(newPlayer);
+    });
+  });
+
+  describe('#storeAllPlayers w/ players', () => {
+    const allPlayers: IAllPlayers = {
+      players: [
+        {
+          admin: false,
+          email: 'test@test.com',
+          firstName: 'test_player',
+          id: 1,
+          lastName: 'tst_player',
+          phoneNumber: '123',
+          team: {
+            id: 1,
+            logo: 'test_logo',
+            name: 'test_name',
+          },
+          totaalToto: true,
+          userName: 'TEST',
+        },
+      ],
+    };
     const expected: StoreAllPlayers = {
       type: ActionType.STORE_ALL_PLAYERS,
-      payload: players,
+      payload: allPlayers,
     };
 
     test('returns an action w/ type STORE_ALL_PLAYERS and players as payload', () => {
-      expect(storeAllPlayers(players)).toEqual(expected);
-      expect(storeAllPlayers(players).type).toEqual(
+      expect(storeAllPlayers(allPlayers)).toEqual(expected);
+      expect(storeAllPlayers(allPlayers).type).toEqual(
         ActionType.STORE_ALL_PLAYERS,
       );
-      expect(storeAllPlayers(players).payload).toEqual(players);
+      expect(storeAllPlayers(allPlayers).payload).toEqual(allPlayers);
     });
   });
 
@@ -98,60 +92,6 @@ describe('#playersState', () => {
     });
   });
 
-  describe('#storePlayerProfile w/ profile', () => {
-    const playerProfile: IPlayerProfile = {
-      admin: false,
-      email: 'test@test.com',
-      firstName: 'test_player',
-      id: 1,
-      lastName: 'tst_player',
-      phoneNumber: '123',
-      team: {
-        id: 1,
-        logo: 'test_logo',
-        name: 'test_name',
-      },
-      totaalToto: true,
-      userName: 'TEST',
-      pastFixturesWithScores: null,
-    };
-    const expected: StorePlayerProfile = {
-      type: ActionType.STORE_PLAYER_PROFILE,
-      payload: playerProfile,
-    };
-
-    test('returns an action w/ type STORE_PLAYER_PROFILE and a profile as payload', () => {
-      expect(storePlayerProfile(playerProfile)).toEqual(expected);
-      expect(storePlayerProfile(playerProfile).type).toEqual(
-        ActionType.STORE_PLAYER_PROFILE,
-      );
-      expect(storePlayerProfile(playerProfile).payload).toEqual(playerProfile);
-    });
-  });
-
-  describe('#playerScoresFetched w/ scores', () => {
-    const scoresPlayer: IScoresPlayer = {
-      scores: [
-        [1, 2],
-        [3, 4],
-      ],
-      userName: 'string',
-      userId: 1,
-    };
-    const expected: StorePlayerScores = {
-      type: ActionType.STORE_PLAYER_SCORES,
-      payload: scoresPlayer,
-    };
-
-    test('returns an action w/ type STORE_PLAYER_SCORES and scores as payload', () => {
-      expect(storePlayerScores(scoresPlayer)).toEqual(expected);
-      expect(storePlayerScores(scoresPlayer).type).toEqual(
-        ActionType.STORE_PLAYER_SCORES,
-      );
-      expect(storePlayerScores(scoresPlayer).payload).toEqual(scoresPlayer);
-    });
-  });
-
   describe('#resetPlayers', () => {
     const expected: ResetPlayers = {
       type: ActionType.RESET_PLAYERS,
@@ -161,36 +101,6 @@ describe('#playersState', () => {
       expect(resetPlayers()).toEqual(expected);
       expect(resetPlayers()).not.toHaveProperty('payload');
       expect(resetPlayers().type).toEqual(ActionType.RESET_PLAYERS);
-    });
-  });
-
-  describe('#updateAdminStatus w/ player', () => {
-    const player: IPlayer = {
-      admin: false,
-      email: 'test@test.com',
-      firstName: 'test_player1',
-      id: 1,
-      lastName: 'tst_player',
-      phoneNumber: '123',
-      team: {
-        id: 1,
-        logo: 'test_logo',
-        name: 'test_name',
-      },
-      totaalToto: true,
-      userName: 'TEST',
-    };
-    const expected: UpdateAdminStatus = {
-      type: ActionType.UPDATE_ADMIN_STATUS,
-      payload: player,
-    };
-
-    test('returns an action w/ type UPDATE_ADMIN_STATUS and a player as payload', () => {
-      expect(updateAdminStatus(player)).toEqual(expected);
-      expect(updateAdminStatus(player).type).toEqual(
-        ActionType.UPDATE_ADMIN_STATUS,
-      );
-      expect(updateAdminStatus(player).payload).toEqual(player);
     });
   });
 });
