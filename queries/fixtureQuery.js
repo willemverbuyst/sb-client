@@ -1,12 +1,11 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const { Op } = require('sequelize');
+const { lastMonday, nextMonday } = require('../utils/date.functions');
 const {
   chunkArrayTotoRounds,
   getTotoRoundNumber,
-  lastMonday,
-  nextMonday,
-} = require('../utils/helper-functions');
+} = require('../utils/helper.functions');
 const { calculateScore } = require('../utils/scores.functions');
 
 const getAllFixturesWithPrediction = async (playerId, userId) => {

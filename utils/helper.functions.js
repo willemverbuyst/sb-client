@@ -5,17 +5,6 @@ const {
   NUMBER_OF_TOTO_ROUNDS,
 } = require('../constants/set-up-game');
 
-const lastMonday = () => {
-  const date = new Date();
-  const day = date.getDay() || 7;
-  if (day !== 1) return Math.floor(date / 1000) - 24 * (day - 1) * 60 * 60;
-  return Math.floor(date / 1000);
-};
-
-const nextMonday = () => {
-  return lastMonday() + 7 * 24 * 60 * 60;
-};
-
 const chunkArray = (arr, size) => {
   const chunkedArr = [];
   let index = 0;
@@ -55,10 +44,22 @@ const getTotoRoundNumber = (seasonNumber) =>
     ? NUMBER_OF_TOTO_ROUNDS
     : Math.ceil(seasonNumber / ROUNDS_PER_TOTO_ROUND);
 
+const reducer = (arr) => {
+  let predictionsReduced = [];
+  arr.reduce((a, b) => {
+    if (!a[b.id]) {
+      a[b.id] = { id: b.id, name: b.name, score: 0 };
+      predictionsReduced.push(a[b.id]);
+    }
+    a[b.id].score += b.score;
+    return a;
+  }, {});
+  return predictionsReduced;
+};
+
 module.exports = {
-  lastMonday,
-  nextMonday,
   chunkArray,
   chunkArrayTotoRounds,
   getTotoRoundNumber,
+  reducer,
 };

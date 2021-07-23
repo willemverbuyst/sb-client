@@ -1,13 +1,10 @@
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
 const User = require('../models').user;
-const { calculateScore } = require('../utils/scores.functions');
 const { Op } = require('sequelize');
-const reducer = require('../utils/reducer');
-const {
-  chunkArrayTotoRounds,
-  lastMonday,
-} = require('../utils/helper-functions');
+const { lastMonday } = require('../utils/date.functions');
+const { chunkArrayTotoRounds, reducer } = require('../utils/helper.functions');
+const { calculateScore } = require('../utils/scores.functions');
 
 const createPrediction = async (
   pGoalsHomeTeam,
