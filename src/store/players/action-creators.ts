@@ -98,8 +98,6 @@ export const playerDelete = (
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    console.log(response);
-
     dispatch(deletePlayer(id));
     dispatch(setMessage(response.data.status, response.data.message));
     dispatch(appDoneLoading());

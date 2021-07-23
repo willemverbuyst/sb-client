@@ -29,7 +29,7 @@ const Brand: React.FC = (): ReactElement => {
         style={{ width: '40px', margin: '0 10px 0 0' }}
         alt="soccer ball"
       />
-      <Typography align="center" variant="h3">
+      <Typography align="center" variant="h4">
         {APP_NAME}
       </Typography>
     </Grid>

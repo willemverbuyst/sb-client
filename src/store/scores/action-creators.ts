@@ -76,7 +76,7 @@ export const fetchScoresTotalToto = (): ThunkAction<
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/scores/totaltoto`, {
+    const response = await axios.get(`${API_URL}/scores/totalToto`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -102,7 +102,7 @@ export const fetchScoresTotoRound = (
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/scores/totorounds/${id}`, {
+    const response = await axios.get(`${API_URL}/scores/totoRounds/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
