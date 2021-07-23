@@ -1,8 +1,8 @@
 const {
-  fixturesPerRound,
-  roundsPerTotoRound,
-  totalFixtures,
-  totoRounds,
+  FIXTURES_PER_ROUND,
+  ROUNDS_PER_TOTO_ROUND,
+  NUMBER_OF_FIXTURES,
+  NUMBER_OF_TOTO_ROUNDS,
 } = require('../constants/set-up-game');
 
 const lastMonday = () => {
@@ -27,18 +27,18 @@ const chunkArray = (arr, size) => {
 };
 
 const chunkArrayTotoRounds = (arr) => {
-  const groupedArr = chunkArray(arr, fixturesPerRound);
+  const groupedArr = chunkArray(arr, FIXTURES_PER_ROUND);
   const chunkedArr = [];
   let index = 0;
 
   while (index < groupedArr.length) {
-    chunkedArr.push(groupedArr.slice(index, roundsPerTotoRound + index));
-    index += roundsPerTotoRound;
+    chunkedArr.push(groupedArr.slice(index, ROUNDS_PER_TOTO_ROUND + index));
+    index += ROUNDS_PER_TOTO_ROUND;
   }
 
   if (
-    arr.length > totalFixtures - fixturesPerRound &&
-    chunkedArr[chunkedArr.length - 1].length < roundsPerTotoRound
+    arr.length > NUMBER_OF_FIXTURES - FIXTURES_PER_ROUND &&
+    chunkedArr[chunkedArr.length - 1].length < ROUNDS_PER_TOTO_ROUND
   ) {
     chunkedArr[chunkedArr.length - 2] = [
       ...chunkedArr[chunkedArr.length - 2],
@@ -51,9 +51,9 @@ const chunkArrayTotoRounds = (arr) => {
 };
 
 const getTotoRoundNumber = (seasonNumber) =>
-  seasonNumber > totoRounds * roundsPerTotoRound
-    ? totoRounds
-    : Math.ceil(seasonNumber / roundsPerTotoRound);
+  seasonNumber > NUMBER_OF_TOTO_ROUNDS * ROUNDS_PER_TOTO_ROUND
+    ? NUMBER_OF_TOTO_ROUNDS
+    : Math.ceil(seasonNumber / ROUNDS_PER_TOTO_ROUND);
 
 module.exports = {
   lastMonday,

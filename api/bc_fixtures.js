@@ -1,15 +1,15 @@
 const Axios = require('axios');
-const apiKey = require('../config/constants').apiKey;
-const apiUrl = require('../config/constants').apiUrl;
-const { league_id } = require('../constants/set-up-game');
 const Fixture = require('../models').fixture;
 
 const getFixtures = async () => {
-  const response = await Axios.get(`${apiUrl}/fixtures/league/${league_id}`, {
-    headers: {
-      'X-RapidAPI-Key': apiKey,
+  const response = await Axios.get(
+    `${process.env.API_URL}/fixtures/league/${process.env.LEAGUE_ID}`,
+    {
+      headers: {
+        'X-RapidAPI-Key': process.env.API_KEY,
+      },
     },
-  });
+  );
 
   const fixtureData = response.data.api;
 

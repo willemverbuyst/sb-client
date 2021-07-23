@@ -1,14 +1,15 @@
 const Axios = require('axios');
 const Team = require('../models').team;
-const apiKey = require('../config/constants').apiKey;
-const apiUrl = require('../config/constants').apiUrl;
 
 const getTeams = async () => {
-  const response = await Axios.get(`${apiUrl}/teams/search/Netherlands`, {
-    headers: {
-      'X-RapidAPI-Key': apiKey,
+  const response = await Axios.get(
+    `${process.env.API_URL}/teams/search/Netherlands`,
+    {
+      headers: {
+        'X-RapidAPI-Key': process.env.API_KEY,
+      },
     },
-  });
+  );
 
   const allTeams = response.data.api;
 
