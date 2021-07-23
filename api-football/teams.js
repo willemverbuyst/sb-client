@@ -13,7 +13,7 @@ const getTeams = async () => {
 
   const allTeams = response.data.api;
 
-  const fixtures = allTeams.teams.map((team) => {
+  const teams = allTeams.teams.map((team) => {
     return {
       id: team.team_id,
       name: team.name,
@@ -21,9 +21,11 @@ const getTeams = async () => {
     };
   });
 
-  Team.bulkCreate(fixtures, {
+  console.log(teams);
+
+  Team.bulkCreate(teams, {
     updateOnDuplicate: ['id'],
   });
 };
 
-exports.getTeams = getTeams;
+module.exports = getTeams;
