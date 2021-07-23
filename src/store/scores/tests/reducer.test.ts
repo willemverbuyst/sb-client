@@ -19,10 +19,11 @@ import reducer, { IScoresState } from '../reducer';
 describe('#scoresStateReducer', () => {
   describe('if given RESET_ALL_SCORES action type and a state', () => {
     const initialState: IScoresState = {
-      fixtureScores: null,
+      fixtureWithScores: null,
       roundScores: null,
       totalTotoScores: null,
       totoRoundScores: null,
+      scoresPlayer: null,
     };
     const fixture: IFixture = {
       awayTeamId: 1,

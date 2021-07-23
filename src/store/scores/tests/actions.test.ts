@@ -1,5 +1,4 @@
 import {
-  IFixtureWithUsersWithScoreAndPrediction,
   IUsersWithScoreAndRoundId,
   IUsersWithScoreAndTotoRoundId,
   IUserWithScore,

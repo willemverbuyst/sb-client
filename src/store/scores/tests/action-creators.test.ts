@@ -2,9 +2,9 @@ import axios from 'axios';
 
 import {
   IFixtureWithUsersWithScoreAndPrediction,
+  IPlayerWithScore,
   IUsersWithScoreAndRoundId,
   IUsersWithScoreAndTotoRoundId,
-  IUserWithScore,
   IUserWithScoreAndPrediction,
 } from '../../../models/scores.models';
 import { IFixture } from '../../../models/toto.models';
