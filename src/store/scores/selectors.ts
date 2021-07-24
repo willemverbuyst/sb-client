@@ -1,9 +1,9 @@
-import { IScoresPlayer } from '../../models/player.model';
 import {
   IPlayerWithScore,
   IPlayerWithScoreAndPrediction,
-  IRoundWithPlayersWithScore,
-} from '../../models/scores.models';
+  IScoresPlayer,
+} from '../../models/player.model';
+import { IRoundWithPlayersWithScore } from '../../models/scores.models';
 import { IFixture } from '../../models/toto.models';
 import * as UTILS from '../../utils';
 import { StoreState } from '../types';

@@ -22,11 +22,16 @@ const ScoresUser: React.FC = (): ReactElement => {
     }
   });
 
+  const scores =
+    scoresPlayer && scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
+      ? true
+      : false;
+
   return (
     <PageContent
       loadingText="Mijn scores"
       content={
-        scoresPlayer ? (
+        scoresPlayer && scores ? (
           <>
             <PageTitle title="Mijn scores" color="primary" />
             <ScoresStackedChart

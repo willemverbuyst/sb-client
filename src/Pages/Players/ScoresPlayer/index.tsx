@@ -20,11 +20,16 @@ const ScoresPlayer: React.FC = (): ReactElement => {
     dispatch(fetchPlayerScores(+id));
   }, [dispatch, id]);
 
+  const scores =
+    scoresPlayer && scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
+      ? true
+      : false;
+
   return (
     <PageContent
       loadingText="Scores"
       content={
-        scoresPlayer ? (
+        scoresPlayer && scores ? (
           <>
             <PageTitle title={`Scores ${name}`} color="secondary" />
             <ScoresStackedChart

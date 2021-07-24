@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 import BarChart from '../../../Components/Chart/BarChart';
 import * as HISTORY from '../../../history';
-import { IPlayerWithScoreAndPrediction } from '../../../models/scores.models';
+import { IPlayerWithScoreAndPrediction } from '../../../models/player.model';
 import { selectUserId } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 
