@@ -1,13 +1,18 @@
 import {
-  IUsersWithScoreAndRoundId,
-  IUsersWithScoreAndTotoRoundId,
-  IUserWithScore,
-  IUserWithScoreAndPrediction,
+  IPlayerWithScoreAndPrediction,
+  IScoresPlayer,
+} from '../../../models/player.model';
+import {
+  IFixtureWithPlayersWithScoreAndPrediction,
+  IRoundWithPlayersWithScore,
+  ITotalToto,
+  ITotoRoundWithPlayersWithScore,
 } from '../../../models/scores.models';
 import { IFixture } from '../../../models/toto.models';
 import {
   ActionType,
   ResetAllScores,
+  StorePlayerScores,
   StoreScoresFixture,
   StoreScoresRound,
   StoreScoresTotalToto,
@@ -15,6 +20,7 @@ import {
 } from '../action-types';
 import {
   resetAllScores,
+  storePlayerScores,
   storeScoresFixture,
   storeScoresRound,
   storeScoresTotalToto,
@@ -51,16 +57,16 @@ describe('#scoressState', () => {
       status: 'test',
       updatedAt: 'test',
     };
-    const predictionWithScorePerUser: IUserWithScoreAndPrediction = {
+    const predictionWithScorePerPlayer: IPlayerWithScoreAndPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 1,
       score: 10,
-      user: 'test_user',
-      userId: 1,
+      name: 'test_user',
+      id: 1,
     };
-    const fixtureScores: IFixtureWithUsersWithScoreAndPrediction = {
+    const fixtureScores: IFixtureWithPlayersWithScoreAndPrediction = {
       fixture,
-      scores: [predictionWithScorePerUser],
+      scores: [predictionWithScorePerPlayer],
     };
     const expected: StoreScoresFixture = {
       type: ActionType.STORE_SCORES_FIXTURE,
@@ -77,12 +83,12 @@ describe('#scoressState', () => {
   });
 
   describe('#storeScoresRound w/ sores', () => {
-    const roundScores: IUsersWithScoreAndRoundId = {
-      usersWithScores: [
+    const roundScores: IRoundWithPlayersWithScore = {
+      scores: [
         {
-          userId: 1,
+          id: 1,
           score: 1,
-          user: 'test_user',
+          name: 'test_user',
         },
       ],
       roundId: 1,
@@ -102,13 +108,15 @@ describe('#scoressState', () => {
   });
 
   describe('#storeScoresTotalToto w/ sores', () => {
-    const totalToto: IUserWithScore[] = [
-      {
-        score: 10,
-        user: 'test_user',
-        userId: 1,
-      },
-    ];
+    const totalToto: ITotalToto = {
+      scores: [
+        {
+          score: 10,
+          name: 'test_user',
+          id: 1,
+        },
+      ],
+    };
 
     const expected: StoreScoresTotalToto = {
       type: ActionType.STORE_SCORES_TOTAL_TOTO,
@@ -125,12 +133,12 @@ describe('#scoressState', () => {
   });
 
   describe('#storeScoresTotoRound w/ sores', () => {
-    const totoRoundScores: IUsersWithScoreAndTotoRoundId = {
-      usersWithScores: [
+    const totoRoundScores: ITotoRoundWithPlayersWithScore = {
+      scores: [
         {
-          userId: 1,
+          id: 1,
           score: 1,
-          user: 'test_user',
+          name: 'test_user',
         },
       ],
       totoRoundId: 1,
@@ -146,6 +154,26 @@ describe('#scoressState', () => {
         totoRoundScores,
       );
       expect(storeScoresTotoRound(totoRoundScores).type).toBe(
+        ActionType.STORE_SCORES_TOTO_ROUND,
+      );
+    });
+  });
+
+  describe('#storeScoresPlayer w/ sores', () => {
+    const scoresPlayer: IScoresPlayer = {
+      id: 1,
+      scores: [[1], [3]],
+      name: 'test_user',
+    };
+    const expected: StorePlayerScores = {
+      type: ActionType.STORE_PLAYER_SCORES,
+      payload: scoresPlayer,
+    };
+
+    test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
+      expect(storePlayerScores(scoresPlayer)).toEqual(expected);
+      expect(storePlayerScores(scoresPlayer).payload).toEqual(scoresPlayer);
+      expect(storePlayerScores(scoresPlayer).type).toBe(
         ActionType.STORE_SCORES_TOTO_ROUND,
       );
     });
