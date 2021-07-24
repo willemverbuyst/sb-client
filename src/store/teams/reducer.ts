@@ -15,7 +15,7 @@ const teamReducer = (
 ): ITeamsState => {
   switch (action.type) {
     case ActionType.STORE_ALL_TEAMS:
-      return { ...state, teams: action.payload };
+      return { ...state, teams: action.payload.teams };
 
     case ActionType.RESET_ALL_TEAMS:
       return { teams: null };

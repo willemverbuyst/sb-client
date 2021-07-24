@@ -1,4 +1,4 @@
-import { ITeam } from '../../../models/toto.models';
+import { IAllTeams, ITeam } from '../../../models/toto.models';
 import { ActionType } from '../action-types';
 import reducer, { ITeamsState } from '../reducer';
 
@@ -7,21 +7,23 @@ describe('#teamsReducer', () => {
     const initialState: ITeamsState = {
       teams: null,
     };
-    const teams: ITeam[] = [
-      {
-        id: 1,
-        name: 'test_name',
-        logo: 'test_logo',
-      },
-    ];
+    const allTeams: IAllTeams = {
+      teams: [
+        {
+          id: 1,
+          name: 'test_name',
+          logo: 'test_logo',
+        },
+      ],
+    };
     const newState: ITeamsState = reducer(initialState, {
       type: ActionType.STORE_ALL_TEAMS,
-      payload: teams,
+      payload: allTeams,
     });
 
     test('returns the new state with teams', () => {
       expect(newState).not.toEqual(initialState);
-      expect(newState.teams).toEqual(teams);
+      expect(newState).toEqual(allTeams);
       expect(newState.teams?.length).toBe(1);
     });
   });
@@ -32,7 +34,7 @@ describe('#teamsReducer', () => {
     };
     const newState: ITeamsState = reducer(initialState, {
       type: ActionType.STORE_ALL_TEAMS,
-      payload: [],
+      payload: { teams: [] },
     });
 
     test('returns the new state w/ an empty array for teams', () => {

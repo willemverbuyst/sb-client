@@ -23,7 +23,7 @@ export const fetchAllTeams = (): ThunkAction<
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    dispatch(storeAllTeams(response.data.data.teams));
+    dispatch(storeAllTeams(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

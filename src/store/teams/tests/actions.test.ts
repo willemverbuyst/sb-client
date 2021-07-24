@@ -1,25 +1,27 @@
-import { ITeam } from '../../../models/toto.models';
+import { IAllTeams } from '../../../models/toto.models';
 import { ActionType, ResetAllTeams, StoreAllTeams } from '../action-types';
 import { resetAllTeams, storeAllTeams } from '../actions';
 
 describe('#teamsState', () => {
   describe('#storeAllTeams w/ teams', () => {
-    const teams: ITeam[] = [
-      {
-        id: 1,
-        name: 'test_name',
-        logo: 'test_logo',
-      },
-    ];
+    const allTeams: IAllTeams = {
+      teams: [
+        {
+          id: 1,
+          name: 'test_name',
+          logo: 'test_logo',
+        },
+      ],
+    };
     const expected: StoreAllTeams = {
       type: ActionType.STORE_ALL_TEAMS,
-      payload: teams,
+      payload: allTeams,
     };
 
     test('returns an action w/ type STORE_ALL_TEAMS and teams as payload', () => {
-      expect(storeAllTeams(teams)).toEqual(expected);
-      expect(storeAllTeams(teams).type).toBe(ActionType.STORE_ALL_TEAMS);
-      expect(storeAllTeams(teams).payload).toBe(teams);
+      expect(storeAllTeams(allTeams)).toEqual(expected);
+      expect(storeAllTeams(allTeams).type).toBe(ActionType.STORE_ALL_TEAMS);
+      expect(storeAllTeams(allTeams).payload).toBe(allTeams);
     });
   });
   describe('#resetAllTeams', () => {
