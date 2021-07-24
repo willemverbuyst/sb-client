@@ -65,7 +65,7 @@ export const changePrediction = ({
     );
 
     dispatch(setMessage(response.data.status, response.data.message));
-    dispatch(updatePrediction(response.data.data.prediction));
+    dispatch(updatePrediction(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

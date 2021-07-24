@@ -82,7 +82,7 @@ describe('#userState', () => {
 
     test('returns an action w/ type LOG_IN_SUCCESS_USER and user as payload', () => {
       expect(logInSuccessUser(apiResponse)).toEqual(expected);
-      expect(logInSuccessUser(apiResponse).payload).toEqual(user);
+      expect(logInSuccessUser(apiResponse).payload).toEqual(apiResponse);
       expect(logInSuccessUser(apiResponse).type).toEqual(
         ActionType.LOG_IN_SUCCESS_USER,
       );

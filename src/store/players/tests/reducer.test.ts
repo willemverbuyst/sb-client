@@ -39,8 +39,6 @@ describe('#playersStateReducer', () => {
     test('returns the initial state with players: null', () => {
       expect(newState).toEqual({
         players: null,
-        playerProfile: null,
-        scoresPlayer: null,
       });
       expect(newState.players).toBeNull;
       expect(newState).toEqual(initialState);
@@ -110,7 +108,7 @@ describe('#playersStateReducer', () => {
 
     test('returns a new state with players', () => {
       expect(newState.players?.length).toBe(allPlayers.players.length);
-      expect(newState.players).toEqual(allPlayers);
+      expect(newState.players).toEqual(allPlayers.players);
     });
   });
 

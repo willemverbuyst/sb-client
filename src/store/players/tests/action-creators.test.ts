@@ -98,7 +98,7 @@ describe('#fetchAllPlayers', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { status: 'success', data: allPlayers };
+    const response = { data: { status: 'success', data: allPlayers } };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
@@ -106,20 +106,26 @@ describe('#fetchAllPlayers', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(storeAllPlayers(response.data));
+    expect(dispatch).toHaveBeenCalledWith(storeAllPlayers(response.data.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });
 
-describe('#fplayerDelete', () => {
+describe('#playerDelete', () => {
   it('calls axios and returns a succes message', async () => {
     const id = 1;
 
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: { message: 'ok' } };
+    const response: {
+      data: {
+        status: Severity;
+        data: null;
+        message: string;
+      };
+    } = { data: { status: 'success', data: null, message: 'ok' } };
 
     mockAxios.delete.mockImplementationOnce(() => Promise.resolve(response));
 
@@ -129,7 +135,7 @@ describe('#fplayerDelete', () => {
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(deletePlayer(id));
     expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message),
+      setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);

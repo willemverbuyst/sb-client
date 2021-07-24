@@ -136,7 +136,7 @@ describe('#editUserProfile', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toBeCalledWith(updateUserProfile(response.data));
+    expect(dispatch).toHaveBeenCalledWith(updateUserProfile(response.data));
     expect(dispatch).toHaveBeenCalledWith(
       setMessage(response.data.status, response.data.message),
     );

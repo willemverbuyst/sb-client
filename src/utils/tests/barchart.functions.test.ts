@@ -1,7 +1,7 @@
 import {
-  IUserWithScore,
-  IUserWithScoreAndPrediction,
-} from '../../models/scores.models';
+  IPlayerWithScore,
+  IPlayerWithScoreAndPrediction,
+} from '../../models/player.model';
 import { colorPrimary, colorSecondary } from '../../theme/chartColors';
 import {
   displayUserScores,
@@ -15,18 +15,18 @@ import {
 
 describe('#displayUserScores', () => {
   describe('if given an array with usersWithScoresandPrediction', () => {
-    const usersWithScoreAndPrediction: IUserWithScoreAndPrediction[] = [
+    const usersWithScoreAndPrediction: IPlayerWithScoreAndPrediction[] = [
       {
         score: 5,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
         pGoalsHomeTeam: 2,
         pGoalsAwayTeam: 1,
       },
       {
         score: 0,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
         pGoalsHomeTeam: 2,
         pGoalsAwayTeam: 1,
       },
@@ -43,40 +43,40 @@ describe('#displayUserScores', () => {
 
 describe('#getColorBars', () => {
   describe('if given an array with usersWithScores and an id', () => {
-    const usersWithScoreOne: IUserWithScore[] = [
+    const usersWithScoreOne: IPlayerWithScore[] = [
       {
         score: 5,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
       },
       {
         score: 0,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
       },
     ];
-    const usersWithScoreTwo: IUserWithScore[] = [
+    const usersWithScoreTwo: IPlayerWithScore[] = [
       {
         score: 5,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
       },
       {
         score: 0,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
       },
     ];
-    const usersWithScoreThree: IUserWithScore[] = [
+    const usersWithScoreThree: IPlayerWithScore[] = [
       {
         score: 5,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
       },
       {
         score: 0,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
       },
     ];
 
@@ -113,16 +113,16 @@ describe('#generateMaxForChartYAx', () => {
 
 describe('#getHoverColorsBars', () => {
   describe('if given an array with usersWithScores', () => {
-    const usersWithScores: IUserWithScore[] = [
+    const usersWithScores: IPlayerWithScore[] = [
       {
         score: 5,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
       },
       {
         score: 0,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
       },
     ];
 
@@ -134,16 +134,16 @@ describe('#getHoverColorsBars', () => {
 
 describe('#getScoresOfAllPlayes', () => {
   describe('if given an array with usersWithScores', () => {
-    const usersWithScores: IUserWithScore[] = [
+    const usersWithScores: IPlayerWithScore[] = [
       {
         score: 5,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
       },
       {
         score: 0,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
       },
     ];
 
@@ -168,18 +168,18 @@ describe('#getTotalsForStackedChart', () => {
 
 describe('#getUserPredictions', () => {
   describe('if given an array with user with scores and predictions', () => {
-    const usersWithScoreAndPrediction: IUserWithScoreAndPrediction[] = [
+    const usersWithScoreAndPrediction: IPlayerWithScoreAndPrediction[] = [
       {
         score: 5,
-        user: 'Sifan',
-        userId: 1,
+        name: 'Sifan',
+        id: 1,
         pGoalsHomeTeam: 2,
         pGoalsAwayTeam: 1,
       },
       {
         score: 0,
-        user: 'Bolt',
-        userId: 2,
+        name: 'Bolt',
+        id: 2,
         pGoalsHomeTeam: 8,
         pGoalsAwayTeam: 4,
       },

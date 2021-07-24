@@ -255,7 +255,7 @@ describe('#IPredictionsStateReducer', () => {
               score: 'scores',
               predictions: {
                 pGoalsAwayTeam: 1,
-                pGoalsHomeTeam: 1,
+                pGoalsHomeTeam: 4,
               },
             },
           ],
@@ -269,10 +269,8 @@ describe('#IPredictionsStateReducer', () => {
     const newState: IPredictionsState = reducer(state, action);
 
     test('returns the state with updated prediction', () => {
-      test('returns the state with prediction added', () => {
-        expect(newState.allPredictions).not.toBeNull;
-        expect(newState.allPredictions).toEqual(newAllPredictions);
-      });
+      expect(newState.allPredictions).not.toBeNull;
+      expect(newState.allPredictions).toEqual(newAllPredictions);
     });
   });
 });

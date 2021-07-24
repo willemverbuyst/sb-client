@@ -1,7 +1,7 @@
 import {
   IPlayerWithScore,
   IPlayerWithScoreAndPrediction,
-} from '../models/scores.models';
+} from '../models/player.model';
 import { colorPrimary, colorSecondary } from '../theme/chartColors';
 
 export const displayUserScores = (

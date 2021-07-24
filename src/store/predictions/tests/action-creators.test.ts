@@ -56,10 +56,10 @@ describe('#changePrediction', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(updatePrediction(response.data.data));
     expect(dispatch).toHaveBeenCalledWith(
       setMessage(response.data.status, response.data.message),
     );
+    expect(dispatch).toHaveBeenCalledWith(updatePrediction(response.data.data));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });

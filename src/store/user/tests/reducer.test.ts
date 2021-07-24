@@ -1,3 +1,4 @@
+import { Severity } from '../../../models/app.models';
 import { IUser } from '../../../models/player.model';
 import {
   ICurrentRound,
@@ -84,7 +85,7 @@ describe('#userReducer', () => {
       expect(newState.token).not.toBeNull();
       expect(newState.token).not.toBe(initialState.token);
       expect(newState.token).toBe(token);
-      expect(newState).toEqual(action.payload);
+      expect(newState).toEqual({ user, token });
       expect(newState).not.toEqual(initialState);
     });
   });
@@ -276,7 +277,7 @@ describe('#userReducer', () => {
       profile,
       currentRound,
     };
-
+    const token = 'token';
     const updatedProfile: IUser = {
       admin: true,
       email: 'test2@test2.com',
@@ -289,16 +290,14 @@ describe('#userReducer', () => {
       userName: 'test2',
       token: 'test2_token',
     };
-    const token = 'token';
     const token2 = 'token2';
-    const status = 'success';
+    const status: Severity = 'success';
     const apiResponse: IApiResponseUser = {
       status,
       data: { user: { profile: updatedProfile, currentRound } },
-      token,
+      token: token2,
     };
     const state: IUserState = { user, token };
-
     const action: UpdateUserProfile = {
       type: ActionType.UPDATE_USER_PROFILE,
       payload: apiResponse,
@@ -308,9 +307,12 @@ describe('#userReducer', () => {
     test('returns the new state with student', () => {
       expect(newState.token).not.toBeNull();
       expect(newState.token).toBe(token2);
-      expect(newState).toEqual(action.payload);
+      expect(newState).toEqual({
+        user: { profile: updatedProfile, currentRound },
+        token: token2,
+      });
       expect(newState).not.toEqual(state);
-      expect(newState.user?.profile.firstName).toBe('test2@test2.com');
+      expect(newState.user?.profile.firstName).toBe('test2');
     });
   });
 });

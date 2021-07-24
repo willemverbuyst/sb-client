@@ -170,11 +170,11 @@ describe('#scoressState', () => {
       payload: scoresPlayer,
     };
 
-    test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
+    test('returns an action w/ type STORE_PLAYER_SCORES and a scoresPlayer as payload', () => {
       expect(storePlayerScores(scoresPlayer)).toEqual(expected);
       expect(storePlayerScores(scoresPlayer).payload).toEqual(scoresPlayer);
       expect(storePlayerScores(scoresPlayer).type).toBe(
-        ActionType.STORE_SCORES_TOTO_ROUND,
+        ActionType.STORE_PLAYER_SCORES,
       );
     });
   });

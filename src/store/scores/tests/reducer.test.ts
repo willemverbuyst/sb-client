@@ -155,7 +155,7 @@ describe('#scoresStateReducer', () => {
       expect(newState.roundScores).toBeNull();
       expect(newState.totalTotoScores).toBeNull();
       expect(newState.totoRoundScores).toBeNull();
-      expect(newState).toHaveProperty('fixtureScores');
+      expect(newState).toHaveProperty('fixtureWithScores');
       expect(newState.fixtureWithScores).not.toBeNull();
       expect(newState.fixtureWithScores?.scores?.length).toBeGreaterThan(0);
       expect(newState.fixtureWithScores?.scores?.length).toBeLessThan(2);
@@ -294,10 +294,10 @@ describe('#scoresStateReducer', () => {
       expect(newState.fixtureWithScores).toBeNull();
       expect(newState.roundScores).toBeNull();
       expect(newState.totalTotoScores).toBeNull();
-      expect(newState.totoRoundScores).not.toBeNull();
-      expect(newState).toHaveProperty('totoRoundScores');
-      expect(newState.totoRoundScores?.scores.length).toBeGreaterThan(0);
-      expect(newState.totoRoundScores?.scores.length).toBeLessThan(2);
+      expect(newState.totoRoundScores).toBeNull();
+      expect(newState).toHaveProperty('scoresPlayer');
+      expect(newState.scoresPlayer?.scores.length).toBeGreaterThan(0);
+      expect(newState.scoresPlayer?.scores.length).toBeLessThan(3);
     });
   });
 });
