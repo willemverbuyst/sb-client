@@ -32,7 +32,7 @@ const TotoRound: React.FC = (): ReactElement => {
     <PageContent
       loadingText="Totoronde"
       content={
-        scoresRoundSortedByScore ? (
+        scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
           <>
             <PageTitle title={`Totoronde  ${totoRound}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />

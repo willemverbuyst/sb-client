@@ -30,7 +30,7 @@ const TotalToto: React.FC = (): ReactElement => {
             <ScoresBarChart scores={scoresTotalTotoSortedByScore} />
           </>
         ) : (
-          <MessageComponent message="Nog geen scores voor totalToto" />
+          <MessageComponent message="Nog geen scores voor de totaalToto" />
         )
       }
     />

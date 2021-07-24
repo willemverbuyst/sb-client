@@ -21,7 +21,9 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   }, [dispatch, id]);
 
   const scores =
-    scoresPlayer && scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
+    scoresPlayer &&
+    scoresPlayer.scores.length &&
+    scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
       ? true
       : false;
 
