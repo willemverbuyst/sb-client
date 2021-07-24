@@ -1,5 +1,8 @@
 const scores = require('../constants/scores');
 
+const getWinner = (homeTeam, awayTeam) =>
+  homeTeam > awayTeam ? 'homeWins' : homeTeam < awayTeam ? 'awayWins' : 'draw';
+
 const calculateScore = (
   goalsHomeTeam,
   goalsAwayTeam,
@@ -23,29 +26,26 @@ const calculateScore = (
   const winnerPrediction = getWinner(predictionHomeTeam, predictionAwayTeam);
 
   if (winnerMatch === winnerPrediction) {
-    score = score + scores.TOTO_SCORE;
+    score += scores.TOTO_SCORE;
   }
 
   const guessedHome = goalsHomeTeam === predictionHomeTeam;
   const guessedAway = goalsAwayTeam === predictionAwayTeam;
 
   if (guessedHome) {
-    score = score + scores.GOAL_BONUS;
+    score += scores.GOAL_BONUS;
   }
 
   if (guessedAway) {
-    score = score + scores.GOAL_BONUS;
+    score += scores.GOAL_BONUS;
   }
 
   if (guessedHome && guessedAway) {
-    score = score + scores.FULL_SCORE;
+    score += scores.FULL_SCORE;
   }
 
   return score;
 };
-
-const getWinner = (homeTeam, awayTeam) =>
-  homeTeam > awayTeam ? 'homeWins' : homeTeam < awayTeam ? 'awayWins' : 'draw';
 
 module.exports = {
   calculateScore,

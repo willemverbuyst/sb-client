@@ -82,9 +82,7 @@ const createNewUser = async ({
         },
       ],
     },
-  ).then((createdUser) => {
-    return createdUser.reload();
-  });
+  ).then((createdUser) => createdUser.reload());
 
 const getUserByEmail = async (email) =>
   await User.findOne({

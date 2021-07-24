@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const {
@@ -9,12 +8,7 @@ const { getUserById, updateUserProfile } = require('../queries/userQuery');
 const { validateProfileInput } = require('../validators/inputValidator');
 const { validateUser } = require('../validators/queryValidator');
 
-const signToken = (data) =>
-  jwt.sign(data, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
-
-exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, next) => {
+exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, _next) => {
   const userId = req.user.dataValues.id;
 
   const fixtures = await getAllFixturesForLoggedInUser(userId);

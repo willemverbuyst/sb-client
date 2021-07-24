@@ -5,9 +5,7 @@ const lastMonday = () => {
   return Math.floor(date / 1000);
 };
 
-const nextMonday = () => {
-  return lastMonday() + 7 * 24 * 60 * 60;
-};
+const nextMonday = () => lastMonday() + 7 * 24 * 60 * 60;
 
 module.exports = {
   lastMonday,

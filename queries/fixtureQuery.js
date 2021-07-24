@@ -1,6 +1,6 @@
+const { Op } = require('sequelize');
 const Fixture = require('../models').fixture;
 const Prediction = require('../models').prediction;
-const { Op } = require('sequelize');
 const { lastMonday, nextMonday } = require('../utils/date.functions');
 const {
   chunkArrayTotoRounds,
@@ -24,17 +24,15 @@ const getAllFixturesWithPrediction = async (playerId, userId) => {
   });
 
   const fixturesWithPredictionAndScore = fixturesWithPrediction.map(
-    (fixtureWithPrediction) => {
-      return {
-        ...fixtureWithPrediction,
-        score: calculateScore(
-          fixtureWithPrediction.goalsHomeTeam,
-          fixtureWithPrediction.goalsAwayTeam,
-          fixtureWithPrediction.predictions.pGoalsHomeTeam,
-          fixtureWithPrediction.predictions.pGoalsAwayTeam,
-        ),
-      };
-    },
+    (fixtureWithPrediction) => ({
+      ...fixtureWithPrediction,
+      score: calculateScore(
+        fixtureWithPrediction.goalsHomeTeam,
+        fixtureWithPrediction.goalsAwayTeam,
+        fixtureWithPrediction.predictions.pGoalsHomeTeam,
+        fixtureWithPrediction.predictions.pGoalsAwayTeam,
+      ),
+    }),
   );
 
   const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
@@ -58,9 +56,8 @@ const getAllFixturesWithPrediction = async (playerId, userId) => {
                 pGoalsHomeTeam: null,
               },
             };
-          } else {
-            return fixture;
           }
+          return fixture;
         }),
       ),
   );
@@ -89,17 +86,15 @@ const getCurrentRoundForUser = async (id) => {
   });
 
   const fixturesWithPredictionAndScore = fixturesWithPrediction.map(
-    (fixtureWithPrediction) => {
-      return {
-        ...fixtureWithPrediction,
-        score: calculateScore(
-          fixtureWithPrediction.goalsHomeTeam,
-          fixtureWithPrediction.goalsAwayTeam,
-          fixtureWithPrediction.predictions.pGoalsHomeTeam,
-          fixtureWithPrediction.predictions.pGoalsAwayTeam,
-        ),
-      };
-    },
+    (fixtureWithPrediction) => ({
+      ...fixtureWithPrediction,
+      score: calculateScore(
+        fixtureWithPrediction.goalsHomeTeam,
+        fixtureWithPrediction.goalsAwayTeam,
+        fixtureWithPrediction.predictions.pGoalsHomeTeam,
+        fixtureWithPrediction.predictions.pGoalsAwayTeam,
+      ),
+    }),
   );
 
   let currentRound = null;

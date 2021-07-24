@@ -10,7 +10,8 @@
     "initdev": "npm run migrate && npm run seed",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
-    "resetDB": "npx sequelize-cli db:migrate:undo:all"
+    "resetDB": "npx sequelize-cli db:migrate:undo:all",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
   },
   "author": "wv",
   "license": "ISC",
@@ -27,7 +28,18 @@
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.6",
     "prettier": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=8.3.0"
   }
 }

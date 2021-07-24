@@ -45,7 +45,7 @@ const getTotoRoundNumber = (seasonNumber) =>
     : Math.ceil(seasonNumber / ROUNDS_PER_TOTO_ROUND);
 
 const reducer = (arr) => {
-  let predictionsReduced = [];
+  const predictionsReduced = [];
   arr.reduce((a, b) => {
     if (!a[b.id]) {
       a[b.id] = { id: b.id, name: b.name, score: 0 };

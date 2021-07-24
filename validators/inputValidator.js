@@ -1,17 +1,16 @@
 const bcrypt = require('bcrypt');
 
-const validateLoginInput = (email, password) =>
-  !email || !password ? false : true;
+const validateLoginInput = (email, password) => !(!email || !password);
 
 const validatePassword = (user, password) =>
-  !user || !bcrypt.compareSync(password, user.password) ? false : true;
+  !(!user || !bcrypt.compareSync(password, user.password));
 
 const validatePredictionInput = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
-  typeof pGoalsHomeTeam !== 'number' ||
-  typeof pGoalsAwayTeam !== 'number' ||
-  !fixtureId
-    ? false
-    : true;
+  !(
+    typeof pGoalsHomeTeam !== 'number' ||
+    typeof pGoalsAwayTeam !== 'number' ||
+    !fixtureId
+  );
 
 const validateProfileInput = ({
   userName,
@@ -21,9 +20,7 @@ const validateProfileInput = ({
   phoneNumber,
   teamId,
 }) =>
-  !userName || !firstName || !lastName || !email || !phoneNumber || !teamId
-    ? false
-    : true;
+  !(!userName || !firstName || !lastName || !email || !phoneNumber || !teamId);
 
 const validateSignupInput = ({
   userName,
@@ -34,17 +31,17 @@ const validateSignupInput = ({
   phoneNumber,
   teamId,
 }) =>
-  !userName ||
-  !firstName ||
-  !lastName ||
-  !email ||
-  !password ||
-  !phoneNumber ||
-  !teamId
-    ? false
-    : true;
+  !(
+    !userName ||
+    !firstName ||
+    !lastName ||
+    !email ||
+    !password ||
+    !phoneNumber ||
+    !teamId
+  );
 
-const validateUpdatePassword = (newPassword) => (!newPassword ? false : true);
+const validateUpdatePassword = (newPassword) => !!newPassword;
 
 module.exports = {
   validateLoginInput,

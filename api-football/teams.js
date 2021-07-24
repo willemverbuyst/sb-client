@@ -13,13 +13,11 @@ const getTeams = async () => {
 
   const allTeams = response.data.api;
 
-  const teams = allTeams.teams.map((team) => {
-    return {
-      id: team.team_id,
-      name: team.name,
-      logo: team.logo,
-    };
-  });
+  const teams = allTeams.teams.map((team) => ({
+    id: team.team_id,
+    name: team.name,
+    logo: team.logo,
+  }));
 
   console.log(teams);
 

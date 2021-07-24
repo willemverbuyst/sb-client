@@ -9,6 +9,7 @@ const predictionRouter = require('./routes/predictionRoutes');
 const scoreRouter = require('./routes/scoreRoutes');
 const teamRouter = require('./routes/teamRoutes');
 const userRouter = require('./routes/userRoutes');
+const fixtures = require('./api-football/fixtures');
 
 const app = express();
 app.use(corsMiddleWare());
@@ -23,7 +24,6 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
   // Call getTFixtures to get all the fixtures and seed the fixtures_table
   // TODO: should be a timed task
-  const fixtures = require('./api/bc_fixtures');
   fixtures.getFixtures();
 }
 

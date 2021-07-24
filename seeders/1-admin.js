@@ -1,10 +1,12 @@
 'use strict';
+
 const bcrypt = require('bcrypt');
+
 const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
+  up: async (queryInterface, Sequelize) =>
+    queryInterface.bulkInsert(
       'users',
       [
         {
@@ -23,10 +25,8 @@ module.exports = {
         },
       ],
       {},
-    );
-  },
+    ),
 
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('users', null, {});
-  },
+  down: async (queryInterface, Sequelize) =>
+    queryInterface.bulkDelete('users', null, {}),
 };
