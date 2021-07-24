@@ -156,27 +156,27 @@ const getScoresPlayer = async (playerId) => {
     order: [['id', 'ASC']],
   });
 
-  const fixturesWithPredictions = await Fixture.findAll({
-    where: {
-      id: {
-        [Op.lte]: fixtures[fixtures.length - 1].id,
-      },
-    },
-    include: [
-      {
-        model: Prediction,
-        where: {
-          userId: playerId,
-        },
-        required: false,
-      },
-    ],
-    order: [['id', 'ASC']],
-    raw: true,
-    nest: true,
-  });
-
   if (fixtures.length > 0) {
+    const fixturesWithPredictions = await Fixture.findAll({
+      where: {
+        id: {
+          [Op.lte]: fixtures[fixtures.length - 1].id,
+        },
+      },
+      include: [
+        {
+          model: Prediction,
+          where: {
+            userId: playerId,
+          },
+          required: false,
+        },
+      ],
+      order: [['id', 'ASC']],
+      raw: true,
+      nest: true,
+    });
+
     const fixturesWithScores = fixturesWithPredictions.map((fixture) => {
       return {
         score: calculateScore(

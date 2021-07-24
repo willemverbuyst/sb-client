@@ -1,6 +1,6 @@
 'use strict';
 const bcrypt = require('bcrypt');
-const SALT_ROUNDS = process.env.SALT_ROUNDS;
+const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
