@@ -17,7 +17,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   const name = scoresPlayer ? scoresPlayer.name : 'Speler...';
 
   useEffect(() => {
-    dispatch(fetchPlayerScores(+id));
+    dispatch(fetchPlayerScores(Number(id)));
   }, [dispatch, id]);
 
   const scores =

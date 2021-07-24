@@ -68,11 +68,6 @@ const NavIcons: React.FC = (): ReactElement => {
         icon={<SportsSoccerIcon className={classes.icon} />}
       />
       <NavIcon
-        label="my scores"
-        goto={HISTORY.gotoScoresUser}
-        icon={<BarChart className={classes.icon} />}
-      />
-      <NavIcon
         label="total toto"
         goto={HISTORY.gotoRankingTotalToto}
         icon={<EmojiEvents className={classes.icon} />}
@@ -86,6 +81,11 @@ const NavIcons: React.FC = (): ReactElement => {
         label="round"
         goto={() => HISTORY.gotoRankingRound(1)}
         icon={<FormatListNumberedRtlIcon className={classes.icon} />}
+      />
+      <NavIcon
+        label="my scores"
+        goto={HISTORY.gotoScoresUser}
+        icon={<BarChart className={classes.icon} />}
       />
       <NavIcon
         label="players"

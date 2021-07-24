@@ -8,7 +8,7 @@ import PageContent from '../../../Sections/PageContent';
 import Predictions from '../../../Sections/Predictions';
 import { getAllPredictions } from '../../../store/predictions/action-creators';
 import { selectAllPredictionsSortedByTime } from '../../../store/predictions/selectors';
-import { selectUserId } from '../../../store/user/selectors';
+import { selectUser } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 import Pagination from './Pagination';
 
@@ -17,17 +17,16 @@ const PredictionsUser: React.FC = (): ReactElement => {
   const allPredictionsSortedByTime = useSelector(
     selectAllPredictionsSortedByTime,
   );
-  const id = useSelector(selectUserId);
+
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
   const round = Number(ronde);
   const totoRound = Number(totoronde);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
-    if (!allPredictionsSortedByTime && id) {
-      dispatch(getAllPredictions(id));
-    }
-  }, [dispatch, allPredictionsSortedByTime]);
+    dispatch(getAllPredictions(Number(user?.id)));
+  }, [dispatch, user]);
 
   const filteredPredictions = allPredictionsSortedByTime
     ? [

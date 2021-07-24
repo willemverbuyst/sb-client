@@ -7,7 +7,7 @@ export interface IApiResponseUser {
   data: {
     user: {
       profile: IUser;
-      currentRound: ICurrentRound;
+      currentRound?: ICurrentRound;
     };
   };
   message?: string;

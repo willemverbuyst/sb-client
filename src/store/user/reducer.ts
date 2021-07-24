@@ -11,7 +11,7 @@ export interface IUserState {
   token: string | null;
   user: {
     profile: IUser;
-    currentRound: ICurrentRound;
+    currentRound?: ICurrentRound;
   } | null;
 }
 
@@ -27,29 +27,28 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
     case ActionType.LOG_IN_SUCCESS_USER:
       localStorage.setItem('user_token', action.payload.token);
       return {
-        ...state,
         user: action.payload.data.user,
         token: action.payload.token,
       };
 
     case ActionType.LOG_OUT_USER:
       localStorage.removeItem('user_token');
-      return { ...initialState, token: null, user: null };
+      return { token: null, user: null };
 
     case ActionType.TOKEN_STILL_VALID_USER:
       localStorage.setItem('user_token', action.payload.token);
       return {
-        ...state,
         user: action.payload.data.user,
         token: action.payload.token,
       };
 
     case ActionType.UPDATE_USER_PROFILE:
-      localStorage.setItem('user_token', action.payload.token);
       return {
         ...state,
-        user: action.payload.data.user,
-        token: action.payload.token,
+        user: {
+          ...state.user,
+          profile: action.payload.data.user.profile,
+        },
       };
 
     default:

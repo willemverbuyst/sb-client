@@ -16,11 +16,8 @@ const ScoresUser: React.FC = (): ReactElement => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    // update logic!
-    if (user && !scoresPlayer) {
-      dispatch(fetchPlayerScores(Number(user.id)));
-    }
-  });
+    dispatch(fetchPlayerScores(Number(user?.id)));
+  }, [dispatch, user]);
 
   const scores =
     scoresPlayer && scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
