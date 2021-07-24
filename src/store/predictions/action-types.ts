@@ -1,5 +1,8 @@
-import { IPrediction } from '../../models/predictions.model';
-import { TotoRound } from '../../models/toto.models';
+import {
+  IPlayerWithPredictions,
+  IPostedPrediction,
+  IUpdatedPrediction,
+} from '../../models/predictions.model';
 
 export enum ActionType {
   STORE_CURRENT_ROUND = 'STORE_CURRENT_ROUND',
@@ -11,7 +14,7 @@ export enum ActionType {
 
 export type PostPrediction = {
   type: ActionType.POST_PREDICTION;
-  payload: IPrediction;
+  payload: IPostedPrediction;
 };
 
 export type ResetAllPredictions = {
@@ -20,12 +23,12 @@ export type ResetAllPredictions = {
 
 export type StoreAllPredictions = {
   type: ActionType.STORE_ALL_PREDICTIONS;
-  payload: { player: string; fixtures: TotoRound[] };
+  payload: IPlayerWithPredictions;
 };
 
 export type UpdatePrediction = {
   type: ActionType.UPDATE_PREDICTION;
-  payload: IPrediction;
+  payload: IUpdatedPrediction;
 };
 
 export type PredictionActions =

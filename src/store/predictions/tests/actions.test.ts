@@ -1,158 +1,127 @@
-import { IPrediction } from '../../../models/predictions.model';
 import {
-  ICurrentRound,
-  IFixtureWithScoreAndPredictions,
-  TotoRound,
-} from '../../../models/toto.models';
+  IPlayerWithPredictions,
+  IPostedPrediction,
+  IUpdatedPrediction,
+} from '../../../models/predictions.model';
 import {
   ActionType,
   PostPrediction,
-  ResetAllFixtures,
-  StoreAllFixtures,
-  StoreCurrentRound,
+  ResetAllPredictions,
+  StoreAllPredictions,
   UpdatePrediction,
 } from '../action-types';
 import {
   postPrediction,
-  resetAllFixtures,
-  storeAllFixtures,
-  storeCurrentRound,
+  resetAllPredictions,
+  storeAllPredictions,
   updatePrediction,
 } from '../actions';
 
 describe('#predictionsState', () => {
-  describe('#storeAllFixtures', () => {
-    const totoRound: TotoRound[] = [
-      [
+  describe('#storeAllPredictions', () => {
+    const allPredictions: IPlayerWithPredictions = {
+      player: 'Piet',
+      fixtures: [
         [
-          {
-            awayTeamId: 1,
-            awayTeamLogo: 'test',
-            awayTeamName: 'test',
-            createdAt: 'test',
-            eventTimeStamp: 1,
-            goalsAwayTeam: null,
-            goalsHomeTeam: null,
-            homeTeamId: 1,
-            homeTeamLogo: 'test',
-            homeTeamName: 'test',
-            id: 1,
-            round: 'test',
-            status: 'test',
-            updatedAt: 'test',
-            score: 'scores',
-            predictions: {
-              pGoalsAwayTeam: null,
-              pGoalsHomeTeam: null,
+          [
+            {
+              awayTeamId: 1,
+              awayTeamLogo: 'test',
+              awayTeamName: 'test',
+              createdAt: 'test',
+              eventTimeStamp: 1,
+              goalsAwayTeam: null,
+              goalsHomeTeam: null,
+              homeTeamId: 1,
+              homeTeamLogo: 'test',
+              homeTeamName: 'test',
+              id: 1,
+              round: 'test',
+              status: 'test',
+              updatedAt: 'test',
+              score: 'scores',
+              predictions: {
+                pGoalsAwayTeam: null,
+                pGoalsHomeTeam: null,
+              },
             },
-          },
+          ],
         ],
       ],
-    ];
-    const expected: StoreAllFixtures = {
-      type: ActionType.STORE_ALL_FIXTURES,
-      payload: totoRound,
+    };
+    const expected: StoreAllPredictions = {
+      type: ActionType.STORE_ALL_PREDICTIONS,
+      payload: allPredictions,
     };
 
-    test('returns an action w/ type STORE_ALL_FIXTURES and fixtures as payload', () => {
-      expect(storeAllFixtures(totoRound)).toEqual(expected);
-      expect(storeAllFixtures(totoRound).payload).toEqual(totoRound);
-      expect(storeAllFixtures(totoRound).type).toEqual(
-        ActionType.STORE_ALL_FIXTURES,
+    test('returns an action w/ type STORE_ALL_PREDICTIONS and fixtures as payload', () => {
+      expect(storeAllPredictions(allPredictions)).toEqual(expected);
+      expect(storeAllPredictions(allPredictions).payload).toEqual(
+        allPredictions,
       );
-    });
-  });
-
-  describe('#storeCurrentRound', () => {
-    const fixtures: IFixtureWithScoreAndPredictions[] = [
-      {
-        awayTeamId: 1,
-        awayTeamLogo: 'test',
-        awayTeamName: 'test',
-        createdAt: 'test',
-        eventTimeStamp: 1,
-        goalsAwayTeam: null,
-        goalsHomeTeam: null,
-        homeTeamId: 1,
-        homeTeamLogo: 'test',
-        homeTeamName: 'test',
-        id: 1,
-        round: 'test',
-        status: 'test',
-        updatedAt: 'test',
-        score: 'scores',
-        predictions: {
-          pGoalsAwayTeam: null,
-          pGoalsHomeTeam: null,
-        },
-      },
-    ];
-    const currentRound: ICurrentRound = {
-      fixtures,
-      roundNumber: 1,
-      totoRoundNumber: 1,
-    };
-    const expected: StoreCurrentRound = {
-      type: ActionType.STORE_CURRENT_ROUND,
-      payload: currentRound,
-    };
-
-    test('returns an action w/ type STORE_CURRENT_ROUND and current round as payload', () => {
-      expect(storeCurrentRound(currentRound)).toEqual(expected);
-      expect(storeCurrentRound(currentRound).payload).toEqual(currentRound);
-      expect(storeCurrentRound(currentRound).type).toEqual(
-        ActionType.STORE_CURRENT_ROUND,
+      expect(storeAllPredictions(allPredictions).type).toEqual(
+        ActionType.STORE_ALL_PREDICTIONS,
       );
     });
   });
 
   describe('#postPrediction', () => {
-    const prediction: IPrediction = {
-      pGoalsAwayTeam: 1,
-      pGoalsHomeTeam: 4,
-      fixtureId: 1,
+    const postedPrediction: IPostedPrediction = {
+      prediction: {
+        pGoalsAwayTeam: 1,
+        pGoalsHomeTeam: 4,
+        fixtureId: 1,
+      },
     };
     const expected: PostPrediction = {
       type: ActionType.POST_PREDICTION,
-      payload: prediction,
+      payload: postedPrediction,
     };
 
     test('returns an action w/ type POST_PREDICTION, and prediction as payload', () => {
-      expect(postPrediction(prediction)).toEqual(expected);
-      expect(postPrediction(prediction).payload).toEqual(prediction);
-      expect(postPrediction(prediction).type).toEqual(
+      expect(postPrediction(postedPrediction)).toEqual(expected);
+      expect(postPrediction(postedPrediction).payload).toEqual(
+        postedPrediction,
+      );
+      expect(postPrediction(postedPrediction).type).toEqual(
         ActionType.POST_PREDICTION,
       );
     });
   });
 
-  describe('#resetAllFixtures', () => {
-    const expected: ResetAllFixtures = {
-      type: ActionType.RESET_ALL_FIXTURES,
+  describe('#resetAllPredictions', () => {
+    const expected: ResetAllPredictions = {
+      type: ActionType.RESET_ALL_PREDICTIONS,
     };
 
-    test('returns an action w/ type RESET_ALL_FIXTURES, and no payload', () => {
-      expect(resetAllFixtures()).toEqual(expected);
-      expect(resetAllFixtures().type).toEqual(ActionType.RESET_ALL_FIXTURES);
-      expect(resetAllFixtures()).not.toHaveProperty('payload');
+    test('returns an action w/ type RESET_ALL_PREDICTIONS, and no payload', () => {
+      expect(resetAllPredictions()).toEqual(expected);
+      expect(resetAllPredictions().type).toEqual(
+        ActionType.RESET_ALL_PREDICTIONS,
+      );
+      expect(resetAllPredictions()).not.toHaveProperty('payload');
     });
   });
 
   describe('#updatePrediction', () => {
-    const prediction: IPrediction = {
-      pGoalsAwayTeam: 1,
-      pGoalsHomeTeam: 4,
-      fixtureId: 1,
+    const updatedPrediction: IUpdatedPrediction = {
+      prediction: {
+        pGoalsAwayTeam: 1,
+        pGoalsHomeTeam: 4,
+        fixtureId: 1,
+      },
     };
     const expected: UpdatePrediction = {
       type: ActionType.UPDATE_PREDICTION,
-      payload: prediction,
+      payload: updatedPrediction,
     };
 
     test('returns an action w/ type UPDATE_PREDICTION, and prediction as payload', () => {
-      expect(updatePrediction(prediction)).toEqual(expected);
-      expect(updatePrediction(prediction).payload).toEqual(prediction);
-      expect(updatePrediction(prediction).type).toEqual(
+      expect(updatePrediction(updatedPrediction)).toEqual(expected);
+      expect(updatePrediction(updatedPrediction).payload).toEqual(
+        updatedPrediction,
+      );
+      expect(updatePrediction(updatedPrediction).type).toEqual(
         ActionType.UPDATE_PREDICTION,
       );
     });

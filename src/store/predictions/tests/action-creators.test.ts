@@ -1,22 +1,21 @@
 import axios from 'axios';
 
-import { IPrediction } from '../../../models/predictions.model';
+import { Severity } from '../../../models/app.models';
 import {
-  ICurrentRound,
-  IFixtureWithScoreAndPredictions,
-  TotoRound,
-} from '../../../models/toto.models';
+  IPlayerWithPredictions,
+  IPostedPrediction,
+  IPrediction,
+  IUpdatedPrediction,
+} from '../../../models/predictions.model';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import {
   changePrediction,
-  fetchAllFixtures,
-  fetchCurrentRound,
+  getAllPredictions,
   postNewPrediction,
 } from '../action-creators';
 import {
   postPrediction,
-  storeAllFixtures,
-  storeCurrentRound,
+  storeAllPredictions,
   updatePrediction,
 } from '../actions';
 
@@ -37,7 +36,19 @@ describe('#changePrediction', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: { prediction, message: 'test_message' } };
+    const response: {
+      data: {
+        status: Severity;
+        data: IUpdatedPrediction;
+        message: string;
+      };
+    } = {
+      data: {
+        status: 'success',
+        data: { prediction },
+        message: 'test_message',
+      },
+    };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
@@ -45,103 +56,62 @@ describe('#changePrediction', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(updatePrediction(prediction));
+    expect(dispatch).toHaveBeenCalledWith(updatePrediction(response.data.data));
     expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message),
+      setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
 
-describe('#fetchAllFixtures', () => {
-  it('calls axios and returns fixtures', async () => {
-    const totoRound: TotoRound[] = [
-      [
+describe('#getAllPredictions', () => {
+  it('calls axios and returns predictions', async () => {
+    const allPredictions: IPlayerWithPredictions = {
+      player: 'Piet',
+      fixtures: [
         [
-          {
-            awayTeamId: 1,
-            awayTeamLogo: 'test',
-            awayTeamName: 'test',
-            createdAt: 'test',
-            eventTimeStamp: 1,
-            goalsAwayTeam: null,
-            goalsHomeTeam: null,
-            homeTeamId: 1,
-            homeTeamLogo: 'test',
-            homeTeamName: 'test',
-            id: 1,
-            round: 'test',
-            status: 'test',
-            updatedAt: 'test',
-            score: 'scores',
-            predictions: {
-              pGoalsAwayTeam: null,
-              pGoalsHomeTeam: null,
+          [
+            {
+              awayTeamId: 1,
+              awayTeamLogo: 'test',
+              awayTeamName: 'test',
+              createdAt: 'test',
+              eventTimeStamp: 1,
+              goalsAwayTeam: null,
+              goalsHomeTeam: null,
+              homeTeamId: 1,
+              homeTeamLogo: 'test',
+              homeTeamName: 'test',
+              id: 1,
+              round: 'test',
+              status: 'test',
+              updatedAt: 'test',
+              score: 'scores',
+              predictions: {
+                pGoalsAwayTeam: null,
+                pGoalsHomeTeam: null,
+              },
             },
-          },
+          ],
         ],
       ],
-    ];
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const extraArg = 'extra';
-    const response = { data: totoRound };
-
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    await fetchAllFixtures()(dispatch, getState, extraArg);
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(storeAllFixtures(totoRound));
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('#fetchCurrentRound', () => {
-  it('calls axios and returns current round', async () => {
-    const fixtures: IFixtureWithScoreAndPredictions[] = [
-      {
-        awayTeamId: 1,
-        awayTeamLogo: 'test',
-        awayTeamName: 'test',
-        createdAt: 'test',
-        eventTimeStamp: 1,
-        goalsAwayTeam: null,
-        goalsHomeTeam: null,
-        homeTeamId: 1,
-        homeTeamLogo: 'test',
-        homeTeamName: 'test',
-        id: 1,
-        round: 'test',
-        status: 'test',
-        updatedAt: 'test',
-        score: 'scores',
-        predictions: {
-          pGoalsAwayTeam: null,
-          pGoalsHomeTeam: null,
-        },
-      },
-    ];
-    const currentRound: ICurrentRound = {
-      fixtures,
-      roundNumber: 1,
-      totoRoundNumber: 1,
     };
+    const playerId = 1;
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: currentRound };
+    const response = { data: { status: 'success', data: allPredictions } };
 
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
 
-    await fetchCurrentRound()(dispatch, getState, extraArg);
+    await getAllPredictions(playerId)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(storeCurrentRound(currentRound));
+    expect(dispatch).toHaveBeenCalledWith(
+      storeAllPredictions(response.data.data),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
   });
@@ -158,7 +128,19 @@ describe('#postNewPrediction', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: { prediction, message: 'test_message' } };
+    const response: {
+      data: {
+        status: Severity;
+        data: IPostedPrediction;
+        message: string;
+      };
+    } = {
+      data: {
+        status: 'success',
+        data: { prediction },
+        message: 'test_message',
+      },
+    };
 
     mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
 
@@ -166,9 +148,9 @@ describe('#postNewPrediction', () => {
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(postPrediction(prediction));
+    expect(dispatch).toHaveBeenCalledWith(postPrediction(response.data.data));
     expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message),
+      setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);

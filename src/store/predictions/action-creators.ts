@@ -104,7 +104,7 @@ export const postNewPrediction = ({
     );
 
     dispatch(setMessage(response.data.status, response.data.message));
-    dispatch(postPrediction(response.data.data.prediction));
+    dispatch(postPrediction(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
