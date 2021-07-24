@@ -100,8 +100,8 @@ const updateUserPassword = async (newPassword, user) =>
 const updateUserProfile = async (
   id,
   { userName, firstName, lastName, email, phoneNumber, totaalToto, teamId },
-) =>
-  await User.update(
+) => {
+  const updatedUser = await User.update(
     {
       userName,
       firstName,
@@ -111,16 +111,16 @@ const updateUserProfile = async (
       totaalToto,
       teamId,
     },
-    { where: { id } },
     {
-      include: [
-        {
-          model: Team,
-          attributes: ['id', 'logo', 'name'],
-        },
-      ],
+      where: { id },
+      returning: true,
+      plain: true,
     },
   );
+  console.log('email', updatedUser[1].dataValues.email);
+
+  return await getUserById(updatedUser[1].dataValues.id);
+};
 
 module.exports = {
   createNewUser,

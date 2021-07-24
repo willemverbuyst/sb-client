@@ -56,17 +56,13 @@ exports.updateUserProfile = catchAsync(async (req, res, next) => {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
 
-  const user = await updateUserProfile(loggedInUserId, req.body);
-
-  // delete user.dataValues['password'];
-  const token = signToken({ userId: user.email });
+  const profile = await updateUserProfile(loggedInUserId, req.body);
 
   res.status(200).json({
     status: 'success',
     data: {
-      user,
+      user: { profile },
     },
     message: 'Je profiel is gewijzigd.',
-    token,
   });
 });
