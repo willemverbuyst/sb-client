@@ -1,8 +1,10 @@
+import { IUser } from '../../../models/player.model';
 import {
   ICurrentRound,
   IFixtureWithScoreAndPredictions,
   ITeam,
 } from '../../../models/toto.models';
+import { IApiResponseUser } from '../../../models/user.models';
 import {
   ActionType,
   LogInSuccessUser,
@@ -16,7 +18,6 @@ import {
   tokenUserStillValid,
   updateUserProfile,
 } from '../actions';
-import { IUserWithCurrentRound } from '../reducer';
 
 describe('#userState', () => {
   describe('#logInSuccessUser w/ user', () => {
@@ -51,7 +52,7 @@ describe('#userState', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const user: IUserWithCurrentRound = {
+    const profile: IUser = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -62,17 +63,27 @@ describe('#userState', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+    };
+    const user = {
+      profile,
       currentRound,
+    };
+    const token = 'token';
+    const status = 'success';
+    const apiResponse: IApiResponseUser = {
+      status,
+      data: { user },
+      token,
     };
     const expected: LogInSuccessUser = {
       type: ActionType.LOG_IN_SUCCESS_USER,
-      payload: user,
+      payload: apiResponse,
     };
 
     test('returns an action w/ type LOG_IN_SUCCESS_USER and user as payload', () => {
-      expect(logInSuccessUser(user)).toEqual(expected);
-      expect(logInSuccessUser(user).payload).toEqual(user);
-      expect(logInSuccessUser(user).type).toEqual(
+      expect(logInSuccessUser(apiResponse)).toEqual(expected);
+      expect(logInSuccessUser(apiResponse).payload).toEqual(user);
+      expect(logInSuccessUser(apiResponse).type).toEqual(
         ActionType.LOG_IN_SUCCESS_USER,
       );
     });
@@ -122,7 +133,7 @@ describe('#userState', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const user: IUserWithCurrentRound = {
+    const profile: IUser = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -133,17 +144,27 @@ describe('#userState', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+    };
+    const user = {
+      profile,
       currentRound,
+    };
+    const token = 'token';
+    const status = 'success';
+    const apiResponse: IApiResponseUser = {
+      status,
+      data: { user },
+      token,
     };
     const expected: TokenUserStillValid = {
       type: ActionType.TOKEN_STILL_VALID_USER,
-      payload: user,
+      payload: apiResponse,
     };
 
     test('returns an action w/ type TOKEN_STILL_VALID_USER and user as payload', () => {
-      expect(tokenUserStillValid(user)).toEqual(expected);
-      expect(tokenUserStillValid(user).payload).toEqual(user);
-      expect(tokenUserStillValid(user).type).toEqual(
+      expect(tokenUserStillValid(apiResponse)).toEqual(expected);
+      expect(tokenUserStillValid(apiResponse).payload).toEqual(apiResponse);
+      expect(tokenUserStillValid(apiResponse).type).toEqual(
         ActionType.TOKEN_STILL_VALID_USER,
       );
     });
@@ -181,7 +202,7 @@ describe('#userState', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const user: IUserWithCurrentRound = {
+    const profile: IUser = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -192,17 +213,27 @@ describe('#userState', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+    };
+    const user = {
+      profile,
       currentRound,
+    };
+    const token = 'token';
+    const status = 'success';
+    const apiResponse: IApiResponseUser = {
+      status,
+      data: { user },
+      token,
     };
     const action: UpdateUserProfile = {
       type: ActionType.UPDATE_USER_PROFILE,
-      payload: user,
+      payload: apiResponse,
     };
 
     test('returns an action w/ type UPDATE_USER_PROFILE and user as payload', () => {
-      expect(updateUserProfile(user)).toEqual(action);
-      expect(updateUserProfile(user).payload).toEqual(user);
-      expect(updateUserProfile(user).type).toEqual(
+      expect(updateUserProfile(apiResponse)).toEqual(action);
+      expect(updateUserProfile(apiResponse).payload).toEqual(apiResponse);
+      expect(updateUserProfile(apiResponse).type).toEqual(
         ActionType.UPDATE_USER_PROFILE,
       );
     });

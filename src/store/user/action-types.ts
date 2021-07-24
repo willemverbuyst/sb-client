@@ -1,16 +1,4 @@
-import { IUser } from '../../models/player.model';
-import { ICurrentRound } from '../../models/toto.models';
-
-interface ApiResponse {
-  status: string;
-  data: {
-    user: {
-      profile: IUser;
-      currentRound: ICurrentRound;
-    };
-  };
-  token: string;
-}
+import { IApiResponseUser } from '../../models/user.models';
 
 export enum ActionType {
   LOG_IN_SUCCESS_USER = 'LOG_IN_SUCCESS_USER',
@@ -21,7 +9,7 @@ export enum ActionType {
 
 export type LogInSuccessUser = {
   type: ActionType.LOG_IN_SUCCESS_USER;
-  payload: ApiResponse;
+  payload: IApiResponseUser;
 };
 
 export type LogOutUser = {
@@ -30,12 +18,12 @@ export type LogOutUser = {
 
 export type TokenUserStillValid = {
   type: ActionType.TOKEN_STILL_VALID_USER;
-  payload: ApiResponse;
+  payload: IApiResponseUser;
 };
 
 export type UpdateUserProfile = {
   type: ActionType.UPDATE_USER_PROFILE;
-  payload: ApiResponse;
+  payload: IApiResponseUser;
 };
 
 export type UserActions =

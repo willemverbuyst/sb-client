@@ -1,5 +1,4 @@
-import { IUser } from '../../models/player.model';
-import { ICurrentRound } from '../../models/toto.models';
+import { IApiResponseUser } from '../../models/user.models';
 import {
   ActionType,
   LogInSuccessUser,
@@ -8,19 +7,8 @@ import {
   UpdateUserProfile,
 } from './action-types';
 
-interface ApiResponse {
-  status: string;
-  data: {
-    user: {
-      profile: IUser;
-      currentRound: ICurrentRound;
-    };
-  };
-  token: string;
-}
-
 export const logInSuccessUser = (
-  apiResponse: ApiResponse,
+  apiResponse: IApiResponseUser,
 ): LogInSuccessUser => {
   return {
     type: ActionType.LOG_IN_SUCCESS_USER,
@@ -35,13 +23,13 @@ export const logOutUser = (): LogOutUser => {
 };
 
 export const tokenUserStillValid = (
-  apiResponse: ApiResponse,
+  apiResponse: IApiResponseUser,
 ): TokenUserStillValid => {
   return { type: ActionType.TOKEN_STILL_VALID_USER, payload: apiResponse };
 };
 
 export const updateUserProfile = (
-  apiResponse: ApiResponse,
+  apiResponse: IApiResponseUser,
 ): UpdateUserProfile => {
   return { type: ActionType.UPDATE_USER_PROFILE, payload: apiResponse };
 };
