@@ -10,7 +10,7 @@ The goal was to move a big part of the calculation/filter logic to the back-end 
 
 ### General
 
-In config/constants.js and config/config.js the process.env variables are listed. Please replace the values with your own keys in a `.env` file.
+Replace the the process.env variables with your own in a `.env` file.
 
 1. DATABASE_DEV=[Your postgres database (example)](https://www.elephantsql.com/)
 2. JWT_SECRET=Your secret
