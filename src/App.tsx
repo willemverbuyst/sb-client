@@ -1,15 +1,20 @@
 import { Box, Grid } from '@material-ui/core';
-import { createStyles, makeStyles, MuiThemeProvider, Theme } from '@material-ui/core/styles';
+import {
+  createStyles,
+  makeStyles,
+  MuiThemeProvider,
+  Theme,
+} from '@material-ui/core/styles';
 import React, { ReactElement } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import AppRouter from './AppRouter';
 import Toast from './Components/Communication/Toast';
-import Header from './Pages/Sections/Header';
-import UserDisplay from './Pages/Sections/UserDisplay';
+import Header from './Sections/Header';
+import UserDisplay from './Sections/UserDisplay';
 import { getUserWithStoredToken } from './store/user/action-creators';
-import IceBlueGold from './ui/theme';
+import IceBlueGold from './theme';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -1,5 +1,10 @@
 import { Severity } from '../../../models/app.models';
-import { ActionType, AppDoneLoading, AppLoading, SetMessage } from '../action-types';
+import {
+  ActionType,
+  AppDoneLoading,
+  AppLoading,
+  SetMessage,
+} from '../action-types';
 import { appDoneLoading, appLoading, setMessage } from '../actions';
 
 describe('#appState', () => {

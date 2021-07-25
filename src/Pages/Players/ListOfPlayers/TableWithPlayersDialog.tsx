@@ -10,7 +10,10 @@ interface IProps {
   closeDialog: () => void;
 }
 
-const TableWithPlayersDialog: React.FC<IProps> = ({ playerToDelete, closeDialog }: IProps): ReactElement => {
+const TableWithPlayersDialog: React.FC<IProps> = ({
+  playerToDelete,
+  closeDialog,
+}: IProps): ReactElement => {
   const dispatch = useDispatch();
   const title = `Weet je zeker dat je ${playerToDelete.firstName} ${playerToDelete.lastName} wilt verwijderen?`;
   const content =
@@ -21,7 +24,14 @@ const TableWithPlayersDialog: React.FC<IProps> = ({ playerToDelete, closeDialog 
     closeDialog();
   };
 
-  return <DeleteDialog closeDialog={closeDialog} title={title} content={content} handleDelete={handleDelete} />;
+  return (
+    <DeleteDialog
+      closeDialog={closeDialog}
+      title={title}
+      content={content}
+      handleDelete={handleDelete}
+    />
+  );
 };
 
 export default TableWithPlayersDialog;

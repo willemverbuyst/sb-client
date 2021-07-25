@@ -38,6 +38,10 @@ export interface ITeam {
   logo: string;
 }
 
+export interface IAllTeams {
+  teams: ITeam[];
+}
+
 export type Round = IFixtureWithScoreAndPredictions[];
 
 export type TotoRound = Round[];

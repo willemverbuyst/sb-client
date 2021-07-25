@@ -4,39 +4,40 @@ import * as chartjs from 'chart.js';
 import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import BarChart from '../../../Components/Chart/BarChart';
-import { IUser } from '../../../models/player.model';
-import { IUserWithScoreAndPrediction } from '../../../models/scores.models';
-import { selectUser } from '../../../store/user/selectors';
-import { getStringsInUpperCase } from '../../../utils/stringFunctions';
+import * as HISTORY from '../../../history';
+import { IPlayerWithScoreAndPrediction } from '../../../models/player.model';
+import { selectUserId } from '../../../store/user/selectors';
+import * as UTILS from '../../../utils';
 
 interface IProps {
-  scores: IUserWithScoreAndPrediction[];
+  scores: IPlayerWithScoreAndPrediction[];
 }
 
-const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
-  const history = useHistory();
-  const user: IUser | null = useSelector(selectUser);
-
-  const labels: string[] = getStringsInUpperCase<keyof IUserWithScoreAndPrediction, IUserWithScoreAndPrediction>(
+const ScoresForFixtureBarChart: React.FC<IProps> = ({
+  scores,
+}: IProps): ReactElement => {
+  const userId: number | null = useSelector(selectUserId);
+  const labels: string[] = UTILS.getStringsInUpperCase<
+    keyof IPlayerWithScoreAndPrediction,
+    IPlayerWithScoreAndPrediction
+  >(scores, 'name');
+  const userScores: number[] = UTILS.displayUserScores(scores);
+  const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
+  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScoreAndPrediction>(
     scores,
-    'user',
   );
-
-  const userScores: number[] = scores.map((player) => player.score + 0.1);
-  const max: number = Math.max(...userScores) * 1.2;
-
-  const hoverBackgroundColors = scores.map(() => 'grey');
-  const backgroundColor = scores.map((score) => (score.userId === user?.id ? '#1e5eb1' : '#EA9C3B'));
-
-  const userPredictions: string[] = scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
-
-  const gotoPlayer = (index: number): void => {
-    return user && scores[index].userId === user.id
-      ? history.push(`/scores`)
-      : history.push(`/spelers/${scores[index].userId}/scores`);
+  const backgroundColor: string[] = UTILS.getColorBars<IPlayerWithScoreAndPrediction>(
+    scores,
+    userId,
+  );
+  const userPredictions: string[] = UTILS.getUserPredictions(scores);
+  const gotoScoresPlayer = (index: number): void => {
+    const id: number = scores[index].id;
+    userId && userId === id
+      ? HISTORY.gotoScoresUser()
+      : HISTORY.gotoScoresPlayer(id);
   };
 
   const chartData: ChartData<chartjs.ChartData> = {
@@ -99,7 +100,13 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({ scores }: IProps): ReactEl
     },
   };
 
-  return <BarChart chartData={chartData} chartOptions={chartOptions} goto={gotoPlayer} />;
+  return (
+    <BarChart
+      chartData={chartData}
+      chartOptions={chartOptions}
+      goto={gotoScoresPlayer}
+    />
+  );
 };
 
 export default ScoresForFixtureBarChart;

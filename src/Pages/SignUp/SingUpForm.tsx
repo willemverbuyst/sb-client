@@ -9,30 +9,29 @@ import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import SelectorComponent from '../../Components/Form/Selector';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ISignUpCredentials } from '../../models/credentials.model';
-import { ButtonEvent } from '../../models/events.model';
 import { addPlayer } from '../../store/players/action-creators';
 import { fetchAllTeams } from '../../store/teams/action-creators';
 import { selectTeams } from '../../store/teams/selectors';
-import * as HELPERS from '../Profile/EditProfile/helpers';
+import * as UTILS from '../../utils';
 
 const SignUpForm: React.FC = (): ReactElement => {
-  const teams = useSelector(selectTeams);
-  const history = useHistory();
   const dispatch = useDispatch();
-
-  const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
+  const history = useHistory();
+  const teams = useSelector(selectTeams);
+  const [
+    signUpCredentials,
+    setSignUpCredentials,
+  ] = useState<ISignUpCredentials>({
     userName: '',
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     phoneNumber: '',
-    admin: false,
     totaalToto: true,
     teamId: '',
   });
-
-  const teamsForSelector = teams ? HELPERS.getTeamsForSelector(teams) : null;
+  const teamsForSelector = teams ? UTILS.getTeamsForSelector(teams) : null;
 
   useEffect(() => {
     if (!teams) {
@@ -40,8 +39,8 @@ const SignUpForm: React.FC = (): ReactElement => {
     }
   }, [dispatch, teams]);
 
-  const submitForm = (e: ButtonEvent): void => {
-    e.preventDefault();
+  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
 
     dispatch(addPlayer(signUpCredentials));
 
@@ -52,7 +51,6 @@ const SignUpForm: React.FC = (): ReactElement => {
       email: '',
       password: '',
       phoneNumber: '',
-      admin: false,
       totaalToto: true,
       teamId: '',
     });
@@ -60,9 +58,13 @@ const SignUpForm: React.FC = (): ReactElement => {
     history.push('/spelers');
   };
 
-  const updateSignUpCredentials = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const updateSignUpCredentials = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newValue =
-      event.target.id === 'admin' || event.target.id === 'totaalToto' ? event.target.checked : event.target.value;
+      event.target.id === 'totaalToto'
+        ? event.target.checked
+        : event.target.value;
 
     setSignUpCredentials({
       ...signUpCredentials,
@@ -70,7 +72,9 @@ const SignUpForm: React.FC = (): ReactElement => {
     });
   };
 
-  const updateFavoriteTeam = (event: ChangeEvent<{ name?: string | undefined; value: unknown }>): void => {
+  const updateFavoriteTeam = (
+    event: ChangeEvent<{ name?: string | undefined; value: unknown }>,
+  ): void => {
     if (typeof event.target.value === 'number' || event.target.value === '') {
       setSignUpCredentials({
         ...signUpCredentials,
@@ -108,13 +112,7 @@ const SignUpForm: React.FC = (): ReactElement => {
             onChange={updateSignUpCredentials}
           />
           <CheckBoxComponent
-            id="admin"
-            checked={signUpCredentials.admin}
-            onChange={updateSignUpCredentials}
-            label="Admin"
-          />
-          <CheckBoxComponent
-            id="totaaltoto"
+            id="totaalToto"
             checked={signUpCredentials.totaalToto}
             onChange={updateSignUpCredentials}
             label="Totaal Toto"
@@ -143,7 +141,13 @@ const SignUpForm: React.FC = (): ReactElement => {
           ) : null}
         </>
       }
-      submitButton={<SubmitButtonComponent caption="SIGN UP" color="primary" handleClick={submitForm} />}
+      submitButton={
+        <SubmitButtonComponent
+          caption="SIGN UP"
+          color="primary"
+          handleClick={submitForm}
+        />
+      }
     />
   );
 };

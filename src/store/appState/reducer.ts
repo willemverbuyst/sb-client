@@ -12,7 +12,10 @@ const initialState: IAppState = {
   message: null,
 };
 
-const appStateReducer = (state = initialState, action: AppStateActions): IAppState => {
+const appStateReducer = (
+  state = initialState,
+  action: AppStateActions,
+): IAppState => {
   switch (action.type) {
     case ActionType.APP_LOADING:
       return { ...state, loading: true };

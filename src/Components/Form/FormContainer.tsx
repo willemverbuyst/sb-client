@@ -22,7 +22,11 @@ interface IProps {
   link?: JSX.Element | null;
 }
 
-const FormContainer: React.FC<IProps> = ({ inputFields, submitButton, link = null }: IProps): ReactElement => {
+const FormContainer: React.FC<IProps> = ({
+  inputFields,
+  submitButton,
+  link = null,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

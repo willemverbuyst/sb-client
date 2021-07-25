@@ -3,13 +3,16 @@ import { ICurrentRound } from '../../models/toto.models';
 import { ActionType } from './action-types';
 import { UserActions } from './action-types';
 
-interface IUserWithCurrentRound extends IUser {
+export interface IUserWithCurrentRound extends IUser {
   currentRound: ICurrentRound;
 }
 
 export interface IUserState {
   token: string | null;
-  user: IUserWithCurrentRound | null;
+  user: {
+    profile: IUser;
+    currentRound?: ICurrentRound;
+  } | null;
 }
 
 const token = localStorage.getItem('user_token');
@@ -22,19 +25,31 @@ const initialState: IUserState = {
 const userReducer = (state = initialState, action: UserActions): IUserState => {
   switch (action.type) {
     case ActionType.LOG_IN_SUCCESS_USER:
-      const userToken = action.payload.token;
-      userToken && localStorage.setItem('user_token', userToken);
-      return { ...state, user: action.payload, token: userToken };
+      localStorage.setItem('user_token', action.payload.token);
+      return {
+        user: action.payload.data.user,
+        token: action.payload.token,
+      };
 
     case ActionType.LOG_OUT_USER:
       localStorage.removeItem('user_token');
-      return { ...initialState, token: null, user: null };
+      return { token: null, user: null };
 
     case ActionType.TOKEN_STILL_VALID_USER:
-      return { ...state, user: action.payload };
+      localStorage.setItem('user_token', action.payload.token);
+      return {
+        user: action.payload.data.user,
+        token: action.payload.token,
+      };
 
     case ActionType.UPDATE_USER_PROFILE:
-      return { ...state, user: action.payload };
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          profile: action.payload.data.user.profile,
+        },
+      };
 
     default:
       return state;

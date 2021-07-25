@@ -7,9 +7,16 @@ import { IPlayer } from '../../../../models/player.model';
 const renderPlayerUserName = (player: IPlayer): ReactElement => {
   const history = useHistory();
 
-  const gotoPredictions = (): void => history.push(`/spelers/${player.id}/voorspellingen/1/1`);
+  const gotoPredictions = (): void =>
+    history.push(`/spelers/${player.id}/voorspellingen/1/1`);
 
-  return <TableButton color="primary" handleClick={gotoPredictions} caption={player.userName} />;
+  return (
+    <TableButton
+      color="primary"
+      handleClick={gotoPredictions}
+      caption={player.userName}
+    />
+  );
 };
 
 export { renderPlayerUserName };

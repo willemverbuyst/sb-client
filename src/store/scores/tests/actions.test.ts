@@ -1,55 +1,46 @@
-import axios from 'axios';
-
+import {
+  IPlayerWithScoreAndPrediction,
+  IScoresPlayer,
+} from '../../../models/player.model';
+import {
+  IFixtureWithPlayersWithScoreAndPrediction,
+  IRoundWithPlayersWithScore,
+  ITotalToto,
+  ITotoRoundWithPlayersWithScore,
+} from '../../../models/scores.models';
 import { IFixture } from '../../../models/toto.models';
-import { appDoneLoading, appLoading } from '../../appState/actions';
 import {
-  fetchScoresFixture,
-  fetchScoresRound,
-  fetchScoresTotalToto,
-  fetchScoresTotoRound,
-  removeAllScores,
-  scoresFixtureFetched,
-  scoresRoundFetched,
-  scoresTotalTotoFetched,
-  scoresTotoRoundFetched,
-} from '../action-creators';
+  ActionType,
+  ResetAllScores,
+  StorePlayerScores,
+  StoreScoresFixture,
+  StoreScoresRound,
+  StoreScoresTotalToto,
+  StoreScoresTotoRound,
+} from '../action-types';
 import {
-  FixtureWithScores,
-  PredictionWithScorePerUser,
-  REMOVE_ALL_SCORES,
-  RemoveAllScores,
-  Scores,
-  SCORES_FIXTURE_FETCHED,
-  SCORES_ROUND_FETCHED,
-  SCORES_TOTAL_TOTO_FETCHED,
-  SCORES_TOTO_ROUND_FETCHED,
-  ScoresFixtureFetched,
-  ScoresRoundFetched,
-  ScoresTotalTotoFetched,
-  ScoresTotoRoundFetched,
-  UserWithScore,
-} from '../types';
-
-const mockAxios = axios as jest.Mocked<typeof axios>;
-
-beforeEach(() => {
-  jest.resetAllMocks();
-});
+  resetAllScores,
+  storePlayerScores,
+  storeScoresFixture,
+  storeScoresRound,
+  storeScoresTotalToto,
+  storeScoresTotoRound,
+} from '../actions';
 
 describe('#scoressState', () => {
-  describe('#removeAllScores', () => {
-    const expected: RemoveAllScores = {
-      type: REMOVE_ALL_SCORES,
+  describe('#resetAllScores', () => {
+    const expected: ResetAllScores = {
+      type: ActionType.RESET_ALL_SCORES,
     };
 
-    test('returns an action w/ type REMOVE_ALL_SCORES and no payload', () => {
-      expect(removeAllScores()).toEqual(expected);
-      expect(removeAllScores()).not.toHaveProperty('payload');
-      expect(removeAllScores().type).toBe(REMOVE_ALL_SCORES);
+    test('returns an action w/ type RESET_ALL_SCORES and no payload', () => {
+      expect(resetAllScores()).toEqual(expected);
+      expect(resetAllScores()).not.toHaveProperty('payload');
+      expect(resetAllScores().type).toEqual(ActionType.RESET_ALL_SCORES);
     });
   });
 
-  describe('#scoresFixtureFetched w/ fixture', () => {
+  describe('#storeScoresFixture w/ fixture', () => {
     const fixture: IFixture = {
       awayTeamId: 1,
       awayTeamLogo: 'test',
@@ -66,229 +57,125 @@ describe('#scoressState', () => {
       status: 'test',
       updatedAt: 'test',
     };
-    const predictionWithScorePerUser: PredictionWithScorePerUser = {
+    const predictionWithScorePerPlayer: IPlayerWithScoreAndPrediction = {
       pGoalsAwayTeam: 1,
       pGoalsHomeTeam: 1,
       score: 10,
-      user: 'test_user',
-      userId: 1,
+      name: 'test_user',
+      id: 1,
     };
-    const fixtureScores: FixtureWithScores = {
+    const fixtureScores: IFixtureWithPlayersWithScoreAndPrediction = {
       fixture,
-      scores: [predictionWithScorePerUser],
+      scores: [predictionWithScorePerPlayer],
     };
-    const expected: ScoresFixtureFetched = {
-      type: SCORES_FIXTURE_FETCHED,
-      fixture: fixtureScores,
+    const expected: StoreScoresFixture = {
+      type: ActionType.STORE_SCORES_FIXTURE,
+      payload: fixtureScores,
     };
 
-    test('returns an action w/ type SCORES_FIXTURE_FETCHED and a fixture as payload', () => {
-      expect(scoresFixtureFetched(fixtureScores)).toEqual(expected);
-      expect(scoresFixtureFetched(fixtureScores).fixture).not.toBe(undefined);
+    test('returns an action w/ type STORE_SCORES_FIXTURE and a fixture as payload', () => {
+      expect(storeScoresFixture(fixtureScores)).toEqual(expected);
+      expect(storeScoresFixture(fixtureScores).type).toEqual(
+        ActionType.STORE_SCORES_FIXTURE,
+      );
+      expect(storeScoresFixture(fixtureScores).payload).toEqual(fixtureScores);
     });
   });
 
-  describe('#scoresRoundFetched w/ sores', () => {
-    const roundScores: Scores = {
-      usersWithScores: [
+  describe('#storeScoresRound w/ sores', () => {
+    const roundScores: IRoundWithPlayersWithScore = {
+      scores: [
         {
           id: 1,
           score: 1,
-          user: 'test_user',
+          name: 'test_user',
         },
       ],
-      id: 1,
+      roundId: 1,
     };
-    const expected: ScoresRoundFetched = {
-      type: SCORES_ROUND_FETCHED,
-      round: roundScores,
+    const expected: StoreScoresRound = {
+      type: ActionType.STORE_SCORES_ROUND,
+      payload: roundScores,
     };
 
-    test('returns an action w/ type SCORES_ROUND_FETCHED and a round with scores as payload', () => {
-      expect(scoresRoundFetched(roundScores)).toEqual(expected);
-      expect(scoresRoundFetched(roundScores).round).not.toBe(undefined);
-      expect(scoresRoundFetched(roundScores).type).toBe(SCORES_ROUND_FETCHED);
+    test('returns an action w/ type STORE_SCORES_ROUND and a round with scores as payload', () => {
+      expect(storeScoresRound(roundScores)).toEqual(expected);
+      expect(storeScoresRound(roundScores).payload).toEqual(roundScores);
+      expect(storeScoresRound(roundScores).type).toEqual(
+        ActionType.STORE_SCORES_ROUND,
+      );
     });
   });
 
-  describe('#scoresTotalTotoFetched w/ sores', () => {
-    const totalToto: UserWithScore[] = [
-      {
-        score: 10,
-        user: 'test_user',
-        id: 1,
-      },
-    ];
-
-    const expected: ScoresTotalTotoFetched = {
-      type: SCORES_TOTAL_TOTO_FETCHED,
-      totalToto,
+  describe('#storeScoresTotalToto w/ sores', () => {
+    const totalToto: ITotalToto = {
+      scores: [
+        {
+          score: 10,
+          name: 'test_user',
+          id: 1,
+        },
+      ],
     };
 
-    test('returns an action w/ type SCORES_TOTAL_TOTO_FETCHED and totalToto scores as payload', () => {
-      expect(scoresTotalTotoFetched(totalToto)).toEqual(expected);
-      expect(scoresTotalTotoFetched(totalToto).totalToto).not.toBe(undefined);
-      expect(scoresTotalTotoFetched(totalToto).type).toBe(SCORES_TOTAL_TOTO_FETCHED);
+    const expected: StoreScoresTotalToto = {
+      type: ActionType.STORE_SCORES_TOTAL_TOTO,
+      payload: totalToto,
+    };
+
+    test('returns an action w/ type STORE_SCORES_TOTAL_TOTO and totalToto scores as payload', () => {
+      expect(storeScoresTotalToto(totalToto)).toEqual(expected);
+      expect(storeScoresTotalToto(totalToto).payload).toEqual(totalToto);
+      expect(storeScoresTotalToto(totalToto).type).toBe(
+        ActionType.STORE_SCORES_TOTAL_TOTO,
+      );
     });
   });
 
-  describe('#scoresTotoRoundFetched w/ sores', () => {
-    const totoRoundScores: Scores = {
-      usersWithScores: [
+  describe('#storeScoresTotoRound w/ sores', () => {
+    const totoRoundScores: ITotoRoundWithPlayersWithScore = {
+      scores: [
         {
           id: 1,
           score: 1,
-          user: 'test_user',
+          name: 'test_user',
         },
       ],
-      id: 1,
+      totoRoundId: 1,
     };
-    const expected: ScoresTotoRoundFetched = {
-      type: SCORES_TOTO_ROUND_FETCHED,
-      totoRound: totoRoundScores,
+    const expected: StoreScoresTotoRound = {
+      type: ActionType.STORE_SCORES_TOTO_ROUND,
+      payload: totoRoundScores,
     };
 
     test('returns an action w/ type SCORES_TOTO_ROUND_FETCHED and a totoRound as payload', () => {
-      expect(scoresTotoRoundFetched(totoRoundScores)).toEqual(expected);
-      expect(scoresTotoRoundFetched(totoRoundScores).totoRound).not.toBe(undefined);
-      expect(scoresTotoRoundFetched(totoRoundScores).type).toBe(SCORES_TOTO_ROUND_FETCHED);
+      expect(storeScoresTotoRound(totoRoundScores)).toEqual(expected);
+      expect(storeScoresTotoRound(totoRoundScores).payload).toEqual(
+        totoRoundScores,
+      );
+      expect(storeScoresTotoRound(totoRoundScores).type).toBe(
+        ActionType.STORE_SCORES_TOTO_ROUND,
+      );
     });
   });
-});
 
-describe('#fetchScoresFixture', () => {
-  it('calls axios and returns a fixture with scores', async () => {
-    const id = 1;
-    const fixture: IFixture = {
-      awayTeamId: 1,
-      awayTeamLogo: 'test',
-      awayTeamName: 'test',
-      createdAt: 'test',
-      eventTimeStamp: 1,
-      goalsAwayTeam: null,
-      goalsHomeTeam: null,
-      homeTeamId: 1,
-      homeTeamLogo: 'test',
-      homeTeamName: 'test',
+  describe('#storeScoresPlayer w/ sores', () => {
+    const scoresPlayer: IScoresPlayer = {
       id: 1,
-      round: 'test',
-      status: 'test',
-      updatedAt: 'test',
+      scores: [[1], [3]],
+      name: 'test_user',
     };
-    const predictionWithScorePerUser: PredictionWithScorePerUser = {
-      pGoalsAwayTeam: 1,
-      pGoalsHomeTeam: 1,
-      score: 10,
-      user: 'test_user',
-      userId: 1,
-    };
-    const fixtureScores: FixtureWithScores = {
-      fixture,
-      scores: [predictionWithScorePerUser],
+    const expected: StorePlayerScores = {
+      type: ActionType.STORE_PLAYER_SCORES,
+      payload: scoresPlayer,
     };
 
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const extraArg = 'extra';
-    const response = { data: fixtureScores };
-
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    await fetchScoresFixture(id)(dispatch, getState, extraArg);
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresFixtureFetched(response.data));
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('#fetchScoresRound', () => {
-  it('calls axios and returns a round with scores', async () => {
-    const id = 1;
-    const roundScores: Scores = {
-      usersWithScores: [
-        {
-          id: 1,
-          score: 1,
-          user: 'test_user',
-        },
-      ],
-      id: 1,
-    };
-
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const extraArg = 'extra';
-    const response = { data: roundScores };
-
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    await fetchScoresRound(id)(dispatch, getState, extraArg);
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresRoundFetched(response.data));
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('#fetchScoresTotalToto', () => {
-  it('calls axios and returns the totalToto', async () => {
-    const totalTotoScores: UserWithScore[] = [
-      {
-        id: 1,
-        score: 1,
-        user: 'test_user',
-      },
-    ];
-
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const extraArg = 'extra';
-    const response = { data: totalTotoScores };
-
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    await fetchScoresTotalToto()(dispatch, getState, extraArg);
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresTotalTotoFetched(response.data));
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('#fetchScoresTotoRound', () => {
-  it('calls axios and returns a totoRound with scores', async () => {
-    const id = 1;
-    const totoRoundScores: Scores = {
-      usersWithScores: [
-        {
-          id: 1,
-          score: 1,
-          user: 'test_user',
-        },
-      ],
-      id: 1,
-    };
-
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const extraArg = 'extra';
-    const response = { data: totoRoundScores };
-
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    await fetchScoresTotoRound(id)(dispatch, getState, extraArg);
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(scoresTotoRoundFetched(response.data));
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
+    test('returns an action w/ type STORE_PLAYER_SCORES and a scoresPlayer as payload', () => {
+      expect(storePlayerScores(scoresPlayer)).toEqual(expected);
+      expect(storePlayerScores(scoresPlayer).payload).toEqual(scoresPlayer);
+      expect(storePlayerScores(scoresPlayer).type).toBe(
+        ActionType.STORE_PLAYER_SCORES,
+      );
+    });
   });
 });

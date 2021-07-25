@@ -4,46 +4,64 @@ import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
-import { fetchPlayerProfile } from '../../../store/players/action-creators';
-import { selectPastFixturesWithScoresSortedByTime, selectUserNamePlayer } from '../../../store/players/selectors';
-import { calculateIndex } from '../../../utils/parameterFunctions';
-import PageContent from '../../Sections/PageContent';
-import Predictions from '../../Sections/Predictions';
-import PaginationSection from './PaginationSection';
+import PageContent from '../../../Sections/PageContent';
+import Predictions from '../../../Sections/Predictions';
+import { getAllPredictions } from '../../../store/predictions/action-creators';
+import {
+  selectAllPredictionsSortedByTime,
+  selectNameOfPlayerOfPredicitons,
+} from '../../../store/predictions/selectors';
+import * as UTILS from '../../../utils';
+import Pagination from './Pagination';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const userNamePlayer = useSelector(selectUserNamePlayer);
-  const pastFixturesWithScoresSortedByTime = useSelector(selectPastFixturesWithScoresSortedByTime);
+  const nameOfPlayerOfPredicitons = useSelector(
+    selectNameOfPlayerOfPredicitons,
+  );
+  const allPredictionsSortedByTime = useSelector(
+    selectAllPredictionsSortedByTime,
+  );
   const { id } = useParams<{ id: string }>();
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
+  const round = Number(ronde);
+  const totoRound = Number(totoronde);
 
-  const t = Number(totoronde);
-  const r = Number(ronde);
-
-  const name = userNamePlayer ? userNamePlayer : 'Speler...';
+  const name = nameOfPlayerOfPredicitons
+    ? nameOfPlayerOfPredicitons
+    : 'Speler...';
 
   useEffect(() => {
-    dispatch(fetchPlayerProfile(Number(id)));
+    dispatch(getAllPredictions(Number(id)));
   }, [dispatch, id]);
 
-  const filteredFixtures = pastFixturesWithScoresSortedByTime
-    ? [...pastFixturesWithScoresSortedByTime[t - 1][calculateIndex(r)]]
+  const filteredFixtures = allPredictionsSortedByTime
+    ? [
+        ...allPredictionsSortedByTime[totoRound - 1][
+          UTILS.calculateIndex(round)
+        ],
+      ]
     : null;
 
   return (
     <PageContent
       loadingText="Voorspellingen"
       content={
-        filteredFixtures && userNamePlayer ? (
+        filteredFixtures && nameOfPlayerOfPredicitons ? (
           <>
             <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
-            <Predictions fixtures={filteredFixtures} display="public" userNamePlayer={userNamePlayer} />
-            <PaginationSection totoronde={totoronde} ronde={ronde} id={id} />
+            <Predictions
+              predictions={filteredFixtures}
+              display="public"
+              userNamePlayer={nameOfPlayerOfPredicitons}
+            />
+            <Pagination totoround={totoRound} round={round} id={id} />
           </>
         ) : (
-          <MessageComponent message={`Geen voorspellingen voor gevonden`} />
+          <MessageComponent
+            message={`Geen voorspellingen voor ${name} gevonden`}
+          />
         )
       }
     />

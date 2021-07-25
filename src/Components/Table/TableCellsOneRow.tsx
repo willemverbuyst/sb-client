@@ -1,13 +1,15 @@
 import { TableCell, TableRow } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
-import { Align, CellValue } from './types';
+import { Align, CellValue } from '../../models/table.models';
 
 interface IProps {
   cells: [CellValue, Align][];
 }
 
-const TableCellsOneRow: React.FC<IProps> = ({ cells }: IProps): ReactElement => {
+const TableCellsOneRow: React.FC<IProps> = ({
+  cells,
+}: IProps): ReactElement => {
   return (
     <TableRow>
       {cells.map((cell, i) => (

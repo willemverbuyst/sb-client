@@ -1,22 +1,14 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { ReactElement } from 'react';
+import { useSelector } from 'react-redux';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageTitle from '../../Components/Title/PageTitle';
-import { fetchCurrentRound } from '../../store/predictions/action-creators';
+import PageContent from '../../Sections/PageContent';
+import Predictions from '../../Sections/Predictions';
 import { selectCurrentRoundSortedByTime } from '../../store/user/selectors';
-import PageContent from '../Sections/PageContent';
-import Predictions from '../Sections/Predictions';
 
 const Program: React.FC = (): ReactElement => {
-  const dispatch = useDispatch();
   const currentRoundSortedByTime = useSelector(selectCurrentRoundSortedByTime);
-
-  useEffect(() => {
-    if (!currentRoundSortedByTime) {
-      dispatch(fetchCurrentRound());
-    }
-  }, [dispatch, currentRoundSortedByTime]);
 
   return (
     <PageContent
@@ -25,10 +17,13 @@ const Program: React.FC = (): ReactElement => {
         currentRoundSortedByTime ? (
           <>
             <PageTitle title="Programma" color="secondary" />
-            <Predictions fixtures={currentRoundSortedByTime} display="private" />
+            <Predictions
+              predictions={currentRoundSortedByTime}
+              display="private"
+            />
           </>
         ) : (
-          <MessageComponent message={`Er staan voor deze week geen wedstrijden gepland.`} />
+          <MessageComponent message="Er staan voor deze week geen wedstrijden gepland." />
         )
       }
     />

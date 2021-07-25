@@ -7,7 +7,11 @@ interface IProps {
   handleClick: () => void;
 }
 
-const TableButton: React.FC<IProps> = ({ caption, color, handleClick }: IProps): ReactElement => (
+const TableButton: React.FC<IProps> = ({
+  caption,
+  color,
+  handleClick,
+}: IProps): ReactElement => (
   <Button size="small" variant="text" color={color} onClick={handleClick}>
     {caption}
   </Button>

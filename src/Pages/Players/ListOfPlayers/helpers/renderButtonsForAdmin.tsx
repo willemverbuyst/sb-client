@@ -1,13 +1,19 @@
 import React, { ReactElement } from 'react';
 
-import TableEditCancelButtons from '../../../../Components/Table/TableEditCancelButtons';
+import TableDeleteConfirmCancelButtons from '../../../../Components/Table/TableDeleteConfirmCancelButtons';
 
 const renderButtonsForAdmin = (
   editModus: boolean,
   toggleEditModus: () => void,
   deletePlayer: () => void,
 ): ReactElement => {
-  return <TableEditCancelButtons editModus={editModus} changeEditModus={toggleEditModus} handleDelete={deletePlayer} />;
+  return (
+    <TableDeleteConfirmCancelButtons
+      editModus={editModus}
+      changeEditModus={toggleEditModus}
+      handleDelete={deletePlayer}
+    />
+  );
 };
 
 export { renderButtonsForAdmin };

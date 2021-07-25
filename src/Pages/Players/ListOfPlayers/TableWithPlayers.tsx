@@ -9,11 +9,15 @@ type IProps = {
   playersSortedByName: IPlayer[];
 };
 
-const TableWithPlayers: React.FC<IProps> = ({ playersSortedByName }: IProps): ReactElement => {
+const TableWithPlayers: React.FC<IProps> = ({
+  playersSortedByName,
+}: IProps): ReactElement => {
   return (
     <TableComponent
       tableHeaders={<TableWithPlayersHeaders />}
-      tableContent={<TableWithPlayersContent playersSortedByName={playersSortedByName} />}
+      tableContent={
+        <TableWithPlayersContent playersSortedByName={playersSortedByName} />
+      }
     />
   );
 };

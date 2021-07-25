@@ -14,7 +14,10 @@ interface IProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextFieldComponent: React.FC<IProps> = ({ defaultValue, onChange }: IProps) => {
+const TextFieldComponent: React.FC<IProps> = ({
+  defaultValue,
+  onChange,
+}: IProps) => {
   const classes = useStyles();
 
   return (

@@ -8,7 +8,6 @@ import FormContainer from '../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ILogInCredentials } from '../../models/credentials.model';
-import { ButtonEvent } from '../../models/events.model';
 import { userLogIn } from '../../store/user/action-creators';
 
 const LoginForm: React.FC = (): ReactElement => {
@@ -18,8 +17,8 @@ const LoginForm: React.FC = (): ReactElement => {
     password: '',
   });
 
-  const submitForm = (e: ButtonEvent): void => {
-    e.preventDefault();
+  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
     dispatch(userLogIn(logInCredentials));
     setLogInCredentials({
       email: '',
@@ -52,7 +51,13 @@ const LoginForm: React.FC = (): ReactElement => {
           />
         </>
       }
-      submitButton={<SubmitButtonComponent caption="LOG IN" color="primary" handleClick={submitForm} />}
+      submitButton={
+        <SubmitButtonComponent
+          caption="LOG IN"
+          color="primary"
+          handleClick={submitForm}
+        />
+      }
     />
   );
 };

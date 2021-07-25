@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import PageTitle from '../../Components/Title/PageTitle';
+import PageContent from '../../Sections/PageContent';
 import { selectUser } from '../../store/user/selectors';
-import PageContent from '../Sections/PageContent';
 import SignUpForm from './SingUpForm';
 
 const SignUp: React.FC = (): ReactElement => {
-  const user = useSelector(selectUser);
   const history = useHistory();
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     if (user && !user.admin) history.push('/page-not-found');

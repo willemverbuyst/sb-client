@@ -15,12 +15,21 @@ interface IProps {
   handleDelete: () => void;
 }
 
-const DeleteDialog: React.FC<IProps> = ({ title, content, closeDialog, handleDelete }: IProps): ReactElement => {
+const DeleteDialog: React.FC<IProps> = ({
+  title,
+  content,
+  closeDialog,
+  handleDelete,
+}: IProps): ReactElement => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Dialog open={true} fullScreen={fullScreen} aria-labelledby="responsive-dialog-title">
+    <Dialog
+      open={true}
+      fullScreen={fullScreen}
+      aria-labelledby="responsive-dialog-title"
+    >
       <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>{content}</DialogContentText>

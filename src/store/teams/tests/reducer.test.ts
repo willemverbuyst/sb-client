@@ -1,38 +1,40 @@
-import { ITeam } from '../../../models/toto.models';
-import reducer from '../reducer';
-import { ALL_TEAMS_FETCHED, REMOVE_ALL_TEAMS, TeamsState } from '../types';
+import { IAllTeams, ITeam } from '../../../models/toto.models';
+import { ActionType } from '../action-types';
+import reducer, { ITeamsState } from '../reducer';
 
 describe('#teamsReducer', () => {
-  describe('w/ initial state and ALL_TEAMS_FETCHED action type', () => {
-    const initialState: TeamsState = {
+  describe('w/ initial state and STORE_ALL_TEAMS action type', () => {
+    const initialState: ITeamsState = {
       teams: null,
     };
-    const teams: ITeam[] = [
-      {
-        id: 1,
-        name: 'test_name',
-        logo: 'test_logo',
-      },
-    ];
-    const newState: TeamsState = reducer(initialState, {
-      type: ALL_TEAMS_FETCHED,
-      teams,
+    const allTeams: IAllTeams = {
+      teams: [
+        {
+          id: 1,
+          name: 'test_name',
+          logo: 'test_logo',
+        },
+      ],
+    };
+    const newState: ITeamsState = reducer(initialState, {
+      type: ActionType.STORE_ALL_TEAMS,
+      payload: allTeams,
     });
 
     test('returns the new state with teams', () => {
       expect(newState).not.toEqual(initialState);
-      expect(newState.teams).toEqual(teams);
+      expect(newState).toEqual(allTeams);
       expect(newState.teams?.length).toBe(1);
     });
   });
 
-  describe('w/ initial state and ALL_TEAMS_FETCHED action type and no teams', () => {
-    const initialState: TeamsState = {
+  describe('w/ initial state and STORE_ALL_TEAMS action type and no teams', () => {
+    const initialState: ITeamsState = {
       teams: null,
     };
-    const newState: TeamsState = reducer(initialState, {
-      type: ALL_TEAMS_FETCHED,
-      teams: [],
+    const newState: ITeamsState = reducer(initialState, {
+      type: ActionType.STORE_ALL_TEAMS,
+      payload: { teams: [] },
     });
 
     test('returns the new state w/ an empty array for teams', () => {
@@ -42,8 +44,8 @@ describe('#teamsReducer', () => {
     });
   });
 
-  describe('w/ a state w/ teams and REMOVE_ALL_TEAMS action type', () => {
-    const initialState: TeamsState = {
+  describe('w/ a state w/ teams and RESET_ALL_TEAMS action type', () => {
+    const initialState: ITeamsState = {
       teams: null,
     };
     const teams: ITeam[] = [
@@ -53,11 +55,11 @@ describe('#teamsReducer', () => {
         logo: 'test_logo',
       },
     ];
-    const state: TeamsState = {
+    const state: ITeamsState = {
       teams,
     };
-    const newState: TeamsState = reducer(state, {
-      type: REMOVE_ALL_TEAMS,
+    const newState: ITeamsState = reducer(state, {
+      type: ActionType.RESET_ALL_TEAMS,
     });
 
     test('returns the initial state', () => {

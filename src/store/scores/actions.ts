@@ -1,12 +1,14 @@
+import { IScoresPlayer } from '../../models/player.model';
 import {
-  IFixtureWithUsersWithScoreAndPrediction,
-  IUsersWithScoreAndRoundId,
-  IUsersWithScoreAndTotoRoundId,
-  IUserWithScore,
+  IFixtureWithPlayersWithScoreAndPrediction,
+  IRoundWithPlayersWithScore,
+  ITotalToto,
+  ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models';
 import {
   ActionType,
   ResetAllScores,
+  StorePlayerScores,
   StoreScoresFixture,
   StoreScoresRound,
   StoreScoresTotalToto,
@@ -19,30 +21,45 @@ export const resetAllScores = (): ResetAllScores => {
   };
 };
 
-export const storeScoresFixture = (fixture: IFixtureWithUsersWithScoreAndPrediction): StoreScoresFixture => {
+export const storeScoresFixture = (
+  fixtureWithScores: IFixtureWithPlayersWithScoreAndPrediction,
+): StoreScoresFixture => {
   return {
     type: ActionType.STORE_SCORES_FIXTURE,
-    payload: fixture,
+    payload: fixtureWithScores,
   };
 };
 
-export const storeScoresRound = (round: IUsersWithScoreAndRoundId): StoreScoresRound => {
+export const storeScoresRound = (
+  round: IRoundWithPlayersWithScore,
+): StoreScoresRound => {
   return {
     type: ActionType.STORE_SCORES_ROUND,
     payload: round,
   };
 };
 
-export const storeScoresTotalToto = (totalToto: IUserWithScore[]): StoreScoresTotalToto => {
+export const storeScoresTotalToto = (
+  totalToto: ITotalToto,
+): StoreScoresTotalToto => {
   return {
     type: ActionType.STORE_SCORES_TOTAL_TOTO,
     payload: totalToto,
   };
 };
 
-export const storeScoresTotoRound = (totoRound: IUsersWithScoreAndTotoRoundId): StoreScoresTotoRound => {
+export const storeScoresTotoRound = (
+  totoRound: ITotoRoundWithPlayersWithScore,
+): StoreScoresTotoRound => {
   return {
     type: ActionType.STORE_SCORES_TOTO_ROUND,
     payload: totoRound,
   };
 };
+
+export const storePlayerScores = (
+  scoresPlayer: IScoresPlayer,
+): StorePlayerScores => ({
+  type: ActionType.STORE_PLAYER_SCORES,
+  payload: scoresPlayer,
+});

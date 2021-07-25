@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import PageContent from '../../../Sections/PageContent';
 import { fetchAllPlayers } from '../../../store/players/action-creators';
 import { selectPlayersSortedByName } from '../../../store/players/selectors';
-import PageContent from '../../Sections/PageContent';
 import TableWithPlayers from './TableWithPlayers';
 
 const ListOfPlayers: React.FC = (): ReactElement => {
@@ -28,7 +28,7 @@ const ListOfPlayers: React.FC = (): ReactElement => {
             <TableWithPlayers playersSortedByName={playersSortedByName} />
           </>
         ) : (
-          <MessageComponent message={`Geen spelers gevonden`} />
+          <MessageComponent message="Geen spelers gevonden" />
         )
       }
     />

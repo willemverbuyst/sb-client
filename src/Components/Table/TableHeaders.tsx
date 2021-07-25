@@ -1,7 +1,7 @@
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
-import { Align } from './types';
+import { Align } from '../../models/table.models';
 
 interface IProps {
   headers: [string, Align][];

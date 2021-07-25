@@ -1,4 +1,4 @@
-import { ITeam, TotoRound } from './toto.models';
+import { ITeam } from './toto.models';
 
 export interface IPlayer {
   admin: boolean;
@@ -12,16 +12,31 @@ export interface IPlayer {
   userName: string;
 }
 
-export interface IPlayerProfile extends IPlayer {
-  pastFixturesWithScores: TotoRound[] | null;
-}
-
 export interface IScoresPlayer {
+  id: number;
+  name: string;
   scores: number[][];
-  userName: string;
-  userId: number;
 }
 
 export interface IUser extends IPlayer {
   token: string;
+}
+
+export interface IAllPlayers {
+  players: IPlayer[];
+}
+
+export interface INewPlayer {
+  player: IPlayer;
+}
+
+export interface IPlayerWithScore {
+  id: number;
+  name: string;
+  score: number;
+}
+
+export interface IPlayerWithScoreAndPrediction extends IPlayerWithScore {
+  pGoalsAwayTeam: number;
+  pGoalsHomeTeam: number;
 }

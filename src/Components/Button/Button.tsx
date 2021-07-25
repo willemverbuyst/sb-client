@@ -9,7 +9,11 @@ interface IProps {
   handleClick: () => void;
 }
 
-const ButtonComponent: React.FC<IProps> = ({ caption, color, handleClick }: IProps): ReactElement => {
+const ButtonComponent: React.FC<IProps> = ({
+  caption,
+  color,
+  handleClick,
+}: IProps): ReactElement => {
   const theme = useTheme();
   const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
 

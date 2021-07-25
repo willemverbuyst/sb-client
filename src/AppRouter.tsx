@@ -7,17 +7,17 @@ import PageNotFound from './Pages/PageNotFound';
 import ListOfPlayers from './Pages/Players/ListOfPlayers';
 import PredictionsPlayer from './Pages/Players/PredictionsPlayer';
 import ScoresPlayer from './Pages/Players/ScoresPlayer';
-import Predictions from './Pages/PredictionsUser';
 import EditPassword from './Pages/Profile/EditPassword';
 import EditProfile from './Pages/Profile/EditProfile';
 import Program from './Pages/Program';
 import Rules from './Pages/Rules';
 import Fixture from './Pages/Scores/Fixture';
 import Round from './Pages/Scores/Round';
-import ScoresUser from './Pages/Scores/ScoresUser';
 import TotalToto from './Pages/Scores/TotalToto';
 import TotoRound from './Pages/Scores/TotoRound';
 import SignUp from './Pages/SignUp';
+import Predictions from './Pages/User/PredictionsUser';
+import ScoresUser from './Pages/User/ScoresUser';
 
 const AppRouter = (): JSX.Element => {
   return (
@@ -36,7 +36,11 @@ const AppRouter = (): JSX.Element => {
       <Route exact path={ROUTES.SCORES_USER} component={ScoresUser} />
       <Route exact path={ROUTES.LIST_OF_PLAYERS} component={ListOfPlayers} />
       <Route exact path={ROUTES.SCORES_PLAYERS} component={ScoresPlayer} />
-      <Route exact path={ROUTES.PREDICTIONS_PLAYERS} component={PredictionsPlayer} />
+      <Route
+        exact
+        path={ROUTES.PREDICTIONS_PLAYERS}
+        component={PredictionsPlayer}
+      />
       <Route exact path={ROUTES.PREDICTIONS} component={Predictions} />
       <Route exact path={ROUTES.FIXTURES} component={Fixture} />
       <Redirect path="/" to={ROUTES.PAGE_NOT_FOUND} />

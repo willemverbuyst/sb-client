@@ -1,62 +1,42 @@
-import { IPlayer, IPlayerProfile, IScoresPlayer } from '../../models/player.model';
+import { IPlayer } from '../../models/player.model';
 import { ActionType, PlayersActions } from './action-types';
 
 export interface IPlayersState {
   players: IPlayer[] | null;
-  playerProfile: IPlayerProfile | null;
-  scoresPlayer: IScoresPlayer | null;
 }
 
 const initialState: IPlayersState = {
   players: null,
-  playerProfile: null,
-  scoresPlayer: null,
 };
 
-const playersReducer = (state = initialState, action: PlayersActions): IPlayersState => {
+const playersReducer = (
+  state = initialState,
+  action: PlayersActions,
+): IPlayersState => {
   switch (action.type) {
     case ActionType.ADD_NEW_PLAYER:
       return {
         ...state,
-        players: state.players ? [...state.players, action.payload] : null,
+        players: state.players
+          ? [...state.players, action.payload.player]
+          : null,
       };
 
     case ActionType.DELETE_PLAYER:
       return {
         ...state,
-        players: state.players ? state.players.filter((player) => player.id !== action.payload) : null,
+        players: state.players
+          ? state.players.filter((player) => player.id !== action.payload)
+          : null,
       };
 
     case ActionType.RESET_PLAYERS:
       return {
-        ...state,
         players: null,
       };
 
     case ActionType.STORE_ALL_PLAYERS:
-      return { ...state, players: [...action.payload] };
-
-    case ActionType.STORE_PLAYER_PROFILE:
-      return { ...state, playerProfile: action.payload };
-
-    case ActionType.STORE_PLAYER_SCORES:
-      return { ...state, scoresPlayer: action.payload };
-
-    case ActionType.UPDATE_ADMIN_STATUS:
-      return {
-        ...state,
-        players: state.players
-          ? [
-              ...state.players.map((player) => {
-                if (player.id === action.payload.id) {
-                  return action.payload;
-                } else {
-                  return player;
-                }
-              }),
-            ]
-          : null,
-      };
+      return { ...state, players: action.payload.players };
 
     default:
       return state;

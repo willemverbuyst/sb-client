@@ -13,7 +13,9 @@ interface IProps {
   answers: string[];
 }
 
-const AccordionAnswers: React.FC<IProps> = ({ answers }: IProps): ReactElement => {
+const AccordionAnswers: React.FC<IProps> = ({
+  answers,
+}: IProps): ReactElement => {
   return (
     <AccordionDetails>
       <List>

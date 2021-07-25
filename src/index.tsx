@@ -5,9 +5,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router';
 
 import App from './App';
+import history from './history';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
 
@@ -25,7 +26,7 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-  <Router>
+  <Router history={history}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />

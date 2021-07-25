@@ -4,38 +4,42 @@ import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
+import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
+import PageContent from '../../../Sections/PageContent';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
-import { selectRoundId, selectScoresRoundSortedByScore } from '../../../store/scores/selectors';
-import ScoresBarChart from '../../Sections/Charts/ScoresBarChart';
-import PageContent from '../../Sections/PageContent';
-import PaginationSection from './PaginationSection';
+import {
+  selectRoundId,
+  selectScoresRoundSortedByScore,
+} from '../../../store/scores/selectors';
+import Pagination from './Pagination';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const { id } = useParams<{ id: string }>();
-
   const roundId = useSelector(selectRoundId);
-  // const scoresRoundSortedByName = useSelector(selectScoresRoundSortedByName);
   const scoresRoundSortedByScore = useSelector(selectScoresRoundSortedByScore);
+  const { ronde } = useParams<{ ronde: string }>();
+  const round = Number(ronde);
 
   useEffect(() => {
-    if (!roundId || Number(id) !== roundId) {
-      dispatch(fetchScoresRound(+id));
+    if (!roundId || round !== roundId) {
+      dispatch(fetchScoresRound(round));
     }
-  }, [dispatch, id, roundId]);
+  }, [dispatch, round, roundId]);
 
   return (
     <PageContent
       loadingText="Speelronde"
       content={
-        scoresRoundSortedByScore ? (
+        scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
           <>
-            <PageTitle title={`Speelronde ${id}`} color="secondary" />
+            <PageTitle title={`Speelronde ${round}`} color="secondary" />
             <ScoresBarChart scores={scoresRoundSortedByScore} />
-            <PaginationSection round={id} />
+            <Pagination round={round} />
           </>
         ) : (
-          <MessageComponent message={`Nog geen scores voor deze ronde`} />
+          <MessageComponent
+            message={`Nog geen scores voor speelronde ${round}`}
+          />
         )
       }
     />

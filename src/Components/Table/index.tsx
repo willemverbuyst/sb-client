@@ -16,7 +16,10 @@ type IProps = {
   tableContent: ReactElement;
 };
 
-const TableComponent: React.FC<IProps> = ({ tableHeaders, tableContent }: IProps): ReactElement => {
+const TableComponent: React.FC<IProps> = ({
+  tableHeaders,
+  tableContent,
+}: IProps): ReactElement => {
   const classes = useStyles();
 
   return (

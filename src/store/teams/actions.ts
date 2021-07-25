@@ -1,7 +1,7 @@
-import { ITeam } from '../../models/toto.models';
+import { IAllTeams } from '../../models/toto.models';
 import { ActionType, ResetAllTeams, StoreAllTeams } from './action-types';
 
-export const storeAllTeams = (teams: ITeam[]): StoreAllTeams => {
+export const storeAllTeams = (teams: IAllTeams): StoreAllTeams => {
   return {
     type: ActionType.STORE_ALL_TEAMS,
     payload: teams,
