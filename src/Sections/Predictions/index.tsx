@@ -5,20 +5,20 @@ import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import MatchCard from '../Card/MatchCard';
 
 interface IProps {
-  fixtures: IFixtureWithScoreAndPredictions[];
+  predictions: IFixtureWithScoreAndPredictions[];
   display: 'private' | 'public';
   userNamePlayer?: string;
 }
 
 const Predictions: React.FC<IProps> = ({
-  fixtures,
+  predictions,
   display,
   userNamePlayer = '',
 }: IProps): ReactElement => {
   return (
     <Box my={{ sm: 1, md: 4 }}>
       <Grid item xs={12} container justify="center">
-        {fixtures.map((wedstrijd, i) => (
+        {predictions.map((wedstrijd, i) => (
           <Grid item key={i} lg={4} md={6} xs={12}>
             <MatchCard
               wedstrijdMetVoorspellingen={wedstrijd}

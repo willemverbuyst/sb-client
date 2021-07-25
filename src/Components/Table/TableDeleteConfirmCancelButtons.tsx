@@ -8,7 +8,7 @@ type IProps = {
   handleDelete: () => void;
 };
 
-const TableEditCancelButtons: React.FC<IProps> = ({
+const TableDeleteConfirmCancelButtons: React.FC<IProps> = ({
   editModus,
   changeEditModus,
   handleDelete,
@@ -16,7 +16,7 @@ const TableEditCancelButtons: React.FC<IProps> = ({
   return editModus ? (
     <>
       <TableButton
-        caption="DELETE"
+        caption="CONFIRM"
         color="secondary"
         handleClick={handleDelete}
       />
@@ -27,8 +27,12 @@ const TableEditCancelButtons: React.FC<IProps> = ({
       />
     </>
   ) : (
-    <TableButton caption="EDIT" color="primary" handleClick={changeEditModus} />
+    <TableButton
+      caption="DELETE"
+      color="primary"
+      handleClick={changeEditModus}
+    />
   );
 };
 
-export default TableEditCancelButtons;
+export default TableDeleteConfirmCancelButtons;

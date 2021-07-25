@@ -1,8 +1,9 @@
+import { IScoresPlayer } from '../../models/player.model';
 import {
-  IFixtureWithUsersWithScoreAndPrediction,
-  IUsersWithScoreAndRoundId,
-  IUsersWithScoreAndTotoRoundId,
-  IUserWithScore,
+  IFixtureWithPlayersWithScoreAndPrediction,
+  IRoundWithPlayersWithScore,
+  ITotalToto,
+  ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models';
 
 export enum ActionType {
@@ -11,6 +12,7 @@ export enum ActionType {
   STORE_SCORES_ROUND = 'STORE_SCORES_ROUND',
   STORE_SCORES_TOTAL_TOTO = 'STORE_SCORES_TOTAL_TOTO',
   STORE_SCORES_TOTO_ROUND = 'STORE_SCORES_TOTO_ROUND',
+  STORE_PLAYER_SCORES = 'STORE_PLAYER_SCORES',
 }
 
 export type ResetAllScores = {
@@ -19,22 +21,27 @@ export type ResetAllScores = {
 
 export type StoreScoresFixture = {
   type: ActionType.STORE_SCORES_FIXTURE;
-  payload: IFixtureWithUsersWithScoreAndPrediction;
+  payload: IFixtureWithPlayersWithScoreAndPrediction;
 };
 
 export type StoreScoresRound = {
   type: ActionType.STORE_SCORES_ROUND;
-  payload: IUsersWithScoreAndRoundId;
+  payload: IRoundWithPlayersWithScore;
 };
 
 export type StoreScoresTotalToto = {
   type: ActionType.STORE_SCORES_TOTAL_TOTO;
-  payload: IUserWithScore[];
+  payload: ITotalToto;
 };
 
 export type StoreScoresTotoRound = {
   type: ActionType.STORE_SCORES_TOTO_ROUND;
-  payload: IUsersWithScoreAndTotoRoundId;
+  payload: ITotoRoundWithPlayersWithScore;
+};
+
+export type StorePlayerScores = {
+  type: ActionType.STORE_PLAYER_SCORES;
+  payload: IScoresPlayer;
 };
 
 export type ScoresActions =
@@ -42,4 +49,5 @@ export type ScoresActions =
   | StoreScoresFixture
   | StoreScoresRound
   | StoreScoresTotalToto
-  | StoreScoresTotoRound;
+  | StoreScoresTotoRound
+  | StorePlayerScores;

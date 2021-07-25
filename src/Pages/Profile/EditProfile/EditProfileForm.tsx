@@ -28,7 +28,6 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
     lastName: user.lastName,
     email: user.email,
     phoneNumber: user.phoneNumber,
-    admin: user.admin,
     totaalToto: user.totaalToto,
     teamId: user.team.id,
   });
@@ -49,7 +48,7 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     const newValue =
-      event.target.id === 'admin' || event.target.id === 'totaalToto'
+      event.target.id === 'totaalToto'
         ? event.target.checked
         : event.target.value;
 
@@ -97,12 +96,6 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
             label="Email Address"
             value={profileDetails.email}
             onChange={updateProfileDetails}
-          />
-          <CheckBoxComponent
-            id="admin"
-            checked={profileDetails.admin}
-            onChange={updateProfileDetails}
-            label="Admin"
           />
           <CheckBoxComponent
             id="totaalToto"

@@ -5,8 +5,8 @@ import MessageComponent from '../../../Components/Communication/Message';
 import PageTitle from '../../../Components/Title/PageTitle';
 import ScoresStackedChart from '../../../Sections/Charts/ScoresStackedChart';
 import PageContent from '../../../Sections/PageContent';
-import { fetchPlayerScores } from '../../../store/players/action-creators';
-import { selectPlayerScores } from '../../../store/players/selectors';
+import { fetchPlayerScores } from '../../../store/scores/action-creators';
+import { selectPlayerScores } from '../../../store/scores/selectors';
 import { selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../theme/chartColors';
 
@@ -16,17 +16,21 @@ const ScoresUser: React.FC = (): ReactElement => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    // update logic!
-    if (user && !scoresPlayer) {
-      dispatch(fetchPlayerScores(Number(user.id)));
-    }
-  });
+    dispatch(fetchPlayerScores(Number(user?.id)));
+  }, [dispatch, user]);
+
+  const scores =
+    scoresPlayer &&
+    scoresPlayer.scores.length &&
+    scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
+      ? true
+      : false;
 
   return (
     <PageContent
       loadingText="Mijn scores"
       content={
-        scoresPlayer ? (
+        scoresPlayer && scores ? (
           <>
             <PageTitle title="Mijn scores" color="primary" />
             <ScoresStackedChart

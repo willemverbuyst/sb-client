@@ -1,22 +1,14 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { ReactElement } from 'react';
+import { useSelector } from 'react-redux';
 
 import MessageComponent from '../../Components/Communication/Message';
 import PageTitle from '../../Components/Title/PageTitle';
 import PageContent from '../../Sections/PageContent';
 import Predictions from '../../Sections/Predictions';
-import { fetchCurrentRound } from '../../store/predictions/action-creators';
 import { selectCurrentRoundSortedByTime } from '../../store/user/selectors';
 
 const Program: React.FC = (): ReactElement => {
-  const dispatch = useDispatch();
   const currentRoundSortedByTime = useSelector(selectCurrentRoundSortedByTime);
-
-  useEffect(() => {
-    if (!currentRoundSortedByTime) {
-      dispatch(fetchCurrentRound());
-    }
-  }, [dispatch, currentRoundSortedByTime]);
 
   return (
     <PageContent
@@ -26,7 +18,7 @@ const Program: React.FC = (): ReactElement => {
           <>
             <PageTitle title="Programma" color="secondary" />
             <Predictions
-              fixtures={currentRoundSortedByTime}
+              predictions={currentRoundSortedByTime}
               display="private"
             />
           </>

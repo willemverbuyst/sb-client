@@ -1,46 +1,43 @@
-import { IPrediction } from '../../models/predictions.model';
-import { ICurrentRound, TotoRound } from '../../models/toto.models';
+import {
+  IPlayerWithPredictions,
+  IPostedPrediction,
+  IUpdatedPrediction,
+} from '../../models/predictions.model';
 import {
   ActionType,
   PostPrediction,
-  ResetAllFixtures,
-  StoreAllFixtures,
-  StoreCurrentRound,
+  ResetAllPredictions,
+  StoreAllPredictions,
   UpdatePrediction,
 } from './action-types';
 
-export const storeAllFixtures = (
-  allFixtures: TotoRound[],
-): StoreAllFixtures => {
+export const storeAllPredictions = (
+  allPredictions: IPlayerWithPredictions,
+): StoreAllPredictions => {
   return {
-    type: ActionType.STORE_ALL_FIXTURES,
-    payload: allFixtures,
+    type: ActionType.STORE_ALL_PREDICTIONS,
+    payload: allPredictions,
   };
 };
 
-export const storeCurrentRound = (
-  currentRound: ICurrentRound,
-): StoreCurrentRound => {
-  return {
-    type: ActionType.STORE_CURRENT_ROUND,
-    payload: currentRound,
-  };
-};
-
-export const postPrediction = (prediction: IPrediction): PostPrediction => {
+export const postPrediction = (
+  prediction: IPostedPrediction,
+): PostPrediction => {
   return {
     type: ActionType.POST_PREDICTION,
     payload: prediction,
   };
 };
 
-export const resetAllFixtures = (): ResetAllFixtures => {
+export const resetAllPredictions = (): ResetAllPredictions => {
   return {
-    type: ActionType.RESET_ALL_FIXTURES,
+    type: ActionType.RESET_ALL_PREDICTIONS,
   };
 };
 
-export const updatePrediction = (prediction: IPrediction): UpdatePrediction => {
+export const updatePrediction = (
+  prediction: IUpdatedPrediction,
+): UpdatePrediction => {
   return {
     type: ActionType.UPDATE_PREDICTION,
     payload: prediction,

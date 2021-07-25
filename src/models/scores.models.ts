@@ -1,27 +1,24 @@
+import {
+  IPlayerWithScore,
+  IPlayerWithScoreAndPrediction,
+} from './player.model';
 import { IFixture } from './toto.models';
 
-export interface IFixtureWithUsersWithScoreAndPrediction {
+export interface IFixtureWithPlayersWithScoreAndPrediction {
   fixture: IFixture;
-  scores: IUserWithScoreAndPrediction[] | null;
+  scores: IPlayerWithScoreAndPrediction[];
 }
 
-export interface IUserWithScore {
-  score: number;
-  user: string;
-  userId: number;
-}
-
-export interface IUserWithScoreAndPrediction extends IUserWithScore {
-  pGoalsAwayTeam: number;
-  pGoalsHomeTeam: number;
-}
-
-export interface IUsersWithScoreAndRoundId {
-  usersWithScores: IUserWithScore[];
+export interface IRoundWithPlayersWithScore {
   roundId: number;
+  scores: IPlayerWithScore[];
 }
 
-export interface IUsersWithScoreAndTotoRoundId {
-  usersWithScores: IUserWithScore[];
+export interface ITotoRoundWithPlayersWithScore {
+  scores: IPlayerWithScore[];
   totoRoundId: number;
+}
+
+export interface ITotalToto {
+  scores: IPlayerWithScore[];
 }

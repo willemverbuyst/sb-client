@@ -9,14 +9,7 @@ import { appDoneLoading, appLoading } from '../appState/actions';
 import { setMessage } from '../appState/actions';
 import { StoreState } from '../types';
 import { PlayersActions } from './action-types';
-import {
-  addNewPlayer,
-  deletePlayer,
-  storeAllPlayers,
-  storePlayerProfile,
-  storePlayerScores,
-  updateAdminStatus,
-} from './actions';
+import { addNewPlayer, deletePlayer, storeAllPlayers } from './actions';
 
 export const addPlayer = (
   signUpCredentials: ISignUpCredentials,
@@ -28,7 +21,6 @@ export const addPlayer = (
     email,
     password,
     phoneNumber,
-    admin,
     totaalToto,
     teamId,
   } = signUpCredentials;
@@ -37,7 +29,7 @@ export const addPlayer = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.post(
-        `${API_URL}/signup`,
+        `${API_URL}/players/signup`,
         {
           userName,
           firstName,
@@ -45,15 +37,14 @@ export const addPlayer = (
           email,
           password,
           phoneNumber,
-          admin,
           totaalToto,
           teamId,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(addNewPlayer(response.data.userData));
-      dispatch(setMessage('success', response.data.message));
+      dispatch(addNewPlayer(response.data.data));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -77,12 +68,11 @@ export const fetchAllPlayers = (): ThunkAction<
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/users`, {
+    const response = await axios.get(`${API_URL}/players`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const players = response.data;
 
-    dispatch(storeAllPlayers(players));
+    dispatch(storeAllPlayers(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -96,59 +86,6 @@ export const fetchAllPlayers = (): ThunkAction<
   }
 };
 
-export const fetchPlayerProfile = (
-  id: number,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<PlayersActions | AppStateActions>,
-) => {
-  dispatch(appLoading());
-  try {
-    const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/users/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const playerProfile = response.data;
-
-    dispatch(storePlayerProfile(playerProfile));
-    dispatch(appDoneLoading());
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
-  }
-};
-
-export const fetchPlayerScores = (
-  id: number,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<PlayersActions | AppStateActions>,
-) => {
-  dispatch(appLoading());
-  try {
-    const token = localStorage.getItem('user_token');
-    const response = await axios.get(`${API_URL}/scores/players/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const scoresPlayer = response.data;
-
-    dispatch(storePlayerScores(scoresPlayer));
-    dispatch(appDoneLoading());
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
-  }
-};
 export const playerDelete = (
   id: number,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => async (
@@ -157,45 +94,12 @@ export const playerDelete = (
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
-    const response = await axios.delete(`${API_URL}/users/${id}`, {
+    const response = await axios.delete(`${API_URL}/players/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
     dispatch(deletePlayer(id));
-    dispatch(setMessage('success', response.data.message));
-    dispatch(appDoneLoading());
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data.message);
-      dispatch(setMessage('error', error.response.data.message));
-    } else {
-      console.log(error.message);
-      dispatch(setMessage('error', error.message));
-    }
-    dispatch(appDoneLoading());
-  }
-};
-
-export const updatePlayerAdminStatus = (
-  id: number,
-  admin: boolean,
-): ThunkAction<void, StoreState, unknown, Action<string>> => async (
-  dispatch: Dispatch<PlayersActions | AppStateActions>,
-) => {
-  dispatch(appLoading());
-  try {
-    const token = localStorage.getItem('user_token');
-    const response = await axios.patch(
-      `${API_URL}/users/${id}/admin`,
-      { admin },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      },
-    );
-    const player = response.data.updatedUser;
-
-    dispatch(updateAdminStatus(player));
-    dispatch(setMessage('success', response.data.message));
+    dispatch(setMessage(response.data.status, response.data.message));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

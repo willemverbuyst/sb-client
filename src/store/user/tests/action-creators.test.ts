@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { ILogInCredentials } from '../../../models/credentials.model';
+import { Severity } from '../../../models/app.models';
+import {
+  ILogInCredentials,
+  IProfileDetails,
+} from '../../../models/credentials.model';
+import { IUser } from '../../../models/player.model';
 import {
   ICurrentRound,
   IFixtureWithScoreAndPredictions,
@@ -8,7 +13,7 @@ import {
 } from '../../../models/toto.models';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import { resetPlayers } from '../../players/actions';
-import { resetAllFixtures } from '../../predictions/actions';
+import { resetAllPredictions } from '../../predictions/actions';
 import { resetAllScores } from '../../scores/actions';
 import { resetAllTeams } from '../../teams/actions';
 import {
@@ -18,7 +23,6 @@ import {
   userLogOut,
 } from '../action-creators';
 import { logInSuccessUser, logOutUser, updateUserProfile } from '../actions';
-import { IUserWithCurrentRound } from '../reducer';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
@@ -32,7 +36,12 @@ describe('#changePassword', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: { message: 'ok' } };
+    const response: {
+      data: {
+        status: Severity;
+        message: string;
+      };
+    } = { data: { status: 'success', message: 'ok' } };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
@@ -41,7 +50,7 @@ describe('#changePassword', () => {
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message),
+      setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(3);
@@ -50,16 +59,6 @@ describe('#changePassword', () => {
 
 describe('#editUserProfile', () => {
   it('returns a user and a succes message', async () => {
-    const user = {
-      userName: 'test',
-      firstName: 'test',
-      lastName: 'test',
-      email: 'test@test',
-      phoneNumber: '123',
-      admin: false,
-      totaalToto: true,
-      teamId: 1,
-    };
     const team: ITeam = {
       id: 1,
       name: 'test_name',
@@ -91,7 +90,7 @@ describe('#editUserProfile', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const updatedUser: IUserWithCurrentRound = {
+    const profile: IUser = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -102,22 +101,44 @@ describe('#editUserProfile', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+    };
+    const user = {
+      profile,
       currentRound,
     };
+    const input: IProfileDetails = {
+      userName: 'test',
+      firstName: 'test',
+      lastName: 'test',
+      email: 'test@test.com',
+      phoneNumber: 'test',
+      totaalToto: true,
+      teamId: 1,
+    };
+    const token = 'token';
+    const status: Severity = 'success';
+
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: { message: 'ok', userData: updatedUser } };
+    const response = {
+      data: {
+        status,
+        data: { user },
+        token,
+        message: 'ok',
+      },
+    };
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
-    await editUserProfile(user)(dispatch, getState, extraArg);
+    await editUserProfile(input)(dispatch, getState, extraArg);
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toBeCalledWith(updateUserProfile(response.data.userData));
+    expect(dispatch).toHaveBeenCalledWith(updateUserProfile(response.data));
     expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message),
+      setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
@@ -157,7 +178,7 @@ describe('#userLogIn', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const user: IUserWithCurrentRound = {
+    const profile: IUser = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -168,8 +189,13 @@ describe('#userLogIn', () => {
       totaalToto: true,
       userName: 'test',
       token: 'test_token',
+    };
+    const user = {
+      profile,
       currentRound,
     };
+    const token = 'token';
+    const status: Severity = 'success';
     const credentials: ILogInCredentials = {
       email: 'test@test',
       password: 'test_password',
@@ -177,7 +203,9 @@ describe('#userLogIn', () => {
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
-    const response = { data: { userData: user, message: 'test_message' } };
+    const response = {
+      data: { status, data: { user }, message: 'test_message', token },
+    };
 
     mockAxios.post.mockImplementationOnce(() => Promise.resolve(response));
 
@@ -185,11 +213,9 @@ describe('#userLogIn', () => {
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(logInSuccessUser(response.data));
     expect(dispatch).toHaveBeenCalledWith(
-      logInSuccessUser(response.data.userData),
-    );
-    expect(dispatch).toHaveBeenCalledWith(
-      setMessage('success', response.data.message),
+      setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
@@ -205,7 +231,7 @@ describe('#userLogOut', () => {
     expect(dispatch).toHaveBeenCalledWith(setMessage('success', 'Tot ziens!'));
     expect(dispatch).toHaveBeenCalledWith(resetAllScores());
     expect(dispatch).toHaveBeenCalledWith(resetPlayers());
-    expect(dispatch).toHaveBeenCalledWith(resetAllFixtures());
+    expect(dispatch).toHaveBeenCalledWith(resetAllPredictions());
     expect(dispatch).toHaveBeenCalledWith(resetAllTeams());
     expect(dispatch).toHaveBeenCalledTimes(6);
   });

@@ -11,7 +11,7 @@ import {
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { resetPlayers } from '../players/actions';
-import { resetAllFixtures } from '../predictions/actions';
+import { resetAllPredictions } from '../predictions/actions';
 import { resetAllScores } from '../scores/actions';
 import { resetAllTeams } from '../teams/actions';
 import { StoreState } from '../types';
@@ -31,13 +31,13 @@ export const changePassword = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${API_URL}/me/password`,
+        `${API_URL}/users/updatePassword`,
         {
           newPassword,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
-      dispatch(setMessage('success', response.data.message));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -61,7 +61,6 @@ export const editUserProfile = (
     lastName,
     email,
     phoneNumber,
-    admin,
     totaalToto,
     teamId,
   } = profileDetails;
@@ -70,22 +69,21 @@ export const editUserProfile = (
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${API_URL}/me/profile`,
+        `${API_URL}/users/profile`,
         {
           userName,
           firstName,
           lastName,
           email,
           phoneNumber,
-          admin,
           totaalToto,
           teamId,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(updateUserProfile(response.data.userData));
-      dispatch(setMessage('success', response.data.message));
+      dispatch(updateUserProfile(response.data));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -107,13 +105,13 @@ export const userLogIn = (
     dispatch(appLoading());
     try {
       const { email, password } = credentials;
-      const response = await axios.post(`${API_URL}/login`, {
+      const response = await axios.post(`${API_URL}/users/login`, {
         email,
         password,
       });
 
-      dispatch(logInSuccessUser(response.data.userData));
-      dispatch(setMessage('success', response.data.message));
+      dispatch(logInSuccessUser(response.data));
+      dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -135,7 +133,7 @@ export const userLogOut = (): ((dispatch: Dispatch) => void) => (
   dispatch(setMessage('success', 'Tot ziens!'));
   dispatch(resetAllScores());
   dispatch(resetPlayers());
-  dispatch(resetAllFixtures());
+  dispatch(resetAllPredictions());
   dispatch(resetAllTeams());
 };
 
@@ -151,7 +149,7 @@ export const getUserWithStoredToken = (): ThunkAction<
   dispatch(appLoading());
   try {
     // if token check if valid
-    const response = await axios.get(`${API_URL}/me`, {
+    const response = await axios.get(`${API_URL}/users/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch(tokenUserStillValid(response.data));

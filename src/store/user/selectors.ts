@@ -7,10 +7,10 @@ export const selectToken = (state: StoreState): string | null =>
   state.userState.token;
 
 export const selectUser = (state: StoreState): IUser | null =>
-  state.userState.user;
+  state.userState.user ? state.userState.user.profile : null;
 
 export const selectUserId = (state: StoreState): number | null =>
-  state.userState.user ? state.userState.user.id : null;
+  state.userState.user ? state.userState.user.profile.id : null;
 
 export const selectCurrentRoundSortedByTime = (
   state: StoreState,

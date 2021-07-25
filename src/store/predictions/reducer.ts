@@ -1,14 +1,12 @@
-import { ICurrentRound, TotoRound } from '../../models/toto.models';
+import { IPlayerWithPredictions } from '../../models/predictions.model';
 import { ActionType, PredictionActions } from './action-types';
 
 export interface IPredictionsState {
-  currentRound: ICurrentRound | null;
-  allFixtures: TotoRound[] | null;
+  allPredictions: IPlayerWithPredictions | null;
 }
 
 const initialState: IPredictionsState = {
-  currentRound: null,
-  allFixtures: null,
+  allPredictions: null,
 };
 
 const predictionsReducer = (
@@ -16,86 +14,61 @@ const predictionsReducer = (
   action: PredictionActions,
 ): IPredictionsState => {
   switch (action.type) {
-    case ActionType.STORE_CURRENT_ROUND:
-      return { ...state, currentRound: action.payload };
-
-    case ActionType.STORE_ALL_FIXTURES:
-      return { ...state, allFixtures: action.payload };
+    case ActionType.STORE_ALL_PREDICTIONS:
+      return { ...state, allPredictions: action.payload };
 
     case ActionType.POST_PREDICTION:
       return {
         ...state,
-        allFixtures: state.allFixtures
-          ? state.allFixtures.map((totoRound) =>
-              totoRound.map((round) =>
-                round.map((fixture) =>
-                  fixture.id === action.payload.fixtureId
-                    ? {
-                        ...fixture,
-                        predictions: {
-                          pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
-                          pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
-                        },
-                      }
-                    : fixture,
-                ),
-              ),
-            )
-          : null,
-        currentRound: state.currentRound
+        allPredictions: state.allPredictions
           ? {
-              ...state.currentRound,
-              fixtures: state.currentRound.fixtures.map((fixture) =>
-                fixture.id === action.payload.fixtureId
-                  ? {
-                      ...fixture,
-                      predictions: {
-                        pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
-                        pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
-                      },
-                    }
-                  : fixture,
+              player: state.allPredictions.player,
+              fixtures: state.allPredictions.fixtures.map((totoRound) =>
+                totoRound.map((round) =>
+                  round.map((fixture) =>
+                    fixture.id === action.payload.prediction.fixtureId
+                      ? {
+                          ...fixture,
+                          predictions: {
+                            pGoalsHomeTeam:
+                              action.payload.prediction.pGoalsHomeTeam,
+                            pGoalsAwayTeam:
+                              action.payload.prediction.pGoalsAwayTeam,
+                          },
+                        }
+                      : fixture,
+                  ),
+                ),
               ),
             }
           : null,
       };
 
-    case ActionType.RESET_ALL_FIXTURES:
-      return { allFixtures: null, currentRound: null };
+    case ActionType.RESET_ALL_PREDICTIONS:
+      return { allPredictions: null };
 
     case ActionType.UPDATE_PREDICTION:
       return {
         ...state,
-        allFixtures: state.allFixtures
-          ? state.allFixtures.map((totoRound) =>
-              totoRound.map((round) =>
-                round.map((fixture) =>
-                  fixture.id === action.payload.fixtureId
-                    ? {
-                        ...fixture,
-                        predictions: {
-                          pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
-                          pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
-                        },
-                      }
-                    : fixture,
-                ),
-              ),
-            )
-          : null,
-        currentRound: state.currentRound
+        allPredictions: state.allPredictions
           ? {
-              ...state.currentRound,
-              fixtures: state.currentRound.fixtures.map((fixture) =>
-                fixture.id === action.payload.fixtureId
-                  ? {
-                      ...fixture,
-                      predictions: {
-                        pGoalsHomeTeam: action.payload.pGoalsHomeTeam,
-                        pGoalsAwayTeam: action.payload.pGoalsAwayTeam,
-                      },
-                    }
-                  : fixture,
+              player: state.allPredictions.player,
+              fixtures: state.allPredictions.fixtures.map((totoRound) =>
+                totoRound.map((round) =>
+                  round.map((fixture) =>
+                    fixture.id === action.payload.prediction.fixtureId
+                      ? {
+                          ...fixture,
+                          predictions: {
+                            pGoalsHomeTeam:
+                              action.payload.prediction.pGoalsHomeTeam,
+                            pGoalsAwayTeam:
+                              action.payload.prediction.pGoalsAwayTeam,
+                          },
+                        }
+                      : fixture,
+                  ),
+                ),
               ),
             }
           : null,

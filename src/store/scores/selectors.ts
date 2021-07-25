@@ -1,15 +1,16 @@
 import {
-  IUsersWithScoreAndRoundId,
-  IUserWithScore,
-  IUserWithScoreAndPrediction,
-} from '../../models/scores.models';
+  IPlayerWithScore,
+  IPlayerWithScoreAndPrediction,
+  IScoresPlayer,
+} from '../../models/player.model';
+import { IRoundWithPlayersWithScore } from '../../models/scores.models';
 import { IFixture } from '../../models/toto.models';
 import * as UTILS from '../../utils';
 import { StoreState } from '../types';
 
 export const selectFixture = (state: StoreState): IFixture | null => {
-  if (state.scoresState.fixtureScores) {
-    return state.scoresState.fixtureScores.fixture;
+  if (state.scoresState.fixtureWithScores) {
+    return state.scoresState.fixtureWithScores.fixture;
   } else {
     return null;
   }
@@ -17,17 +18,17 @@ export const selectFixture = (state: StoreState): IFixture | null => {
 
 export const selectScoresForFixtureSortedByName = (
   state: StoreState,
-): IUserWithScoreAndPrediction[] | null => {
+): IPlayerWithScoreAndPrediction[] | null => {
   if (
-    state.scoresState.fixtureScores &&
-    state.scoresState.fixtureScores.scores &&
-    state.scoresState.fixtureScores.scores.length > 0
+    state.scoresState.fixtureWithScores &&
+    state.scoresState.fixtureWithScores.scores &&
+    state.scoresState.fixtureWithScores.scores.length > 0
   ) {
-    const scoresFixture = state.scoresState.fixtureScores.scores;
-    const scoresFixtureSortedByName: IUserWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScoreAndPrediction,
-      IUserWithScoreAndPrediction
-    >('user')(scoresFixture);
+    const scoresFixture = state.scoresState.fixtureWithScores.scores;
+    const scoresFixtureSortedByName: IPlayerWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScoreAndPrediction,
+      IPlayerWithScoreAndPrediction
+    >('name')(scoresFixture);
 
     return scoresFixtureSortedByName;
   } else {
@@ -37,7 +38,7 @@ export const selectScoresForFixtureSortedByName = (
 
 export const selectRound = (
   state: StoreState,
-): IUsersWithScoreAndRoundId | null => state.scoresState.roundScores;
+): IRoundWithPlayersWithScore | null => state.scoresState.roundScores;
 
 export const selectRoundId = (state: StoreState): number | null => {
   if (state.scoresState.roundScores) {
@@ -49,16 +50,17 @@ export const selectRoundId = (state: StoreState): number | null => {
 
 export const selectScoresTotalTotoSortedByName = (
   state: StoreState,
-): IUserWithScore[] | null => {
+): IPlayerWithScore[] | null => {
   if (
     state.scoresState.totalTotoScores &&
-    state.scoresState.totalTotoScores.length > 0
+    state.scoresState.totalTotoScores.scores &&
+    state.scoresState.totalTotoScores.scores.length > 0
   ) {
-    const scoresTotalToto = state.scoresState.totalTotoScores;
-    const scoresTotalTotoSortedByName: IUserWithScore[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScore,
-      IUserWithScore
-    >('user')(scoresTotalToto);
+    const scoresTotalToto = state.scoresState.totalTotoScores.scores;
+    const scoresTotalTotoSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScore,
+      IPlayerWithScore
+    >('name')(scoresTotalToto);
 
     return scoresTotalTotoSortedByName;
   } else {
@@ -68,15 +70,16 @@ export const selectScoresTotalTotoSortedByName = (
 
 export const selectScoresTotalTotoSortedByScore = (
   state: StoreState,
-): IUserWithScore[] | null => {
+): IPlayerWithScore[] | null => {
   if (
     state.scoresState.totalTotoScores &&
-    state.scoresState.totalTotoScores.length > 0
+    state.scoresState.totalTotoScores.scores &&
+    state.scoresState.totalTotoScores.scores.length > 0
   ) {
-    const scoresTotalToto = state.scoresState.totalTotoScores;
-    const scoresTotalTotoSortedByScore: IUserWithScore[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScore,
-      IUserWithScore
+    const scoresTotalToto = state.scoresState.totalTotoScores.scores;
+    const scoresTotalTotoSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScore,
+      IPlayerWithScore
     >('score')(scoresTotalToto);
 
     return scoresTotalTotoSortedByScore;
@@ -87,14 +90,14 @@ export const selectScoresTotalTotoSortedByScore = (
 
 export const selectScoresTotoRoundSortedByName = (
   state: StoreState,
-): IUserWithScore[] | null => {
+): IPlayerWithScore[] | null => {
   if (state.scoresState.totoRoundScores) {
-    const scoresTotoRound = state.scoresState.totoRoundScores.usersWithScores;
+    const scoresTotoRound = state.scoresState.totoRoundScores.scores;
 
-    const scoresTotoRoundSortedByName: IUserWithScore[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScore,
-      IUserWithScore
-    >('user')(scoresTotoRound);
+    const scoresTotoRoundSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScore,
+      IPlayerWithScore
+    >('name')(scoresTotoRound);
 
     return scoresTotoRoundSortedByName;
   } else {
@@ -104,13 +107,13 @@ export const selectScoresTotoRoundSortedByName = (
 
 export const selectScoresTotoRoundSortedByScore = (
   state: StoreState,
-): IUserWithScore[] | null => {
+): IPlayerWithScore[] | null => {
   if (state.scoresState.totoRoundScores) {
-    const scoresTotoRound = state.scoresState.totoRoundScores.usersWithScores;
+    const scoresTotoRound = state.scoresState.totoRoundScores.scores;
 
-    const scoresTotoRoundSortedByScore: IUserWithScore[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScore,
-      IUserWithScore
+    const scoresTotoRoundSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScore,
+      IPlayerWithScore
     >('score')(scoresTotoRound);
 
     return scoresTotoRoundSortedByScore;
@@ -121,14 +124,14 @@ export const selectScoresTotoRoundSortedByScore = (
 
 export const selectScoresRoundSortedByName = (
   state: StoreState,
-): IUserWithScore[] | null => {
+): IPlayerWithScore[] | null => {
   if (state.scoresState.roundScores) {
-    const scoresRound = state.scoresState.roundScores.usersWithScores;
+    const scoresRound = state.scoresState.roundScores.scores;
 
-    const scoresRoundSortedByName: IUserWithScore[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScore,
-      IUserWithScore
-    >('user')(scoresRound);
+    const scoresRoundSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScore,
+      IPlayerWithScore
+    >('name')(scoresRound);
 
     return scoresRoundSortedByName;
   } else {
@@ -138,12 +141,12 @@ export const selectScoresRoundSortedByName = (
 
 export const selectScoresRoundSortedByScore = (
   state: StoreState,
-): IUserWithScore[] | null => {
+): IPlayerWithScore[] | null => {
   if (state.scoresState.roundScores) {
-    const scoresRound = state.scoresState.roundScores.usersWithScores;
-    const scoresRoundSortedByScore: IUserWithScore[] = UTILS.sortArrayWithObjects<
-      keyof IUserWithScore,
-      IUserWithScore
+    const scoresRound = state.scoresState.roundScores.scores;
+    const scoresRoundSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScore,
+      IPlayerWithScore
     >('score')(scoresRound);
 
     return scoresRoundSortedByScore;
@@ -159,3 +162,6 @@ export const selectTotoRoundId = (state: StoreState): number | null => {
     return null;
   }
 };
+
+export const selectPlayerScores = (state: StoreState): IScoresPlayer | null =>
+  state.scoresState.scoresPlayer;
