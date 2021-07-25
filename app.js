@@ -9,7 +9,7 @@ const predictionRouter = require('./routes/predictionRoutes');
 const scoreRouter = require('./routes/scoreRoutes');
 const teamRouter = require('./routes/teamRoutes');
 const userRouter = require('./routes/userRoutes');
-const fixtures = require('./api-football/fixtures');
+// const fixtures = require('./api-football/fixtures');
 
 const app = express();
 app.use(corsMiddleWare());
@@ -21,11 +21,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-if (process.env.NODE_ENV === 'production') {
-  // Call getTFixtures to get all the fixtures and seed the fixtures_table
-  // TODO: should be a timed task
-  fixtures.getFixtures();
-}
+// TURNED OFF, TO STOP AUTO REFRESH
+// if (process.env.NODE_ENV === 'production') {
+//   // Call getTFixtures to get all the fixtures and seed the fixtures_table
+//   // TODO: should be a timed task
+//   fixtures.getFixtures();
+// }
 
 // Body parser middleware
 app.use(express.json());
