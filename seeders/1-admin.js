@@ -10,7 +10,6 @@ module.exports = {
       'users',
       [
         {
-          id: 1,
           userName: 'Pascal',
           firstName: 'Pascal',
           lastName: 'Duin',

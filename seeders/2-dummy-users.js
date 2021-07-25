@@ -10,7 +10,6 @@ module.exports = {
       'users',
       [
         {
-          id: 2,
           userName: 'Rick',
           firstName: 'Rick',
           lastName: 'Wolt',
@@ -24,7 +23,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 3,
           userName: 'Siffy',
           firstName: 'Sifan',
           lastName: 'Hassan',
@@ -38,7 +36,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 4,
           userName: 'Fjodjee',
           firstName: 'Fjodor',
           lastName: 'Dostojewski',
