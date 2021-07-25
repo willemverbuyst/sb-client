@@ -1,4 +1,6 @@
+const { Op } = require('sequelize');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const Prediction = require('../models').prediction;
 const Team = require('../models').team;
 const User = require('../models').user;
@@ -82,8 +84,7 @@ const createNewUser = async ({
         },
       ],
     },
-  );
-// ).then((createdUser) => createdUser.reload());
+  ).then((createdUser) => createdUser.reload());
 
 const getUserByEmail = async (email) =>
   await User.findOne({
@@ -91,9 +92,41 @@ const getUserByEmail = async (email) =>
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
+const getUserByToken = async (token) => {
+  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
+
+  return await User.findOne({
+    where: {
+      passwordResetToken: hashedToken,
+      passwordResetExpires: { [Op.gt]: Date.now() },
+    },
+  });
+};
+
+const handlePasswordReset = async (
+  passwordResetExpires,
+  passwordResetToken,
+  email,
+) => {
+  await await User.update(
+    { passwordResetExpires, passwordResetToken },
+    { where: { email } },
+  );
+};
+
+const handlePasswordResetError = async (email) => {
+  await await User.update(
+    { passwordResetExpires: null, passwordResetToken: null },
+    { where: { email } },
+  );
+};
+
 const updateUserPassword = async (newPassword, user) =>
   await user.update({
     password: bcrypt.hashSync(newPassword, Number(process.env.SALT_ROUNDS)),
+    passwordChangedAt: Date.now() - 1000,
+    passwordResetToken: null,
+    passwordResetExpires: null,
   });
 
 const updateUserProfile = async (
@@ -127,6 +160,9 @@ module.exports = {
   getAllUsers,
   getUserById,
   getUserByEmail,
+  getUserByToken,
+  handlePasswordReset,
+  handlePasswordResetError,
   updateUserPassword,
   updateUserProfile,
 };
