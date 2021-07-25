@@ -13,7 +13,7 @@ const { validateNewPassword } = require('../validators/queryValidator');
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    expiresIn: Number(process.env.JWT_EXPIRES_IN),
   });
 
 exports.login = catchAsync(async (req, res, next) => {

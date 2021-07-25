@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+
 dotenv.config({ path: './config.env' });
 
 process.on('uncaughtException', (err) => {
@@ -7,7 +8,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-const app = require('./app.js');
+const app = require('./app');
+
 const PORT = process.env.PORT || 4000;
 
 const server = app.listen(PORT, () => {
