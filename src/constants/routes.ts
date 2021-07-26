@@ -1,6 +1,7 @@
 export const HOME = '/';
 export const LOGIN = '/login';
 export const SIGN_UP = '/signup';
+export const FORGOT_PASSWORD = '/forgotPassword';
 
 export const ROUND = '/klassement/ronde/:ronde';
 export const TOTAL_TOTO = '/klassement/totaaltoto';

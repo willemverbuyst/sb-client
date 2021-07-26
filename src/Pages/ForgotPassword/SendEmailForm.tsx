@@ -6,32 +6,22 @@ import { Link } from 'react-router-dom';
 import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import FormContainer from '../../Components/Form/FormContainer';
-import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { userLogIn } from '../../store/user/action-creators';
 
-const LoginForm: React.FC = (): ReactElement => {
+const SendEmailForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const [logInCredentials, setLogInCredentials] = useState<ILogInCredentials>({
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState<string>('');
 
   const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
-    dispatch(userLogIn(logInCredentials));
-    setLogInCredentials({
-      email: '',
-      password: '',
-    });
+    // dispatch(userLogIn(logInCredentials));
+    setEmail('');
   };
 
-  const updateLoginCredentials = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setLogInCredentials({
-      ...logInCredentials,
-      [event.target.id]: event.target.value,
-    });
+  const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setEmail(event.target.value);
 
   return (
     <FormContainer
@@ -41,27 +31,21 @@ const LoginForm: React.FC = (): ReactElement => {
           <TextFieldComponent
             id="email"
             label="Email Address"
-            value={logInCredentials.email}
-            onChange={updateLoginCredentials}
-          />
-          <PasswordFieldComponent
-            id="password"
-            label="Password"
-            value={logInCredentials.password}
-            onChange={updateLoginCredentials}
+            value={email}
+            onChange={updateEmail}
           />
         </>
       }
       submitButton={
         <SubmitButtonComponent
-          caption="LOG IN"
+          caption="SEND EMAIL"
           color="primary"
           handleClick={submitForm}
         />
       }
-      link={<Link to="/forgotPassword">Forgot Password?</Link>}
+      link={<Link to="/login">Back to login page?</Link>}
     />
   );
 };
 
-export default LoginForm;
+export default SendEmailForm;
