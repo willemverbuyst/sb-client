@@ -1,6 +1,6 @@
+import { Link } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import ShowAlertComponent from '../../../Components/Communication/Alert';
@@ -61,7 +61,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
             handleClick={submitForm}
           />
         }
-        link={<Link to="/profiel/edit">Edit Profile</Link>}
+        link={<Link href="/profiel/edit">Edit Profile</Link>}
       />
       <ShowAlertComponent
         message="Passwords are not the same"

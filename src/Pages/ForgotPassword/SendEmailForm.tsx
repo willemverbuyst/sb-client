@@ -1,7 +1,7 @@
+import { Link } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
@@ -42,7 +42,7 @@ const SendEmailForm: React.FC = (): ReactElement => {
           handleClick={submitForm}
         />
       }
-      link={<Link to="/login">Back to login page?</Link>}
+      link={<Link href="/login">Back to login page?</Link>}
     />
   );
 };

@@ -1,7 +1,7 @@
+import { Link } from '@material-ui/core';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import CheckBoxComponent from '../../../Components/Form/CheckBox';
@@ -129,7 +129,7 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
           handleClick={submitForm}
         />
       }
-      link={<Link to="/profiel/password">Change Password</Link>}
+      link={<Link href="/profiel/password">Change Password</Link>}
     />
   );
 };
