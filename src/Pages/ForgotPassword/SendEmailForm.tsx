@@ -7,8 +7,7 @@ import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import FormContainer from '../../Components/Form/FormContainer';
 import TextFieldComponent from '../../Components/Form/TextField';
-import { ILogInCredentials } from '../../models/credentials.model';
-import { userLogIn } from '../../store/user/action-creators';
+import { requestEmailForNewPassword } from '../../store/user/action-creators';
 
 const SendEmailForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const SendEmailForm: React.FC = (): ReactElement => {
 
   const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
-    // dispatch(userLogIn(logInCredentials));
+    dispatch(requestEmailForNewPassword(email));
     setEmail('');
   };
 

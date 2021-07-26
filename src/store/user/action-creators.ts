@@ -166,3 +166,28 @@ export const getUserWithStoredToken = (): ThunkAction<
     dispatch(appDoneLoading());
   }
 };
+
+export const requestEmailForNewPassword = (
+  email: string,
+): ThunkAction<void, StoreState, unknown, Action<string>> => {
+  return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
+    dispatch(appLoading());
+    try {
+      const response = await axios.post(`${API_URL}/users/forgotPassword`, {
+        email,
+      });
+
+      dispatch(setMessage(response.data.status, response.data.message));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
+};
