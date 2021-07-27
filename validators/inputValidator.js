@@ -5,6 +5,9 @@ const validateLoginInput = (email, password) => !(!email || !password);
 const validatePassword = (user, password) =>
   !(!user || !bcrypt.compareSync(password, user.password));
 
+const validatePasswordConfirm = (password, passwordConfirm) =>
+  password === passwordConfirm;
+
 const validatePredictionInput = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
   !(
     typeof pGoalsHomeTeam !== 'number' ||
@@ -41,13 +44,18 @@ const validateSignupInput = ({
     !teamId
   );
 
-const validateUpdatePassword = (newPassword) => !!newPassword;
+const validateInputChangePassword = ({
+  currentPassword,
+  newPassword,
+  confirmPassword,
+}) => !(!currentPassword || !newPassword || !confirmPassword);
 
 module.exports = {
   validateLoginInput,
   validatePassword,
+  validatePasswordConfirm,
   validateProfileInput,
   validatePredictionInput,
   validateSignupInput,
-  validateUpdatePassword,
+  validateInputChangePassword,
 };

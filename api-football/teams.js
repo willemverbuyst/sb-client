@@ -21,7 +21,7 @@ const getTeams = async () => {
 
   console.log(teams);
 
-  Team.bulkCreate(teams, {
+  await Team.bulkCreate(teams, {
     updateOnDuplicate: ['id'],
   });
 };
