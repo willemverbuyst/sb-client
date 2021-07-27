@@ -10,7 +10,7 @@ import { changePassword } from '../../../store/user/action-creators';
 
 const EditPasswordForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const [oldPassword, setOldPassword] = useState<string>('');
+  const [currentPassword, setcurrentPassword] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [showAlert, setShowAlert] = useState<boolean>(false);
@@ -19,7 +19,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
     event.preventDefault();
 
     if (newPassword === confirmPassword) {
-      dispatch(changePassword(newPassword));
+      dispatch(changePassword(currentPassword, newPassword, confirmPassword));
     } else {
       setShowAlert(true);
     }
@@ -27,13 +27,13 @@ const EditPasswordForm: React.FC = (): ReactElement => {
 
   const closeAlert = () => {
     setShowAlert(false);
-    setOldPassword('');
+    setcurrentPassword('');
     setNewPassword('');
     setConfirmPassword('');
   };
 
-  const updateOldPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setOldPassword(event.target.value);
+  const updateCurrentPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setcurrentPassword(event.target.value);
   const updateNewPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
     setNewPassword(event.target.value);
   const updateConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -45,10 +45,10 @@ const EditPasswordForm: React.FC = (): ReactElement => {
         inputFields={
           <>
             <PasswordFieldComponent
-              id="oldPassword"
-              label="Old Password"
-              value={oldPassword}
-              onChange={updateOldPassword}
+              id="currentPassword"
+              label="Current Password"
+              value={currentPassword}
+              onChange={updateCurrentPassword}
             />
             <PasswordFieldComponent
               id="newPassword"

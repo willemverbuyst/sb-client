@@ -24,16 +24,20 @@ import {
 } from './actions';
 
 export const changePassword = (
+  currentPassword: string,
   newPassword: string,
+  confirmPassword: string,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${API_URL}/users/updatePassword`,
+        `${API_URL}/users/changePassword`,
         {
+          currentPassword,
           newPassword,
+          confirmPassword,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
