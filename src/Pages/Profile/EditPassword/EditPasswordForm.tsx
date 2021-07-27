@@ -1,6 +1,6 @@
+import { Link } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import ShowAlertComponent from '../../../Components/Communication/Alert';
@@ -10,15 +10,16 @@ import { changePassword } from '../../../store/user/action-creators';
 
 const EditPasswordForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const [password1, setPassword1] = useState<string>('');
-  const [password2, setPassword2] = useState<string>('');
+  const [currentPassword, setcurrentPassword] = useState<string>('');
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [showAlert, setShowAlert] = useState<boolean>(false);
 
   const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
 
-    if (password1 === password2) {
-      dispatch(changePassword(password1));
+    if (newPassword === confirmPassword) {
+      dispatch(changePassword(currentPassword, newPassword, confirmPassword));
     } else {
       setShowAlert(true);
     }
@@ -26,14 +27,17 @@ const EditPasswordForm: React.FC = (): ReactElement => {
 
   const closeAlert = () => {
     setShowAlert(false);
-    setPassword1('');
-    setPassword2('');
+    setcurrentPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
   };
 
-  const updatePassword1 = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword1(event.target.value);
-  const updatePassword2 = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword2(event.target.value);
+  const updateCurrentPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setcurrentPassword(event.target.value);
+  const updateNewPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setNewPassword(event.target.value);
+  const updateConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setConfirmPassword(event.target.value);
 
   return (
     <>
@@ -41,16 +45,22 @@ const EditPasswordForm: React.FC = (): ReactElement => {
         inputFields={
           <>
             <PasswordFieldComponent
-              id="password1"
-              label="Password"
-              value={password1}
-              onChange={updatePassword1}
+              id="currentPassword"
+              label="Current Password"
+              value={currentPassword}
+              onChange={updateCurrentPassword}
             />
             <PasswordFieldComponent
-              id="password2"
-              label="Password"
-              value={password2}
-              onChange={updatePassword2}
+              id="newPassword"
+              label="New Password"
+              value={newPassword}
+              onChange={updateNewPassword}
+            />
+            <PasswordFieldComponent
+              id="confirmPassword"
+              label="Confirm Password"
+              value={confirmPassword}
+              onChange={updateConfirmPassword}
             />
           </>
         }
@@ -61,7 +71,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
             handleClick={submitForm}
           />
         }
-        link={<Link to="/profiel/edit">Edit Profile</Link>}
+        link={<Link href="/profiel/edit">Edit Profile</Link>}
       />
       <ShowAlertComponent
         message="Passwords are not the same"

@@ -24,16 +24,20 @@ import {
 } from './actions';
 
 export const changePassword = (
+  currentPassword: string,
   newPassword: string,
+  confirmPassword: string,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
     dispatch(appLoading());
     try {
       const token = localStorage.getItem('user_token');
       const response = await axios.patch(
-        `${API_URL}/users/updatePassword`,
+        `${API_URL}/users/changePassword`,
         {
+          currentPassword,
           newPassword,
+          confirmPassword,
         },
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -165,4 +169,29 @@ export const getUserWithStoredToken = (): ThunkAction<
     userLogOut()(dispatch);
     dispatch(appDoneLoading());
   }
+};
+
+export const requestEmailForNewPassword = (
+  email: string,
+): ThunkAction<void, StoreState, unknown, Action<string>> => {
+  return async (dispatch: Dispatch<AppStateActions | UserActions>) => {
+    dispatch(appLoading());
+    try {
+      const response = await axios.post(`${API_URL}/users/forgotPassword`, {
+        email,
+      });
+
+      dispatch(setMessage(response.data.status, response.data.message));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage('error', error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage('error', error.message));
+      }
+      dispatch(appDoneLoading());
+    }
+  };
 };
