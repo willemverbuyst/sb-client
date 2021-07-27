@@ -15,7 +15,7 @@ const {
   validateLoginInput,
   validatePassword,
   validatePasswordConfirm,
-  validateUpdatePassword,
+  validateInputChangePassword,
 } = require('../validators/inputValidator');
 const { validateNewPassword } = require('../validators/queryValidator');
 const sendEmail = require('../utils/email');
@@ -226,16 +226,30 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updatePassword = catchAsync(async (req, res, next) => {
-  const { newPassword } = req.body;
+exports.changePassword = catchAsync(async (req, res, next) => {
+  const { currentPassword, newPassword, confirmPassword } = req.body;
 
-  if (!validateUpdatePassword(newPassword)) {
-    return next(new AppError('Vul nieuw wachtwoord in!'), 400);
+  if (!validateInputChangePassword(req.body)) {
+    return next(
+      new AppError('Er ontbreken gevens, vul alle wachtwoorden in!'),
+      400,
+    );
   }
 
-  if (!validateNewPassword(newPassword, req.user.password)) {
+  if (!validatePassword(req.user, currentPassword)) {
+    next(new AppError('Je current password is verkeerd!', 401));
+  }
+
+  if (!validateNewPassword(newPassword, currentPassword)) {
     return next(
       new AppError('Je oude en nieuwe wachtwoord mag niet hetzelfde zijn!'),
+      400,
+    );
+  }
+
+  if (!validatePasswordConfirm(newPassword, confirmPassword)) {
+    return next(
+      new AppError('Je nieuwe en confirm wachtwoord zijn niet hetzelfde!'),
       400,
     );
   }

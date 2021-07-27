@@ -44,7 +44,11 @@ const validateSignupInput = ({
     !teamId
   );
 
-const validateUpdatePassword = (newPassword) => !!newPassword;
+const validateInputChangePassword = ({
+  currentPassword,
+  newPassword,
+  confirmPassword,
+}) => !(!currentPassword || !newPassword || !confirmPassword);
 
 module.exports = {
   validateLoginInput,
@@ -53,5 +57,5 @@ module.exports = {
   validateProfileInput,
   validatePredictionInput,
   validateSignupInput,
-  validateUpdatePassword,
+  validateInputChangePassword,
 };
