@@ -77,11 +77,13 @@ const NavIcons: React.FC = (): ReactElement => {
         goto={() => HISTORY.gotoRankingTotoRound(totoRoundNumber)}
         icon={<FormatListNumberedIcon className={classes.icon} />}
       />
-      <NavIcon
-        label="total toto"
-        goto={HISTORY.gotoRankingTotalToto}
-        icon={<EmojiEvents className={classes.icon} />}
-      />
+      {user && user.totaalToto ? (
+        <NavIcon
+          label="total toto"
+          goto={HISTORY.gotoRankingTotalToto}
+          icon={<EmojiEvents className={classes.icon} />}
+        />
+      ) : null}
       <NavIcon
         label="my scores"
         goto={HISTORY.gotoScoresUser}
