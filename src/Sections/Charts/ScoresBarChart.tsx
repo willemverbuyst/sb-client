@@ -83,10 +83,10 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     },
     plugins: {
       datalabels: {
-        anchor: 'center',
-        align: 'center',
+        anchor: 'end',
+        align: 'start',
         display: true,
-        color: 'black',
+        color: '#f1f1f1',
       },
     },
   };
