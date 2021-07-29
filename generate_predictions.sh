@@ -13,7 +13,7 @@ touch dummy_predictions.txt
 
 for i in {573164..573469}
 do
-  for u in {1..4}
+  for u in {1..9}
   do
     echo "{
   pGoalsHomeTeam: $(( ( RANDOM % 5 )  + 0 )),
