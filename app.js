@@ -9,7 +9,7 @@ const predictionRouter = require('./routes/predictionRoutes');
 const scoreRouter = require('./routes/scoreRoutes');
 const teamRouter = require('./routes/teamRoutes');
 const userRouter = require('./routes/userRoutes');
-const fixtures = require('./api-football/fixtures');
+// const fixtures = require('./api-football/fixtures');
 
 const app = express();
 app.use(corsMiddleWare());
