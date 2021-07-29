@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
-import BarChart from '../../Components/Chart/BarChart';
+import HorizontalBarChart from '../../Components/Chart/HorizontalBarChart';
 import * as HISTORY from '../../history';
 import { IPlayerWithScore } from '../../models/player.model';
 import { selectUserId } from '../../store/user/selectors';
@@ -61,9 +61,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
       yAxes: [
         {
           ticks: {
-            display: false,
-            suggestedMin: 0,
-            suggestedMax: max,
+            display: true,
           },
           gridLines: {
             display: false,
@@ -72,6 +70,11 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
       ],
       xAxes: [
         {
+          ticks: {
+            display: false,
+            suggestedMin: 0,
+            // suggestedMax: max,
+          },
           gridLines: {
             display: false,
           },
@@ -80,8 +83,8 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     },
     plugins: {
       datalabels: {
-        anchor: 'end',
-        align: 'top',
+        anchor: 'center',
+        align: 'center',
         display: true,
         color: 'black',
       },
@@ -89,7 +92,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   };
 
   return (
-    <BarChart
+    <HorizontalBarChart
       chartData={chartData}
       chartOptions={chartOptions}
       goto={gotoScoresPlayer}
