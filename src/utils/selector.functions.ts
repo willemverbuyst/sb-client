@@ -7,7 +7,9 @@ interface IOptionsForSelector {
 }
 
 export const getTeamsForSelector = (teams: ITeam[]): IOptionsForSelector[] => {
-  const sortedTeams = sortArrayWithObjects<keyof ITeam, ITeam>('name')(teams);
+  const sortedTeams = sortArrayWithObjects<keyof ITeam, ITeam>('name')(
+    'ascending',
+  )(teams);
   const teamsForSelector = sortedTeams.map((team) => {
     return {
       name: team.name,

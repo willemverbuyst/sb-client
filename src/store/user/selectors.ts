@@ -26,7 +26,7 @@ export const selectCurrentRoundSortedByTime = (
     const currentRoundSortedByTime = UTILS.sortArrayWithObjects<
       keyof IFixtureWithScoreAndPredictions,
       IFixtureWithScoreAndPredictions
-    >('eventTimeStamp')(fixtures);
+    >('eventTimeStamp')('ascending')(fixtures);
 
     return currentRoundSortedByTime;
   }
