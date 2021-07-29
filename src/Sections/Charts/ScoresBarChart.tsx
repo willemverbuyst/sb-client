@@ -22,7 +22,6 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     IPlayerWithScore
   >(scores, 'name');
   const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
-  const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
   const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScore>(
     scores,
   );
@@ -73,7 +72,6 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
           ticks: {
             display: false,
             suggestedMin: 0,
-            // suggestedMax: max,
           },
           gridLines: {
             display: false,
