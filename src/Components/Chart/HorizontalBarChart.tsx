@@ -17,7 +17,7 @@ const HorizontalBarChart: React.FC<IProps> = ({
   goto,
 }: IProps): ReactElement => {
   return (
-    <Box mt="4rem">
+    <Box>
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={8} md={6} container justify="center">
           <HorizontalBar
@@ -26,6 +26,8 @@ const HorizontalBarChart: React.FC<IProps> = ({
             onElementsClick={(e) => {
               if (e[0] !== undefined) goto(e[0]._index);
             }}
+            width={600}
+            height={600}
           />
         </Grid>
       </Grid>

@@ -55,6 +55,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     legend: {
       display: false,
     },
+    maintainAspectRatio: false,
     responsive: true,
     scales: {
       yAxes: [
