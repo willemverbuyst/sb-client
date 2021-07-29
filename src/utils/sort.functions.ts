@@ -12,7 +12,7 @@ export const sortArrayWithObjects = <
       if (typeof value1 === 'string' && typeof value2 === 'string') {
         return value1.toLowerCase().localeCompare(value2.toLowerCase());
       } else if (typeof value1 === 'number' && typeof value2 === 'number') {
-        return value1 - value2;
+        return value2 - value1;
       } else {
         return 1;
       }
