@@ -36,6 +36,26 @@ export const selectScoresForFixtureSortedByName = (
   }
 };
 
+export const selectScoresForFixtureSortedByScore = (
+  state: StoreState,
+): IPlayerWithScoreAndPrediction[] | null => {
+  if (
+    state.scoresState.fixtureWithScores &&
+    state.scoresState.fixtureWithScores.scores &&
+    state.scoresState.fixtureWithScores.scores.length > 0
+  ) {
+    const scoresFixture = state.scoresState.fixtureWithScores.scores;
+    const scoresFixtureSortedByName: IPlayerWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScoreAndPrediction,
+      IPlayerWithScoreAndPrediction
+    >('score')(scoresFixture);
+
+    return scoresFixtureSortedByName;
+  } else {
+    return null;
+  }
+};
+
 export const selectRound = (
   state: StoreState,
 ): IRoundWithPlayersWithScore | null => state.scoresState.roundScores;

@@ -9,7 +9,7 @@ import PageContent from '../../../Sections/PageContent';
 import { fetchScoresFixture } from '../../../store/scores/action-creators';
 import {
   selectFixture,
-  selectScoresForFixtureSortedByName,
+  selectScoresForFixtureSortedByScore,
 } from '../../../store/scores/selectors';
 import FixtureSection from './FixtureSection';
 import ScoresForFixtureBarChart from './ScoresFixtureBarChart';
@@ -17,8 +17,8 @@ import ScoresForFixtureBarChart from './ScoresFixtureBarChart';
 const Fixture: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const fixture = useSelector(selectFixture);
-  const scoresFixtureSortedByName = useSelector(
-    selectScoresForFixtureSortedByName,
+  const scoresFixtureSortedByScore = useSelector(
+    selectScoresForFixtureSortedByScore,
   );
   const { id } = useParams<{ id: string }>();
 
@@ -35,8 +35,8 @@ const Fixture: React.FC = (): ReactElement => {
             <PageTitle title="Uitslag" color="secondary" />
             <FixtureSection fixture={fixture} />
             <DividerComponent />
-            {scoresFixtureSortedByName ? (
-              <ScoresForFixtureBarChart scores={scoresFixtureSortedByName} />
+            {scoresFixtureSortedByScore ? (
+              <ScoresForFixtureBarChart scores={scoresFixtureSortedByScore} />
             ) : (
               <MessageComponent message="Nog geen scores" />
             )}

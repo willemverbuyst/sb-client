@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
-import BarChart from '../../../Components/Chart/BarChart';
+import HorizontalBarChart from '../../../Components/Chart/HorizontalBarChart';
 import * as HISTORY from '../../../history';
 import { IPlayerWithScoreAndPrediction } from '../../../models/player.model';
 import { selectUserId } from '../../../store/user/selectors';
@@ -18,13 +18,16 @@ interface IProps {
 const ScoresForFixtureBarChart: React.FC<IProps> = ({
   scores,
 }: IProps): ReactElement => {
+  console.log(scores);
   const userId: number | null = useSelector(selectUserId);
-  const labels: string[] = UTILS.getStringsInUpperCase<
-    keyof IPlayerWithScoreAndPrediction,
-    IPlayerWithScoreAndPrediction
-  >(scores, 'name');
-  const userScores: number[] = UTILS.displayUserScores(scores);
-  const max: number = UTILS.generateMaxForChartYAx(userScores, 1.2);
+  const labels = scores.map(
+    (score) =>
+      `${score.name.toLocaleUpperCase()}    [${score.pGoalsHomeTeam} - ${
+        score.pGoalsHomeTeam
+      }]   `,
+  );
+  const userScores: number[] = scores.map((score) => score.score);
+  const contraUserScores: number[] = userScores.map((score) => 10 - score);
   const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScoreAndPrediction>(
     scores,
   );
@@ -32,7 +35,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
     scores,
     userId,
   );
-  const userPredictions: string[] = UTILS.getUserPredictions(scores);
+
   const gotoScoresPlayer = (index: number): void => {
     const id: number = scores[index].id;
     userId && userId === id
@@ -44,8 +47,18 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
     labels: labels,
     datasets: [
       {
+        stack: '1',
+        label: 'part1',
         data: userScores,
         backgroundColor: backgroundColor,
+        borderWidth: 0,
+        hoverBackgroundColor: hoverBackgroundColors,
+      },
+      {
+        stack: '1',
+        label: 'part4',
+        data: contraUserScores,
+        backgroundColor: '#eee',
         borderWidth: 0,
         hoverBackgroundColor: hoverBackgroundColors,
       },
@@ -54,27 +67,19 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
 
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
-      enabled: true,
-      callbacks: {
-        title: (tooltipItem) =>
-          typeof tooltipItem[0].index === 'number'
-            ? `Voorspelling: ${userPredictions[tooltipItem[0].index]}`
-            : `Prediction ???`,
-        label: () => '',
-      },
+      enabled: false,
     },
     legend: {
       display: false,
     },
+    maintainAspectRatio: false,
     responsive: true,
     scales: {
       yAxes: [
         {
+          stacked: true,
           ticks: {
-            beginAtZero: true,
-            display: false,
-            suggestedMin: 0,
-            suggestedMax: max,
+            display: true,
           },
           gridLines: {
             display: false,
@@ -83,6 +88,13 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
       ],
       xAxes: [
         {
+          position: 'top',
+          stacked: true,
+          ticks: {
+            display: true,
+            suggestedMin: 0,
+            suggestedMax: 10,
+          },
           gridLines: {
             display: false,
           },
@@ -91,17 +103,16 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
     },
     plugins: {
       datalabels: {
+        display: false,
         anchor: 'end',
-        align: 'top',
-        display: true,
-        color: 'black',
-        formatter: (value) => `${value - 0.1}`,
+        align: 'start',
+        color: '#f1f1f1',
       },
     },
   };
 
   return (
-    <BarChart
+    <HorizontalBarChart
       chartData={chartData}
       chartOptions={chartOptions}
       goto={gotoScoresPlayer}
