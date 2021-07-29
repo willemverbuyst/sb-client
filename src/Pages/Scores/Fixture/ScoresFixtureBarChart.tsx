@@ -18,7 +18,6 @@ interface IProps {
 const ScoresForFixtureBarChart: React.FC<IProps> = ({
   scores,
 }: IProps): ReactElement => {
-  console.log(scores);
   const userId: number | null = useSelector(selectUserId);
   const labels = scores.map(
     (score) =>

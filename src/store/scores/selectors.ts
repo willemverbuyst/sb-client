@@ -45,12 +45,14 @@ export const selectScoresForFixtureSortedByScore = (
     state.scoresState.fixtureWithScores.scores.length > 0
   ) {
     const scoresFixture = state.scoresState.fixtureWithScores.scores;
-    const scoresFixtureSortedByName: IPlayerWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
+    const scoresFixtureSortedByScore: IPlayerWithScoreAndPrediction[] = UTILS.sortArrayWithObjects2<
       keyof IPlayerWithScoreAndPrediction,
       IPlayerWithScoreAndPrediction
-    >('score')(scoresFixture);
+    >('score')('descending')(scoresFixture);
 
-    return scoresFixtureSortedByName;
+    console.log(scoresFixtureSortedByScore.map((score) => score.score));
+
+    return scoresFixtureSortedByScore;
   } else {
     return null;
   }
