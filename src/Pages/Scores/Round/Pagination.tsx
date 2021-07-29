@@ -19,7 +19,7 @@ const Pagination: React.FC<IProps> = ({ round }: IProps): ReactElement => {
         label="Speelronde"
         page={round}
         count={TOTAL_ROUNDS}
-        color="secondary"
+        color="standard"
         onChange={gotoRound}
       />
     </Box>

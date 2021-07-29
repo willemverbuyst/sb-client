@@ -35,8 +35,8 @@ const TotoRound: React.FC = (): ReactElement => {
         scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
           <>
             <PageTitle title={`Totoronde  ${totoRound}`} color="secondary" />
-            <ScoresBarChart scores={scoresRoundSortedByScore} />
             <Pagination totoRound={totoRound} />
+            <ScoresBarChart scores={scoresRoundSortedByScore} />
           </>
         ) : (
           <MessageComponent

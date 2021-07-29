@@ -33,8 +33,8 @@ const Round: React.FC = (): ReactElement => {
         scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
           <>
             <PageTitle title={`Speelronde ${round}`} color="secondary" />
-            <ScoresBarChart scores={scoresRoundSortedByScore} />
             <Pagination round={round} />
+            <ScoresBarChart scores={scoresRoundSortedByScore} />
           </>
         ) : (
           <MessageComponent

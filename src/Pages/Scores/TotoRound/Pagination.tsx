@@ -23,7 +23,7 @@ const PaginationSection: React.FC<IProps> = ({
         label="Totoronde"
         page={totoRound}
         count={TOTO_ROUNDS}
-        color="primary"
+        color="standard"
         onChange={gotoTotoRound}
       />
     </Box>
