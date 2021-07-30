@@ -28,6 +28,8 @@ if (process.env.NODE_ENV === 'development') {
 //   fixtures.getFixtures();
 // }
 
+// fixtures.getFixtures();
+
 // Body parser middleware
 app.use(express.json());
 
