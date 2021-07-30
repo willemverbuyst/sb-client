@@ -1,4 +1,4 @@
-import { Link } from '@material-ui/core';
+import { Link, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,27 +23,28 @@ const SendEmailForm: React.FC = (): ReactElement => {
     setEmail(event.target.value);
 
   return (
-    <FormContainer
-      inputFields={
-        <>
-          <AvatarIconComponent icon={<LockOutlinedIcon />} />
-          <TextFieldComponent
-            id="email"
-            label="Email Address"
-            value={email}
-            onChange={updateEmail}
-          />
-        </>
-      }
-      submitButton={
-        <SubmitButtonComponent
-          caption="SEND EMAIL"
-          color="primary"
-          handleClick={submitForm}
-        />
-      }
-      link={<Link href="/login">Back to login page?</Link>}
-    />
+    // <FormContainer
+    //   inputFields={
+    //     <>
+    //       <AvatarIconComponent icon={<LockOutlinedIcon />} />
+    //       <TextFieldComponent
+    //         id="email"
+    //         label="Email Address"
+    //         value={email}
+    //         onChange={updateEmail}
+    //       />
+    //     </>
+    //   }
+    //   submitButton={
+    //     <SubmitButtonComponent
+    //       caption="SEND EMAIL"
+    //       color="primary"
+    //       handleClick={submitForm}
+    //     />
+    //   }
+    //   link={<Link href="/login">Back to login page?</Link>}
+    // />
+    <Typography>Too bad, game over!!</Typography>
   );
 };
 
