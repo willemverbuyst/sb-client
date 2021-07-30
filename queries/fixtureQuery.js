@@ -10,6 +10,7 @@ const { calculateScore } = require('../utils/scores.functions');
 
 const getAllFixturesWithPrediction = async (playerId, userId) => {
   const fixturesWithPrediction = await Fixture.findAll({
+    where: { round: { [Op.regexp]: '^Regular' } },
     include: [
       {
         model: Prediction,
