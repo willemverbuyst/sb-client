@@ -27,7 +27,7 @@ const HorizontalBarChart: React.FC<IProps> = ({
               if (e[0] !== undefined) goto(e[0]._index);
             }}
             width={600}
-            height={600}
+            height={1200}
           />
         </Grid>
       </Grid>
