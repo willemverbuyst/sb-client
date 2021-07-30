@@ -70,6 +70,10 @@ exports.updatePrediction = catchAsync(async (req, res, next) => {
   const fixtureId = req.params.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
+  console.log(fixtureId);
+  console.log(pGoalsHomeTeam);
+  console.log(pGoalsAwayTeam);
+
   if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
@@ -87,7 +91,7 @@ exports.updatePrediction = catchAsync(async (req, res, next) => {
 
   const prediction = await updatePrediction(
     pGoalsHomeTeam,
-    pGoalsHomeTeam,
+    pGoalsAwayTeam,
     fixtureId,
     userId,
   );
