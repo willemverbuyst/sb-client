@@ -11,7 +11,8 @@
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
     "resetDB": "npx sequelize-cli db:migrate:undo:all",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "test": "jest --watch"
   },
   "author": "wv",
   "license": "ISC",
@@ -33,12 +34,21 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
+    "jest": "^27.0.6",
     "nodemon": "^2.0.6",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "supertest": "^6.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "engines": {
     "node": ">=8.3.0"
