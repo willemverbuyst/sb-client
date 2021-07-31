@@ -28,6 +28,8 @@ const getFixtures = async () => {
     status: fixture.status,
   }));
 
+  // console.log(fixtures);
+
   await Fixture.bulkCreate(fixtures, {
     updateOnDuplicate: [
       'goalsHomeTeam',
@@ -37,7 +39,7 @@ const getFixtures = async () => {
     ],
   });
 
-  setInterval(getFixtures, 60 * 60 * 1000);
+  // setInterval(getFixtures, 60 * 60 * 1000);
 };
 
-exports.getFixtures = getFixtures;
+module.exports = getFixtures;
