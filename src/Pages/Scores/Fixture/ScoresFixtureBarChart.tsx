@@ -22,7 +22,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
   const labels = scores.map(
     (score) =>
       `${score.name.toLocaleUpperCase()}    [${score.pGoalsHomeTeam} - ${
-        score.pGoalsHomeTeam
+        score.pGoalsAwayTeam
       }]   `,
   );
   const userScores: number[] = scores.map((score) => score.score);

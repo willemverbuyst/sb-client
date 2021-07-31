@@ -50,8 +50,6 @@ export const selectScoresForFixtureSortedByScore = (
       IPlayerWithScoreAndPrediction
     >('score')('descending')(scoresFixture);
 
-    console.log(scoresFixtureSortedByScore.map((score) => score.score));
-
     return scoresFixtureSortedByScore;
   } else {
     return null;
