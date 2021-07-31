@@ -83,6 +83,7 @@ const getCurrentRoundForUser = async (id) => {
       attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
       required: false,
     },
+    order: [['id', 'ASC']],
     raw: true,
     nest: true,
   });
