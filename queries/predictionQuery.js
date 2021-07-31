@@ -144,6 +144,7 @@ const getScoresPlayer = async (playerId) => {
 
   const fixtures = await Fixture.findAll({
     where: {
+      round: { [Op.regexp]: '^Regular' },
       eventTimeStamp: {
         [Op.lt]: [timeStampLastMonday],
       },

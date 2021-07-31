@@ -71,6 +71,7 @@ const getCurrentRoundForUser = async (id) => {
   const timeStampNextMonday = nextMonday();
   const fixturesWithPrediction = await Fixture.findAll({
     where: {
+      round: { [Op.regexp]: '^Regular' },
       eventTimeStamp: {
         [Op.between]: [timeStampLastMonday, timeStampNextMonday],
       },
