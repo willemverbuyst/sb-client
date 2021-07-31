@@ -28,17 +28,12 @@ const MatchCardInput: React.FC<IProps> = ({
   const [pGoalsHT, setpGoalsHT] = useState<number>(pGoalsHomeTeam || 0);
   const [pGoalsAT, setpGoalsAT] = useState<number>(pGoalsAwayTeam || 0);
 
-  console.log('*****');
-  console.log(pGoalsHT, ' ', pGoalsAT);
-
   const handleSubmit = () => {
     const prediction: IPrediction = {
       pGoalsHomeTeam: pGoalsHT,
       pGoalsAwayTeam: pGoalsAT,
       fixtureId: id,
     };
-
-    console.log(prediction);
 
     Number.isInteger(pGoalsAwayTeam) || Number.isInteger(pGoalsHomeTeam)
       ? dispatch(changePrediction(prediction))

@@ -51,6 +51,34 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
         },
       };
 
+    case ActionType.UPDATE_USER_CURRENT_ROUND:
+      if (state.user && state.user.currentRound) {
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            currentRound: {
+              ...state.user.currentRound,
+              fixtures: state.user.currentRound.fixtures.map((fixture) =>
+                fixture.id === action.payload.prediction.fixtureId
+                  ? {
+                      ...fixture,
+                      predictions: {
+                        pGoalsHomeTeam:
+                          action.payload.prediction.pGoalsHomeTeam,
+                        pGoalsAwayTeam:
+                          action.payload.prediction.pGoalsAwayTeam,
+                      },
+                    }
+                  : fixture,
+              ),
+            },
+          },
+        };
+      } else {
+        return state;
+      }
+
     default:
       return state;
   }
