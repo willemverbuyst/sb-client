@@ -7,11 +7,8 @@ module.exports = {
     operatorsAliases: '0',
   },
   test: {
-    username: 'root',
-    password: null,
-    database: 'database_test',
-    host: '127.0.0.1',
-    dialect: 'mysql',
+    url: 'database_test',
+    dialect: 'postgres',
   },
   production: {
     use_env_variable: 'DATABASE_URL',
