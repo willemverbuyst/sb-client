@@ -2,6 +2,7 @@ const express = require('express');
 const corsMiddleWare = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
@@ -24,6 +25,13 @@ console.log(`Environment: ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests for this IP, please try again in an hour',
+});
+app.use('/api', limiter);
 
 // TURNED OFF, TO STOP AUTO REFRESH
 // if (process.env.NODE_ENV === 'production') {
