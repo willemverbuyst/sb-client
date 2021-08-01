@@ -3,6 +3,7 @@ const corsMiddleWare = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
 
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
@@ -43,7 +44,13 @@ app.use('/api', limiter);
 // getFixtures();
 
 // Body parser middleware
-app.use(express.json());
+app.use(
+  express.json({
+    limit: '10kb',
+  }),
+);
+
+app.use(xss());
 
 app.use((_res, req, next) => {
   req.requestTime = new Date().toISOString();
