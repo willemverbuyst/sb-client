@@ -1,6 +1,8 @@
 const express = require('express');
 const corsMiddleWare = require('cors');
 const morgan = require('morgan');
+const helmet = require('helmet');
+
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const fixtureRouter = require('./routes/fixtureRoutes');
@@ -12,6 +14,8 @@ const userRouter = require('./routes/userRoutes');
 // const getFixtures = require('./api-football/fixtures');
 
 const app = express();
+
+app.use(helmet());
 app.use(corsMiddleWare());
 
 // For development
