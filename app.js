@@ -1,6 +1,10 @@
 const express = require('express');
 const corsMiddleWare = require('cors');
 const morgan = require('morgan');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
+
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const fixtureRouter = require('./routes/fixtureRoutes');
@@ -12,6 +16,8 @@ const userRouter = require('./routes/userRoutes');
 // const getFixtures = require('./api-football/fixtures');
 
 const app = express();
+
+app.use(helmet());
 app.use(corsMiddleWare());
 
 // For development
@@ -20,6 +26,13 @@ console.log(`Environment: ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests for this IP, please try again in an hour',
+});
+app.use('/api', limiter);
 
 // TURNED OFF, TO STOP AUTO REFRESH
 // if (process.env.NODE_ENV === 'production') {
@@ -31,7 +44,13 @@ if (process.env.NODE_ENV === 'development') {
 // getFixtures();
 
 // Body parser middleware
-app.use(express.json());
+app.use(
+  express.json({
+    limit: '10kb',
+  }),
+);
+
+app.use(xss());
 
 app.use((_res, req, next) => {
   req.requestTime = new Date().toISOString();
