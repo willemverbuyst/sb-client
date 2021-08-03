@@ -122,7 +122,7 @@ describe('validateSignupInput function', () => {
     ).toBe(false);
   });
 
-  test('returns false given an object and the values for userName, firstName, lastName, email and phoneNumber are not strings', () => {
+  test('returns false given an object and incorrect value types', () => {
     expect(
       validateSignupInput({
         userName: 123,
@@ -134,9 +134,6 @@ describe('validateSignupInput function', () => {
         teamId: 123,
       }),
     ).toBe(false);
-  });
-
-  test('returns false given an object and the value for teamId is not a number', () => {
     expect(
       validateSignupInput({
         userName: 'userName',
@@ -150,7 +147,7 @@ describe('validateSignupInput function', () => {
     ).toBe(false);
   });
 
-  test('returns true given an object and its properties have the corresponding value types', () => {
+  test('returns true given an object and its properties have the correct value types', () => {
     expect(
       validateSignupInput({
         userName: 'userName',

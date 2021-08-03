@@ -106,7 +106,7 @@ describe('validateUpdateProfileInput function', () => {
     ).toBe(false);
   });
 
-  test('returns false given an object and the values for userName, firstName, lastName, email and phoneNumber are not strings', () => {
+  test('returns false given an object and incorrect value types', () => {
     expect(
       validateUpdateProfileInput({
         userName: 123,
@@ -117,9 +117,6 @@ describe('validateUpdateProfileInput function', () => {
         teamId: 123,
       }),
     ).toBe(false);
-  });
-
-  test('returns false given an object and the value for teamId is not a number', () => {
     expect(
       validateUpdateProfileInput({
         userName: 'userName',
@@ -132,7 +129,7 @@ describe('validateUpdateProfileInput function', () => {
     ).toBe(false);
   });
 
-  test('returns true given an object and its properties have the corresponding value types', () => {
+  test('returns true given an object and its properties have the correct value types', () => {
     expect(
       validateUpdateProfileInput({
         userName: 'userName',
