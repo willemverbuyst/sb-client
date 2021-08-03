@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const validatePassword = require('./validatePassword');
 
 test('returns false given an empty string', () => {
@@ -23,7 +24,14 @@ test('returns false given a user with no password property', () => {
   expect(validatePassword(testUser, 'password')).toBe(false);
 });
 
-test("returns false given if passwords don't match", () => {
+test("returns false if passwords don't match", () => {
   const testUser = { password: 'differentPassword' };
   expect(validatePassword(testUser, 'password')).toBe(false);
+});
+
+test('returns true if passwords match', () => {
+  const testUser = {
+    password: bcrypt.hashSync('password', Number(process.env.SALT_ROUNDS)),
+  };
+  expect(validatePassword(testUser, 'password')).toBe(true);
 });

@@ -29,11 +29,11 @@ test('returns false given six numbers', () => {
   expect(validateUpdateProfileInput(123, 123, 123, 123, 123, 123)).toBe(false);
 });
 
-test('returns false with an empty object', () => {
+test('returns false given an empty object', () => {
   expect(validateUpdateProfileInput({})).toBe(false);
 });
 
-test('returns false with an object and its keys having no values', () => {
+test('returns false given an object and its keys having no values', () => {
   expect(
     validateUpdateProfileInput({
       userName: '',
@@ -46,7 +46,7 @@ test('returns false with an object and its keys having no values', () => {
   ).toBe(false);
 });
 
-test('returns false with an object missing one of the properties', () => {
+test('returns false given an object missing one of the properties', () => {
   expect(
     validateUpdateProfileInput({
       firstName: 'firstName',
@@ -103,7 +103,7 @@ test('returns false with an object missing one of the properties', () => {
   ).toBe(false);
 });
 
-test('returns false with an object and the values for userName, firstName, lastName, emai and phoneNumber are not strings', () => {
+test('returns false given an object and the values for userName, firstName, lastName, emai and phoneNumber are not strings', () => {
   expect(
     validateUpdateProfileInput({
       userName: 123,
@@ -116,7 +116,7 @@ test('returns false with an object and the values for userName, firstName, lastN
   ).toBe(false);
 });
 
-test('returns false with an object and the value for teamId is not a number', () => {
+test('returns false given an object and the value for teamId is not a number', () => {
   expect(
     validateUpdateProfileInput({
       userName: 'userName',
@@ -129,7 +129,7 @@ test('returns false with an object and the value for teamId is not a number', ()
   ).toBe(false);
 });
 
-test('returns true with an object and all the properties with corresponding value types', () => {
+test('returns true given an object and its properties have the corresponding value types', () => {
   expect(
     validateUpdateProfileInput({
       userName: 'userName',
