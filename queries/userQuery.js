@@ -149,8 +149,6 @@ const updateUserProfile = async (
       plain: true,
     },
   );
-  console.log('email', updatedUser[1].dataValues.email);
-
   return await getUserById(updatedUser[1].dataValues.id);
 };
 
