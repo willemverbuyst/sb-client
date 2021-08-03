@@ -122,13 +122,14 @@ describe('validateSignupInput function', () => {
     ).toBe(false);
   });
 
-  test('returns false given an object and the values for userName, firstName, lastName, emai and phoneNumber are not strings', () => {
+  test('returns false given an object and the values for userName, firstName, lastName, email and phoneNumber are not strings', () => {
     expect(
       validateSignupInput({
         userName: 123,
         firstName: 123,
         lastName: 123,
         email: 123,
+        password: 123,
         phoneNumber: 123,
         teamId: 123,
       }),
@@ -142,6 +143,7 @@ describe('validateSignupInput function', () => {
         firstName: 'firstName',
         lastName: 'lastName',
         email: 'email',
+        password: 'password',
         phoneNumber: 'phoneNumber',
         teamId: 'teamId',
       }),
