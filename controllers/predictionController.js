@@ -9,8 +9,8 @@ const {
   updatePrediction,
 } = require('../queries/predictionQuery');
 const { getUserById } = require('../queries/userQuery');
-const { validatePredictionInput } = require('../validators/inputValidator');
-const { validateFixtureStatus } = require('../validators/queryValidator');
+const validatePredictionInput = require('../validators/validatePredictionInput');
+const validateFixtureStatus = require('../validators/validateFixtureStatus');
 
 exports.getAllPredictions = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;

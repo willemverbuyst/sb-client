@@ -11,14 +11,12 @@ const {
   updateUserPassword,
 } = require('../queries/userQuery');
 const { getCurrentRoundForUser } = require('../queries/fixtureQuery');
-const {
-  validateLoginInput,
-  validatePassword,
-  validatePasswordConfirm,
-  validateInputChangePassword,
-} = require('../validators/inputValidator');
-const { validateNewPassword } = require('../validators/queryValidator');
 const sendEmail = require('../utils/email');
+const validateChangePasswordInput = require('../validators/validateChangePasswordInput');
+const validateLoginInput = require('../validators/validateLoginInput');
+const validateNewPassword = require('../validators/validateNewPassword');
+const validatePassword = require('../validators/validatePassword');
+const validatePasswordConfirm = require('../validators/validatePasswordConfirm');
 
 const createPasswordResetToken = async (email) => {
   const resetToken = crypto.randomBytes(32).toString('hex');
@@ -229,7 +227,9 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 exports.changePassword = catchAsync(async (req, res, next) => {
   const { currentPassword, newPassword, confirmPassword } = req.body;
 
-  if (!validateInputChangePassword(req.body)) {
+  if (
+    !validateChangePasswordInput(currentPassword, newPassword, confirmPassword)
+  ) {
     return next(
       new AppError('Er ontbreken gevens, vul alle wachtwoorden in!'),
       400,

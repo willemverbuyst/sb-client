@@ -5,8 +5,7 @@ const {
   getPastFixturesWithPredictionsAndScores,
 } = require('../queries/fixtureQuery');
 const { getUserById, updateUserProfile } = require('../queries/userQuery');
-const { validateProfileInput } = require('../validators/inputValidator');
-const { validateUser } = require('../validators/queryValidator');
+const validateUpdateProfileInput = require('../validators/validateUpdateProfileInput');
 
 exports.getAllFixturesForLoggedInUser = catchAsync(async (req, res, _next) => {
   const userId = req.user.dataValues.id;
@@ -26,7 +25,7 @@ exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
   async (req, res, next) => {
     const user = await getUserById(req.params.id);
 
-    if (!validateUser(user)) {
+    if (!user) {
       return next(new AppError('Geen speler gevonden met deze id!', 404));
     }
 
@@ -45,8 +44,19 @@ exports.getUserWithPredictionsAndScoresPastFixtures = catchAsync(
 
 exports.updateUserProfile = catchAsync(async (req, res, next) => {
   const loggedInUserId = Number(req.user.id);
+  const { userName, firstName, lastName, email, phoneNumber, teamId } =
+    req.body;
 
-  if (!validateProfileInput(req.body)) {
+  if (
+    !validateUpdateProfileInput(
+      userName,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      teamId,
+    )
+  ) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
 
