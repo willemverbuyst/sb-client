@@ -1,4 +1,4 @@
-const validateSignupInput = ({
+const validateSignupInput = (
   userName,
   firstName,
   lastName,
@@ -6,7 +6,7 @@ const validateSignupInput = ({
   password,
   phoneNumber,
   teamId,
-}) =>
+) =>
   !!userName &&
   !!firstName &&
   !!lastName &&

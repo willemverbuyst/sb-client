@@ -6,10 +6,6 @@ describe('validatePassword function', () => {
     expect(validatePassword('')).toBe(false);
   });
 
-  test('returns false given two empty strings', () => {
-    expect(validatePassword('', '')).toBe(false);
-  });
-
   test('returns false given only a user', () => {
     const testUser = { password: 'password' };
     expect(validatePassword(testUser)).toBe(false);

@@ -5,17 +5,12 @@ describe('validateLoginInput function', () => {
     expect(validateLoginInput('')).toBe(false);
   });
 
-  test('returns false given two empty strings', () => {
-    expect(validateLoginInput('', '')).toBe(false);
-  });
-
-  test('returns false given one string', () => {
+  test('returns false given 1 string', () => {
     expect(validateLoginInput('email')).toBe(false);
   });
 
-  test('returns false given one string and an empty string', () => {
+  test('returns false given 1 string and an empty string', () => {
     expect(validateLoginInput('email', '')).toBe(false);
-    expect(validateLoginInput('', 'password')).toBe(false);
   });
 
   test('returns false given a number and string', () => {
@@ -26,11 +21,11 @@ describe('validateLoginInput function', () => {
     expect(validateLoginInput('email', 123)).toBe(false);
   });
 
-  test('returns false given two numbers', () => {
+  test('returns false given 2 numbers', () => {
     expect(validateLoginInput(123, 123)).toBe(false);
   });
 
-  test('returns true given two strings', () => {
+  test('returns true given 2 strings', () => {
     expect(validateLoginInput('email', 'password')).toBe(true);
   });
 });

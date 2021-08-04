@@ -12,7 +12,8 @@
     "seed": "npx sequelize-cli db:seed:all",
     "resetDB": "npx sequelize-cli db:migrate:undo:all",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:all": "jest --watchAll --verbose"
   },
   "author": "wv",
   "license": "ISC",

@@ -1,11 +1,11 @@
-const validateUpdateProfileInput = ({
+const validateUpdateProfileInput = (
   userName,
   firstName,
   lastName,
   email,
   phoneNumber,
   teamId,
-}) =>
+) =>
   !!userName &&
   !!firstName &&
   !!lastName &&

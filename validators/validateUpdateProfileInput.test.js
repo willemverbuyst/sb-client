@@ -9,11 +9,41 @@ describe('validateUpdateProfileInput function', () => {
     expect(validateUpdateProfileInput('userName')).toBe(false);
   });
 
-  test('returns false given one string and 6 empty strings', () => {
-    expect(validateUpdateProfileInput('', '', '', '', '', '')).toBe(false);
+  test('returns false given 1 string and 5 empty strings', () => {
+    expect(validateUpdateProfileInput('userName', '', '', '', '', '')).toBe(
+      false,
+    );
   });
 
-  test('returns false given six strings', () => {
+  test('returns false given 2 strings', () => {
+    expect(validateUpdateProfileInput('userName', 'firstName')).toBe(false);
+  });
+
+  test('returns false given 3 strings', () => {
+    expect(
+      validateUpdateProfileInput('userName', 'firstName', 'lastName'),
+    ).toBe(false);
+  });
+
+  test('returns false given 4 strings', () => {
+    expect(
+      validateUpdateProfileInput('userName', 'firstName', 'lastName', 'email'),
+    ).toBe(false);
+  });
+
+  test('returns false given 5 strings', () => {
+    expect(
+      validateUpdateProfileInput(
+        'userName',
+        'firstName',
+        'lastName',
+        'email',
+        'phoneNumber',
+      ),
+    ).toBe(false);
+  });
+
+  test('returns false given 6 strings', () => {
     expect(
       validateUpdateProfileInput(
         'userName',
@@ -26,119 +56,22 @@ describe('validateUpdateProfileInput function', () => {
     ).toBe(false);
   });
 
-  test('returns false given six numbers', () => {
+  test('returns false given 6 numbers', () => {
     expect(validateUpdateProfileInput(123, 123, 123, 123, 123, 123)).toBe(
       false,
     );
   });
 
-  test('returns false given an empty object', () => {
-    expect(validateUpdateProfileInput({})).toBe(false);
-  });
-
-  test('returns false given an object and its keys having no values', () => {
+  test('returns true given 5 strings and 1 number', () => {
     expect(
-      validateUpdateProfileInput({
-        userName: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-        teamId: '',
-      }),
-    ).toBe(false);
-  });
-
-  test('returns false given an object missing one of the properties', () => {
-    expect(
-      validateUpdateProfileInput({
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',
-        phoneNumber: 'phoneNumber',
-        teamId: 123,
-      }),
-    ).toBe(false);
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        lastName: 'lastName',
-        email: 'email',
-        phoneNumber: 'phoneNumber',
-        teamId: 123,
-      }),
-    ).toBe(false);
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        firstName: 'firstName',
-        email: 'email',
-        phoneNumber: 'phoneNumber',
-        teamId: 123,
-      }),
-    ).toBe(false);
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        phoneNumber: 'phoneNumber',
-        teamId: 123,
-      }),
-    ).toBe(false);
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',
-        teamId: 123,
-      }),
-    ).toBe(false);
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',
-        phoneNumber: 'phoneNumber',
-      }),
-    ).toBe(false);
-  });
-
-  test('returns false given an object and incorrect value types', () => {
-    expect(
-      validateUpdateProfileInput({
-        userName: 123,
-        firstName: 123,
-        lastName: 123,
-        email: 123,
-        phoneNumber: 123,
-        teamId: 123,
-      }),
-    ).toBe(false);
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',
-        phoneNumber: 'phoneNumber',
-        teamId: 'teamId',
-      }),
-    ).toBe(false);
-  });
-
-  test('returns true given an object and its properties have the correct value types', () => {
-    expect(
-      validateUpdateProfileInput({
-        userName: 'userName',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',
-        phoneNumber: 'phoneNumber',
-        teamId: 123,
-      }),
+      validateUpdateProfileInput(
+        'userName',
+        'firstName',
+        'lastName',
+        'email',
+        'phoneNumber',
+        123,
+      ),
     ).toBe(true);
   });
 });
