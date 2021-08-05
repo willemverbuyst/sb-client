@@ -13,7 +13,6 @@ import { IUser } from '../../../models/player.model';
 import { fetchAllTeams } from '../../../store/teams/action-creators';
 import { selectTeams } from '../../../store/teams/selectors';
 import { editUserProfile } from '../../../store/user/action-creators';
-import * as UTILS from '../../../utils';
 
 interface IProps {
   user: IUser;
@@ -31,7 +30,6 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
     totaalToto: user.totaalToto,
     teamId: user.team.id,
   });
-  const teamsForSelector = teams ? UTILS.getTeamsForSelector(teams) : null;
 
   useEffect(() => {
     if (!teams) {
@@ -110,14 +108,14 @@ const EditProfileForm: React.FC<IProps> = ({ user }: IProps): ReactElement => {
             value={profileDetails.phoneNumber}
             onChange={updateProfileDetails}
           />
-          {teamsForSelector ? (
+          {teams ? (
             <SelectorComponent
               label="Team"
               labelId="favTeam"
               id="teamId"
               value={profileDetails.teamId}
               onChange={updateFavoriteTeam}
-              options={teamsForSelector}
+              options={teams}
             />
           ) : null}
         </>

@@ -12,7 +12,6 @@ import { ISignUpCredentials } from '../../models/credentials.model';
 import { addPlayer } from '../../store/players/action-creators';
 import { fetchAllTeams } from '../../store/teams/action-creators';
 import { selectTeams } from '../../store/teams/selectors';
-import * as UTILS from '../../utils';
 
 const SignUpForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -31,7 +30,6 @@ const SignUpForm: React.FC = (): ReactElement => {
     totaalToto: true,
     teamId: '',
   });
-  const teamsForSelector = teams ? UTILS.getTeamsForSelector(teams) : null;
 
   useEffect(() => {
     if (!teams) {
@@ -129,14 +127,14 @@ const SignUpForm: React.FC = (): ReactElement => {
             value={signUpCredentials.phoneNumber}
             onChange={updateSignUpCredentials}
           />
-          {teamsForSelector ? (
+          {teams ? (
             <SelectorComponent
               label="Team"
               labelId="favTeam"
               id="teamId"
               value={signUpCredentials.teamId}
               onChange={updateFavoriteTeam}
-              options={teamsForSelector}
+              options={teams}
             />
           ) : null}
         </>
