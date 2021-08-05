@@ -17,7 +17,7 @@ const SignUp: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Sign Up"
+      loadingText=""
       content={
         <>
           <PageTitle title="Sign up" color="secondary" />

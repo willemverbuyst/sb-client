@@ -17,7 +17,7 @@ const Login: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Login"
+      loadingText=""
       content={
         <>
           <PageTitle title="Login" color="secondary" />

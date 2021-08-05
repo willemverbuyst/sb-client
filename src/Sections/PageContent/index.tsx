@@ -26,7 +26,8 @@ const PageContent: React.FC<IProps> = ({
 
   return (
     <Box>
-      {isLoading ? <ProgressComponent loadingText={loadingText} /> : content}
+      {content}
+      {isLoading ? <ProgressComponent loadingText={loadingText} /> : null}
     </Box>
   );
 };

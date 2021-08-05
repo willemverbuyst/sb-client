@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
@@ -13,25 +13,31 @@ const TotalToto: React.FC = (): ReactElement => {
   const scoresTotalTotoSortedByScore = useSelector(
     selectScoresTotalTotoSortedByScore,
   );
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (!scoresTotalTotoSortedByScore) {
-      dispatch(fetchScoresTotalToto());
+      (async () => {
+        await dispatch(fetchScoresTotalToto());
+        if (!scoresTotalTotoSortedByScore) {
+          setMessage('Nog geen scores voor de totaalToto');
+        }
+      })();
     }
   }, [dispatch, scoresTotalTotoSortedByScore]);
 
   return (
     <PageContent
-      loadingText="Totaaltoto"
+      loadingText=""
       content={
-        scoresTotalTotoSortedByScore ? (
-          <>
-            <PageTitle title="Totaaltoto" color="secondary" />
+        <>
+          <PageTitle title="Totaaltoto" color="secondary" />
+          {scoresTotalTotoSortedByScore ? (
             <ScoresBarChart scores={scoresTotalTotoSortedByScore} />
-          </>
-        ) : (
-          <MessageComponent message="Nog geen scores voor de totaalToto" />
-        )
+          ) : (
+            <MessageComponent message={message} />
+          )}
+        </>
       }
     />
   );

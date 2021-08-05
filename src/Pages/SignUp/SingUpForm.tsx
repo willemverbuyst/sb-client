@@ -127,16 +127,14 @@ const SignUpForm: React.FC = (): ReactElement => {
             value={signUpCredentials.phoneNumber}
             onChange={updateSignUpCredentials}
           />
-          {teams ? (
-            <SelectorComponent
-              label="Team"
-              labelId="favTeam"
-              id="teamId"
-              value={signUpCredentials.teamId}
-              onChange={updateFavoriteTeam}
-              options={teams}
-            />
-          ) : null}
+          <SelectorComponent
+            label="Team"
+            labelId="favTeam"
+            id="teamId"
+            value={signUpCredentials.teamId}
+            onChange={updateFavoriteTeam}
+            options={teams || [{ id: 0, name: 'Geen teams gevonden' }]}
+          />
         </>
       }
       submitButton={
