@@ -12,19 +12,19 @@ const Program: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Programma"
+      loadingText=""
       content={
-        currentRoundSortedByTime ? (
-          <>
-            <PageTitle title="Programma" color="secondary" />
+        <>
+          <PageTitle title="Programma" color="secondary" />
+          {currentRoundSortedByTime ? (
             <Predictions
               predictions={currentRoundSortedByTime}
               display="private"
             />
-          </>
-        ) : (
-          <MessageComponent message="Er staan voor deze week geen wedstrijden gepland." />
-        )
+          ) : (
+            <MessageComponent message="Er staan voor deze week geen wedstrijden gepland." />
+          )}
+        </>
       }
     />
   );
