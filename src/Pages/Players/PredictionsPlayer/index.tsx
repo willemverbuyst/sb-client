@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -27,13 +27,19 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { totoronde } = useParams<{ totoronde: string }>();
   const round = Number(ronde);
   const totoRound = Number(totoronde);
+  const [message, setMessage] = useState('');
 
   const name = nameOfPlayerOfPredicitons
     ? nameOfPlayerOfPredicitons
     : 'Speler...';
 
   useEffect(() => {
-    dispatch(getAllPredictions(Number(id)));
+    async () => {
+      await dispatch(getAllPredictions(Number(id)));
+      if (!allPredictionsSortedByTime) {
+        setMessage(`Geen voorspellingen voor ${name} gevonden`);
+      }
+    };
   }, [dispatch, id]);
 
   const filteredFixtures = allPredictionsSortedByTime
@@ -46,23 +52,23 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Voorspellingen"
+      loadingText=""
       content={
-        filteredFixtures && nameOfPlayerOfPredicitons ? (
-          <>
-            <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
-            <Predictions
-              predictions={filteredFixtures}
-              display="public"
-              userNamePlayer={nameOfPlayerOfPredicitons}
-            />
-            <Pagination totoround={totoRound} round={round} id={id} />
-          </>
-        ) : (
-          <MessageComponent
-            message={`Geen voorspellingen voor ${name} gevonden`}
-          />
-        )
+        <>
+          <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
+          {filteredFixtures && nameOfPlayerOfPredicitons ? (
+            <>
+              <Predictions
+                predictions={filteredFixtures}
+                display="public"
+                userNamePlayer={nameOfPlayerOfPredicitons}
+              />
+              <Pagination totoround={totoRound} round={round} id={id} />
+            </>
+          ) : (
+            <MessageComponent message={message} />
+          )}
+        </>
       }
     />
   );

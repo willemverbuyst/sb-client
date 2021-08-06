@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -17,15 +17,22 @@ const PredictionsUser: React.FC = (): ReactElement => {
   const allPredictionsSortedByTime = useSelector(
     selectAllPredictionsSortedByTime,
   );
-
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
   const round = Number(ronde);
   const totoRound = Number(totoronde);
   const user = useSelector(selectUser);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    dispatch(getAllPredictions(Number(user?.id)));
+    if (!allPredictionsSortedByTime) {
+      (async () => {
+        await dispatch(getAllPredictions(Number(user?.id)));
+        if (!allPredictionsSortedByTime) {
+          setMessage('Geen voorspellingen gevonden');
+        }
+      })();
+    }
   }, [dispatch, user]);
 
   const filteredPredictions = allPredictionsSortedByTime
@@ -38,17 +45,22 @@ const PredictionsUser: React.FC = (): ReactElement => {
 
   return (
     <PageContent
-      loadingText="Mijn voorspellingen"
+      loadingText=""
       content={
-        filteredPredictions ? (
-          <>
-            <PageTitle title="Mijn voorspellingen" color="primary" />
-            <Predictions predictions={filteredPredictions} display="private" />
-            <Pagination totoround={totoRound} round={round} />
-          </>
-        ) : (
-          <MessageComponent message="Geen voorspellingen gevonden" />
-        )
+        <>
+          <PageTitle title="Mijn voorspellingen" color="primary" />
+          {filteredPredictions ? (
+            <>
+              <Predictions
+                predictions={filteredPredictions}
+                display="private"
+              />
+              <Pagination totoround={totoRound} round={round} />
+            </>
+          ) : (
+            <MessageComponent message={message} />
+          )}
+        </>
       }
     />
   );
