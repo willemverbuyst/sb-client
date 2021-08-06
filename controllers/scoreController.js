@@ -6,8 +6,6 @@ const {
   getScoresTotoRound,
 } = require('../queries/predictionQuery');
 const { getUserById } = require('../queries/userQuery');
-const { nextMonday } = require('../utils/date.functions');
-const AppError = require('../utils/appError');
 
 exports.getScoresPlayer = catchAsync(async (req, res, _next) => {
   const playerId = req.params.id;
