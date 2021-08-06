@@ -185,3 +185,11 @@ export const selectTotoRoundId = (state: StoreState): number | null => {
 
 export const selectPlayerScores = (state: StoreState): IScoresPlayer | null =>
   state.scoresState.scoresPlayer;
+
+export const selectPlayerHasScores = (state: StoreState): boolean =>
+  state.scoresState.scoresPlayer &&
+  state.scoresState.scoresPlayer.scores &&
+  state.scoresState.scoresPlayer.scores.length &&
+  state.scoresState.scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
+    ? true
+    : false;

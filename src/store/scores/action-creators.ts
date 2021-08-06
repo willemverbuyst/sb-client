@@ -8,6 +8,7 @@ import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { StoreState } from '../types';
 import { ScoresActions } from './action-types';
 import {
+  resetScoresPlayer,
   storePlayerScores,
   storeScoresFixture,
   storeScoresRound,
@@ -125,6 +126,7 @@ export const fetchPlayerScores = (
 ): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<AppStateActions | ScoresActions>,
 ) => {
+  dispatch(resetScoresPlayer());
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

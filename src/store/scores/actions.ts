@@ -8,6 +8,7 @@ import {
 import {
   ActionType,
   ResetAllScores,
+  ResetScoresPlayer,
   StorePlayerScores,
   StoreScoresFixture,
   StoreScoresRound,
@@ -18,6 +19,12 @@ import {
 export const resetAllScores = (): ResetAllScores => {
   return {
     type: ActionType.RESET_ALL_SCORES,
+  };
+};
+
+export const resetScoresPlayer = (): ResetScoresPlayer => {
+  return {
+    type: ActionType.RESET_SCORES_PLAYER,
   };
 };
 
