@@ -6,13 +6,14 @@ import MessageComponent from '../../../Components/Communication/Message';
 import ProgressComponent from '../../../Components/Progress';
 import PageTitle from '../../../Components/Title/PageTitle';
 import ScoresStackedChart from '../../../Sections/Charts/ScoresStackedChart';
+import Guard from '../../../Sections/Guard';
 import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchPlayerScores } from '../../../store/scores/action-creators';
 import {
   selectPlayerHasScores,
   selectPlayerScores,
 } from '../../../store/scores/selectors';
-import { selectUser } from '../../../store/user/selectors';
+import { selectToken, selectUser } from '../../../store/user/selectors';
 import { colorPrimary, colorSecondary } from '../../../theme/chartColors';
 
 const ScoresUser: React.FC = (): ReactElement => {
@@ -20,28 +21,35 @@ const ScoresUser: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading);
   const scoresPlayer = useSelector(selectPlayerScores);
   const playerHasScores = useSelector(selectPlayerHasScores);
+  const token = useSelector(selectToken);
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    dispatch(fetchPlayerScores(Number(user?.id)));
-  }, [dispatch, user]);
+    if (token) {
+      dispatch(fetchPlayerScores(Number(user?.id)));
+    }
+  }, [dispatch, token, user]);
 
   return (
-    <Box>
-      <PageTitle title="Mijn scores" color="primary" />
-      {isLoading ? (
-        <ProgressComponent />
-      ) : scoresPlayer && playerHasScores ? (
-        <ScoresStackedChart
-          scoresPlayer={scoresPlayer}
-          colorMain={colorPrimary}
-          colorHover={colorSecondary}
-          loggedInUser={true}
-        />
-      ) : (
-        <MessageComponent message="Je hebt nog geen scores" />
-      )}
-    </Box>
+    <Guard
+      content={
+        <Box>
+          <PageTitle title="Mijn scores" color="primary" />
+          {isLoading ? (
+            <ProgressComponent />
+          ) : scoresPlayer && playerHasScores ? (
+            <ScoresStackedChart
+              scoresPlayer={scoresPlayer}
+              colorMain={colorPrimary}
+              colorHover={colorSecondary}
+              loggedInUser={true}
+            />
+          ) : (
+            <MessageComponent message="Je hebt nog geen scores" />
+          )}
+        </Box>
+      }
+    />
   );
 };
 
