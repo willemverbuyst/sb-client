@@ -8,6 +8,7 @@ import CheckBoxComponent from '../../../Components/Form/CheckBox';
 import FormContainer from '../../../Components/Form/FormContainer';
 import SelectorComponent from '../../../Components/Form/Selector';
 import TextFieldComponent from '../../../Components/Form/TextField';
+import * as HISTORY from '../../../history';
 import { IProfileDetails } from '../../../models/credentials.model';
 import { IUser } from '../../../models/player.model';
 import { ITeamForSelector } from '../../../models/toto.models';
@@ -122,7 +123,11 @@ const EditProfileForm: React.FC<IProps> = ({
           handleClick={submitForm}
         />
       }
-      link={<Link href="/profiel/password">Change Password</Link>}
+      link={
+        <Link href="#" onClick={HISTORY.gotoEditPassword}>
+          Change Password
+        </Link>
+      }
     />
   );
 };

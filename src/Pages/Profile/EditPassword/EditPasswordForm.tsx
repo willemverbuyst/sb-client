@@ -6,6 +6,7 @@ import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
 import ShowAlertComponent from '../../../Components/Communication/Alert';
 import FormContainer from '../../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../../Components/Form/PasswordField';
+import * as HISTORY from '../../../history';
 import { changePassword } from '../../../store/user/action-creators';
 
 const EditPasswordForm: React.FC = (): ReactElement => {
@@ -71,7 +72,11 @@ const EditPasswordForm: React.FC = (): ReactElement => {
             handleClick={submitForm}
           />
         }
-        link={<Link href="/profiel/edit">Edit Profile</Link>}
+        link={
+          <Link href="#" onClick={HISTORY.gotoProfile}>
+            Edit Profile
+          </Link>
+        }
       />
       <ShowAlertComponent
         message="Passwords are not the same"

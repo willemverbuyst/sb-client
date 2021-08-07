@@ -1,5 +1,7 @@
 import history from './index';
 
+export const gotoEditPassword = (): void => history.push('/profiel/password');
+
 export const gotoFixture = (id: number): void =>
   history.push(`/wedstrijd/${id}`);
 
