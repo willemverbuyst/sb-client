@@ -1,5 +1,5 @@
-import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { ChangeEvent, ReactElement, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import SubmitButtonComponent from '../../Components/Button/SubmitButton';
@@ -9,14 +9,17 @@ import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import SelectorComponent from '../../Components/Form/Selector';
 import TextFieldComponent from '../../Components/Form/TextField';
 import { ISignUpCredentials } from '../../models/credentials.model';
+import { ITeamForSelector } from '../../models/toto.models';
 import { addPlayer } from '../../store/players/action-creators';
-import { fetchAllTeams } from '../../store/teams/action-creators';
-import { selectTeams } from '../../store/teams/selectors';
 
-const SignUpForm: React.FC = (): ReactElement => {
+interface IProps {
+  teams: ITeamForSelector[];
+}
+
+const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const teams = useSelector(selectTeams);
+
   const [
     signUpCredentials,
     setSignUpCredentials,
@@ -30,12 +33,6 @@ const SignUpForm: React.FC = (): ReactElement => {
     totaalToto: true,
     teamId: '',
   });
-
-  useEffect(() => {
-    if (!teams) {
-      dispatch(fetchAllTeams());
-    }
-  }, [dispatch, teams]);
 
   const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
@@ -133,7 +130,7 @@ const SignUpForm: React.FC = (): ReactElement => {
             id="teamId"
             value={signUpCredentials.teamId}
             onChange={updateFavoriteTeam}
-            options={teams || [{ id: 0, name: 'Geen teams gevonden' }]}
+            options={teams}
           />
         </>
       }
