@@ -69,7 +69,7 @@ const NavIcons: React.FC = (): ReactElement => {
       />
       <NavIcon
         label="round"
-        goto={() => HISTORY.gotoRankingRound(1)}
+        goto={() => HISTORY.gotoRankingRound(roundNumber)}
         icon={<FormatListNumberedRtlIcon className={classes.icon} />}
       />
       <NavIcon
