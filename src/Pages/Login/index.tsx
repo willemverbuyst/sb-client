@@ -1,10 +1,10 @@
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import MessageComponent from '../../Components/Communication/Message';
+import ProgressComponent from '../../Components/Progress';
 import PageTitle from '../../Components/Title/PageTitle';
-import PageContent from '../../Sections/PageContent';
 import { selectAppLoading } from '../../store/appState/selectors';
 import { selectToken } from '../../store/user/selectors';
 import LoginForm from './LoginForm';
@@ -18,19 +18,10 @@ const Login: React.FC = (): ReactElement => {
   }, [token, history]);
 
   return (
-    <PageContent
-      loadingText=""
-      content={
-        <>
-          <PageTitle title="Login" color="secondary" />
-          {isLoading ? (
-            <MessageComponent message="Logging in ..." />
-          ) : (
-            <LoginForm />
-          )}
-        </>
-      }
-    />
+    <Box>
+      <PageTitle title="Login" color="secondary" />
+      {isLoading ? <ProgressComponent /> : <LoginForm />}
+    </Box>
   );
 };
 
