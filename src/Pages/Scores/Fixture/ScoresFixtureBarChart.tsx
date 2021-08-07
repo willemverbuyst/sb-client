@@ -64,8 +64,6 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
     ],
   };
 
-  const ticks = [1, 2, 3, '', 5, '', 7, 8, 9, 10];
-
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
       enabled: false,
@@ -98,7 +96,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
             suggestedMin: 0,
             suggestedMax: 10,
             stepSize: 1,
-            callback: (value, _index, _labels) => {
+            callback: (value) => {
               if (
                 value === 0 ||
                 value === 2 ||
@@ -112,7 +110,6 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
               }
             },
           },
-
           gridLines: {
             display: false,
           },
