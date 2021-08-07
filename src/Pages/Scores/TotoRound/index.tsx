@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -21,28 +21,34 @@ const TotoRound: React.FC = (): ReactElement => {
   const totoRoundId = useSelector(selectTotoRoundId);
   const { totoronde } = useParams<{ totoronde: string }>();
   const totoRound = Number(totoronde);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (!totoRoundId || totoRound !== totoRoundId) {
-      dispatch(fetchScoresTotoRound(totoRound));
+      (async () => {
+        await dispatch(fetchScoresTotoRound(totoRound));
+        if (!scoresRoundSortedByScore) {
+          setMessage(`Nog geen scores voor totoronde`);
+        }
+      })();
     }
   }, [dispatch, totoRound, totoRoundId]);
 
   return (
     <PageContent
-      loadingText="Totoronde"
+      loadingText=""
       content={
-        scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
-          <>
-            <PageTitle title={`Totoronde  ${totoRound}`} color="secondary" />
-            <Pagination totoRound={totoRound} />
-            <ScoresBarChart scores={scoresRoundSortedByScore} />
-          </>
-        ) : (
-          <MessageComponent
-            message={`Nog geen scores voor toto ronde ${totoRound}`}
-          />
-        )
+        <>
+          <PageTitle title={`Totoronde  ${totoRound}`} color="secondary" />
+          {scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
+            <>
+              <Pagination totoRound={totoRound} />
+              <ScoresBarChart scores={scoresRoundSortedByScore} />
+            </>
+          ) : (
+            <MessageComponent message={message} />
+          )}
+        </>
       }
     />
   );

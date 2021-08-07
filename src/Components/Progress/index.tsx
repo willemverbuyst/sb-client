@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IProps {
-  loadingText: string;
+  loadingText?: string;
 }
 
 const ProgressComponent: React.FC<IProps> = ({
-  loadingText,
+  loadingText = '',
 }: IProps): ReactElement => {
   const classes = useStyles();
 
