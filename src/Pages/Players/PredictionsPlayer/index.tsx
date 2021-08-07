@@ -1,11 +1,13 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import { Box } from '@material-ui/core';
+import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
+import ProgressComponent from '../../../Components/Progress';
 import PageTitle from '../../../Components/Title/PageTitle';
-import PageContent from '../../../Sections/PageContent';
 import Predictions from '../../../Sections/Predictions';
+import { selectAppLoading } from '../../../store/appState/selectors';
 import { getAllPredictions } from '../../../store/predictions/action-creators';
 import {
   selectAllPredictionsSortedByTime,
@@ -16,6 +18,7 @@ import Pagination from './Pagination';
 
 const PredictionsPlayer: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
   const nameOfPlayerOfPredicitons = useSelector(
     selectNameOfPlayerOfPredicitons,
   );
@@ -27,19 +30,9 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
   const { totoronde } = useParams<{ totoronde: string }>();
   const round = Number(ronde);
   const totoRound = Number(totoronde);
-  const [message, setMessage] = useState('');
-
-  const name = nameOfPlayerOfPredicitons
-    ? nameOfPlayerOfPredicitons
-    : 'Speler...';
 
   useEffect(() => {
-    async () => {
-      await dispatch(getAllPredictions(Number(id)));
-      if (!allPredictionsSortedByTime) {
-        setMessage(`Geen voorspellingen voor ${name} gevonden`);
-      }
-    };
+    dispatch(getAllPredictions(Number(id)));
   }, [dispatch, id]);
 
   const filteredFixtures = allPredictionsSortedByTime
@@ -51,26 +44,40 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
     : null;
 
   return (
-    <PageContent
-      loadingText=""
-      content={
+    <Box>
+      {isLoading ? (
         <>
-          <PageTitle title={`Voorspellingen ${name}`} color="secondary" />
-          {filteredFixtures && nameOfPlayerOfPredicitons ? (
-            <>
-              <Predictions
-                predictions={filteredFixtures}
-                display="public"
-                userNamePlayer={nameOfPlayerOfPredicitons}
-              />
-              <Pagination totoround={totoRound} round={round} id={id} />
-            </>
-          ) : (
-            <MessageComponent message={message} />
-          )}
+          <PageTitle title="Voorspellingen" color="secondary" />
+          <ProgressComponent />
         </>
-      }
-    />
+      ) : filteredFixtures && nameOfPlayerOfPredicitons ? (
+        <>
+          <PageTitle
+            title={`Voorspellingen ${nameOfPlayerOfPredicitons}`}
+            color="secondary"
+          />
+          <Predictions
+            predictions={filteredFixtures}
+            display="public"
+            userNamePlayer={nameOfPlayerOfPredicitons}
+          />
+          <Pagination totoround={totoRound} round={round} id={id} />
+        </>
+      ) : nameOfPlayerOfPredicitons ? (
+        <>
+          <PageTitle
+            title={`Voorspellingen ${nameOfPlayerOfPredicitons}`}
+            color="secondary"
+          />
+          <MessageComponent message="Geen wedstrijden met voorspellingen gevonden" />
+        </>
+      ) : (
+        <>
+          <PageTitle title="Voorspellingen" color="secondary" />
+          <MessageComponent message="Geen data gevonden" />
+        </>
+      )}
+    </Box>
   );
 };
 

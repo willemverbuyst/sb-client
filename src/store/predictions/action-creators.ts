@@ -12,6 +12,7 @@ import { updateUserCurrentRound } from '../user/actions';
 import { PredictionActions } from './action-types';
 import {
   postPrediction,
+  resetAllPredictions,
   storeAllPredictions,
   updatePrediction,
 } from './actions';
@@ -21,6 +22,7 @@ export const getAllPredictions = (
 ): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<AppStateActions | PredictionActions>,
 ) => {
+  dispatch(resetAllPredictions());
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');

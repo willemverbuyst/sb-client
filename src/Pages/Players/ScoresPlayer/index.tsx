@@ -30,7 +30,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
     <Box>
       {isLoading ? (
         <>
-          <PageTitle title={`Scores`} color="secondary" />
+          <PageTitle title="Scores" color="secondary" />
           <ProgressComponent />
         </>
       ) : scoresPlayer && playerHasScores ? (
@@ -50,7 +50,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
         </>
       ) : (
         <>
-          <PageTitle title={`Scores`} color="secondary" />
+          <PageTitle title="Scores" color="secondary" />
           <MessageComponent message="Geen data gevonden" />
         </>
       )}
