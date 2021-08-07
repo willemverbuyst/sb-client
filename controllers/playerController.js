@@ -22,6 +22,10 @@ exports.deletePlayer = catchAsync(async (req, res, next) => {
 exports.getAllPlayers = catchAsync(async (req, res, next) => {
   const players = await getAllUsers();
 
+  if (!players) {
+    return next(new AppError('No players found!', 404));
+  }
+
   res.status(200).json({
     status: 'success',
     results: players.length,

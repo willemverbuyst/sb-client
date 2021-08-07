@@ -24,10 +24,6 @@ exports.getAllPredictions = catchAsync(async (req, res, next) => {
 
   const fixtures = await getAllFixturesWithPrediction(playerId, userId);
 
-  if (!fixtures) {
-    return next(new AppError('No predictions found', 404));
-  }
-
   res.status(200).json({
     status: 'success',
     result: fixtures.length,
