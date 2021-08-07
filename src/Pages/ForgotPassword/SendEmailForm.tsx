@@ -1,6 +1,8 @@
 import { Box, Link, Typography } from '@material-ui/core';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { ReactElement } from 'react';
+
+import * as HISTORY from '../../history';
 // import { useDispatch } from 'react-redux';
 
 // import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
@@ -48,7 +50,9 @@ const SendEmailForm: React.FC = (): ReactElement => {
       <Box py={2}>
         <Typography variant="h4">Too bad, game over!!</Typography>
       </Box>
-      <Link href="/login">Back to login page</Link>
+      <Link href="#" onClick={HISTORY.gotoLogin}>
+        Back to login page
+      </Link>
     </>
   );
 };

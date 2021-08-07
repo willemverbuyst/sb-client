@@ -8,6 +8,7 @@ import SubmitButtonComponent from '../../Components/Button/SubmitButton';
 import FormContainer from '../../Components/Form/FormContainer';
 import PasswordFieldComponent from '../../Components/Form/PasswordField';
 import TextFieldComponent from '../../Components/Form/TextField';
+import * as HISTORY from '../../history';
 import { ILogInCredentials } from '../../models/credentials.model';
 import { userLogIn } from '../../store/user/action-creators';
 
@@ -59,7 +60,11 @@ const LoginForm: React.FC = (): ReactElement => {
           handleClick={submitForm}
         />
       }
-      link={<Link href="/forgotPassword">Forgot Password?</Link>}
+      link={
+        <Link href="#" onClick={HISTORY.gotoForgotPassword}>
+          Forgot Password?
+        </Link>
+      }
     />
   );
 };

@@ -2,8 +2,12 @@ import history from './index';
 
 export const gotoEditPassword = (): void => history.push('/profiel/password');
 
+export const gotoForgotPassword = (): void => history.push('/forgotPassword');
+
 export const gotoFixture = (id: number): void =>
   history.push(`/wedstrijd/${id}`);
+
+export const gotoLogin = (): void => history.push('/login');
 
 export const gotoPlayers = (): void => history.push('/spelers');
 
