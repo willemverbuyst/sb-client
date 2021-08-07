@@ -1,11 +1,13 @@
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
+import ProgressComponent from '../../../Components/Progress';
 import PageTitle from '../../../Components/Title/PageTitle';
 import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
-import PageContent from '../../../Sections/PageContent';
+import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresRound } from '../../../store/scores/action-creators';
 import {
   selectRoundId,
@@ -15,6 +17,7 @@ import Pagination from './Pagination';
 
 const Round: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
   const roundId = useSelector(selectRoundId);
   const scoresRoundSortedByScore = useSelector(selectScoresRoundSortedByScore);
   const { ronde } = useParams<{ ronde: string }>();
@@ -27,22 +30,24 @@ const Round: React.FC = (): ReactElement => {
   }, [dispatch, round, roundId]);
 
   return (
-    <PageContent
-      loadingText="Speelronde"
-      content={
-        scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
-          <>
-            <PageTitle title={`Speelronde ${round}`} color="secondary" />
-            <Pagination round={round} />
-            <ScoresBarChart scores={scoresRoundSortedByScore} />
-          </>
-        ) : (
+    <Box>
+      <PageTitle title={`Speelronde ${round}`} color="secondary" />
+      {isLoading ? (
+        <ProgressComponent />
+      ) : scoresRoundSortedByScore && scoresRoundSortedByScore.length ? (
+        <>
+          <Pagination round={round} />
+          <ScoresBarChart scores={scoresRoundSortedByScore} />
+        </>
+      ) : (
+        <>
           <MessageComponent
             message={`Nog geen scores voor speelronde ${round}`}
           />
-        )
-      }
-    />
+          <Pagination round={round} />
+        </>
+      )}
+    </Box>
   );
 };
 

@@ -42,7 +42,10 @@ const TotoRound: React.FC = (): ReactElement => {
           <ScoresBarChart scores={scoresRoundSortedByScore} />
         </>
       ) : (
-        <MessageComponent message="Nog geen scores voor totoronde" />
+        <>
+          <MessageComponent message="Nog geen scores voor totoronde" />
+          <Pagination totoRound={totoRound} />
+        </>
       )}
     </Box>
   );
