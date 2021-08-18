@@ -13,7 +13,7 @@ touch dummy_predictions.js
 
 echo "const predictions = [" >> dummy_predictions.js
 
-for i in {573164..573469}
+for i in {707179..707484}
 do
   for u in {1..31}
   do
