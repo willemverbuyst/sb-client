@@ -6,12 +6,18 @@ const {
   getScoresTotoRound,
 } = require('../queries/predictionQuery');
 const { getUserById } = require('../queries/userQuery');
+const AppError = require('../utils/appError');
 
-exports.getScoresPlayer = catchAsync(async (req, res, _next) => {
+exports.getScoresPlayer = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
 
-  const scores = await getScoresPlayer(playerId);
   const { userName } = await getUserById(playerId);
+
+  if (!userName) {
+    return next(new AppError('Geen speler gevonden met deze id!', 404));
+  }
+
+  const scores = await getScoresPlayer(playerId);
 
   res.status(200).json({
     status: 'success',

@@ -5,13 +5,12 @@ const {
   deleteUserAndHisPrediction,
   getAllUsers,
 } = require('../queries/userQuery');
-const { validateSignupInput } = require('../validators/inputValidator');
-const { validateUser } = require('../validators/queryValidator');
+const validateSignupInput = require('../validators/validateSignupInput');
 
 exports.deletePlayer = catchAsync(async (req, res, next) => {
   const player = await deleteUserAndHisPrediction(req.params.id);
 
-  if (!validateUser(player)) {
+  if (!player) {
     return next(new AppError('Geen speler gevonden met deze id!', 404));
   }
 
@@ -23,6 +22,10 @@ exports.deletePlayer = catchAsync(async (req, res, next) => {
 exports.getAllPlayers = catchAsync(async (req, res, next) => {
   const players = await getAllUsers();
 
+  if (!players) {
+    return next(new AppError('No players found!', 404));
+  }
+
   res.status(200).json({
     status: 'success',
     results: players.length,
@@ -33,7 +36,26 @@ exports.getAllPlayers = catchAsync(async (req, res, next) => {
 });
 
 exports.signupPlayer = catchAsync(async (req, res, next) => {
-  if (!validateSignupInput(req.body)) {
+  const {
+    userName,
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber,
+    teamId,
+  } = req.body;
+  if (
+    !validateSignupInput(
+      userName,
+      firstName,
+      lastName,
+      email,
+      password,
+      phoneNumber,
+      teamId,
+    )
+  ) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
 
