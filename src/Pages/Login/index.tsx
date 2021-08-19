@@ -13,6 +13,7 @@ const Login: React.FC = (): ReactElement => {
   const history = useHistory();
   const token = useSelector(selectToken);
   const isLoading = useSelector(selectAppLoading);
+
   useEffect(() => {
     if (token) history.push('/programma');
   }, [token, history]);
