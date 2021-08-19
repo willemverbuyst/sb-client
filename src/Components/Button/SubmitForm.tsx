@@ -14,7 +14,7 @@ interface IProps {
   color: 'primary' | 'secondary';
 }
 
-const SubmitButtonFormComponent: React.FC<IProps> = ({
+const SubmitForm: React.FC<IProps> = ({
   caption,
   color,
 }: IProps): ReactElement => {
@@ -38,4 +38,4 @@ const SubmitButtonFormComponent: React.FC<IProps> = ({
   );
 };
 
-export default SubmitButtonFormComponent;
+export default SubmitForm;

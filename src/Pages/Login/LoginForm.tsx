@@ -1,28 +1,14 @@
-import { Grid, Link, TextField, Theme, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Link, TextField, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
-import SubmitButtonFormComponent from '../../Components/Button/SubmitButtonForm';
+import SubmitForm from '../../Components/Button/SubmitForm';
 import * as HISTORY from '../../history';
 import { userLogIn } from '../../store/user/action-creators';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-}));
+import { useStyles } from './styles';
 
 type Inputs = {
   email: string;
@@ -75,7 +61,7 @@ const LoginForm: React.FC = (): ReactElement => {
               <Typography color="error">This field is required</Typography>
             )}
           </Grid>
-          <SubmitButtonFormComponent caption="LOG IN" color="primary" />
+          <SubmitForm caption="LOG IN" color="primary" />
         </form>
         <Link href="#" onClick={HISTORY.gotoForgotPassword}>
           Forgot Password?
