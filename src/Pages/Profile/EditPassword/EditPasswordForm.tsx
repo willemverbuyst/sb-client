@@ -1,89 +1,109 @@
-import { Link } from '@material-ui/core';
-import React, { ReactElement, useState } from 'react';
+import { Grid, Link, TextField, Typography } from '@material-ui/core';
+import React, { ReactElement } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
-import ShowAlertComponent from '../../../Components/Communication/Alert';
-import FormContainer from '../../../Components/Form/FormContainer';
-import PasswordFieldComponent from '../../../Components/Form/PasswordField';
+import SubmitForm from '../../../Components/Button/SubmitForm';
 import * as HISTORY from '../../../history';
 import { changePassword } from '../../../store/user/action-creators';
+import { useStyles } from './styles';
+
+type Inputs = {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
 
 const EditPasswordForm: React.FC = (): ReactElement => {
+  const classes = useStyles();
   const dispatch = useDispatch();
-  const [currentPassword, setcurrentPassword] = useState<string>('');
-  const [newPassword, setNewPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [showAlert, setShowAlert] = useState<boolean>(false);
 
-  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm<Inputs>();
+  const newPassword = watch('newPassword', '');
 
-    if (newPassword === confirmPassword) {
-      dispatch(changePassword(currentPassword, newPassword, confirmPassword));
-    } else {
-      setShowAlert(true);
-    }
+  const submitForm: SubmitHandler<Inputs> = (data) => {
+    dispatch(
+      changePassword(
+        data.currentPassword,
+        data.newPassword,
+        data.confirmPassword,
+      ),
+    );
+    reset(data, {
+      keepValues: false,
+    });
   };
-
-  const closeAlert = () => {
-    setShowAlert(false);
-    setcurrentPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
-  };
-
-  const updateCurrentPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setcurrentPassword(event.target.value);
-  const updateNewPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setNewPassword(event.target.value);
-  const updateConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setConfirmPassword(event.target.value);
 
   return (
-    <>
-      <FormContainer
-        inputFields={
-          <>
-            <PasswordFieldComponent
-              id="currentPassword"
+    <Grid container justify="center">
+      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
+        <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
+          <Grid container>
+            <TextField
+              variant="outlined"
+              type="password"
+              margin="normal"
+              fullWidth
               label="Current Password"
-              value={currentPassword}
-              onChange={updateCurrentPassword}
+              {...register('currentPassword', {
+                required: 'This field is required',
+              })}
             />
-            <PasswordFieldComponent
-              id="newPassword"
+            {errors.currentPassword && (
+              <Typography color="error">
+                {errors.currentPassword.message}
+              </Typography>
+            )}
+            <TextField
+              variant="outlined"
+              type="password"
+              margin="normal"
+              fullWidth
               label="New Password"
-              value={newPassword}
-              onChange={updateNewPassword}
+              {...register('newPassword', {
+                required: 'This field is required',
+                minLength: {
+                  value: 8,
+                  message: 'Password must have at least 8 characters',
+                },
+              })}
             />
-            <PasswordFieldComponent
-              id="confirmPassword"
-              label="Confirm Password"
-              value={confirmPassword}
-              onChange={updateConfirmPassword}
+            {errors.newPassword && (
+              <Typography color="error">
+                {errors.newPassword.message}
+              </Typography>
+            )}
+            <TextField
+              variant="outlined"
+              type="password"
+              margin="normal"
+              fullWidth
+              label="Confirm New Password"
+              {...register('confirmPassword', {
+                required: 'This field is required',
+                validate: (value) =>
+                  value === newPassword || 'The passwords do not match',
+              })}
             />
-          </>
-        }
-        submitButton={
-          <SubmitButtonComponent
-            caption="CHANGE PASSWORD"
-            color="primary"
-            handleClick={submitForm}
-          />
-        }
-        link={
-          <Link href="#" onClick={HISTORY.gotoProfile}>
-            Edit Profile
-          </Link>
-        }
-      />
-      <ShowAlertComponent
-        message="Passwords are not the same"
-        displayAlert={showAlert}
-        closeAlert={closeAlert}
-      />
-    </>
+            {errors.confirmPassword && (
+              <Typography color="error">
+                {errors.confirmPassword.message}
+              </Typography>
+            )}
+          </Grid>
+          <SubmitForm caption="CHANGE PASSWORD" color="primary" />
+        </form>
+        <Link href="#" onClick={HISTORY.gotoProfile}>
+          Edit Profile
+        </Link>
+      </Grid>
+    </Grid>
   );
 };
 
