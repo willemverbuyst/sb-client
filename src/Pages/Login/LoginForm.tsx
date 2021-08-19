@@ -62,10 +62,10 @@ const LoginForm: React.FC = (): ReactElement => {
             )}
           </Grid>
           <SubmitForm caption="LOG IN" color="primary" />
+          <Link href="#" onClick={HISTORY.gotoForgotPassword}>
+            Forgot Password?
+          </Link>
         </form>
-        <Link href="#" onClick={HISTORY.gotoForgotPassword}>
-          Forgot Password?
-        </Link>
       </Grid>
     </Grid>
   );

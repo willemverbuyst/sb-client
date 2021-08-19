@@ -98,10 +98,10 @@ const EditPasswordForm: React.FC = (): ReactElement => {
             )}
           </Grid>
           <SubmitForm caption="CHANGE PASSWORD" color="primary" />
+          <Link href="#" onClick={HISTORY.gotoProfile}>
+            Edit Profile
+          </Link>
         </form>
-        <Link href="#" onClick={HISTORY.gotoProfile}>
-          Edit Profile
-        </Link>
       </Grid>
     </Grid>
   );
