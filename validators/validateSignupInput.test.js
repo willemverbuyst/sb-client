@@ -9,8 +9,8 @@ describe('validateSignupInput function', () => {
     expect(validateSignupInput('userName')).toBe(false);
   });
 
-  test('returns false given 1 string and 6 empty strings', () => {
-    expect(validateSignupInput('username', '', '', '', '', '', '')).toBe(false);
+  test('returns false given 1 string and 5 empty strings', () => {
+    expect(validateSignupInput('username', '', '', '', '', '')).toBe(false);
   });
 
   test('returns false given 2 strings', () => {
@@ -36,7 +36,7 @@ describe('validateSignupInput function', () => {
         'firstName',
         'lastName',
         'email',
-        'password',
+        'phoneNumber',
       ),
     ).toBe(false);
   });
@@ -48,38 +48,23 @@ describe('validateSignupInput function', () => {
         'firstName',
         'lastName',
         'email',
-        'password',
-        'phoneNumber',
-      ),
-    ).toBe(false);
-  });
-
-  test('returns false given 7 strings', () => {
-    expect(
-      validateSignupInput(
-        'userName',
-        'firstName',
-        'lastName',
-        'email',
-        'password',
         'phoneNumber',
         'teamId',
       ),
     ).toBe(false);
   });
 
-  test('returns false given 7 numbers', () => {
-    expect(validateSignupInput(123, 123, 123, 123, 123, 123, 123)).toBe(false);
+  test('returns false given 6 numbers', () => {
+    expect(validateSignupInput(123, 123, 123, 123, 123, 123)).toBe(false);
   });
 
-  test('returns true given 6 strings and 1 number', () => {
+  test('returns true given 5 strings and 1 number', () => {
     expect(
       validateSignupInput(
         'userName',
         'firstName',
         'lastName',
         'email',
-        'password',
         'phoneNumber',
         123,
       ),
