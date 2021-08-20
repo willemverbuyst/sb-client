@@ -36,22 +36,14 @@ exports.getAllPlayers = catchAsync(async (req, res, next) => {
 });
 
 exports.signupPlayer = catchAsync(async (req, res, next) => {
-  const {
-    userName,
-    firstName,
-    lastName,
-    email,
-    password,
-    phoneNumber,
-    teamId,
-  } = req.body;
+  const { userName, firstName, lastName, email, phoneNumber, teamId } =
+    req.body;
   if (
     !validateSignupInput(
       userName,
       firstName,
       lastName,
       email,
-      password,
       phoneNumber,
       teamId,
     )
