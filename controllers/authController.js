@@ -59,6 +59,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const currentRound = await getCurrentRoundForUser(user.id);
 
   const token = signToken({ userId: user.email });
+  user.password = '';
 
   res.status(200).json({
     status: 'success',
@@ -132,6 +133,7 @@ exports.validToken = catchAsync(async (req, res, next) => {
   const currentRound = await getCurrentRoundForUser(user.id);
 
   const token = signToken({ userId: user.email });
+  user.password = '';
 
   res.status(200).json({
     status: 'success',
@@ -210,6 +212,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   const user = await getUserByEmail(userByToken.email);
   const currentRound = await getCurrentRoundForUser(user.id);
   const token = signToken({ userId: user.email });
+  user.password = '';
 
   res.status(200).json({
     status: 'success',
