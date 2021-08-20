@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import React, { ReactElement } from 'react';
 import {
@@ -13,6 +13,15 @@ interface IProps<T> extends UseControllerProps<T> {
   label: string;
 }
 
+const useStyles = makeStyles({
+  input: {
+    '& input + fieldset': {
+      borderColor: '#f44336',
+      borderWidth: '2px',
+    },
+  },
+});
+
 const ControllerTextInput = <T extends FieldValues>({
   control,
   defaultValue,
@@ -20,6 +29,8 @@ const ControllerTextInput = <T extends FieldValues>({
   label,
   name,
 }: IProps<T>): ReactElement => {
+  const classes = useStyles();
+
   return (
     <Controller
       control={control}
@@ -32,6 +43,9 @@ const ControllerTextInput = <T extends FieldValues>({
             margin="normal"
             fullWidth
             label={label}
+            InputProps={{
+              className: error ? classes.input : '',
+            }}
           />
           {error && <Typography color="error">{error?.message}</Typography>}
         </>

@@ -73,47 +73,26 @@ const EditProfileForm: React.FC<IProps> = ({
               label="User Name"
               name="userName"
             />
-            <Controller
+            <ControllerTextInput
               control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  label="First Name"
-                />
-              )}
-              name="firstName"
               defaultValue={user.firstName}
+              error={errors.firstName}
+              label="First Name"
+              name="firstName"
             />
-            <Controller
+            <ControllerTextInput
               control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  label="Last Name"
-                />
-              )}
-              name="lastName"
               defaultValue={user.lastName}
+              error={errors.lastName}
+              label="Last Name"
+              name="lastName"
             />
-            <Controller
+            <ControllerTextInput
               control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  label="Email Address"
-                />
-              )}
-              name="email"
               defaultValue={user.email}
+              error={errors.email}
+              label="Email Address"
+              name="email"
             />
             <Controller
               control={control}
@@ -134,19 +113,12 @@ const EditProfileForm: React.FC<IProps> = ({
               name="totaalToto"
               defaultValue={user.totaalToto}
             />
-            <Controller
+            <ControllerTextInput
               control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  label="Phone Number"
-                />
-              )}
-              name="phoneNumber"
               defaultValue={user.phoneNumber}
+              error={errors.phoneNumber}
+              label="Phone Number"
+              name="phoneNumber"
             />
             <Controller
               control={control}
