@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import SubmitForm from '../../../Components/Button/SubmitForm';
 import ControllerCheckbox from '../../../Components/Form/ControllerCheckbox';
+import ControllerEmailInput from '../../../Components/Form/ControllerEmailInput';
 import ControllerSelect from '../../../Components/Form/ControllerSelect';
 import ControllerTextInput from '../../../Components/Form/ControllerTextInput';
 import * as HISTORY from '../../../history';
@@ -80,7 +81,7 @@ const EditProfileForm: React.FC<IProps> = ({
               label="Last Name"
               name="lastName"
             />
-            <ControllerTextInput
+            <ControllerEmailInput
               control={control}
               defaultValue={user.email}
               error={errors.email}
