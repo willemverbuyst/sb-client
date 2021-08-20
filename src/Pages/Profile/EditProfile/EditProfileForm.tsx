@@ -1,16 +1,11 @@
-import {
-  FormControl,
-  Grid,
-  Link,
-  MenuItem,
-  TextField,
-} from '@material-ui/core';
+import { Grid, Link } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import SubmitForm from '../../../Components/Button/SubmitForm';
 import ControllerCheckbox from '../../../Components/Form/ControllerCheckbox';
+import ControllerSelect from '../../../Components/Form/ControllerSelect';
 import ControllerTextInput from '../../../Components/Form/ControllerTextInput';
 import * as HISTORY from '../../../history';
 import { IUser } from '../../../models/player.model';
@@ -106,31 +101,13 @@ const EditProfileForm: React.FC<IProps> = ({
               label="Phone Number"
               name="phoneNumber"
             />
-            <Controller
+            <ControllerSelect
               control={control}
-              render={({ field }) => (
-                <FormControl variant="outlined" fullWidth>
-                  <TextField
-                    {...field}
-                    variant="outlined"
-                    margin="normal"
-                    select
-                    label="Team"
-                  >
-                    {[...teams]
-                      .sort((optionOne, optionTwo) =>
-                        optionOne.name.localeCompare(optionTwo.name),
-                      )
-                      .map((team, i) => (
-                        <MenuItem key={i} value={team.id}>
-                          {team.name}
-                        </MenuItem>
-                      ))}
-                  </TextField>
-                </FormControl>
-              )}
-              name="teamId"
               defaultValue={String(user.team.id)}
+              error={errors.teamId}
+              label="Team"
+              name="teamId"
+              teams={teams}
             />
           </Grid>
           <SubmitForm caption="UPDATE PROFIEL" color="primary" />

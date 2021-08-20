@@ -13,12 +13,12 @@ import {
   UseControllerProps,
 } from 'react-hook-form';
 
-import { ITeam } from '../../models/toto.models';
+import { ITeamForSelector } from '../../models/toto.models';
 
 interface IProps<T> extends UseControllerProps<T> {
   error: FieldError | undefined;
   label: string;
-  teams: ITeam[];
+  teams: ITeamForSelector[];
 }
 
 const useStyles = makeStyles({
