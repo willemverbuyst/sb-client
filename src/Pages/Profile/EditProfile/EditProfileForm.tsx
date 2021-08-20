@@ -1,7 +1,5 @@
 import {
-  Checkbox,
   FormControl,
-  FormControlLabel,
   Grid,
   Link,
   MenuItem,
@@ -12,6 +10,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import SubmitForm from '../../../Components/Button/SubmitForm';
+import ControllerCheckbox from '../../../Components/Form/ControllerCheckbox';
 import ControllerTextInput from '../../../Components/Form/ControllerTextInput';
 import * as HISTORY from '../../../history';
 import { IUser } from '../../../models/player.model';
@@ -94,24 +93,11 @@ const EditProfileForm: React.FC<IProps> = ({
               label="Email Address"
               name="email"
             />
-            <Controller
+            <ControllerCheckbox
               control={control}
-              render={({ field }) => (
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        color="primary"
-                        {...field}
-                        checked={!!field.value}
-                      />
-                    }
-                    label="Totaaltoto"
-                  />
-                </Grid>
-              )}
-              name="totaalToto"
               defaultValue={user.totaalToto}
+              label="Totaaltoto"
+              name="totaalToto"
             />
             <ControllerTextInput
               control={control}
