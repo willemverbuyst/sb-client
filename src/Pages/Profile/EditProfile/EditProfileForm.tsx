@@ -12,7 +12,7 @@ import * as HISTORY from '../../../history';
 import { IUser } from '../../../models/player.model';
 import { ITeamForSelector } from '../../../models/toto.models';
 import { editUserProfile } from '../../../store/user/action-creators';
-import { useStyles } from './styles';
+import { useFormStyles } from '../../../theme/form';
 
 interface IProps {
   teams: ITeamForSelector[];
@@ -33,7 +33,7 @@ const EditProfileForm: React.FC<IProps> = ({
   teams,
   user,
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useFormStyles();
   const dispatch = useDispatch();
   const {
     control,

@@ -12,7 +12,7 @@ import ControllerSelect from '../../Components/Form/ControllerSelect';
 import ControllerTextInput from '../../Components/Form/ControllerTextInput';
 import { ITeamForSelector } from '../../models/toto.models';
 import { addPlayer } from '../../store/players/action-creators';
-import { useStyles } from './styles';
+import { useFormStyles } from '../../theme/form';
 
 interface IProps {
   teams: ITeamForSelector[];
@@ -30,7 +30,7 @@ type Inputs = {
 };
 
 const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useFormStyles();
   const dispatch = useDispatch();
   const history = useHistory();
   const {

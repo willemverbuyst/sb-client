@@ -1,7 +1,7 @@
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useFormStyles = makeStyles((theme: Theme) => ({
   paper: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
@@ -22,4 +22,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export { useStyles };
+export { useFormStyles };

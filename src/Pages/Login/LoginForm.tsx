@@ -10,7 +10,7 @@ import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
 import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput';
 import * as HISTORY from '../../history';
 import { userLogIn } from '../../store/user/action-creators';
-import { useStyles } from './styles';
+import { useFormStyles } from '../../theme/form';
 
 type Inputs = {
   email: string;
@@ -18,7 +18,7 @@ type Inputs = {
 };
 
 const LoginForm: React.FC = (): ReactElement => {
-  const classes = useStyles();
+  const classes = useFormStyles();
   const dispatch = useDispatch();
   const {
     control,

@@ -7,7 +7,7 @@ import SubmitForm from '../../../Components/Button/SubmitForm';
 import ControllerPasswordInput from '../../../Components/Form/ControllerPasswordInput';
 import * as HISTORY from '../../../history';
 import { changePassword } from '../../../store/user/action-creators';
-import { useStyles } from './styles';
+import { useFormStyles } from '../../../theme/form';
 
 type Inputs = {
   currentPassword: string;
@@ -16,7 +16,7 @@ type Inputs = {
 };
 
 const EditPasswordForm: React.FC = (): ReactElement => {
-  const classes = useStyles();
+  const classes = useFormStyles();
   const dispatch = useDispatch();
 
   const {
