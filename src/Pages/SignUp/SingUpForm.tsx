@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 import SubmitForm from '../../Components/Button/SubmitForm';
 import ControllerCheckbox from '../../Components/Form/ControllerCheckbox';
 import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
-import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput';
 import ControllerSelect from '../../Components/Form/ControllerSelect';
 import ControllerTextInput from '../../Components/Form/ControllerTextInput';
 import { ITeamForSelector } from '../../models/toto.models';
@@ -23,7 +22,6 @@ type Inputs = {
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
   phoneNumber: string;
   totaalToto: boolean;
   teamId: string;
@@ -47,7 +45,6 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
-        password: data.password,
         phoneNumber: data.phoneNumber,
         totaalToto: data.totaalToto,
         teamId: Number(data.teamId),
@@ -97,14 +94,6 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
               defaultValue={true}
               label="Totaaltoto"
               name="totaalToto"
-            />
-            <ControllerPasswordInput
-              control={control}
-              defaultValue=""
-              error={errors.password}
-              label="Password"
-              name="password"
-              validateLength={true}
             />
             <ControllerTextInput
               control={control}
