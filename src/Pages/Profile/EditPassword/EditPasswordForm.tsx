@@ -66,7 +66,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
               control={control}
               defaultValue=""
               error={errors.confirmPassword}
-              label="confirmPassword"
+              label="Confirm Password"
               name="confirmPassword"
               validateLength={true}
               newPassword={newPassword}

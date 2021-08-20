@@ -1,18 +1,15 @@
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Grid,
-  MenuItem,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import SubmitForm from '../../Components/Button/SubmitForm';
+import ControllerCheckbox from '../../Components/Form/ControllerCheckbox';
+import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
+import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput';
+import ControllerSelect from '../../Components/Form/ControllerSelect';
+import ControllerTextInput from '../../Components/Form/ControllerTextInput';
 import { ITeamForSelector } from '../../models/toto.models';
 import { addPlayer } from '../../store/players/action-creators';
 import { useStyles } from './styles';
@@ -38,7 +35,6 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
   const history = useHistory();
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
     reset,
@@ -68,118 +64,63 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
       <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
         <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
           <Grid container>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
+            <ControllerTextInput
+              control={control}
+              defaultValue=""
+              error={errors.userName}
               label="User Name"
-              {...register('userName', { required: 'This field is required' })}
+              name="userName"
             />
-            {errors.userName && (
-              <Typography color="error">{errors.userName.message}</Typography>
-            )}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
+            <ControllerTextInput
+              control={control}
+              defaultValue=""
+              error={errors.firstName}
               label="First Name"
-              {...register('firstName', { required: 'This field is required' })}
+              name="firstName"
             />
-            {errors.firstName && (
-              <Typography color="error">{errors.firstName.message}</Typography>
-            )}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
+            <ControllerTextInput
+              control={control}
+              defaultValue=""
+              error={errors.lastName}
               label="Last Name"
-              {...register('lastName', { required: 'This field is required' })}
+              name="lastName"
             />
-            {errors.lastName && (
-              <Typography color="error">{errors.lastName.message}</Typography>
-            )}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
+            <ControllerEmailInput
+              control={control}
+              defaultValue=""
+              error={errors.email}
               label="Email Address"
-              {...register('email', { required: 'This field is required' })}
+              name="email"
             />
-            {errors.email && (
-              <Typography color="error">{errors.email.message}</Typography>
-            )}
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={
-                  <Controller
-                    name="totaalToto"
-                    control={control}
-                    defaultValue={false}
-                    render={({ field }) => (
-                      <Checkbox color="primary" {...field} />
-                    )}
-                  />
-                }
-                label="Totaaltoto"
-              />
-            </Grid>
-            <TextField
-              variant="outlined"
-              type="password"
-              margin="normal"
-              fullWidth
+            <ControllerCheckbox
+              control={control}
+              defaultValue={true}
+              label="Totaaltoto"
+              name="totaalToto"
+            />
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.password}
               label="Password"
-              {...register('password', { required: 'This field is required' })}
+              name="password"
+              validateLength={true}
             />
-            {errors.password && (
-              <Typography color="error">{errors.password.message}</Typography>
-            )}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
+            <ControllerTextInput
+              control={control}
+              defaultValue=""
+              error={errors.phoneNumber}
               label="Phone Number"
-              {...register('phoneNumber', {
-                required: 'This field is required',
-              })}
+              name="phoneNumber"
             />
-            {errors.phoneNumber && (
-              <Typography color="error">
-                {errors.phoneNumber.message}
-              </Typography>
-            )}
-            <FormControl variant="outlined" fullWidth>
-              <Controller
-                name="teamId"
-                control={control}
-                defaultValue=""
-                rules={{
-                  required: 'This field is required',
-                }}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    variant="outlined"
-                    margin="normal"
-                    select
-                    label="Team"
-                  >
-                    {[...teams]
-                      .sort((optionOne, optionTwo) =>
-                        optionOne.name.localeCompare(optionTwo.name),
-                      )
-                      .map((team, i) => (
-                        <MenuItem key={i} value={team.id}>
-                          {team.name}
-                        </MenuItem>
-                      ))}
-                  </TextField>
-                )}
-              />
-            </FormControl>
-            {errors.teamId && (
-              <Typography color="error">{errors.teamId.message}</Typography>
-            )}
+            <ControllerSelect
+              control={control}
+              defaultValue=""
+              error={errors.teamId}
+              label="Team"
+              name="teamId"
+              teams={teams}
+            />
           </Grid>
           <SubmitForm caption="SIGN UP" color="primary" />
         </form>
