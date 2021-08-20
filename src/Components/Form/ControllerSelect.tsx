@@ -8,23 +8,25 @@ import {
   UseControllerProps,
 } from 'react-hook-form';
 
-import { ITeamForSelector } from '../../models/toto.models';
 import { useValidationStyles } from '../../theme/validation';
 
-interface IProps<T> extends UseControllerProps<T> {
+interface IProps<T, U> extends UseControllerProps<T> {
   error: FieldError | undefined;
   label: string;
-  teams: ITeamForSelector[];
+  options: U[];
 }
 
-const ControllerSelect = <T extends FieldValues>({
+const ControllerSelect = <
+  T extends FieldValues,
+  U extends { id: number; name: string }
+>({
   control,
   defaultValue,
   error,
   label,
   name,
-  teams,
-}: IProps<T>): ReactElement => {
+  options,
+}: IProps<T, U>): ReactElement => {
   const classes = useValidationStyles();
 
   return (
@@ -44,15 +46,11 @@ const ControllerSelect = <T extends FieldValues>({
                 className: error ? classes.input : '',
               }}
             >
-              {[...teams]
-                .sort((optionOne, optionTwo) =>
-                  optionOne.name.localeCompare(optionTwo.name),
-                )
-                .map((team, i) => (
-                  <MenuItem key={i} value={team.id}>
-                    {team.name}
-                  </MenuItem>
-                ))}
+              {options.map((option, i) => (
+                <MenuItem key={i} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
             </TextField>
           </FormControl>
           {error && <Typography color="error">{error?.message}</Typography>}

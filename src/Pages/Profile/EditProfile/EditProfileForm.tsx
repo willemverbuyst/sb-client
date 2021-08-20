@@ -101,13 +101,13 @@ const EditProfileForm: React.FC<IProps> = ({
               label="Phone Number"
               name="phoneNumber"
             />
-            <ControllerSelect
+            <ControllerSelect<Inputs, ITeamForSelector>
               control={control}
               defaultValue={String(user.team.id)}
               error={errors.teamId}
               label="Team"
               name="teamId"
-              teams={teams}
+              options={teams}
             />
           </Grid>
           <SubmitForm caption="UPDATE PROFIEL" color="primary" />

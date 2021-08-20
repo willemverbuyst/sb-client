@@ -113,13 +113,13 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
               label="Phone Number"
               name="phoneNumber"
             />
-            <ControllerSelect
+            <ControllerSelect<Inputs, ITeamForSelector>
               control={control}
               defaultValue=""
               error={errors.teamId}
               label="Team"
               name="teamId"
-              teams={teams}
+              options={teams}
             />
           </Grid>
           <SubmitForm caption="SIGN UP" color="primary" />
