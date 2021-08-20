@@ -41,18 +41,17 @@ const EditProfileForm: React.FC<IProps> = ({
   } = useForm<Inputs>();
 
   const submitForm: SubmitHandler<Inputs> = (data) => {
-    // dispatch(
-    //   editUserProfile({
-    //     userName: data.userName,
-    //     firstName: data.firstName,
-    //     lastName: data.lastName,
-    //     email: data.email,
-    //     phoneNumber: data.phoneNumber,
-    //     totaalToto: data.totaalToto,
-    //     teamId: Number(data.teamId),
-    //   }),
-    // );
-    console.log(data);
+    dispatch(
+      editUserProfile({
+        userName: data.userName,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        totaalToto: data.totaalToto,
+        teamId: Number(data.teamId),
+      }),
+    );
   };
 
   return (
