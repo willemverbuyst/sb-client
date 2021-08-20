@@ -6,8 +6,8 @@ const Team = require('../models').team;
 const User = require('../models').user;
 
 const deleteUserAndHisPrediction = async (id) => {
-  const user = await User.destroy({ where: { id } });
   await Prediction.destroy({ where: { userId: id } });
+  const user = await User.destroy({ where: { id } });
 
   return user;
 };
