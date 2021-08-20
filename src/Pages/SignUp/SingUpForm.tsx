@@ -120,7 +120,7 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
                     )}
                   />
                 }
-                label="Totaal toto"
+                label="Totaaltoto"
               />
             </Grid>
             <TextField

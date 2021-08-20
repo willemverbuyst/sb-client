@@ -1,134 +1,198 @@
-import { Link } from '@material-ui/core';
-import React, { ReactElement, useState } from 'react';
-import { ChangeEvent } from 'react';
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  Link,
+  MenuItem,
+  TextField,
+  Typography,
+} from '@material-ui/core';
+import React, { ReactElement } from 'react';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
-import CheckBoxComponent from '../../../Components/Form/CheckBox';
-import FormContainer from '../../../Components/Form/FormContainer';
-import SelectorComponent from '../../../Components/Form/Selector';
-import TextFieldComponent from '../../../Components/Form/TextField';
+import SubmitForm from '../../../Components/Button/SubmitForm';
 import * as HISTORY from '../../../history';
-import { IProfileDetails } from '../../../models/credentials.model';
 import { IUser } from '../../../models/player.model';
 import { ITeamForSelector } from '../../../models/toto.models';
 import { editUserProfile } from '../../../store/user/action-creators';
+import { useStyles } from './styles';
 
 interface IProps {
   teams: ITeamForSelector[];
   user: IUser;
 }
 
+type Inputs = {
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  totaalToto: boolean;
+  teamId: string;
+};
+
 const EditProfileForm: React.FC<IProps> = ({
   teams,
   user,
 }: IProps): ReactElement => {
+  const classes = useStyles();
   const dispatch = useDispatch();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
-  const [profileDetails, setProfileDetails] = useState<IProfileDetails>({
-    userName: user.userName,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    phoneNumber: user.phoneNumber,
-    totaalToto: user.totaalToto,
-    teamId: user.team.id,
-  });
-
-  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
-    dispatch(editUserProfile(profileDetails));
-  };
-
-  const updateProfileDetails = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
-    const newValue =
-      event.target.id === 'totaalToto'
-        ? event.target.checked
-        : event.target.value;
-
-    setProfileDetails({
-      ...profileDetails,
-      [event.target.id]: newValue,
-    });
-  };
-
-  const updateFavoriteTeam = (
-    event: ChangeEvent<{ name?: string | undefined; value: unknown }>,
-  ): void => {
-    if (typeof event.target.value === 'number' || event.target.value === '') {
-      setProfileDetails({
-        ...profileDetails,
-        teamId: event.target.value,
-      });
-    }
+  const submitForm: SubmitHandler<Inputs> = (data) => {
+    // dispatch(
+    //   editUserProfile({
+    //     userName: data.userName,
+    //     firstName: data.firstName,
+    //     lastName: data.lastName,
+    //     email: data.email,
+    //     phoneNumber: data.phoneNumber,
+    //     totaalToto: data.totaalToto,
+    //     teamId: Number(data.teamId),
+    //   }),
+    // );
+    console.log(data);
   };
 
   return (
-    <FormContainer
-      inputFields={
-        <>
-          <TextFieldComponent
-            id="userName"
-            label="User Name"
-            value={profileDetails.userName}
-            onChange={updateProfileDetails}
-          />
-          <TextFieldComponent
-            id="firstName"
-            label="First Name"
-            value={profileDetails.firstName}
-            onChange={updateProfileDetails}
-          />
-          <TextFieldComponent
-            id="lastName"
-            label="Last Name"
-            value={profileDetails.lastName}
-            onChange={updateProfileDetails}
-          />
-          <TextFieldComponent
-            id="email"
-            label="Email Address"
-            value={profileDetails.email}
-            onChange={updateProfileDetails}
-          />
-          <CheckBoxComponent
-            id="totaalToto"
-            checked={profileDetails.totaalToto}
-            onChange={updateProfileDetails}
-            label="Totaal Toto"
-          />
-
-          <TextFieldComponent
-            id="phoneNumber"
-            label="Phone Number"
-            value={profileDetails.phoneNumber}
-            onChange={updateProfileDetails}
-          />
-          <SelectorComponent
-            label="Team"
-            labelId="favTeam"
-            id="teamId"
-            value={profileDetails.teamId}
-            onChange={updateFavoriteTeam}
-            options={teams}
-          />
-        </>
-      }
-      submitButton={
-        <SubmitButtonComponent
-          caption="UPDATE PROFIEL"
-          color="primary"
-          handleClick={submitForm}
-        />
-      }
-      link={
-        <Link href="#" onClick={HISTORY.gotoEditPassword}>
-          Change Password
-        </Link>
-      }
-    />
+    <Grid container justify="center">
+      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
+        <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
+          <Grid container>
+            <Controller
+              control={control}
+              rules={{ required: 'This field is required' }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="User Name"
+                />
+              )}
+              name="userName"
+              defaultValue={user.userName}
+            />
+            {errors.userName && (
+              <Typography color="error">{errors.userName.message}</Typography>
+            )}
+            <Controller
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="First Name"
+                />
+              )}
+              name="firstName"
+              defaultValue={user.firstName}
+            />
+            <Controller
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="Last Name"
+                />
+              )}
+              name="lastName"
+              defaultValue={user.lastName}
+            />
+            <Controller
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="Email Address"
+                />
+              )}
+              name="email"
+              defaultValue={user.email}
+            />
+            <Controller
+              control={control}
+              render={({ field }) => (
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        color="primary"
+                        {...field}
+                        checked={!!field.value}
+                      />
+                    }
+                    label="Totaaltoto"
+                  />
+                </Grid>
+              )}
+              name="totaalToto"
+              defaultValue={user.totaalToto}
+            />
+            <Controller
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  label="Phone Number"
+                />
+              )}
+              name="phoneNumber"
+              defaultValue={user.phoneNumber}
+            />
+            <Controller
+              control={control}
+              render={({ field }) => (
+                <FormControl variant="outlined" fullWidth>
+                  <TextField
+                    {...field}
+                    variant="outlined"
+                    margin="normal"
+                    select
+                    label="Team"
+                  >
+                    {[...teams]
+                      .sort((optionOne, optionTwo) =>
+                        optionOne.name.localeCompare(optionTwo.name),
+                      )
+                      .map((team, i) => (
+                        <MenuItem key={i} value={team.id}>
+                          {team.name}
+                        </MenuItem>
+                      ))}
+                  </TextField>
+                </FormControl>
+              )}
+              name="teamId"
+              defaultValue={String(user.team.id)}
+            />
+          </Grid>
+          <SubmitForm caption="UPDATE PROFIEL" color="primary" />
+          <Link href="#" onClick={HISTORY.gotoEditPassword}>
+            Change Password
+          </Link>
+        </form>
+      </Grid>
+    </Grid>
   );
 };
 
