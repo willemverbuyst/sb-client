@@ -117,8 +117,20 @@ const getCurrentRoundForUser = async (id) => {
 
 const getFixture = async (id) => await Fixture.findOne({ where: { id } });
 
+const getLastUpdate = async (id) => {
+  const fixture = await Fixture.findOne({
+    where: { id },
+    attributes: ['updatedAt'],
+  });
+
+  const lastUpdate = fixture ? new Date(fixture.dataValues.updatedAt) : null;
+
+  return lastUpdate;
+};
+
 module.exports = {
   getAllFixturesWithPrediction,
   getCurrentRoundForUser,
   getFixture,
+  getLastUpdate,
 };
