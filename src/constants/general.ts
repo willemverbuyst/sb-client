@@ -1,1 +1,1 @@
-export const APP_NAME = 'Erpasi 2020 - 2021';
+export const APP_NAME = 'ErPaSitoto';
