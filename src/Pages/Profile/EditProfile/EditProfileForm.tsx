@@ -6,13 +6,13 @@ import {
   Link,
   MenuItem,
   TextField,
-  Typography,
 } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import SubmitForm from '../../../Components/Button/SubmitForm';
+import ControllerTextInput from '../../../Components/Form/ControllerTextInput';
 import * as HISTORY from '../../../history';
 import { IUser } from '../../../models/player.model';
 import { ITeamForSelector } from '../../../models/toto.models';
@@ -66,24 +66,13 @@ const EditProfileForm: React.FC<IProps> = ({
       <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
         <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
           <Grid container>
-            <Controller
+            <ControllerTextInput
               control={control}
-              rules={{ required: 'This field is required' }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  label="User Name"
-                />
-              )}
-              name="userName"
               defaultValue={user.userName}
+              error={errors.userName}
+              label="User Name"
+              name="userName"
             />
-            {errors.userName && (
-              <Typography color="error">{errors.userName.message}</Typography>
-            )}
             <Controller
               control={control}
               render={({ field }) => (
