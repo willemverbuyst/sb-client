@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
 import SubmitForm from '../../Components/Button/SubmitForm';
+import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
 import * as HISTORY from '../../history';
 import { userLogIn } from '../../store/user/action-creators';
 import { useStyles } from './styles';
@@ -19,6 +20,7 @@ const LoginForm: React.FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -39,16 +41,13 @@ const LoginForm: React.FC = (): ReactElement => {
         <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
           <Grid container>
             <AvatarIconComponent icon={<LockOutlinedIcon />} />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
+            <ControllerEmailInput
+              control={control}
+              defaultValue=""
+              error={errors.email}
               label="Email Address"
-              {...register('email', { required: true })}
+              name="email"
             />
-            {errors.email && (
-              <Typography color="error">This field is required</Typography>
-            )}
             <TextField
               variant="outlined"
               type="password"
