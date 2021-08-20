@@ -1,9 +1,4 @@
-import {
-  FormControl,
-  makeStyles,
-  MenuItem,
-  Typography,
-} from '@material-ui/core';
+import { FormControl, MenuItem, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import React, { ReactElement } from 'react';
 import {
@@ -14,21 +9,13 @@ import {
 } from 'react-hook-form';
 
 import { ITeamForSelector } from '../../models/toto.models';
+import { useValidationStyles } from '../../theme/validation';
 
 interface IProps<T> extends UseControllerProps<T> {
   error: FieldError | undefined;
   label: string;
   teams: ITeamForSelector[];
 }
-
-const useStyles = makeStyles({
-  input: {
-    '& input + fieldset': {
-      borderColor: '#f44336',
-      borderWidth: '2px',
-    },
-  },
-});
 
 const ControllerSelect = <T extends FieldValues>({
   control,
@@ -38,7 +25,7 @@ const ControllerSelect = <T extends FieldValues>({
   name,
   teams,
 }: IProps<T>): ReactElement => {
-  const classes = useStyles();
+  const classes = useValidationStyles();
 
   return (
     <Controller

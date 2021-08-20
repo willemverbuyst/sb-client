@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import React, { ReactElement } from 'react';
 import {
@@ -8,19 +8,12 @@ import {
   UseControllerProps,
 } from 'react-hook-form';
 
+import { useValidationStyles } from '../../theme/validation';
+
 interface IProps<T> extends UseControllerProps<T> {
   error: FieldError | undefined;
   label: string;
 }
-
-const useStyles = makeStyles({
-  input: {
-    '& input + fieldset': {
-      borderColor: '#f44336',
-      borderWidth: '2px',
-    },
-  },
-});
 
 const ControllerTextInput = <T extends FieldValues>({
   control,
@@ -29,7 +22,7 @@ const ControllerTextInput = <T extends FieldValues>({
   label,
   name,
 }: IProps<T>): ReactElement => {
-  const classes = useStyles();
+  const classes = useValidationStyles();
 
   return (
     <Controller
