@@ -1,9 +1,10 @@
-import { Grid, Link, TextField, Typography } from '@material-ui/core';
+import { Grid, Link } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import SubmitForm from '../../../Components/Button/SubmitForm';
+import ControllerPasswordInput from '../../../Components/Form/ControllerPasswordInput';
 import * as HISTORY from '../../../history';
 import { changePassword } from '../../../store/user/action-creators';
 import { useStyles } from './styles';
@@ -19,7 +20,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
     reset,
@@ -45,57 +46,31 @@ const EditPasswordForm: React.FC = (): ReactElement => {
       <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
         <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
           <Grid container>
-            <TextField
-              variant="outlined"
-              type="password"
-              margin="normal"
-              fullWidth
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.currentPassword}
               label="Current Password"
-              {...register('currentPassword', {
-                required: 'This field is required',
-              })}
+              name="currentPassword"
+              validateLength={false}
             />
-            {errors.currentPassword && (
-              <Typography color="error">
-                {errors.currentPassword.message}
-              </Typography>
-            )}
-            <TextField
-              variant="outlined"
-              type="password"
-              margin="normal"
-              fullWidth
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.newPassword}
               label="New Password"
-              {...register('newPassword', {
-                required: 'This field is required',
-                minLength: {
-                  value: 8,
-                  message: 'Password must have at least 8 characters',
-                },
-              })}
+              name="newPassword"
+              validateLength={true}
             />
-            {errors.newPassword && (
-              <Typography color="error">
-                {errors.newPassword.message}
-              </Typography>
-            )}
-            <TextField
-              variant="outlined"
-              type="password"
-              margin="normal"
-              fullWidth
-              label="Confirm New Password"
-              {...register('confirmPassword', {
-                required: 'This field is required',
-                validate: (value) =>
-                  value === newPassword || 'The passwords do not match',
-              })}
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.confirmPassword}
+              label="confirmPassword"
+              name="confirmPassword"
+              validateLength={true}
+              newPassword={newPassword}
             />
-            {errors.confirmPassword && (
-              <Typography color="error">
-                {errors.confirmPassword.message}
-              </Typography>
-            )}
           </Grid>
           <SubmitForm caption="CHANGE PASSWORD" color="primary" />
           <Link href="#" onClick={HISTORY.gotoProfile}>

@@ -12,6 +12,7 @@ interface IProps<T> extends UseControllerProps<T> {
   error: FieldError | undefined;
   label: string;
   validateLength: boolean;
+  newPassword?: string;
 }
 
 const useStyles = makeStyles({
@@ -25,10 +26,12 @@ const useStyles = makeStyles({
 
 const ControllerPasswordInput = <T extends FieldValues>({
   control,
+  defaultValue,
   error,
   label,
   name,
   validateLength,
+  newPassword,
 }: IProps<T>): ReactElement => {
   const classes = useStyles();
 
@@ -42,6 +45,9 @@ const ControllerPasswordInput = <T extends FieldValues>({
               value: 8,
               message: 'Password must have at least 8 characters',
             }
+          : undefined,
+        validate: newPassword
+          ? (value) => value === newPassword || 'The passwords do not match'
           : undefined,
       }}
       render={({ field }) => (
@@ -61,6 +67,7 @@ const ControllerPasswordInput = <T extends FieldValues>({
         </>
       )}
       name={name}
+      defaultValue={defaultValue}
     />
   );
 };
