@@ -1,4 +1,4 @@
-import { Grid, Link, TextField, Typography } from '@material-ui/core';
+import { Grid, Link } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { ReactElement } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
 import SubmitForm from '../../Components/Button/SubmitForm';
 import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
+import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput';
 import * as HISTORY from '../../history';
 import { userLogIn } from '../../store/user/action-creators';
 import { useStyles } from './styles';
@@ -21,7 +22,6 @@ const LoginForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
@@ -48,17 +48,14 @@ const LoginForm: React.FC = (): ReactElement => {
               label="Email Address"
               name="email"
             />
-            <TextField
-              variant="outlined"
-              type="password"
-              margin="normal"
-              fullWidth
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.password}
               label="Password"
-              {...register('password', { required: true })}
+              name="password"
+              validateLength={false}
             />
-            {errors.password && (
-              <Typography color="error">This field is required</Typography>
-            )}
           </Grid>
           <SubmitForm caption="LOG IN" color="primary" />
           <Link href="#" onClick={HISTORY.gotoForgotPassword}>
