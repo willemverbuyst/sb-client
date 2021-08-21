@@ -1,11 +1,13 @@
+const { Op } = require('sequelize');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const Prediction = require('../models').prediction;
 const Team = require('../models').team;
 const User = require('../models').user;
 
 const deleteUserAndHisPrediction = async (id) => {
-  const user = await User.destroy({ where: { id } });
   await Prediction.destroy({ where: { userId: id } });
+  const user = await User.destroy({ where: { id } });
 
   return user;
 };
@@ -58,7 +60,6 @@ const createNewUser = async ({
   firstName,
   lastName,
   email,
-  password,
   phoneNumber,
   totaalToto,
   teamId,
@@ -69,7 +70,10 @@ const createNewUser = async ({
       firstName,
       lastName,
       email,
-      password: bcrypt.hashSync(password, Number(process.env.SALT_ROUNDS)),
+      password: bcrypt.hashSync(
+        'EliudKipchoge',
+        Number(process.env.SALT_ROUNDS),
+      ),
       phoneNumber,
       totaalToto,
       teamId,
@@ -90,9 +94,41 @@ const getUserByEmail = async (email) =>
     include: [{ model: Team, attributes: ['id', 'logo', 'name'] }],
   });
 
+const getUserByToken = async (token) => {
+  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
+
+  return await User.findOne({
+    where: {
+      passwordResetToken: hashedToken,
+      passwordResetExpires: { [Op.gt]: Date.now() },
+    },
+  });
+};
+
+const handlePasswordReset = async (
+  passwordResetExpires,
+  passwordResetToken,
+  email,
+) => {
+  await await User.update(
+    { passwordResetExpires, passwordResetToken },
+    { where: { email } },
+  );
+};
+
+const handlePasswordResetError = async (email) => {
+  await await User.update(
+    { passwordResetExpires: null, passwordResetToken: null },
+    { where: { email } },
+  );
+};
+
 const updateUserPassword = async (newPassword, user) =>
   await user.update({
     password: bcrypt.hashSync(newPassword, Number(process.env.SALT_ROUNDS)),
+    passwordChangedAt: Date.now() - 1000,
+    passwordResetToken: null,
+    passwordResetExpires: null,
   });
 
 const updateUserProfile = async (
@@ -115,8 +151,6 @@ const updateUserProfile = async (
       plain: true,
     },
   );
-  console.log('email', updatedUser[1].dataValues.email);
-
   return await getUserById(updatedUser[1].dataValues.id);
 };
 
@@ -126,6 +160,9 @@ module.exports = {
   getAllUsers,
   getUserById,
   getUserByEmail,
+  getUserByToken,
+  handlePasswordReset,
+  handlePasswordResetError,
   updateUserPassword,
   updateUserProfile,
 };

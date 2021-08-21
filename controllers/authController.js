@@ -1,15 +1,37 @@
+const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const { getUserByEmail, updateUserPassword } = require('../queries/userQuery');
-const { getCurrentRoundForUser } = require('../queries/fixtureQuery');
 const {
-  validateLoginInput,
-  validatePassword,
-  validateUpdatePassword,
-} = require('../validators/inputValidator');
-const { validateNewPassword } = require('../validators/queryValidator');
+  getUserByEmail,
+  getUserByToken,
+  handlePasswordReset,
+  handlePasswordResetError,
+  updateUserPassword,
+} = require('../queries/userQuery');
+const { getCurrentRoundForUser } = require('../queries/fixtureQuery');
+const sendEmail = require('../utils/email');
+const validateChangePasswordInput = require('../validators/validateChangePasswordInput');
+const validateLoginInput = require('../validators/validateLoginInput');
+const validateNewPassword = require('../validators/validateNewPassword');
+const validatePassword = require('../validators/validatePassword');
+const validatePasswordConfirm = require('../validators/validatePasswordConfirm');
+
+const createPasswordResetToken = async (email) => {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  const passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  console.log({ resetToken }, passwordResetToken);
+  const passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+  await handlePasswordReset(passwordResetExpires, passwordResetToken, email);
+
+  return resetToken;
+};
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -37,6 +59,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const currentRound = await getCurrentRoundForUser(user.id);
 
   const token = signToken({ userId: user.email });
+  user.password = '';
 
   res.status(200).json({
     status: 'success',
@@ -110,6 +133,7 @@ exports.validToken = catchAsync(async (req, res, next) => {
   const currentRound = await getCurrentRoundForUser(user.id);
 
   const token = signToken({ userId: user.email });
+  user.password = '';
 
   res.status(200).json({
     status: 'success',
@@ -124,19 +148,111 @@ exports.validToken = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.forgotPassword = catchAsync(async (req, res, next) => {});
-exports.resetPassword = catchAsync(async (req, res, next) => {});
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
 
-exports.updatePassword = catchAsync(async (req, res, next) => {
-  const { newPassword } = req.body;
+  // Get user based on posted email
+  const user = await getUserByEmail(email);
 
-  if (!validateUpdatePassword(newPassword)) {
-    return next(new AppError('Vul nieuw wachtwoord in!'), 400);
+  if (!user) {
+    next(new AppError('There is no user with that email address', 404));
   }
 
-  if (!validateNewPassword(newPassword, req.user.password)) {
+  const resetToken = await createPasswordResetToken(email);
+
+  const resetURL = `${req.protocol}://${req.get(
+    'host',
+  )}/api/v1/users/resetPassword/${resetToken}`;
+
+  const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to \n${resetURL}.\nIf you didn't forget your password, please ignore this email. `;
+
+  try {
+    await sendEmail({
+      email: email,
+      subject: 'Your password reset token (valid for 10 minutes)',
+      message,
+    });
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Token sent to email!',
+    });
+  } catch (err) {
+    await handlePasswordResetError(email);
+
+    return next(
+      new AppError(
+        'There was an error sending the email. Try again later!',
+        500,
+      ),
+    );
+  }
+});
+
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const temporaryToken = req.params.token;
+  const { password } = req.body;
+  const { passwordConfirm } = req.body;
+  // Get user based on token
+  const userByToken = await getUserByToken(temporaryToken);
+
+  // If token has not expired and there is a user
+  // then set new password
+  if (!userByToken) {
+    next(new AppError('Token is invalid or has expired', 400));
+  }
+
+  if (!validatePasswordConfirm(password, passwordConfirm)) {
+    next(new AppError('Passwords are not the same!', 400));
+  }
+
+  await updateUserPassword(password, userByToken);
+
+  // Log in user, send JWT
+  const user = await getUserByEmail(userByToken.email);
+  const currentRound = await getCurrentRoundForUser(user.id);
+  const token = signToken({ userId: user.email });
+  user.password = '';
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user: {
+        profile: user,
+        currentRound,
+      },
+    },
+    message: `Welcome back ${user.userName}`,
+    token,
+  });
+});
+
+exports.changePassword = catchAsync(async (req, res, next) => {
+  const { currentPassword, newPassword, confirmPassword } = req.body;
+
+  if (
+    !validateChangePasswordInput(currentPassword, newPassword, confirmPassword)
+  ) {
+    return next(
+      new AppError('Er ontbreken gevens, vul alle wachtwoorden in!'),
+      400,
+    );
+  }
+
+  if (!validatePassword(req.user, currentPassword)) {
+    next(new AppError('Je current password is verkeerd!', 401));
+  }
+
+  if (!validateNewPassword(newPassword, currentPassword)) {
     return next(
       new AppError('Je oude en nieuwe wachtwoord mag niet hetzelfde zijn!'),
+      400,
+    );
+  }
+
+  if (!validatePasswordConfirm(newPassword, confirmPassword)) {
+    return next(
+      new AppError('Je nieuwe en confirm wachtwoord zijn niet hetzelfde!'),
       400,
     );
   }

@@ -10,6 +10,7 @@ const { calculateScore } = require('../utils/scores.functions');
 
 const getAllFixturesWithPrediction = async (playerId, userId) => {
   const fixturesWithPrediction = await Fixture.findAll({
+    where: { round: { [Op.regexp]: '^Regular' } },
     include: [
       {
         model: Prediction,
@@ -70,6 +71,7 @@ const getCurrentRoundForUser = async (id) => {
   const timeStampNextMonday = nextMonday();
   const fixturesWithPrediction = await Fixture.findAll({
     where: {
+      round: { [Op.regexp]: '^Regular' },
       eventTimeStamp: {
         [Op.between]: [timeStampLastMonday, timeStampNextMonday],
       },
@@ -81,6 +83,7 @@ const getCurrentRoundForUser = async (id) => {
       attributes: ['pGoalsAwayTeam', 'pGoalsHomeTeam'],
       required: false,
     },
+    order: [['id', 'ASC']],
     raw: true,
     nest: true,
   });
@@ -114,8 +117,20 @@ const getCurrentRoundForUser = async (id) => {
 
 const getFixture = async (id) => await Fixture.findOne({ where: { id } });
 
+const getLastUpdate = async (id) => {
+  const fixture = await Fixture.findOne({
+    where: { id },
+    attributes: ['updatedAt'],
+  });
+
+  const lastUpdate = fixture ? new Date(fixture.dataValues.updatedAt) : null;
+
+  return lastUpdate;
+};
+
 module.exports = {
   getAllFixturesWithPrediction,
   getCurrentRoundForUser,
   getFixture,
+  getLastUpdate,
 };

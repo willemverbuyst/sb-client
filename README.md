@@ -1,31 +1,106 @@
 # What is this?
 
-A repo with a server and database access, made with Express and Sequelize.
+A repo with a server and a PostgreSQL database setup, made with Express and Sequelize.
 
-This is a continuation of a project started/created by [Michelle Pesch](https://github.com/mipes4/sportsbetting_fe).
+This is a refactored version of a project started/created by [Michelle Pesch](https://github.com/mipes4/sportsbetting_fe).
 
-The goal was to move a big part of the calculation/filter logic to the back-end and reduce the amount of data being transferred. For this a I created a new back-end repo.
+# Development version
 
 ## Set up :electric_plug:
 
-### General
+### Genreal
 
-Replace the the process.env variables with your own in a `.env` file.
+1. Clone the repo
+2. Run `npm i` to install the dependencies
 
-1. DATABASE_DEV=[Your postgres database (example)](https://www.elephantsql.com/)
-2. JWT_SECRET=Your secret
-3. API_URL=[The API URL from https://www.api-football.com/](https://www.api-football.com/)
-4. API_KEY=[The API Key from https://www.api-football.com/](https://www.api-football.com/)
+### Environment
 
-### Get running
+3. Create a PostgreSQL database
+4. Sign up and get an api key from the football api
+5. Add a `.env` file at the root level of the project
+6. Add the environment variables and update them with your credentials
 
-1. Clone Repo
-2. `npm i` to install dependencies.
-3. Create a postgresql database.
-4. Get an api key from api-football.
-5. Update process.env variables with your credentials.
-6. Migrate tables and relations. `npx sequelize-cli db:migrate`
-7. Uncomment line 18/19 in index.js and start server with `npm run dev`. This to fetch the teams for the favteam table and all the fixtures.
-8. Once fetched comment out these lines to prevent refetching during development. Shut down the server.
-9. Seed the tables with seeders. `npx sequelize-cli db:seed:all`
-10. Start server. `npm run dev`
+### Database
+
+7. Update or create seed-files if needed
+8. Use the `generate_predictions.sh` bash script to generate dummy predictions if desired
+9. Migrate tables and relations with `npx sequelize-cli db:migrate`
+10. Import teams by running `node api-football/api-calls.js --importTeams`
+11. Import your seeds with `npx sequelize-cli db:seed:all`
+12. Use the scripts in the `post-release.sh` and/or `package.json` files to undo/redo/customize your setup.
+
+### Server
+
+13. Start server with `npm run dev`
+
+## Environment variables
+
+NODE_ENV=development or production
+
+PORT=port number
+
+DATABASE_DEV=[Your postgres database (example)](https://www.elephantsql.com/)
+
+API_URL=[The API URL from https://www.api-football.com/](https://www.api-football.com/)
+
+API_KEY=[The API Key from https://www.api-football.com/](https://www.api-football.com/)
+
+LEAGUE_ID=Check documentation football api
+
+ID_FIRST_FIXTURE=Check documentation football api
+
+ID_LAST_FIXTURE=Check documentation football api
+
+UPDATE_INTERVAL=7200000 #2hrs
+
+JWT_SECRET=string
+
+JWT_EXPIRES_IN=time in ms
+
+SALT_ROUNDS=number
+
+EMAIL_USERNAME=email
+
+EMAIL_PASSWORD=password
+
+EMAIL_HOST=e.g. mailtrap
+
+EMAIL_PORT=port number
+
+# Production version
+
+## Set up :electric_plug
+
+1. Create a new project at your host
+2. Add a PostgreSQL database
+3. Add env variables
+4. Update post-release script to migrate tables and seed database
+5. Deploy the branch you have for production
+
+## Environment variables
+
+API_URL=[The API URL from https://www.api-football.com/](https://www.api-football.com/)
+
+API_KEY=[The API Key from https://www.api-football.com/](https://www.api-football.com/)
+
+LEAGUE_ID=Check documentation football api
+
+ID_FIRST_FIXTURE=Check documentation football api
+
+ID_LAST_FIXTURE=Check documentation football api
+
+UPDATE_INTERVAL=7200000 #2hrs
+
+JWT_SECRET=string
+
+JWT_EXPIRES_IN=time in ms
+
+SALT_ROUNDS=number
+
+EMAIL_USERNAME=email
+
+EMAIL_PASSWORD=password
+
+EMAIL_HOST=e.g. mailtrap
+
+EMAIL_PORT=port number
