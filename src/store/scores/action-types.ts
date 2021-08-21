@@ -8,6 +8,7 @@ import {
 
 export enum ActionType {
   RESET_ALL_SCORES = 'RESET_ALL_SCORES ',
+  RESET_SCORES_PLAYER = 'RESET_SCORES_PLAYER',
   STORE_SCORES_FIXTURE = 'STORE_SCORES_FIXTURE',
   STORE_SCORES_ROUND = 'STORE_SCORES_ROUND',
   STORE_SCORES_TOTAL_TOTO = 'STORE_SCORES_TOTAL_TOTO',
@@ -17,6 +18,10 @@ export enum ActionType {
 
 export type ResetAllScores = {
   type: ActionType.RESET_ALL_SCORES;
+};
+
+export type ResetScoresPlayer = {
+  type: ActionType.RESET_SCORES_PLAYER;
 };
 
 export type StoreScoresFixture = {
@@ -46,6 +51,7 @@ export type StorePlayerScores = {
 
 export type ScoresActions =
   | ResetAllScores
+  | ResetScoresPlayer
   | StoreScoresFixture
   | StoreScoresRound
   | StoreScoresTotalToto

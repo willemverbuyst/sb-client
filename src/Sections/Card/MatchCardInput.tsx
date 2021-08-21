@@ -25,8 +25,8 @@ const MatchCardInput: React.FC<IProps> = ({
     predictions: { pGoalsAwayTeam, pGoalsHomeTeam },
   } = fixtureWithPrediction;
   const dispatch = useDispatch();
-  const [pGoalsHT, setpGoalsHT] = useState<number>(0);
-  const [pGoalsAT, setpGoalsAT] = useState<number>(0);
+  const [pGoalsHT, setpGoalsHT] = useState<number>(pGoalsHomeTeam || 0);
+  const [pGoalsAT, setpGoalsAT] = useState<number>(pGoalsAwayTeam || 0);
 
   const handleSubmit = () => {
     const prediction: IPrediction = {

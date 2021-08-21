@@ -18,10 +18,6 @@ export interface IScoresPlayer {
   scores: number[][];
 }
 
-export interface IUser extends IPlayer {
-  token: string;
-}
-
 export interface IAllPlayers {
   players: IPlayer[];
 }

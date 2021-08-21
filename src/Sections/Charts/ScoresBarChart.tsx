@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react';
 import { ChartData } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
-import BarChart from '../../Components/Chart/BarChart';
+import HorizontalBarChart from '../../Components/Chart/HorizontalBarChart';
 import * as HISTORY from '../../history';
 import { IPlayerWithScore } from '../../models/player.model';
 import { selectUserId } from '../../store/user/selectors';
@@ -22,7 +22,6 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     IPlayerWithScore
   >(scores, 'name');
   const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
-  const max: number = UTILS.generateMaxForChartYAx(scoresOfAllPlayes, 1.2);
   const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScore>(
     scores,
   );
@@ -56,14 +55,13 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     legend: {
       display: false,
     },
+    maintainAspectRatio: false,
     responsive: true,
     scales: {
       yAxes: [
         {
           ticks: {
-            display: false,
-            suggestedMin: 0,
-            suggestedMax: max,
+            display: true,
           },
           gridLines: {
             display: false,
@@ -72,6 +70,10 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
       ],
       xAxes: [
         {
+          ticks: {
+            display: false,
+            suggestedMin: 0,
+          },
           gridLines: {
             display: false,
           },
@@ -81,15 +83,15 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
     plugins: {
       datalabels: {
         anchor: 'end',
-        align: 'top',
+        align: 'start',
         display: true,
-        color: 'black',
+        color: '#f1f1f1',
       },
     },
   };
 
   return (
-    <BarChart
+    <HorizontalBarChart
       chartData={chartData}
       chartOptions={chartOptions}
       goto={gotoScoresPlayer}

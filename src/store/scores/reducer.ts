@@ -37,6 +37,12 @@ const scoresReducer = (
         scoresPlayer: null,
       };
 
+    case ActionType.RESET_SCORES_PLAYER:
+      return {
+        ...state,
+        scoresPlayer: null,
+      };
+
     case ActionType.STORE_SCORES_FIXTURE:
       return { ...state, fixtureWithScores: action.payload };
 

@@ -1,14 +1,14 @@
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
-import PageContent from '../../Sections/PageContent';
+import PageTitle from '../../Components/Title/PageTitle';
 
 const PageNotFound: React.FC = (): ReactElement => {
   return (
-    <PageContent
-      loadingText="Looking for ..."
-      content={<Typography variant="h3">...oops 404</Typography>}
-    />
+    <Box>
+      <PageTitle title="Looking for" color="secondary" />
+      <Typography variant="h3">...oops 404</Typography>
+    </Box>
   );
 };
 

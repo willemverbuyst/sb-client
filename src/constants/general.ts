@@ -1,1 +1,1 @@
-export const APP_NAME = 'Sport Betting App 2020 - 2021';
+export const APP_NAME = 'ErPaSitoto';

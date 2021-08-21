@@ -28,9 +28,29 @@ export const selectScoresForFixtureSortedByName = (
     const scoresFixtureSortedByName: IPlayerWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScoreAndPrediction,
       IPlayerWithScoreAndPrediction
-    >('name')(scoresFixture);
+    >('name')('ascending')(scoresFixture);
 
     return scoresFixtureSortedByName;
+  } else {
+    return null;
+  }
+};
+
+export const selectScoresForFixtureSortedByScore = (
+  state: StoreState,
+): IPlayerWithScoreAndPrediction[] | null => {
+  if (
+    state.scoresState.fixtureWithScores &&
+    state.scoresState.fixtureWithScores.scores &&
+    state.scoresState.fixtureWithScores.scores.length > 0
+  ) {
+    const scoresFixture = state.scoresState.fixtureWithScores.scores;
+    const scoresFixtureSortedByScore: IPlayerWithScoreAndPrediction[] = UTILS.sortArrayWithObjects<
+      keyof IPlayerWithScoreAndPrediction,
+      IPlayerWithScoreAndPrediction
+    >('score')('descending')(scoresFixture);
+
+    return scoresFixtureSortedByScore;
   } else {
     return null;
   }
@@ -60,7 +80,7 @@ export const selectScoresTotalTotoSortedByName = (
     const scoresTotalTotoSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
-    >('name')(scoresTotalToto);
+    >('name')('ascending')(scoresTotalToto);
 
     return scoresTotalTotoSortedByName;
   } else {
@@ -80,7 +100,7 @@ export const selectScoresTotalTotoSortedByScore = (
     const scoresTotalTotoSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
-    >('score')(scoresTotalToto);
+    >('score')('descending')(scoresTotalToto);
 
     return scoresTotalTotoSortedByScore;
   } else {
@@ -97,7 +117,7 @@ export const selectScoresTotoRoundSortedByName = (
     const scoresTotoRoundSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
-    >('name')(scoresTotoRound);
+    >('name')('ascending')(scoresTotoRound);
 
     return scoresTotoRoundSortedByName;
   } else {
@@ -114,7 +134,7 @@ export const selectScoresTotoRoundSortedByScore = (
     const scoresTotoRoundSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
-    >('score')(scoresTotoRound);
+    >('score')('descending')(scoresTotoRound);
 
     return scoresTotoRoundSortedByScore;
   } else {
@@ -131,7 +151,7 @@ export const selectScoresRoundSortedByName = (
     const scoresRoundSortedByName: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
-    >('name')(scoresRound);
+    >('name')('ascending')(scoresRound);
 
     return scoresRoundSortedByName;
   } else {
@@ -147,7 +167,7 @@ export const selectScoresRoundSortedByScore = (
     const scoresRoundSortedByScore: IPlayerWithScore[] = UTILS.sortArrayWithObjects<
       keyof IPlayerWithScore,
       IPlayerWithScore
-    >('score')(scoresRound);
+    >('score')('descending')(scoresRound);
 
     return scoresRoundSortedByScore;
   } else {
@@ -165,3 +185,11 @@ export const selectTotoRoundId = (state: StoreState): number | null => {
 
 export const selectPlayerScores = (state: StoreState): IScoresPlayer | null =>
   state.scoresState.scoresPlayer;
+
+export const selectPlayerHasScores = (state: StoreState): boolean =>
+  state.scoresState.scoresPlayer &&
+  state.scoresState.scoresPlayer.scores &&
+  state.scoresState.scoresPlayer.scores.length &&
+  state.scoresState.scoresPlayer.scores.flat().reduce((a, b) => a + b) !== 0
+    ? true
+    : false;

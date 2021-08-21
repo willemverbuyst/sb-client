@@ -38,6 +38,11 @@ export interface ITeam {
   logo: string;
 }
 
+export interface ITeamForSelector {
+  id: number;
+  name: string;
+}
+
 export interface IAllTeams {
   teams: ITeam[];
 }

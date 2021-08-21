@@ -19,7 +19,7 @@ export const selectAllPredictionsSortedByTime = (
         UTILS.sortArrayWithObjects<
           keyof IFixtureWithScoreAndPredictions,
           IFixtureWithScoreAndPredictions
-        >('eventTimeStamp')(round),
+        >('eventTimeStamp')('ascending')(round),
       ),
     );
     return fixturesSortedByTime;

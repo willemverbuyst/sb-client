@@ -1,18 +1,18 @@
+import { Box } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 import PageTitle from '../../Components/Title/PageTitle';
-import PageContent from '../../Sections/PageContent';
+import Guard from '../../Sections/Guard';
 import AccordionWithRules from './AccordionWithRules';
 
 const Rules: React.FC = (): ReactElement => {
   return (
-    <PageContent
-      loadingText="Regels"
+    <Guard
       content={
-        <>
+        <Box>
           <PageTitle title="Regels" color="secondary" />
           <AccordionWithRules />
-        </>
+        </Box>
       }
     />
   );

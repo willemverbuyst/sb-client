@@ -4,15 +4,35 @@ export const sortArrayWithObjects = <
   T extends { [key: string]: any }
 >(
   prop: U,
-) => (arrayWithObjects: T[]): T[] => {
+) => (order: string) => (arrayWithObjects: T[]): T[] => {
   const sortedArrayWithObjects = [...arrayWithObjects].sort(
     (object1, object2): number => {
       const value1 = object1[prop];
       const value2 = object2[prop];
-      if (typeof value1 === 'string' && typeof value2 === 'string') {
+      if (
+        typeof value1 === 'string' &&
+        typeof value2 === 'string' &&
+        order === 'ascending'
+      ) {
         return value1.toLowerCase().localeCompare(value2.toLowerCase());
-      } else if (typeof value1 === 'number' && typeof value2 === 'number') {
+      } else if (
+        typeof value1 === 'string' &&
+        typeof value2 === 'string' &&
+        order === 'descending'
+      ) {
+        return value2.toLowerCase().localeCompare(value1.toLowerCase());
+      } else if (
+        typeof value1 === 'number' &&
+        typeof value2 === 'number' &&
+        order === 'ascending'
+      ) {
         return value1 - value2;
+      } else if (
+        typeof value1 === 'number' &&
+        typeof value2 === 'number' &&
+        order === 'descending'
+      ) {
+        return value2 - value1;
       } else {
         return 1;
       }

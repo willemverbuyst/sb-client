@@ -10,7 +10,7 @@ export const selectPlayersSortedByName = (
     const playersSortedByName = UTILS.sortArrayWithObjects<
       keyof IPlayer,
       IPlayer
-    >('userName')(players);
+    >('userName')('ascending')(players);
     return playersSortedByName;
   }
   return null;

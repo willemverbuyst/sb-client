@@ -7,9 +7,12 @@ import { IPrediction } from '../../models/predictions.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions';
 import { StoreState } from '../types';
+import { UserActions } from '../user/action-types';
+import { updateUserCurrentRound } from '../user/actions';
 import { PredictionActions } from './action-types';
 import {
   postPrediction,
+  resetAllPredictions,
   storeAllPredictions,
   updatePrediction,
 } from './actions';
@@ -19,6 +22,7 @@ export const getAllPredictions = (
 ): ThunkAction<void, StoreState, unknown, Action<string>> => async (
   dispatch: Dispatch<AppStateActions | PredictionActions>,
 ) => {
+  dispatch(resetAllPredictions());
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -49,7 +53,9 @@ export const changePrediction = ({
   StoreState,
   unknown,
   Action<string>
-> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
+> => async (
+  dispatch: Dispatch<AppStateActions | PredictionActions | UserActions>,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -63,9 +69,9 @@ export const changePrediction = ({
         headers: { Authorization: `Bearer ${token}` },
       },
     );
-
     dispatch(setMessage(response.data.status, response.data.message));
     dispatch(updatePrediction(response.data.data));
+    dispatch(updateUserCurrentRound(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {
@@ -88,7 +94,9 @@ export const postNewPrediction = ({
   StoreState,
   unknown,
   Action<string>
-> => async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
+> => async (
+  dispatch: Dispatch<AppStateActions | PredictionActions | UserActions>,
+) => {
   dispatch(appLoading());
   try {
     const token = localStorage.getItem('user_token');
@@ -105,6 +113,7 @@ export const postNewPrediction = ({
 
     dispatch(setMessage(response.data.status, response.data.message));
     dispatch(postPrediction(response.data.data));
+    dispatch(updateUserCurrentRound(response.data.data));
     dispatch(appDoneLoading());
   } catch (error) {
     if (error.response) {

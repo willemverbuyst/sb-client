@@ -1,27 +1,43 @@
-import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { Box } from '@material-ui/core';
+import React, { ReactElement, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import MessageComponent from '../../../Components/Communication/Message';
+import ProgressComponent from '../../../Components/Progress';
 import PageTitle from '../../../Components/Title/PageTitle';
-import PageContent from '../../../Sections/PageContent';
-import { selectUser } from '../../../store/user/selectors';
+import Guard from '../../../Sections/Guard';
+import { selectAppLoading } from '../../../store/appState/selectors';
+import { fetchAllTeams } from '../../../store/teams/action-creators';
+import { selectTeams } from '../../../store/teams/selectors';
+import { selectToken, selectUser } from '../../../store/user/selectors';
 import EditProfileForm from './EditProfileForm';
 
 const EditProfile: React.FC = (): ReactElement => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
+  const teams = useSelector(selectTeams);
+  const token = useSelector(selectToken);
   const user = useSelector(selectUser);
 
+  useEffect(() => {
+    if (token && !teams) {
+      dispatch(fetchAllTeams());
+    }
+  }, [dispatch, teams, token]);
+
   return (
-    <PageContent
-      loadingText="Profiel"
+    <Guard
       content={
-        <>
+        <Box>
           <PageTitle title="Profiel" color="primary" />
-          {user ? (
-            <EditProfileForm user={user} />
+          {isLoading ? (
+            <ProgressComponent />
+          ) : user && teams ? (
+            <EditProfileForm user={user} teams={teams} />
           ) : (
             <MessageComponent message="Geen profiel gevonden" />
           )}
-        </>
+        </Box>
       }
     />
   );

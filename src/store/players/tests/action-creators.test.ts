@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { Severity } from '../../../models/app.models';
-import { ISignUpCredentials } from '../../../models/credentials.model';
+import { IProfileDetails } from '../../../models/credentials.model';
 import { IAllPlayers, INewPlayer, IPlayer } from '../../../models/player.model';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
 import { addPlayer, fetchAllPlayers, playerDelete } from '../action-creators';
@@ -15,12 +15,11 @@ beforeEach(() => {
 
 describe('#addPlayer', () => {
   it('calls axios and returns a player', async () => {
-    const signUpCredentials: ISignUpCredentials = {
+    const signUpCredentials: IProfileDetails = {
       userName: 'test',
       firstName: 'test',
       lastName: 'test',
       email: 'test@test.com',
-      password: 'test',
       phoneNumber: '123',
       totaalToto: true,
       teamId: 1,

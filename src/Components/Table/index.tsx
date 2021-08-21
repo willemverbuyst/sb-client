@@ -4,10 +4,7 @@ import React, { ReactElement } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   table: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-    },
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(2),
   },
 }));
 

@@ -3,7 +3,7 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { API_URL } from '../../config/apiUrl';
-import { ISignUpCredentials } from '../../models/credentials.model';
+import { IProfileDetails } from '../../models/credentials.model';
 import { AppStateActions } from '../appState/action-types';
 import { appDoneLoading, appLoading } from '../appState/actions';
 import { setMessage } from '../appState/actions';
@@ -12,14 +12,13 @@ import { PlayersActions } from './action-types';
 import { addNewPlayer, deletePlayer, storeAllPlayers } from './actions';
 
 export const addPlayer = (
-  signUpCredentials: ISignUpCredentials,
+  signUpCredentials: IProfileDetails,
 ): ThunkAction<void, StoreState, unknown, Action<string>> => {
   const {
     userName,
     firstName,
     lastName,
     email,
-    password,
     phoneNumber,
     totaalToto,
     teamId,
@@ -35,7 +34,6 @@ export const addPlayer = (
           firstName,
           lastName,
           email,
-          password,
           phoneNumber,
           totaalToto,
           teamId,

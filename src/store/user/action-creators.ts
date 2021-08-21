@@ -86,7 +86,7 @@ export const editUserProfile = (
         { headers: { Authorization: `Bearer ${token}` } },
       );
 
-      dispatch(updateUserProfile(response.data));
+      dispatch(updateUserProfile(response.data.data));
       dispatch(setMessage(response.data.status, response.data.message));
       dispatch(appDoneLoading());
     } catch (error) {

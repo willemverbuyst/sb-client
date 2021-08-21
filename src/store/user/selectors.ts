@@ -1,4 +1,4 @@
-import { IUser } from '../../models/player.model';
+import { IPlayer } from '../../models/player.model';
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
 import * as UTILS from '../../utils';
 import { StoreState } from '../types';
@@ -6,7 +6,7 @@ import { StoreState } from '../types';
 export const selectToken = (state: StoreState): string | null =>
   state.userState.token;
 
-export const selectUser = (state: StoreState): IUser | null =>
+export const selectUser = (state: StoreState): IPlayer | null =>
   state.userState.user ? state.userState.user.profile : null;
 
 export const selectUserId = (state: StoreState): number | null =>
@@ -26,7 +26,7 @@ export const selectCurrentRoundSortedByTime = (
     const currentRoundSortedByTime = UTILS.sortArrayWithObjects<
       keyof IFixtureWithScoreAndPredictions,
       IFixtureWithScoreAndPredictions
-    >('eventTimeStamp')(fixtures);
+    >('eventTimeStamp')('ascending')(fixtures);
 
     return currentRoundSortedByTime;
   }

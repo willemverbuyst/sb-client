@@ -1,23 +1,27 @@
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
+import ProgressComponent from '../../../Components/Progress';
 import PageTitle from '../../../Components/Title/PageTitle';
-import PageContent from '../../../Sections/PageContent';
+import Guard from '../../../Sections/Guard';
 import Predictions from '../../../Sections/Predictions';
+import { selectAppLoading } from '../../../store/appState/selectors';
 import { getAllPredictions } from '../../../store/predictions/action-creators';
 import { selectAllPredictionsSortedByTime } from '../../../store/predictions/selectors';
-import { selectUser } from '../../../store/user/selectors';
+import { selectToken, selectUser } from '../../../store/user/selectors';
 import * as UTILS from '../../../utils';
 import Pagination from './Pagination';
 
 const PredictionsUser: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
   const allPredictionsSortedByTime = useSelector(
     selectAllPredictionsSortedByTime,
   );
-
+  const token = useSelector(selectToken);
   const { ronde } = useParams<{ ronde: string }>();
   const { totoronde } = useParams<{ totoronde: string }>();
   const round = Number(ronde);
@@ -25,8 +29,10 @@ const PredictionsUser: React.FC = (): ReactElement => {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    dispatch(getAllPredictions(Number(user?.id)));
-  }, [dispatch, user]);
+    if (token && !allPredictionsSortedByTime) {
+      dispatch(getAllPredictions(Number(user?.id)));
+    }
+  }, [dispatch, user, token]);
 
   const filteredPredictions = allPredictionsSortedByTime
     ? [
@@ -37,18 +43,24 @@ const PredictionsUser: React.FC = (): ReactElement => {
     : null;
 
   return (
-    <PageContent
-      loadingText="Mijn voorspellingen"
+    <Guard
       content={
-        filteredPredictions ? (
-          <>
-            <PageTitle title="Mijn voorspellingen" color="primary" />
-            <Predictions predictions={filteredPredictions} display="private" />
-            <Pagination totoround={totoRound} round={round} />
-          </>
-        ) : (
-          <MessageComponent message="Geen voorspellingen gevonden" />
-        )
+        <Box>
+          <PageTitle title="Mijn voorspellingen" color="primary" />
+          {isLoading ? (
+            <ProgressComponent />
+          ) : filteredPredictions ? (
+            <>
+              <Predictions
+                predictions={filteredPredictions}
+                display="private"
+              />
+              <Pagination totoround={totoRound} round={round} />
+            </>
+          ) : (
+            <MessageComponent message="Geen wedstrijden met voorspellingen gevonden" />
+          )}
+        </Box>
       }
     />
   );

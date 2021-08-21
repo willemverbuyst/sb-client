@@ -14,7 +14,7 @@ interface IProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextFieldComponent: React.FC<IProps> = ({
+const NumberFieldComponent: React.FC<IProps> = ({
   defaultValue,
   onChange,
 }: IProps) => {
@@ -39,4 +39,4 @@ const TextFieldComponent: React.FC<IProps> = ({
   );
 };
 
-export default TextFieldComponent;
+export default NumberFieldComponent;

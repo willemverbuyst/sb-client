@@ -12,13 +12,11 @@ const ForgotPassword: React.FC = (): ReactElement => {
 
   return (
     <Box>
+      <PageTitle title="Forgot Password?" color="secondary" />
       {isLoading ? (
         <ProgressComponent loadingText="Sending email..." />
       ) : (
-        <>
-          <PageTitle title="Forgot Password?" color="secondary" />
-          <SendEmailForm />
-        </>
+        <SendEmailForm />
       )}
     </Box>
   );

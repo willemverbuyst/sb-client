@@ -1,49 +1,60 @@
+import { Box } from '@material-ui/core';
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import MessageComponent from '../../../Components/Communication/Message';
 import DividerComponent from '../../../Components/Divider';
+import ProgressComponent from '../../../Components/Progress';
 import PageTitle from '../../../Components/Title/PageTitle';
-import PageContent from '../../../Sections/PageContent';
+import Guard from '../../../Sections/Guard';
+import { selectAppLoading } from '../../../store/appState/selectors';
 import { fetchScoresFixture } from '../../../store/scores/action-creators';
 import {
   selectFixture,
-  selectScoresForFixtureSortedByName,
+  selectScoresForFixtureSortedByScore,
 } from '../../../store/scores/selectors';
+import { selectToken } from '../../../store/user/selectors';
 import FixtureSection from './FixtureSection';
 import ScoresForFixtureBarChart from './ScoresFixtureBarChart';
 
 const Fixture: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const fixture = useSelector(selectFixture);
-  const scoresFixtureSortedByName = useSelector(
-    selectScoresForFixtureSortedByName,
+  const isLoading = useSelector(selectAppLoading);
+  const scoresFixtureSortedByScore = useSelector(
+    selectScoresForFixtureSortedByScore,
   );
+  const token = useSelector(selectToken);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    dispatch(fetchScoresFixture(Number(id)));
+    if (token) {
+      dispatch(fetchScoresFixture(Number(id)));
+    }
   }, [dispatch, id]);
 
   return (
-    <PageContent
-      loadingText="Uitslag"
+    <Guard
       content={
-        fixture ? (
-          <>
-            <PageTitle title="Uitslag" color="secondary" />
-            <FixtureSection fixture={fixture} />
-            <DividerComponent />
-            {scoresFixtureSortedByName ? (
-              <ScoresForFixtureBarChart scores={scoresFixtureSortedByName} />
-            ) : (
-              <MessageComponent message="Nog geen scores" />
-            )}
-          </>
-        ) : (
-          <MessageComponent message="Geen wedstrijd gevonden" />
-        )
+        <Box>
+          <PageTitle title="Uitslag" color="secondary" />
+          {isLoading ? (
+            <ProgressComponent />
+          ) : fixture ? (
+            <>
+              <FixtureSection fixture={fixture} />
+              <DividerComponent />
+              {scoresFixtureSortedByScore ? (
+                <ScoresForFixtureBarChart scores={scoresFixtureSortedByScore} />
+              ) : (
+                <MessageComponent message="Nog geen scores" />
+              )}
+            </>
+          ) : (
+            <MessageComponent message="Geen wedstrijd gevonden" />
+          )}
+        </Box>
       }
     />
   );

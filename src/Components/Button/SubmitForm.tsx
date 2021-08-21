@@ -12,13 +12,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface IProps {
   caption: string;
   color: 'primary' | 'secondary';
-  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const SubmitButtonComponent: React.FC<IProps> = ({
+const SubmitForm: React.FC<IProps> = ({
   caption,
   color,
-  handleClick,
 }: IProps): ReactElement => {
   const classes = useStyles();
   const theme = useTheme();
@@ -33,7 +31,6 @@ const SubmitButtonComponent: React.FC<IProps> = ({
         variant={btnVariant ? 'contained' : 'outlined'}
         color={color}
         disableElevation
-        onClick={handleClick}
       >
         {caption}
       </Button>
@@ -41,4 +38,4 @@ const SubmitButtonComponent: React.FC<IProps> = ({
   );
 };
 
-export default SubmitButtonComponent;
+export default SubmitForm;

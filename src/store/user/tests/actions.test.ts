@@ -1,10 +1,10 @@
-import { IUser } from '../../../models/player.model';
+import { IPlayer } from '../../../models/player.model';
 import {
   ICurrentRound,
   IFixtureWithScoreAndPredictions,
   ITeam,
 } from '../../../models/toto.models';
-import { IApiResponseUser } from '../../../models/user.models';
+import { IApiResponseUser, IUpdatedUser } from '../../../models/user.models';
 import {
   ActionType,
   LogInSuccessUser,
@@ -52,7 +52,7 @@ describe('#userState', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -62,7 +62,6 @@ describe('#userState', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
@@ -133,7 +132,7 @@ describe('#userState', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -143,7 +142,6 @@ describe('#userState', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
@@ -176,33 +174,7 @@ describe('#userState', () => {
       name: 'test_name',
       logo: 'test_logo',
     };
-    const fixture: IFixtureWithScoreAndPredictions = {
-      awayTeamId: 1,
-      awayTeamLogo: 'test',
-      awayTeamName: 'test',
-      createdAt: 'test',
-      eventTimeStamp: 1,
-      goalsAwayTeam: null,
-      goalsHomeTeam: null,
-      homeTeamId: 1,
-      homeTeamLogo: 'test',
-      homeTeamName: 'test',
-      id: 1,
-      round: 'test',
-      status: 'test',
-      updatedAt: 'test',
-      score: 'scores',
-      predictions: {
-        pGoalsAwayTeam: null,
-        pGoalsHomeTeam: null,
-      },
-    };
-    const currentRound: ICurrentRound = {
-      roundNumber: 1,
-      totoRoundNumber: 1,
-      fixtures: [fixture],
-    };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -212,18 +184,10 @@ describe('#userState', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
-    const user = {
-      profile,
-      currentRound,
-    };
-    const token = 'token';
-    const status = 'success';
-    const apiResponse: IApiResponseUser = {
-      status,
-      data: { user },
-      token,
+
+    const apiResponse: IUpdatedUser = {
+      user: { profile },
     };
     const action: UpdateUserProfile = {
       type: ActionType.UPDATE_USER_PROFILE,

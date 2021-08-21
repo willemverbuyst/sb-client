@@ -20,6 +20,7 @@ import {
   fetchScoresTotoRound,
 } from '../action-creators';
 import {
+  resetScoresPlayer,
   storePlayerScores,
   storeScoresFixture,
   storeScoresRound,
@@ -198,10 +199,11 @@ describe('#fetchPlayerScores', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
+    expect(dispatch).toHaveBeenCalledWith(resetScoresPlayer());
     expect(dispatch).toHaveBeenCalledWith(
       storePlayerScores(response.data.data),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });

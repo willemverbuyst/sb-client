@@ -1,84 +1,84 @@
-import { Link } from '@material-ui/core';
-import React, { ReactElement, useState } from 'react';
+import { Grid, Link } from '@material-ui/core';
+import React, { ReactElement } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import SubmitButtonComponent from '../../../Components/Button/SubmitButton';
-import ShowAlertComponent from '../../../Components/Communication/Alert';
-import FormContainer from '../../../Components/Form/FormContainer';
-import PasswordFieldComponent from '../../../Components/Form/PasswordField';
+import SubmitForm from '../../../Components/Button/SubmitForm';
+import ControllerPasswordInput from '../../../Components/Form/ControllerPasswordInput';
+import * as HISTORY from '../../../history';
 import { changePassword } from '../../../store/user/action-creators';
+import { useFormStyles } from '../../../theme/form';
+
+type Inputs = {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
 
 const EditPasswordForm: React.FC = (): ReactElement => {
+  const classes = useFormStyles();
   const dispatch = useDispatch();
-  const [currentPassword, setcurrentPassword] = useState<string>('');
-  const [newPassword, setNewPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [showAlert, setShowAlert] = useState<boolean>(false);
 
-  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm<Inputs>();
+  const newPassword = watch('newPassword', '');
 
-    if (newPassword === confirmPassword) {
-      dispatch(changePassword(currentPassword, newPassword, confirmPassword));
-    } else {
-      setShowAlert(true);
-    }
+  const submitForm: SubmitHandler<Inputs> = (data) => {
+    dispatch(
+      changePassword(
+        data.currentPassword,
+        data.newPassword,
+        data.confirmPassword,
+      ),
+    );
+    reset(data, {
+      keepValues: false,
+    });
   };
-
-  const closeAlert = () => {
-    setShowAlert(false);
-    setcurrentPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
-  };
-
-  const updateCurrentPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setcurrentPassword(event.target.value);
-  const updateNewPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setNewPassword(event.target.value);
-  const updateConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setConfirmPassword(event.target.value);
 
   return (
-    <>
-      <FormContainer
-        inputFields={
-          <>
-            <PasswordFieldComponent
-              id="currentPassword"
+    <Grid container justify="center">
+      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
+        <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
+          <Grid container>
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.currentPassword}
               label="Current Password"
-              value={currentPassword}
-              onChange={updateCurrentPassword}
+              name="currentPassword"
+              validateLength={false}
             />
-            <PasswordFieldComponent
-              id="newPassword"
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.newPassword}
               label="New Password"
-              value={newPassword}
-              onChange={updateNewPassword}
+              name="newPassword"
+              validateLength={true}
             />
-            <PasswordFieldComponent
-              id="confirmPassword"
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.confirmPassword}
               label="Confirm Password"
-              value={confirmPassword}
-              onChange={updateConfirmPassword}
+              name="confirmPassword"
+              validateLength={true}
+              newPassword={newPassword}
             />
-          </>
-        }
-        submitButton={
-          <SubmitButtonComponent
-            caption="CHANGE PASSWORD"
-            color="primary"
-            handleClick={submitForm}
-          />
-        }
-        link={<Link href="/profiel/edit">Edit Profile</Link>}
-      />
-      <ShowAlertComponent
-        message="Passwords are not the same"
-        displayAlert={showAlert}
-        closeAlert={closeAlert}
-      />
-    </>
+          </Grid>
+          <SubmitForm caption="CHANGE PASSWORD" color="primary" />
+          <Link href="#" onClick={HISTORY.gotoProfile}>
+            Edit Profile
+          </Link>
+        </form>
+      </Grid>
+    </Grid>
   );
 };
 

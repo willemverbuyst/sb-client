@@ -1,11 +1,10 @@
-import { Severity } from '../../../models/app.models';
-import { IUser } from '../../../models/player.model';
+import { IPlayer } from '../../../models/player.model';
 import {
   ICurrentRound,
   IFixtureWithScoreAndPredictions,
   ITeam,
 } from '../../../models/toto.models';
-import { IApiResponseUser } from '../../../models/user.models';
+import { IApiResponseUser, IUpdatedUser } from '../../../models/user.models';
 import {
   ActionType,
   LogInSuccessUser,
@@ -52,7 +51,7 @@ describe('#userReducer', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -62,7 +61,6 @@ describe('#userReducer', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
@@ -126,7 +124,7 @@ describe('#userReducer', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -136,7 +134,6 @@ describe('#userReducer', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
@@ -192,7 +189,7 @@ describe('#userReducer', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -202,7 +199,6 @@ describe('#userReducer', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
@@ -261,7 +257,7 @@ describe('#userReducer', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -271,14 +267,13 @@ describe('#userReducer', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
       currentRound,
     };
     const token = 'token';
-    const updatedProfile: IUser = {
+    const updatedProfile: IPlayer = {
       admin: true,
       email: 'test2@test2.com',
       firstName: 'test2',
@@ -288,14 +283,9 @@ describe('#userReducer', () => {
       team,
       totaalToto: true,
       userName: 'test2',
-      token: 'test2_token',
     };
-    const token2 = 'token2';
-    const status: Severity = 'success';
-    const apiResponse: IApiResponseUser = {
-      status,
-      data: { user: { profile: updatedProfile, currentRound } },
-      token: token2,
+    const apiResponse: IUpdatedUser = {
+      user: { profile: updatedProfile },
     };
     const state: IUserState = { user, token };
     const action: UpdateUserProfile = {
@@ -306,10 +296,10 @@ describe('#userReducer', () => {
 
     test('returns the new state with student', () => {
       expect(newState.token).not.toBeNull();
-      expect(newState.token).toBe(token2);
+      expect(newState.token).toBe(token);
       expect(newState).toEqual({
         user: { profile: updatedProfile, currentRound },
-        token: token2,
+        token: token,
       });
       expect(newState).not.toEqual(state);
       expect(newState.user?.profile.firstName).toBe('test2');

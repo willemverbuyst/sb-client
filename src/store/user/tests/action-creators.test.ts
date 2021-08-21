@@ -5,7 +5,7 @@ import {
   ILogInCredentials,
   IProfileDetails,
 } from '../../../models/credentials.model';
-import { IUser } from '../../../models/player.model';
+import { IPlayer } from '../../../models/player.model';
 import {
   ICurrentRound,
   IFixtureWithScoreAndPredictions,
@@ -32,7 +32,6 @@ beforeEach(() => {
 
 describe('#changePassword', () => {
   it('returns a succes message', async () => {
-    const password = 'test_password';
     const dispatch = jest.fn();
     const getState = jest.fn();
     const extraArg = 'extra';
@@ -45,7 +44,11 @@ describe('#changePassword', () => {
 
     mockAxios.patch.mockImplementationOnce(() => Promise.resolve(response));
 
-    await changePassword(password)(dispatch, getState, extraArg);
+    await changePassword('currentPassword', 'newPassword', 'confirmPasword')(
+      dispatch,
+      getState,
+      extraArg,
+    );
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
@@ -90,7 +93,7 @@ describe('#editUserProfile', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -100,7 +103,6 @@ describe('#editUserProfile', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,
@@ -136,7 +138,9 @@ describe('#editUserProfile', () => {
 
     expect(mockAxios.patch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(updateUserProfile(response.data));
+    expect(dispatch).toHaveBeenCalledWith(
+      updateUserProfile(response.data.data),
+    );
     expect(dispatch).toHaveBeenCalledWith(
       setMessage(response.data.status, response.data.message),
     );
@@ -178,7 +182,7 @@ describe('#userLogIn', () => {
       totoRoundNumber: 1,
       fixtures: [fixture],
     };
-    const profile: IUser = {
+    const profile: IPlayer = {
       admin: true,
       email: 'test@test.com',
       firstName: 'test',
@@ -188,7 +192,6 @@ describe('#userLogIn', () => {
       team,
       totaalToto: true,
       userName: 'test',
-      token: 'test_token',
     };
     const user = {
       profile,

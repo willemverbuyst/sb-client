@@ -8,6 +8,7 @@ import {
   IUpdatedPrediction,
 } from '../../../models/predictions.model';
 import { appDoneLoading, appLoading, setMessage } from '../../appState/actions';
+import { updateUserCurrentRound } from '../../user/actions';
 import {
   changePrediction,
   getAllPredictions,
@@ -15,6 +16,7 @@ import {
 } from '../action-creators';
 import {
   postPrediction,
+  resetAllPredictions,
   storeAllPredictions,
   updatePrediction,
 } from '../actions';
@@ -60,8 +62,11 @@ describe('#changePrediction', () => {
       setMessage(response.data.status, response.data.message),
     );
     expect(dispatch).toHaveBeenCalledWith(updatePrediction(response.data.data));
+    expect(dispatch).toHaveBeenCalledWith(
+      updateUserCurrentRound(response.data.data),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(5);
   });
 });
 
@@ -108,12 +113,13 @@ describe('#getAllPredictions', () => {
     await getAllPredictions(playerId)(dispatch, getState, extraArg);
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(resetAllPredictions());
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(
       storeAllPredictions(response.data.data),
     );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenCalledTimes(4);
   });
 });
 
@@ -152,7 +158,10 @@ describe('#postNewPrediction', () => {
     expect(dispatch).toHaveBeenCalledWith(
       setMessage(response.data.status, response.data.message),
     );
+    expect(dispatch).toHaveBeenCalledWith(
+      updateUserCurrentRound(response.data.data),
+    );
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(5);
   });
 });

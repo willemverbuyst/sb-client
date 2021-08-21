@@ -1,66 +1,69 @@
-import { Link } from '@material-ui/core';
+import { Grid, Link } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
-import SubmitButtonComponent from '../../Components/Button/SubmitButton';
-import FormContainer from '../../Components/Form/FormContainer';
-import PasswordFieldComponent from '../../Components/Form/PasswordField';
-import TextFieldComponent from '../../Components/Form/TextField';
-import { ILogInCredentials } from '../../models/credentials.model';
+import SubmitForm from '../../Components/Button/SubmitForm';
+import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
+import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput';
+import * as HISTORY from '../../history';
 import { userLogIn } from '../../store/user/action-creators';
+import { useFormStyles } from '../../theme/form';
+
+type Inputs = {
+  email: string;
+  password: string;
+};
 
 const LoginForm: React.FC = (): ReactElement => {
+  const classes = useFormStyles();
   const dispatch = useDispatch();
-  const [logInCredentials, setLogInCredentials] = useState<ILogInCredentials>({
-    email: '',
-    password: '',
-  });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
-  const submitForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
-    dispatch(userLogIn(logInCredentials));
-    setLogInCredentials({
-      email: '',
-      password: '',
-    });
+  const submitForm: SubmitHandler<Inputs> = (data) => {
+    dispatch(
+      userLogIn({
+        email: data.email,
+        password: data.password,
+      }),
+    );
   };
 
-  const updateLoginCredentials = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setLogInCredentials({
-      ...logInCredentials,
-      [event.target.id]: event.target.value,
-    });
-
   return (
-    <FormContainer
-      inputFields={
-        <>
-          <AvatarIconComponent icon={<LockOutlinedIcon />} />
-          <TextFieldComponent
-            id="email"
-            label="Email Address"
-            value={logInCredentials.email}
-            onChange={updateLoginCredentials}
-          />
-          <PasswordFieldComponent
-            id="password"
-            label="Password"
-            value={logInCredentials.password}
-            onChange={updateLoginCredentials}
-          />
-        </>
-      }
-      submitButton={
-        <SubmitButtonComponent
-          caption="LOG IN"
-          color="primary"
-          handleClick={submitForm}
-        />
-      }
-      link={<Link href="/forgotPassword">Forgot Password?</Link>}
-    />
+    <Grid container justify="center">
+      <Grid item xs={12} sm={8} md={6} lg={4} className={classes.paper}>
+        <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
+          <Grid container>
+            <AvatarIconComponent icon={<LockOutlinedIcon />} />
+            <ControllerEmailInput
+              control={control}
+              defaultValue=""
+              error={errors.email}
+              label="Email Address"
+              name="email"
+            />
+            <ControllerPasswordInput
+              control={control}
+              defaultValue=""
+              error={errors.password}
+              label="Password"
+              name="password"
+              validateLength={false}
+            />
+          </Grid>
+          <SubmitForm caption="LOG IN" color="primary" />
+          <Link href="#" onClick={HISTORY.gotoForgotPassword}>
+            Forgot Password?
+          </Link>
+        </form>
+      </Grid>
+    </Grid>
   );
 };
 
