@@ -34,12 +34,6 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// if (process.env.NODE_ENV === 'production') {
-//   // Call getTFixtures to get all the fixtures and seed the fixtures_table
-//   // TODO: should be a timed task
-//   getFixtures();
-// }
-
 getFixtures();
 
 // Body parser middleware
