@@ -1,5 +1,5 @@
 import { IUpdatedPrediction } from '../../models/predictions.model';
-import { IApiResponseUser } from '../../models/user.models';
+import { IApiResponseUser, IUpdatedUser } from '../../models/user.models';
 import {
   ActionType,
   LogInSuccessUser,
@@ -31,7 +31,7 @@ export const tokenUserStillValid = (
 };
 
 export const updateUserProfile = (
-  apiResponse: IApiResponseUser,
+  apiResponse: IUpdatedUser,
 ): UpdateUserProfile => {
   return { type: ActionType.UPDATE_USER_PROFILE, payload: apiResponse };
 };

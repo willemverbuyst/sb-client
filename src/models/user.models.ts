@@ -1,15 +1,19 @@
 import { Severity } from './app.models';
-import { IUser } from './player.model';
+import { IPlayer } from './player.model';
 import { ICurrentRound } from './toto.models';
 
 export interface IApiResponseUser {
   status: Severity;
   data: {
     user: {
-      profile: IUser;
+      profile: IPlayer;
       currentRound?: ICurrentRound;
     };
   };
   message?: string;
   token: string;
+}
+
+export interface IUpdatedUser {
+  user: { profile: IPlayer };
 }

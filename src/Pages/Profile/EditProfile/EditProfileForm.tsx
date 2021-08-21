@@ -9,14 +9,14 @@ import ControllerEmailInput from '../../../Components/Form/ControllerEmailInput'
 import ControllerSelect from '../../../Components/Form/ControllerSelect';
 import ControllerTextInput from '../../../Components/Form/ControllerTextInput';
 import * as HISTORY from '../../../history';
-import { IUser } from '../../../models/player.model';
+import { IPlayer } from '../../../models/player.model';
 import { ITeamForSelector } from '../../../models/toto.models';
 import { editUserProfile } from '../../../store/user/action-creators';
 import { useFormStyles } from '../../../theme/form';
 
 interface IProps {
   teams: ITeamForSelector[];
-  user: IUser;
+  user: IPlayer;
 }
 
 type Inputs = {

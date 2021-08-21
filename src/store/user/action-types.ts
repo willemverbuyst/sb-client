@@ -1,5 +1,5 @@
 import { IUpdatedPrediction } from '../../models/predictions.model';
-import { IApiResponseUser } from '../../models/user.models';
+import { IApiResponseUser, IUpdatedUser } from '../../models/user.models';
 
 export enum ActionType {
   LOG_IN_SUCCESS_USER = 'LOG_IN_SUCCESS_USER',
@@ -25,7 +25,7 @@ export type TokenUserStillValid = {
 
 export type UpdateUserProfile = {
   type: ActionType.UPDATE_USER_PROFILE;
-  payload: IApiResponseUser;
+  payload: IUpdatedUser;
 };
 
 export type UpdateUserCurrentRound = {

@@ -1,16 +1,12 @@
-import { IUser } from '../../models/player.model';
+import { IPlayer } from '../../models/player.model';
 import { ICurrentRound } from '../../models/toto.models';
 import { ActionType } from './action-types';
 import { UserActions } from './action-types';
 
-export interface IUserWithCurrentRound extends IUser {
-  currentRound: ICurrentRound;
-}
-
 export interface IUserState {
   token: string | null;
   user: {
-    profile: IUser;
+    profile: IPlayer;
     currentRound?: ICurrentRound;
   } | null;
 }
@@ -47,7 +43,7 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
         ...state,
         user: {
           ...state.user,
-          profile: action.payload.data.user.profile,
+          profile: action.payload.user.profile,
         },
       };
 
