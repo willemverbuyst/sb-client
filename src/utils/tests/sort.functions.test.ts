@@ -7,21 +7,39 @@ describe('#sortArrayWithObjects', () => {
       { id: 3, name: 'Freida' },
       { id: 2, name: 'Annie' },
     ];
-    const arraySortedById = [
+    const arraySortedByIdAscending = [
       { id: 1, name: 'Xeno' },
       { id: 2, name: 'Annie' },
       { id: 3, name: 'Freida' },
     ];
-    const arraySortedByName = [
+    const arraySortedByNameAscending = [
       { id: 2, name: 'Annie' },
       { id: 3, name: 'Freida' },
       { id: 1, name: 'Xeno' },
+    ];
+    const arraySortedByIdDescending = [
+      { id: 3, name: 'Freida' },
+      { id: 2, name: 'Annie' },
+      { id: 1, name: 'Xeno' },
+    ];
+    const arraySortedByNameDescending = [
+      { id: 1, name: 'Xeno' },
+      { id: 3, name: 'Freida' },
+      { id: 2, name: 'Annie' },
     ];
 
     test('returns the array with objects sorted by that key', () => {
-      expect(sortArrayWithObjects('id')(testArray)).toEqual(arraySortedById);
-      expect(sortArrayWithObjects('name')(testArray)).toEqual(
-        arraySortedByName,
+      expect(sortArrayWithObjects('id')('ascending')(testArray)).toEqual(
+        arraySortedByIdAscending,
+      );
+      expect(sortArrayWithObjects('name')('ascending')(testArray)).toEqual(
+        arraySortedByNameAscending,
+      );
+      expect(sortArrayWithObjects('id')('descending')(testArray)).toEqual(
+        arraySortedByIdDescending,
+      );
+      expect(sortArrayWithObjects('name')('descending')(testArray)).toEqual(
+        arraySortedByNameDescending,
       );
     });
   });
