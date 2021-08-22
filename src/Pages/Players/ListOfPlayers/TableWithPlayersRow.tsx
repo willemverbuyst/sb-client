@@ -27,8 +27,8 @@ const TableWithPlayersRow: React.FC<IProps> = ({
   const playerTotalToto: JSX.Element | null = HELPERS.renderTotalTotoCheck(
     player,
   );
+  const playerAdmin: boolean = player.admin;
   const playerFirstName: string = player.firstName;
-
   const playerLastName: string = player.lastName;
   const playerPhoneNumber: string = player.phoneNumber;
   const playerEmail: string = player.email;
@@ -53,9 +53,24 @@ const TableWithPlayersRow: React.FC<IProps> = ({
     [editCancelButtonsForAdmin, 'center'],
   ];
 
+  // Don't render delete btn, to prevent admin being deleted
+  const cellsAdminForPlayerIsAdmin: [CellValue, Align][] = [
+    ...cellsRegularUser,
+    [playerLastName, 'left'],
+    [playerPhoneNumber, 'left'],
+    [playerEmail, 'left'],
+    ['', 'left'],
+  ];
+
   return (
     <TableCellsOneRow
-      cells={user && user.admin ? cellsAdmin : cellsRegularUser}
+      cells={
+        user && user.admin && playerAdmin
+          ? cellsAdminForPlayerIsAdmin
+          : user && user.admin
+          ? cellsAdmin
+          : cellsRegularUser
+      }
     />
   );
 };
