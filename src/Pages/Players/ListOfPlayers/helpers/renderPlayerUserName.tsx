@@ -12,7 +12,7 @@ const renderPlayerUserName = (player: IPlayer): ReactElement => {
 
   return (
     <TableButton
-      color={player.admin ? 'secondary' : 'primary'}
+      color="primary"
       handleClick={gotoPredictions}
       caption={player.userName}
     />

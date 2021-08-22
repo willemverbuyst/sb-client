@@ -1,3 +1,5 @@
+import { IconButton } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import React, { ReactElement } from 'react';
 
 import TableButton from '../Button/TableButton';
@@ -27,11 +29,9 @@ const TableDeleteConfirmCancelButtons: React.FC<IProps> = ({
       />
     </>
   ) : (
-    <TableButton
-      caption="DELETE"
-      color="primary"
-      handleClick={changeEditModus}
-    />
+    <IconButton aria-label="delete" color="secondary" onClick={changeEditModus}>
+      <DeleteForeverIcon />
+    </IconButton>
   );
 };
 

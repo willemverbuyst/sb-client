@@ -18,7 +18,7 @@ const TableWithPlayersHeaders = (): ReactElement => {
     ['achternaam', 'left'],
     ['telefoon', 'left'],
     ['email', 'left'],
-    ['', 'left'],
+    ['delete player?', 'right'],
   ];
   return (
     <TableHeaders

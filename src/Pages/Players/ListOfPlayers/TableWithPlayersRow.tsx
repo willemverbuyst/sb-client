@@ -50,17 +50,15 @@ const TableWithPlayersRow: React.FC<IProps> = ({
     [playerLastName, 'left'],
     [playerPhoneNumber, 'left'],
     [playerEmail, 'left'],
-    [editCancelButtonsForAdmin, 'center'],
+    [editCancelButtonsForAdmin, 'right'],
   ];
 
   // Don't render delete btn, to prevent admin being deleted
-  const cellsAdminForPlayerIsAdmin: [CellValue, Align][] = [
-    ...cellsRegularUser,
-    [playerLastName, 'left'],
-    [playerPhoneNumber, 'left'],
-    [playerEmail, 'left'],
-    ['', 'left'],
-  ];
+  const cellsAdminForPlayerIsAdmin: [CellValue, Align][] = [...cellsAdmin];
+  cellsAdminForPlayerIsAdmin.splice(cellsAdminForPlayerIsAdmin.length - 1, 1, [
+    '',
+    'right',
+  ]);
 
   return (
     <TableCellsOneRow
