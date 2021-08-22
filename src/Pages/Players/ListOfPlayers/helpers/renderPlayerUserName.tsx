@@ -1,3 +1,4 @@
+import { Badge, Tooltip } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -10,7 +11,17 @@ const renderPlayerUserName = (player: IPlayer): ReactElement => {
   const gotoPredictions = (): void =>
     history.push(`/spelers/${player.id}/voorspellingen/1/1`);
 
-  return (
+  return player.admin ? (
+    <Tooltip title="admin">
+      <Badge color="secondary" variant="dot">
+        <TableButton
+          color="primary"
+          handleClick={gotoPredictions}
+          caption={player.userName}
+        />
+      </Badge>
+    </Tooltip>
+  ) : (
     <TableButton
       color="primary"
       handleClick={gotoPredictions}
