@@ -1,21 +1,26 @@
 #!/bin/bash
 
+# File
+
+dummy_data="dummy_predictions_20.js"
+number_of_users=21
+
 # Create a file
-touch dummy_predictions.js
+touch $dummy_data
 
 # Delete previous data
-> dummy_predictions.js
+> $dummy_data
 
 # Loop over fixtures (306)
 # Loop over players (4)
 # Generate random scores between 0 and 5
 # Write to text-file
 
-echo "const predictions = [" >> dummy_predictions.js
+echo "const predictions = [" >> $dummy_data
 
 for i in {707179..707484}
 do
-  for u in {1..31}
+  for ((u=1; u <= $number_of_users; u++))
   do
     echo "{
   pGoalsHomeTeam: $(( ( RANDOM % 5 )  + 0 )),
@@ -24,9 +29,9 @@ do
   fixtureId: $i,
   createdAt: new Date(),
   updatedAt: new Date(),
-}," >> dummy_predictions.js
+}," >> $dummy_data
   done
 done
 
-echo "]" >> dummy_predictions.js
-echo "module.exports = predictions;" >> dummy_predictions.js
+echo "]" >> $dummy_data
+echo "module.exports = predictions;" >> $dummy_data

@@ -3,5 +3,6 @@
 
 /migrations
 /models
+
+/dummy-data/*.js
 /seeders
-/dummy-data

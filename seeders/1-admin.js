@@ -1,30 +1,10 @@
 'use strict';
 
-const bcrypt = require('bcrypt');
-
-const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
+const dummyAdmin = require('../dummy-data/dummy_admin');
 
 module.exports = {
   up: async (queryInterface, Sequelize) =>
-    queryInterface.bulkInsert(
-      'users',
-      [
-        {
-          userName: 'Pascal',
-          firstName: 'Pascal',
-          lastName: 'Duin',
-          email: 'pascal@pascal.com',
-          password: bcrypt.hashSync('pascal123', SALT_ROUNDS),
-          phoneNumber: '0612345678',
-          admin: true,
-          totaalToto: true,
-          teamId: 194,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-      {},
-    ),
+    queryInterface.bulkInsert('users', dummyAdmin, {}),
 
   down: async (queryInterface, Sequelize) =>
     queryInterface.bulkDelete('users', null, {}),
