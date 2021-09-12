@@ -1,6 +1,6 @@
 'use strict';
 
-const dummyUsers = require('../dummy-data/dummy_users_20');
+const dummyUsers = require('../dummy-data/prod_users');
 
 module.exports = {
   up: async (queryInterface, Sequelize) =>
