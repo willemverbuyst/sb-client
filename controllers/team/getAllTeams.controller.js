@@ -1,8 +1,8 @@
-const catchAsync = require('../utils/catchAsync');
-const { getAllTeams } = require('../queries/teamQuery');
-const AppError = require('../utils/appError');
+const catchAsync = require('../../utils/catchAsync');
+const { getAllTeams } = require('../../queries/teamQuery');
+const AppError = require('../../utils/appError');
 
-exports.getAllTeams = catchAsync(async (req, res, next) => {
+module.exports = catchAsync(async (_req, res, next) => {
   const teams = await getAllTeams();
 
   if (!teams) {

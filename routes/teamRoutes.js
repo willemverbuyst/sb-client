@@ -1,9 +1,11 @@
 const express = require('express');
 const authController = require('../controllers/authController');
-const teamController = require('../controllers/teamController');
+const { teamControllers } = require('../controllers');
+
+const { getAllTeamsController } = teamControllers;
 
 const router = express.Router();
 
-router.route('/').get(authController.protect, teamController.getAllTeams);
+router.route('/').get(authController.protect, getAllTeamsController);
 
 module.exports = router;
