@@ -1,25 +1,30 @@
 const express = require('express');
-const authController = require('../controllers/authController');
-const { userControllers } = require('../controllers');
+const { authControllers, userControllers } = require('../controllers');
 
+const {
+  changedPasswordController,
+  forgotPasswordController,
+  loginController,
+  protectController,
+  resetPasswordController,
+  validTokenController,
+} = authControllers;
 const { updateUserProfileController } = userControllers;
 
 const router = express.Router();
 
-router.route('/login').post(authController.login);
+router.route('/login').post(loginController);
 
-router.route('/forgotPassword').post(authController.forgotPassword);
+router.route('/forgotPassword').post(forgotPasswordController);
 
-router.route('/resetPassword/:token').patch(authController.resetPassword);
+router.route('/resetPassword/:token').patch(resetPasswordController);
 
 router
   .route('/changePassword')
-  .patch(authController.protect, authController.changePassword);
+  .patch(protectController, changedPasswordController);
 
-router.route('/me').get(authController.protect, authController.validToken);
+router.route('/me').get(protectController, validTokenController);
 
-router
-  .route('/profile')
-  .patch(authController.protect, updateUserProfileController);
+router.route('/profile').patch(protectController, updateUserProfileController);
 
 module.exports = router;

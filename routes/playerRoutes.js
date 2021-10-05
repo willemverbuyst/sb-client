@@ -1,7 +1,7 @@
 const express = require('express');
-const authController = require('../controllers/authController');
-const { playerControllers } = require('../controllers');
+const { authControllers, playerControllers } = require('../controllers');
 
+const { protectController } = authControllers;
 const {
   deletePlayerController,
   getAllPlayersController,
@@ -10,22 +10,18 @@ const {
 
 const router = express.Router();
 
-router.route('/').get(authController.protect, getAllPlayersController);
+router.route('/').get(protectController, getAllPlayersController);
 
-router
-  .route('/signup')
-  .post(
-    authController.protect,
-    authController.restrictTo('admin'),
-    signupPlayerController,
-  );
+router.route('/signup').post(
+  protectController,
+  // authController.restrictTo('admin'),
+  signupPlayerController,
+);
 
-router
-  .route('/:id')
-  .delete(
-    authController.protect,
-    authController.restrictTo('admin'),
-    deletePlayerController,
-  );
+router.route('/:id').delete(
+  protectController,
+  // authController.restrictTo('admin'),
+  deletePlayerController,
+);
 
 module.exports = router;
