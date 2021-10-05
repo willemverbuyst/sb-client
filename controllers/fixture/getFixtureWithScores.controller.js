@@ -5,7 +5,7 @@ const {
 } = require('../../queries/predictionQuery');
 const AppError = require('../../utils/appError');
 
-exports.getFixtureWithScores = catchAsync(async (req, res, next) => {
+module.exports = catchAsync(async (req, res, next) => {
   const fixtureId = req.params.id;
   const fixture = await getFixture(fixtureId);
 

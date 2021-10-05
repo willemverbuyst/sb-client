@@ -1,11 +1,13 @@
 const express = require('express');
 const authController = require('../controllers/authController');
-const fixtureController = require('../controllers/fixtureController');
+const { fixtureControllers } = require('../controllers');
+
+const { getFixtureWithScoresController } = fixtureControllers;
 
 const router = express.Router();
 
 router
   .route('/:id')
-  .get(authController.protect, fixtureController.getFixtureWithScores);
+  .get(authController.protect, getFixtureWithScoresController);
 
 module.exports = router;
