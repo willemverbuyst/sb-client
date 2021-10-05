@@ -1,17 +1,23 @@
 const express = require('express');
 const authController = require('../controllers/authController');
-const playerController = require('../controllers/playerController');
+const { playerControllers } = require('../controllers');
+
+const {
+  deletePlayerController,
+  getAllPlayersController,
+  signupPlayerController,
+} = playerControllers;
 
 const router = express.Router();
 
-router.route('/').get(authController.protect, playerController.getAllPlayers);
+router.route('/').get(authController.protect, getAllPlayersController);
 
 router
   .route('/signup')
   .post(
     authController.protect,
     authController.restrictTo('admin'),
-    playerController.signupPlayer,
+    signupPlayerController,
   );
 
 router
@@ -19,7 +25,7 @@ router
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
-    playerController.deletePlayer,
+    deletePlayerController,
   );
 
 module.exports = router;
