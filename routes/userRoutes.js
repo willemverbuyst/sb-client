@@ -1,6 +1,8 @@
 const express = require('express');
 const authController = require('../controllers/authController');
-const userController = require('../controllers/userController');
+const { userControllers } = require('../controllers');
+
+const { updateUserProfileController } = userControllers;
 
 const router = express.Router();
 
@@ -18,6 +20,6 @@ router.route('/me').get(authController.protect, authController.validToken);
 
 router
   .route('/profile')
-  .patch(authController.protect, userController.updateUserProfile);
+  .patch(authController.protect, updateUserProfileController);
 
 module.exports = router;
