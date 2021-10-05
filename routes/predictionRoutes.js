@@ -1,16 +1,22 @@
 const express = require('express');
 const authController = require('../controllers/authController');
-const predictionController = require('../controllers/predictionController');
+const { predictionControllers } = require('../controllers');
+
+const {
+  getAllPredictionsController,
+  postPredictionController,
+  updatePredictionController,
+} = predictionControllers;
 
 const router = express.Router();
 
 router
   .route('/player/:id')
-  .get(authController.protect, predictionController.getAllPredictions);
+  .get(authController.protect, getAllPredictionsController);
 
 router
   .route('/:id')
-  .post(authController.protect, predictionController.postPrediction)
-  .patch(authController.protect, predictionController.updatePrediction);
+  .post(authController.protect, postPredictionController)
+  .patch(authController.protect, updatePredictionController);
 
 module.exports = router;
