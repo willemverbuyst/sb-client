@@ -5,7 +5,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 
-const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const fixtureRouter = require('./routes/fixtureRoutes');
 const playerRouter = require('./routes/playerRoutes');
@@ -14,6 +13,9 @@ const scoreRouter = require('./routes/scoreRoutes');
 const teamRouter = require('./routes/teamRoutes');
 const userRouter = require('./routes/userRoutes');
 const getFixtures = require('./api-football/fixtures');
+const { errorControllers } = require('./controllers');
+
+const { errorController } = errorControllers;
 
 const app = express();
 
@@ -67,6 +69,6 @@ app.all('*', (req, _res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
 });
 
-app.use(globalErrorHandler);
+app.use(errorController);
 
 module.exports = app;
