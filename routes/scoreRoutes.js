@@ -1,20 +1,27 @@
 const express = require('express');
 const authController = require('../controllers/authController');
-const scoreController = require('../controllers/scoreController');
+const { scoreControllers } = require('../controllers');
+
+const {
+  getScoresPlayerController,
+  getScoresRoundController,
+  getScoresTotalTotoController,
+  getScoresTotoRoundController,
+} = scoreControllers;
 
 const router = express.Router();
 
 router
   .route('/players/:id')
-  .get(authController.protect, scoreController.getScoresPlayer);
+  .get(authController.protect, getScoresPlayerController);
 router
   .route('/rounds/:id')
-  .get(authController.protect, scoreController.getScoresRound);
+  .get(authController.protect, getScoresRoundController);
 router
   .route('/totalToto')
-  .get(authController.protect, scoreController.getScoresTotalToto);
+  .get(authController.protect, getScoresTotalTotoController);
 router
   .route('/totoRounds/:id')
-  .get(authController.protect, scoreController.getScoresTotoRound);
+  .get(authController.protect, getScoresTotoRoundController);
 
 module.exports = router;
