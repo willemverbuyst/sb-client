@@ -6,7 +6,9 @@ const {
   handlePasswordReset,
   handlePasswordResetError,
 } = require('../../queries/userQuery');
-const sendEmail = require('../../utils/email');
+const { emailFunctions } = require('../../utils');
+
+const { sendEmail } = emailFunctions;
 
 const createPasswordResetToken = async (email) => {
   const resetToken = crypto.randomBytes(32).toString('hex');
