@@ -1,4 +1,4 @@
-const { getWinner } = require('.');
+const getWinner = require('./getWinner.function');
 
 describe('getWinner function', () => {
   test('returns "draw" given no arguments', () => {
