@@ -4,7 +4,7 @@ const Prediction = require('../models').prediction;
 const User = require('../models').user;
 const { lastMonday } = require('../utils/date.functions');
 const { chunkArrayTotoRounds, reducer } = require('../utils/helper.functions');
-const { calculateScore } = require('../utils/scores.functions');
+const { calculateScore } = require('../utils/scores/scores.functions');
 
 const updatePrediction = async (
   pGoalsHomeTeam,

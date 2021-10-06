@@ -6,7 +6,7 @@ const {
   chunkArrayTotoRounds,
   getTotoRoundNumber,
 } = require('../utils/helper.functions');
-const { calculateScore } = require('../utils/scores.functions');
+const { calculateScore } = require('../utils/scores/scores.functions');
 
 const getAllFixturesWithPrediction = async (playerId, userId) => {
   const fixturesWithPrediction = await Fixture.findAll({

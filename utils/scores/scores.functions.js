@@ -1,4 +1,4 @@
-const scores = require('../constants/scores');
+const scores = require('../../constants/scores');
 
 const getWinner = (homeTeam, awayTeam) =>
   homeTeam > awayTeam ? 'homeWins' : homeTeam < awayTeam ? 'awayWins' : 'draw';
