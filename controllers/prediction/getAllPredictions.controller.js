@@ -1,7 +1,9 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { getAllFixturesWithPrediction } = require('../../queries/fixtureQuery');
+const { fixtureQueries } = require('../../queries');
 const { getUserById } = require('../../queries/userQuery');
+
+const { getAllFixturesWithPredictionQuery } = fixtureQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
@@ -13,7 +15,7 @@ module.exports = catchAsync(async (req, res, next) => {
     return next(new AppError('No player found with this id!', 404));
   }
 
-  const fixtures = await getAllFixturesWithPrediction(playerId, userId);
+  const fixtures = await getAllFixturesWithPredictionQuery(playerId, userId);
 
   res.status(200).json({
     status: 'success',

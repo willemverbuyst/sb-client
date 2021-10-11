@@ -1,13 +1,15 @@
 const catchAsync = require('../../utils/catchAsync');
-const { getFixture } = require('../../queries/fixtureQuery');
+const { fixtureQueries } = require('../../queries');
 const {
   getAllPredictionsAndScoresForFixture,
 } = require('../../queries/predictionQuery');
 const AppError = require('../../utils/appError');
 
+const { getFixtureQuery } = fixtureQueries;
+
 module.exports = catchAsync(async (req, res, next) => {
   const fixtureId = req.params.id;
-  const fixture = await getFixture(fixtureId);
+  const fixture = await getFixtureQuery(fixtureId);
 
   if (!fixture) {
     return next(new AppError('That fixture was not found', 404));

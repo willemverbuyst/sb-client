@@ -6,8 +6,10 @@ const {
   getUserByToken,
   updateUserPassword,
 } = require('../../queries/userQuery');
-const { getCurrentRoundForUser } = require('../../queries/fixtureQuery');
+const { fixtureQueries } = require('../../queries');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
+
+const { getCurrentRoundForUserQuery } = fixtureQueries;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -35,7 +37,7 @@ module.exports = catchAsync(async (req, res, next) => {
 
   // Log in user, send JWT
   const user = await getUserByEmail(userByToken.email);
-  const currentRound = await getCurrentRoundForUser(user.id);
+  const currentRound = await getCurrentRoundForUserQuery(user.id);
   const token = signToken({ userId: user.email });
   user.password = '';
 

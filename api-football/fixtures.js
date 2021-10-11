@@ -1,12 +1,15 @@
 const Axios = require('axios');
 const Fixture = require('../models').fixture;
-const { getLastUpdate } = require('../queries/fixtureQuery');
+const { fixtureQueries } = require('../queries');
 
+// const { getLastUpdate } = require('../queries/fixtureQuery');
+
+const { getLastUpdateQuery } = fixtureQueries;
 const firstFixture = process.env.ID_FIRST_FIXTURE;
 const updateInterval = process.env.UPDATE_INTERVAL;
 
 const getFixtures = async () => {
-  const lastUpdate = await getLastUpdate(firstFixture);
+  const lastUpdate = await getLastUpdateQuery(firstFixture);
   const rightNow = new Date();
 
   if (!lastUpdate || rightNow - lastUpdate > updateInterval) {
