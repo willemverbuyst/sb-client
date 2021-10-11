@@ -1,9 +1,9 @@
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries } = require('../../queries');
-const {
-  getAllPredictionsAndScoresForFixture,
-} = require('../../queries/predictionQuery');
+const { predictionQueries } = require('../../queries');
 const AppError = require('../../utils/appError');
+
+const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
 
 const { getFixtureQuery } = fixtureQueries;
 
@@ -15,7 +15,7 @@ module.exports = catchAsync(async (req, res, next) => {
     return next(new AppError('That fixture was not found', 404));
   }
 
-  const scores = await getAllPredictionsAndScoresForFixture(fixture);
+  const scores = await getAllPredictionsAndScoresForFixtureQuery(fixture);
 
   res.status(200).json({
     status: 'success',

@@ -1,8 +1,10 @@
 const catchAsync = require('../../utils/catchAsync');
-const { getScoresTotalToto } = require('../../queries/predictionQuery');
+const { predictionQueries } = require('../../queries');
 
-module.exports = catchAsync(async (req, res, _next) => {
-  const scores = await getScoresTotalToto();
+const { getScoresTotalTotoQuery } = predictionQueries;
+
+module.exports = catchAsync(async (_req, res, _next) => {
+  const scores = await getScoresTotalTotoQuery();
 
   res.status(200).json({
     status: 'success',

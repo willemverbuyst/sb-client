@@ -1,11 +1,12 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries } = require('../../queries');
-const { createPrediction } = require('../../queries/predictionQuery');
+const { predictionQueries } = require('../../queries');
 const validatePredictionInput = require('../../validators/validatePredictionInput');
 const validateFixtureStatus = require('../../validators/validateFixtureStatus');
 
 const { getFixtureQuery } = fixtureQueries;
+const { createPredictionQuery } = predictionQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
@@ -28,7 +29,7 @@ module.exports = catchAsync(async (req, res, next) => {
     );
   }
 
-  const prediction = await createPrediction(
+  const prediction = await createPredictionQuery(
     pGoalsHomeTeam,
     pGoalsAwayTeam,
     fixtureId,
