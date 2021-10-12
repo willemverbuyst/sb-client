@@ -1,4 +1,6 @@
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
+
+const { AppError } = errorHandlers;
 
 module.exports = (role) => (req, _res, next) => {
   if (!req.user[role] === true) {

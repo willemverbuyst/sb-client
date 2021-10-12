@@ -1,7 +1,8 @@
 const catchAsync = require('../../utils/catchAsync');
 const { predictionQueries, userQueries } = require('../../queries');
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 
+const { AppError } = errorHandlers;
 const { getScoresPlayerQuery } = predictionQueries;
 const { getUserByIdQuery } = userQueries;
 

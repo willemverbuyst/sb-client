@@ -1,7 +1,8 @@
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries, userQueries } = require('../../queries');
 
+const { AppError } = errorHandlers;
 const { getAllFixturesWithPredictionQuery } = fixtureQueries;
 const { getUserByIdQuery } = userQueries;
 

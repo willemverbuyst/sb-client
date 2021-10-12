@@ -1,9 +1,10 @@
 const crypto = require('crypto');
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
 const { emailFunctions } = require('../../utils');
 
+const { AppError } = errorHandlers;
 const { sendEmail } = emailFunctions;
 const {
   getUserByEmailQuery,

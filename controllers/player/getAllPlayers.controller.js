@@ -1,7 +1,8 @@
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
 
+const { AppError } = errorHandlers;
 const { getAllUsersQuery } = userQueries;
 
 module.exports = catchAsync(async (_req, res, next) => {

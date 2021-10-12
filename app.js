@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 
-const AppError = require('./utils/appError');
+const { errorHandlers } = require('./utils');
 const fixtureRouter = require('./routes/fixtureRoutes');
 const playerRouter = require('./routes/playerRoutes');
 const predictionRouter = require('./routes/predictionRoutes');
@@ -15,6 +15,7 @@ const userRouter = require('./routes/userRoutes');
 const getFixtures = require('./api-football/fixtures');
 const { errorControllers } = require('./controllers');
 
+const { AppError } = errorHandlers;
 const { errorController } = errorControllers;
 
 const app = express();

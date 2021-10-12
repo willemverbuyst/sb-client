@@ -1,9 +1,10 @@
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
 
+const { AppError } = errorHandlers;
 const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {

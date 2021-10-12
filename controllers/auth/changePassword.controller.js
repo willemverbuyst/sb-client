@@ -1,4 +1,4 @@
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
 const validateChangePasswordInput = require('../../validators/validateChangePasswordInput');
@@ -6,6 +6,7 @@ const validateNewPassword = require('../../validators/validateNewPassword');
 const validatePassword = require('../../validators/validatePassword');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
 
+const { AppError } = errorHandlers;
 const { updateUserPasswordQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {

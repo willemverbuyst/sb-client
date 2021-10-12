@@ -1,4 +1,6 @@
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
+
+const { AppError } = errorHandlers;
 
 const handleUniqueConstraintError = (err) => {
   const message = `Error: ${err.errors[0].message}`;

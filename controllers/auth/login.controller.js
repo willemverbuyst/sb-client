@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries, userQueries } = require('../../queries');
 const validateLoginInput = require('../../validators/validateLoginInput');
 const validatePassword = require('../../validators/validatePassword');
 
+const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
 

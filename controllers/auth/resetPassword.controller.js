@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries, userQueries } = require('../../queries');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
 
+const { AppError } = errorHandlers;
+const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
   userQueries;
-
-const { getCurrentRoundForUserQuery } = fixtureQueries;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {

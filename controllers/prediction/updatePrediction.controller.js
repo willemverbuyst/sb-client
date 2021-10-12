@@ -1,10 +1,11 @@
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries } = require('../../queries');
 const { predictionQueries } = require('../../queries');
 const validatePredictionInput = require('../../validators/validatePredictionInput');
 const validateFixtureStatus = require('../../validators/validateFixtureStatus');
 
+const { AppError } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { updatePredictionQuery } = predictionQueries;
 

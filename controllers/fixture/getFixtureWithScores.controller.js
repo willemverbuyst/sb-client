@@ -1,10 +1,10 @@
 const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries } = require('../../queries');
 const { predictionQueries } = require('../../queries');
-const AppError = require('../../utils/appError');
+const { errorHandlers } = require('../../utils');
 
+const { AppError } = errorHandlers;
 const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
-
 const { getFixtureQuery } = fixtureQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
