@@ -2,9 +2,9 @@ const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
 const { lastMonday } = require('../../utils/date.functions');
-const { chunkArrayTotoRounds } = require('../../utils/helper.functions');
-const { scoreFunctions } = require('../../utils');
+const { helperFunctions, scoreFunctions } = require('../../utils');
 
+const { chunkArrayTotoRoundsHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (playerId) => {
@@ -50,7 +50,7 @@ module.exports = async (playerId) => {
       ),
     }));
 
-    const chunkedScores = chunkArrayTotoRounds(fixturesWithScores);
+    const chunkedScores = chunkArrayTotoRoundsHelper(fixturesWithScores);
 
     const scores = chunkedScores.map((totoround) =>
       totoround.map((round) => round.reduce((a, b) => a + b.score, 0)),

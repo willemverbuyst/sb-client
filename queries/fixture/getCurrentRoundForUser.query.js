@@ -2,9 +2,9 @@ const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
 const { lastMonday, nextMonday } = require('../../utils/date.functions');
-const { getTotoRoundNumber } = require('../../utils/helper.functions');
-const { scoreFunctions } = require('../../utils');
+const { helperFunctions, scoreFunctions } = require('../../utils');
 
+const { getTotoRoundNumberHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (id) => {
@@ -45,7 +45,7 @@ module.exports = async (id) => {
 
   if (fixturesWithPredictionAndScore.length > 0) {
     const roundNumber = fixturesWithPredictionAndScore[0].round.slice(-2);
-    const totoRoundNumber = getTotoRoundNumber(roundNumber);
+    const totoRoundNumber = getTotoRoundNumberHelper(roundNumber);
 
     currentRound = {
       roundNumber,

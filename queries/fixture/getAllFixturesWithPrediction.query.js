@@ -1,9 +1,9 @@
 const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
-const { chunkArrayTotoRounds } = require('../../utils/helper.functions');
-const { scoreFunctions } = require('../../utils');
+const { helperFunctions, scoreFunctions } = require('../../utils');
 
+const { chunkArrayTotoRoundsHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (playerId, userId) => {
@@ -34,7 +34,7 @@ module.exports = async (playerId, userId) => {
     }),
   );
 
-  const fixturesGroupedByTotoRounds = chunkArrayTotoRounds(
+  const fixturesGroupedByTotoRounds = chunkArrayTotoRoundsHelper(
     fixturesWithPredictionAndScore,
   );
 

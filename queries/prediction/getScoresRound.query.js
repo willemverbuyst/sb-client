@@ -2,9 +2,9 @@ const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
 const User = require('../../models').user;
-const { reducer } = require('../../utils/helper.functions');
-const { scoreFunctions } = require('../../utils');
+const { helperFunctions, scoreFunctions } = require('../../utils');
 
+const { reducerHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (roundNumber) => {
@@ -44,7 +44,7 @@ module.exports = async (roundNumber) => {
       id: pred.user.id,
     }));
 
-    const predictionsReduced = reducer(predictionsWithScores);
+    const predictionsReduced = reducerHelper(predictionsWithScores);
     return predictionsReduced;
   }
   return predictions;
