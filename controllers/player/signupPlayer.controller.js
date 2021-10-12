@@ -1,7 +1,9 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { createNewUser } = require('../../queries/userQuery');
+const { userQueries } = require('../../queries');
 const validateSignupInput = require('../../validators/validateSignupInput');
+
+const { createNewUserQuery } = userQueries;
 
 module.exports = () =>
   catchAsync(async (req, res, next) => {
@@ -20,7 +22,7 @@ module.exports = () =>
       return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
     }
 
-    const newPlayer = await createNewUser(req.body);
+    const newPlayer = await createNewUserQuery(req.body);
 
     res.status(201).json({
       status: 'success',

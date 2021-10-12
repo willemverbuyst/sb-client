@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { getUserByEmail } = require('../../queries/userQuery');
-const { fixtureQueries } = require('../../queries');
+const { fixtureQueries, userQueries } = require('../../queries');
 const validateLoginInput = require('../../validators/validateLoginInput');
 const validatePassword = require('../../validators/validatePassword');
 
 const { getCurrentRoundForUserQuery } = fixtureQueries;
+const { getUserByEmailQuery } = userQueries;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -20,7 +20,7 @@ module.exports = catchAsync(async (req, res, next) => {
     return next(new AppError('Vul email en wachtwoord in!'), 400);
   }
 
-  const user = await getUserByEmail(email);
+  const user = await getUserByEmailQuery(email);
 
   if (!validatePassword(user, password)) {
     return next(

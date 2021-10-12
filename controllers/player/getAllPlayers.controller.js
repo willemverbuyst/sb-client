@@ -1,9 +1,11 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { getAllUsers } = require('../../queries/userQuery');
+const { userQueries } = require('../../queries');
+
+const { getAllUsersQuery } = userQueries;
 
 module.exports = catchAsync(async (_req, res, next) => {
-  const players = await getAllUsers();
+  const players = await getAllUsersQuery();
 
   if (!players) {
     return next(new AppError('No players found!', 404));

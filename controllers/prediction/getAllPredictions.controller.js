@@ -1,15 +1,15 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { fixtureQueries } = require('../../queries');
-const { getUserById } = require('../../queries/userQuery');
+const { fixtureQueries, userQueries } = require('../../queries');
 
 const { getAllFixturesWithPredictionQuery } = fixtureQueries;
+const { getUserByIdQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
   const userId = req.user.dataValues.id;
 
-  const { userName } = await getUserById(playerId);
+  const { userName } = await getUserByIdQuery(playerId);
 
   if (!userName) {
     return next(new AppError('No player found with this id!', 404));

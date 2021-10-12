@@ -1,10 +1,12 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { deleteUserAndHisPrediction } = require('../../queries/userQuery');
+const { userQueries } = require('../../queries');
+
+const { deleteUserAndHisPredictionQuery } = userQueries;
 
 module.exports = () =>
   catchAsync(async (req, res, next) => {
-    const player = await deleteUserAndHisPrediction(req.params.id);
+    const player = await deleteUserAndHisPredictionQuery(req.params.id);
 
     if (!player) {
       return next(new AppError('Geen speler gevonden met deze id!', 404));

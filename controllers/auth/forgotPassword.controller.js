@@ -1,14 +1,15 @@
 const crypto = require('crypto');
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const {
-  getUserByEmail,
-  handlePasswordReset,
-  handlePasswordResetError,
-} = require('../../queries/userQuery');
+const { userQueries } = require('../../queries');
 const { emailFunctions } = require('../../utils');
 
 const { sendEmail } = emailFunctions;
+const {
+  getUserByEmailQuery,
+  handlePasswordResetQuery,
+  handlePasswordResetErrorQuery,
+} = userQueries;
 
 const createPasswordResetToken = async (email) => {
   const resetToken = crypto.randomBytes(32).toString('hex');
@@ -20,7 +21,11 @@ const createPasswordResetToken = async (email) => {
   console.log({ resetToken }, passwordResetToken);
   const passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
-  await handlePasswordReset(passwordResetExpires, passwordResetToken, email);
+  await handlePasswordResetQuery(
+    passwordResetExpires,
+    passwordResetToken,
+    email,
+  );
 
   return resetToken;
 };
@@ -29,7 +34,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const { email } = req.body;
 
   // Get user based on posted email
-  const user = await getUserByEmail(email);
+  const user = await getUserByEmailQuery(email);
 
   if (!user) {
     next(new AppError('There is no user with that email address', 404));
@@ -55,7 +60,7 @@ module.exports = catchAsync(async (req, res, next) => {
       message: 'Token sent to email!',
     });
   } catch (err) {
-    await handlePasswordResetError(email);
+    await handlePasswordResetErrorQuery(email);
 
     return next(
       new AppError(

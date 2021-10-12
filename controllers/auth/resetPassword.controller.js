@@ -1,13 +1,11 @@
 const jwt = require('jsonwebtoken');
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const {
-  getUserByEmail,
-  getUserByToken,
-  updateUserPassword,
-} = require('../../queries/userQuery');
-const { fixtureQueries } = require('../../queries');
+const { fixtureQueries, userQueries } = require('../../queries');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
+
+const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
+  userQueries;
 
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 
@@ -21,7 +19,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const { password } = req.body;
   const { passwordConfirm } = req.body;
   // Get user based on token
-  const userByToken = await getUserByToken(temporaryToken);
+  const userByToken = await getUserByTokenQuery(temporaryToken);
 
   // If token has not expired and there is a user
   // then set new password
@@ -33,10 +31,10 @@ module.exports = catchAsync(async (req, res, next) => {
     next(new AppError('Passwords are not the same!', 400));
   }
 
-  await updateUserPassword(password, userByToken);
+  await updateUserPasswordQuery(password, userByToken);
 
   // Log in user, send JWT
-  const user = await getUserByEmail(userByToken.email);
+  const user = await getUserByEmailQuery(userByToken.email);
   const currentRound = await getCurrentRoundForUserQuery(user.id);
   const token = signToken({ userId: user.email });
   user.password = '';

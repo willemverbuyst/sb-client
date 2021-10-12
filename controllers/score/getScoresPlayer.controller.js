@@ -1,14 +1,14 @@
 const catchAsync = require('../../utils/catchAsync');
-const { predictionQueries } = require('../../queries');
-const { getUserById } = require('../../queries/userQuery');
+const { predictionQueries, userQueries } = require('../../queries');
 const AppError = require('../../utils/appError');
 
 const { getScoresPlayerQuery } = predictionQueries;
+const { getUserByIdQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
 
-  const { userName } = await getUserById(playerId);
+  const { userName } = await getUserByIdQuery(playerId);
 
   if (!userName) {
     return next(new AppError('Geen speler gevonden met deze id!', 404));

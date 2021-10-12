@@ -1,10 +1,12 @@
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { updateUserPassword } = require('../../queries/userQuery');
+const { userQueries } = require('../../queries');
 const validateChangePasswordInput = require('../../validators/validateChangePasswordInput');
 const validateNewPassword = require('../../validators/validateNewPassword');
 const validatePassword = require('../../validators/validatePassword');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
+
+const { updateUserPasswordQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   const { currentPassword, newPassword, confirmPassword } = req.body;
@@ -36,7 +38,7 @@ module.exports = catchAsync(async (req, res, next) => {
     );
   }
 
-  await updateUserPassword(newPassword, req.user);
+  await updateUserPasswordQuery(newPassword, req.user);
 
   return res.status(200).send({
     status: 'success',

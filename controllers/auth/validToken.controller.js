@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 const catchAsync = require('../../utils/catchAsync');
-const { getUserByEmail } = require('../../queries/userQuery');
-const { fixtureQueries } = require('../../queries');
+const { fixtureQueries, userQueries } = require('../../queries');
 
 const { getCurrentRoundForUserQuery } = fixtureQueries;
+const { getUserByEmailQuery } = userQueries;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -11,7 +11,7 @@ const signToken = (data) =>
   });
 
 module.exports = catchAsync(async (req, res, _next) => {
-  const user = await getUserByEmail(req.user.email);
+  const user = await getUserByEmailQuery(req.user.email);
 
   const currentRound = await getCurrentRoundForUserQuery(user.id);
 

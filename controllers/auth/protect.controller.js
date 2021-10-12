@@ -2,7 +2,9 @@ const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
-const { getUserByEmail } = require('../../queries/userQuery');
+const { userQueries } = require('../../queries');
+
+const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   // get token an check if it's there
@@ -26,7 +28,7 @@ module.exports = catchAsync(async (req, res, next) => {
   );
 
   // check if user still exists
-  const currentUser = await getUserByEmail(email);
+  const currentUser = await getUserByEmailQuery(email);
 
   if (!currentUser) {
     return next(
