@@ -18,7 +18,7 @@ const createPasswordResetToken = async (email) => {
     .update(resetToken)
     .digest('hex');
 
-  console.log({ resetToken }, passwordResetToken);
+  // console.log({ resetToken }, passwordResetToken);
   const passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
   await handlePasswordResetQuery(

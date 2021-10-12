@@ -10,8 +10,8 @@ module.exports = async ({
   phoneNumber,
   totaalToto,
   teamId,
-}) =>
-  await User.create(
+}) => {
+  const newUser = await User.create(
     {
       userName,
       firstName,
@@ -34,3 +34,6 @@ module.exports = async ({
       ],
     },
   ).then((createdUser) => createdUser.reload());
+
+  return newUser;
+};

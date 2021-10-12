@@ -7,3 +7,5 @@ module.exports = {
   getAllPlayersController,
   signupPlayerController,
 };
+
+console.log('index');

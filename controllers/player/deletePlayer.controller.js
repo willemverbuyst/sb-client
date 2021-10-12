@@ -4,17 +4,16 @@ const { userQueries } = require('../../queries');
 
 const { deleteUserAndHisPredictionQuery } = userQueries;
 
-module.exports = () =>
-  catchAsync(async (req, res, next) => {
-    const player = await deleteUserAndHisPredictionQuery(req.params.id);
+module.exports = catchAsync(async (req, res, next) => {
+  const player = await deleteUserAndHisPredictionQuery(req.params.id);
 
-    if (!player) {
-      return next(new AppError('Geen speler gevonden met deze id!', 404));
-    }
+  if (!player) {
+    return next(new AppError('Geen speler gevonden met deze id!', 404));
+  }
 
-    res.status(200).json({
-      status: 'success',
-      data: null,
-      message: 'Speler is verwijderd!',
-    });
+  res.status(200).json({
+    status: 'success',
+    data: null,
+    message: 'Speler is verwijderd!',
   });
+});
