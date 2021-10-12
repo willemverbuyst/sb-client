@@ -1,15 +1,15 @@
 const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
-const { lastMonday, nextMonday } = require('../../utils/date.functions');
 const { helperFunctions, scoreFunctions } = require('../../utils');
 
-const { getTotoRoundNumberHelper } = helperFunctions;
+const { getLastMondayHelper, getNextMondayHelper, getTotoRoundNumberHelper } =
+  helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (id) => {
-  const timeStampLastMonday = lastMonday();
-  const timeStampNextMonday = nextMonday();
+  const timeStampLastMonday = getLastMondayHelper();
+  const timeStampNextMonday = getNextMondayHelper();
   const fixturesWithPrediction = await Fixture.findAll({
     where: {
       round: { [Op.regexp]: '^Regular' },

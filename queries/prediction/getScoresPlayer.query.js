@@ -1,14 +1,13 @@
 const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
-const { lastMonday } = require('../../utils/date.functions');
 const { helperFunctions, scoreFunctions } = require('../../utils');
 
-const { chunkArrayTotoRoundsHelper } = helperFunctions;
+const { chunkArrayTotoRoundsHelper, getLastMondayHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (playerId) => {
-  const timeStampLastMonday = lastMonday();
+  const timeStampLastMonday = getLastMondayHelper();
 
   const fixtures = await Fixture.findAll({
     where: {
