@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
-const catchAsync = require('../../utils/catchAsync');
 const { fixtureQueries, userQueries } = require('../../queries');
+const { asyncHandler } = require('../../utils');
 
+const { catchAsync } = asyncHandler;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
 

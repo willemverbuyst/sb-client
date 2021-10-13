@@ -1,11 +1,11 @@
-const { errorHandlers } = require('../../utils');
-const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
+const { asyncHandler, errorHandlers } = require('../../utils');
 const validateChangePasswordInput = require('../../validators/validateChangePasswordInput');
 const validateNewPassword = require('../../validators/validateNewPassword');
 const validatePassword = require('../../validators/validatePassword');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
 
+const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { updateUserPasswordQuery } = userQueries;
 

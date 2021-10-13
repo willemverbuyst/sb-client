@@ -1,8 +1,8 @@
-const { errorHandlers } = require('../../utils');
-const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
+const { asyncHandler, errorHandlers } = require('../../utils');
 const validateUpdateProfileInput = require('../../validators/validateUpdateProfileInput');
 
+const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { updateUserProfileQuery } = userQueries;
 

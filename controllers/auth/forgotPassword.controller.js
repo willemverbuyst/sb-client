@@ -1,9 +1,8 @@
 const crypto = require('crypto');
-const { errorHandlers } = require('../../utils');
-const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
-const { emailFunctions } = require('../../utils');
+const { asyncHandler, emailFunctions, errorHandlers } = require('../../utils');
 
+const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { sendEmail } = emailFunctions;
 const {

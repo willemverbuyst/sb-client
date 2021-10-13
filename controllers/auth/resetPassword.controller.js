@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-const { errorHandlers } = require('../../utils');
-const catchAsync = require('../../utils/catchAsync');
+const { asyncHandler, errorHandlers } = require('../../utils');
 const { fixtureQueries, userQueries } = require('../../queries');
 const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
 
+const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =

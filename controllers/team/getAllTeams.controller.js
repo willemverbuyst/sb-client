@@ -1,7 +1,7 @@
-const catchAsync = require('../../utils/catchAsync');
 const { teamQueries } = require('../../queries');
-const { errorHandlers } = require('../../utils');
+const { asyncHandler, errorHandlers } = require('../../utils');
 
+const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getAllTeamsQuery } = teamQueries;
 

@@ -1,6 +1,7 @@
-const catchAsync = require('../../utils/catchAsync');
+const { asyncHandler } = require('../../utils');
 const { predictionQueries } = require('../../queries');
 
+const { catchAsync } = asyncHandler;
 const { getScoresTotalTotoQuery } = predictionQueries;
 
 module.exports = catchAsync(async (_req, res, _next) => {

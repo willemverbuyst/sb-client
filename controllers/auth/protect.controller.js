@@ -1,9 +1,9 @@
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
-const { errorHandlers } = require('../../utils');
-const catchAsync = require('../../utils/catchAsync');
 const { userQueries } = require('../../queries');
+const { asyncHandler, errorHandlers } = require('../../utils');
 
+const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getUserByEmailQuery } = userQueries;
 
