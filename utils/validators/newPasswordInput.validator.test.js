@@ -1,37 +1,37 @@
-const validateChangePasswordInput = require('./newPasswordInput.validator');
+const isValidNewPasswordInput = require('./newPasswordInput.validator');
 
-describe('validateChangePasswordInput function', () => {
+describe('isValidNewPasswordInput', () => {
   test('returns false given an empty string', () => {
-    expect(validateChangePasswordInput('')).toBe(false);
+    expect(isValidNewPasswordInput('')).toBe(false);
   });
 
   test('returns false given one string', () => {
-    expect(validateChangePasswordInput('currentPassword')).toBe(false);
+    expect(isValidNewPasswordInput('currentPassword')).toBe(false);
   });
 
   test('returns false given a string and an empty string', () => {
-    expect(validateChangePasswordInput('currentPassword', '')).toBe(false);
+    expect(isValidNewPasswordInput('currentPassword', '')).toBe(false);
   });
 
   test('returns false given two strings', () => {
-    expect(validateChangePasswordInput('currentPassword', 'newPassword')).toBe(
+    expect(isValidNewPasswordInput('currentPassword', 'newPassword')).toBe(
       false,
     );
   });
 
   test('returns false given two strings and an empty string', () => {
-    expect(
-      validateChangePasswordInput('currentPassword', 'newPassword', ''),
-    ).toBe(false);
+    expect(isValidNewPasswordInput('currentPassword', 'newPassword', '')).toBe(
+      false,
+    );
   });
 
   test('returns false if not given strings', () => {
-    expect(validateChangePasswordInput(123, 123, 123)).toBe(false);
+    expect(isValidNewPasswordInput(123, 123, 123)).toBe(false);
   });
 
   test('returns true if given three strings', () => {
     expect(
-      validateChangePasswordInput(
+      isValidNewPasswordInput(
         'currentPassword',
         'newPassword',
         'confirmPassword',

@@ -1,22 +1,22 @@
 const bcrypt = require('bcrypt');
-const validateNewPassword = require('./newPassword.validator');
+const isValidNewPassword = require('./newPassword.validator');
 
-describe('validateNewPassword function', () => {
+describe('isValidNewPassword', () => {
   test('returns false given an empty string', () => {
-    expect(validateNewPassword('')).toBe(false);
+    expect(isValidNewPassword('')).toBe(false);
   });
 
   test('returns false given a string and an empty string', () => {
-    expect(validateNewPassword('newPassword', '')).toBe(false);
+    expect(isValidNewPassword('newPassword', '')).toBe(false);
   });
 
   test('returns false given arguments are not strings', () => {
-    expect(validateNewPassword(123, 123)).toBe(false);
+    expect(isValidNewPassword(123, 123)).toBe(false);
   });
 
   test('returns false given arguments are the same', () => {
     expect(
-      validateNewPassword(
+      isValidNewPassword(
         'currentPassword',
         bcrypt.hashSync('currentPassword', Number(process.env.SALT_ROUNDS)),
       ),
@@ -25,7 +25,7 @@ describe('validateNewPassword function', () => {
 
   test('returns true given arguments are not the same', () => {
     expect(
-      validateNewPassword(
+      isValidNewPassword(
         'newPassword',
         bcrypt.hashSync('currentPassword', Number(process.env.SALT_ROUNDS)),
       ),

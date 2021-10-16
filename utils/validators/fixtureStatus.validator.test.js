@@ -1,15 +1,15 @@
-const validateFixtureStatus = require('./fixtureStatus.validator');
+const isValidFixtureStatus = require('./fixtureStatus.validator');
 
-describe('validateFixtureStatus function', () => {
+describe('isValidFixtureStatus', () => {
   test('returns false given an empty string', () => {
-    expect(validateFixtureStatus('')).toBe(false);
+    expect(isValidFixtureStatus('')).toBe(false);
   });
 
   test("returns false given string equal to 'Match Finished'", () => {
-    expect(validateFixtureStatus('Match Finished')).toBe(false);
+    expect(isValidFixtureStatus('Match Finished')).toBe(false);
   });
 
   test("returns true given string not equal to 'Match Finished'", () => {
-    expect(validateFixtureStatus('Not started')).toBe(true);
+    expect(isValidFixtureStatus('Not started')).toBe(true);
   });
 });
