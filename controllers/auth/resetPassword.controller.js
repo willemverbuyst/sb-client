@@ -7,7 +7,7 @@ const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
   userQueries;
-const { passwordConfirmValidator } = validators;
+const { isValidPasswordConfirm } = validators;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -27,7 +27,7 @@ module.exports = catchAsync(async (req, res, next) => {
     next(new AppError('Token is invalid or has expired', 400));
   }
 
-  if (!passwordConfirmValidator(password, passwordConfirm)) {
+  if (!isValidPasswordConfirm(password, passwordConfirm)) {
     next(new AppError('Passwords are not the same!', 400));
   }
 

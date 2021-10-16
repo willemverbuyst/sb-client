@@ -5,21 +5,21 @@ const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { createPredictionQuery } = predictionQueries;
-const { fixtureStatusValidator, predictionInputValidator } = validators;
+const { isValidFixtureStatus, isValidPredictionInput } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
   const fixtureId = req.params.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
-  if (!predictionInputValidator(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
+  if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
     return next(new AppError('Missing details, please try again!', 404));
   }
 
   const fixture = await getFixtureQuery(fixtureId);
 
   // TODO: BUILD TIME GUARD
-  if (!fixtureStatusValidator(fixture.status, next)) {
+  if (!isValidFixtureStatus(fixture.status, next)) {
     return next(
       new AppError(
         'You cannot post a prediction of a match that has finsihed already!',

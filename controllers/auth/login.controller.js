@@ -6,7 +6,7 @@ const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
-const { loginInputValidator, passwordValidator } = validators;
+const { isValidLoginInput, isValidPassword } = validators;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -16,13 +16,13 @@ const signToken = (data) =>
 module.exports = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!loginInputValidator(email, password)) {
+  if (!isValidLoginInput(email, password)) {
     return next(new AppError('Vul email en wachtwoord in!'), 400);
   }
 
   const user = await getUserByEmailQuery(email);
 
-  if (!passwordValidator(user, password)) {
+  if (!isValidPassword(user, password)) {
     return next(
       new AppError(
         'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',

@@ -1,21 +1,21 @@
-const fixtureStatusValidator = require('./fixtureStatus.validator');
-const loginInputValidator = require('./loginInput.validator');
-const newPasswordInputValidator = require('./newPasswordInput.validator');
-const newPasswordValidator = require('./newPassword.validator');
-const passwordConfirmValidator = require('./passwordConfirm.validator');
-const passwordValidator = require('./password.validator');
-const predictionInputValidator = require('./predictionInput.validator');
-const signupInputValidator = require('./signupInput.validator');
-const updateProfileInputValidator = require('./updateProfileInput.validator');
+const isValidFixtureStatus = require('./fixtureStatus.validator');
+const isValidLoginInput = require('./loginInput.validator');
+const isValidNewPassword = require('./newPassword.validator');
+const isValidNewPasswordInput = require('./newPasswordInput.validator');
+const isValidPassword = require('./password.validator');
+const isValidPasswordConfirm = require('./passwordConfirm.validator');
+const isValidPredictionInput = require('./predictionInput.validator');
+const isValidSignupInput = require('./signupInput.validator');
+const isvalidUpdateProfileInput = require('./updateProfileInput.validator');
 
 module.exports = {
-  fixtureStatusValidator,
-  loginInputValidator,
-  newPasswordInputValidator,
-  newPasswordValidator,
-  passwordConfirmValidator,
-  passwordValidator,
-  predictionInputValidator,
-  signupInputValidator,
-  updateProfileInputValidator,
+  isValidFixtureStatus,
+  isValidLoginInput,
+  isValidNewPassword,
+  isValidNewPasswordInput,
+  isValidPassword,
+  isValidPasswordConfirm,
+  isValidPredictionInput,
+  isValidSignupInput,
+  isvalidUpdateProfileInput,
 };

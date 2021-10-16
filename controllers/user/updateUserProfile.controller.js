@@ -4,7 +4,7 @@ const { asyncHandler, errorHandlers, validators } = require('../../utils');
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { updateUserProfileQuery } = userQueries;
-const { updateProfileInputValidator } = validators;
+const { isvalidUpdateProfileInput } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const loggedInUserId = Number(req.user.id);
@@ -12,7 +12,7 @@ module.exports = catchAsync(async (req, res, next) => {
     req.body;
 
   if (
-    !updateProfileInputValidator(
+    !isvalidUpdateProfileInput(
       userName,
       firstName,
       lastName,

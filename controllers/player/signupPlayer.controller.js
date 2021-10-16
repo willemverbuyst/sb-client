@@ -4,14 +4,14 @@ const { asyncHandler, errorHandlers, validators } = require('../../utils');
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { createUserQuery } = userQueries;
-const { signupInputValidator } = validators;
+const { isValidSignupInput } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const { userName, firstName, lastName, email, phoneNumber, teamId } =
     req.body;
 
   if (
-    !signupInputValidator(
+    !isValidSignupInput(
       userName,
       firstName,
       lastName,
