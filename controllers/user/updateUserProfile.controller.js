@@ -1,10 +1,10 @@
 const { userQueries } = require('../../queries');
-const { asyncHandler, errorHandlers } = require('../../utils');
-const validateUpdateProfileInput = require('../../validators/validateUpdateProfileInput');
+const { asyncHandler, errorHandlers, validators } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { updateUserProfileQuery } = userQueries;
+const { updateProfileInputValidator } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const loggedInUserId = Number(req.user.id);
@@ -12,7 +12,7 @@ module.exports = catchAsync(async (req, res, next) => {
     req.body;
 
   if (
-    !validateUpdateProfileInput(
+    !updateProfileInputValidator(
       userName,
       firstName,
       lastName,

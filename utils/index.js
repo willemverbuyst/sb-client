@@ -1,8 +1,9 @@
 const asyncHandler = require('./async');
 const errorHandlers = require('./error');
+const emailFunctions = require('./email');
 const helperFunctions = require('./helpers');
 const scoreFunctions = require('./score');
-const emailFunctions = require('./email');
+const validators = require('./validators');
 
 module.exports = {
   asyncHandler,
@@ -10,4 +11,5 @@ module.exports = {
   helperFunctions,
   scoreFunctions,
   emailFunctions,
+  validators,
 };

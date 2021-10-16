@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
-const { asyncHandler, errorHandlers } = require('../../utils');
 const { fixtureQueries, userQueries } = require('../../queries');
-const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
+const { asyncHandler, errorHandlers, validators } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
   userQueries;
+const { passwordConfirmValidator } = validators;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -27,7 +27,7 @@ module.exports = catchAsync(async (req, res, next) => {
     next(new AppError('Token is invalid or has expired', 400));
   }
 
-  if (!validatePasswordConfirm(password, passwordConfirm)) {
+  if (!passwordConfirmValidator(password, passwordConfirm)) {
     next(new AppError('Passwords are not the same!', 400));
   }
 

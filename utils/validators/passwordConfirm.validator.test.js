@@ -1,4 +1,4 @@
-const validatePasswordConfirm = require('./validatePasswordConfirm');
+const validatePasswordConfirm = require('./passwordConfirm.validator');
 
 describe('validatePasswordConfirm function', () => {
   test('returns false given an empty string', () => {

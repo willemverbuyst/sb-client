@@ -1,13 +1,12 @@
 const jwt = require('jsonwebtoken');
 const { fixtureQueries, userQueries } = require('../../queries');
-const { asyncHandler, errorHandlers } = require('../../utils');
-const validateLoginInput = require('../../validators/validateLoginInput');
-const validatePassword = require('../../validators/validatePassword');
+const { asyncHandler, errorHandlers, validators } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
+const { loginInputValidator, passwordValidator } = validators;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -17,13 +16,13 @@ const signToken = (data) =>
 module.exports = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!validateLoginInput(email, password)) {
+  if (!loginInputValidator(email, password)) {
     return next(new AppError('Vul email en wachtwoord in!'), 400);
   }
 
   const user = await getUserByEmailQuery(email);
 
-  if (!validatePassword(user, password)) {
+  if (!passwordValidator(user, password)) {
     return next(
       new AppError(
         'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',

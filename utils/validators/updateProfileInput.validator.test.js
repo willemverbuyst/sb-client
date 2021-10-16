@@ -1,4 +1,4 @@
-const validateUpdateProfileInput = require('./validateUpdateProfileInput');
+const validateUpdateProfileInput = require('./updateProfileInput.validator');
 
 describe('validateUpdateProfileInput function', () => {
   test('returns false given an empty string', () => {

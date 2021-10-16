@@ -1,5 +1,5 @@
-const { asyncHandler } = require('../../utils');
 const { predictionQueries } = require('../../queries');
+const { asyncHandler } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { getScoresTotalTotoQuery } = predictionQueries;

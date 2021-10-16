@@ -1,17 +1,17 @@
 const { userQueries } = require('../../queries');
-const { asyncHandler, errorHandlers } = require('../../utils');
-const validateSignupInput = require('../../validators/validateSignupInput');
+const { asyncHandler, errorHandlers, validators } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { createUserQuery } = userQueries;
+const { signupInputValidator } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const { userName, firstName, lastName, email, phoneNumber, teamId } =
     req.body;
 
   if (
-    !validateSignupInput(
+    !signupInputValidator(
       userName,
       firstName,
       lastName,

@@ -1,4 +1,4 @@
-const validateSignupInput = require('./validateSignupInput');
+const validateSignupInput = require('./signupInput.validator');
 
 describe('validateSignupInput function', () => {
   test('returns false given an empty string', () => {

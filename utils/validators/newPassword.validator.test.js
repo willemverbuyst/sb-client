@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const validateNewPassword = require('./validateNewPassword');
+const validateNewPassword = require('./newPassword.validator');
 
 describe('validateNewPassword function', () => {
   test('returns false given an empty string', () => {

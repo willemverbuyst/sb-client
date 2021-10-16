@@ -1,27 +1,25 @@
-const { asyncHandler, errorHandlers } = require('../../utils');
-const { fixtureQueries } = require('../../queries');
-const { predictionQueries } = require('../../queries');
-const validatePredictionInput = require('../../validators/validatePredictionInput');
-const validateFixtureStatus = require('../../validators/validateFixtureStatus');
+const { fixtureQueries, predictionQueries } = require('../../queries');
+const { asyncHandler, errorHandlers, validators } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { updatePredictionQuery } = predictionQueries;
+const { fixtureStatusValidator, predictionInputValidator } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
   const fixtureId = req.params.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
-  if (!validatePredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
+  if (!predictionInputValidator(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
     return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
   }
 
   const fixture = await getFixtureQuery(fixtureId);
 
   // TODO: BUILD TIME GUARD
-  if (!validateFixtureStatus(fixture.status, next)) {
+  if (!fixtureStatusValidator(fixture.status, next)) {
     return next(
       new AppError(
         'You cannot change a prediction of a match that has finsihed already!',

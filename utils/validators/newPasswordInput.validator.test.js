@@ -1,4 +1,4 @@
-const validateChangePasswordInput = require('./validateChangePasswordInput');
+const validateChangePasswordInput = require('./newPasswordInput.validator');
 
 describe('validateChangePasswordInput function', () => {
   test('returns false given an empty string', () => {

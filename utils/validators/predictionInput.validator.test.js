@@ -1,4 +1,6 @@
-const validatePredictionInput = require('./validatePredictionInput');
+const validatePredictionInput = require('./predictionInput.validator');
+
+// TODO test for negative numbers
 
 describe('validatePredictionInput function', () => {
   test('returns false given an empty string', () => {

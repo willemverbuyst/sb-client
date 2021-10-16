@@ -1,19 +1,21 @@
 const { userQueries } = require('../../queries');
-const { asyncHandler, errorHandlers } = require('../../utils');
-const validateChangePasswordInput = require('../../validators/validateChangePasswordInput');
-const validateNewPassword = require('../../validators/validateNewPassword');
-const validatePassword = require('../../validators/validatePassword');
-const validatePasswordConfirm = require('../../validators/validatePasswordConfirm');
+const { asyncHandler, errorHandlers, validators } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { updateUserPasswordQuery } = userQueries;
+const {
+  newPasswordInputValidator,
+  newPasswordValidator,
+  passwordConfirmValidator,
+  passwordValidator,
+} = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const { currentPassword, newPassword, confirmPassword } = req.body;
 
   if (
-    !validateChangePasswordInput(currentPassword, newPassword, confirmPassword)
+    !newPasswordInputValidator(currentPassword, newPassword, confirmPassword)
   ) {
     return next(
       new AppError('Er ontbreken gevens, vul alle wachtwoorden in!'),
@@ -21,18 +23,18 @@ module.exports = catchAsync(async (req, res, next) => {
     );
   }
 
-  if (!validatePassword(req.user, currentPassword)) {
+  if (!passwordValidator(req.user, currentPassword)) {
     next(new AppError('Je current password is verkeerd!', 401));
   }
 
-  if (!validateNewPassword(newPassword, currentPassword)) {
+  if (!newPasswordValidator(newPassword, currentPassword)) {
     return next(
       new AppError('Je oude en nieuwe wachtwoord mag niet hetzelfde zijn!'),
       400,
     );
   }
 
-  if (!validatePasswordConfirm(newPassword, confirmPassword)) {
+  if (!passwordConfirmValidator(newPassword, confirmPassword)) {
     return next(
       new AppError('Je nieuwe en confirm wachtwoord zijn niet hetzelfde!'),
       400,

@@ -1,11 +1,10 @@
-const { fixtureQueries } = require('../../queries');
-const { predictionQueries } = require('../../queries');
+const { fixtureQueries, predictionQueries } = require('../../queries');
 const { asyncHandler, errorHandlers } = require('../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
-const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
 const { getFixtureQuery } = fixtureQueries;
+const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   const fixtureId = req.params.id;
