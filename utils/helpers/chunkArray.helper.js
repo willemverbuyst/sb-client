@@ -1,9 +1,11 @@
 module.exports = (arr, size) => {
-  const chunkedArr = [];
+  const chunkedArray = [];
   let index = 0;
-  while (index < arr.length) {
-    chunkedArr.push(arr.slice(index, size + index));
-    index += size;
+  if (arr && arr.length > 0 && size) {
+    while (index < arr.length) {
+      chunkedArray.push(arr.slice(index, size + index));
+      index += size;
+    }
   }
-  return chunkedArr;
+  return chunkedArray;
 };
