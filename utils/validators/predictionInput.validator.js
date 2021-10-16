@@ -1,9 +1,7 @@
-const validatePredictionInput = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
+module.exports = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
   !(
     typeof pGoalsHomeTeam !== 'number' ||
     typeof pGoalsAwayTeam !== 'number' ||
     !fixtureId ||
     typeof fixtureId !== 'string'
   );
-
-module.exports = validatePredictionInput;

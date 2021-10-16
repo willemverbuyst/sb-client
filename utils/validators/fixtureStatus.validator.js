@@ -1,4 +1,1 @@
-const validateFixtureStatus = (status) =>
-  !!(status && status !== 'Match Finished');
-
-module.exports = validateFixtureStatus;
+module.exports = (status) => !!(status && status !== 'Match Finished');

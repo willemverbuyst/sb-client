@@ -1,11 +1,4 @@
-const validateSignupInput = (
-  userName,
-  firstName,
-  lastName,
-  email,
-  phoneNumber,
-  teamId,
-) =>
+module.exports = (userName, firstName, lastName, email, phoneNumber, teamId) =>
   !!userName &&
   !!firstName &&
   !!lastName &&
@@ -18,5 +11,3 @@ const validateSignupInput = (
   typeof email === 'string' &&
   typeof phoneNumber === 'string' &&
   typeof teamId === 'number';
-
-module.exports = validateSignupInput;
