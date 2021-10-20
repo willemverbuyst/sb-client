@@ -6,7 +6,8 @@ const isValidPassword = require('./password.validator');
 const isValidPasswordConfirm = require('./passwordConfirm.validator');
 const isValidPredictionInput = require('./predictionInput.validator');
 const isValidSignupInput = require('./signupInput.validator');
-const isvalidUpdateProfileInput = require('./updateProfileInput.validator');
+const isValidUpdateProfileInput = require('./updateProfileInput.validator');
+const isValidUUID = require('./uuid.validator');
 
 module.exports = {
   isValidFixtureStatus,
@@ -17,5 +18,6 @@ module.exports = {
   isValidPasswordConfirm,
   isValidPredictionInput,
   isValidSignupInput,
-  isvalidUpdateProfileInput,
+  isValidUpdateProfileInput,
+  isValidUUID,
 };
