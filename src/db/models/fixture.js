@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
   fixture.init(
     {
       homeTeamId: { type: DataTypes.INTEGER, allowNull: false },
-      homeTeamName: { type: DataTypes.INTEGER, allowNull: false },
-      homeTeamLogo: DataTypes.STRING,
+      homeTeamName: { type: DataTypes.STRING, allowNull: false },
+      homeTeamLogo: DataTypes.TEXT,
       goalsHomeTeam: DataTypes.INTEGER,
       awayTeamId: { type: DataTypes.INTEGER, allowNull: false },
-      awayTeamName: { type: DataTypes.INTEGER, allowNull: false },
-      awayTeamLogo: DataTypes.STRING,
+      awayTeamName: { type: DataTypes.STRING, allowNull: false },
+      awayTeamLogo: DataTypes.TEXT,
       goalsAwayTeam: DataTypes.INTEGER,
       eventTimeStamp: DataTypes.INTEGER,
       round: DataTypes.STRING,

@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
-const { helperFunctions, scoreFunctions } = require('../../utils');
+const { helperFunctions, scoreFunctions } = require('../../../utils');
 
 const { getLastMondayHelper, getNextMondayHelper, getTotoRoundNumberHelper } =
   helperFunctions;

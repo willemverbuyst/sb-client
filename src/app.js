@@ -6,14 +6,14 @@ const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 
 const { errorHandlers } = require('./utils');
-const fixtureRouter = require('./routes/fixtureRoutes');
-const playerRouter = require('./routes/playerRoutes');
-const predictionRouter = require('./routes/predictionRoutes');
-const scoreRouter = require('./routes/scoreRoutes');
-const teamRouter = require('./routes/teamRoutes');
-const userRouter = require('./routes/userRoutes');
-const getFixtures = require('./api-football/fixtures');
-const { errorControllers } = require('./controllers');
+const fixtureRouter = require('./api/routes/fixtureRoutes');
+const playerRouter = require('./api/routes/playerRoutes');
+const predictionRouter = require('./api/routes/predictionRoutes');
+const scoreRouter = require('./api/routes/scoreRoutes');
+const teamRouter = require('./api/routes/teamRoutes');
+const userRouter = require('./api/routes/userRoutes');
+const getFixtures = require('./db/api-football/fixtures');
+const { errorControllers } = require('./api/controllers');
 
 const { AppError } = errorHandlers;
 const { errorController } = errorControllers;

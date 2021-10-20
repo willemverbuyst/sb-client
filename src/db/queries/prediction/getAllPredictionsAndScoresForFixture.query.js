@@ -1,6 +1,6 @@
 const Prediction = require('../../models').prediction;
 const User = require('../../models').user;
-const { scoreFunctions } = require('../../utils');
+const { scoreFunctions } = require('../../../utils');
 
 const { calculateScore } = scoreFunctions;
 

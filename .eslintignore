@@ -1,8 +1,7 @@
 /node_modules
 /build
 
-/migrations
-/models
-
-/dummy-data/*.js
-/seeders
+src/db/migrations
+src/db/models
+src/db/seeders
+src/db/dummy-data/*.js

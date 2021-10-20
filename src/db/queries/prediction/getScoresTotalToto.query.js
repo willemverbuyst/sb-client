@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 const Fixture = require('../../models').fixture;
 const Prediction = require('../../models').prediction;
 const User = require('../../models').user;
-const { helperFunctions, scoreFunctions } = require('../../utils');
+const { helperFunctions, scoreFunctions } = require('../../../utils');
 
 const { reducerHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;

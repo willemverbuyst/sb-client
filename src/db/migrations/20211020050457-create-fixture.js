@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false,
       },
       homeTeamLogo: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       goalsHomeTeam: {
         type: Sequelize.INTEGER,
@@ -31,7 +31,7 @@ module.exports = {
         allowNull: false,
       },
       awayTeamLogo: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       goalsAwayTeam: {
         type: Sequelize.INTEGER,

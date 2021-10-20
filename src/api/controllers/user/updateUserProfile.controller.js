@@ -1,4 +1,4 @@
-const { userQueries } = require('../../../db/queries');
+const { userQueries } = require('../../../db_old/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
