@@ -1,13 +1,18 @@
 const { predictionQueries, userQueries } = require('../../../db/queries');
-const { asyncHandler, errorHandlers } = require('../../../utils');
+const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getScoresPlayerQuery } = predictionQueries;
 const { getUserByIdQuery } = userQueries;
+const { isValidUUID } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
+
+  if (!isValidUUID(playerId)) {
+    return next(new AppError('This is not a valid id!', 404));
+  }
 
   const { userName } = await getUserByIdQuery(playerId);
 
