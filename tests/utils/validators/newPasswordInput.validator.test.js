@@ -1,4 +1,4 @@
-const isValidNewPasswordInput = require('./newPasswordInput.validator');
+const { isValidNewPasswordInput } = require('../../../src/utils/validators');
 
 describe('isValidNewPasswordInput', () => {
   test('returns false given an empty string', () => {

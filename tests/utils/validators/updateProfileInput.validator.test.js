@@ -1,35 +1,39 @@
-const isValidSignupInput = require('./signupInput.validator');
+const { isValidUpdateProfileInput } = require('../../../src/utils/validators');
 
-describe('isValidSignupInput', () => {
+describe('isValidUpdateProfileInput', () => {
   test('returns false given an empty string', () => {
-    expect(isValidSignupInput('')).toBe(false);
+    expect(isValidUpdateProfileInput('')).toBe(false);
   });
 
   test('returns false given a string', () => {
-    expect(isValidSignupInput('userName')).toBe(false);
+    expect(isValidUpdateProfileInput('userName')).toBe(false);
   });
 
   test('returns false given 1 string and 5 empty strings', () => {
-    expect(isValidSignupInput('username', '', '', '', '', '')).toBe(false);
+    expect(isValidUpdateProfileInput('userName', '', '', '', '', '')).toBe(
+      false,
+    );
   });
 
   test('returns false given 2 strings', () => {
-    expect(isValidSignupInput('userName', 'firstName')).toBe(false);
+    expect(isValidUpdateProfileInput('userName', 'firstName')).toBe(false);
   });
 
   test('returns false given 3 strings', () => {
-    expect(isValidSignupInput('userName', 'firstName', 'lastName')).toBe(false);
+    expect(isValidUpdateProfileInput('userName', 'firstName', 'lastName')).toBe(
+      false,
+    );
   });
 
   test('returns false given 4 strings', () => {
     expect(
-      isValidSignupInput('userName', 'firstName', 'lastName', 'email'),
+      isValidUpdateProfileInput('userName', 'firstName', 'lastName', 'email'),
     ).toBe(false);
   });
 
   test('returns false given 5 strings', () => {
     expect(
-      isValidSignupInput(
+      isValidUpdateProfileInput(
         'userName',
         'firstName',
         'lastName',
@@ -41,7 +45,7 @@ describe('isValidSignupInput', () => {
 
   test('returns false given 6 strings', () => {
     expect(
-      isValidSignupInput(
+      isValidUpdateProfileInput(
         'userName',
         'firstName',
         'lastName',
@@ -53,12 +57,12 @@ describe('isValidSignupInput', () => {
   });
 
   test('returns false given 6 numbers', () => {
-    expect(isValidSignupInput(123, 123, 123, 123, 123, 123)).toBe(false);
+    expect(isValidUpdateProfileInput(123, 123, 123, 123, 123, 123)).toBe(false);
   });
 
   test('returns true given 5 strings and 1 number', () => {
     expect(
-      isValidSignupInput(
+      isValidUpdateProfileInput(
         'userName',
         'firstName',
         'lastName',

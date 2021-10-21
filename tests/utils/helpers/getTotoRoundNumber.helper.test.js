@@ -1,12 +1,12 @@
-const getTotoRoundNumber = require('./getTotoRoundNumber.helper');
+const { getTotoRoundNumberHelper } = require('../../../src/utils/helpers');
 const {
   ROUNDS_PER_TOTO_ROUND,
   NUMBER_OF_TOTO_ROUNDS,
-} = require('../../constants/set-up-game');
+} = require('../../../src/constants/set-up-game');
 
-describe('getTotoRoundNumber', () => {
+describe('getTotoRoundNumberHelper', () => {
   test('should return 1 if no argument provided', () => {
-    expect(getTotoRoundNumber()).toBe(1);
+    expect(getTotoRoundNumberHelper()).toBe(1);
   });
   test('should return totoround', () => {
     for (
@@ -14,13 +14,17 @@ describe('getTotoRoundNumber', () => {
       r <= ROUNDS_PER_TOTO_ROUND * NUMBER_OF_TOTO_ROUNDS;
       r += 1
     ) {
-      expect(getTotoRoundNumber(r)).toBe(Math.ceil(r / ROUNDS_PER_TOTO_ROUND));
+      expect(getTotoRoundNumberHelper(r)).toBe(
+        Math.ceil(r / ROUNDS_PER_TOTO_ROUND),
+      );
     }
   });
   test('should return last totoround, if argument > rounds per toto  * totorounds', () => {
     for (let i = 0; i < 10; i += 1) {
       expect(
-        getTotoRoundNumber(ROUNDS_PER_TOTO_ROUND * NUMBER_OF_TOTO_ROUNDS + i),
+        getTotoRoundNumberHelper(
+          ROUNDS_PER_TOTO_ROUND * NUMBER_OF_TOTO_ROUNDS + i,
+        ),
       ).toBe(NUMBER_OF_TOTO_ROUNDS);
     }
   });
