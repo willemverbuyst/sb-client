@@ -6,7 +6,7 @@ const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
-const { isValidLoginInput, isValidPassword } = validators;
+const { isValidEmail, isValidLoginInput, isValidPassword } = validators;
 
 const signToken = (data) =>
   jwt.sign(data, process.env.JWT_SECRET, {
@@ -18,6 +18,10 @@ module.exports = catchAsync(async (req, res, next) => {
 
   if (!isValidLoginInput(email, password)) {
     return next(new AppError('Vul email en wachtwoord in!'), 400);
+  }
+
+  if (!isValidEmail(email)) {
+    return next(new AppError('This is not a valid email!'), 400);
   }
 
   const user = await getUserByEmailQuery(email);
