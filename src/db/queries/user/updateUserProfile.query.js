@@ -5,7 +5,7 @@ module.exports = async (
   id,
   { userName, firstName, lastName, email, phoneNumber, totaalToto, teamId },
 ) => {
-  const updatedUser = await User.update(
+  await User.update(
     {
       userName,
       firstName,
@@ -17,9 +17,7 @@ module.exports = async (
     },
     {
       where: { id },
-      returning: true,
-      plain: true,
     },
   );
-  return await getUserById(updatedUser[1].dataValues.id);
+  return await getUserById(id);
 };

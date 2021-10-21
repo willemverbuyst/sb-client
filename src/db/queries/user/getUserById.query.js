@@ -3,7 +3,7 @@ const User = require('../../models').user;
 
 module.exports = async (id) =>
   await User.findOne({
-    where: { id: id },
+    where: { id },
     attributes: [
       'id',
       'userName',
@@ -20,6 +20,4 @@ module.exports = async (id) =>
         attributes: ['id', 'logo', 'name'],
       },
     ],
-    raw: true,
-    nest: true,
   });
