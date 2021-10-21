@@ -26,6 +26,15 @@ module.exports = catchAsync(async (req, res, next) => {
 
   const user = await getUserByEmailQuery(email);
 
+  if (!user) {
+    return next(
+      new AppError(
+        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
+        401,
+      ),
+    );
+  }
+
   if (!isValidPassword(user, password)) {
     return next(
       new AppError(
@@ -35,10 +44,11 @@ module.exports = catchAsync(async (req, res, next) => {
     );
   }
 
+  delete user.dataValues.password;
+
   const currentRound = await getCurrentRoundForUserQuery(user.id);
 
   const token = signToken({ userId: user.email });
-  user.password = '';
 
   res.status(200).json({
     status: 'success',
