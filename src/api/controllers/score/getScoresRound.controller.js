@@ -7,7 +7,7 @@ const { getScoresRoundQuery } = predictionQueries;
 const { isValidRoundNumber } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
-  const roundNumber = req.params.id;
+  const roundNumber = Number(req.params.id);
 
   if (!isValidRoundNumber(roundNumber)) {
     return next(new AppError('This is not a valid round number!', 404));
