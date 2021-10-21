@@ -7,7 +7,7 @@ const { getScoresTotoRoundQuery } = predictionQueries;
 const { isValidTotoRoundNumber } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
-  const totoRoundNumber = req.params.id;
+  const totoRoundNumber = Number(req.params.id);
 
   if (!isValidTotoRoundNumber(totoRoundNumber)) {
     return next(new AppError('This is not a valid totoround number!', 404));
