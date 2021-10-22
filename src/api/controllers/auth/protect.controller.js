@@ -51,11 +51,3 @@ module.exports = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
-
-exports.restrictTo = (role) => (req, res, next) => {
-  if (!req.user[role] === true) {
-    return next(new AppError('Je moet een admin zijn voor dit verzoek!', 403));
-  }
-
-  next();
-};

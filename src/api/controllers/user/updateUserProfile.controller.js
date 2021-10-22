@@ -17,7 +17,6 @@ module.exports = catchAsync(async (req, res, next) => {
     totaalToto,
     teamId,
   } = req.body;
-  console.log('req.body :>> ', req.body);
 
   if (
     !isValidUpdateProfileInput(
