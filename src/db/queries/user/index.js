@@ -4,6 +4,7 @@ const getAllUsersQuery = require('./getAllUsers.query');
 const getUserByEmailQuery = require('./getUserByEmail.query');
 const getUserByIdQuery = require('./getUserById.query');
 const getUserByTokenQuery = require('./getUserByToken.query');
+const getUserByUserNameQuery = require('./getUserByUserName.query');
 const handlePasswordResetQuery = require('./handlePasswordReset.query');
 const handlePasswordResetErrorQuery = require('./handlePasswordResetError.query');
 const updateUserPasswordQuery = require('./updateUserPassword.query');
@@ -16,6 +17,7 @@ module.exports = {
   getUserByEmailQuery,
   getUserByIdQuery,
   getUserByTokenQuery,
+  getUserByUserNameQuery,
   handlePasswordResetQuery,
   handlePasswordResetErrorQuery,
   updateUserPasswordQuery,

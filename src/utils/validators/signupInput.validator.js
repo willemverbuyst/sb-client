@@ -1,4 +1,12 @@
-module.exports = (userName, firstName, lastName, email, phoneNumber, teamId) =>
+module.exports = (
+  userName,
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  totaalToto,
+  teamId,
+) =>
   !!userName &&
   !!firstName &&
   !!lastName &&
@@ -10,4 +18,5 @@ module.exports = (userName, firstName, lastName, email, phoneNumber, teamId) =>
   typeof lastName === 'string' &&
   typeof email === 'string' &&
   typeof phoneNumber === 'string' &&
-  typeof teamId === 'number';
+  typeof teamId === 'number' &&
+  typeof totaalToto === 'boolean';

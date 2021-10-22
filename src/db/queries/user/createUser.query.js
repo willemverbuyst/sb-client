@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 const Team = require('../../models').team;
 const User = require('../../models').user;
+const getUserByEmailQuery = require('./getUserByEmail.query');
 
 module.exports = async ({
   userName,
@@ -12,7 +13,7 @@ module.exports = async ({
   totaalToto,
   teamId,
 }) => {
-  const newUser = await User.create(
+  await User.create(
     {
       id: uuidv4(),
       userName,
@@ -20,7 +21,7 @@ module.exports = async ({
       lastName,
       email,
       password: bcrypt.hashSync(
-        'EliudKipchoge',
+        process.env.TEMP_PASSWORD,
         Number(process.env.SALT_ROUNDS),
       ),
       phoneNumber,
@@ -35,7 +36,9 @@ module.exports = async ({
         },
       ],
     },
-  ).then((createdUser) => createdUser.reload());
+  );
 
-  return newUser;
+  const user = await getUserByEmailQuery(email);
+
+  return user;
 };
