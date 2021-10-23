@@ -5,18 +5,27 @@ const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { createPredictionQuery } = predictionQueries;
-const { isValidFixtureStatus, isValidPredictionInput } = validators;
+const { isValidFixtureId, isValidFixtureStatus, isValidPredictionInput } =
+  validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
   const fixtureId = req.params.id;
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
+  if (!isValidFixtureId(fixtureId)) {
+    return next(new AppError('This is not a valid fixture id', 404));
+  }
+
   if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
     return next(new AppError('Missing details, please try again!', 404));
   }
 
   const fixture = await getFixtureQuery(fixtureId);
+
+  if (!fixture) {
+    return next(new AppError('The fixture with this id was not found', 404));
+  }
 
   // TODO: BUILD TIME GUARD
   if (!isValidFixtureStatus(fixture.status, next)) {
