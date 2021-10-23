@@ -1,6 +1,6 @@
 const chunkArrayHelper = require('./chunkArray.helper');
 const chunkArrayTotoRoundsHelper = require('./chunkArrayTotoRounds.helper');
-const getLastMondayHelper = require('./getLastMonday.helpers');
+const { getLastMondayHelper } = require('./getLastMonday.helpers');
 const getNextMondayHelper = require('./getNextMonday.helper');
 const getTotoRoundNumberHelper = require('./getTotoRoundNumber.helper');
 const reducerHelper = require('./reducer.helper');
