@@ -1,11 +1,19 @@
-const getTodayAsNumber = () => new Date().getDay() || 7;
+const getNowAsTimeStamp = (now) => Math.floor(now / 1000);
 
-// const getDays = (todayAsNumber) => (todayAsNumber - 1) * 24 * 60 * 60;
+const getTodayAsNumber = (now) => now.getDay() || 7;
 
-module.exports = () => {
-  const date = new Date();
-  const todayAsNumber = getTodayAsNumber();
-  if (todayAsNumber !== 1)
-    return Math.floor(date / 1000) - 24 * (todayAsNumber - 1) * 60 * 60;
-  return Math.floor(date / 1000);
+const getLastMondayAsTimeStamp = (now) =>
+  getNowAsTimeStamp(now) - 24 * (getTodayAsNumber(now) - 1) * 60 * 60;
+
+const isTodayAMonday = (now) => getTodayAsNumber(now) === 1;
+
+const getLastMondayHelper = (now) =>
+  isTodayAMonday(now) ? getNowAsTimeStamp(now) : getLastMondayAsTimeStamp(now);
+
+module.exports = {
+  getLastMondayAsTimeStamp,
+  getLastMondayHelper,
+  getNowAsTimeStamp,
+  getTodayAsNumber,
+  isTodayAMonday,
 };
