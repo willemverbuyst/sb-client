@@ -9,8 +9,8 @@ describe('isValidUpdateProfileInput', () => {
     expect(isValidUpdateProfileInput('userName')).toBe(false);
   });
 
-  test('returns false given 1 string and 5 empty strings', () => {
-    expect(isValidUpdateProfileInput('userName', '', '', '', '', '')).toBe(
+  test('returns false given 1 string and 6 empty strings', () => {
+    expect(isValidUpdateProfileInput('userName', '', '', '', '', '', '')).toBe(
       false,
     );
   });
@@ -60,7 +60,7 @@ describe('isValidUpdateProfileInput', () => {
     expect(isValidUpdateProfileInput(123, 123, 123, 123, 123, 123)).toBe(false);
   });
 
-  test('returns true given 5 strings and 1 number', () => {
+  test('returns false given 6 strings and 1 number', () => {
     expect(
       isValidUpdateProfileInput(
         'userName',
@@ -68,6 +68,21 @@ describe('isValidUpdateProfileInput', () => {
         'lastName',
         'email',
         'phoneNumber',
+        'true',
+        123,
+      ),
+    ).toBe(false);
+  });
+
+  test('returns false given 5 strings, a boolean and 1 number', () => {
+    expect(
+      isValidUpdateProfileInput(
+        'userName',
+        'firstName',
+        'lastName',
+        'email',
+        'phoneNumber',
+        true,
         123,
       ),
     ).toBe(true);

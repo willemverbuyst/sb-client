@@ -13,16 +13,16 @@ describe('isValidLoginInput', () => {
     expect(isValidLoginInput('email', '')).toBe(false);
   });
 
-  test('returns false given a number and string', () => {
-    expect(isValidLoginInput(123, 'password')).toBe(false);
+  test('returns true given a number and string', () => {
+    expect(isValidLoginInput(123, 'password')).toBe(true);
   });
 
-  test('returns false given a string and a number', () => {
-    expect(isValidLoginInput('email', 123)).toBe(false);
+  test('returns true given a string and a number', () => {
+    expect(isValidLoginInput('email', 123)).toBe(true);
   });
 
-  test('returns false given 2 numbers', () => {
-    expect(isValidLoginInput(123, 123)).toBe(false);
+  test('returns true given 2 numbers', () => {
+    expect(isValidLoginInput(123, 123)).toBe(true);
   });
 
   test('returns true given 2 strings', () => {
