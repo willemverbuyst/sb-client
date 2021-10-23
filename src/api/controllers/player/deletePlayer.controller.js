@@ -1,12 +1,19 @@
 const { userQueries } = require('../../../db/queries');
-const { asyncHandler, errorHandlers } = require('../../../utils');
+const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
 const { deleteUserAndHisPredictionQuery } = userQueries;
+const { isValidUUID } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
-  const player = await deleteUserAndHisPredictionQuery(req.params.id);
+  const playerId = req.params.id;
+
+  if (!isValidUUID(playerId)) {
+    return next(new AppError('This is not a valid id!', 404));
+  }
+
+  const player = await deleteUserAndHisPredictionQuery(playerId);
 
   if (!player) {
     return next(new AppError('Geen speler gevonden met deze id!', 404));
