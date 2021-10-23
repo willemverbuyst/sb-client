@@ -1,4 +1,5 @@
 const isValidEmail = require('./email.validator');
+const isValidFixtureId = require('./fixtureId.validator');
 const isValidFixtureStatus = require('./fixtureStatus.validator');
 const isValidLoginInput = require('./loginInput.validator');
 const isValidNewPassword = require('./newPassword.validator');
@@ -14,6 +15,7 @@ const isValidUUID = require('./uuid.validator');
 
 module.exports = {
   isValidEmail,
+  isValidFixtureId,
   isValidFixtureStatus,
   isValidLoginInput,
   isValidNewPassword,
