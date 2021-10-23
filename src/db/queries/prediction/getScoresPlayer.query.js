@@ -7,7 +7,8 @@ const { chunkArrayTotoRoundsHelper, getLastMondayHelper } = helperFunctions;
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (playerId) => {
-  const timeStampLastMonday = getLastMondayHelper();
+  const now = new Date(Date.now());
+  const timeStampLastMonday = getLastMondayHelper(now);
 
   const fixtures = await Fixture.findAll({
     where: {

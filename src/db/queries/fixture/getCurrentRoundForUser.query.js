@@ -8,8 +8,9 @@ const { getLastMondayHelper, getNextMondayHelper, getTotoRoundNumberHelper } =
 const { calculateScore } = scoreFunctions;
 
 module.exports = async (id) => {
-  const timeStampLastMonday = getLastMondayHelper();
-  const timeStampNextMonday = getNextMondayHelper();
+  const now = new Date(Date.now());
+  const timeStampLastMonday = getLastMondayHelper(now);
+  const timeStampNextMonday = getNextMondayHelper(now);
   const fixturesWithPrediction = await Fixture.findAll({
     where: {
       round: { [Op.regexp]: '^Regular' },
