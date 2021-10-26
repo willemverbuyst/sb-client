@@ -14,10 +14,11 @@ const signToken = (data) =>
 module.exports = catchAsync(async (req, res, _next) => {
   const user = await getUserByEmailQuery(req.user.email);
 
+  delete user.dataValues.password;
+
   const currentRound = await getCurrentRoundForUserQuery(user.id);
 
   const token = signToken({ userId: user.email });
-  user.password = '';
 
   res.status(200).json({
     status: 'success',

@@ -1,8 +1,9 @@
-const { userQueries } = require('../../../db/queries');
+const { teamQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const { AppError } = errorHandlers;
+const { getTeamById } = teamQueries;
 const { createUserQuery, getUserByEmailQuery, getUserByUserNameQuery } =
   userQueries;
 const { isValidEmail, isValidSignupInput } = validators;
@@ -56,6 +57,12 @@ module.exports = catchAsync(async (req, res, next) => {
       ),
       400,
     );
+  }
+
+  const team = await getTeamById(teamId);
+
+  if (!team) {
+    return next(new AppError('Team with this id not found!'), 400);
   }
 
   const newPlayer = await createUserQuery(req.body);

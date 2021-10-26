@@ -9,13 +9,12 @@ const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
   // get token an check if it's there
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
-    token = req.headers.authorization.split(' ')[1];
-  }
+
+  const token =
+    req.headers.authorization && req.headers.authorization.startsWith('Bearer')
+      ? req.headers.authorization.split(' ')[1]
+      : '';
+
   if (!token) {
     return next(
       new AppError('Je bent niet ingelogd. Log in om de app te gebruiken.'),

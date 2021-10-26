@@ -35,9 +35,12 @@ module.exports = catchAsync(async (req, res, next) => {
 
   // Log in user, send JWT
   const user = await getUserByEmailQuery(userByToken.email);
+
+  delete user.dataValues.password;
+
   const currentRound = await getCurrentRoundForUserQuery(user.id);
+
   const token = signToken({ userId: user.email });
-  user.password = '';
 
   res.status(200).json({
     status: 'success',
