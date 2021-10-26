@@ -59,12 +59,14 @@ if (process.env.NODE_ENV === 'development')
     setTimeout(() => next(), Number(process.env.DELAY));
   });
 
-app.use('/api/v1/fixtures', fixtureRouter);
-app.use('/api/v1/players', playerRouter);
-app.use('/api/v1/predictions', predictionRouter);
-app.use('/api/v1/scores', scoreRouter);
-app.use('/api/v1/teams', teamRouter);
-app.use('/api/v1/users', userRouter);
+const { BASE_URL } = process.env;
+
+app.use(`${BASE_URL}/fixtures`, fixtureRouter);
+app.use(`${BASE_URL}/players`, playerRouter);
+app.use(`${BASE_URL}/predictions`, predictionRouter);
+app.use(`${BASE_URL}/scores`, scoreRouter);
+app.use(`${BASE_URL}/teams`, teamRouter);
+app.use(`${BASE_URL}/users`, userRouter);
 
 app.all('*', (req, _res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
