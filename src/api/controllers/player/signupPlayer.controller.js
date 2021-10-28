@@ -67,9 +67,11 @@ module.exports = catchAsync(async (req, res, next) => {
 
   const newPlayer = await createUserQuery(req.body);
 
+  delete newPlayer.dataValues.password;
+
   res.status(201).json({
     status: 'success',
     data: { player: newPlayer },
-    message: `Er is een nieuw account gemaakt voor ${newPlayer.dataValues.userName}.`,
+    message: `A new account is made for ${newPlayer.dataValues.userName}.`,
   });
 });
