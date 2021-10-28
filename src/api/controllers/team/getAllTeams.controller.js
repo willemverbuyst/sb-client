@@ -9,9 +9,7 @@ module.exports = catchAsync(async (_req, res, next) => {
   const teams = await getAllTeamsQuery();
 
   if (!teams) {
-    return next(
-      new AppError('Geen teams gevonden, probeer het later nog eens.', 500),
-    );
+    return next(new AppError('No teams found, please try again later.', 500));
   }
 
   res.status(200).json({
