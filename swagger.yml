@@ -1,0 +1,320 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in HTML.
+  version: 0.1.9
+servers:
+  - url: localhost:4000/api/v2
+    description: ErPaSitoto Server
+paths:
+  /players:
+    get:
+      summary: Gets all players.
+      description: Returns a list of all the players including some of user details.
+      responses:
+        '200':
+          description: Successful getting all players
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  results:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Player'
+        '404':
+          description: Unsuccesful response!
+  /players/{id}:
+    delete:
+      summary: Deletes a player
+      description: The admin can delete a player from the list.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the player.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful removing of player
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: string
+                  message:
+                    type: string
+        '500':
+          description: Unsuccesful response
+  /players/signup:
+    post:
+      summary: Creates a new player.
+      description: Returns the signed up player details and a success message.
+      requestBody:
+        description: Details of the user, all are reuired
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Successful signing up player
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/Player'
+                  message:
+                    type: string
+                    example: A new account is made for Jack
+        '400':
+          description: User with that email already exists.
+        '404':
+          description: Missing input details.
+  /fixtures/{id}:
+    get:
+      summary: Gets a fixture.
+      description: >
+        Returns the fixture. 
+        Including the predictions and scores of the players if predictions were made.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the fixture.
+          schema:
+            type: integer
+            minimum: 707179
+            maximum: 707484
+      responses:
+        '200':
+          description: A fixture  with the scores of the players.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    example: success
+                  data:
+                    properties:
+                      fixture:
+                        $ref: '#/components/schemas/Fixture'
+                      scores:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PredictionsWithScores'
+        '400':
+          description: Bad request, return error when the id is not valid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    example: fail
+                  message:
+                    example: This is not a valid fixture id.
+
+        '404':
+          description: The fixture with this id was not found.
+        default:
+          description: Unexpected error
+  /scores/players/{id}:
+    get:
+      summary: Gets the scores of a player.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the player.
+          schema:
+            type: string
+      responses:
+        '200': # status code
+          description: Successful getting all the player and her/his scores
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  results:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
+        '500':
+          description: No teams found, please try again later
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+  /teams:
+    get:
+      summary: Gets all teams.
+      description: Players select one of these teams on signup.
+      responses:
+        '200': # status code
+          description: Successful getting all teams
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  results:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
+        '500':
+          description: No teams found, please try again later
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+components:
+  schemas:
+    Fixture:
+      type: object
+      properties:
+        id:
+          type: integer
+        homeTeamId:
+          type: integer
+        homeTeamName:
+          type: string
+        homeTeamLogo:
+          type: string
+        goalsHomeTeam:
+          type: integer
+        awayTeamId:
+          type: integer
+        awayTeamName:
+          type: string
+        awayTeamLogo:
+          type: string
+        goalsAwayTeam:
+          type: integer
+        eventTimeStamp:
+          type: integer
+        round:
+          type: string
+        status:
+          type: string
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1118
+        logo:
+          type: string
+          example: https://media.api-sports.io/football/teams/1118.png
+        name:
+          type: string
+          example: Netherlands
+    PredictionsWithScores:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Jack
+        userId:
+          type: string
+          example: 2222bbbb-ffff-4444-aaaa-888887777777
+        pGoalsHomeTeam:
+          type: integer
+          example: 3
+        pGoalsAwayTeam:
+          type: integer
+          example: 2
+        score:
+          type: integer
+          example: 5
+    Player:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 2222bbbb-ffff-4444-aaaa-888887777777
+        userName:
+          type: string
+          example: Jack
+        firstName:
+          type: string
+          example: Jack
+        lastName:
+          type: string
+          example: Sparrow
+        email:
+          type: string
+          example: jack@sparrow.com
+        phoneNumber:
+          type: string
+          example: 0612312312
+        admin:
+          type: boolean
+          example: False
+        totaalToto:
+          type: boolean
+          example: True
+        team:
+          $ref: '#/components/schemas/Team'
+    User:
+      type: object
+      properties:
+        userName:
+          type: string
+          example: Jack
+        firstName:
+          type: string
+          example: Jack
+        lastName:
+          type: string
+          example: Sparrow
+        email:
+          type: string
+          example: jack@sparrow.com
+        phoneNumber:
+          type: string
+          example: 0612312312
+        totaalToto:
+          type: boolean
+          example: true
+        teamId:
+          type: integer
+          example: 123

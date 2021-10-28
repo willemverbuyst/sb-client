@@ -18,7 +18,7 @@ module.exports = async (fixture) => {
 
   const predictionsWithScores = predictions.map((prediction) => ({
     name: prediction.user.userName,
-    id: prediction.user.id,
+    userId: prediction.user.id,
     pGoalsHomeTeam: prediction.pGoalsHomeTeam,
     pGoalsAwayTeam: prediction.pGoalsAwayTeam,
     score: calculateScore(

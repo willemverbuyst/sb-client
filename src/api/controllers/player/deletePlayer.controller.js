@@ -16,12 +16,12 @@ module.exports = catchAsync(async (req, res, next) => {
   const player = await deleteUserAndHisPredictionQuery(playerId);
 
   if (!player) {
-    return next(new AppError('Geen speler gevonden met deze id!', 404));
+    return next(new AppError('No player found with this id!', 404));
   }
 
   res.status(200).json({
     status: 'success',
     data: null,
-    message: 'Speler is verwijderd!',
+    message: 'Player removed!',
   });
 });

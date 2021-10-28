@@ -1,0 +1,2615 @@
+[33mcommit 5adcddbdb183059ed32e2f46e6f0ce17b82da42c[m[33m ([m[1;36mHEAD -> [m[1;32mfeat-swagger[m[33m, [m[1;31morigin/feat-swagger[m[33m)[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 28 06:06:32 2021 +0200
+
+    Set up swagger file -1
+
+[33mcommit aa1fe07bd4ee2a6fb2a16d90c9e22ba8df639f97[m[33m ([m[1;31morigin/development[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdevelopment[m[33m)[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 26 20:13:44 2021 +0200
+
+    Add base url to dotenv
+
+[33mcommit eaf4eb0a0047a2d75801d8b2e214c95971217e35[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 26 19:30:07 2021 +0200
+
+    Update auth controllers
+
+[33mcommit c2f691707f22275691aa34999c8f87332c05e987[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 26 06:05:38 2021 +0200
+
+    Check for teamId on update profile
+
+[33mcommit 496cdef2412a12c930683c475b3f80306ba3997d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Oct 24 09:43:48 2021 +0200
+
+    Add validation to update prediction
+
+[33mcommit 1f140e1df9be29e45bb040a25b4bc19ec60b2e2e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Oct 24 09:29:19 2021 +0200
+
+    Add validation
+
+[33mcommit bfba51eb5be6bea64d592c02aa44558f0019dcdf[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Oct 24 09:29:07 2021 +0200
+
+    Validate is open to bet, write test
+
+[33mcommit 7d14a47e5738efba020d6b3f13d025fbddb166f0[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 16:36:54 2021 +0200
+
+    Update tests
+
+[33mcommit bd7baf8969069c67b5a34b1dc5086cedbec1dc2a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 16:31:20 2021 +0200
+
+    Test nextMonday helper
+
+[33mcommit 3b005b7cac1e60d5f1bfe6d62904da1dfbb7e7de[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 16:24:19 2021 +0200
+
+    Pass current time as argument
+
+[33mcommit 770f7bf8c14df81990fad0f6ba8b227b40325194[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 16:23:53 2021 +0200
+
+    Test login in lastMonday helpers
+
+[33mcommit c795fd2faef7ec17ce71b20729d8590ad94ea330[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 16:23:22 2021 +0200
+
+    Separate login in lastMonday helpers
+
+[33mcommit 2882ae36d5c8ce2a9b484dd8b5184d604996638b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 12:42:46 2021 +0200
+
+    Test isValidFixtureId
+
+[33mcommit ad19165a312df4bf83deefe229d1240d6848c54b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 11:30:19 2021 +0200
+
+    Add validation to post prediction controller
+
+[33mcommit 0190b5ea8b340e2a6bee3638b47b55866af90c76[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 07:26:58 2021 +0200
+
+    Add validation in get fixture w/ scores controller
+
+[33mcommit d9b6e442589fd9f54d2a843b6051a63237c14c64[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 23 07:26:16 2021 +0200
+
+    Update delete palyer logic
+
+[33mcommit b9b8bce1493295841176e002bd382dd3cda119ca[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Oct 22 07:05:41 2021 +0200
+
+    Work on sign up player logic
+
+[33mcommit b0fc78ba95f9100334f28bd717e5153b7e966d52[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Oct 22 07:05:23 2021 +0200
+
+    Clean up
+
+[33mcommit 3a526235ad12710ddc7940de795b2a071dc76705[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 21:26:00 2021 +0200
+
+    Work on update user profile logic
+
+[33mcommit abf07263bac87260bab6d6480b888c339af4c379[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 21:02:52 2021 +0200
+
+    Limit attributes response get all teams
+
+[33mcommit 4b3ad744f21013d4b4b928c4248cd687e631e7c1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 21:02:15 2021 +0200
+
+    Remove password key from response login
+
+[33mcommit 24efd4788fd7be7847cfaafcfac3dc83beb58855[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 06:55:33 2021 +0200
+
+    Update login input validation
+
+[33mcommit a5289d173e626367ebc4888fcc03006c8e915844[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 06:55:12 2021 +0200
+
+    Add validator + test for email
+
+[33mcommit 1637d50b5ff12ab9d2f82dfdb372224eb030b661[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 06:28:44 2021 +0200
+
+    Write test for isValidUUID
+
+[33mcommit b80bf380029820267d4e7fe5fdcfff6eac523f39[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 06:22:05 2021 +0200
+
+    Write test for isValidTotoRoundNumber
+
+[33mcommit 95471c562094f71886b7ed3a6bda380fea0fadb3[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 06:17:01 2021 +0200
+
+    Write test for isValidRoundNumber
+
+[33mcommit c322d60df536b17bb00161b925e9a10124136bc9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Oct 21 06:01:06 2021 +0200
+
+    Move all test to separate folder
+
+[33mcommit 0af321e3baf2ac6f904dcd2eadf07bdcc23a94e7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 19:59:52 2021 +0200
+
+    Add validator for totoround numbers
+
+[33mcommit c8282b7a2c45fc5f41176ca14769bd511bb6375c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 19:53:04 2021 +0200
+
+    Implement validators
+
+[33mcommit 5779c94c5d7e2c8841176b9cc40016b2600a18c9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 19:52:37 2021 +0200
+
+    Add validatator for round number
+
+[33mcommit da759a2f0ecc93000f7f2fe97e92037ffbe59a33[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 19:38:50 2021 +0200
+
+    Check for valid player id
+
+[33mcommit fc33b821f548fd9bd17fdfd690e6d31d1c3d40c9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 19:38:30 2021 +0200
+
+    Update dummy predictions
+
+[33mcommit a3c574dc8318eea8ac2c5b52898be87b84f4705b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 19:37:55 2021 +0200
+
+    Add validator for uuid
+
+[33mcommit 3fb443706ac53316558e59c0af2dec975b118607[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 08:30:01 2021 +0200
+
+    Use uuidv4 for userId
+
+[33mcommit 5b651a900fb2ce1b1178847a397f3cc384f2ab89[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 08:18:08 2021 +0200
+
+    Refactor sequelize set up, part 1
+
+[33mcommit 623216b414f73d8f96a1dfb4cbadf5575a013c84[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 20 06:26:44 2021 +0200
+
+    Major reorder of folders
+
+[33mcommit 5ffebae5f70c6d0da16b65fb439645df1067a5c4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 16 09:43:22 2021 +0200
+
+    Test chunkArray helper
+
+[33mcommit 0bdbd5201b46f9d515c0f4146d814c63fd5f606f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 16 09:20:08 2021 +0200
+
+    Test getTotoRoundNumber helper
+
+[33mcommit f84e61a8d45400e1c20444e1299d68ba65d22474[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 16 07:26:20 2021 +0200
+
+    Update names of validators in tests
+
+[33mcommit 6a512fff480bcf77b4b59b3bf4f48b07cb8500a7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 16 07:19:50 2021 +0200
+
+    Update names of validators in controllers
+
+[33mcommit b1386072d5461b3122c696e05621e2f8eee12635[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 16 07:08:39 2021 +0200
+
+    Update exports
+
+[33mcommit f9e1c83f33302fa254efad96b8ca0f8bfcf80fd6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Oct 16 07:05:14 2021 +0200
+
+    Move validators to utils folder
+
+[33mcommit c6336c031ee938024406be0071ffd36a7eaadd49[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 13 06:03:18 2021 +0200
+
+    Reorganize catch async helper
+
+[33mcommit 6d4b827764b802b8c654eaa4665af2b5d539b0f7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 12 19:10:22 2021 +0200
+
+    Move date fn to helpers
+
+[33mcommit dd12134fe5bcbd450a6e26649e1b5da9c3fc7b65[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 12 19:04:20 2021 +0200
+
+    Reorganize helpers
+
+[33mcommit 191a4890c9e598ef7ac13cd55f72167d90b4a78d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 12 08:17:50 2021 +0200
+
+    Reorganize error handler in utils
+
+[33mcommit c3541bbd7ad439479b4999b651048a6041a06363[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 12 07:09:19 2021 +0200
+
+    Fix logic user queries and controllers
+
+[33mcommit 53af91c5d21bebf359115509ef164618cd27c304[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 12 06:22:07 2021 +0200
+
+    Reorganize user queries
+
+[33mcommit 437344277392c876920d04c5551c4bc04483b95e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Oct 11 20:22:29 2021 +0200
+
+    Reorganize prediction queries
+
+[33mcommit 8c1f7c659ffdc9a72cdb48da45ed3d184d7d8c4e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Oct 11 19:40:56 2021 +0200
+
+    Reorganize team query
+
+[33mcommit c7e496650ff1fee0b23473128f98e615cd4898fa[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Oct 11 07:07:55 2021 +0200
+
+    Reorganize fixture queries
+
+[33mcommit eeef99e1f3653f442d17b75f7f1d0036fdeef535[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 6 06:19:45 2021 +0200
+
+    Move email functions
+
+[33mcommit 9bd6665e0235009015dc0452f430d28faaf029c8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 6 06:12:57 2021 +0200
+
+    Clean up
+
+[33mcommit 5249f9a2ea198e525b93b774f4820c743dff8992[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 6 05:57:19 2021 +0200
+
+    Move and test calculate scores
+
+[33mcommit ae3bae3aa83989cc82ad072cc70d78de82504bb8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Oct 6 05:23:23 2021 +0200
+
+    Move and test getWinner fn
+
+[33mcommit b2622e73b49aa6539d02be220b995ed4c99186b8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 20:47:09 2021 +0200
+
+    Create jest config file
+
+[33mcommit acdd46276163dc12e59b5886a5bb48fccfe966ff[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 20:35:57 2021 +0200
+
+    Update auth controllers
+
+[33mcommit fa7aa5137e80c76b3c8b7034e2719db977d4cf27[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 19:59:06 2021 +0200
+
+    Refactor error controllers
+
+[33mcommit eca5c1f466d0ba9282b577695e74894391ac2a7c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 19:52:26 2021 +0200
+
+    Refactor prediction controllers
+
+[33mcommit 3d1842cb49be13a1a0382902bb1cb5836cd03325[m
+Merge: 700853d a893aa7
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 19:36:11 2021 +0200
+
+    Merge branch 'development' of https://github.com/willemverbuyst/sb-server into development
+
+[33mcommit 700853d06a3c00ef494d96cb17ea81476ba7acf8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 19:35:52 2021 +0200
+
+    Refactor score controllers
+
+[33mcommit 20b992d457e6f8ea5d1f0540ed194dcd35aafc9f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 19:20:12 2021 +0200
+
+    Refactor user controllers
+
+[33mcommit 733da45944889929c8070e6350f208e77d882f32[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 07:58:59 2021 +0200
+
+    Refactor team controllers
+
+[33mcommit 3cd5ea85d7714a239195d0ab939b1465005c7d22[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 07:21:58 2021 +0200
+
+    Update fixture controllers
+
+[33mcommit 923edd492ec5f7841f9651c9f220acac07b016c9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Oct 5 07:13:06 2021 +0200
+
+    Refactor player controllers
+
+[33mcommit de475952538489a66e69a5c0340c36ccd99a0fb6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Oct 4 20:54:43 2021 +0200
+
+    Move fixture controller to own folder
+
+[33mcommit a893aa7c4730b80dbd127210c065b5fc53aaf69c[m
+Merge: dd9a0c0 de6495b
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Mon Sep 27 06:54:04 2021 +0200
+
+    Merge pull request #45 from willemverbuyst/dependabot/npm_and_yarn/tmpl-1.0.5
+    
+    Bump tmpl from 1.0.4 to 1.0.5
+
+[33mcommit de6495bfcde0ec3c06e9a021519920070c7f2474[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Mon Sep 27 04:04:06 2021 +0000
+
+    Bump tmpl from 1.0.4 to 1.0.5
+    
+    Bumps [tmpl](https://github.com/daaku/nodejs-tmpl) from 1.0.4 to 1.0.5.
+    - [Release notes](https://github.com/daaku/nodejs-tmpl/releases)
+    - [Commits](https://github.com/daaku/nodejs-tmpl/commits/v1.0.5)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: tmpl
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit dd9a0c053f11625c5d3297cc32923262965ebac1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Sep 14 05:54:07 2021 +0200
+
+    Remove prod files
+
+[33mcommit 23166192872fc7e69c0e9b1d0385bc402c369065[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Sep 13 19:45:51 2021 +0200
+
+    Adjust script for deploy heroku
+
+[33mcommit 98deb3e20f5a09a7aceca459db1fdec8091f8455[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Sep 13 19:27:13 2021 +0200
+
+    Add data for seed
+
+[33mcommit b586bc137dc88f0ede2e544205cd948f265e73b3[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Sep 13 19:20:37 2021 +0200
+
+    Prepare for heroku dev
+
+[33mcommit 9fd5c4c9b4d76ff2527e28ff7789b245981776ef[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Sep 13 18:47:50 2021 +0200
+
+    Fix typo scripts
+
+[33mcommit 69d3ade1780fc480998c7bf04b7153468311d660[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Sep 12 13:53:00 2021 +0200
+
+    Use different dummy data
+
+[33mcommit 09a53281364da81ea97c62f4d4016ff81e65e03c[m
+Merge: 1e47815 05afdb2
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Sep 12 07:53:04 2021 +0200
+
+    Merge pull request #44 from willemverbuyst/dependabot/npm_and_yarn/axios-0.21.2
+    
+    Bump axios from 0.21.1 to 0.21.2
+
+[33mcommit 05afdb23d767a6927014311a81705d5670af81d5[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Sun Sep 12 05:51:33 2021 +0000
+
+    Bump axios from 0.21.1 to 0.21.2
+    
+    Bumps [axios](https://github.com/axios/axios) from 0.21.1 to 0.21.2.
+    - [Release notes](https://github.com/axios/axios/releases)
+    - [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/axios/axios/compare/v0.21.1...v0.21.2)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: axios
+      dependency-type: direct:production
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit 1e478158d88a7efa0acb778cf60ae688e2eaa31a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Sep 12 07:49:19 2021 +0200
+
+    Organize dummy data files
+
+[33mcommit f469f39edca9ffbb0dab0694949250c172a2e017[m
+Merge: 41ddb91 3e4b9b8
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Aug 21 14:15:10 2021 +0200
+
+    Merge pull request #43 from willemverbuyst/master
+    
+    Merge pull request #42 from willemverbuyst/development
+
+[33mcommit 3e4b9b8abfe8a38a13e0baaca96c72aacaa05322[m[33m ([m[1;31morigin/master[m[33m)[m
+Merge: 14e0653 41ddb91
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Aug 21 14:14:25 2021 +0200
+
+    Merge pull request #42 from willemverbuyst/development
+    
+    Update master for production
+
+[33mcommit 41ddb911bd985fa6bbc3b4b53b8c8ec35f99f79d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 21 14:12:41 2021 +0200
+
+    Turn off script for production
+
+[33mcommit 615efc9db2beb13a1ad430fd39e5ed3a2270f502[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 21 14:03:03 2021 +0200
+
+    Revert change
+
+[33mcommit 8f69055d55aad21ea4c8ccbc538c85a96ac00c50[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 21 14:00:13 2021 +0200
+
+    Adjust post release script for Heroku
+
+[33mcommit 0bd515fb945943a4ca9a48ea8f230252d11b6a87[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 21 13:53:25 2021 +0200
+
+    Clean up
+
+[33mcommit 803a79ee807008602ef8b485464ede7de8a5bd48[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 21 13:51:19 2021 +0200
+
+    Prepare for deployment development
+
+[33mcommit 0d25cf049660bd10fff9159ad2449853c13c9ba3[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 21 07:12:05 2021 +0200
+
+    Update readme
+
+[33mcommit e342b84533a8c0bdd2df66235ff471cf728882c5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 20 16:51:23 2021 +0200
+
+    Turn off post release scripts
+
+[33mcommit 7522fe5d01bd812fd17eaa0f16d67b6eb5160f8a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 20 16:49:42 2021 +0200
+
+    Update fixtures with timestamp
+
+[33mcommit 58a64506eb258d39dfcec94fe77286e2cc602b0e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 20 12:49:19 2021 +0200
+
+    ~Don't return password
+
+[33mcommit 708b657154eae6535d311125ff83a099bf2e7ea9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 20 12:29:32 2021 +0200
+
+    Update test validate signup input
+
+[33mcommit d4469d001005686d385d8c2764e32a251fe2569c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 20 12:26:40 2021 +0200
+
+    Use default password to signup
+
+[33mcommit e90f5cee516c57cb3f8d97211bbbafaf9bbbbbc3[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 20 11:54:02 2021 +0200
+
+    Fix delete player bug
+
+[33mcommit fd3487764efbf910d94554a5d6766308f41e2ec5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 18 16:50:17 2021 +0200
+
+    Update dummy data for new season
+
+[33mcommit 9dfc316c7ebde8b53c14792614c3535850b67519[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 18 16:11:03 2021 +0200
+
+    Install and update packages
+
+[33mcommit f329014aa859a7140e0b5b42e6ccd3e1e2f92787[m
+Merge: 6610f45 b593634
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 16:07:38 2021 +0200
+
+    Merge pull request #41 from willemverbuyst/feat-error-handling
+    
+    Feat error handling
+
+[33mcommit b593634391639903464d4a396b9dc8633f989125[m
+Merge: 4372a72 6610f45
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 16:07:29 2021 +0200
+
+    Merge branch 'development' into feat-error-handling
+
+[33mcommit 6610f45220b6a86e87efac87512e9e0d4b06a22d[m
+Merge: 13f8008 3e14aef
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 15:45:11 2021 +0200
+
+    Merge pull request #37 from willemverbuyst/dependabot/npm_and_yarn/path-parse-1.0.7
+    
+    Bump path-parse from 1.0.6 to 1.0.7
+
+[33mcommit 13f80080fcf293d22daaaefd86a17b2bec012be5[m
+Merge: 91bb435 dd76d22
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 15:44:47 2021 +0200
+
+    Merge pull request #39 from willemverbuyst/dependabot/npm_and_yarn/y18n-4.0.3
+    
+    Bump y18n from 4.0.0 to 4.0.3
+
+[33mcommit 91bb435be853632339b8b7a091746461b5a6035d[m
+Merge: bee48db 47fd770
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 15:44:28 2021 +0200
+
+    Merge pull request #40 from willemverbuyst/dependabot/npm_and_yarn/ini-1.3.8
+    
+    Bump ini from 1.3.5 to 1.3.8
+
+[33mcommit bee48db887c5ebfdfe64527712cf410d84f36972[m
+Merge: 0672971 4ab7413
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 15:44:01 2021 +0200
+
+    Merge pull request #38 from willemverbuyst/dependabot/npm_and_yarn/normalize-url-4.5.1
+    
+    Bump normalize-url from 4.5.0 to 4.5.1
+
+[33mcommit 47fd770363bfcb04e6311ee1134437705bde92fc[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Aug 18 13:43:57 2021 +0000
+
+    Bump ini from 1.3.5 to 1.3.8
+    
+    Bumps [ini](https://github.com/isaacs/ini) from 1.3.5 to 1.3.8.
+    - [Release notes](https://github.com/isaacs/ini/releases)
+    - [Commits](https://github.com/isaacs/ini/compare/v1.3.5...v1.3.8)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: ini
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit dd76d22acb3ca7c66914d875ff31604fe3191f7c[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Aug 18 13:43:45 2021 +0000
+
+    Bump y18n from 4.0.0 to 4.0.3
+    
+    Bumps [y18n](https://github.com/yargs/y18n) from 4.0.0 to 4.0.3.
+    - [Release notes](https://github.com/yargs/y18n/releases)
+    - [Changelog](https://github.com/yargs/y18n/blob/y18n-v4.0.3/CHANGELOG.md)
+    - [Commits](https://github.com/yargs/y18n/compare/v4.0.0...y18n-v4.0.3)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: y18n
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit 4ab741364e71b2818fb56707593b52512ff759bd[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Aug 18 13:43:26 2021 +0000
+
+    Bump normalize-url from 4.5.0 to 4.5.1
+    
+    Bumps [normalize-url](https://github.com/sindresorhus/normalize-url) from 4.5.0 to 4.5.1.
+    - [Release notes](https://github.com/sindresorhus/normalize-url/releases)
+    - [Commits](https://github.com/sindresorhus/normalize-url/commits)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: normalize-url
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit 0672971896743be18b8ae0881a477c27188caba0[m
+Merge: d4f2282 6eb40e8
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 15:42:36 2021 +0200
+
+    Merge pull request #36 from willemverbuyst/dependabot/npm_and_yarn/tar-4.4.17
+    
+    Bump tar from 4.4.13 to 4.4.17
+
+[33mcommit 3e14aef9d0dda461e5c887180f915357a9acfe6b[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Aug 18 13:42:32 2021 +0000
+
+    Bump path-parse from 1.0.6 to 1.0.7
+    
+    Bumps [path-parse](https://github.com/jbgutierrez/path-parse) from 1.0.6 to 1.0.7.
+    - [Release notes](https://github.com/jbgutierrez/path-parse/releases)
+    - [Commits](https://github.com/jbgutierrez/path-parse/commits/v1.0.7)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: path-parse
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit d4f2282053813f6495c983156b9bdfe850998e7f[m
+Merge: 9424cbf da21ad0
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Aug 18 15:41:31 2021 +0200
+
+    Merge pull request #35 from willemverbuyst/dependabot/npm_and_yarn/lodash-4.17.21
+    
+    Bump lodash from 4.17.20 to 4.17.21
+
+[33mcommit 6eb40e8cbd71c75c6268f92a0f0fd68fd98163c0[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Wed Aug 18 13:41:28 2021 +0000
+
+    Bump tar from 4.4.13 to 4.4.17
+    
+    Bumps [tar](https://github.com/npm/node-tar) from 4.4.13 to 4.4.17.
+    - [Release notes](https://github.com/npm/node-tar/releases)
+    - [Changelog](https://github.com/npm/node-tar/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/npm/node-tar/compare/v4.4.13...v4.4.17)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: tar
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit 4372a72db0212fcd1fec7f9522c637d7c70dd980[m[33m ([m[1;31morigin/feat-error-handling[m[33m)[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Aug 7 10:01:31 2021 +0200
+
+    Add error handling
+
+[33mcommit f6b2d1004918830247cca8368ac8553208a22154[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 6 05:59:11 2021 +0200
+
+    Update error handling predictionController
+
+[33mcommit 49180d975b0080aad50083556edbfea85fd795c9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Aug 6 04:24:40 2021 +0200
+
+    Add error handling to teamController
+
+[33mcommit da21ad0698acc1be12e297c41d3dbb6128e5cc9a[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Thu Aug 5 01:48:07 2021 +0000
+
+    Bump lodash from 4.17.20 to 4.17.21
+    
+    Bumps [lodash](https://github.com/lodash/lodash) from 4.17.20 to 4.17.21.
+    - [Release notes](https://github.com/lodash/lodash/releases)
+    - [Commits](https://github.com/lodash/lodash/compare/4.17.20...4.17.21)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: lodash
+      dependency-type: indirect
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit e03e4f7aab601450e31f23ccc5735281e0074e52[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 4 18:20:16 2021 +0200
+
+    Move old validators
+
+[33mcommit 45e5892ae9f18d03a4019e90255114d62354e951[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 4 05:11:36 2021 +0200
+
+    Test validate new password
+
+[33mcommit 5d568601bc31c98cc4a3434a08410d218fc56af8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 4 04:57:54 2021 +0200
+
+    Test validate fixture status
+
+[33mcommit 51ba6f5eca0cfd5973d62395466ba4598629b3da[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 4 04:43:29 2021 +0200
+
+    Refactor and clean up tests
+
+[33mcommit 424b22b59d7363e291173c33ef5407f34186393d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Aug 4 04:25:41 2021 +0200
+
+    Test validate change password input
+
+[33mcommit 446a750c93201fe41293636fe34e73574baaaf06[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Aug 3 19:28:43 2021 +0200
+
+    Update return description
+
+[33mcommit 87b97ad9a4a03900fbe9b67e0c9093fb2b544188[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Aug 3 19:25:05 2021 +0200
+
+    Add describe block to tests
+
+[33mcommit d654da13da8c2d4ce8341a9f0e2573f20c7dc0fc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Aug 3 19:17:12 2021 +0200
+
+    Test validate signup input
+
+[33mcommit c17572c8ab46e3745d8f7ce9a5191432ce917b39[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Aug 3 07:07:03 2021 +0200
+
+    Update tests
+
+[33mcommit b881ce6767065bf10730a4af968876188ef4227c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Aug 3 07:01:13 2021 +0200
+
+    Test validate update profile input
+
+[33mcommit b591acceebf7a4b38c320dae2cb4c130007b0965[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Aug 2 05:12:48 2021 +0200
+
+    Update test validate prediction input
+
+[33mcommit 92a0a774a1e76af85112b9b84799d20a970c7c68[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Aug 2 05:03:17 2021 +0200
+
+    Test validate prediction input
+
+[33mcommit 5db800a878e275775597d9052df234bf0a1e2b99[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Aug 2 04:48:01 2021 +0200
+
+    Test validate password confirm
+
+[33mcommit 9c24ad0fde90328b689624b60e8961c10702e8f6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Aug 2 04:34:30 2021 +0200
+
+    Test validate password
+
+[33mcommit 1bc74268a090d23cfff337e542939bbcce6db6fe[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Aug 2 04:16:24 2021 +0200
+
+    Test validate login input
+
+[33mcommit 6d33f6e83b1d767f4dd1a509c425948fc182ae20[m
+Merge: bef75bb 9424cbf
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Aug 1 12:56:20 2021 +0200
+
+    Update with development
+
+[33mcommit 9424cbf5efbf8b0687b1eecb182c47f6cdef4f27[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Aug 1 04:57:15 2021 +0200
+
+    Use xss-clean
+
+[33mcommit 2197e7d9193024a31b591118c4077171167721ae[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Aug 1 04:49:51 2021 +0200
+
+    Use rate limiting
+
+[33mcommit dec145ab081eb9c0122b392828bd7709597104de[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Aug 1 04:47:19 2021 +0200
+
+    Use helmet
+
+[33mcommit bef75bb071f860736b688e972253cdd0fd5e5d1d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Aug 1 04:30:43 2021 +0200
+
+    Update config
+
+[33mcommit c91105c214524f952651481df65c623e78039142[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 31 17:08:14 2021 +0200
+
+    Set up jest
+
+[33mcommit 32a296fe015e3975a0eb56134970921126d5f34e[m
+Merge: eed01b2 15bba7f
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 31 16:42:39 2021 +0200
+
+    Merge branch 'development' of github.com:willemverbuyst/sb-server into development
+
+[33mcommit 15bba7f9f07d55a7a430f4d02bfc9d979456dbe1[m
+Merge: 2bdc566 4d79e08
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jul 31 16:30:17 2021 +0200
+
+    Merge pull request #33 from willemverbuyst/dependabot/npm_and_yarn/axios-0.21.1
+    
+    Bump axios from 0.21.0 to 0.21.1
+
+[33mcommit 4d79e083f970bca38bd070497bffcf6a72d5e37f[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Sat Jul 31 14:28:36 2021 +0000
+
+    Bump axios from 0.21.0 to 0.21.1
+    
+    Bumps [axios](https://github.com/axios/axios) from 0.21.0 to 0.21.1.
+    - [Release notes](https://github.com/axios/axios/releases)
+    - [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
+    - [Commits](https://github.com/axios/axios/compare/v0.21.0...v0.21.1)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: axios
+      dependency-type: direct:production
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit eed01b2b9f45bbaf977c9ebde9c7376ae1c69229[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 31 08:50:43 2021 +0200
+
+    Move dummy data files to own folder
+
+[33mcommit 2bdc566cf9892c2dbf7d918d80e490730332e866[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 31 06:10:44 2021 +0200
+
+    Work on post-release
+
+[33mcommit a845f0f49c090e38564f24683741bf1396e393c0[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 31 05:53:54 2021 +0200
+
+    Move dummy-objects, adjust bash script
+
+[33mcommit 4e3bf275ab62bbba57aa102a53178602320913db[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 31 04:30:52 2021 +0200
+
+    Add regex to fixture queries
+
+[33mcommit c02bb8f954fb42250ccb34c36064bec17a027b5e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 30 06:58:40 2021 +0200
+
+    Cleanup console.log
+
+[33mcommit 922b81e822212e97543b73979bb0ee01e8184d54[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 30 06:55:05 2021 +0200
+
+    Fix bug update predictions
+
+[33mcommit cd002c6ea793289d05194f0f2798e7455a4c8777[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 30 06:18:21 2021 +0200
+
+    Use regex to filter fixtures
+
+[33mcommit 4c7167bfe36d7820b991dd32712e1fd48fec6abe[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 30 06:03:27 2021 +0200
+
+    Update seeds
+
+[33mcommit 9ac59058a0b363a88c990a585629919e2eecc270[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 29 06:11:30 2021 +0200
+
+    Add dummy predictions
+
+[33mcommit 26e1ad3de25c2d577d6e9aaca5d8fe9935e6ff99[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 29 06:08:07 2021 +0200
+
+    Add dummy users
+
+[33mcommit 68cb78c0891cbfc1279eb935d8779b59474459dd[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 27 19:30:19 2021 +0200
+
+    Update script for seeds
+
+[33mcommit 95ed3ababc978117f1578e86030e2d7612f3e5e6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 27 19:25:42 2021 +0200
+
+    Adjust post-release script
+
+[33mcommit d39856794d5a8fec2592ecd148b6c4a7ba1dbc0d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 27 19:21:55 2021 +0200
+
+    Prepare for Heroku
+
+[33mcommit 51a550aec771e6c07a7ddf1b7c7aaebec0175d6e[m
+Merge: 5fc222d e117fe2
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Tue Jul 27 19:14:11 2021 +0200
+
+    Merge pull request #32 from willemverbuyst/feat-nodemailer
+    
+    Feat nodemailer
+
+[33mcommit e117fe2ae3ded7ac8510257c65de28cdcf91d272[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 27 19:12:21 2021 +0200
+
+    Update change password logic
+
+[33mcommit e596564db8e87f86f3019bd140a7213bbe6862a1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 25 16:51:42 2021 +0200
+
+    Implement forgot password logic
+
+[33mcommit d0d90d69becd66521aa7a1f3734bca644557f4ae[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 25 11:12:50 2021 +0200
+
+    Add password props to User model
+
+[33mcommit 5fc222d9fe17150d641f8c3d522725f576363181[m
+Merge: 0a400f3 14e0653
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Jul 25 05:19:06 2021 +0200
+
+    Merge pull request #31 from willemverbuyst/master
+    
+    Update the master for production
+
+[33mcommit 14e06534bcb9ee20d9b630e8c97655fadb1e02b9[m
+Merge: 26877a1 0a400f3
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Jul 25 04:40:39 2021 +0200
+
+    Merge pull request #30 from willemverbuyst/development
+    
+    Adjust expiresIn to seconds
+
+[33mcommit 0a400f37bab4abd2fbeaa04f1246c3936e0119cd[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 25 04:39:27 2021 +0200
+
+    Adjust expiresIn to seconds
+
+[33mcommit 26877a1b0862b9952f444cdd53a099e34711aa98[m
+Merge: 3350c70 e678f52
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Jul 25 04:06:41 2021 +0200
+
+    Merge pull request #29 from willemverbuyst/development
+    
+    Replace env var name for Heroku
+
+[33mcommit e678f520b4df30d9c6998f258b1c82dbe7df92a5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 25 04:05:56 2021 +0200
+
+    Replace env var name for Heroku
+
+[33mcommit 3350c708c5bc173b0e01439d169edbb5a796fe3d[m
+Merge: 10f57d5 ad2a59a
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Jul 25 03:48:49 2021 +0200
+
+    Merge pull request #28 from willemverbuyst/development
+    
+    Prepare for deployment
+
+[33mcommit ad2a59ada3250bf8bb17557953d6679e02f4d1b4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 25 03:47:27 2021 +0200
+
+    Prepare for deployment
+
+[33mcommit 10f57d53d765e5a9724c4da39b61e133a3dd47b4[m
+Merge: 1968541 268d079
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Jul 25 03:41:10 2021 +0200
+
+    Merge pull request #27 from willemverbuyst/development
+    
+    Development
+
+[33mcommit 268d079fdd88d232f84106c1a641dbcc2f18b4be[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 24 18:00:45 2021 +0200
+
+    Lint code, except sequelize part
+
+[33mcommit 5c648cd5da9a37868f7eeac3171dd3d99b6a12be[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 24 16:18:17 2021 +0200
+
+    Adjust Salt for seeds
+
+[33mcommit 3ea4befd6dc07377cf6dc17ebc015fcc9776c64a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 24 15:22:38 2021 +0200
+
+    Adjust return on update user
+
+[33mcommit f89802b749ba9407f4e83811fd278372c4e04d35[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 23 07:12:46 2021 +0200
+
+    Reorganize helper functions
+
+[33mcommit 3b447dbac016f3f4b46898a8ea348bd96525460d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 23 06:58:22 2021 +0200
+
+    Remove old index file
+
+[33mcommit 5bedb57724969e383583a2122ba1b188b39cf44c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 23 06:56:39 2021 +0200
+
+    Work on post release
+
+[33mcommit 2deb55368616c57355affbc83b9b868a74c6318b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 23 06:14:41 2021 +0200
+
+    Clean up old files
+
+[33mcommit e3a85b2a761df1a22a069f10ddb671d5f6e7e996[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 23 05:49:30 2021 +0200
+
+    Remove old scores routes
+
+[33mcommit d116e976678b83555dab0e25ab807d9dfffc8d5a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 07:04:32 2021 +0200
+
+    Fix bug scores.functions
+
+[33mcommit e54b4ed81c747938cc09ecfc8e00554f9959624a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 07:00:55 2021 +0200
+
+    Remove old rounds route
+
+[33mcommit 5b0581b9599bd15e0941f0a4488ed1b8c5056516[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 06:58:48 2021 +0200
+
+    Remove old predictions router
+
+[33mcommit 56281daa09ebfbede2d506db2d623dd3f8d97ab5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 06:57:59 2021 +0200
+
+    Remove old auth router
+
+[33mcommit b2fe2b0c177550050cb13268adcd7fa7821b276f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 06:56:23 2021 +0200
+
+    Clean up calculateScore
+
+[33mcommit b2ec1a6713b3d184af84badd7611e03f28038f8b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 06:53:54 2021 +0200
+
+    Clean up fixtures query
+
+[33mcommit bdcd9133c09c905536d73ca1851e60e16cc6a04b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 06:47:28 2021 +0200
+
+    Clean up predictions query
+
+[33mcommit d3ead59b146da675f4c55db06cb622d84d7feafc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 05:51:43 2021 +0200
+
+    Remove old team router
+
+[33mcommit 907e734d7dd8bf9da97f0adc66e50eb83bc67f9a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 05:50:51 2021 +0200
+
+    Remove old user router
+
+[33mcommit a287f68af7305e939b92d6513c346058bafd7d50[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 05:44:41 2021 +0200
+
+    Clean up controllers
+
+[33mcommit 7bdb6b6dbcd1949750df4e2831b0e876110e679a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 05:29:30 2021 +0200
+
+    Change code to 200 on delete to send message
+
+[33mcommit eb7424cbbe6edd46f916fa61cfbae4c80e65ed63[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 05:13:09 2021 +0200
+
+    Move signup to playerRoute
+
+[33mcommit f9e2beb584402403f6e6286daab681eb1129533b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 05:00:34 2021 +0200
+
+    Create playerRouter
+
+[33mcommit fa764385dd0abb2685d16fe732bcd4f47be52412[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Jul 22 04:37:56 2021 +0200
+
+    Create update password route
+
+[33mcommit 95b80504690603d838e9f4567d7f8c72230fa9c5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Jul 21 19:05:02 2021 +0200
+
+    Unify return scores
+
+[33mcommit 1bdc06a7404c65c56a81452f9a39d2e286fe553c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Jul 21 05:10:57 2021 +0200
+
+    Create route scores player
+
+[33mcommit 8156e6113dc39cb676e3d5fb33524dc5cba4eb7d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 20 07:15:22 2021 +0200
+
+    Create route scores round
+
+[33mcommit 83e13b4f0d05670cd8db89019eb48d3eecefd50a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 20 07:10:03 2021 +0200
+
+    Create route scores totoround
+
+[33mcommit a8ac463d3fdd0cb20e055bc24df1ec5ec6c6319a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 20 06:24:39 2021 +0200
+
+    Create route for scores total toto
+
+[33mcommit d91dffafef91368fa3fee16c8a4667d3a9609269[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jul 20 06:00:51 2021 +0200
+
+    Update route for fixture
+
+[33mcommit 33733eadd7b526a091b3c62f3c2e7b12e05b309e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Jul 19 20:04:48 2021 +0200
+
+    Create route to get predictions player
+
+[33mcommit 1733e37d0cfeaef1cde611aee3d3b876736b6b99[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Jul 19 04:46:06 2021 +0200
+
+    Create route for user with valid token
+
+[33mcommit 54476acc7dd9287c790991fe5e911bb41f630f98[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 15:22:41 2021 +0200
+
+    Update response on create user
+
+[33mcommit d72b05875dbf0fbe9807614e882c80960d81b1d7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 14:00:38 2021 +0200
+
+    Update response login
+
+[33mcommit bd1b86f849f0af9e8da2c233d52bf18ff76bfc06[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 11:02:38 2021 +0200
+
+    Organize routes
+
+[33mcommit 324cd20a1060244bf8a114fcd61fb010329b37cc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 08:38:30 2021 +0200
+
+    Create function to add scores to object
+
+[33mcommit 574c15e7f7743aa26f9fa7c8866fce4feae876f8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 07:52:12 2021 +0200
+
+    Check if prediction already exists on create
+
+[33mcommit c9d6ba9529c38b6e905ef2c6e040d313fd3fb531[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 07:31:49 2021 +0200
+
+    Add comments, update naming variables
+
+[33mcommit 5e49d172073663701b0fdf0b86c196bb0cb64012[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 07:11:21 2021 +0200
+
+    Update calculate scores
+
+[33mcommit 6a28c88a2459402f74a680722bdc637921b5c3a6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 06:36:00 2021 +0200
+
+    Move fixture logic predictions to fixtureQuery
+
+[33mcommit f4a3b72e903172979fd1c96374db130d4cdd0214[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Jul 18 06:26:13 2021 +0200
+
+    Get fixture with scores
+
+[33mcommit 3c91de9cf702642b411e207a7f7af9ca4f4d5496[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 19:06:27 2021 +0200
+
+    Move getCurrentRoundForUser to fixtureQuery
+
+[33mcommit 700f78207fb2255101d43bad1b7e4ea358a0874a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 18:44:47 2021 +0200
+
+    Add route for updating profile
+
+[33mcommit d3b4a715138dbc1cfb6f30250847aab2900933a9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 17:18:57 2021 +0200
+
+    Get all fixtures for logged in user
+
+[33mcommit f563428c10a1d1c4b76ca90383e7eecea5d511e1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 16:20:34 2021 +0200
+
+    Add script for production
+
+[33mcommit 1fc0c8a2e749efbc162d6f73436636cbe9a95597[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 16:04:32 2021 +0200
+
+    Restrict routes for admin
+
+[33mcommit 0a4f2455588bafb91ba902e83541fb98b8a24ab8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 14:48:53 2021 +0200
+
+    Protect routes
+
+[33mcommit 64040e2c579af38d014c564b9e482de1dd1c2298[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 14:14:13 2021 +0200
+
+    Create update prediction logic
+
+[33mcommit 0c2773fa6a2946fa6e5b843a5b87b9fd1d4129e1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 13:16:15 2021 +0200
+
+    Work on error handling and validation
+
+[33mcommit ebf3910478bf5dacc5564ebad6f72d8f17339d99[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 08:05:29 2021 +0200
+
+    Post a prediction
+
+[33mcommit dd089e2fcdac0c9baabdcd3d680d41e9025426b9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 07:22:54 2021 +0200
+
+    Fetch user with predictions and scores
+
+[33mcommit b0488da2a9f6167f3c787ea5ab821e0b2ff135f4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 06:35:53 2021 +0200
+
+    Add delete user
+
+[33mcommit 25d7df018541b32151549538611d5a64c7c93e70[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 06:02:41 2021 +0200
+
+    Get all users
+
+[33mcommit 1fa95c689686c4c8ef59eff2994dd79f2801e07d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 05:56:55 2021 +0200
+
+    Create query to get all users
+
+[33mcommit 869a67abeb3c108465208793cef3ade17cc2225a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 05:53:51 2021 +0200
+
+    Get all teams
+
+[33mcommit 56c0ee9e737c0e82024882d092b5595b9d81ef24[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 05:43:05 2021 +0200
+
+    Create errorController
+
+[33mcommit f6e5f899b9f6619fc41227d4dc6f197878f506dc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jul 17 05:03:22 2021 +0200
+
+    Create validateSignupInput
+
+[33mcommit c67aec4ec8ffe9da162d094c4cfdb8fab5984884[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 19:56:22 2021 +0200
+
+    Create validatePassword
+
+[33mcommit f5bfe69782ef96edf65a43dac80013c8bfe2d6eb[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 18:58:27 2021 +0200
+
+    Create validateLoginInput
+
+[33mcommit 6dc4da4cf294b41afefe88836b0e0a52602a6458[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 18:52:48 2021 +0200
+
+    Create new user query
+
+[33mcommit 6879a4964ab1c9c57b6fcb430bf64ab063a5cc1d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 18:41:32 2021 +0200
+
+    Create controller for sign up
+
+[33mcommit 9fb33355c5b3ba80a774ed99ed96010a92f0894a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 18:30:51 2021 +0200
+
+    Create query for current round
+
+[33mcommit 9ba20acb203cdac020345bf5c536d0a6fbfe8174[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 18:17:49 2021 +0200
+
+    Create query for user with team
+
+[33mcommit 496735147667c4ffb83aff7e0e091f1f7dc562f5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 18:10:38 2021 +0200
+
+    Update jwt functionality
+
+[33mcommit f4e86fc127fa93fd307b5e05ff46d70afde8ed91[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 07:07:30 2021 +0200
+
+    Add userRoutes and app.js
+
+[33mcommit 2bd3d774d1d39878d176cdefa21ad9b1dfd1ead0[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 06:48:32 2021 +0200
+
+    Create AppError class
+
+[33mcommit 3f4c0f4540e7d5e6eda1bf0ab1029caf95aa3e2b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 06:47:43 2021 +0200
+
+    Create authController
+
+[33mcommit 147c69bb5ca279850686e3ac8bcd9b67243d327b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 06:45:27 2021 +0200
+
+    Create function to catch async errors
+
+[33mcommit 1e351afaee4712c2f566d0c694f97733e85a6b09[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 06:30:52 2021 +0200
+
+    Separate server from app.use logic
+
+[33mcommit 4765f6d63dad249e337bf3256c5d6a2885b579d4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Jul 16 06:12:47 2021 +0200
+
+    Add prettier config
+
+[33mcommit 196854171af5485e59e46e9e29493274745b2284[m
+Merge: 1eb0530 db3e21d
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 19 05:35:23 2021 +0200
+
+    Merge pull request #26 from willemverbuyst/development
+    
+    Development
+
+[33mcommit db3e21db85a59509f6f44c6fb3587471e3d154c1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 19 05:34:28 2021 +0200
+
+    Change id to userId for user
+
+[33mcommit e892a462b95ced139d6ee396576e3d39f676df69[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Jun 14 18:44:40 2021 +0200
+
+    Fix bug userId
+
+[33mcommit 1eb0530b5b94bd62419a62b2e5d56d348d4636ae[m
+Merge: 11a3951 5247821
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 12 03:59:34 2021 +0200
+
+    Merge pull request #25 from willemverbuyst/development
+    
+    Development
+
+[33mcommit 52478218bc770d601936d5816842a6c9d7cea57d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 12 03:56:30 2021 +0200
+
+    Return current uround on user login
+
+[33mcommit 551aed42b0f13f5ec6886dc18afc233e430c7be4[m
+Merge: 5761ece 11a3951
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:27:37 2021 +0200
+
+    Merge branch 'master' of github.com:willemverbuyst/sb-server into development
+
+[33mcommit 5761ece23bfc5d22b6e185ffe9a5bd874b5f9fa4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:27:20 2021 +0200
+
+    Comment out seeding
+
+[33mcommit 11a395134fdb28c41ab3b87bf7b013d90d4113bb[m
+Merge: 498b8f2 278f57b
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 14:25:32 2021 +0200
+
+    Merge pull request #24 from willemverbuyst/development
+    
+    Add seeds to db
+
+[33mcommit 278f57bc40f208a7c2838cccaceef1b0fbedf8f7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:24:44 2021 +0200
+
+    Add seeds to db
+
+[33mcommit 498b8f21abf9c590e3fbbd7b1621e09546d5a235[m
+Merge: 05109a6 81dd2c7
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 14:19:57 2021 +0200
+
+    Merge pull request #23 from willemverbuyst/development
+    
+    Get all fixtures for db
+
+[33mcommit 81dd2c70a12c88dadf66bd64706d9e210c2b267d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:18:01 2021 +0200
+
+    Get all fixtures for db
+
+[33mcommit 05109a63e8eeb6582b4514431b31aade7ccfd94b[m
+Merge: 1fd44af 0adf910
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 14:16:03 2021 +0200
+
+    Merge pull request #22 from willemverbuyst/development
+    
+    Get all teams for db
+
+[33mcommit 0adf910e870a29a8c47dd12be38c7fce4b2cbe9f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:15:38 2021 +0200
+
+    Get all teams for db
+
+[33mcommit 1fd44af9874810740e5ba895a89c69a9cf6ee92e[m
+Merge: ce7a16f e51e475
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 14:10:12 2021 +0200
+
+    Merge pull request #21 from willemverbuyst/development
+    
+    Development
+
+[33mcommit e51e475f2d88d155ad7d4ae1784ed38cd6d991e9[m
+Merge: 0cc9e70 35abf1b
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:09:12 2021 +0200
+
+    Merge dev
+
+[33mcommit 0cc9e7027e5c30063fe05e977b70ffcb847734bc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 14:07:43 2021 +0200
+
+    Update config
+
+[33mcommit ce7a16f48f15897b8cf2d6a91fd73649705c14bf[m
+Merge: 5f163f5 35abf1b
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 13:47:36 2021 +0200
+
+    Merge pull request #20 from willemverbuyst/development
+    
+    Update config.js
+
+[33mcommit 35abf1ba895444c4d217929b29db37ff8294c8d8[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 13:47:12 2021 +0200
+
+    Update config.js
+
+[33mcommit 5f163f5e192537b4306040c164e16d0c3dd54c52[m
+Merge: abfae1c 5effdec
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 13:36:28 2021 +0200
+
+    Merge pull request #19 from willemverbuyst/development
+    
+    Update production object
+
+[33mcommit 5effdececaf16611b06c80c7f4c89f12bf5d842f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 13:35:59 2021 +0200
+
+    Update production object
+
+[33mcommit abfae1ccb63ab061bf9cfa76c1e8b66cb49a92ae[m
+Merge: b89265f 0f842bb
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 13:30:32 2021 +0200
+
+    Merge pull request #18 from willemverbuyst/development
+    
+    Update config
+
+[33mcommit 0f842bb9bd27352a6b5db5375ee4a2abade11acd[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 13:29:24 2021 +0200
+
+    Update config
+
+[33mcommit b89265fa528ac312a22505eb692b34f557bbb375[m
+Merge: 2f7ebd7 8c5c23d
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 13:03:17 2021 +0200
+
+    Merge pull request #17 from willemverbuyst/development
+    
+    Update env vars
+
+[33mcommit 8c5c23d743f6adfa5bbc743dd6b1bf48ce51d7f5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 13:01:55 2021 +0200
+
+    Update env vars
+
+[33mcommit 2f7ebd78983aef41128de0aff7c7855318ee7946[m
+Merge: 84b5180 40234e2
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Jun 5 12:38:18 2021 +0200
+
+    Merge pull request #16 from willemverbuyst/development
+    
+    Development
+
+[33mcommit 40234e2bf01cd2f92d049e6a74e1efb3f958e8f6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 12:37:20 2021 +0200
+
+    Prepare for deployment
+
+[33mcommit dddef1aec0473d72c106a21c0cb4bd41000697b7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Jun 5 04:55:30 2021 +0200
+
+    Send all fixtures for public predictions
+
+[33mcommit f6caa74d04e3e6834c75ece37a03371a5e8efb6c[m
+Merge: 47a060a 84b5180
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:53:46 2021 +0100
+
+    Merge pull request #15 from willemverbuyst/master
+    
+    Update development
+
+[33mcommit 84b51802200ff721ec1238b105afbcada325e2a8[m
+Merge: 28bf1ca 47a060a
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:50:11 2021 +0100
+
+    Merge pull request #14 from willemverbuyst/development
+    
+    Close update
+
+[33mcommit 47a060a0abc0fbfb652a4e418fe1c40f6e7b9158[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Feb 6 06:48:55 2021 +0100
+
+    Close update
+
+[33mcommit 28bf1ca64c3bdb2600387bfcb9cabff44bb6cf2b[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:43:34 2021 +0100
+
+    Update post-release.sh
+
+[33mcommit 9a76832f874551c124015eabdcb078779b041b77[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:36:35 2021 +0100
+
+    Update post-release.sh
+
+[33mcommit 7bb55cd3f296e0cd96c9d44acad5b5e78386a46f[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:35:07 2021 +0100
+
+    Update post-release.sh
+
+[33mcommit a2f10cc808ad9018845e682a076c1b65d971a543[m
+Merge: 7a8abe9 dbf7a4f
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:29:49 2021 +0100
+
+    Merge pull request #13 from willemverbuyst/development
+    
+    Fetch data for database
+
+[33mcommit dbf7a4f54d26f22155a8a5de6dee2f753a972e20[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Feb 6 06:28:00 2021 +0100
+
+    Fetch data for database
+
+[33mcommit 7a8abe9853e94811b5dca581940647eae4e33aaf[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:24:58 2021 +0100
+
+    Add seeds to database
+
+[33mcommit 0b3a3b5cfdce47116ef54e73545e9d1e6430e3b4[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:22:16 2021 +0100
+
+    Update post-release.sh
+
+[33mcommit be68908242e4277d28c51ebc521d51456501d532[m
+Merge: 2325a60 79d7d8d
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:18:07 2021 +0100
+
+    Merge pull request #12 from willemverbuyst/development
+    
+    Development
+
+[33mcommit 79d7d8d7115b243fa743947a3e5ac3b6de77fddc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Feb 6 06:15:22 2021 +0100
+
+    Update database
+
+[33mcommit 0b7360cc13aa8b8450b779795c013be1f2d23bed[m
+Merge: c306826 6ab8e19
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sat Feb 6 06:10:26 2021 +0100
+
+    Merge pull request #11 from willemverbuyst/feat-bash-script
+    
+    Add bash script for dummy data
+
+[33mcommit 6ab8e1983e0749b31c89326b78db76e266927117[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Feb 6 06:07:25 2021 +0100
+
+    Add bash script for dummy data
+
+[33mcommit c306826ea8bc5b08ddb849e9fb415430f84d8d34[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Jan 5 05:42:10 2021 +0100
+
+    Add dummy data for all predictions
+
+[33mcommit 2325a60dcc50182e715ab650ed8f3b8b2ebe195c[m
+Merge: 013a0d3 d119be0
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Wed Dec 30 11:05:09 2020 +0100
+
+    Merge pull request #9 from willemverbuyst/development
+    
+    Update message if no program
+
+[33mcommit d119be03ec89048814c1bb872430e7ec6ba86d57[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Dec 30 11:04:03 2020 +0100
+
+    Update message if no program
+
+[33mcommit 013a0d358e2e5ef96e5d2bc5048f7d12a3b02e4f[m
+Merge: 97cd4bf 02f7eaa
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 12:51:48 2020 +0100
+
+    Merge pull request #8 from willemverbuyst/development
+    
+    Finish deployment
+
+[33mcommit 02f7eaa0a3e309335b649fe0b20065bbaca7cc8b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 12:46:19 2020 +0100
+
+    Finish deployment
+
+[33mcommit 97cd4bf112a7b3beff0005332cf59ec8d50a1252[m
+Merge: b6d5619 0b5a74d
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 12:24:58 2020 +0100
+
+    Merge pull request #7 from willemverbuyst/development
+    
+    Add seeds to Heroku
+
+[33mcommit 0b5a74d6716c22dd5eb019cad55189a0b265f2a4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 12:24:07 2020 +0100
+
+    Add seeds to Heroku
+
+[33mcommit b6d56193d3e1b26633b84428d1e30833a1b95262[m
+Merge: 175063e d4a91b5
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 12:21:40 2020 +0100
+
+    Merge pull request #6 from willemverbuyst/development
+    
+    Fetch fixture w/ Heroku
+
+[33mcommit d4a91b57f9609ac082f87d7275dbbc3dbb6c6fba[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 12:19:05 2020 +0100
+
+    Fetcg fixture w/ Heroku
+
+[33mcommit 175063ec1835cfe37f8510ee929f621c7395942b[m
+Merge: 479d8b1 a490134
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 11:43:50 2020 +0100
+
+    Merge pull request #5 from willemverbuyst/development
+    
+    Use Bash script for fetching teams
+
+[33mcommit a4901348f7d57349fbeb4957f5435bd4a6b73ecb[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 11:42:53 2020 +0100
+
+    Use Bash script for fetching teams
+
+[33mcommit 479d8b1c5dfd7afc1b28d3108640195c9663912c[m
+Merge: 5bc3bce c83043a
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 11:18:08 2020 +0100
+
+    Merge pull request #4 from willemverbuyst/development
+    
+    Fetch teams for Heroku
+
+[33mcommit c83043a4d93f27c7604cdb017c6de618def62b24[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 11:16:48 2020 +0100
+
+    Fetch teams for Heroku
+
+[33mcommit 5bc3bce56ef6814130a394dbfac0e308cbd16ab6[m
+Merge: a35f55c 83d4ed6
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 11:11:24 2020 +0100
+
+    Merge pull request #3 from willemverbuyst/development
+    
+    Development
+
+[33mcommit 83d4ed64e4941c203b90a7dba8f4ef36e650cf96[m
+Merge: 184d9cc c1a6b77
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 11:09:57 2020 +0100
+
+    Merge branch 'development' of github.com:willemverbuyst/sb-server into development
+
+[33mcommit 184d9cc02920f58e558eca6307ca5e602ed16e56[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 11:08:56 2020 +0100
+
+    Add route for testing
+
+[33mcommit a35f55c94a11b21a21ca47cd9d35b5f50237c863[m
+Merge: 4b996c7 c1a6b77
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 11:00:35 2020 +0100
+
+    Merge pull request #2 from willemverbuyst/development
+    
+    Prepare files for Heroku part 2
+
+[33mcommit c1a6b77c1e7ced89300666cd00325f1582bc36f7[m
+Merge: 5cb7be9 4b996c7
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 11:00:21 2020 +0100
+
+    Merge branch 'master' into development
+
+[33mcommit 5cb7be94dde9238ecc775eeb915c13a8edd40e4b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 10:58:11 2020 +0100
+
+    Prepare files for Heroku part2
+
+[33mcommit 4b996c70a5bcad36c4dfb1776d0a4001015b2ab7[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 10:42:57 2020 +0100
+
+    Update post-release.sh
+    
+    First set up the other tables, add dummy data later.
+
+[33mcommit 02e5ebef378a2f9e407a0b05cad857cece9712b8[m
+Merge: cbae5fc e50fa40
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Dec 27 10:40:41 2020 +0100
+
+    Merge pull request #1 from willemverbuyst/development
+    
+    Prepare files for Heroku server
+
+[33mcommit e50fa407a19a0b236cc46eae6c2e3dab1cd16be9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 10:37:50 2020 +0100
+
+    Prepare files for Heroku server
+
+[33mcommit cbae5fccf455aadc7568e30eaae8099c853b75c4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 27 10:25:23 2020 +0100
+
+    General clean up
+
+[33mcommit 6a9a81c476c65d466e2c73591d24fe03644d9b97[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 26 13:45:33 2020 +0100
+
+    Hide predictions when match is not finished yet
+
+[33mcommit 70f473a6163d9b434638d338fa1e16b2692dbc7e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 26 13:30:52 2020 +0100
+
+    Set interval for fetching fixture data
+
+[33mcommit fcc3b1b65d2a1765646a75c1e23a6552ff62a5f4[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 26 04:57:39 2020 +0100
+
+    Translate messages to Dutch
+
+[33mcommit 06a8a6370ef0fc55dc6bf925a4f849eeb427ebb7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Dec 25 17:05:45 2020 +0100
+
+    Add route to delete player by admin
+
+[33mcommit d538b8c3528355956855d2fa45278565229439da[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Dec 25 09:57:51 2020 +0100
+
+    Create extra dummy data
+
+[33mcommit 6e30efafa8e5237baba479daaef262d24b5825de[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Dec 25 09:24:43 2020 +0100
+
+    Update return after update admin status
+
+[33mcommit f46af66b3b3ba04ddc0587405742bcb75769b167[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Dec 24 19:45:28 2020 +0100
+
+    Move fetch scores player to scores route
+
+[33mcommit 75a55215f2f027471fda45ff8d6e7a119bd1bbce[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Dec 22 19:17:46 2020 +0100
+
+    Move scores logged in user to auth route
+
+[33mcommit e3309c8e167eb2f8e5bcae47830dde064ca938ea[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Dec 22 04:44:17 2020 +0100
+
+    Add dummy data for charts
+
+[33mcommit 0c4ce6bc6b6dc22417a8a32987dd1ce6e4f9dea8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Dec 22 04:13:06 2020 +0100
+
+    Create route to return scores user (private)
+
+[33mcommit b536231c51ad5c6c73e99c602c056062f3254a1b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Dec 21 07:14:39 2020 +0100
+
+    Update change password route
+
+[33mcommit 5b19708531c6e053c6a17162995f5b4fee39e514[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 20 08:27:07 2020 +0100
+
+    Add id on return with no scores
+
+[33mcommit fad8310b6099b7718a956b1b29e9966b18930e1a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 20 08:18:10 2020 +0100
+
+    Include id with return scores
+
+[33mcommit 55f0c2d90a3e7ba7b173b0681b042f1538412f1b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 20 07:06:27 2020 +0100
+
+    Create route for scores round
+
+[33mcommit 08f77b069ebc4dfdebd45dcb83a2a92dd6612b6c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 19 17:47:33 2020 +0100
+
+    Adjust return totalToto
+
+[33mcommit 2d6076e2db520d2f091b03c522fc90da0913f0c8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 19 16:22:48 2020 +0100
+
+    Add more dummy data
+
+[33mcommit a76607ab4aa5bfaf3556a63554c3d0ae569a198a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Dec 18 05:13:30 2020 +0100
+
+    Update bulkCreate and public user
+
+[33mcommit 2856b19ed098862c176d580e17f0bba1d483da59[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 12 20:48:12 2020 +0100
+
+    Update check patch
+
+[33mcommit fea639809f50f6441284da5e60f1e75f75a090a6[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 6 13:05:23 2020 +0100
+
+    Minor adjustment return total scores
+
+[33mcommit 214f301610665c022f1e961293a80d62e1d8653e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Dec 6 06:37:26 2020 +0100
+
+    Clean up, add comments
+
+[33mcommit 3e0a6a7a4935d7fdf173f309eac7b9141e6804d5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Dec 5 20:03:05 2020 +0100
+
+    Adjust return TotoRound
+
+[33mcommit e59e93b35973af6dbebff10fb22e78b9c20581cc[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 28 13:16:19 2020 +0100
+
+    Return prediction on post/patch
+
+[33mcommit b8d40e07ce659a26992788c440f2421df1a35f5d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 28 11:40:06 2020 +0100
+
+    Add roud to update prediction
+
+[33mcommit a2b7f552a94d2c45d75a70d4fe57ee74e37a2d06[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 28 07:58:38 2020 +0100
+
+    Refactor, clean up, update helper functions
+
+[33mcommit 8e468fd8172b4388237117b6f91a4e76ac0cee06[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 28 06:48:26 2020 +0100
+
+    Add round info on return current round
+
+[33mcommit cb058edcfd527f97953b3688a838ca84bec3c6a8[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Nov 22 08:31:05 2020 +0100
+
+    Rename constants, return past fixtures with profile
+
+[33mcommit fe84aaa18a5be8a2840af796a92a74f90b68ec1a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 21 20:20:40 2020 +0100
+
+    Tweak post prediction
+
+[33mcommit 68077a639dfd4ba9cfd58d1d16cb2a88d7a52b49[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 21 09:03:17 2020 +0100
+
+    Return users unconditionally
+
+[33mcommit 1ba27b5cc7ef214fa2615d23b1d14af8bce833d1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 21 06:12:25 2020 +0100
+
+    Update return userData
+
+[33mcommit 5c14162bde99bd34fc16b095ef312c9b48d37c67[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 21 05:49:45 2020 +0100
+
+    Update signup route
+
+[33mcommit 44bc2c74dfa47ea729107fa59a497d9058a35ee0[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Nov 19 18:56:01 2020 +0100
+
+    Update return fixtures with predictions
+
+[33mcommit 421fc7aa62401dc876583834bc2de78c923d4b1f[m
+Merge: 3985992 5a40de8
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Nov 19 05:11:18 2020 +0100
+
+    Merge branch 'master' of github.com:willemverbuyst/sb-server
+
+[33mcommit 39859926bbb0047b83cdb50c7e4d204180a75e6c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Nov 19 05:10:44 2020 +0100
+
+    Update return all fixtures
+
+[33mcommit 5a40de8a001311c0af990762014c88e45c810a1a[m
+Author: wilmverb <60842970+willemverbuyst@users.noreply.github.com>
+Date:   Sun Nov 8 11:41:46 2020 +0100
+
+    Update README.md
+
+[33mcommit 8e42d6cb835c8bcd0d3f93fb4c868d709625c9ae[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sun Nov 8 11:33:41 2020 +0100
+
+    Update readme
+
+[33mcommit a074d10c82e023d96c4ec633cebb5b868559de1f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 17:38:46 2020 +0100
+
+    Let admin update admin status user
+
+[33mcommit b204a7c811cc4c328abb793a2cefaf09fa568a38[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 17:18:18 2020 +0100
+
+    Guard patch me route with authMiddleware
+
+[33mcommit f8f211c0bdf3fa873f5fd28d84439bf75afb1437[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 17:04:06 2020 +0100
+
+    Guard score route with authMiddleware
+
+[33mcommit 33dc94ace78c376fee4425d621532173122993c2[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 16:58:45 2020 +0100
+
+    Guard user route with authMiddleware
+
+[33mcommit a667b7f6ed2dcee7baaad34a5abc3145ca26729a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 16:47:40 2020 +0100
+
+    Post a prediction
+
+[33mcommit 1fb9013cd6f6eccfbb624e54bcf5271a86aa2681[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 16:04:31 2020 +0100
+
+    Update routes md
+
+[33mcommit 97d5c51d0aaf558d5f9456ed5d8fb18cedbc43c0[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 15:56:44 2020 +0100
+
+    Move reducer to utils
+
+[33mcommit 5da42031c86177064ab3eea1a7d6a41161729ba3[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 15:44:31 2020 +0100
+
+    Get total score per game for each user
+
+[33mcommit a2aec003789a45f5831fb948112c7300afd5a4cb[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 15:05:13 2020 +0100
+
+    Get total score for each user
+
+[33mcommit a13035b489177f4f1085d5944547ca702417df48[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 12:35:58 2020 +0100
+
+    Create chunk array into Games fn
+
+[33mcommit 6b1e67bca2801f09f3e3acd9c60028c4eb8a7223[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 11:36:17 2020 +0100
+
+    Return score of all users for one fixture
+
+[33mcommit 14e1febf9a1d5bece03869566217c936f126930b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 10:05:49 2020 +0100
+
+    Add scores to current round user
+
+[33mcommit bc56e8a0927b99065b5d8fb746999ce5abf0fe33[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 09:50:59 2020 +0100
+
+    Add comments
+
+[33mcommit c55eb85c44a2c3aeb64b28c0486e1aba80b85c19[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 09:39:40 2020 +0100
+
+    Update routes md, delete fixtures routes file
+
+[33mcommit 1335587f9ba5724f768decfb514c847b33edff2e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 09:33:35 2020 +0100
+
+    Get all fixtures for user, adjust score calc fn
+
+[33mcommit 940a7f57c2dfae86652411ce326d36d7a22a4ee5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 07:22:32 2020 +0100
+
+    Add predictions to seeder for development
+
+[33mcommit 75d62e384945c0359c1c4f38fa56158fbef25940[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Sat Nov 7 07:10:01 2020 +0100
+
+    Add users to seeder for development
+
+[33mcommit 3019b233d8c6904cc94c30ebcd11ea61dc0c9b63[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Nov 6 19:46:16 2020 +0100
+
+    Calculate and return score, group by round
+
+[33mcommit d19f0afb5ecca752d170b88e9136b6f41f2806fe[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Fri Nov 6 19:04:29 2020 +0100
+
+    Get user, previous predictions and scores
+
+[33mcommit 5279ab08ec01273a2b60952cbfb6c1f14575414b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Nov 5 19:02:47 2020 +0100
+
+    Get previous predictions for a user
+
+[33mcommit 8baf9a40ef140df0612ac0d926e1169828685032[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Nov 5 07:51:36 2020 +0100
+
+    Create overview of routes to make
+
+[33mcommit 5e3bbade81bfec48165860e45f851b1b8ef967d7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Thu Nov 5 06:18:26 2020 +0100
+
+    Add readme with info of the game
+
+[33mcommit 5b904dc77d4eee359e0ba89c9054e004052d54ba[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 19:07:48 2020 +0100
+
+    Remove dev test router file
+
+[33mcommit 73178b659935fc4444e7b1be6ef8604796c3e1ec[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 19:06:01 2020 +0100
+
+    Generate total scores per fixture for a user
+
+[33mcommit d285c62fa38e553346871a9d758be0885d6f493f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 18:11:50 2020 +0100
+
+    Add function to caculate scores
+
+[33mcommit c6cdabe96a07f6754b0c0c4a22f49f741b7cde57[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 16:06:17 2020 +0100
+
+    Get all rounds with predictions for user
+
+[33mcommit 107f5bfc3bf0262541a064de79721fc0ddef517c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 16:03:33 2020 +0100
+
+    Get current round with predictions for user
+
+[33mcommit 758cdb83e0cf6ef6b8b10908608b90a79d6b92cb[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 15:09:34 2020 +0100
+
+    Fetch fixtures for current week/round
+
+[33mcommit 60e582e35a71347aba968c3934467e03561df82c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 13:46:52 2020 +0100
+
+    Get users for admin
+
+[33mcommit 1e12759cf8dd8c01edc9f2e8199aabbf2e2c1c83[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 07:01:46 2020 +0100
+
+    Update change password route
+
+[33mcommit cd877f81ee48e6d3ece15497dde7814940c6541c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 06:33:07 2020 +0100
+
+    Create dev route to fetch predictions from one user
+
+[33mcommit e1440f225f370e32b63b9d968a39cacdfc1d3312[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 06:17:36 2020 +0100
+
+    Adjust column names predictions
+
+[33mcommit 7ad2fed247aae5b939ebf1e08d5f3487300729b1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 06:12:25 2020 +0100
+
+    Create seeder for predictions
+
+[33mcommit 7371a3ccc4563d977648e3da7455841e232afb9d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 06:03:27 2020 +0100
+
+    Set up relation prediction fixture
+
+[33mcommit 589d4e41a3883eb24aed63a21727b75e25e884f1[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 05:59:43 2020 +0100
+
+    Set up relation prediction user
+
+[33mcommit 4bbff3702cd955487ff802dfe32a601c94157c20[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 05:53:50 2020 +0100
+
+    Create table for predictions
+
+[33mcommit 1d92325413938fa30eb816916cd0200339310b3e[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 05:43:31 2020 +0100
+
+    Add columns to fixtures table
+
+[33mcommit 53115848cf768b5f221c6cf5583a7447e258fd11[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 05:24:13 2020 +0100
+
+    Add route to get specific round
+
+[33mcommit 4e5798a45e5fcac3bc1b4d46f26f0b4772719134[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Wed Nov 4 05:14:08 2020 +0100
+
+    Create route to get fixture by id
+
+[33mcommit 1f4565b8bdba819d6317dafcb3b6b808f53d54b0[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 19:52:26 2020 +0100
+
+    Rearrange migration files
+
+[33mcommit 3fa370f5b63934a331f116756a74e03143981d37[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 18:41:45 2020 +0100
+
+    Set up route for fixtures
+
+[33mcommit a40551917e9a849ce65a26e4f41bbab0e353f5c7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 17:35:20 2020 +0100
+
+    Create route to get team by id
+
+[33mcommit 847340a136729e5887b72133a20795e243b535aa[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 17:30:23 2020 +0100
+
+    Create route for teams
+
+[33mcommit 7832b7f93df6baf62e0a5fee28aa1a521110eccb[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 17:09:41 2020 +0100
+
+    Change favteam to team
+
+[33mcommit 2c7329cb891cf3ebc1257b311bbaf26f4c650f51[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 16:59:01 2020 +0100
+
+    Use getfixtures to seed fixtures table
+
+[33mcommit c62cd64044b3921f8aa223f60e3b207892a64446[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 16:51:22 2020 +0100
+
+    Create model for fixture
+
+[33mcommit 5f87f60e131938801cf80161032b1c6fe820ae6c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 06:30:21 2020 +0100
+
+    Fix typo
+
+[33mcommit ae8b48d8acb7a73e7230fa72c9b784ecacb0b25f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 06:29:54 2020 +0100
+
+    Get all fixtures for bulk create
+
+[33mcommit f12f16763fa7caff8dde099d12556dd9a1467293[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 06:10:40 2020 +0100
+
+    Include message in response
+
+[33mcommit 0bd9401c57ec81809455804fc637835869beca11[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 06:02:48 2020 +0100
+
+    Create update profile functionlity
+
+[33mcommit cc064e8571104b472ef81216aee94b2ba0a74f57[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Tue Nov 3 05:36:23 2020 +0100
+
+    Create change password route
+
+[33mcommit efde357deffe6fcd7880383d4fa11b83eb797294[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 19:31:41 2020 +0100
+
+    Add readme
+
+[33mcommit 9bffb9aef0c33dd97a07a6e2a7055d4f7207983a[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 18:29:39 2020 +0100
+
+    Return fav team on auth actions
+
+[33mcommit 08c9e04dc2f1fcfb9496552cf22e96d0b642382b[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 17:28:56 2020 +0100
+
+    Create route for valid jwt token
+
+[33mcommit 915e924f8387fec509eb3f1800967223bcd7172d[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 16:49:40 2020 +0100
+
+    Create signup functionality
+
+[33mcommit b619a31f1c3f5bd21facbcb10b8706a5cb63ce49[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 16:29:39 2020 +0100
+
+    Add comments
+
+[33mcommit 90db5da44522214cb925e9a394e073048fd97642[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 16:20:36 2020 +0100
+
+    Add team on return login
+
+[33mcommit bbb8177a50295580a74aca11d3bbb561420563f2[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 16:13:59 2020 +0100
+
+    Fix bug, create login route
+
+[33mcommit c60a45dd360cf037f75fe1459eaef2d392e767a7[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 15:12:11 2020 +0100
+
+    Set up auth middleware
+
+[33mcommit 050c802626a753df59efd9ed3ff1c553a219f88f[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 15:05:41 2020 +0100
+
+    Create jwt file
+
+[33mcommit a6a520ab6891c982a8b67cefd26e45204369e0c9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 15:03:58 2020 +0100
+
+    Set up relations user fav_team
+
+[33mcommit 51ed70159f24e2c921d075748d2a256592e464d9[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 14:46:18 2020 +0100
+
+    Fetch teams, insert into fav_team
+
+[33mcommit 391cc2c08dcc1c9e2ae194fc9079315ad4dcab94[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 14:37:36 2020 +0100
+
+    Create table for favorite team
+
+[33mcommit 9835afde35369903c86fc35f577676f85e515ca3[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 14:19:45 2020 +0100
+
+    Set up test router
+
+[33mcommit f8b087372f5b01f6bba6aa50afcbae22e4f3d22c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 13:39:41 2020 +0100
+
+    Add seeder for users
+
+[33mcommit 3489cb824274dec34bbf934309b084adc4c538a5[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 13:32:03 2020 +0100
+
+    Create model for user
+
+[33mcommit 7205a0a0afb6a967014ebe9ebcbcccfffd247de2[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 13:23:46 2020 +0100
+
+    Initialize sequelize
+
+[33mcommit 4ac03ba6fbf9c2649bafc2866d05cba19177646c[m
+Author: Willem Verbuyst <willemverbuyst@gmail.com>
+Date:   Mon Nov 2 13:10:35 2020 +0100
+
+    Set up project, install packages
