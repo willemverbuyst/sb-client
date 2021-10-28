@@ -147,7 +147,7 @@ paths:
           schema:
             type: string
       responses:
-        '200': # status code
+        '200':
           description: Successful getting all the player and her/his scores
           content:
             application/json:
