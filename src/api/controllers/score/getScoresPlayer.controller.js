@@ -2,7 +2,7 @@ const { predictionQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, InvalidPlayerIdlError } = errorHandlers;
+const { InvalidPlayerIdlError, PlayerNotFoundError } = errorHandlers;
 const { getScoresPlayerQuery } = predictionQueries;
 const { getUserByIdQuery } = userQueries;
 const { isValidUUID } = validators;
@@ -17,7 +17,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const { userName } = await getUserByIdQuery(playerId);
 
   if (!userName) {
-    return next(new AppError('No player found with this id!', 404));
+    return next(new PlayerNotFoundError());
   }
 
   const scores = await getScoresPlayerQuery(playerId);
