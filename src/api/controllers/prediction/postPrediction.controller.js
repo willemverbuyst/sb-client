@@ -2,7 +2,7 @@ const { fixtureQueries, predictionQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const { AppError, DetailsMissingError } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { createPredictionQuery } = predictionQueries;
 const {
@@ -22,7 +22,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
-    return next(new AppError('Details are missing, try again!', 422));
+    return next(new DetailsMissingError());
   }
 
   const fixture = await getFixtureQuery(fixtureId);
