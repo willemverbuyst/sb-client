@@ -2,7 +2,7 @@ const { predictionQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const { InvalidRoundNumberError } = errorHandlers;
 const { getScoresRoundQuery } = predictionQueries;
 const { isValidRoundNumber } = validators;
 
@@ -10,7 +10,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const roundNumber = Number(req.params.id);
 
   if (!isValidRoundNumber(roundNumber)) {
-    return next(new AppError('This is not a valid round number!', 422));
+    return next(new InvalidRoundNumberError());
   }
 
   const scores = await getScoresRoundQuery(roundNumber);
