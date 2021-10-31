@@ -12,7 +12,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const userId = req.user.dataValues.id;
 
   if (!isValidUUID(playerId)) {
-    return next(new AppError('This is not a valid id!', 404));
+    return next(new AppError('This is not a valid player id!', 422));
   }
 
   const { userName } = await getUserByIdQuery(playerId);

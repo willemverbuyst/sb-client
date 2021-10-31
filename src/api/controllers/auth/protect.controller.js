@@ -16,10 +16,7 @@ module.exports = catchAsync(async (req, res, next) => {
       : '';
 
   if (!token) {
-    return next(
-      new AppError('Je bent niet ingelogd. Log in om de app te gebruiken.'),
-      401,
-    );
+    return next(new AppError('You are not logged in!'), 401);
   }
   // verify token
   const { userId: email } = await promisify(jwt.verify)(
@@ -33,7 +30,7 @@ module.exports = catchAsync(async (req, res, next) => {
   if (!currentUser) {
     return next(
       new AppError(
-        'De gebruiker met deze token bestaat niet meer, log in en probeer opnieuw.',
+        'The user with this token does not exist anymore. Log in and try again!',
         401,
       ),
     );

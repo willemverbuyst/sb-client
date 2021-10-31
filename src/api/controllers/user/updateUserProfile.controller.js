@@ -30,17 +30,17 @@ module.exports = catchAsync(async (req, res, next) => {
       teamId,
     )
   ) {
-    return next(new AppError('Details ontbreken, probeer opnieuw!', 400));
+    return next(new AppError('Details are missing, try again!', 422));
   }
 
   if (!isValidEmail(email)) {
-    return next(new AppError('This is not a valid email!'), 400);
+    return next(new AppError('This is not a valid email address!'), 422);
   }
 
   const team = await getTeamById(teamId);
 
   if (!team) {
-    return next(new AppError('Team with this id not found!'), 400);
+    return next(new AppError('Team with this id not found!'), 404);
   }
 
   const profile = await updateUserProfileQuery(loggedInUserId, req.body);
@@ -50,6 +50,6 @@ module.exports = catchAsync(async (req, res, next) => {
     data: {
       user: { profile },
     },
-    message: 'Je profiel is gewijzigd.',
+    message: 'Your profile hase been udpated.',
   });
 });

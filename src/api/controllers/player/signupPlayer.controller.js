@@ -30,11 +30,11 @@ module.exports = catchAsync(async (req, res, next) => {
       teamId,
     )
   ) {
-    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
+    return next(new AppError('Details are missing, try again!', 422));
   }
 
   if (!isValidEmail(email)) {
-    return next(new AppError('This is not a valid email!'), 400);
+    return next(new AppError('This is not a valid email address!'), 422);
   }
 
   const userByemail = await getUserByEmailQuery(email);

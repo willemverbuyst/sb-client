@@ -11,13 +11,13 @@ module.exports = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
 
   if (!isValidUUID(playerId)) {
-    return next(new AppError('This is not a valid id!', 404));
+    return next(new AppError('This is not a valid player id!', 422));
   }
 
   const { userName } = await getUserByIdQuery(playerId);
 
   if (!userName) {
-    return next(new AppError('Geen speler gevonden met deze id!', 404));
+    return next(new AppError('No player found with this id!', 404));
   }
 
   const scores = await getScoresPlayerQuery(playerId);

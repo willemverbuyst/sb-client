@@ -15,26 +15,23 @@ module.exports = catchAsync(async (req, res, next) => {
   const { currentPassword, newPassword, confirmPassword } = req.body;
 
   if (!isValidNewPasswordInput(currentPassword, newPassword, confirmPassword)) {
-    return next(
-      new AppError('Er ontbreken gevens, vul alle wachtwoorden in!'),
-      400,
-    );
+    return next(new AppError('Details are missing, try again!'), 422);
   }
 
   if (!isValidPassword(req.user, currentPassword)) {
-    next(new AppError('Je current password is verkeerd!', 401));
+    next(new AppError('The current password is wrong!', 422));
   }
 
   if (!isValidNewPassword(newPassword, currentPassword)) {
     return next(
-      new AppError('Je oude en nieuwe wachtwoord mag niet hetzelfde zijn!'),
-      400,
+      new AppError('Your old and new password cannot be the same!'),
+      422,
     );
   }
 
   if (!isValidPasswordConfirm(newPassword, confirmPassword)) {
     return next(
-      new AppError('Je nieuwe en confirm wachtwoord zijn niet hetzelfde!'),
+      new AppError('Your new password and confirm password are not the same!'),
       400,
     );
   }

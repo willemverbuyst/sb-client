@@ -17,30 +17,24 @@ module.exports = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!isValidLoginInput(email, password)) {
-    return next(new AppError('Vul email en wachtwoord in!'), 400);
+    return next(new AppError('Details are missing, try again!'), 422);
   }
 
   if (!isValidEmail(email)) {
-    return next(new AppError('This is not a valid email!'), 400);
+    return next(new AppError('This is not a valid email address!'), 422);
   }
 
   const user = await getUserByEmailQuery(email);
 
   if (!user) {
     return next(
-      new AppError(
-        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
-        401,
-      ),
+      new AppError('No user found with that email address and password!', 401),
     );
   }
 
   if (!isValidPassword(user, password)) {
     return next(
-      new AppError(
-        'Speler met dit emailadres en wachtwoord niet gevonden, probeer opnieuw!',
-        401,
-      ),
+      new AppError('No user found with that email address and password!', 401),
     );
   }
 

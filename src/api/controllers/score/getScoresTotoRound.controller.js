@@ -10,7 +10,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const totoRoundNumber = Number(req.params.id);
 
   if (!isValidTotoRoundNumber(totoRoundNumber)) {
-    return next(new AppError('This is not a valid totoround number!', 404));
+    return next(new AppError('This is not a valid totoround number!', 422));
   }
 
   const scores = await getScoresTotoRoundQuery(totoRoundNumber);

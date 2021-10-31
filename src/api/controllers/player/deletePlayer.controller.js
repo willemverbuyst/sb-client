@@ -10,7 +10,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const playerId = req.params.id;
 
   if (!isValidUUID(playerId)) {
-    return next(new AppError('This is not a valid id!', 404));
+    return next(new AppError('This is not a valid player id!', 422));
   }
 
   const player = await deleteUserAndHisPredictionQuery(playerId);
@@ -22,6 +22,6 @@ module.exports = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     data: null,
-    message: 'Player removed!',
+    message: 'Player has been removed.',
   });
 });

@@ -10,7 +10,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const roundNumber = Number(req.params.id);
 
   if (!isValidRoundNumber(roundNumber)) {
-    return next(new AppError('This is not a valid round number!', 404));
+    return next(new AppError('This is not a valid round number!', 422));
   }
 
   const scores = await getScoresRoundQuery(roundNumber);

@@ -18,33 +18,28 @@ module.exports = catchAsync(async (req, res, next) => {
   const { pGoalsHomeTeam, pGoalsAwayTeam } = req.body;
 
   if (!isValidFixtureId(fixtureId)) {
-    return next(new AppError('This is not a valid fixture id', 404));
+    return next(new AppError('This is not a valid fixture id', 422));
   }
 
   if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
-    return next(new AppError('Details ontbreken, probeer opnieuw!', 404));
+    return next(new AppError('Details are missing try again!', 422));
   }
 
   const fixture = await getFixtureQuery(fixtureId);
 
   if (!fixture) {
-    return next(new AppError('The fixture with this id was not found', 404));
+    return next(new AppError('No fixture found with this id', 404));
   }
 
   if (!isValidFixtureStatus(fixture.status, next)) {
-    return next(
-      new AppError(
-        'You cannot change a prediction of a match that has finsihed already!',
-        404,
-      ),
-    );
+    return next(new AppError('This fixture is closed for betting!', 403));
   }
 
   // Timestamp in seconds
   const currentTimeStamp = Math.floor(Date.now() / 1000);
 
   if (!isValidOpenToBet(currentTimeStamp, fixture.eventTimeStamp)) {
-    return next(new AppError('This fixture is closed for betting!', 404));
+    return next(new AppError('This fixture is closed for betting!', 403));
   }
 
   const prediction = await updatePredictionQuery(

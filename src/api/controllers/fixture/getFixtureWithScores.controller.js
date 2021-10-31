@@ -11,7 +11,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const fixtureId = req.params.id;
 
   if (!isValidFixtureId(fixtureId)) {
-    return next(new AppError('This is not a valid fixture id.', 400));
+    return next(new AppError('This is not a valid fixture id.', 422));
   }
 
   const fixture = await getFixtureQuery(fixtureId);
