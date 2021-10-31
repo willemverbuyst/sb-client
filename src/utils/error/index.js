@@ -6,6 +6,8 @@ const InvalidInputError = require('./invalidInputError');
 const InvalidPlayerIdlError = require('./invalidPlayerIdError.');
 const InvalidRoundNumberError = require('./invalidRoundNumberError');
 const InvalidTotoRoundNumberError = require('./invalidTotoRoundNumberError');
+const NotFoundError = require('./notFoundError');
+const TeamNotFoundError = require('./teamNotFoundError');
 
 module.exports = {
   AppError,
@@ -16,4 +18,6 @@ module.exports = {
   InvalidPlayerIdlError,
   InvalidRoundNumberError,
   InvalidTotoRoundNumberError,
+  NotFoundError,
+  TeamNotFoundError,
 };
