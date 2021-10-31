@@ -1,13 +1,13 @@
 const AppError = require('./appError');
 const DetailsMissingError = require('./detailsMissingError');
-const InvalidEmailError = require('./invalidEmailError');
-const InvalidFixtureIdError = require('./invalidFixtureIdError');
-const InvalidInputError = require('./invalidInputError');
-const InvalidPlayerIdlError = require('./invalidPlayerIdError.');
-const InvalidRoundNumberError = require('./invalidRoundNumberError');
-const InvalidTotoRoundNumberError = require('./invalidTotoRoundNumberError');
-const NotFoundError = require('./notFoundError');
-const TeamNotFoundError = require('./teamNotFoundError');
+const InvalidEmailError = require('./invalidError/invalidEmailError');
+const InvalidFixtureIdError = require('./invalidError/invalidFixtureIdError');
+const InvalidInputError = require('./invalidError/invalidInputError');
+const InvalidPlayerIdlError = require('./invalidError/invalidPlayerIdError.');
+const InvalidRoundNumberError = require('./invalidError/invalidRoundNumberError');
+const InvalidTotoRoundNumberError = require('./invalidError/invalidTotoRoundNumberError');
+const NotFoundError = require('./notFoundError/notFoundError');
+const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 
 module.exports = {
   AppError,

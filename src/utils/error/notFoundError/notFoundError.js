@@ -1,4 +1,4 @@
-const AppError = require('./appError');
+const AppError = require('../appError');
 
 class NotFoundError extends AppError {
   constructor(object, property) {
