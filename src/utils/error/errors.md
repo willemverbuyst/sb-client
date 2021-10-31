@@ -4,7 +4,7 @@
 
 200 - Your profile hase been udpated.
 
-~~ 404 - Team with this id not found!~~
+~~404 - Team with this id not found!~~
 
 ~~422 - Details are missing, try again!~~
 
@@ -26,9 +26,9 @@
 
 200 - OK
 
-404 - No player found with this id!
+~~404 - No player found with this id!~~
 
-~~422 - This is not a valid player id!'~~
+~~422 - This is not a valid player id!~~
 <br><br>
 
 ### GET SCORES ROUND
@@ -56,7 +56,7 @@
 
 200 - OK
 
-404 - No player found with this id!
+~~404 - No player found with this id!~~
 
 ~~422 - This is not a valid player id!'~~
 <br><br>
@@ -69,9 +69,9 @@
 
 404 - No fixture found with this id!
 
-422 - This is not a valid fixture id!
+~~422 - This is not a valid fixture id!~~
 
-422 - Details are missing, try again!
+~~422 - Details are missing, try again!~~
 <br><br>
 
 ### UPDATE A PREDICTION
@@ -80,11 +80,11 @@
 
 403 - This fixture is closed for betting!
 
-404 - No fixture found with this id!
+~~404 - No fixture found with this id!~~
 
-422 - This is not a valid fixture id!
+~~422 - This is not a valid fixture id!~~
 
-422 - Details are missing, try again!
+~~422 - Details are missing, try again!~~
 <br><br>
 
 ## PLAYER
@@ -124,7 +124,7 @@
 
 200 - OK
 
-404 - No fixture found with this id!
+~~404 - No fixture found with this id!~~
 
 ~~422 - This is not a valid fixture id!~~
 <br><br>
@@ -135,7 +135,7 @@
 
 200 - OK
 
-422 - Details are missing, try again!
+~~422 - Details are missing, try again!~~
 
 422 - The current password is wrong!
 
