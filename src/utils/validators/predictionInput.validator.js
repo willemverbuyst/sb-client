@@ -1,7 +1,4 @@
-module.exports = (pGoalsHomeTeam, pGoalsAwayTeam, fixtureId) =>
-  !(
-    typeof pGoalsHomeTeam !== 'number' ||
-    typeof pGoalsAwayTeam !== 'number' ||
-    !fixtureId ||
-    typeof fixtureId !== 'string'
-  );
+module.exports = (pGoalsHomeTeam, pGoalsAwayTeam) =>
+  !(typeof pGoalsHomeTeam !== 'number' || typeof pGoalsAwayTeam !== 'number') &&
+  pGoalsHomeTeam >= 0 &&
+  pGoalsAwayTeam >= 0;

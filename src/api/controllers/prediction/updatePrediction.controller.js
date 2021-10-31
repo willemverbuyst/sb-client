@@ -26,7 +26,7 @@ module.exports = catchAsync(async (req, res, next) => {
     return next(new InvalidFixtureIdError());
   }
 
-  if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam, fixtureId)) {
+  if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam)) {
     return next(new DetailsMissingError());
   }
 
