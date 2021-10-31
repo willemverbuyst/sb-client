@@ -6,9 +6,9 @@
 
 404 - Team with this id not found!
 
-422 - Details are missing, try again!
+~~422 - Details are missing, try again!~~
 
-422 - This is not a valid email address!
+~~422 - This is not a valid email address!~~
 <br><br>
 
 ## TEAM
@@ -28,14 +28,14 @@
 
 404 - No player found with this id!
 
-422 - This is not a valid player id!'
+~~422 - This is not a valid player id!'~~
 <br><br>
 
 ### GET SCORES ROUND
 
 200 - OK
 
-422 - This is not a valid round number!
+~~422 - This is not a valid round number!~~
 <br><br>
 
 ### GET SCORES TOTAL TOTO
@@ -47,7 +47,7 @@
 
 200 - OK
 
-422 - This is not a valid totoround number!
+~~422 - This is not a valid totoround number!~~
 <br><br>
 
 ## PREDICTIONS
@@ -58,7 +58,7 @@
 
 404 - No player found with this id!
 
-422 - This is not a valid player id!'
+~~422 - This is not a valid player id!'~~
 <br><br>
 
 ### POST A PREDICTION
@@ -93,7 +93,7 @@
 
 200 - Player has been removed.
 
-422 - This is not a valid player id!'
+~~422 - This is not a valid player id!'~~
 
 404 - No player found with this id!
 <br><br>
@@ -111,9 +111,9 @@
 
 404 - Team with this id not found!
 
-422 - Details are missing, try again!
+~~422 - Details are missing, try again!~~
 
-422 - This is not a valid email address!
+~~422 - This is not a valid email address!~~
 
 400 - A user with that username alreay exists, username should be unique!
 <br><br>
@@ -159,9 +159,9 @@
 
 401 - No user found with that email address and password!
 
-422 - Details are missing, try again!
+~~422 - Details are missing, try again!~~
 
-422 - This is not a valid email address!
+~~422 - This is not a valid email address!~~
 <br><br>
 
 ### PROTECT
