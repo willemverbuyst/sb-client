@@ -2,7 +2,7 @@ const { teamQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, DetailsMissingError } = errorHandlers;
+const { AppError, DetailsMissingError, InvalidEmailError } = errorHandlers;
 const { getTeamById } = teamQueries;
 const { updateUserProfileQuery } = userQueries;
 const { isValidEmail, isValidUpdateProfileInput } = validators;
@@ -34,7 +34,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidEmail(email)) {
-    return next(new AppError('This is not a valid email address!'), 422);
+    return next(new InvalidEmailError());
   }
 
   const team = await getTeamById(teamId);

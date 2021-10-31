@@ -3,7 +3,7 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, DetailsMissingError } = errorHandlers;
+const { AppError, DetailsMissingError, InvalidEmailError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
 const { isValidEmail, isValidLoginInput, isValidPassword } = validators;
@@ -21,7 +21,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidEmail(email)) {
-    return next(new AppError('This is not a valid email address!'), 422);
+    return next(new InvalidEmailError());
   }
 
   const user = await getUserByEmailQuery(email);
