@@ -1,5 +1,6 @@
 const AppError = require('./appError');
 const DetailsMissingError = require('./detailsMissingError');
+const FixtureNotFoundError = require('./notFoundError/fixtureNotFoundError');
 const InvalidEmailError = require('./invalidError/invalidEmailError');
 const InvalidFixtureIdError = require('./invalidError/invalidFixtureIdError');
 const InvalidInputError = require('./invalidError/invalidInputError');
@@ -12,6 +13,7 @@ const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 module.exports = {
   AppError,
   DetailsMissingError,
+  FixtureNotFoundError,
   InvalidEmailError,
   InvalidFixtureIdError,
   InvalidInputError,
