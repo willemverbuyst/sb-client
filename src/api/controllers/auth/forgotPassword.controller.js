@@ -7,7 +7,7 @@ const {
 } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const { AppError, UserNotFoundError } = errorHandlers;
 const { sendEmail } = emailFunctions;
 const {
   getUserByEmailQuery,
@@ -41,7 +41,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const user = await getUserByEmailQuery(email);
 
   if (!user) {
-    next(new AppError('No user found with that email address', 404));
+    next(new UserNotFoundError());
   }
 
   const resetToken = await createPasswordResetToken(email);

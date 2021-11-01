@@ -9,7 +9,7 @@ module.exports = catchAsync(async (_req, res, next) => {
   const players = await getAllUsersQuery();
 
   if (!players) {
-    return next(new AppError('No players found!', 404));
+    return next(new AppError('No players found!', 500));
   }
 
   res.status(200).json({

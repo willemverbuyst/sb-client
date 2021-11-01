@@ -67,7 +67,7 @@
 
 403 - This fixture is closed for betting!
 
-404 - No fixture found with this id!
+~~404 - No fixture found with this id!~~
 
 ~~422 - This is not a valid fixture id!~~
 
@@ -95,14 +95,14 @@
 
 ~~422 - This is not a valid player id!'~~
 
-404 - No player found with this id!
+~~404 - No player found with this id!~~
 <br><br>
 
 ### GET ALL PLAYERS
 
 200 - OK
 
-404 - No players found!
+500 - No players found!
 <br><br>
 
 ### SIGNUP PLAYER
@@ -148,7 +148,7 @@
 
 200 - Token sent to email.
 
-404 - No user found with that email address!
+~~404 - User with this email address not found!~~
 
 500 - There was an error sending the email. Try again later.
 <br><br>
