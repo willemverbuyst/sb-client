@@ -12,7 +12,7 @@ const NoPlayersFoundError = require('./serverError/noPlayersFoundError');
 const NoTeammsFoundError = require('./serverError/noTeamsFoundError');
 const NotFoundError = require('./notFoundError/notFoundError');
 const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
-const ProductionError = require('./serverError/productionError');
+const RestrictedError = require('./unAuthorizedError/restrictedError');
 const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 const UserNotFoundError = require('./notFoundError/userNotfoundError');
 
@@ -31,7 +31,7 @@ module.exports = {
   NoTeammsFoundError,
   NotFoundError,
   PlayerNotFoundError,
-  ProductionError,
+  RestrictedError,
   TeamNotFoundError,
   UserNotFoundError,
 };
