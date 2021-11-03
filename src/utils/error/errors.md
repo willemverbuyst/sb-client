@@ -137,9 +137,9 @@
 
 ~~422 - Details are missing, try again!~~
 
-422 - The current password is wrong!
+~~422 - The current password is wrong!~~
 
-422 - Your old and new password cannot be the same!
+~~422 - Your old and new password cannot be the same!~~
 
 ~~422 - Your new password and confirm password are not the same!~~
 <br><br>
@@ -168,7 +168,7 @@
 
 401 - You are not logged in!
 
-401 - The user with this token does not exist anymore. Log in and try again!
+~~401 - The user with this token does not exist anymore. Log in and try~~ again!
 <br><br>
 
 ### RESET PASSWORD
