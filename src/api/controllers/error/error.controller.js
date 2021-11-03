@@ -1,11 +1,9 @@
 const { errorHandlers } = require('../../../utils');
 
-const { AppError, ExpiredTokenError, InvalidTokenError } = errorHandlers;
+const { ExpiredTokenError, InvalidTokenError, UniqueConstraintError } =
+  errorHandlers;
 
-const handleUniqueConstraintError = (err) => {
-  const message = `Error: ${err.errors[0].message}`;
-  return new AppError(message, 400);
-};
+const handleUniqueConstraintError = (err) => new UniqueConstraintError(err);
 
 const handleJWTError = () => new InvalidTokenError();
 

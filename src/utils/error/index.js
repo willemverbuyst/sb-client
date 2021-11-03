@@ -20,6 +20,7 @@ const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
 const RestrictedError = require('./forbiddenError/restrictedError');
 const SendEmailError = require('./serverError/sendEmailError');
 const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
+const UniqueConstraintError = require('./invalidError/uniqueConstraintError');
 const UserNotFoundError = require('./notFoundError/userNotfoundError');
 
 module.exports = {
@@ -45,5 +46,6 @@ module.exports = {
   RestrictedError,
   SendEmailError,
   TeamNotFoundError,
+  UniqueConstraintError,
   UserNotFoundError,
 };
