@@ -182,7 +182,7 @@
 
 ### RESTRICT TO
 
-403 - You need to be an administrator for this request!
+~~403 - You need to be an administrator for this request!~~
 <br><br>
 
 ### VALID TOKEN
@@ -200,9 +200,4 @@
 ### JWT EXPIRED
 
 401 - Your token has expired, please log in again!
-<br><br>
-
-### PRODUCTION ERROR
-
-500 - Something went very wrong!
 <br><br>

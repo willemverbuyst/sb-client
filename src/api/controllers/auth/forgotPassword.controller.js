@@ -7,7 +7,7 @@ const {
 } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, UserNotFoundError } = errorHandlers;
+const { SendEmailError, UserNotFoundError } = errorHandlers;
 const { sendEmail } = emailFunctions;
 const {
   getUserByEmailQuery,
@@ -66,11 +66,6 @@ module.exports = catchAsync(async (req, res, next) => {
   } catch (err) {
     await handlePasswordResetErrorQuery(email);
 
-    return next(
-      new AppError(
-        'There was an error sending the email. Try again later.',
-        500,
-      ),
-    );
+    return next(new SendEmailError());
   }
 });
