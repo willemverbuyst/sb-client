@@ -3,7 +3,7 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const {
-  BettingClosedError,
+  ErrorStatus403: { BettingClosedError },
   DetailsMissingError,
   FixtureNotFoundError,
   InvalidFixtureIdError,

@@ -1,5 +1,4 @@
 const AppError = require('./appError');
-const BettingClosedError = require('./forbiddenError/bettingClosedError');
 const ConfirmPasswordError = require('./invalidError/confirmPasswordError');
 const DetailsMissingError = require('./invalidError/detailsMissingError');
 const EmailAlreadyExistsError = require('./invalidError/emailAlreadyExistsError');
@@ -19,17 +18,16 @@ const NotFoundError = require('./notFoundError/notFoundError');
 const NoUserWithTokenError = require('./unAuthorizedError/noUserWithTokenError');
 const OldAndNewPasswordError = require('./invalidError/oldAndNewPassordError');
 const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
-const RestrictedError = require('./forbiddenError/restrictedError');
 const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 const UniqueConstraintError = require('./invalidError/uniqueConstraintError');
 const UserNameAlreadyExistsError = require('./invalidError/userNameAlreadyExistsError');
 const UserNotFoundError = require('./notFoundError/userNotfoundError');
 const WrongPasswordError = require('./invalidError/wrongPasswordError');
+const ErrorStatus403 = require('./ErrorStatus403');
 const ErrorStatus500 = require('./ErrorStatus500');
 
 module.exports = {
   AppError,
-  BettingClosedError,
   ConfirmPasswordError,
   DetailsMissingError,
   EmailAlreadyExistsError,
@@ -49,11 +47,11 @@ module.exports = {
   NoUserWithTokenError,
   OldAndNewPasswordError,
   PlayerNotFoundError,
-  RestrictedError,
   TeamNotFoundError,
   UniqueConstraintError,
   UserNameAlreadyExistsError,
   UserNotFoundError,
   WrongPasswordError,
+  ErrorStatus403,
   ErrorStatus500,
 };
