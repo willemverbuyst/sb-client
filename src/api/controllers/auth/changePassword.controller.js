@@ -2,7 +2,7 @@ const { userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, DetailsMissingError } = errorHandlers;
+const { AppError, ConfirmPasswordError, DetailsMissingError } = errorHandlers;
 const { updateUserPasswordQuery } = userQueries;
 const {
   isValidNewPassword,
@@ -30,10 +30,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidPasswordConfirm(newPassword, confirmPassword)) {
-    return next(
-      new AppError('Your new password and confirm password are not the same!'),
-      400,
-    );
+    return next(new ConfirmPasswordError());
   }
 
   await updateUserPasswordQuery(newPassword, req.user);

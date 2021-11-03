@@ -3,7 +3,7 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const { AppError, ConfirmPasswordError } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
   userQueries;
@@ -28,12 +28,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidPasswordConfirm(password, passwordConfirm)) {
-    next(
-      new AppError(
-        'Your new password and confirm password are not the same!',
-        422,
-      ),
-    );
+    next(new ConfirmPasswordError());
   }
 
   await updateUserPasswordQuery(password, userByToken);

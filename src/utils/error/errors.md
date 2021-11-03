@@ -157,7 +157,7 @@
 
 200 - Welcome back.
 
-401 - No user found with that email address and password!
+~~401 - No user found with that email address and password!~~
 
 ~~422 - Details are missing, try again!~~
 
