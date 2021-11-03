@@ -141,7 +141,7 @@
 
 422 - Your old and new password cannot be the same!
 
-422 - Your new password and confirm password are not the same!
+~~422 - Your new password and confirm password are not the same!~~
 <br><br>
 
 ### FORGOT PASSWORD
@@ -175,9 +175,9 @@
 
 200 - Welcome back.
 
-401 - Token is invalid or has expired!
+~~401 - Token is invalid or has expired!~~
 
-422 - Your new password and confirm password are not the same!
+~~422 - Your new password and confirm password are not the same!~~
 <br><br>
 
 ### RESTRICT TO
@@ -194,10 +194,10 @@
 
 ### JWT ERROR
 
-401 - Invalid token, please log in again!
+~~401 - Invalid token, please log in again!~~
 <br><br>
 
 ### JWT EXPIRED
 
-401 - Your token has expired, please log in again!
+~~401 - Your token has expired, please log in again!~~
 <br><br>

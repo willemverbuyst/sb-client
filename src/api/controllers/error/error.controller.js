@@ -1,17 +1,15 @@
 const { errorHandlers } = require('../../../utils');
 
-const { AppError } = errorHandlers;
+const { AppError, ExpiredTokenError, InvalidTokenError } = errorHandlers;
 
 const handleUniqueConstraintError = (err) => {
   const message = `Error: ${err.errors[0].message}`;
   return new AppError(message, 400);
 };
 
-const handleJWTError = () =>
-  new AppError('Invalid token, please log in again!', 401);
+const handleJWTError = () => new InvalidTokenError();
 
-const handleJWTExpiredError = () =>
-  new AppError('Your token has expired, please log in again!', 401);
+const handleJWTExpiredError = () => new ExpiredTokenError();
 
 const sendErrorProduction = (err, res) => {
   // Operational, trusted error: send message to the client
