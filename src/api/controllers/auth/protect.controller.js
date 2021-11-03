@@ -4,7 +4,7 @@ const { userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, LoginError } = errorHandlers;
+const { LoginError, NoUserWithTokenError } = errorHandlers;
 const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
@@ -28,12 +28,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const currentUser = await getUserByEmailQuery(email);
 
   if (!currentUser) {
-    return next(
-      new AppError(
-        'The user with this token does not exist anymore. Log in and try again!',
-        401,
-      ),
-    );
+    return next(new NoUserWithTokenError());
   }
 
   // check if the user changed password after the token was issued
