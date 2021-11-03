@@ -17,7 +17,7 @@
 
 200 - OK
 
-500 - No teams found, please try again later.
+~~500 - No teams found, please try again later.~~
 <br><br>
 
 ## SCORE
@@ -65,7 +65,7 @@
 
 201 - Your prediction has been posted.
 
-403 - This fixture is closed for betting!
+~~403 - This fixture is closed for betting!~~
 
 ~~404 - No fixture found with this id!~~
 
@@ -78,7 +78,7 @@
 
 200 - Your prediction has been updated.
 
-403 - This fixture is closed for betting!
+~~403 - This fixture is closed for betting!~~
 
 ~~404 - No fixture found with this id!~~
 
@@ -102,7 +102,7 @@
 
 200 - OK
 
-500 - No players found!
+~~500 - No players found!~~
 <br><br>
 
 ### SIGNUP PLAYER
