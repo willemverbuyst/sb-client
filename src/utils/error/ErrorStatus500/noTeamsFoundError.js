@@ -1,9 +1,9 @@
 const NotFoundServerError = require('./notFoundServerError');
 
-class NoTeammsFoundError extends NotFoundServerError {
+class NoTeamsFoundError extends NotFoundServerError {
   constructor() {
     super('teams');
   }
 }
 
-module.exports = NoTeammsFoundError;
+module.exports = NoTeamsFoundError;

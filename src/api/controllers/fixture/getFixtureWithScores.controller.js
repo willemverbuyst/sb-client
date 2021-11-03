@@ -2,7 +2,7 @@ const { fixtureQueries, predictionQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, InvalidFixtureIdError } = errorHandlers;
+const { FixtureNotFoundError, InvalidFixtureIdError } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
 const { isValidFixtureId } = validators;
@@ -17,7 +17,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const fixture = await getFixtureQuery(fixtureId);
 
   if (!fixture) {
-    return next(new AppError('The fixture with this id was not found.', 404));
+    return next(new FixtureNotFoundError());
   }
 
   const scores = await getAllPredictionsAndScoresForFixtureQuery(fixture);

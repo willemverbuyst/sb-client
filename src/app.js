@@ -6,7 +6,7 @@ const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
-const { errorHandlers } = require('./utils');
+const { AppError } = require('./utils/error/appError');
 const fixtureRouter = require('./api/routes/fixtureRoutes');
 const playerRouter = require('./api/routes/playerRoutes');
 const predictionRouter = require('./api/routes/predictionRoutes');
@@ -18,7 +18,6 @@ const { errorControllers } = require('./api/controllers');
 
 const swaggerDocument = YAML.load('swagger.yml');
 
-const { AppError } = errorHandlers;
 const { errorController } = errorControllers;
 
 const app = express();

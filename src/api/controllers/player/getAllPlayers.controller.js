@@ -2,7 +2,9 @@ const { userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { NoPlayersFoundError } = errorHandlers;
+const {
+  ErrorStatus500: { NoPlayersFoundError },
+} = errorHandlers;
 const { getAllUsersQuery } = userQueries;
 
 module.exports = catchAsync(async (_req, res, next) => {

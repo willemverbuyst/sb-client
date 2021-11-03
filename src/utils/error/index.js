@@ -14,20 +14,18 @@ const InvalidRoundNumberError = require('./invalidError/invalidRoundNumberError'
 const InvalidTokenError = require('./unAuthorizedError/invalidTokenEror');
 const InvalidTotoRoundNumberError = require('./invalidError/invalidTotoRoundNumberError');
 const LoginError = require('./unAuthorizedError/loginError');
-const NoPlayersFoundError = require('./serverError/noPlayersFoundError');
 const NotAUserError = require('./unAuthorizedError/notAUserError');
-const NoTeammsFoundError = require('./serverError/noTeamsFoundError');
 const NotFoundError = require('./notFoundError/notFoundError');
 const NoUserWithTokenError = require('./unAuthorizedError/noUserWithTokenError');
 const OldAndNewPasswordError = require('./invalidError/oldAndNewPassordError');
 const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
 const RestrictedError = require('./forbiddenError/restrictedError');
-const SendEmailError = require('./serverError/sendEmailError');
 const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 const UniqueConstraintError = require('./invalidError/uniqueConstraintError');
 const UserNameAlreadyExistsError = require('./invalidError/userNameAlreadyExistsError');
 const UserNotFoundError = require('./notFoundError/userNotfoundError');
 const WrongPasswordError = require('./invalidError/wrongPasswordError');
+const ErrorStatus500 = require('./ErrorStatus500');
 
 module.exports = {
   AppError,
@@ -46,18 +44,16 @@ module.exports = {
   InvalidTokenError,
   InvalidTotoRoundNumberError,
   LoginError,
-  NoPlayersFoundError,
   NotAUserError,
-  NoTeammsFoundError,
   NotFoundError,
   NoUserWithTokenError,
   OldAndNewPasswordError,
   PlayerNotFoundError,
   RestrictedError,
-  SendEmailError,
   TeamNotFoundError,
   UniqueConstraintError,
   UserNameAlreadyExistsError,
   UserNotFoundError,
   WrongPasswordError,
+  ErrorStatus500,
 };

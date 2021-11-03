@@ -7,7 +7,10 @@ const {
 } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { SendEmailError, UserNotFoundError } = errorHandlers;
+const {
+  ErrorStatus500: { SendEmailError },
+  UserNotFoundError,
+} = errorHandlers;
 const { sendEmail } = emailFunctions;
 const {
   getUserByEmailQuery,
