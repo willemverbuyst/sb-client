@@ -2,7 +2,7 @@ const AppError = require('./appError');
 const ConfirmPasswordError = require('./invalidError/confirmPasswordError');
 const DetailsMissingError = require('./invalidError/detailsMissingError');
 const EmailAlreadyExistsError = require('./invalidError/emailAlreadyExistsError');
-const FixtureNotFoundError = require('./notFoundError/fixtureNotFoundError');
+const FixtureNotFoundError = require('./ErrorStatus404/fixtureNotFoundError');
 const InvalidEmailError = require('./invalidError/invalidEmailError');
 const InvalidFixtureIdError = require('./invalidError/invalidFixtureIdError');
 const InvalidInputError = require('./invalidError/invalidInputError');
@@ -12,17 +12,15 @@ const InvalidRoundNumberError = require('./invalidError/invalidRoundNumberError'
 
 const InvalidTotoRoundNumberError = require('./invalidError/invalidTotoRoundNumberError');
 
-const NotFoundError = require('./notFoundError/notFoundError');
-
 const OldAndNewPasswordError = require('./invalidError/oldAndNewPassordError');
-const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
-const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
+
 const UniqueConstraintError = require('./invalidError/uniqueConstraintError');
 const UserNameAlreadyExistsError = require('./invalidError/userNameAlreadyExistsError');
-const UserNotFoundError = require('./notFoundError/userNotfoundError');
+
 const WrongPasswordError = require('./invalidError/wrongPasswordError');
 const ErrorStatus401 = require('./ErrorStatus401');
 const ErrorStatus403 = require('./ErrorStatus403');
+const ErrorStatus404 = require('./ErrorStatus404');
 const ErrorStatus500 = require('./ErrorStatus500');
 
 module.exports = {
@@ -41,16 +39,14 @@ module.exports = {
 
   InvalidTotoRoundNumberError,
 
-  NotFoundError,
-
   OldAndNewPasswordError,
-  PlayerNotFoundError,
-  TeamNotFoundError,
+
   UniqueConstraintError,
   UserNameAlreadyExistsError,
-  UserNotFoundError,
+
   WrongPasswordError,
   ErrorStatus401,
   ErrorStatus403,
+  ErrorStatus404,
   ErrorStatus500,
 };

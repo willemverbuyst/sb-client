@@ -8,8 +8,8 @@ const {
 
 const { catchAsync } = asyncHandler;
 const {
+  ErrorStatus404: { UserNotFoundError },
   ErrorStatus500: { SendEmailError },
-  UserNotFoundError,
 } = errorHandlers;
 const { sendEmail } = emailFunctions;
 const {

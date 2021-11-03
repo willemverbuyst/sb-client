@@ -2,7 +2,10 @@ const { predictionQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { InvalidPlayerIdlError, PlayerNotFoundError } = errorHandlers;
+const {
+  InvalidPlayerIdlError,
+  ErrorStatus404: { PlayerNotFoundError },
+} = errorHandlers;
 const { getScoresPlayerQuery } = predictionQueries;
 const { getUserByIdQuery } = userQueries;
 const { isValidUUID } = validators;

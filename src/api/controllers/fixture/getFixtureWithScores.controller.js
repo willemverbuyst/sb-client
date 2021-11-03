@@ -2,7 +2,10 @@ const { fixtureQueries, predictionQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { FixtureNotFoundError, InvalidFixtureIdError } = errorHandlers;
+const {
+  ErrorStatus404: { FixtureNotFoundError },
+  InvalidFixtureIdError,
+} = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
 const { isValidFixtureId } = validators;

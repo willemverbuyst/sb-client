@@ -2,8 +2,11 @@ const { teamQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { DetailsMissingError, InvalidEmailError, TeamNotFoundError } =
-  errorHandlers;
+const {
+  DetailsMissingError,
+  InvalidEmailError,
+  ErrorStatus404: { TeamNotFoundError },
+} = errorHandlers;
 const { getTeamById } = teamQueries;
 const { updateUserProfileQuery } = userQueries;
 const { isValidEmail, isValidUpdateProfileInput } = validators;

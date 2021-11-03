@@ -6,7 +6,7 @@ const {
   DetailsMissingError,
   EmailAlreadyExistsError,
   InvalidEmailError,
-  TeamNotFoundError,
+  ErrorStatus404: { TeamNotFoundError },
   UserNameAlreadyExistsError,
 } = errorHandlers;
 const { getTeamById } = teamQueries;

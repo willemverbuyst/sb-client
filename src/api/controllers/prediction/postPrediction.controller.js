@@ -4,8 +4,8 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 const { catchAsync } = asyncHandler;
 const {
   ErrorStatus403: { BettingClosedError },
+  ErrorStatus404: { FixtureNotFoundError },
   DetailsMissingError,
-  FixtureNotFoundError,
   InvalidFixtureIdError,
 } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
