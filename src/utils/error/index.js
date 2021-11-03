@@ -1,4 +1,5 @@
 const AppError = require('./appError');
+const BettingClosedError = require('./unAuthorizedError/bettingClosedError');
 const DetailsMissingError = require('./detailsMissingError');
 const FixtureNotFoundError = require('./notFoundError/fixtureNotFoundError');
 const InvalidEmailError = require('./invalidError/invalidEmailError');
@@ -14,6 +15,7 @@ const UserNotFoundError = require('./notFoundError/userNotfoundError');
 
 module.exports = {
   AppError,
+  BettingClosedError,
   DetailsMissingError,
   FixtureNotFoundError,
   InvalidEmailError,
