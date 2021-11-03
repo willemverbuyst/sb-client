@@ -150,7 +150,7 @@
 
 ~~404 - User with this email address not found!~~
 
-500 - There was an error sending the email. Try again later.
+~~500 - There was an error sending the email. Try again later.~~
 <br><br>
 
 ### LOGIN

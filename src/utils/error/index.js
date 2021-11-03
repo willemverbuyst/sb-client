@@ -1,6 +1,6 @@
 const AppError = require('./appError');
-const BettingClosedError = require('./unAuthorizedError/bettingClosedError');
-const DetailsMissingError = require('./detailsMissingError');
+const BettingClosedError = require('./forbiddenError/bettingClosedError');
+const DetailsMissingError = require('./invalidError/detailsMissingError');
 const FixtureNotFoundError = require('./notFoundError/fixtureNotFoundError');
 const InvalidEmailError = require('./invalidError/invalidEmailError');
 const InvalidFixtureIdError = require('./invalidError/invalidFixtureIdError');
@@ -12,7 +12,7 @@ const NoPlayersFoundError = require('./serverError/noPlayersFoundError');
 const NoTeammsFoundError = require('./serverError/noTeamsFoundError');
 const NotFoundError = require('./notFoundError/notFoundError');
 const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
-const RestrictedError = require('./unAuthorizedError/restrictedError');
+const RestrictedError = require('./forbiddenError/restrictedError');
 const SendEmailError = require('./serverError/sendEmailError');
 const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 const UserNotFoundError = require('./notFoundError/userNotfoundError');
