@@ -3,11 +3,13 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const {
-  DetailsMissingError,
-  EmailAlreadyExistsError,
-  InvalidEmailError,
   ErrorStatus404: { TeamNotFoundError },
-  UserNameAlreadyExistsError,
+  ErrorStatus422: {
+    DetailsMissingError,
+    EmailAlreadyExistsError,
+    InvalidEmailError,
+    UserNameAlreadyExistsError,
+  },
 } = errorHandlers;
 const { getTeamById } = teamQueries;
 const { createUserQuery, getUserByEmailQuery, getUserByUserNameQuery } =

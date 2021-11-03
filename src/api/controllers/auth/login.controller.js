@@ -3,7 +3,10 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { DetailsMissingError, InvalidEmailError, NotAUserError } = errorHandlers;
+const {
+  ErrorStatus401: { NotAUserError },
+  ErrorStatus422: { DetailsMissingError, InvalidEmailError },
+} = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
 const { isValidEmail, isValidLoginInput, isValidPassword } = validators;

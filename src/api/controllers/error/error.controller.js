@@ -2,7 +2,7 @@ const { errorHandlers } = require('../../../utils');
 
 const {
   ErrorStatus401: { ExpiredTokenError, InvalidTokenError },
-  UniqueConstraintError,
+  ErrorStatus422: { UniqueConstraintError },
 } = errorHandlers;
 
 const handleUniqueConstraintError = (err) => new UniqueConstraintError(err);

@@ -3,10 +3,12 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const {
-  ConfirmPasswordError,
-  DetailsMissingError,
-  OldAndNewPasswordError,
-  WrongPasswordError,
+  ErrorStatus422: {
+    ConfirmPasswordError,
+    DetailsMissingError,
+    OldAndNewPasswordError,
+    WrongPasswordError,
+  },
 } = errorHandlers;
 const { updateUserPasswordQuery } = userQueries;
 const {

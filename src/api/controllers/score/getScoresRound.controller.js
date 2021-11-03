@@ -2,7 +2,9 @@ const { predictionQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { InvalidRoundNumberError } = errorHandlers;
+const {
+  ErrorStatus422: { InvalidRoundNumberError },
+} = errorHandlers;
 const { getScoresRoundQuery } = predictionQueries;
 const { isValidRoundNumber } = validators;
 

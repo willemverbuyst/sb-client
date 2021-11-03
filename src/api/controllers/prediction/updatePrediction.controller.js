@@ -5,8 +5,7 @@ const { catchAsync } = asyncHandler;
 const {
   ErrorStatus403: { BettingClosedError },
   ErrorStatus404: { FixtureNotFoundError },
-  DetailsMissingError,
-  InvalidFixtureIdError,
+  ErrorStatus422: { DetailsMissingError, InvalidFixtureIdError },
 } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { updatePredictionQuery } = predictionQueries;

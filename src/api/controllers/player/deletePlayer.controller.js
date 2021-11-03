@@ -3,8 +3,8 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const {
-  InvalidPlayerIdlError,
   ErrorStatus404: { PlayerNotFoundError },
+  ErrorStatus422: { InvalidPlayerIdlError },
 } = errorHandlers;
 const { deleteUserAndHisPredictionQuery } = userQueries;
 const { isValidUUID } = validators;
