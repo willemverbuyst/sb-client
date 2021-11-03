@@ -4,7 +4,7 @@ const { userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const { AppError, LoginError } = errorHandlers;
 const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
@@ -16,7 +16,7 @@ module.exports = catchAsync(async (req, res, next) => {
       : '';
 
   if (!token) {
-    return next(new AppError('You are not logged in!'), 401);
+    return next(new LoginError());
   }
   // verify token
   const { userId: email } = await promisify(jwt.verify)(

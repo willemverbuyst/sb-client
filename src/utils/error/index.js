@@ -12,6 +12,7 @@ const InvalidPlayerIdlError = require('./invalidError/invalidPlayerIdError.');
 const InvalidRoundNumberError = require('./invalidError/invalidRoundNumberError');
 const InvalidTokenError = require('./unAuthorizedError/invalidTokenEror');
 const InvalidTotoRoundNumberError = require('./invalidError/invalidTotoRoundNumberError');
+const LoginError = require('./unAuthorizedError/loginError');
 const NoPlayersFoundError = require('./serverError/noPlayersFoundError');
 const NotAUserError = require('./unAuthorizedError/notAUserError');
 const NoTeammsFoundError = require('./serverError/noTeamsFoundError');
@@ -38,6 +39,7 @@ module.exports = {
   InvalidRoundNumberError,
   InvalidTokenError,
   InvalidTotoRoundNumberError,
+  LoginError,
   NoPlayersFoundError,
   NotAUserError,
   NoTeammsFoundError,
