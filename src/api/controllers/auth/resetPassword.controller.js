@@ -3,7 +3,10 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { ConfirmPasswordError, InvalidOrExpiredTokenError } = errorHandlers;
+const {
+  ConfirmPasswordError,
+  ErrorStatus401: { InvalidOrExpiredTokenError },
+} = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
   userQueries;

@@ -4,7 +4,9 @@ const { userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { LoginError, NoUserWithTokenError } = errorHandlers;
+const {
+  ErrorStatus401: { LoginError, NoUserWithTokenError },
+} = errorHandlers;
 const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
