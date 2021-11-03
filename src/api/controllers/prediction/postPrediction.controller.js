@@ -3,10 +3,9 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
 const {
-  AppError,
-  DetailsMissingError,
-  FixtureNotFoundError,
-  InvalidFixtureIdError,
+  ErrorStatus403: { BettingClosedError },
+  ErrorStatus404: { FixtureNotFoundError },
+  ErrorStatus422: { DetailsMissingError, InvalidFixtureIdError },
 } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { createPredictionQuery } = predictionQueries;
@@ -36,15 +35,15 @@ module.exports = catchAsync(async (req, res, next) => {
     return next(new FixtureNotFoundError());
   }
 
-  if (!isValidFixtureStatus(fixture.status, next)) {
-    return next(new AppError('This fixture is closed for betting!', 403));
+  if (!isValidFixtureStatus(fixture.status)) {
+    return next(new BettingClosedError());
   }
 
   // Timestamp in seconds
   const currentTimeStamp = Math.floor(Date.now() / 1000);
 
   if (!isValidOpenToBet(currentTimeStamp, fixture.eventTimeStamp)) {
-    return next(new AppError('This fixture is closed for betting!', 403));
+    return next(new BettingClosedError());
   }
 
   const prediction = await createPredictionQuery(

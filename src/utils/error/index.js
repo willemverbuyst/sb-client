@@ -1,27 +1,15 @@
 const AppError = require('./appError');
-const DetailsMissingError = require('./detailsMissingError');
-const FixtureNotFoundError = require('./notFoundError/fixtureNotFoundError');
-const InvalidEmailError = require('./invalidError/invalidEmailError');
-const InvalidFixtureIdError = require('./invalidError/invalidFixtureIdError');
-const InvalidInputError = require('./invalidError/invalidInputError');
-const InvalidPlayerIdlError = require('./invalidError/invalidPlayerIdError.');
-const InvalidRoundNumberError = require('./invalidError/invalidRoundNumberError');
-const InvalidTotoRoundNumberError = require('./invalidError/invalidTotoRoundNumberError');
-const NotFoundError = require('./notFoundError/notFoundError');
-const PlayerNotFoundError = require('./notFoundError/playerNotFoundError');
-const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
+const ErrorStatus401 = require('./ErrorStatus401');
+const ErrorStatus403 = require('./ErrorStatus403');
+const ErrorStatus404 = require('./ErrorStatus404');
+const ErrorStatus422 = require('./ErrorStatus422');
+const ErrorStatus500 = require('./ErrorStatus500');
 
 module.exports = {
   AppError,
-  DetailsMissingError,
-  FixtureNotFoundError,
-  InvalidEmailError,
-  InvalidFixtureIdError,
-  InvalidInputError,
-  InvalidPlayerIdlError,
-  InvalidRoundNumberError,
-  InvalidTotoRoundNumberError,
-  NotFoundError,
-  PlayerNotFoundError,
-  TeamNotFoundError,
+  ErrorStatus401,
+  ErrorStatus403,
+  ErrorStatus404,
+  ErrorStatus422,
+  ErrorStatus500,
 };

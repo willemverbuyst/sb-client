@@ -2,7 +2,10 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { InvalidPlayerIdlError, PlayerNotFoundError } = errorHandlers;
+const {
+  ErrorStatus404: { PlayerNotFoundError },
+  ErrorStatus422: { InvalidPlayerIdlError },
+} = errorHandlers;
 const { getAllFixturesWithPredictionQuery } = fixtureQueries;
 const { getUserByIdQuery } = userQueries;
 const { isValidUUID } = validators;

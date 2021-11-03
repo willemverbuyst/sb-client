@@ -3,7 +3,10 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const {
+  ErrorStatus401: { InvalidOrExpiredTokenError },
+  ErrorStatus422: { ConfirmPasswordError },
+} = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery, getUserByTokenQuery, updateUserPasswordQuery } =
   userQueries;
@@ -24,16 +27,11 @@ module.exports = catchAsync(async (req, res, next) => {
   // If token has not expired and there is a user
   // then set new password
   if (!userByToken) {
-    next(new AppError('Token is invalid or has expired!', 401));
+    next(new InvalidOrExpiredTokenError());
   }
 
   if (!isValidPasswordConfirm(password, passwordConfirm)) {
-    next(
-      new AppError(
-        'Your new password and confirm password are not the same!',
-        422,
-      ),
-    );
+    next(new ConfirmPasswordError());
   }
 
   await updateUserPasswordQuery(password, userByToken);

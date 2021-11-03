@@ -1,4 +1,4 @@
-const AppError = require('./appError');
+const AppError = require('../appError');
 
 class DetailsMissingError extends AppError {
   constructor() {

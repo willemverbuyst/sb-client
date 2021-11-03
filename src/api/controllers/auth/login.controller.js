@@ -3,7 +3,10 @@ const { fixtureQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, DetailsMissingError, InvalidEmailError } = errorHandlers;
+const {
+  ErrorStatus401: { NotAUserError },
+  ErrorStatus422: { DetailsMissingError, InvalidEmailError },
+} = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
 const { isValidEmail, isValidLoginInput, isValidPassword } = validators;
@@ -27,15 +30,11 @@ module.exports = catchAsync(async (req, res, next) => {
   const user = await getUserByEmailQuery(email);
 
   if (!user) {
-    return next(
-      new AppError('No user found with that email address and password!', 401),
-    );
+    return next(new NotAUserError());
   }
 
   if (!isValidPassword(user, password)) {
-    return next(
-      new AppError('No user found with that email address and password!', 401),
-    );
+    return next(new NotAUserError());
   }
 
   delete user.dataValues.password;

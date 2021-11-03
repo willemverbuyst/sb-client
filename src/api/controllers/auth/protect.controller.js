@@ -4,7 +4,9 @@ const { userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError } = errorHandlers;
+const {
+  ErrorStatus401: { LoginError, NoUserWithTokenError },
+} = errorHandlers;
 const { getUserByEmailQuery } = userQueries;
 
 module.exports = catchAsync(async (req, res, next) => {
@@ -16,7 +18,7 @@ module.exports = catchAsync(async (req, res, next) => {
       : '';
 
   if (!token) {
-    return next(new AppError('You are not logged in!'), 401);
+    return next(new LoginError());
   }
   // verify token
   const { userId: email } = await promisify(jwt.verify)(
@@ -28,12 +30,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const currentUser = await getUserByEmailQuery(email);
 
   if (!currentUser) {
-    return next(
-      new AppError(
-        'The user with this token does not exist anymore. Log in and try again!',
-        401,
-      ),
-    );
+    return next(new NoUserWithTokenError());
   }
 
   // check if the user changed password after the token was issued
