@@ -2,6 +2,7 @@ const AppError = require('./appError');
 const BettingClosedError = require('./forbiddenError/bettingClosedError');
 const ConfirmPasswordError = require('./invalidError/confirmPasswordError');
 const DetailsMissingError = require('./invalidError/detailsMissingError');
+const EmailAlreadyExistsError = require('./invalidError/emailAlreadyExistsError');
 const ExpiredTokenError = require('./unAuthorizedError/expiredTokenError');
 const FixtureNotFoundError = require('./notFoundError/fixtureNotFoundError');
 const InvalidEmailError = require('./invalidError/invalidEmailError');
@@ -24,6 +25,7 @@ const RestrictedError = require('./forbiddenError/restrictedError');
 const SendEmailError = require('./serverError/sendEmailError');
 const TeamNotFoundError = require('./notFoundError/teamNotFoundError');
 const UniqueConstraintError = require('./invalidError/uniqueConstraintError');
+const UserNameAlreadyExistsError = require('./invalidError/userNameAlreadyExistsError');
 const UserNotFoundError = require('./notFoundError/userNotfoundError');
 const WrongPasswordError = require('./invalidError/wrongPasswordError');
 
@@ -32,6 +34,7 @@ module.exports = {
   BettingClosedError,
   ConfirmPasswordError,
   DetailsMissingError,
+  EmailAlreadyExistsError,
   ExpiredTokenError,
   FixtureNotFoundError,
   InvalidEmailError,
@@ -54,6 +57,7 @@ module.exports = {
   SendEmailError,
   TeamNotFoundError,
   UniqueConstraintError,
+  UserNameAlreadyExistsError,
   UserNotFoundError,
   WrongPasswordError,
 };

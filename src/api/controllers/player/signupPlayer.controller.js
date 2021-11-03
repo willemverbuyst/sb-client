@@ -2,8 +2,13 @@ const { teamQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 
 const { catchAsync } = asyncHandler;
-const { AppError, DetailsMissingError, InvalidEmailError, TeamNotFoundError } =
-  errorHandlers;
+const {
+  DetailsMissingError,
+  EmailAlreadyExistsError,
+  InvalidEmailError,
+  TeamNotFoundError,
+  UserNameAlreadyExistsError,
+} = errorHandlers;
 const { getTeamById } = teamQueries;
 const { createUserQuery, getUserByEmailQuery, getUserByUserNameQuery } =
   userQueries;
@@ -41,23 +46,13 @@ module.exports = catchAsync(async (req, res, next) => {
   const userByemail = await getUserByEmailQuery(email);
 
   if (userByemail && userByemail.email) {
-    return next(
-      new AppError(
-        'A user with that email alreay exists, email should be unique!',
-      ),
-      400,
-    );
+    return next(new EmailAlreadyExistsError());
   }
 
   const userByUserName = await getUserByUserNameQuery(userName);
 
   if (userByUserName && userByUserName.userName) {
-    return next(
-      new AppError(
-        'A user with that username alreay exists, username should be unique!',
-      ),
-      400,
-    );
+    return next(new UserNameAlreadyExistsError());
   }
 
   const team = await getTeamById(teamId);
