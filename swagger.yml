@@ -1,3 +1,4 @@
+# WORK IN PROGRESS
 openapi: 3.0.0
 info:
   title: Sample API
@@ -162,17 +163,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Team'
-        '500':
-          description: No teams found, please try again later
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  message:
-                    type: string
   /teams:
     get:
       summary: Gets all teams.
@@ -196,16 +186,13 @@ paths:
                     items:
                       $ref: '#/components/schemas/Team'
         '500':
-          description: No teams found, please try again later
+          description: Server error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  message:
-                    type: string
+                oneOf:
+                  - $ref: '#/components/schemas/NoTeamsFoundError'
+                  - $ref: '#/components/schemas/NoPlayersFoundError'
 components:
   schemas:
     Fixture:
@@ -318,3 +305,21 @@ components:
         teamId:
           type: integer
           example: 123
+    NoTeamsFoundError:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        message:
+          type: string
+          example: No teams found. Please try again later.
+    NoPlayersFoundError:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        message:
+          type: string
+          example: No players found. Please try again later.
