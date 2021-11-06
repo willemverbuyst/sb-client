@@ -4,7 +4,7 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 const { catchAsync } = asyncHandler;
 const {
   ErrorStatus404: { TeamNotFoundError },
-  ErrorStatus422: { DetailsMissingError, InvalidEmailError },
+  ErrorStatus422: { InvalidOrMissingInputError, InvalidEmailError },
 } = errorHandlers;
 const { getTeamById } = teamQueries;
 const { updateUserProfileQuery } = userQueries;
@@ -33,7 +33,7 @@ module.exports = catchAsync(async (req, res, next) => {
       teamId,
     )
   ) {
-    return next(new DetailsMissingError());
+    return next(new InvalidOrMissingInputError());
   }
 
   if (!isValidEmail(email)) {

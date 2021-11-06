@@ -51,7 +51,7 @@ module.exports = (err, req, res, next) => {
     if (error.name === 'SequelizeUniqueConstraintError') {
       error = handleUniqueConstraintError(error);
     }
-    if (error.name === 'JsonwebTokenError') {
+    if (error.name === 'JsonWebTokenError') {
       error = handleJWTError();
     }
     if (error.name === 'TokenExpiredError') {

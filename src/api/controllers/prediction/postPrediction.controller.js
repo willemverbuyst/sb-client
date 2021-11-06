@@ -5,7 +5,7 @@ const { catchAsync } = asyncHandler;
 const {
   ErrorStatus403: { BettingClosedError },
   ErrorStatus404: { FixtureNotFoundError },
-  ErrorStatus422: { DetailsMissingError, InvalidFixtureIdError },
+  ErrorStatus422: { InvalidOrMissingInputError, InvalidFixtureIdError },
 } = errorHandlers;
 const { getFixtureQuery } = fixtureQueries;
 const { createPredictionQuery } = predictionQueries;
@@ -26,7 +26,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidPredictionInput(pGoalsHomeTeam, pGoalsAwayTeam)) {
-    return next(new DetailsMissingError());
+    return next(new InvalidOrMissingInputError());
   }
 
   const fixture = await getFixtureQuery(fixtureId);

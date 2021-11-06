@@ -5,7 +5,7 @@ const { catchAsync } = asyncHandler;
 const {
   ErrorStatus422: {
     ConfirmPasswordError,
-    DetailsMissingError,
+    InvalidOrMissingInputError,
     OldAndNewPasswordError,
     WrongPasswordError,
   },
@@ -22,7 +22,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const { currentPassword, newPassword, confirmPassword } = req.body;
 
   if (!isValidNewPasswordInput(currentPassword, newPassword, confirmPassword)) {
-    return next(new DetailsMissingError());
+    return next(new InvalidOrMissingInputError());
   }
 
   if (!isValidPassword(req.user, currentPassword)) {

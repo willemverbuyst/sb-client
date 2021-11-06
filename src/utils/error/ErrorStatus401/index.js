@@ -1,6 +1,6 @@
 const ExpiredTokenError = require('./expiredTokenError');
 const InvalidOrExpiredTokenError = require('./invalidOrExpiredTokenError');
-const InvalidTokenError = require('./invalidTokenEror');
+const InvalidTokenError = require('./invalidTokenError');
 const LoginError = require('./loginError');
 const NotAUserError = require('./notAUserError');
 const NoUserWithTokenError = require('./noUserWithTokenError');

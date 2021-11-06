@@ -1,11 +1,12 @@
 const { teamQueries, userQueries } = require('../../../db/queries');
 const { asyncHandler, errorHandlers, validators } = require('../../../utils');
+const { InvalidTeamIdError } = require('../../../utils/error/ErrorStatus422');
 
 const { catchAsync } = asyncHandler;
 const {
   ErrorStatus404: { TeamNotFoundError },
   ErrorStatus422: {
-    DetailsMissingError,
+    InvalidOrMissingInputError,
     EmailAlreadyExistsError,
     InvalidEmailError,
     UserNameAlreadyExistsError,
@@ -14,7 +15,7 @@ const {
 const { getTeamById } = teamQueries;
 const { createUserQuery, getUserByEmailQuery, getUserByUserNameQuery } =
   userQueries;
-const { isValidEmail, isValidSignupInput } = validators;
+const { isValidEmail, isValidSignupInput, isValidTeamId } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
   const {
@@ -38,7 +39,7 @@ module.exports = catchAsync(async (req, res, next) => {
       teamId,
     )
   ) {
-    return next(new DetailsMissingError());
+    return next(new InvalidOrMissingInputError());
   }
 
   if (!isValidEmail(email)) {
@@ -55,6 +56,10 @@ module.exports = catchAsync(async (req, res, next) => {
 
   if (userByUserName && userByUserName.userName) {
     return next(new UserNameAlreadyExistsError());
+  }
+
+  if (!isValidTeamId(teamId)) {
+    return next(new InvalidTeamIdError());
   }
 
   const team = await getTeamById(teamId);

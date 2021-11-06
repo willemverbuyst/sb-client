@@ -5,7 +5,7 @@ const { asyncHandler, errorHandlers, validators } = require('../../../utils');
 const { catchAsync } = asyncHandler;
 const {
   ErrorStatus401: { NotAUserError },
-  ErrorStatus422: { DetailsMissingError, InvalidEmailError },
+  ErrorStatus422: { InvalidOrMissingInputError, InvalidEmailError },
 } = errorHandlers;
 const { getCurrentRoundForUserQuery } = fixtureQueries;
 const { getUserByEmailQuery } = userQueries;
@@ -20,7 +20,7 @@ module.exports = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!isValidLoginInput(email, password)) {
-    return next(new DetailsMissingError());
+    return next(new InvalidOrMissingInputError());
   }
 
   if (!isValidEmail(email)) {

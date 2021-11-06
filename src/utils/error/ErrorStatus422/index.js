@@ -1,10 +1,11 @@
 const ConfirmPasswordError = require('./confirmPasswordError');
-const DetailsMissingError = require('./detailsMissingError');
+const InvalidOrMissingInputError = require('./invalidOrMissingInput');
 const EmailAlreadyExistsError = require('./emailAlreadyExistsError');
-const InvalidEmailError = require('./invalidFixtureIdError');
+const InvalidEmailError = require('./invalidEmailError');
 const InvalidFixtureIdError = require('./invalidFixtureIdError');
 const InvalidPlayerIdlError = require('./invalidPlayerIdError');
 const InvalidRoundNumberError = require('./invalidRoundNumberError');
+const InvalidTeamIdError = require('./invalidTeamIdError');
 const InvalidTotoRoundNumberError = require('./invalidTotoRoundNumberError');
 const OldAndNewPasswordError = require('./oldAndNewPassordError');
 const UniqueConstraintError = require('./uniqueConstraintError');
@@ -13,12 +14,13 @@ const WrongPasswordError = require('./wrongPasswordError');
 
 module.exports = {
   ConfirmPasswordError,
-  DetailsMissingError,
+  InvalidOrMissingInputError,
   EmailAlreadyExistsError,
   InvalidEmailError,
   InvalidFixtureIdError,
   InvalidPlayerIdlError,
   InvalidRoundNumberError,
+  InvalidTeamIdError,
   InvalidTotoRoundNumberError,
   OldAndNewPasswordError,
   UniqueConstraintError,
