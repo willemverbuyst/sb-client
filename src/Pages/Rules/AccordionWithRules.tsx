@@ -1,13 +1,12 @@
-import { Grid, Typography } from '@material-ui/core';
-import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import React, { ReactElement } from 'react';
+import { Grid, Typography } from '@material-ui/core'
+import MuiAccordion from '@material-ui/core/Accordion'
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
+import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import React, { ReactElement } from 'react'
 
-import { listOfRules } from '../../constants/listOfRules';
-import AccordionAnswers from './AccordionAnswers';
+import { listOfRules } from '../../constants/listOfRules'
+import AccordionAnswers from './AccordionAnswers'
 
 const Accordion = withStyles(() => ({
   root: {
@@ -20,7 +19,7 @@ const Accordion = withStyles(() => ({
     },
   },
   expanded: {},
-}))(MuiAccordion);
+}))(MuiAccordion)
 
 const AccordionSummary = withStyles(() => ({
   root: {
@@ -37,7 +36,7 @@ const AccordionSummary = withStyles(() => ({
     },
   },
   expanded: {},
-}))(MuiAccordionSummary);
+}))(MuiAccordionSummary)
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -48,10 +47,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
   },
-}));
+}))
 
 const AccordionWithRules: React.FC = (): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid container justify="center" className={classes.content}>
@@ -70,7 +69,7 @@ const AccordionWithRules: React.FC = (): ReactElement => {
         ))}
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default AccordionWithRules;
+export default AccordionWithRules

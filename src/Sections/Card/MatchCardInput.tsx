@@ -1,19 +1,19 @@
-import { Grid } from '@material-ui/core';
-import React, { ReactElement, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Grid } from '@material-ui/core'
+import React, { ReactElement, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import CardButton from '../../Components/Button/CardButton';
-import NumberField from '../../Components/Form/NumberField';
-import { IPrediction } from '../../models/predictions.model';
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
+import CardButton from '../../Components/Button/CardButton'
+import NumberField from '../../Components/Form/NumberField'
+import { IPrediction } from '../../models/predictions.model'
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models'
 import {
   changePrediction,
   postNewPrediction,
-} from '../../store/predictions/action-creators';
+} from '../../store/predictions/action-creators'
 
 interface IProps {
-  fixtureWithPrediction: IFixtureWithScoreAndPredictions;
-  hideInput: () => void;
+  fixtureWithPrediction: IFixtureWithScoreAndPredictions
+  hideInput: () => void
 }
 
 const MatchCardInput: React.FC<IProps> = ({
@@ -23,32 +23,32 @@ const MatchCardInput: React.FC<IProps> = ({
   const {
     id,
     predictions: { pGoalsAwayTeam, pGoalsHomeTeam },
-  } = fixtureWithPrediction;
-  const dispatch = useDispatch();
-  const [pGoalsHT, setpGoalsHT] = useState<number>(pGoalsHomeTeam || 0);
-  const [pGoalsAT, setpGoalsAT] = useState<number>(pGoalsAwayTeam || 0);
+  } = fixtureWithPrediction
+  const dispatch = useDispatch()
+  const [pGoalsHT, setpGoalsHT] = useState<number>(pGoalsHomeTeam || 0)
+  const [pGoalsAT, setpGoalsAT] = useState<number>(pGoalsAwayTeam || 0)
 
   const handleSubmit = () => {
     const prediction: IPrediction = {
       pGoalsHomeTeam: pGoalsHT,
       pGoalsAwayTeam: pGoalsAT,
       fixtureId: id,
-    };
+    }
 
     Number.isInteger(pGoalsAwayTeam) || Number.isInteger(pGoalsHomeTeam)
       ? dispatch(changePrediction(prediction))
-      : dispatch(postNewPrediction(prediction));
+      : dispatch(postNewPrediction(prediction))
 
-    hideInput();
-  };
+    hideInput()
+  }
 
   const handleGoalsHomeTeam = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setpGoalsHT(Number(e.target.value));
-  };
+    setpGoalsHT(Number(e.target.value))
+  }
 
   const handleGoalsAwayTeam = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setpGoalsAT(Number(e.target.value));
-  };
+    setpGoalsAT(Number(e.target.value))
+  }
 
   return (
     <Grid item xs={12} container justify="center">
@@ -68,7 +68,7 @@ const MatchCardInput: React.FC<IProps> = ({
 
       <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
     </Grid>
-  );
-};
+  )
+}
 
-export default MatchCardInput;
+export default MatchCardInput

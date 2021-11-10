@@ -1,13 +1,13 @@
-import { Box, Grid, Typography } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { Box, Grid, Typography } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
-import LogoComponent from '../../../Components/Logo';
-import { IFixture } from '../../../models/toto.models';
-import * as UTILS from '../../../utils';
-import TextComponent from './Text';
+import LogoComponent from '../../../Components/Logo'
+import { IFixture } from '../../../models/toto.models'
+import * as UTILS from '../../../utils'
+import TextComponent from './Text'
 
 interface IProps {
-  fixture: IFixture;
+  fixture: IFixture
 }
 
 const FixtureSection: React.FC<IProps> = ({
@@ -21,12 +21,12 @@ const FixtureSection: React.FC<IProps> = ({
     goalsAwayTeam,
     awayTeamName,
     awayTeamLogo,
-  } = fixture;
-  const formattedDate = UTILS.formatTimeStampToLocalDate(eventTimeStamp);
+  } = fixture
+  const formattedDate = UTILS.formatTimeStampToLocalDate(eventTimeStamp)
   const goals =
     Number.isInteger(goalsAwayTeam) && Number.isInteger(goalsHomeTeam)
       ? `${goalsHomeTeam} - ${goalsAwayTeam}`
-      : ` - `;
+      : ' - '
 
   return (
     <Box mb={{ sm: 0, md: 6 }}>
@@ -53,7 +53,7 @@ const FixtureSection: React.FC<IProps> = ({
         />
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default FixtureSection;
+export default FixtureSection

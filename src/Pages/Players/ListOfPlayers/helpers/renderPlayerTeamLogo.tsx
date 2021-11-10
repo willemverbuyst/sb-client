@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
-import { IPlayer } from '../../../../models/player.model';
+import { IPlayer } from '../../../../models/player.model'
 
 const useStyles = makeStyles(() => ({
   avatar: {
@@ -9,10 +9,10 @@ const useStyles = makeStyles(() => ({
     width: 30,
     objectFit: 'contain',
   },
-}));
+}))
 
 const renderPlayerTeamLogo = (player: IPlayer): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <img
@@ -21,7 +21,7 @@ const renderPlayerTeamLogo = (player: IPlayer): ReactElement => {
       alt={player.team.name}
       src={player.team.logo}
     />
-  );
-};
+  )
+}
 
-export { renderPlayerTeamLogo };
+export { renderPlayerTeamLogo }

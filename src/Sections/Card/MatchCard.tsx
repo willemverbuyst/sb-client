@@ -1,12 +1,12 @@
-import { Card, CardContent, Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Card, CardContent, Theme } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
-import ChipComponent from '../../Components/Chip';
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import MatchCardBottom from './MatchCardBottom';
-import MatchCardMiddle from './MatchCardMiddle';
-import MatchCardTop from './MatchCardTop';
+import ChipComponent from '../../Components/Chip'
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models'
+import MatchCardBottom from './MatchCardBottom'
+import MatchCardMiddle from './MatchCardMiddle'
+import MatchCardTop from './MatchCardTop'
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -17,12 +17,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: '10px',
     position: 'relative',
   },
-}));
+}))
 
 interface IProps {
-  wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions;
-  display: 'private' | 'public';
-  userNamePlayer: string;
+  wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions
+  display: 'private' | 'public'
+  userNamePlayer: string
 }
 
 const MatchCard: React.FC<IProps> = ({
@@ -30,8 +30,8 @@ const MatchCard: React.FC<IProps> = ({
   display,
   userNamePlayer,
 }: IProps): ReactElement => {
-  const classes = useStyles();
-  const { eventTimeStamp, score, status } = wedstrijdMetVoorspellingen;
+  const classes = useStyles()
+  const { eventTimeStamp, score, status } = wedstrijdMetVoorspellingen
 
   return (
     <Card className={classes.card}>
@@ -46,7 +46,7 @@ const MatchCard: React.FC<IProps> = ({
         />
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default MatchCard;
+export default MatchCard

@@ -1,24 +1,21 @@
-import {
-  IPlayerWithScore,
-  IPlayerWithScoreAndPrediction,
-} from './player.model';
-import { IFixture } from './toto.models';
+import { IPlayerWithScore, IPlayerWithScoreAndPrediction } from './player.model'
+import { IFixture } from './toto.models'
 
 export interface IFixtureWithPlayersWithScoreAndPrediction {
-  fixture: IFixture;
-  scores: IPlayerWithScoreAndPrediction[];
+  fixture: IFixture
+  scores: IPlayerWithScoreAndPrediction[]
 }
 
 export interface IRoundWithPlayersWithScore {
-  roundId: number;
-  scores: IPlayerWithScore[];
+  roundId: number
+  scores: IPlayerWithScore[]
 }
 
 export interface ITotoRoundWithPlayersWithScore {
-  scores: IPlayerWithScore[];
-  totoRoundId: number;
+  scores: IPlayerWithScore[]
+  totoRoundId: number
 }
 
 export interface ITotalToto {
-  scores: IPlayerWithScore[];
+  scores: IPlayerWithScore[]
 }

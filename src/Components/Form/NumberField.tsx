@@ -1,5 +1,5 @@
-import { makeStyles, TextField } from '@material-ui/core';
-import React from 'react';
+import { makeStyles, TextField } from '@material-ui/core'
+import React from 'react'
 
 const useStyles = makeStyles(() => ({
   inputBox: {
@@ -7,18 +7,18 @@ const useStyles = makeStyles(() => ({
     padding: '3px',
     textAlign: 'right',
   },
-}));
+}))
 
 interface IProps {
-  defaultValue: number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  defaultValue: number
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const NumberFieldComponent: React.FC<IProps> = ({
   defaultValue,
   onChange,
 }: IProps) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <TextField
@@ -36,7 +36,7 @@ const NumberFieldComponent: React.FC<IProps> = ({
         },
       }}
     />
-  );
-};
+  )
+}
 
-export default NumberFieldComponent;
+export default NumberFieldComponent

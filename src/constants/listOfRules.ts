@@ -39,4 +39,4 @@ export const listOfRules: Array<{ question: string; answers: string[] }> = [
       'Er zijn dan ook geen punten te behalen op deze wedstrijd.',
     ],
   },
-];
+]

@@ -1,17 +1,17 @@
-import { Box } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { Box } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
-import PaginationComponent from '../../../Components/Pagination';
-import { TOTAL_ROUNDS } from '../../../constants/setupGame';
-import * as HISTORY from '../../../history';
+import PaginationComponent from '../../../Components/Pagination'
+import { TOTAL_ROUNDS } from '../../../constants/setupGame'
+import * as HISTORY from '../../../history'
 
 interface IProps {
-  round: number;
+  round: number
 }
 
 const Pagination: React.FC<IProps> = ({ round }: IProps): ReactElement => {
   const gotoRound = (_event: React.ChangeEvent<unknown>, value: number): void =>
-    HISTORY.gotoRankingRound(value);
+    HISTORY.gotoRankingRound(value)
 
   return (
     <Box my={2}>
@@ -23,7 +23,7 @@ const Pagination: React.FC<IProps> = ({ round }: IProps): ReactElement => {
         onChange={gotoRound}
       />
     </Box>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

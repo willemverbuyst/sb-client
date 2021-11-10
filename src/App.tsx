@@ -1,20 +1,19 @@
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core'
 import {
   createStyles,
   makeStyles,
   MuiThemeProvider,
   Theme,
-} from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+} from '@material-ui/core/styles'
+import React, { ReactElement, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
-import AppRouter from './AppRouter';
-import Toast from './Components/Communication/Toast';
-import Header from './Sections/Header';
-import UserDisplay from './Sections/UserDisplay';
-import { getUserWithStoredToken } from './store/user/action-creators';
-import IceBlueGold from './theme';
+import AppRouter from './AppRouter'
+import Toast from './Components/Communication/Toast'
+import Header from './Sections/Header'
+import UserDisplay from './Sections/UserDisplay'
+import { getUserWithStoredToken } from './store/user/action-creators'
+import IceBlueGold from './theme'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,16 +34,16 @@ const useStyles = makeStyles((theme: Theme) =>
         minHeight: '60vh',
       },
     },
-  }),
-);
+  })
+)
 
 const App: React.FC = (): ReactElement => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
+  const classes = useStyles()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getUserWithStoredToken());
-  }, []);
+    dispatch(getUserWithStoredToken())
+  }, [])
 
   return (
     <MuiThemeProvider theme={IceBlueGold}>
@@ -63,7 +62,7 @@ const App: React.FC = (): ReactElement => {
         </Grid>
       </Grid>
     </MuiThemeProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

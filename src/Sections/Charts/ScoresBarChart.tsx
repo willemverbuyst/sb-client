@@ -1,52 +1,51 @@
-import 'chartjs-plugin-datalabels';
+import 'chartjs-plugin-datalabels'
 
-import * as chartjs from 'chart.js';
-import React, { ReactElement } from 'react';
-import { ChartData } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
+import * as chartjs from 'chart.js'
+import React, { ReactElement } from 'react'
+import { ChartData } from 'react-chartjs-2'
+import { useSelector } from 'react-redux'
 
-import HorizontalBarChart from '../../Components/Chart/HorizontalBarChart';
-import * as HISTORY from '../../history';
-import { IPlayerWithScore } from '../../models/player.model';
-import { selectUserId } from '../../store/user/selectors';
-import * as UTILS from '../../utils';
+import HorizontalBarChart from '../../Components/Chart/HorizontalBarChart'
+import * as HISTORY from '../../history'
+import { IPlayerWithScore } from '../../models/player.model'
+import { selectUserId } from '../../store/user/selectors'
+import * as UTILS from '../../utils'
 
 interface IProps {
-  scores: IPlayerWithScore[];
+  scores: IPlayerWithScore[]
 }
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
-  const userId: number | null = useSelector(selectUserId);
+  const userId: number | null = useSelector(selectUserId)
   const labels: string[] = UTILS.getStringsInUpperCase<
     keyof IPlayerWithScore,
     IPlayerWithScore
-  >(scores, 'name');
-  const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores);
-  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScore>(
-    scores,
-  );
+  >(scores, 'name')
+  const scoresOfAllPlayes: number[] = UTILS.getScoresOfAllPlayes(scores)
+  const hoverBackgroundColors: string[] =
+    UTILS.getHoverColorsBars<IPlayerWithScore>(scores)
   const backgroundColor: string[] = UTILS.getColorBars<IPlayerWithScore>(
     scores,
-    userId,
-  );
+    userId
+  )
   const gotoScoresPlayer = (index: number): void => {
-    const id: number = scores[index].id;
+    const { id } = scores[index]
     userId && userId === id
       ? HISTORY.gotoScoresUser()
-      : HISTORY.gotoScoresPlayer(id);
-  };
+      : HISTORY.gotoScoresPlayer(id)
+  }
 
   const chartData: ChartData<chartjs.ChartData> = {
-    labels: labels,
+    labels,
     datasets: [
       {
         data: scoresOfAllPlayes,
-        backgroundColor: backgroundColor,
+        backgroundColor,
         borderWidth: 0,
         hoverBackgroundColor: hoverBackgroundColors,
       },
     ],
-  };
+  }
 
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
@@ -88,7 +87,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
         color: '#f1f1f1',
       },
     },
-  };
+  }
 
   return (
     <HorizontalBarChart
@@ -96,7 +95,7 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
       chartOptions={chartOptions}
       goto={gotoScoresPlayer}
     />
-  );
-};
+  )
+}
 
-export default ScoresBarChart;
+export default ScoresBarChart

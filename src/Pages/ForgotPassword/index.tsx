@@ -1,14 +1,14 @@
-import { Box } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { Box } from '@material-ui/core'
+import React, { ReactElement } from 'react'
+import { useSelector } from 'react-redux'
 
-import ProgressComponent from '../../Components/Progress';
-import PageTitle from '../../Components/Title/PageTitle';
-import { selectAppLoading } from '../../store/appState/selectors';
-import SendEmailForm from '../ForgotPassword/SendEmailForm';
+import ProgressComponent from '../../Components/Progress'
+import PageTitle from '../../Components/Title/PageTitle'
+import { selectAppLoading } from '../../store/appState/selectors'
+import SendEmailForm from '../ForgotPassword/SendEmailForm'
 
 const ForgotPassword: React.FC = (): ReactElement => {
-  const isLoading = useSelector(selectAppLoading);
+  const isLoading = useSelector(selectAppLoading)
 
   return (
     <Box>
@@ -19,7 +19,7 @@ const ForgotPassword: React.FC = (): ReactElement => {
         <SendEmailForm />
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

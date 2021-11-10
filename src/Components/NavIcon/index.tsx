@@ -1,22 +1,20 @@
-import { IconButton } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { IconButton } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
 interface IProps {
-  label: string;
-  goto: () => void;
-  icon: ReactElement;
+  label: string
+  goto: () => void
+  icon: ReactElement
 }
 
 const NavIcon: React.FC<IProps> = ({
   label,
   goto,
   icon,
-}: IProps): ReactElement => {
-  return (
-    <IconButton edge="start" color="inherit" aria-label={label} onClick={goto}>
-      {icon}
-    </IconButton>
-  );
-};
+}: IProps): ReactElement => (
+  <IconButton edge="start" color="inherit" aria-label={label} onClick={goto}>
+    {icon}
+  </IconButton>
+)
 
-export default NavIcon;
+export default NavIcon

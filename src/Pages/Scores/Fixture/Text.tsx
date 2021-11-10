@@ -4,9 +4,9 @@ import {
   GridSize,
   Theme,
   Typography,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   text: {
@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: '0.5rem',
     },
   },
-}));
+}))
 
 interface IProps {
-  xs: GridSize;
-  sm: GridSize;
-  content: string;
-  justify: GridJustification;
+  xs: GridSize
+  sm: GridSize
+  content: string
+  justify: GridJustification
 }
 
 const TextComponent: React.FC<IProps> = ({
@@ -30,14 +30,14 @@ const TextComponent: React.FC<IProps> = ({
   content,
   justify,
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Grid item xs={xs} sm={sm} container justify={justify} alignItems="center">
       <Typography variant="h4" className={classes.text}>
         {content}
       </Typography>
     </Grid>
-  );
-};
+  )
+}
 
-export default TextComponent;
+export default TextComponent

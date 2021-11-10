@@ -1,16 +1,16 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles'
 
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface ThemeOptions {
-    themeName?: string; // optional
+    themeName?: string // optional
   }
 }
 
 const palette = {
   primary: { main: '#1e5eb1' },
   secondary: { main: '#EA9C3B' },
-};
+}
 
-const themeName = 'IceBlueGold';
+const themeName = 'IceBlueGold'
 
-export default createMuiTheme({ palette, themeName });
+export default createMuiTheme({ palette, themeName })

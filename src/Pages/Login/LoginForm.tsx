@@ -1,39 +1,39 @@
-import { Grid, Link } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import React, { ReactElement } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { Grid, Link } from '@material-ui/core'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import React, { ReactElement } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 
-import AvatarIconComponent from '../../Components/Avatar/AvatarIcon';
-import SubmitForm from '../../Components/Button/SubmitForm';
-import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
-import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput';
-import * as HISTORY from '../../history';
-import { userLogIn } from '../../store/user/action-creators';
-import { useFormStyles } from '../../theme/form';
+import AvatarIconComponent from '../../Components/Avatar/AvatarIcon'
+import SubmitForm from '../../Components/Button/SubmitForm'
+import ControllerEmailInput from '../../Components/Form/ControllerEmailInput'
+import ControllerPasswordInput from '../../Components/Form/ControllerPasswordInput'
+import * as HISTORY from '../../history'
+import { userLogIn } from '../../store/user/action-creators'
+import { useFormStyles } from '../../theme/form'
 
 type Inputs = {
-  email: string;
-  password: string;
-};
+  email: string
+  password: string
+}
 
 const LoginForm: React.FC = (): ReactElement => {
-  const classes = useFormStyles();
-  const dispatch = useDispatch();
+  const classes = useFormStyles()
+  const dispatch = useDispatch()
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>()
 
   const submitForm: SubmitHandler<Inputs> = (data) => {
     dispatch(
       userLogIn({
         email: data.email,
         password: data.password,
-      }),
-    );
-  };
+      })
+    )
+  }
 
   return (
     <Grid container justify="center">
@@ -64,7 +64,7 @@ const LoginForm: React.FC = (): ReactElement => {
         </form>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

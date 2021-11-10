@@ -1,55 +1,52 @@
-import 'chartjs-plugin-datalabels';
+import 'chartjs-plugin-datalabels'
 
-import * as chartjs from 'chart.js';
-import React, { ReactElement } from 'react';
-import { ChartData } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
+import * as chartjs from 'chart.js'
+import React, { ReactElement } from 'react'
+import { ChartData } from 'react-chartjs-2'
+import { useSelector } from 'react-redux'
 
-import HorizontalBarChart from '../../../Components/Chart/HorizontalBarChart';
-import * as HISTORY from '../../../history';
-import { IPlayerWithScoreAndPrediction } from '../../../models/player.model';
-import { selectUserId } from '../../../store/user/selectors';
-import * as UTILS from '../../../utils';
+import HorizontalBarChart from '../../../Components/Chart/HorizontalBarChart'
+import * as HISTORY from '../../../history'
+import { IPlayerWithScoreAndPrediction } from '../../../models/player.model'
+import { selectUserId } from '../../../store/user/selectors'
+import * as UTILS from '../../../utils'
 
 interface IProps {
-  scores: IPlayerWithScoreAndPrediction[];
+  scores: IPlayerWithScoreAndPrediction[]
 }
 
 const ScoresForFixtureBarChart: React.FC<IProps> = ({
   scores,
 }: IProps): ReactElement => {
-  const userId: number | null = useSelector(selectUserId);
+  const userId: number | null = useSelector(selectUserId)
   const labels = scores.map(
     (score) =>
       `${score.name.toLocaleUpperCase()}    [${score.pGoalsHomeTeam} - ${
         score.pGoalsAwayTeam
-      }]   `,
-  );
-  const userScores: number[] = scores.map((score) => score.score);
-  const contraUserScores: number[] = userScores.map((score) => 10 - score);
-  const hoverBackgroundColors: string[] = UTILS.getHoverColorsBars<IPlayerWithScoreAndPrediction>(
-    scores,
-  );
-  const backgroundColor: string[] = UTILS.getColorBars<IPlayerWithScoreAndPrediction>(
-    scores,
-    userId,
-  );
+      }]   `
+  )
+  const userScores: number[] = scores.map((score) => score.score)
+  const contraUserScores: number[] = userScores.map((score) => 10 - score)
+  const hoverBackgroundColors: string[] =
+    UTILS.getHoverColorsBars<IPlayerWithScoreAndPrediction>(scores)
+  const backgroundColor: string[] =
+    UTILS.getColorBars<IPlayerWithScoreAndPrediction>(scores, userId)
 
   const gotoScoresPlayer = (index: number): void => {
-    const id: number = scores[index].id;
+    const { id } = scores[index]
     userId && userId === id
       ? HISTORY.gotoScoresUser()
-      : HISTORY.gotoScoresPlayer(id);
-  };
+      : HISTORY.gotoScoresPlayer(id)
+  }
 
   const chartData: ChartData<chartjs.ChartData> = {
-    labels: labels,
+    labels,
     datasets: [
       {
         stack: '1',
         label: 'part1',
         data: userScores,
-        backgroundColor: backgroundColor,
+        backgroundColor,
         borderWidth: 0,
         hoverBackgroundColor: hoverBackgroundColors,
       },
@@ -62,7 +59,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
         hoverBackgroundColor: hoverBackgroundColors,
       },
     ],
-  };
+  }
 
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
@@ -104,10 +101,9 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
                 value === 7 ||
                 value === 10
               ) {
-                return value;
-              } else {
-                return '';
+                return value
               }
+              return ''
             },
           },
           gridLines: {
@@ -124,7 +120,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
         color: '#f1f1f1',
       },
     },
-  };
+  }
 
   return (
     <HorizontalBarChart
@@ -132,7 +128,7 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
       chartOptions={chartOptions}
       goto={gotoScoresPlayer}
     />
-  );
-};
+  )
+}
 
-export default ScoresForFixtureBarChart;
+export default ScoresForFixtureBarChart

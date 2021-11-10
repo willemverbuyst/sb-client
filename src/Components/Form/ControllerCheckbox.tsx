@@ -1,9 +1,9 @@
-import { Checkbox, FormControlLabel, Grid } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
+import { Checkbox, FormControlLabel, Grid } from '@material-ui/core'
+import React, { ReactElement } from 'react'
+import { Controller, FieldValues, UseControllerProps } from 'react-hook-form'
 
 interface IProps<T> extends UseControllerProps<T> {
-  label: string;
+  label: string
 }
 
 const ControllerCheckbox = <T extends FieldValues>({
@@ -11,24 +11,22 @@ const ControllerCheckbox = <T extends FieldValues>({
   defaultValue,
   label,
   name,
-}: IProps<T>): ReactElement => {
-  return (
-    <Controller
-      control={control}
-      render={({ field }) => (
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={
-              <Checkbox color="primary" {...field} checked={!!field.value} />
-            }
-            label={label}
-          />
-        </Grid>
-      )}
-      name={name}
-      defaultValue={defaultValue}
-    />
-  );
-};
+}: IProps<T>): ReactElement => (
+  <Controller
+    control={control}
+    render={({ field }) => (
+      <Grid item xs={12}>
+        <FormControlLabel
+          control={
+            <Checkbox color="primary" {...field} checked={!!field.value} />
+          }
+          label={label}
+        />
+      </Grid>
+    )}
+    name={name}
+    defaultValue={defaultValue}
+  />
+)
 
-export default ControllerCheckbox;
+export default ControllerCheckbox

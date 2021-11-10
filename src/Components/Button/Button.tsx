@@ -1,12 +1,12 @@
-import { Button, Grid } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import React, { ReactElement } from 'react';
+import { Button, Grid } from '@material-ui/core'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import React, { ReactElement } from 'react'
 
 interface IProps {
-  caption: string;
-  color: 'primary' | 'secondary';
-  handleClick: () => void;
+  caption: string
+  color: 'primary' | 'secondary'
+  handleClick: () => void
 }
 
 const ButtonComponent: React.FC<IProps> = ({
@@ -14,8 +14,8 @@ const ButtonComponent: React.FC<IProps> = ({
   color,
   handleClick,
 }: IProps): ReactElement => {
-  const theme = useTheme();
-  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'));
+  const theme = useTheme()
+  const btnVariant = useMediaQuery(theme.breakpoints.up('sm'))
 
   return (
     <Grid container justify="center">
@@ -32,7 +32,7 @@ const ButtonComponent: React.FC<IProps> = ({
         </Button>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default ButtonComponent;
+export default ButtonComponent

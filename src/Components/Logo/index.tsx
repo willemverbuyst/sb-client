@@ -1,6 +1,6 @@
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
 export const useStyles = makeStyles(() => ({
   small: {
@@ -13,12 +13,12 @@ export const useStyles = makeStyles(() => ({
     width: 40,
     objectFit: 'contain',
   },
-}));
+}))
 
 interface IProps {
-  alt: string;
-  source: string;
-  size: 'small' | 'medium';
+  alt: string
+  source: string
+  size: 'small' | 'medium'
 }
 
 const LogoComponent: React.FC<IProps> = ({
@@ -26,14 +26,14 @@ const LogoComponent: React.FC<IProps> = ({
   source,
   size,
 }: IProps): ReactElement => {
-  const classes = useStyles();
-  const className = size === 'small' ? classes.small : classes.medium;
+  const classes = useStyles()
+  const className = size === 'small' ? classes.small : classes.medium
 
   return (
     <Grid item xs={1} container justify="center" alignItems="center">
       <img className={className} alt={alt} src={source} />
     </Grid>
-  );
-};
+  )
+}
 
-export default LogoComponent;
+export default LogoComponent

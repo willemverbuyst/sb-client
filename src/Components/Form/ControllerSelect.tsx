@@ -1,19 +1,19 @@
-import { FormControl, MenuItem, Typography } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import React, { ReactElement } from 'react';
+import { FormControl, MenuItem, Typography } from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'
+import React, { ReactElement } from 'react'
 import {
   Controller,
   FieldError,
   FieldValues,
   UseControllerProps,
-} from 'react-hook-form';
+} from 'react-hook-form'
 
-import { useValidationStyles } from '../../theme/validation';
+import { useValidationStyles } from '../../theme/validation'
 
 interface IProps<T, U> extends UseControllerProps<T> {
-  error: FieldError | undefined;
-  label: string;
-  options: U[];
+  error: FieldError | undefined
+  label: string
+  options: U[]
 }
 
 const ControllerSelect = <
@@ -27,7 +27,7 @@ const ControllerSelect = <
   name,
   options,
 }: IProps<T, U>): ReactElement => {
-  const classes = useValidationStyles();
+  const classes = useValidationStyles()
 
   return (
     <Controller
@@ -59,7 +59,7 @@ const ControllerSelect = <
       name={name}
       defaultValue={defaultValue}
     />
-  );
-};
+  )
+}
 
-export default ControllerSelect;
+export default ControllerSelect

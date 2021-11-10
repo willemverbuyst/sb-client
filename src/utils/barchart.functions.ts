@@ -1,37 +1,37 @@
 import {
   IPlayerWithScore,
   IPlayerWithScoreAndPrediction,
-} from '../models/player.model';
-import { colorPrimary, colorSecondary } from '../theme/chartColors';
+} from '../models/player.model'
+import { colorPrimary, colorSecondary } from '../theme/chartColors'
 
 export const displayUserScores = (
-  scores: IPlayerWithScoreAndPrediction[],
-): number[] => scores.map((player) => player.score + 0.1);
+  scores: IPlayerWithScoreAndPrediction[]
+): number[] => scores.map((player) => player.score + 0.1)
 
 export const getColorBars = <T extends IPlayerWithScore>(
   array: T[],
-  userId: number | null,
+  userId: number | null
 ): string[] =>
   array.map((a) =>
-    a.id === userId ? colorPrimary.color1 : colorSecondary.color1,
-  );
+    a.id === userId ? colorPrimary.color1 : colorSecondary.color1
+  )
 
 export const generateMaxForChartYAx = (
   arrayOfNumbers: number[],
-  factor: number,
-): number => Math.max(...arrayOfNumbers) * factor;
+  factor: number
+): number => Math.max(...arrayOfNumbers) * factor
 
 export const getHoverColorsBars = <T extends IPlayerWithScore>(
-  array: T[],
-): string[] => array.map(() => 'grey');
+  array: T[]
+): string[] => array.map(() => 'grey')
 
 export const getScoresOfAllPlayes = (scores: IPlayerWithScore[]): number[] =>
-  scores.map((player) => player.score);
+  scores.map((player) => player.score)
 
 export const getTotalsForStackedChart = (scores: number[][]): number[] =>
-  scores.map((totoround) => totoround.reduce((a, b) => a + b));
+  scores.map((totoround) => totoround.reduce((a, b) => a + b))
 
 export const getUserPredictions = (
-  scores: IPlayerWithScoreAndPrediction[],
+  scores: IPlayerWithScoreAndPrediction[]
 ): string[] =>
-  scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`);
+  scores.map((player) => `${player.pGoalsHomeTeam} - ${player.pGoalsAwayTeam}`)

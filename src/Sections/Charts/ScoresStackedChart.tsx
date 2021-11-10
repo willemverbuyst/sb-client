@@ -1,28 +1,28 @@
-import 'chartjs-plugin-datalabels';
+import 'chartjs-plugin-datalabels'
 
-import * as chartjs from 'chart.js';
-import React, { ReactElement } from 'react';
-import { ChartData } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
+import * as chartjs from 'chart.js'
+import React, { ReactElement } from 'react'
+import { ChartData } from 'react-chartjs-2'
+import { useSelector } from 'react-redux'
 
-import BarChart from '../../Components/Chart/BarChart';
-import * as HISTORY from '../../history';
-import { IScoresPlayer } from '../../models/player.model';
-import { selectUser } from '../../store/user/selectors';
-import * as UTILS from '../../utils';
+import BarChart from '../../Components/Chart/BarChart'
+import * as HISTORY from '../../history'
+import { IScoresPlayer } from '../../models/player.model'
+import { selectUser } from '../../store/user/selectors'
+import * as UTILS from '../../utils'
 
 interface Color {
-  color1: string;
-  color2: string;
-  color3: string;
-  color4: string;
+  color1: string
+  color2: string
+  color3: string
+  color4: string
 }
 
 interface IProps {
-  scoresPlayer: IScoresPlayer;
-  colorMain: Color;
-  colorHover: Color;
-  loggedInUser: boolean;
+  scoresPlayer: IScoresPlayer
+  colorMain: Color
+  colorHover: Color
+  loggedInUser: boolean
 }
 
 const ScoresStackedChart: React.FC<IProps> = ({
@@ -31,22 +31,22 @@ const ScoresStackedChart: React.FC<IProps> = ({
   colorHover,
   loggedInUser,
 }: IProps): ReactElement => {
-  const user = useSelector(selectUser);
-  const { id: playerId, scores } = scoresPlayer;
+  const user = useSelector(selectUser)
+  const { id: playerId, scores } = scoresPlayer
   const colorPrimary =
-    !loggedInUser && user?.id === playerId ? colorHover : colorMain;
+    !loggedInUser && user?.id === playerId ? colorHover : colorMain
   const gotoTotoRound = (index: number) => {
-    const totoRoundNumber = index + 1;
-    const roundNumber = (index + 1) * 3 - 2;
+    const totoRoundNumber = index + 1
+    const roundNumber = (index + 1) * 3 - 2
     loggedInUser
       ? HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)
-      : HISTORY.gotoPredictionsPlayer(playerId, totoRoundNumber, roundNumber);
-  };
-  const totals: number[] = UTILS.getTotalsForStackedChart(scores);
-  const max: number = UTILS.generateMaxForChartYAx(totals, 1.2);
+      : HISTORY.gotoPredictionsPlayer(playerId, totoRoundNumber, roundNumber)
+  }
+  const totals: number[] = UTILS.getTotalsForStackedChart(scores)
+  const max: number = UTILS.generateMaxForChartYAx(totals, 1.2)
 
   const chartData: ChartData<chartjs.ChartData> = {
-    labels: scores.map(() => ``),
+    labels: scores.map(() => ''),
     datasets: [
       {
         stack: '',
@@ -81,7 +81,7 @@ const ScoresStackedChart: React.FC<IProps> = ({
         barPercentage: 1,
       },
     ],
-  };
+  }
 
   const chartOptions: chartjs.ChartOptions = {
     tooltips: {
@@ -127,7 +127,7 @@ const ScoresStackedChart: React.FC<IProps> = ({
         color: '#000',
       },
     },
-  };
+  }
 
   return (
     <BarChart
@@ -135,7 +135,7 @@ const ScoresStackedChart: React.FC<IProps> = ({
       chartOptions={chartOptions}
       goto={gotoTotoRound}
     />
-  );
-};
+  )
+}
 
-export default ScoresStackedChart;
+export default ScoresStackedChart

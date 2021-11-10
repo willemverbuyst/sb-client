@@ -1,28 +1,28 @@
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
-import LogoComponent from '../../Components/Logo';
-import * as HISTORY from '../../history';
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import * as UTILS from '../../utils';
-import TextComponent from './Text';
+import LogoComponent from '../../Components/Logo'
+import * as HISTORY from '../../history'
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models'
+import * as UTILS from '../../utils'
+import TextComponent from './Text'
 
 const useStyles = makeStyles(() => ({
   match: {
     cursor: 'pointer',
     height: 60,
   },
-}));
+}))
 
 interface IProps {
-  fixtureWithPrediction: IFixtureWithScoreAndPredictions;
+  fixtureWithPrediction: IFixtureWithScoreAndPredictions
 }
 
 const MatchCardMiddle: React.FC<IProps> = ({
   fixtureWithPrediction,
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
   const {
     awayTeamLogo,
     awayTeamName,
@@ -33,9 +33,9 @@ const MatchCardMiddle: React.FC<IProps> = ({
     homeTeamLogo,
     id,
     status,
-  } = fixtureWithPrediction;
+  } = fixtureWithPrediction
 
-  const gotoFixture = () => HISTORY.gotoFixture(id);
+  const gotoFixture = () => HISTORY.gotoFixture(id)
 
   return (
     <Grid
@@ -55,14 +55,14 @@ const MatchCardMiddle: React.FC<IProps> = ({
           status,
           goalsHomeTeam,
           goalsAwayTeam,
-          eventTimeStamp,
+          eventTimeStamp
         )}
         justify="center"
       />
       <LogoComponent alt={awayTeamName} source={awayTeamLogo} size="small" />
       <TextComponent xs={4} content={awayTeamName} justify="flex-start" />
     </Grid>
-  );
-};
+  )
+}
 
-export default MatchCardMiddle;
+export default MatchCardMiddle

@@ -2,7 +2,7 @@ import {
   IPlayerWithPredictions,
   IPostedPrediction,
   IUpdatedPrediction,
-} from '../../models/predictions.model';
+} from '../../models/predictions.model'
 
 export enum ActionType {
   STORE_CURRENT_ROUND = 'STORE_CURRENT_ROUND',
@@ -13,26 +13,26 @@ export enum ActionType {
 }
 
 export type PostPrediction = {
-  type: ActionType.POST_PREDICTION;
-  payload: IPostedPrediction;
-};
+  type: ActionType.POST_PREDICTION
+  payload: IPostedPrediction
+}
 
 export type ResetAllPredictions = {
-  type: ActionType.RESET_ALL_PREDICTIONS;
-};
+  type: ActionType.RESET_ALL_PREDICTIONS
+}
 
 export type StoreAllPredictions = {
-  type: ActionType.STORE_ALL_PREDICTIONS;
-  payload: IPlayerWithPredictions;
-};
+  type: ActionType.STORE_ALL_PREDICTIONS
+  payload: IPlayerWithPredictions
+}
 
 export type UpdatePrediction = {
-  type: ActionType.UPDATE_PREDICTION;
-  payload: IUpdatedPrediction;
-};
+  type: ActionType.UPDATE_PREDICTION
+  payload: IUpdatedPrediction
+}
 
 export type PredictionActions =
   | PostPrediction
   | ResetAllPredictions
   | StoreAllPredictions
-  | UpdatePrediction;
+  | UpdatePrediction

@@ -1,15 +1,15 @@
-import { Badge, Tooltip } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Badge, Tooltip } from '@material-ui/core'
+import React, { ReactElement } from 'react'
+import { useHistory } from 'react-router-dom'
 
-import TableButton from '../../../../Components/Button/TableButton';
-import { IPlayer } from '../../../../models/player.model';
+import TableButton from '../../../../Components/Button/TableButton'
+import { IPlayer } from '../../../../models/player.model'
 
 const renderPlayerUserName = (player: IPlayer): ReactElement => {
-  const history = useHistory();
+  const history = useHistory()
 
   const gotoPredictions = (): void =>
-    history.push(`/spelers/${player.id}/voorspellingen/1/1`);
+    history.push(`/spelers/${player.id}/voorspellingen/1/1`)
 
   return player.admin ? (
     <Tooltip title="admin">
@@ -27,7 +27,7 @@ const renderPlayerUserName = (player: IPlayer): ReactElement => {
       handleClick={gotoPredictions}
       caption={player.userName}
     />
-  );
-};
+  )
+}
 
-export { renderPlayerUserName };
+export { renderPlayerUserName }

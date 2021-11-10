@@ -1,42 +1,42 @@
-import { Grid } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Grid } from '@material-ui/core'
+import React, { ReactElement } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
-import SubmitForm from '../../Components/Button/SubmitForm';
-import ControllerCheckbox from '../../Components/Form/ControllerCheckbox';
-import ControllerEmailInput from '../../Components/Form/ControllerEmailInput';
-import ControllerSelect from '../../Components/Form/ControllerSelect';
-import ControllerTextInput from '../../Components/Form/ControllerTextInput';
-import { ITeamForSelector } from '../../models/toto.models';
-import { addPlayer } from '../../store/players/action-creators';
-import { useFormStyles } from '../../theme/form';
+import SubmitForm from '../../Components/Button/SubmitForm'
+import ControllerCheckbox from '../../Components/Form/ControllerCheckbox'
+import ControllerEmailInput from '../../Components/Form/ControllerEmailInput'
+import ControllerSelect from '../../Components/Form/ControllerSelect'
+import ControllerTextInput from '../../Components/Form/ControllerTextInput'
+import { ITeamForSelector } from '../../models/toto.models'
+import { addPlayer } from '../../store/players/action-creators'
+import { useFormStyles } from '../../theme/form'
 
 interface IProps {
-  teams: ITeamForSelector[];
+  teams: ITeamForSelector[]
 }
 
 type Inputs = {
-  userName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  totaalToto: boolean;
-  teamId: string;
-};
+  userName: string
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber: string
+  totaalToto: boolean
+  teamId: string
+}
 
 const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
-  const classes = useFormStyles();
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const classes = useFormStyles()
+  const dispatch = useDispatch()
+  const history = useHistory()
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Inputs>();
+  } = useForm<Inputs>()
 
   const submitForm: SubmitHandler<Inputs> = (data) => {
     dispatch(
@@ -48,13 +48,13 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
         phoneNumber: data.phoneNumber,
         totaalToto: data.totaalToto,
         teamId: Number(data.teamId),
-      }),
-    );
+      })
+    )
     reset(data, {
       keepValues: false,
-    });
-    history.push('/spelers');
-  };
+    })
+    history.push('/spelers')
+  }
 
   return (
     <Grid container justify="center">
@@ -91,7 +91,7 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
             />
             <ControllerCheckbox
               control={control}
-              defaultValue={true}
+              defaultValue
               label="Totaaltoto"
               name="totaalToto"
             />
@@ -115,7 +115,7 @@ const SignUpForm: React.FC<IProps> = ({ teams }: IProps): ReactElement => {
         </form>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

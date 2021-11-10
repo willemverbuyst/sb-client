@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core'
 
 const useValidationStyles = makeStyles({
   input: {
@@ -7,6 +7,6 @@ const useValidationStyles = makeStyles({
       borderWidth: '2px',
     },
   },
-});
+})
 
-export { useValidationStyles };
+export { useValidationStyles }

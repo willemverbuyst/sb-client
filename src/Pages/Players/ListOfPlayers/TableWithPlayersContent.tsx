@@ -1,38 +1,37 @@
-import { TableBody } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { useState } from 'react';
+import { TableBody } from '@material-ui/core'
+import React, { ReactElement, useState } from 'react'
 
-import { IPlayer } from '../../../models/player.model';
-import TableWithPlayersDialog from './TableWithPlayersDialog';
-import TableWithPlayersRow from './TableWithPlayersRow';
+import { IPlayer } from '../../../models/player.model'
+import TableWithPlayersDialog from './TableWithPlayersDialog'
+import TableWithPlayersRow from './TableWithPlayersRow'
 
 type IProps = {
-  playersSortedByName: IPlayer[];
-};
+  playersSortedByName: IPlayer[]
+}
 
 const TableWithPlayersContent = ({
   playersSortedByName,
 }: IProps): ReactElement => {
-  const [showDialog, setShowDialog] = useState(false);
-  const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null);
+  const [showDialog, setShowDialog] = useState(false)
+  const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null)
 
   const handleBtnClick = (player: IPlayer): void => {
-    setPlayerToDelete(player);
-    openDialog();
-  };
+    setPlayerToDelete(player)
+    openDialog()
+  }
 
   const closeDialog = (): void => {
-    setShowDialog(false);
-  };
+    setShowDialog(false)
+  }
 
   const openDialog = (): void => {
-    setShowDialog(true);
-  };
+    setShowDialog(true)
+  }
 
   const tableContent = (): ReactElement[] =>
     playersSortedByName.map((player, i) => (
       <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />
-    ));
+    ))
 
   return (
     <>
@@ -44,7 +43,7 @@ const TableWithPlayersContent = ({
         />
       ) : null}
     </>
-  );
-};
+  )
+}
 
-export default TableWithPlayersContent;
+export default TableWithPlayersContent

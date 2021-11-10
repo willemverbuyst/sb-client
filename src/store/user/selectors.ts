@@ -1,19 +1,19 @@
-import { IPlayer } from '../../models/player.model';
-import { IFixtureWithScoreAndPredictions } from '../../models/toto.models';
-import * as UTILS from '../../utils';
-import { StoreState } from '../types';
+import { IPlayer } from '../../models/player.model'
+import { IFixtureWithScoreAndPredictions } from '../../models/toto.models'
+import * as UTILS from '../../utils'
+import { StoreState } from '../types'
 
 export const selectToken = (state: StoreState): string | null =>
-  state.userState.token;
+  state.userState.token
 
 export const selectUser = (state: StoreState): IPlayer | null =>
-  state.userState.user ? state.userState.user.profile : null;
+  state.userState.user ? state.userState.user.profile : null
 
 export const selectUserId = (state: StoreState): number | null =>
-  state.userState.user ? state.userState.user.profile.id : null;
+  state.userState.user ? state.userState.user.profile.id : null
 
 export const selectCurrentRoundSortedByTime = (
-  state: StoreState,
+  state: StoreState
 ): IFixtureWithScoreAndPredictions[] | null => {
   if (
     state.userState.user &&
@@ -21,27 +21,26 @@ export const selectCurrentRoundSortedByTime = (
     state.userState.user.currentRound.fixtures &&
     state.userState.user.currentRound.fixtures.length > 0
   ) {
-    const fixtures = state.userState.user.currentRound.fixtures;
+    const { fixtures } = state.userState.user.currentRound
 
     const currentRoundSortedByTime = UTILS.sortArrayWithObjects<
       keyof IFixtureWithScoreAndPredictions,
       IFixtureWithScoreAndPredictions
-    >('eventTimeStamp')('ascending')(fixtures);
+    >('eventTimeStamp')('ascending')(fixtures)
 
-    return currentRoundSortedByTime;
+    return currentRoundSortedByTime
   }
-  return null;
-};
+  return null
+}
 
 export const selectRoundAndTotoRoundNumber = (
-  state: StoreState,
+  state: StoreState
 ): Array<number> => {
   if (state.userState.user && state.userState.user.currentRound) {
-    const roundNumber = state.userState.user.currentRound.roundNumber;
-    const totoRoundNumber = state.userState.user.currentRound.totoRoundNumber;
+    const { roundNumber } = state.userState.user.currentRound
+    const { totoRoundNumber } = state.userState.user.currentRound
 
-    return [roundNumber, totoRoundNumber];
-  } else {
-    return [1, 1];
+    return [roundNumber, totoRoundNumber]
   }
-};
+  return [1, 1]
+}

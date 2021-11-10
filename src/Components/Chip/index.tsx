@@ -1,6 +1,6 @@
-import { Chip } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Chip } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
 const useStyles = makeStyles(() => ({
   chip: {
@@ -11,14 +11,14 @@ const useStyles = makeStyles(() => ({
     color: '#c5c5c5',
     border: 'none',
   },
-}));
+}))
 
 interface IProps {
-  score: string;
+  score: string
 }
 
 const ChipComponent: React.FC<IProps> = ({ score }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Chip
@@ -27,7 +27,7 @@ const ChipComponent: React.FC<IProps> = ({ score }: IProps): ReactElement => {
       label={`${score} pt.`}
       variant="outlined"
     />
-  );
-};
+  )
+}
 
-export default ChipComponent;
+export default ChipComponent

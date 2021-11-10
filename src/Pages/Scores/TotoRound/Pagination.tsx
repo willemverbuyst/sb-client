@@ -1,12 +1,12 @@
-import { Box } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { Box } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
-import PaginationComponent from '../../../Components/Pagination';
-import { TOTO_ROUNDS } from '../../../constants/setupGame';
-import * as HISTORY from '../../../history';
+import PaginationComponent from '../../../Components/Pagination'
+import { TOTO_ROUNDS } from '../../../constants/setupGame'
+import * as HISTORY from '../../../history'
 
 interface IProps {
-  totoRound: number;
+  totoRound: number
 }
 
 const PaginationSection: React.FC<IProps> = ({
@@ -14,8 +14,8 @@ const PaginationSection: React.FC<IProps> = ({
 }: IProps): ReactElement => {
   const gotoTotoRound = (
     _event: React.ChangeEvent<unknown>,
-    value: number,
-  ): void => HISTORY.gotoRankingTotoRound(value);
+    value: number
+  ): void => HISTORY.gotoRankingTotoRound(value)
 
   return (
     <Box my={2}>
@@ -27,7 +27,7 @@ const PaginationSection: React.FC<IProps> = ({
         onChange={gotoTotoRound}
       />
     </Box>
-  );
-};
+  )
+}
 
-export default PaginationSection;
+export default PaginationSection

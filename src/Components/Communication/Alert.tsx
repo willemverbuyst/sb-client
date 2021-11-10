@@ -1,17 +1,17 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import React, { ReactElement } from 'react';
+import { makeStyles, Theme } from '@material-ui/core'
+import { Alert } from '@material-ui/lab'
+import React, { ReactElement } from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   margin: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}))
 
 interface IProps {
-  message: string;
-  displayAlert: boolean;
-  closeAlert: () => void;
+  message: string
+  displayAlert: boolean
+  closeAlert: () => void
 }
 
 const ShowAlertComponent: React.FC<IProps> = ({
@@ -19,7 +19,7 @@ const ShowAlertComponent: React.FC<IProps> = ({
   displayAlert,
   closeAlert,
 }: IProps): ReactElement | null => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return displayAlert ? (
     <Alert
@@ -30,7 +30,7 @@ const ShowAlertComponent: React.FC<IProps> = ({
     >
       {message}
     </Alert>
-  ) : null;
-};
+  ) : null
+}
 
-export default ShowAlertComponent;
+export default ShowAlertComponent

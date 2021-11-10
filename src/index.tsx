@@ -1,16 +1,16 @@
-import './index.css';
+import './index.css'
 
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { CssBaseline, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme } from '@material-ui/core/styles'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router } from 'react-router'
 
-import App from './App';
-import history from './history';
-import reportWebVitals from './reportWebVitals';
-import store from './store';
+import App from './App'
+import history from './history'
+import reportWebVitals from './reportWebVitals'
+import store from './store'
 
 const theme = createMuiTheme({
   overrides: {
@@ -23,7 +23,7 @@ const theme = createMuiTheme({
       },
     },
   },
-});
+})
 
 ReactDOM.render(
   <Router history={history}>
@@ -34,7 +34,7 @@ ReactDOM.render(
       </ThemeProvider>
     </Provider>
   </Router>,
-  document.getElementById('root'),
-);
+  document.getElementById('root')
+)
 
-reportWebVitals();
+reportWebVitals()

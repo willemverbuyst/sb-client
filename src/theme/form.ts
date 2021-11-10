@@ -1,5 +1,5 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useFormStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -20,6 +20,6 @@ const useFormStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
-}));
+}))
 
-export { useFormStyles };
+export { useFormStyles }

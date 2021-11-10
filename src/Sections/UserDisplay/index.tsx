@@ -1,11 +1,11 @@
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { Grid, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
+import { useSelector } from 'react-redux'
 
-import AvatarLargeComponent from '../../Components/Avatar/AvatarLarge';
-import { selectUser } from '../../store/user/selectors';
-import * as UTILS from '../../utils';
+import AvatarLargeComponent from '../../Components/Avatar/AvatarLarge'
+import { selectUser } from '../../store/user/selectors'
+import * as UTILS from '../../utils'
 
 export const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -28,13 +28,13 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     color: '#fff',
   },
-}));
+}))
 
 const UserDisplay: React.FC = (): ReactElement => {
-  const classes = useStyles();
-  const user = useSelector(selectUser);
+  const classes = useStyles()
+  const user = useSelector(selectUser)
 
-  const name = user ? UTILS.replaceUnderscore(user.userName) : 'Who are you?';
+  const name = user ? UTILS.replaceUnderscore(user.userName) : 'Who are you?'
 
   return (
     <Grid container justify="center">
@@ -47,7 +47,7 @@ const UserDisplay: React.FC = (): ReactElement => {
         ) : null}
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default UserDisplay;
+export default UserDisplay

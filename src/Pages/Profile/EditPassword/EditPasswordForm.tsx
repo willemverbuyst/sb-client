@@ -1,23 +1,23 @@
-import { Grid, Link } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { Grid, Link } from '@material-ui/core'
+import React, { ReactElement } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 
-import SubmitForm from '../../../Components/Button/SubmitForm';
-import ControllerPasswordInput from '../../../Components/Form/ControllerPasswordInput';
-import * as HISTORY from '../../../history';
-import { changePassword } from '../../../store/user/action-creators';
-import { useFormStyles } from '../../../theme/form';
+import SubmitForm from '../../../Components/Button/SubmitForm'
+import ControllerPasswordInput from '../../../Components/Form/ControllerPasswordInput'
+import * as HISTORY from '../../../history'
+import { changePassword } from '../../../store/user/action-creators'
+import { useFormStyles } from '../../../theme/form'
 
 type Inputs = {
-  currentPassword: string;
-  newPassword: string;
-  confirmPassword: string;
-};
+  currentPassword: string
+  newPassword: string
+  confirmPassword: string
+}
 
 const EditPasswordForm: React.FC = (): ReactElement => {
-  const classes = useFormStyles();
-  const dispatch = useDispatch();
+  const classes = useFormStyles()
+  const dispatch = useDispatch()
 
   const {
     control,
@@ -25,21 +25,21 @@ const EditPasswordForm: React.FC = (): ReactElement => {
     formState: { errors },
     reset,
     watch,
-  } = useForm<Inputs>();
-  const newPassword = watch('newPassword', '');
+  } = useForm<Inputs>()
+  const newPassword = watch('newPassword', '')
 
   const submitForm: SubmitHandler<Inputs> = (data) => {
     dispatch(
       changePassword(
         data.currentPassword,
         data.newPassword,
-        data.confirmPassword,
-      ),
-    );
+        data.confirmPassword
+      )
+    )
     reset(data, {
       keepValues: false,
-    });
-  };
+    })
+  }
 
   return (
     <Grid container justify="center">
@@ -60,7 +60,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
               error={errors.newPassword}
               label="New Password"
               name="newPassword"
-              validateLength={true}
+              validateLength
             />
             <ControllerPasswordInput
               control={control}
@@ -68,7 +68,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
               error={errors.confirmPassword}
               label="Confirm Password"
               name="confirmPassword"
-              validateLength={true}
+              validateLength
               newPassword={newPassword}
             />
           </Grid>
@@ -79,7 +79,7 @@ const EditPasswordForm: React.FC = (): ReactElement => {
         </form>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default EditPasswordForm;
+export default EditPasswordForm

@@ -1,38 +1,38 @@
-import { Box } from '@material-ui/core';
-import React, { ReactElement, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Box } from '@material-ui/core'
+import React, { ReactElement, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
-import MessageComponent from '../../../Components/Communication/Message';
-import ProgressComponent from '../../../Components/Progress';
-import PageTitle from '../../../Components/Title/PageTitle';
-import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart';
-import Guard from '../../../Sections/Guard';
-import { selectAppLoading } from '../../../store/appState/selectors';
-import { fetchScoresTotoRound } from '../../../store/scores/action-creators';
+import MessageComponent from '../../../Components/Communication/Message'
+import ProgressComponent from '../../../Components/Progress'
+import PageTitle from '../../../Components/Title/PageTitle'
+import ScoresBarChart from '../../../Sections/Charts/ScoresBarChart'
+import Guard from '../../../Sections/Guard'
+import { selectAppLoading } from '../../../store/appState/selectors'
+import { fetchScoresTotoRound } from '../../../store/scores/action-creators'
 import {
   selectScoresTotoRoundSortedByScore,
   selectTotoRoundId,
-} from '../../../store/scores/selectors';
-import { selectToken } from '../../../store/user/selectors';
-import Pagination from './Pagination';
+} from '../../../store/scores/selectors'
+import { selectToken } from '../../../store/user/selectors'
+import Pagination from './Pagination'
 
 const TotoRound: React.FC = (): ReactElement => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectAppLoading);
+  const dispatch = useDispatch()
+  const isLoading = useSelector(selectAppLoading)
   const scoresRoundSortedByScore = useSelector(
-    selectScoresTotoRoundSortedByScore,
-  );
-  const token = useSelector(selectToken);
-  const totoRoundId = useSelector(selectTotoRoundId);
-  const { totoronde } = useParams<{ totoronde: string }>();
-  const totoRound = Number(totoronde);
+    selectScoresTotoRoundSortedByScore
+  )
+  const token = useSelector(selectToken)
+  const totoRoundId = useSelector(selectTotoRoundId)
+  const { totoronde } = useParams<{ totoronde: string }>()
+  const totoRound = Number(totoronde)
 
   useEffect(() => {
     if (token && (!totoRoundId || totoRound !== totoRoundId)) {
-      dispatch(fetchScoresTotoRound(totoRound));
+      dispatch(fetchScoresTotoRound(totoRound))
     }
-  }, [dispatch, totoRound, totoRoundId, token]);
+  }, [dispatch, totoRound, totoRoundId, token])
 
   return (
     <Guard
@@ -55,7 +55,7 @@ const TotoRound: React.FC = (): ReactElement => {
         </Box>
       }
     />
-  );
-};
+  )
+}
 
-export default TotoRound;
+export default TotoRound

@@ -1,6 +1,6 @@
-import { Avatar, Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Avatar, Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
 export const useStyles = makeStyles((theme) => ({
   container: {
@@ -18,24 +18,24 @@ export const useStyles = makeStyles((theme) => ({
     border: '2px solid #fff',
     backgroundColor: '#fff',
   },
-}));
+}))
 
 interface IProps {
-  alt: string;
-  source: string;
+  alt: string
+  source: string
 }
 
 const AvatarLargeComponent: React.FC<IProps> = ({
   alt,
   source,
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid container justify="center" className={classes.container}>
       <Avatar alt={alt} src={source} className={classes.avatar} />
     </Grid>
-  );
-};
+  )
+}
 
-export default AvatarLargeComponent;
+export default AvatarLargeComponent

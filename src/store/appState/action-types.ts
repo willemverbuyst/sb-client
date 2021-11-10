@@ -1,4 +1,4 @@
-import { IMessage } from '../../models/app.models';
+import { IMessage } from '../../models/app.models'
 
 export enum ActionType {
   APP_LOADING = 'APP_LOADING',
@@ -7,16 +7,16 @@ export enum ActionType {
 }
 
 export type AppDoneLoading = {
-  type: ActionType.APP_DONE_LOADING;
-};
+  type: ActionType.APP_DONE_LOADING
+}
 
 export type AppLoading = {
-  type: ActionType.APP_LOADING;
-};
+  type: ActionType.APP_LOADING
+}
 
 export type SetMessage = {
-  type: ActionType.SET_MESSAGE;
-  payload: IMessage;
-};
+  type: ActionType.SET_MESSAGE
+  payload: IMessage
+}
 
-export type AppStateActions = AppDoneLoading | AppLoading | SetMessage;
+export type AppStateActions = AppDoneLoading | AppLoading | SetMessage

@@ -1,4 +1,4 @@
-import { IAllTeams } from '../../models/toto.models';
+import { IAllTeams } from '../../models/toto.models'
 
 export enum ActionType {
   RESET_ALL_TEAMS = 'RESET_ALL_TEAMS',
@@ -6,12 +6,12 @@ export enum ActionType {
 }
 
 export type StoreAllTeams = {
-  type: ActionType.STORE_ALL_TEAMS;
-  payload: IAllTeams;
-};
+  type: ActionType.STORE_ALL_TEAMS
+  payload: IAllTeams
+}
 
 export type ResetAllTeams = {
-  type: ActionType.RESET_ALL_TEAMS;
-};
+  type: ActionType.RESET_ALL_TEAMS
+}
 
-export type TeamsActions = ResetAllTeams | StoreAllTeams;
+export type TeamsActions = ResetAllTeams | StoreAllTeams

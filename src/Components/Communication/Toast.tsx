@@ -1,28 +1,28 @@
-import { Snackbar } from '@material-ui/core';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import React, { ReactElement, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { Snackbar } from '@material-ui/core'
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import { selectMessage } from '../../store/appState/selectors';
+import { selectMessage } from '../../store/appState/selectors'
 
 const Alert: React.FC<AlertProps> = (props: AlertProps): ReactElement => (
   <MuiAlert elevation={6} variant="filled" {...props} />
-);
+)
 
 const Toast: React.FC = (): ReactElement | null => {
-  const message = useSelector(selectMessage);
-  const [open, setOpen] = useState(false);
+  const message = useSelector(selectMessage)
+  const [open, setOpen] = useState(false)
 
   const handleClose = (_event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
-      return;
+      return
     }
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   useEffect(() => {
-    setOpen(!!message);
-  }, [message]);
+    setOpen(!!message)
+  }, [message])
 
   return message ? (
     <Snackbar
@@ -36,7 +36,7 @@ const Toast: React.FC = (): ReactElement | null => {
     >
       <Alert severity={message.severity}>{message.text}</Alert>
     </Snackbar>
-  ) : null;
-};
+  ) : null
+}
 
-export default Toast;
+export default Toast

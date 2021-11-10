@@ -1,15 +1,15 @@
-import { Grid, Typography } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Pagination from '@material-ui/lab/Pagination';
-import React, { ReactElement } from 'react';
+import { Grid, Typography } from '@material-ui/core'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Pagination from '@material-ui/lab/Pagination'
+import React, { ReactElement } from 'react'
 
 interface IProps {
-  label: string;
-  page: number;
-  count: number;
-  color: 'primary' | 'secondary' | 'standard';
-  onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
+  label: string
+  page: number
+  count: number
+  color: 'primary' | 'secondary' | 'standard'
+  onChange: (event: React.ChangeEvent<unknown>, value: number) => void
 }
 
 const PaginationComponent: React.FC<IProps> = ({
@@ -19,8 +19,8 @@ const PaginationComponent: React.FC<IProps> = ({
   color,
   onChange,
 }: IProps): ReactElement => {
-  const theme = useTheme();
-  const pagVariant = useMediaQuery(theme.breakpoints.up('xs'));
+  const theme = useTheme()
+  const pagVariant = useMediaQuery(theme.breakpoints.up('xs'))
 
   return (
     <>
@@ -43,7 +43,7 @@ const PaginationComponent: React.FC<IProps> = ({
         </Grid>
       </Grid>
     </>
-  );
-};
+  )
+}
 
-export default PaginationComponent;
+export default PaginationComponent

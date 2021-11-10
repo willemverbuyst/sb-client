@@ -1,28 +1,28 @@
-import { ITeam } from '../../models/toto.models';
-import { ActionType, TeamsActions } from './action-types';
+import { ITeam } from '../../models/toto.models'
+import { ActionType, TeamsActions } from './action-types'
 
 export interface ITeamsState {
-  teams: ITeam[] | null;
+  teams: ITeam[] | null
 }
 
 const initialState: ITeamsState = {
   teams: null,
-};
+}
 
 const teamReducer = (
   state = initialState,
-  action: TeamsActions,
+  action: TeamsActions
 ): ITeamsState => {
   switch (action.type) {
     case ActionType.STORE_ALL_TEAMS:
-      return { ...state, teams: action.payload.teams };
+      return { ...state, teams: action.payload.teams }
 
     case ActionType.RESET_ALL_TEAMS:
-      return { teams: null };
+      return { teams: null }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default teamReducer;
+export default teamReducer

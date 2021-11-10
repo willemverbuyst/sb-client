@@ -1,10 +1,10 @@
-import { Button } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { Button } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
 interface IProps {
-  caption: string;
-  color: 'primary' | 'secondary';
-  handleClick: () => void;
+  caption: string
+  color: 'primary' | 'secondary'
+  handleClick: () => void
 }
 
 const TableButton: React.FC<IProps> = ({
@@ -15,6 +15,6 @@ const TableButton: React.FC<IProps> = ({
   <Button size="small" variant="text" color={color} onClick={handleClick}>
     {caption}
   </Button>
-);
+)
 
-export default TableButton;
+export default TableButton

@@ -1,9 +1,9 @@
-import { Box } from '@material-ui/core';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Box } from '@material-ui/core'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
-import PageTitle from '../Title/PageTitle';
+import PageTitle from '../Title/PageTitle'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,17 +13,17 @@ const useStyles = makeStyles((theme: Theme) =>
         marginTop: theme.spacing(2),
       },
     },
-  }),
-);
+  })
+)
 
 interface IProps {
-  loadingText?: string;
+  loadingText?: string
 }
 
 const ProgressComponent: React.FC<IProps> = ({
   loadingText = '',
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Box className={classes.root}>
@@ -31,7 +31,7 @@ const ProgressComponent: React.FC<IProps> = ({
       <LinearProgress color="secondary" />
       <LinearProgress color="primary" />
     </Box>
-  );
-};
+  )
+}
 
-export default ProgressComponent;
+export default ProgressComponent

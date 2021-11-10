@@ -1,21 +1,21 @@
-import { IPlayerWithPredictions } from '../../models/predictions.model';
-import { ActionType, PredictionActions } from './action-types';
+import { IPlayerWithPredictions } from '../../models/predictions.model'
+import { ActionType, PredictionActions } from './action-types'
 
 export interface IPredictionsState {
-  allPredictions: IPlayerWithPredictions | null;
+  allPredictions: IPlayerWithPredictions | null
 }
 
 const initialState: IPredictionsState = {
   allPredictions: null,
-};
+}
 
 const predictionsReducer = (
   state = initialState,
-  action: PredictionActions,
+  action: PredictionActions
 ): IPredictionsState => {
   switch (action.type) {
     case ActionType.STORE_ALL_PREDICTIONS:
-      return { ...state, allPredictions: action.payload };
+      return { ...state, allPredictions: action.payload }
 
     case ActionType.POST_PREDICTION:
       return {
@@ -36,16 +36,16 @@ const predictionsReducer = (
                               action.payload.prediction.pGoalsAwayTeam,
                           },
                         }
-                      : fixture,
-                  ),
-                ),
+                      : fixture
+                  )
+                )
               ),
             }
           : null,
-      };
+      }
 
     case ActionType.RESET_ALL_PREDICTIONS:
-      return { allPredictions: null };
+      return { allPredictions: null }
 
     case ActionType.UPDATE_PREDICTION:
       return {
@@ -66,17 +66,17 @@ const predictionsReducer = (
                               action.payload.prediction.pGoalsAwayTeam,
                           },
                         }
-                      : fixture,
-                  ),
-                ),
+                      : fixture
+                  )
+                )
               ),
             }
           : null,
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default predictionsReducer;
+export default predictionsReducer

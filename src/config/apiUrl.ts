@@ -1,4 +1,7 @@
-import * as dotenv from 'dotenv';
-dotenv.config({ path: __dirname + '../../.env' });
+import * as dotenv from 'dotenv'
 
-export const API_URL = process.env.REACT_APP_SERVER_URL;
+dotenv.config({ path: `${__dirname}../../.env` })
+
+const API_URL = process.env.REACT_APP_SERVER_URL
+
+export default API_URL

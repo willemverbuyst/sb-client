@@ -1,18 +1,18 @@
-import { Typography } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import React, { ReactElement } from 'react';
+import { Typography } from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'
+import React, { ReactElement } from 'react'
 import {
   Controller,
   FieldError,
   FieldValues,
   UseControllerProps,
-} from 'react-hook-form';
+} from 'react-hook-form'
 
-import { useValidationStyles } from '../../theme/validation';
+import { useValidationStyles } from '../../theme/validation'
 
 interface IProps<T> extends UseControllerProps<T> {
-  error: FieldError | undefined;
-  label: string;
+  error: FieldError | undefined
+  label: string
 }
 
 const ControllerEmailInput = <T extends FieldValues>({
@@ -22,7 +22,7 @@ const ControllerEmailInput = <T extends FieldValues>({
   label,
   name,
 }: IProps<T>): ReactElement => {
-  const classes = useValidationStyles();
+  const classes = useValidationStyles()
 
   return (
     <Controller
@@ -52,7 +52,7 @@ const ControllerEmailInput = <T extends FieldValues>({
       name={name}
       defaultValue={defaultValue}
     />
-  );
-};
+  )
+}
 
-export default ControllerEmailInput;
+export default ControllerEmailInput

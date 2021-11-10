@@ -1,45 +1,45 @@
-import { Grid, Link } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { Grid, Link } from '@material-ui/core'
+import React, { ReactElement } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 
-import SubmitForm from '../../../Components/Button/SubmitForm';
-import ControllerCheckbox from '../../../Components/Form/ControllerCheckbox';
-import ControllerEmailInput from '../../../Components/Form/ControllerEmailInput';
-import ControllerSelect from '../../../Components/Form/ControllerSelect';
-import ControllerTextInput from '../../../Components/Form/ControllerTextInput';
-import * as HISTORY from '../../../history';
-import { IPlayer } from '../../../models/player.model';
-import { ITeamForSelector } from '../../../models/toto.models';
-import { editUserProfile } from '../../../store/user/action-creators';
-import { useFormStyles } from '../../../theme/form';
+import SubmitForm from '../../../Components/Button/SubmitForm'
+import ControllerCheckbox from '../../../Components/Form/ControllerCheckbox'
+import ControllerEmailInput from '../../../Components/Form/ControllerEmailInput'
+import ControllerSelect from '../../../Components/Form/ControllerSelect'
+import ControllerTextInput from '../../../Components/Form/ControllerTextInput'
+import * as HISTORY from '../../../history'
+import { IPlayer } from '../../../models/player.model'
+import { ITeamForSelector } from '../../../models/toto.models'
+import { editUserProfile } from '../../../store/user/action-creators'
+import { useFormStyles } from '../../../theme/form'
 
 interface IProps {
-  teams: ITeamForSelector[];
-  user: IPlayer;
+  teams: ITeamForSelector[]
+  user: IPlayer
 }
 
 type Inputs = {
-  userName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  totaalToto: boolean;
-  teamId: string;
-};
+  userName: string
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber: string
+  totaalToto: boolean
+  teamId: string
+}
 
 const EditProfileForm: React.FC<IProps> = ({
   teams,
   user,
 }: IProps): ReactElement => {
-  const classes = useFormStyles();
-  const dispatch = useDispatch();
+  const classes = useFormStyles()
+  const dispatch = useDispatch()
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>()
 
   const submitForm: SubmitHandler<Inputs> = (data) => {
     dispatch(
@@ -51,9 +51,9 @@ const EditProfileForm: React.FC<IProps> = ({
         phoneNumber: data.phoneNumber,
         totaalToto: data.totaalToto,
         teamId: Number(data.teamId),
-      }),
-    );
-  };
+      })
+    )
+  }
 
   return (
     <Grid container justify="center">
@@ -117,7 +117,7 @@ const EditProfileForm: React.FC<IProps> = ({
         </form>
       </Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default EditProfileForm;
+export default EditProfileForm

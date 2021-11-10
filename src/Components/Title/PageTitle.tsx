@@ -1,6 +1,6 @@
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import React, { ReactElement } from 'react';
+import { Grid, Typography } from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import React, { ReactElement } from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   topSection: {
@@ -18,18 +18,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
   },
-}));
+}))
 
 interface IProps {
-  title: string;
-  color: 'primary' | 'secondary';
+  title: string
+  color: 'primary' | 'secondary'
 }
 
 const PageTitleComponent: React.FC<IProps> = ({
   title,
   color,
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid container className={classes.topSection}>
@@ -37,7 +37,7 @@ const PageTitleComponent: React.FC<IProps> = ({
         {title}
       </Typography>
     </Grid>
-  );
-};
+  )
+}
 
-export default PageTitleComponent;
+export default PageTitleComponent

@@ -1,5 +1,5 @@
-import { Grid, makeStyles, Theme, Typography } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { Grid, makeStyles, Theme, Typography } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   message: {
@@ -7,16 +7,16 @@ const useStyles = makeStyles((theme: Theme) => ({
       justifyContent: 'center',
     },
   },
-}));
+}))
 
 type IProps = {
-  message: string;
-};
+  message: string
+}
 
 const MessageComponent: React.FC<IProps> = ({
   message,
 }: IProps): ReactElement => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid>
@@ -24,7 +24,7 @@ const MessageComponent: React.FC<IProps> = ({
         {message}
       </Typography>
     </Grid>
-  );
-};
+  )
+}
 
-export default MessageComponent;
+export default MessageComponent

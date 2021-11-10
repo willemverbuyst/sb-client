@@ -1,11 +1,11 @@
-import { Button, Grid } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import { Button, Grid } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 
 interface IProps {
-  caption: string;
-  color: 'primary' | 'secondary';
-  handleClick: () => void;
-  variant?: 'contained' | 'text' | 'outlined';
+  caption: string
+  color: 'primary' | 'secondary'
+  handleClick: () => void
+  variant?: 'contained' | 'text' | 'outlined'
 }
 
 const CardButton: React.FC<IProps> = ({
@@ -25,6 +25,6 @@ const CardButton: React.FC<IProps> = ({
       {caption}
     </Button>
   </Grid>
-);
+)
 
-export default CardButton;
+export default CardButton

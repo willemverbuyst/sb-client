@@ -1,19 +1,19 @@
-import { TotoRound } from './toto.models';
+import { TotoRound } from './toto.models'
 
 export interface IPrediction {
-  pGoalsAwayTeam: number;
-  pGoalsHomeTeam: number;
-  fixtureId: number;
+  pGoalsAwayTeam: number
+  pGoalsHomeTeam: number
+  fixtureId: number
 }
 
 export interface IPlayerWithPredictions {
-  player: string;
-  fixtures: TotoRound[];
+  player: string
+  fixtures: TotoRound[]
 }
 
 export interface IPostedPrediction {
-  prediction: IPrediction;
+  prediction: IPrediction
 }
 export interface IUpdatedPrediction {
-  prediction: IPrediction;
+  prediction: IPrediction
 }
