@@ -111,6 +111,7 @@ const EditProfileForm: React.FC<IProps> = ({
             />
           </Grid>
           <SubmitForm caption="UPDATE PROFIEL" color="primary" />
+          {/* eslint-disable-next-line */}
           <Link href="#" onClick={HISTORY.gotoEditPassword}>
             Change Password
           </Link>

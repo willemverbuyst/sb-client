@@ -73,9 +73,8 @@ const EditPasswordForm: React.FC = (): ReactElement => {
             />
           </Grid>
           <SubmitForm caption="CHANGE PASSWORD" color="primary" />
-          <Link href="#" onClick={HISTORY.gotoProfile}>
-            Edit Profile
-          </Link>
+          {/* eslint-disable-next-line */}
+          <Link href="#" onClick={HISTORY.gotoProfile} />
         </form>
       </Grid>
     </Grid>

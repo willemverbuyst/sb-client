@@ -27,8 +27,8 @@ const Pagination: React.FC<IProps> = ({
     _event: React.ChangeEvent<unknown>,
     value: number
   ): void => {
-    const round = UTILS.roundByTotoRound(value)
-    HISTORY.gotoPredictionsUser(value, round)
+    const roundByTotoRound = UTILS.roundByTotoRound(value)
+    HISTORY.gotoPredictionsUser(value, roundByTotoRound)
   }
 
   return (

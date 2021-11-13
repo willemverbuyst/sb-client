@@ -88,7 +88,7 @@ export const editUserProfile = (
       dispatch(updateUserProfile(response.data.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -117,7 +117,7 @@ export const userLogIn =
       dispatch(logInSuccessUser(response.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -153,7 +153,7 @@ export const getUserWithStoredToken =
       })
       dispatch(tokenUserStillValid(response.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -177,7 +177,7 @@ export const requestEmailForNewPassword =
 
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))

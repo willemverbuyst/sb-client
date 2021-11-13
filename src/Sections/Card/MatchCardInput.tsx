@@ -35,9 +35,11 @@ const MatchCardInput: React.FC<IProps> = ({
       fixtureId: id,
     }
 
-    Number.isInteger(pGoalsAwayTeam) || Number.isInteger(pGoalsHomeTeam)
-      ? dispatch(changePrediction(prediction))
-      : dispatch(postNewPrediction(prediction))
+    if (Number.isInteger(pGoalsAwayTeam) || Number.isInteger(pGoalsHomeTeam)) {
+      dispatch(changePrediction(prediction))
+    } else {
+      dispatch(postNewPrediction(prediction))
+    }
 
     hideInput()
   }

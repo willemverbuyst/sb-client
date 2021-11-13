@@ -1,5 +1,10 @@
-export const listOfRules: Array<{ question: string; answers: string[] }> = [
+const listOfRules: Array<{
+  number: number
+  question: string
+  answers: string[]
+}> = [
   {
+    number: 1,
     question: 'Hoeveel punten kan ik verdienen per wedstrijd?',
     answers: [
       'Het aantal goals per team goed voorspeld: 2 punten (dus 2x2 punten te verdienen',
@@ -9,6 +14,7 @@ export const listOfRules: Array<{ question: string; answers: string[] }> = [
     ],
   },
   {
+    number: 2,
     question: 'Hoeveel totorondes worden er gespeeld?',
     answers: [
       'Er worden in totaal 11 totorondes per seizoen gespeeld.',
@@ -17,6 +23,7 @@ export const listOfRules: Array<{ question: string; answers: string[] }> = [
     ],
   },
   {
+    number: 3,
     question: 'Wat is de totaaltoto?',
     answers: [
       'Naast de reguliere totorondes, is er ook een Totaaltoto.',
@@ -25,6 +32,7 @@ export const listOfRules: Array<{ question: string; answers: string[] }> = [
     ],
   },
   {
+    number: 4,
     question: 'Wanneer ben je de winnaar van de toto?',
     answers: [
       'Na afloop van de laatste speelronde van een spel worden alle punten bij elkaar opgeteld.',
@@ -33,6 +41,7 @@ export const listOfRules: Array<{ question: string; answers: string[] }> = [
     ],
   },
   {
+    number: 5,
     question: 'Wat gebeurt er als ik mijn punten niet heb ingezet?',
     answers: [
       'Wanneer een speler geen voorspelling heeft gedaan dan wordt er géén score genoteerd.',
@@ -40,3 +49,5 @@ export const listOfRules: Array<{ question: string; answers: string[] }> = [
     ],
   },
 ]
+
+export default listOfRules

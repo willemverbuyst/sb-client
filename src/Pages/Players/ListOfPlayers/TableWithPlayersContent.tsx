@@ -15,17 +15,16 @@ const TableWithPlayersContent = ({
   const [showDialog, setShowDialog] = useState(false)
   const [playerToDelete, setPlayerToDelete] = useState<IPlayer | null>(null)
 
-  const handleBtnClick = (player: IPlayer): void => {
-    setPlayerToDelete(player)
-    openDialog()
-  }
-
   const closeDialog = (): void => {
     setShowDialog(false)
   }
 
   const openDialog = (): void => {
     setShowDialog(true)
+  }
+  const handleBtnClick = (player: IPlayer): void => {
+    setPlayerToDelete(player)
+    openDialog()
   }
 
   const tableContent = (): ReactElement[] =>

@@ -58,6 +58,7 @@ const LoginForm: React.FC = (): ReactElement => {
             />
           </Grid>
           <SubmitForm caption="LOG IN" color="primary" />
+          {/* eslint-disable-next-line */}
           <Link href="#" onClick={HISTORY.gotoForgotPassword}>
             Forgot Password?
           </Link>

@@ -68,7 +68,7 @@ export const changePrediction =
       dispatch(updatePrediction(response.data.data))
       dispatch(updateUserCurrentRound(response.data.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))

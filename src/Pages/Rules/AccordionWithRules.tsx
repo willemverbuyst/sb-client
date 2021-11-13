@@ -5,7 +5,7 @@ import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import React, { ReactElement } from 'react'
 
-import { listOfRules } from '../../constants/listOfRules'
+import listOfRules from '../../constants/listOfRules'
 import AccordionAnswers from './AccordionAnswers'
 
 const Accordion = withStyles(() => ({
@@ -55,8 +55,8 @@ const AccordionWithRules: React.FC = (): ReactElement => {
   return (
     <Grid container justify="center" className={classes.content}>
       <Grid item xs={12} md={8}>
-        {listOfRules.map((rule, i) => (
-          <Accordion key={i}>
+        {listOfRules.map((rule) => (
+          <Accordion key={rule.number}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"

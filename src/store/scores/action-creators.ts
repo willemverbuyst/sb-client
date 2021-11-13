@@ -28,7 +28,7 @@ export const fetchScoresFixture =
 
       dispatch(storeScoresFixture(response.data.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -52,7 +52,7 @@ export const fetchScoresRound =
 
       dispatch(storeScoresRound(response.data.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -76,7 +76,7 @@ export const fetchScoresTotalToto =
 
       dispatch(storeScoresTotalToto(response.data.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -100,7 +100,7 @@ export const fetchScoresTotoRound =
 
       dispatch(storeScoresTotoRound(response.data.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))
@@ -125,7 +125,7 @@ export const fetchPlayerScores =
 
       dispatch(storePlayerScores(response.data.data))
       dispatch(appDoneLoading())
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
         dispatch(setMessage('error', error.response.data.message))

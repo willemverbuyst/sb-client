@@ -38,9 +38,12 @@ const ScoresStackedChart: React.FC<IProps> = ({
   const gotoTotoRound = (index: number) => {
     const totoRoundNumber = index + 1
     const roundNumber = (index + 1) * 3 - 2
-    loggedInUser
-      ? HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)
-      : HISTORY.gotoPredictionsPlayer(playerId, totoRoundNumber, roundNumber)
+
+    if (loggedInUser) {
+      HISTORY.gotoPredictionsUser(totoRoundNumber, roundNumber)
+    } else {
+      HISTORY.gotoPredictionsPlayer(playerId, totoRoundNumber, roundNumber)
+    }
   }
   const totals: number[] = UTILS.getTotalsForStackedChart(scores)
   const max: number = UTILS.generateMaxForChartYAx(totals, 1.2)

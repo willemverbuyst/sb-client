@@ -30,9 +30,12 @@ const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
   )
   const gotoScoresPlayer = (index: number): void => {
     const { id } = scores[index]
-    userId && userId === id
-      ? HISTORY.gotoScoresUser()
-      : HISTORY.gotoScoresPlayer(id)
+
+    if (userId && userId === id) {
+      HISTORY.gotoScoresUser()
+    } else {
+      HISTORY.gotoScoresPlayer(id)
+    }
   }
 
   const chartData: ChartData<chartjs.ChartData> = {

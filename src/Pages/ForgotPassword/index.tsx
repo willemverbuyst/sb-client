@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import ProgressComponent from '../../Components/Progress'
 import PageTitle from '../../Components/Title/PageTitle'
 import { selectAppLoading } from '../../store/appState/selectors'
-import SendEmailForm from '../ForgotPassword/SendEmailForm'
+import SendEmailForm from './SendEmailForm'
 
 const ForgotPassword: React.FC = (): ReactElement => {
   const isLoading = useSelector(selectAppLoading)

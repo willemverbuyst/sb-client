@@ -49,6 +49,7 @@ const SendEmailForm: React.FC = (): ReactElement => (
     <Box py={2}>
       <Typography variant="h4">Too bad, game over!!</Typography>
     </Box>
+    {/* eslint-disable-next-line */}
     <Link href="#" onClick={HISTORY.gotoLogin}>
       Back to login page
     </Link>
