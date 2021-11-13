@@ -21,7 +21,7 @@ router
   );
 
 router
-  .route('/:id')
+  .route('/:playerId')
   .delete(
     protectController,
     restrictToController('admin'),

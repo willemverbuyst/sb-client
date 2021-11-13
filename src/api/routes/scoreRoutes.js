@@ -11,7 +11,9 @@ const {
 
 const router = express.Router();
 
-router.route('/players/:id').get(protectController, getScoresPlayerController);
+router
+  .route('/players/:playerId')
+  .get(protectController, getScoresPlayerController);
 router.route('/rounds/:id').get(protectController, getScoresRoundController);
 router.route('/totalToto').get(protectController, getScoresTotalTotoController);
 router

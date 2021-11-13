@@ -11,7 +11,7 @@ const { getAllPredictionsAndScoresForFixtureQuery } = predictionQueries;
 const { isValidFixtureId } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
-  const fixtureId = req.params.id;
+  const { fixtureId } = req.params;
 
   if (!isValidFixtureId(fixtureId)) {
     return next(new InvalidFixtureIdError());

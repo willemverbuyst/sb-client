@@ -10,7 +10,7 @@ const { deleteUserAndHisPredictionQuery } = userQueries;
 const { isValidUUID } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
-  const playerId = req.params.id;
+  const { playerId } = req.params;
 
   if (!isValidUUID(playerId)) {
     return next(new InvalidPlayerIdlError());

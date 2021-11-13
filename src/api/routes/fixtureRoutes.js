@@ -6,6 +6,8 @@ const { getFixtureWithScoresController } = fixtureControllers;
 
 const router = express.Router();
 
-router.route('/:id').get(protectController, getFixtureWithScoresController);
+router
+  .route('/:fixtureId')
+  .get(protectController, getFixtureWithScoresController);
 
 module.exports = router;
