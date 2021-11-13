@@ -3,7 +3,7 @@ const getAllPredictionsAndScoresForFixtureQuery = require('./getAllPredictionsAn
 const getScoresPlayerQuery = require('./getScoresPlayer.query');
 const getScoresRoundQuery = require('./getScoresRound.query');
 const getScoresTotalTotoQuery = require('./getScoresTotalToto.query');
-const getScoresTotoRoundQuery = require('./getScoresTotalToto.query');
+const getScoresTotoRoundQuery = require('./getScoresTotoRound.query');
 const updatePredictionQuery = require('./updatePrediction.query');
 
 module.exports = {

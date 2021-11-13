@@ -29,7 +29,7 @@ module.exports = catchAsync(async (req, res, next) => {
     status: 'success',
     results: scores.length,
     data: {
-      id: playerId,
+      userId: playerId,
       name: user.userName,
       scores,
     },
