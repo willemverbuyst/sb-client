@@ -18,9 +18,9 @@ module.exports = catchAsync(async (req, res, next) => {
     return next(new InvalidPlayerIdlError());
   }
 
-  const { userName } = await getUserByIdQuery(playerId);
+  const user = await getUserByIdQuery(playerId);
 
-  if (!userName) {
+  if (!user) {
     return next(new PlayerNotFoundError());
   }
 
@@ -28,9 +28,9 @@ module.exports = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    result: fixtures.length,
+    results: fixtures.length,
     data: {
-      player: userName,
+      player: user.userName,
       fixtures,
     },
   });

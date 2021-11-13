@@ -11,15 +11,15 @@ const { getUserByIdQuery } = userQueries;
 const { isValidUUID } = validators;
 
 module.exports = catchAsync(async (req, res, next) => {
-  const playerId = req.params.id;
+  const { playerId } = req.params;
 
   if (!isValidUUID(playerId)) {
     return next(new InvalidPlayerIdlError());
   }
 
-  const { userName } = await getUserByIdQuery(playerId);
+  const user = await getUserByIdQuery(playerId);
 
-  if (!userName) {
+  if (!user) {
     return next(new PlayerNotFoundError());
   }
 
@@ -30,7 +30,7 @@ module.exports = catchAsync(async (req, res, next) => {
     results: scores.length,
     data: {
       id: playerId,
-      name: userName,
+      name: user.userName,
       scores,
     },
   });
