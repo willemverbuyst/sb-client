@@ -40,7 +40,7 @@ module.exports = async () => {
           prediction.pGoalsAwayTeam,
         ),
         name: prediction.user.userName,
-        id: prediction.user.id,
+        userId: prediction.user.id,
       }));
 
     const scoresTotalToto = reducerHelper(predictionsWithScores);

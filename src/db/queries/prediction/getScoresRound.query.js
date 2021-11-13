@@ -41,7 +41,7 @@ module.exports = async (roundNumber) => {
         pred.pGoalsAwayTeam,
       ),
       name: pred.user.userName,
-      id: pred.user.id,
+      userId: pred.user.id,
     }));
 
     const predictionsReduced = reducerHelper(predictionsWithScores);
