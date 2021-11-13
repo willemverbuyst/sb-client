@@ -10,8 +10,8 @@ interface IProps {
 const TableHeaders: React.FC<IProps> = ({ headers }: IProps): ReactElement => (
   <TableHead>
     <TableRow>
-      {headers.map((header, i) => (
-        <TableCell key={i} align={header[1]}>
+      {headers.map((header) => (
+        <TableCell key={header[0]} align={header[1]}>
           {header[0]}
         </TableCell>
       ))}

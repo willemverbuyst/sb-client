@@ -17,8 +17,8 @@ const Predictions: React.FC<IProps> = ({
 }: IProps): ReactElement => (
   <Box my={{ sm: 1, md: 4 }}>
     <Grid item xs={12} container justify="center">
-      {predictions.map((wedstrijd, i) => (
-        <Grid item key={i} lg={4} md={6} xs={12}>
+      {predictions.map((wedstrijd) => (
+        <Grid item key={wedstrijd.id} lg={4} md={6} xs={12}>
           <MatchCard
             wedstrijdMetVoorspellingen={wedstrijd}
             display={display}
