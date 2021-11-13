@@ -17,7 +17,7 @@ export const storeAllPlayers = (players: IAllPlayers): StoreAllPlayers => ({
   payload: players,
 })
 
-export const deletePlayer = (playerId: number): DeletePlayer => ({
+export const deletePlayer = (playerId: string): DeletePlayer => ({
   type: ActionType.DELETE_PLAYER,
   payload: playerId,
 })

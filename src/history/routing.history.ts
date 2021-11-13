@@ -12,7 +12,7 @@ export const gotoLogin = (): void => history.push('/login')
 export const gotoPlayers = (): void => history.push('/spelers')
 
 export const gotoPredictionsPlayer = (
-  id: number | string,
+  id: string | string,
   totoRoundNumber: number,
   roundNumber: number
 ): void =>
@@ -40,7 +40,7 @@ export const gotoRankingTotoRound = (totoRoundNumber: number): void =>
 
 export const gotoRules = (): void => history.push('/regels')
 
-export const gotoScoresPlayer = (id: number): void =>
+export const gotoScoresPlayer = (id: string): void =>
   history.push(`/spelers/${id}/scores`)
 
 export const gotoScoresUser = (): void => history.push('/scores')

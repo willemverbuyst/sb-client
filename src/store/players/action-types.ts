@@ -14,7 +14,7 @@ export type AddNewPlayer = {
 
 export type DeletePlayer = {
   type: ActionType.DELETE_PLAYER
-  payload: number
+  payload: string
 }
 
 export type ResetPlayers = {

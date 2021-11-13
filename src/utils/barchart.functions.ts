@@ -10,7 +10,7 @@ export const displayUserScores = (
 
 export const getColorBars = <T extends IPlayerWithScore>(
   array: T[],
-  userId: number | null
+  userId: string | null
 ): string[] =>
   array.map((a) =>
     a.id === userId ? colorPrimary.color1 : colorSecondary.color1

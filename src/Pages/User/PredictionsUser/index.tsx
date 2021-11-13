@@ -29,8 +29,8 @@ const PredictionsUser: React.FC = (): ReactElement => {
   const user = useSelector(selectUser)
 
   useEffect(() => {
-    if (token && !allPredictionsSortedByTime) {
-      dispatch(getAllPredictions(Number(user?.id)))
+    if (token && !allPredictionsSortedByTime && user) {
+      dispatch(getAllPredictions(user.id))
     }
   }, [dispatch, user, token])
 

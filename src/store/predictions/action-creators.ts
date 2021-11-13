@@ -18,7 +18,7 @@ import {
 } from './actions'
 
 export const getAllPredictions =
-  (id: number): ThunkAction<void, StoreState, unknown, Action<string>> =>
+  (id: string): ThunkAction<void, StoreState, unknown, Action<string>> =>
   async (dispatch: Dispatch<AppStateActions | PredictionActions>) => {
     dispatch(resetAllPredictions())
     dispatch(appLoading())

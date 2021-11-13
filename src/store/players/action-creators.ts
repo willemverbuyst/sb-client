@@ -81,7 +81,7 @@ export const fetchAllPlayers =
   }
 
 export const playerDelete =
-  (id: number): ThunkAction<void, StoreState, unknown, Action<string>> =>
+  (id: string): ThunkAction<void, StoreState, unknown, Action<string>> =>
   async (dispatch: Dispatch<PlayersActions | AppStateActions>) => {
     dispatch(appLoading())
     try {

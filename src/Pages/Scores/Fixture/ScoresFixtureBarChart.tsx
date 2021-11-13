@@ -18,7 +18,7 @@ interface IProps {
 const ScoresForFixtureBarChart: React.FC<IProps> = ({
   scores,
 }: IProps): ReactElement => {
-  const userId: number | null = useSelector(selectUserId)
+  const userId: string | null = useSelector(selectUserId)
   const labels = scores.map(
     (score) =>
       `${score.name.toLocaleUpperCase()}    [${score.pGoalsHomeTeam} - ${

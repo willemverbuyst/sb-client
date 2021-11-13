@@ -9,7 +9,7 @@ export const selectToken = (state: StoreState): string | null =>
 export const selectUser = (state: StoreState): IPlayer | null =>
   state.userState.user ? state.userState.user.profile : null
 
-export const selectUserId = (state: StoreState): number | null =>
+export const selectUserId = (state: StoreState): string | null =>
   state.userState.user ? state.userState.user.profile.id : null
 
 export const selectCurrentRoundSortedByTime = (

@@ -20,7 +20,7 @@ const TableWithPlayersDialog: React.FC<IProps> = ({
     'Wanneer je deze speler verwijderd, wordt alle data uit de database gewist. Er is dan geen weg terug...'
 
   const handleDelete = () => {
-    dispatch(playerDelete(Number(playerToDelete.id)))
+    dispatch(playerDelete(playerToDelete.id))
     closeDialog()
   }
 

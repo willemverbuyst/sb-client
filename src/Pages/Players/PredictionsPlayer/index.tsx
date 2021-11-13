@@ -34,7 +34,7 @@ const PredictionsPlayer: React.FC = (): ReactElement => {
 
   useEffect(() => {
     if (token) {
-      dispatch(getAllPredictions(Number(id)))
+      dispatch(getAllPredictions(id))
     }
   }, [dispatch, id])
 

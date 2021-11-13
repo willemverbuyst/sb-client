@@ -16,7 +16,7 @@ interface IProps {
 }
 
 const ScoresBarChart: React.FC<IProps> = ({ scores }: IProps): ReactElement => {
-  const userId: number | null = useSelector(selectUserId)
+  const userId: string | null = useSelector(selectUserId)
   const labels: string[] = UTILS.getStringsInUpperCase<
     keyof IPlayerWithScore,
     IPlayerWithScore

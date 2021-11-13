@@ -28,8 +28,12 @@ const TableWithPlayersContent = ({
   }
 
   const tableContent = (): ReactElement[] =>
-    playersSortedByName.map((player, i) => (
-      <TableWithPlayersRow key={i} player={player} onChange={handleBtnClick} />
+    playersSortedByName.map((player) => (
+      <TableWithPlayersRow
+        key={player.id}
+        player={player}
+        onChange={handleBtnClick}
+      />
     ))
 
   return (

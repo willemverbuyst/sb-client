@@ -4,7 +4,7 @@ export interface IPlayer {
   admin: boolean
   email: string
   firstName: string
-  id: number
+  id: string
   lastName: string
   phoneNumber: string
   team: ITeam
@@ -13,7 +13,7 @@ export interface IPlayer {
 }
 
 export interface IScoresPlayer {
-  id: number
+  id: string
   name: string
   scores: number[][]
 }
@@ -27,7 +27,7 @@ export interface INewPlayer {
 }
 
 export interface IPlayerWithScore {
-  id: number
+  id: string
   name: string
   score: number
 }
