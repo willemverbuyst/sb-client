@@ -13,7 +13,7 @@ export interface IPlayer {
 }
 
 export interface IScoresPlayer {
-  id: string
+  userId: string
   name: string
   scores: number[][]
 }
@@ -27,7 +27,7 @@ export interface INewPlayer {
 }
 
 export interface IPlayerWithScore {
-  id: string
+  userId: string
   name: string
   score: number
 }

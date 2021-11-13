@@ -113,7 +113,7 @@ export const fetchScoresTotoRound =
   }
 
 export const fetchPlayerScores =
-  (id: number): ThunkAction<void, StoreState, unknown, Action<string>> =>
+  (id: string): ThunkAction<void, StoreState, unknown, Action<string>> =>
   async (dispatch: Dispatch<AppStateActions | ScoresActions>) => {
     dispatch(resetScoresPlayer())
     dispatch(appLoading())

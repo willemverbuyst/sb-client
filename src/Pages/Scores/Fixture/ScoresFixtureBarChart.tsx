@@ -33,12 +33,12 @@ const ScoresForFixtureBarChart: React.FC<IProps> = ({
     UTILS.getColorBars<IPlayerWithScoreAndPrediction>(scores, userId)
 
   const gotoScoresPlayer = (index: number): void => {
-    const { id } = scores[index]
+    const score = scores[index]
 
-    if (userId && userId === id) {
+    if (userId && userId === score.userId) {
       HISTORY.gotoScoresUser()
     } else {
-      HISTORY.gotoScoresPlayer(id)
+      HISTORY.gotoScoresPlayer(score.userId)
     }
   }
 

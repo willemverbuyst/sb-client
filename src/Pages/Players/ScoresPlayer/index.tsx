@@ -23,7 +23,7 @@ const ScoresPlayer: React.FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>()
 
   useEffect(() => {
-    dispatch(fetchPlayerScores(Number(id)))
+    dispatch(fetchPlayerScores(id))
   }, [dispatch, id])
 
   return (

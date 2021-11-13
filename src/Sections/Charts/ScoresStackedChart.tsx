@@ -32,9 +32,9 @@ const ScoresStackedChart: React.FC<IProps> = ({
   loggedInUser,
 }: IProps): ReactElement => {
   const user = useSelector(selectUser)
-  const { id: playerId, scores } = scoresPlayer
+  const { userId: playerId, scores } = scoresPlayer
   const colorPrimary =
-    !loggedInUser && user?.id === playerId ? colorHover : colorMain
+    !loggedInUser && user && user.id === playerId ? colorHover : colorMain
   const gotoTotoRound = (index: number) => {
     const totoRoundNumber = index + 1
     const roundNumber = (index + 1) * 3 - 2

@@ -25,8 +25,8 @@ const ScoresUser: React.FC = (): ReactElement => {
   const user = useSelector(selectUser)
 
   useEffect(() => {
-    if (token) {
-      dispatch(fetchPlayerScores(Number(user?.id)))
+    if (token && user) {
+      dispatch(fetchPlayerScores(user.id))
     }
   }, [dispatch, token, user])
 
