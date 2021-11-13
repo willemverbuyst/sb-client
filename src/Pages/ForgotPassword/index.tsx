@@ -12,7 +12,10 @@ const ForgotPassword: React.FC = (): ReactElement => {
 
   return (
     <Box>
-      <PageTitle title="Forgot Password?" color="secondary" />
+      <PageTitle
+        title="Forgot Password? Too bad, game over!!"
+        color="secondary"
+      />
       {isLoading ? (
         <ProgressComponent loadingText="Sending email..." />
       ) : (

@@ -1,4 +1,4 @@
-import { Grid, Link } from '@material-ui/core'
+import { Button, Grid } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import React, { ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -58,10 +58,9 @@ const LoginForm: React.FC = (): ReactElement => {
             />
           </Grid>
           <SubmitForm caption="LOG IN" color="primary" />
-          {/* eslint-disable-next-line */}
-          <Link href="#" onClick={HISTORY.gotoForgotPassword}>
+          <Button color="secondary" onClick={HISTORY.gotoForgotPassword}>
             Forgot Password?
-          </Link>
+          </Button>
         </form>
       </Grid>
     </Grid>

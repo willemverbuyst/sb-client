@@ -1,4 +1,4 @@
-import { Grid, Link } from '@material-ui/core'
+import { Button, Grid } from '@material-ui/core'
 import React, { ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
@@ -112,9 +112,9 @@ const EditProfileForm: React.FC<IProps> = ({
           </Grid>
           <SubmitForm caption="UPDATE PROFIEL" color="primary" />
           {/* eslint-disable-next-line */}
-          <Link href="#" onClick={HISTORY.gotoEditPassword}>
+          <Button color="secondary" onClick={HISTORY.gotoEditPassword}>
             Change Password
-          </Link>
+          </Button>
         </form>
       </Grid>
     </Grid>

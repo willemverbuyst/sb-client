@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { ReactElement } from 'react'
 
@@ -45,14 +45,9 @@ const SendEmailForm: React.FC = (): ReactElement => (
   //   }
   //   link={<Link href="/login">Back to login page?</Link>}
   // />
-  <>
-    <Box py={2}>
-      <Typography variant="h4">Too bad, game over!!</Typography>
-    </Box>
-    {/* eslint-disable-next-line */}
-    <Link href="#" onClick={HISTORY.gotoLogin}>
-      Back to login page
-    </Link>
-  </>
+
+  <Button color="primary" onClick={HISTORY.gotoLogin}>
+    Back to login page
+  </Button>
 )
 export default SendEmailForm
