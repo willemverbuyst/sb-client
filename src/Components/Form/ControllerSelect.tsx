@@ -46,8 +46,8 @@ const ControllerSelect = <
                 className: error ? classes.input : '',
               }}
             >
-              {options.map((option, i) => (
-                <MenuItem key={i} value={option.id}>
+              {options.map((option) => (
+                <MenuItem key={option.id} value={option.id}>
                   {option.name}
                 </MenuItem>
               ))}
