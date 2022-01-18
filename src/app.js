@@ -4,8 +4,6 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
 const { AppError } = require('./utils/error');
 const fixtureRouter = require('./api/routes/fixtureRoutes');
 const playerRouter = require('./api/routes/playerRoutes');
@@ -15,8 +13,6 @@ const teamRouter = require('./api/routes/teamRoutes');
 const userRouter = require('./api/routes/userRoutes');
 const getFixtures = require('./db/api-football/fixtures');
 const { errorControllers } = require('./api/controllers');
-
-const swaggerDocument = YAML.load('swagger.yml');
 
 const { errorController } = errorControllers;
 
@@ -69,11 +65,6 @@ app.use(`${BASE_URL}/predictions`, predictionRouter);
 app.use(`${BASE_URL}/scores`, scoreRouter);
 app.use(`${BASE_URL}/teams`, teamRouter);
 app.use(`${BASE_URL}/users`, userRouter);
-app.use(
-  `${BASE_URL}/api-docs`,
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument),
-);
 
 app.all('*', (req, _res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
