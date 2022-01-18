@@ -1,4 +1,6 @@
 node_modules/
 .env
 
-__dummy_*.js
+dummy_admin.js
+dummy_predictions.js
+dummy_users.js
