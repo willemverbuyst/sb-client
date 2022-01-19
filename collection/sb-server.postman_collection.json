@@ -1,0 +1,3118 @@
+{
+  "info": {
+    "_postman_id": "31c848fb-599d-4506-8bda-07c7803a9058",
+    "name": "sssb-server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "update user profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userName\": \"Jack\",\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Sparrow\",\n    \"email\": \"jack@sparrow.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/users/profile",
+              "host": ["{{URL}}"],
+              "path": ["users", "profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "forgot password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJwYXNjYWxAcGFzY2FsLmNvbSIsImlhdCI6MTYyNzIwMzcyMywiZXhwIjoxNjI3MjEwOTIzfQ.TpDS5vXzYeS2u-RY3Lw1el_JoX031wEIBv4PQmFx5Qk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"email\": \"pascal@pascal.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/users/forgotPassword",
+              "host": ["{{URL}}"],
+              "path": ["users", "forgotPassword"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reset password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJwYXNjYWxAcGFzY2FsLmNvbSIsImlhdCI6MTYyNzIwMzcyMywiZXhwIjoxNjI3MjEwOTIzfQ.TpDS5vXzYeS2u-RY3Lw1el_JoX031wEIBv4PQmFx5Qk",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{jwt}}.eyJ1c2VySWQiOiJwYXNjYWxAcGFzY2FsLmNvbSIsImlhdCI6MTYyNjUzMDM4MSwiZXhwIjoxNjI2NTM3NTgxfQ.RdM5_RehkbnLrebHFxA7DSsqdNqeqIVRfvuTieyFiSg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"password\": \"pascal1234\",\n   \"passwordConfirm\": \"pascal1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/users/resetPassword/1bb1f9cd600364a7bfd3c83d43bdb0fb76a0f690a6f4f61df6d917762f64950d",
+              "host": ["{{URL}}"],
+              "path": [
+                "users",
+                "resetPassword",
+                "1bb1f9cd600364a7bfd3c83d43bdb0fb76a0f690a6f4f61df6d917762f64950d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{jwt}}.eyJ1c2VySWQiOiJwYXNjYWxAcGFzY2FsLmNvbSIsImlhdCI6MTYyNjUzMDM4MSwiZXhwIjoxNjI2NTM3NTgxfQ.RdM5_RehkbnLrebHFxA7DSsqdNqeqIVRfvuTieyFiSg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"currentPassword\": \"jack123\",\n    \"newPassword\": \"EliudKipchoge\",\n    \"confirmPassword\": \"EliudKipchoge\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/users/changePassword",
+              "host": ["{{URL}}"],
+              "path": ["users", "changePassword"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Not logged in",
+      "item": [
+        {
+          "name": "get all players",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Status is fail\", function () {",
+                  "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                  "});",
+                  "",
+                  "pm.test(\"Message is 'You are not logged in!'\", function () {",
+                  "    pm.expect(jsonData.message).to.eql(\"You are not logged in!\")",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/players",
+              "host": ["{{URL}}"],
+              "path": ["players"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all teams",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Status is fail\", function () {",
+                  "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                  "});",
+                  "",
+                  "pm.test(\"Message is 'You are not logged in!'\", function () {",
+                  "    pm.expect(jsonData.message).to.eql(\"You are not logged in!\")",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/teams",
+              "host": ["{{URL}}"],
+              "path": ["teams"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get score totaltoto",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Status is fail\", function () {",
+                  "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                  "});",
+                  "",
+                  "pm.test(\"Message is 'You are not logged in!'\", function () {",
+                  "    pm.expect(jsonData.message).to.eql(\"You are not logged in!\")",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/scores/totaltoto",
+              "host": ["{{URL}}"],
+              "path": ["scores", "totaltoto"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get predictions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Status is fail\", function () {",
+                  "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                  "});",
+                  "",
+                  "pm.test(\"Message is 'You are not logged in!'\", function () {",
+                  "    pm.expect(jsonData.message).to.eql(\"You are not logged in!\")",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/predictions/player/:playerId",
+              "host": ["{{URL}}"],
+              "path": ["predictions", "player", ":playerId"],
+              "variable": [
+                {
+                  "key": "playerId",
+                  "value": "{{playerId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "post prediction - token expired",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Status is fail\", function () {",
+                  "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                  "});",
+                  "",
+                  "pm.test(\"Message is 'Your token has expired, please log in again!'\", function () {",
+                  "    pm.expect(jsonData.message).to.eql(\"Your token has expired, please log in again!\")",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenExpired}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"pGoalsHomeTeam\": 3,\n    \"pGoalsAwayTeam\": 6\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/predictions/707265",
+              "host": ["{{URL}}"],
+              "path": ["predictions", "707265"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Regular User",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "login user - missing email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"password\": \"jack123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login user - invalid email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid email address!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid email address!\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"jack@sparrow\",\n    \"password\": \"jack123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login user - unknown email",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 401\", function () {",
+                      "    pm.response.to.have.status(401);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'No user found with that email address and password!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"No user found with that email address and password!\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"unknown@email.com\",\n    \"password\": \"test\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login user - missing password",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{emailUser}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login user - wrong password",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 401\", function () {",
+                      "    pm.response.to.have.status(401);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'No user found with that email address and password!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"No user found with that email address and password!\")",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{emailUser}}\",\n    \"password\": \"{{wrongPassword}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login user - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "pm.environment.set(\"tokenPlayer\", jsonData.token);",
+                      "",
+                      "const playerId = jsonData.data.user.profile.id",
+                      "pm.environment.set(\"playerId\", playerId)",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Welcome back Gene'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Welcome back Gene\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{emailUser}}\",\n    \"password\": \"{{passwordUser}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - not admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 403\", function () {",
+                      "    pm.response.to.have.status(403);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'You must be an administrator for this request!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"You must be an administrator for this request!\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_player\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete player - not admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Status code is 403\", function () {",
+                      "    pm.response.to.have.status(403);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'You must be an administrator for this request!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"You must be an administrator for this request!\")",
+                      "});",
+                      "",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{playerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Scores",
+          "item": [
+            {
+              "name": "get score player - invalid param",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid player id!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid player id!\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "playerId"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score player - unknown player id",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Player with this id not found!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Player with this id not found!\")",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{unknownPlayerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score player - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const playerId = pm.environment.get(\"playerId\");",
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Get scores from the correct player\", function () {",
+                      "    pm.expect(jsonData.data.id).to.eql(playerId)",
+                      "})",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.at.least(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data in response has scores property\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"scores\")",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{playerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score round - invalid param",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid ound number!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid round number!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/rounds/:round",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "rounds", ":round"],
+                  "variable": [
+                    {
+                      "key": "round",
+                      "value": "1234"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score round - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.at.least(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data in response has a scores property!'\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"scores\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/rounds/:round",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "rounds", ":round"],
+                  "variable": [
+                    {
+                      "key": "round",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score totoround - invalid param",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid totoround number!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid totoround number!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/totorounds/:totoround",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "totorounds", ":totoround"],
+                  "variable": [
+                    {
+                      "key": "totoround",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score totoround - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.at.least(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data in response has a scores property!'\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"scores\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/totorounds/:totoround",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "totorounds", ":totoround"],
+                  "variable": [
+                    {
+                      "key": "totoround",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get score totaltoto - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.at.least(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data in response has a scores property!'\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"scores\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/scores/totaltoto",
+                  "host": ["{{URL}}"],
+                  "path": ["scores", "totaltoto"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Prediction",
+          "item": [
+            {
+              "name": "get predictions - invalid param",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid player id!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid player id!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/predictions/player/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", "player", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "playerId"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get predictions - unknown player id",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Player with this id not found!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Player with this id not found!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/predictions/player/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", "player", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{unknowPlayerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get predictions - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const playerId = pm.environment.get(\"playerId\");",
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.at.least(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data in response has fixtures property\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"fixtures\")",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/predictions/player/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", "player", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{playerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "post prediction - invaid param",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid fixture id!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid fixture id!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pGoalsHomeTeam\": 3,\n    \"pGoalsAwayTeam\": 6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/predictions/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "test_id"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "post prediction - fixture not found",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Fixture with this id not found!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Fixture with this id not found!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pGoalsHomeTeam\": 3,\n    \"pGoalsAwayTeam\": 6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/predictions/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "1234"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "post prediction",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "lastFixture = Number(pm.environment.get(\"lastFixture\"))",
+                      "",
+                      "pm.test(\"Status code is 201\", function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Fixture id in response is param id\", function () {",
+                      "    pm.expect(jsonData.data.prediction.fixtureId).to.eql(lastFixture)",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Your prediction has been posted.'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Your prediction has been posted.\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pGoalsHomeTeam\": 3,\n    \"pGoalsAwayTeam\": 6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/predictions/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "{{lastFixture}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "post prediction - invaid param Copy",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid fixture id!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid fixture id!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pGoalsHomeTeam\": 3,\n    \"pGoalsAwayTeam\": 6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/predictions/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "test_id"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "post prediction - fixture not found Copy",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Fixture with this id not found!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Fixture with this id not found!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pGoalsHomeTeam\": 3,\n    \"pGoalsAwayTeam\": 6\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/predictions/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "1234"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update prediction",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "lastFixture = Number(pm.environment.get(\"lastFixture\"))",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Fixture id in response is param id\", function () {",
+                      "    pm.expect(jsonData.data.prediction.fixtureId).to.eql(lastFixture)",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Your prediction has been updated.'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Your prediction has been updated.\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"pGoalsHomeTeam\": 1,\n    \"pGoalsAwayTeam\": 2\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/predictions/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["predictions", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "{{lastFixture}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Fixture",
+          "item": [
+            {
+              "name": "get fixture - fixtureId invalid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid fixture id!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid fixture id!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/fixtures/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["fixtures", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "test"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get fixture - fixture not found",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Fixture with this id not found!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Fixture with this id not found!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/fixtures/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["fixtures", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "11111"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get fixture - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Returns data with fixture and scores\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"fixture\");",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"scores\");",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/fixtures/:fixtureId",
+                  "host": ["{{URL}}"],
+                  "path": ["fixtures", ":fixtureId"],
+                  "variable": [
+                    {
+                      "key": "fixtureId",
+                      "value": "{{fixtureId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Player",
+          "item": [
+            {
+              "name": "get all players - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.above(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data has a players property!'\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"players\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/players",
+                  "host": ["{{URL}}"],
+                  "path": ["players"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Team",
+          "item": [
+            {
+              "name": "get all teams - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Results is at least one\", function () {",
+                      "    pm.expect(jsonData.results).to.be.above(0)",
+                      "});",
+                      "",
+                      "pm.test(\"Data has a teams property!'\", function () {",
+                      "    pm.expect(jsonData.data).to.haveOwnProperty(\"teams\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenPlayer}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/teams",
+                  "host": ["{{URL}}"],
+                  "path": ["teams"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "login admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "pm.environment.set(\"tokenAdmin\", jsonData.token);",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Welcome back the Philosopher'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Welcome back the Philosopher\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{emailAdmin}}\",\n    \"password\": \"{{passwordAdmin}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/users/login",
+                  "host": ["{{URL}}"],
+                  "path": ["users", "login"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Signup player",
+          "item": [
+            {
+              "name": "signup player - userName missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - firstName missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - lastName missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - email missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - email invalid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid email address!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid email address!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - phone number missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - phone number invalid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": 612345678,\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - totalToto missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - totalToto invalid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": \"true\",\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - teamId missing",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - teamId invalid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Input is missing or invalid!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Input is missing or invalid!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": \"1118\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - team not found",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Team with this id not found!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Team with this id not found!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 11\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - userName already exists",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'A user with that username already exsits, username should be unique!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"A user with that username already exsits, username should be unique!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"the Philosopher\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - email already exists",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'A user with that email already exsits, email should be unique!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"A user with that email already exsits, email should be unique!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_test\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"eliud@kipchoge.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "signup player - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "pm.environment.set(\"newPlayerId\", jsonData.data.player.id)",
+                      "",
+                      "pm.test(\"Status code is 201\", function () {",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'A new account is made for test_player.'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"A new account is made for test_player.\")",
+                      "});",
+                      "",
+                      "pm.test(\"There must be an id for the new player\", function () {",
+                      "    pm.expect(jsonData.data.player).to.haveOwnProperty(\"id\")",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userName\": \"test_player\",\n    \"firstName\": \"test\",\n    \"lastName\": \"player\",\n    \"email\": \"test@player.com\",\n    \"phoneNumber\": \"0612345678\",\n    \"totaalToto\": true,\n    \"teamId\": 1118\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/players/signup",
+                  "host": ["{{URL}}"],
+                  "path": ["players", "signup"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Delete player",
+          "item": [
+            {
+              "name": "delete player - OK",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is success\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"success\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Player has been removed.'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Player has been removed.\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{newPlayerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete player - playerId invalid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Status code is 422\", function () {",
+                      "    pm.response.to.have.status(422);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'This is not a valid player id'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"This is not a valid player id!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete player - no player found",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const jsonData = pm.response.json()",
+                      "",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Status is fail\", function () {",
+                      "    pm.expect(jsonData.status).to.eql(\"fail\")",
+                      "});",
+                      "",
+                      "pm.test(\"Message is 'Player with this id not founc!'\", function () {",
+                      "    pm.expect(jsonData.message).to.eql(\"Player with this id not found!\")",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{tokenAdmin}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/players/:playerId",
+                  "host": ["{{URL}}"],
+                  "path": ["players", ":playerId"],
+                  "variable": [
+                    {
+                      "key": "playerId",
+                      "value": "{{newPlayerId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
