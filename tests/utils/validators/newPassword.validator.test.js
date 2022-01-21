@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const { isValidNewPassword } = require('../../../src/utils/validators');
 
 describe('isValidNewPassword', () => {
@@ -15,20 +14,12 @@ describe('isValidNewPassword', () => {
   });
 
   test('returns false given arguments are the same', () => {
-    expect(
-      isValidNewPassword(
-        'currentPassword',
-        bcrypt.hashSync('currentPassword', Number(process.env.SALT_ROUNDS)),
-      ),
-    ).toBe(false);
+    expect(isValidNewPassword('currentPassword', 'currentPassword')).toBe(
+      false,
+    );
   });
 
   test('returns true given arguments are not the same', () => {
-    expect(
-      isValidNewPassword(
-        'newPassword',
-        bcrypt.hashSync('currentPassword', Number(process.env.SALT_ROUNDS)),
-      ),
-    ).toBe(true);
+    expect(isValidNewPassword('newPassword', 'currentPassword')).toBe(true);
   });
 });
