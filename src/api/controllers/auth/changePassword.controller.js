@@ -26,7 +26,7 @@ module.exports = catchAsync(async (req, res, next) => {
   }
 
   if (!isValidPassword(req.user, currentPassword)) {
-    next(new WrongPasswordError());
+    return next(new WrongPasswordError());
   }
 
   if (!isValidNewPassword(newPassword, currentPassword)) {
@@ -42,6 +42,6 @@ module.exports = catchAsync(async (req, res, next) => {
   return res.status(200).send({
     status: 'success',
     data: null,
-    message: 'Je wachtwoord is gewijzigd.',
+    message: 'Your password has been updated.',
   });
 });

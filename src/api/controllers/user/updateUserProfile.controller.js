@@ -53,6 +53,6 @@ module.exports = catchAsync(async (req, res, next) => {
     data: {
       user: { profile },
     },
-    message: 'Your profile hase been udpated.',
+    message: 'Your profile has been updated.',
   });
 });
