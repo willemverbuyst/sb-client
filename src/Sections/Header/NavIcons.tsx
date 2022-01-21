@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icon: {
       fontSize: '1.8rem',
-      marginLeft: '0.5rem',
-      marginRight: '0.5rem',
     },
     iconSet: {
       [theme.breakpoints.down('sm')]: {

@@ -1,7 +1,7 @@
 import './index.css'
 
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -12,7 +12,7 @@ import history from './history'
 import reportWebVitals from './reportWebVitals'
 import store from './store'
 
-const theme = createMuiTheme({
+const theme = createTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
