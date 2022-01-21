@@ -43,6 +43,7 @@ export const addPlayer = (
       dispatch(addNewPlayer(response.data.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -68,6 +69,7 @@ export const fetchAllPlayers =
 
       dispatch(storeAllPlayers(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -93,6 +95,7 @@ export const playerDelete =
       dispatch(deletePlayer(id))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)

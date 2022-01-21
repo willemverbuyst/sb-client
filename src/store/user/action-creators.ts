@@ -43,6 +43,7 @@ export const changePassword =
       )
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -88,6 +89,7 @@ export const editUserProfile = (
       dispatch(updateUserProfile(response.data.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -117,6 +119,7 @@ export const userLogIn =
       dispatch(logInSuccessUser(response.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -153,6 +156,7 @@ export const getUserWithStoredToken =
       })
       dispatch(tokenUserStillValid(response.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.message)
@@ -177,6 +181,7 @@ export const requestEmailForNewPassword =
 
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)

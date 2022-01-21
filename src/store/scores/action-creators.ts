@@ -28,6 +28,7 @@ export const fetchScoresFixture =
 
       dispatch(storeScoresFixture(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -52,6 +53,7 @@ export const fetchScoresRound =
 
       dispatch(storeScoresRound(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -76,6 +78,7 @@ export const fetchScoresTotalToto =
 
       dispatch(storeScoresTotalToto(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -100,6 +103,7 @@ export const fetchScoresTotoRound =
 
       dispatch(storeScoresTotoRound(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
@@ -125,6 +129,7 @@ export const fetchPlayerScores =
 
       dispatch(storePlayerScores(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)

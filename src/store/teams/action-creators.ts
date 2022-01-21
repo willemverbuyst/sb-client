@@ -21,6 +21,7 @@ const fetchAllTeams =
 
       dispatch(storeAllTeams(response.data.data))
       dispatch(appDoneLoading())
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response) {
         console.log(error.response.data.message)
