@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer')
 const expect = require('chai').expect
-const { click, getText, typeText } = require('../lib/helpers')
+const { click, getText, typeText } = require('../../lib/helpers')
 
-describe('Login with credentials', () => {
+describe('User login ', () => {
 	let browser
 	let page
 
@@ -19,7 +19,7 @@ describe('Login with credentials', () => {
 		await browser.close()
 	})
 
-	it('should login successful', async () => {
+	it('should login successfully with valid credentials', async () => {
 		await page.goto('http://localhost:3000/')
 		const title = await page.title()
 		const brand = await getText(page, 'h4')
@@ -44,7 +44,28 @@ describe('Login with credentials', () => {
 		expect(pageTitleProgramma).to.be.a('string', 'Programma')
 	})
 
-	it('should login successful by pressing enter', async () => {
+	it('should login unsuccessfully with invalid credentials', async () => {
+		await page.goto('http://localhost:3000/')
+		const title = await page.title()
+		const brand = await getText(page, 'h4')
+		const urlLogin = page.url()
+		const pageTitleLogin = await getText(page, 'h3')
+
+		expect(title).to.be.a('string', 'Erpasi')
+		expect(brand).to.be.a('string', 'ErPaSitoto')
+		expect(urlLogin).to.include('login')
+		expect(pageTitleLogin).to.be.a('string', 'Login')
+
+		await typeText(page, 'input[name=email]', 'jack@sparrow.com')
+		await typeText(page, 'input[name=password]', 'jack1234')
+		await click(page, 'button[type=submit]')
+		await page.waitForTimeout(2000)
+
+		expect(urlLogin).to.include('login')
+		expect(pageTitleLogin).to.be.a('string', 'Login')
+	})
+
+	it('should login successful with valid credentials by pressing enter', async () => {
 		await page.goto('http://localhost:3000/')
 		const title = await page.title()
 		const brand = await getText(page, 'h4')
