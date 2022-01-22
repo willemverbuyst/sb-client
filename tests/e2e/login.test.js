@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer')
 const expect = require('chai').expect
 const { click, getText, typeText } = require('../../lib/helpers')
 
-describe('User login ', () => {
+describe('Login', () => {
 	let browser
 	let page
 
@@ -47,6 +47,30 @@ describe('User login ', () => {
 		expect(pageTitleProgramma).to.be.a('string', 'Programma')
 	})
 
+	it('should login successfully with valid credentials by pressing enter', async () => {
+		await page.goto('http://localhost:3000/')
+		const title = await page.title()
+		const brand = await getText(page, 'h4')
+		const urlLogin = page.url()
+		const pageTitleLogin = await getText(page, 'h3')
+
+		expect(title).to.be.a('string', 'Erpasi')
+		expect(brand).to.be.a('string', 'ErPaSitoto')
+		expect(urlLogin).to.include('login')
+		expect(pageTitleLogin).to.be.a('string', 'Login')
+
+		await typeText(page, 'input[name=email]', 'jack@sparrow.com')
+		await typeText(page, 'input[name=password]', 'jack123')
+		await page.keyboard.press('Enter', { delay: 10 })
+		await page.waitForTimeout(2000)
+
+		const urlProgramma = page.url()
+		const pageTitleProgramma = await getText(page, 'h3')
+
+		expect(urlProgramma).to.include('programma')
+		expect(pageTitleProgramma).to.be.a('string', 'Programma')
+	})
+
 	it('should login unsuccessfully with invalid credentials', async () => {
 		await page.goto('http://localhost:3000/')
 		const title = await page.title()
@@ -73,29 +97,5 @@ describe('User login ', () => {
 
 		expect(urlLogin).to.include('login')
 		expect(pageTitleLogin).to.be.a('string', 'Login')
-	})
-
-	it('should login successful with valid credentials by pressing enter', async () => {
-		await page.goto('http://localhost:3000/')
-		const title = await page.title()
-		const brand = await getText(page, 'h4')
-		const urlLogin = page.url()
-		const pageTitleLogin = await getText(page, 'h3')
-
-		expect(title).to.be.a('string', 'Erpasi')
-		expect(brand).to.be.a('string', 'ErPaSitoto')
-		expect(urlLogin).to.include('login')
-		expect(pageTitleLogin).to.be.a('string', 'Login')
-
-		await typeText(page, 'input[name=email]', 'jack@sparrow.com')
-		await typeText(page, 'input[name=password]', 'jack123')
-		await page.keyboard.press('Enter', { delay: 10 })
-		await page.waitForTimeout(2000)
-
-		const urlProgramma = page.url()
-		const pageTitleProgramma = await getText(page, 'h3')
-
-		expect(urlProgramma).to.include('programma')
-		expect(pageTitleProgramma).to.be.a('string', 'Programma')
 	})
 })
