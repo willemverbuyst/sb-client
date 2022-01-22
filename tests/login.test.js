@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer')
 const expect = require('chai').expect
-const { click, getText } = require('../lib/helpers')
+const { click, getText, typeText } = require('../lib/helpers')
 
 describe('Login with credentials', () => {
 	let browser
@@ -31,8 +31,8 @@ describe('Login with credentials', () => {
 		expect(urlLogin).to.include('login')
 		expect(pageTitleLogin).to.be.a('string', 'Login')
 
-		await page.type('input[name=email]', 'jack@sparrow.com')
-		await page.type('input[name=password]', 'jack123')
+		await typeText(page, 'input[name=email]', 'jack@sparrow.com')
+		await typeText(page, 'input[name=password]', 'jack123')
 		await click(page, 'button[type=submit]')
 
 		await page.waitForTimeout(2000)
@@ -56,8 +56,8 @@ describe('Login with credentials', () => {
 		expect(urlLogin).to.include('login')
 		expect(pageTitleLogin).to.be.a('string', 'Login')
 
-		await page.type('input[name=email]', 'jack@sparrow.com')
-		await page.type('input[name=password]', 'jack123')
+		await typeText(page, 'input[name=email]', 'jack@sparrow.com')
+		await typeText(page, 'input[name=password]', 'jack123')
 		await page.keyboard.press('Enter', { delay: 10 })
 		await page.waitForTimeout(2000)
 
