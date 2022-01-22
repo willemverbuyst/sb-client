@@ -39,7 +39,7 @@ describe('Navigation', () => {
 		await browser.close()
 	})
 
-	it.only('should start on program page', async () => {
+	it('should start on program page', async () => {
 		const urlProgramma = page.url()
 		const pageTitleProgramma = await getText(page, 'h3')
 
@@ -47,7 +47,7 @@ describe('Navigation', () => {
 		expect(pageTitleProgramma).to.be.a('string', 'Programma')
 	})
 
-	it.only('should navigate to prediction page', async () => {
+	it('should navigate to prediction page', async () => {
 		await click(page, 'button[aria-label=prediction]')
 
 		const urlPrediction = page.url()
@@ -57,7 +57,7 @@ describe('Navigation', () => {
 		expect(pageTitlePrediction).to.be.a('string', 'Mijn voorspellingen')
 	})
 
-	it.only('should navigate to round page', async () => {
+	it('should navigate to round page', async () => {
 		await click(page, 'button[aria-label=round]')
 
 		const urlRound = page.url()
@@ -67,7 +67,7 @@ describe('Navigation', () => {
 		expect(pageTitleRound).to.include('Speelronde')
 	})
 
-	it.only('should navigate to toto round page', async () => {
+	it('should navigate to toto round page', async () => {
 		await click(page, 'button[aria-label="toto round"]')
 
 		const urlRound = page.url()
@@ -77,7 +77,7 @@ describe('Navigation', () => {
 		expect(pageTitleRound).to.include('Totoronde')
 	})
 
-	it.only('should navigate to total toto page', async () => {
+	it('should navigate to total toto page', async () => {
 		await click(page, 'button[aria-label="total toto"]')
 
 		const urlRound = page.url()
@@ -87,7 +87,7 @@ describe('Navigation', () => {
 		expect(pageTitleRound).to.be.a('string', 'Totaaltoto')
 	})
 
-	it.only('should navigate to my scores page', async () => {
+	it('should navigate to my scores page', async () => {
 		await click(page, 'button[aria-label="my scores"]')
 
 		const urlMyScores = page.url()
@@ -97,7 +97,7 @@ describe('Navigation', () => {
 		expect(pageTitleMyScores).to.be.a('string', 'Mijn scores')
 	})
 
-	it.only('should navigate to players page', async () => {
+	it('should navigate to players page', async () => {
 		await click(page, 'button[aria-label=players]')
 
 		const urlPlayers = page.url()
@@ -107,7 +107,7 @@ describe('Navigation', () => {
 		expect(pageTitlePlayers).to.be.a('string', 'Spelers')
 	})
 
-	it.only('should navigate to signup page', async () => {
+	it('should navigate to signup page', async () => {
 		await click(page, 'button[aria-label="sign up"]')
 
 		const urlSignup = page.url()
@@ -117,7 +117,7 @@ describe('Navigation', () => {
 		expect(pageTitleSignup).to.be.a('string', 'Sign up')
 	})
 
-	it.only('should navigate to profile page', async () => {
+	it('should navigate to profile page', async () => {
 		await click(page, 'button[aria-label="profile"]')
 
 		const urlProfile = page.url()
@@ -127,7 +127,7 @@ describe('Navigation', () => {
 		expect(pageTitleProfile).to.be.a('string', 'Profiel')
 	})
 
-	it.only('should navigate to rules page', async () => {
+	it('should navigate to rules page', async () => {
 		await click(page, 'button[aria-label="rules"]')
 
 		const urlRules = page.url()
