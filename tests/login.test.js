@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer')
 const expect = require('chai').expect
+const { click, getText } = require('../lib/helpers')
 
 describe('Login with credentials', () => {
 	let browser
@@ -21,12 +22,9 @@ describe('Login with credentials', () => {
 	it('should login successful', async () => {
 		await page.goto('http://localhost:3000/')
 		const title = await page.title()
-		const brand = await page.$eval('h4', element => element.textContent)
+		const brand = await getText(page, 'h4')
 		const urlLogin = page.url()
-		const pageTitleLogin = await page.$eval(
-			'h3',
-			element => element.textContent
-		)
+		const pageTitleLogin = await getText(page, 'h3')
 
 		expect(title).to.be.a('string', 'Erpasi')
 		expect(brand).to.be.a('string', 'ErPaSitoto')
@@ -35,14 +33,12 @@ describe('Login with credentials', () => {
 
 		await page.type('input[name=email]', 'jack@sparrow.com')
 		await page.type('input[name=password]', 'jack123')
-		await page.click('button[type=submit]')
+		await click(page, 'button[type=submit]')
+
 		await page.waitForTimeout(2000)
 
 		const urlProgramma = page.url()
-		const pageTitleProgramma = await page.$eval(
-			'h3',
-			element => element.textContent
-		)
+		const pageTitleProgramma = await getText(page, 'h3')
 
 		expect(urlProgramma).to.include('programma')
 		expect(pageTitleProgramma).to.be.a('string', 'Programma')
@@ -51,12 +47,9 @@ describe('Login with credentials', () => {
 	it('should login successful by pressing enter', async () => {
 		await page.goto('http://localhost:3000/')
 		const title = await page.title()
-		const brand = await page.$eval('h4', element => element.textContent)
+		const brand = await getText(page, 'h4')
 		const urlLogin = page.url()
-		const pageTitleLogin = await page.$eval(
-			'h3',
-			element => element.textContent
-		)
+		const pageTitleLogin = await getText(page, 'h3')
 
 		expect(title).to.be.a('string', 'Erpasi')
 		expect(brand).to.be.a('string', 'ErPaSitoto')
@@ -69,10 +62,7 @@ describe('Login with credentials', () => {
 		await page.waitForTimeout(2000)
 
 		const urlProgramma = page.url()
-		const pageTitleProgramma = await page.$eval(
-			'h3',
-			element => element.textContent
-		)
+		const pageTitleProgramma = await getText(page, 'h3')
 
 		expect(urlProgramma).to.include('programma')
 		expect(pageTitleProgramma).to.be.a('string', 'Programma')
