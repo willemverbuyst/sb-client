@@ -34,7 +34,9 @@ const Toast: React.FC = (): ReactElement | null => {
       autoHideDuration={3000}
       onClose={handleClose}
     >
-      <Alert severity={message.severity}>{message.text}</Alert>
+      <Alert severity={message.severity} id="displayAlert">
+        {message.text}
+      </Alert>
     </Snackbar>
   ) : null
 }
