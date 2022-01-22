@@ -35,6 +35,9 @@ describe('User login ', () => {
 		await typeText(page, 'input[name=password]', 'jack123')
 		await click(page, 'button[type=submit]')
 
+		const message = await getText(page, '#displayAlert')
+		expect(message).to.be.a('string', 'Welcome back Sparrow')
+
 		await page.waitForTimeout(2000)
 
 		const urlProgramma = page.url()
@@ -59,6 +62,13 @@ describe('User login ', () => {
 		await typeText(page, 'input[name=email]', 'jack@sparrow.com')
 		await typeText(page, 'input[name=password]', 'jack1234')
 		await click(page, 'button[type=submit]')
+
+		const message = await getText(page, '#displayAlert')
+		expect(message).to.be.a(
+			'string',
+			'No user found with that email address and password!'
+		)
+
 		await page.waitForTimeout(2000)
 
 		expect(urlLogin).to.include('login')
