@@ -1,0 +1,27 @@
+{
+	"name": "sb-e2e-tests",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest --forceExit",
+		"test:device": "./node_modules/mocha/bin/mocha --timeout=20000 ./tests/device.test.js",
+		"test:e2e": "./node_modules/mocha/bin/mocha --timeout=20000 ./tests/e2e"
+	},
+	"keywords": [],
+	"author": "Willem Verbuyst",
+	"license": "ISC",
+	"dependencies": {
+		"chai": "^4.3.4",
+		"jest": "^27.4.7",
+		"jest-puppeteer": "^6.0.3",
+		"mocha": "^9.1.4",
+		"puppeteer": "^13.1.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.16.10",
+		"@babel/preset-env": "^7.16.11",
+		"babel-jest": "^27.4.6",
+		"prettier": "^2.5.1"
+	}
+}
