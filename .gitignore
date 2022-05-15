@@ -24,3 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
+
+
+# dummy_admin.js
+# dummy_predictions.js
+# dummy_users.js
