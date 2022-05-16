@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from controllers.root import root_router
+from controllers.teams import teams_router
 
 
 origins = ["http://0.0.0.0:3000",
@@ -17,3 +18,4 @@ app.add_middleware(
 )
 
 app.include_router(root_router)
+app.include_router(teams_router)
