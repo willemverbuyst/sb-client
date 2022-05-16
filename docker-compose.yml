@@ -1,0 +1,17 @@
+version: '3'
+services:
+  service:
+    build:
+      context: './service'
+      dockerfile: 'Dockerfile'
+    stdin_open: true
+    volumes:
+      - ./service:/scripts
+    ports:
+      - 8000:8000
+    networks:
+      - toto-game-net
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+networks:
+  toto-game-net:
+    driver: bridge

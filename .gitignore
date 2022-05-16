@@ -25,6 +25,8 @@ yarn-error.log*
 
 .eslintcache
 
+**/__pycache__
+
 
 # dummy_admin.js
 # dummy_predictions.js
