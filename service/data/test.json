@@ -1,0 +1,14 @@
+{
+  "id": 707477,
+  "homeTeamId": 209,
+  "homeTeamName": "Feyenoord",
+  "homeTeamLogo": "https://media.api-sports.io/football/teams/209.png",
+  "goalsHomeTeam": "",
+  "awayTeamId": 415,
+  "awayTeamName": "Twente",
+  "awayTeamLogo": "https://media.api-sports.io/football/teams/415.png",
+  "goalsAwayTeam": "",
+  "eventTimeStamp": "%timestamp%add:0:1:16:30%%",
+  "round": "Regular Season - 34",
+  "status": "Not Started"
+}

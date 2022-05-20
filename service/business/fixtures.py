@@ -1,7 +1,15 @@
 import json
 
+from business.time_unctions import create_timestamps
+
+
+# def get_fixtures_from_json():
+#     with open('data/fixtures.json') as json_file:
+#         fixtures = json.load(json_file)
+#         return fixtures
 
 def get_fixtures_from_json():
-    with open('data/fixtures.json') as json_file:
+    with open('data/test.json') as json_file:
         fixtures = json.load(json_file)
-        return fixtures
+        updated_fixtures = create_timestamps(fixtures)
+        return updated_fixtures
