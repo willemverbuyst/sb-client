@@ -34,6 +34,6 @@ def create_timestamps(json_file):
                 days=int(placeholder[2]),
             )
 
-        buffer = buffer.replace(placeholder_string, str(ts))
+        buffer = buffer.replace(placeholder_string, str(int(ts.timestamp())))
 
     return json.loads(buffer)

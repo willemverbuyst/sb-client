@@ -1,6 +1,6 @@
 import json
 
-from business.time_unctions import create_timestamps
+from business.time_functions import create_timestamps
 
 
 # def get_fixtures_from_json():
