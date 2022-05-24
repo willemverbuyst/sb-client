@@ -1,7 +1,7 @@
 GET http://localhost:8000/ HTTP/1.1
 
 ###
-GET http://localhost:8000/teams HTTP/1.1
+GET http://localhost:8000/teams/search/Netherlands HTTP/1.1
 
 ###
 GET http://localhost:8000/fixtures HTTP/1.1
