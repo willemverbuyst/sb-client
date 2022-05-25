@@ -8,4 +8,4 @@ teams_router = APIRouter()
 @teams_router.get("/teams/search/Netherlands", tags=["teams"])
 async def get_teams() -> dict:
     teams = get_teams_from_json()
-    return {"api": teams}
+    return {"api": {"teams": teams}}

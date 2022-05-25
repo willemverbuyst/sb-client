@@ -13,15 +13,13 @@ const getTeams = async () => {
 
   const allTeams = response.data.api;
 
-  console.log('allTeams', allTeams);
+  const teams = allTeams.teams.map((team) => ({
+    id: team.team_id,
+    name: team.name,
+    logo: team.logo,
+  }));
 
-  // const teams = allTeams.teams.map((team) => ({
-  //   id: team.team_id,
-  //   name: team.name,
-  //   logo: team.logo,
-  // }));
-
-  // // console.log(teams);
+  console.log(teams);
 
   // await Team.bulkCreate(teams, {
   //   updateOnDuplicate: ['id'],
