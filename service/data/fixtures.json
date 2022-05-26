@@ -3084,13 +3084,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:0:16:30%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3102,13 +3102,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:0:20:0%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3120,13 +3120,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:0:21:0%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3138,13 +3138,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:1:14:30%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3156,13 +3156,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:1:16:0%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3174,13 +3174,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:1:19:0%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3192,13 +3192,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:2:10:00%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3210,13 +3210,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:2:13:30%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3228,13 +3228,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:0:2:16:0%%",
     "round": "Regular Season - 20",
     "status": "Not Started"
@@ -3246,13 +3246,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:0:16:30%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3264,13 +3264,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:0:20:0%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3282,13 +3282,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:0:21:0%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3300,13 +3300,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:1:14:30%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3318,13 +3318,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:1:16:0%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3336,13 +3336,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:1:19:0%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3354,13 +3354,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:2:10:00%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3372,13 +3372,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:2:13:30%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3390,13 +3390,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:1:2:16:0%%",
     "round": "Regular Season - 21",
     "status": "Not Started"
@@ -3408,13 +3408,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:0:16:30%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3426,13 +3426,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:0:20:0%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3444,13 +3444,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:0:21:0%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3462,13 +3462,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:1:14:30%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3480,13 +3480,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:1:16:0%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3498,13 +3498,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:1:19:0%%",
     "round": "Regular Season - 22",
     "status": "Time to be defined"
@@ -3516,13 +3516,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:2:10:00%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3534,13 +3534,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:2:13:30%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3552,13 +3552,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:2:2:16:0%%",
     "round": "Regular Season - 22",
     "status": "Not Started"
@@ -3570,13 +3570,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:0:16:30%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3588,13 +3588,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:0:20:0%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3606,13 +3606,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:0:21:0%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3624,13 +3624,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:1:14:30%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3642,13 +3642,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:1:16:0%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3660,13 +3660,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:1:19:0%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3678,13 +3678,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:2:10:00%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3696,13 +3696,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:2:13:30%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3714,13 +3714,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:3:2:16:0%%",
     "round": "Regular Season - 23",
     "status": "Not Started"
@@ -3732,13 +3732,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:0:16:30%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3750,13 +3750,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:0:20:0%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3768,13 +3768,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:0:21:0%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3786,13 +3786,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:1:14:30%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3804,13 +3804,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:1:16:0%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3822,13 +3822,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:1:19:0%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3840,13 +3840,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:2:10:00%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3858,13 +3858,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:2:13:30%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3876,13 +3876,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:4:2:16:0%%",
     "round": "Regular Season - 24",
     "status": "Not Started"
@@ -3894,13 +3894,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:0:16:30%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -3912,13 +3912,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:0:20:0%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -3930,13 +3930,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:0:21:0%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -3948,13 +3948,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:1:14:30%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -3966,13 +3966,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:1:16:0%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -3984,13 +3984,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:1:19:0%%",
     "round": "Regular Season - 25",
     "status": "Time to be defined"
@@ -4002,13 +4002,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:2:10:00%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -4020,13 +4020,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:2:13:30%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -4038,13 +4038,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:5:2:16:0%%",
     "round": "Regular Season - 25",
     "status": "Not Started"
@@ -4056,13 +4056,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:0:16:30%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4074,13 +4074,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:0:20:0%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4092,13 +4092,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:0:21:0%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4110,13 +4110,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:1:14:30%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4128,13 +4128,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:1:16:0%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4146,13 +4146,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:1:19:0%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4164,13 +4164,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:2:10:00%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4182,13 +4182,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:2:13:30%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4200,13 +4200,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:6:2:16:0%%",
     "round": "Regular Season - 26",
     "status": "Not Started"
@@ -4218,13 +4218,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:0:16:30%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4236,13 +4236,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:0:20:0%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4254,13 +4254,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:0:21:0%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4272,13 +4272,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:1:14:30%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4290,13 +4290,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:1:16:0%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4308,13 +4308,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:1:19:0%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4326,13 +4326,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:2:10:00%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4344,13 +4344,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:2:13:30%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4362,13 +4362,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:7:2:16:0%%",
     "round": "Regular Season - 27",
     "status": "Not Started"
@@ -4380,13 +4380,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:0:16:30%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4398,13 +4398,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:0:20:0%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4416,13 +4416,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:0:21:0%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4434,13 +4434,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:1:14:30%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4452,13 +4452,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:1:16:0%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4470,13 +4470,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:1:19:0%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4488,13 +4488,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:2:10:00%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4506,13 +4506,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:2:13:30%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4524,13 +4524,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:8:2:16:0%%",
     "round": "Regular Season - 28",
     "status": "Not Started"
@@ -4542,13 +4542,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:0:16:30%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4560,13 +4560,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:0:20:0%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4578,13 +4578,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:0:21:0%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4596,13 +4596,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:1:14:30%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4614,13 +4614,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:1:16:0%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4632,13 +4632,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:1:19:0%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4650,13 +4650,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:2:10:00%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4668,13 +4668,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:2:13:30%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4686,13 +4686,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:9:2:16:0%%",
     "round": "Regular Season - 29",
     "status": "Not Started"
@@ -4704,13 +4704,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:0:16:30%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4722,13 +4722,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:0:20:0%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4740,13 +4740,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:0:21:0%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4758,13 +4758,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:1:14:30%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4776,13 +4776,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:1:16:0%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4794,13 +4794,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:1:19:0%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4812,13 +4812,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:2:10:00%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4830,13 +4830,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:2:13:30%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4848,13 +4848,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:10:2:16:0%%",
     "round": "Regular Season - 30",
     "status": "Not Started"
@@ -4866,13 +4866,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:0:16:30%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4884,13 +4884,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:0:20:0%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4902,13 +4902,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:0:21:0%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4920,13 +4920,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:1:14:30%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4938,13 +4938,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:1:16:0%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4956,13 +4956,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:1:19:0%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4974,13 +4974,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:2:10:00%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -4992,13 +4992,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:2:13:30%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -5010,13 +5010,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:11:2:16:0%%",
     "round": "Regular Season - 31",
     "status": "Not Started"
@@ -5028,13 +5028,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:0:16:30%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5046,13 +5046,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:0:20:0%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5064,13 +5064,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:0:21:0%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5082,13 +5082,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:1:14:30%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5100,13 +5100,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:1:16:0%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5118,13 +5118,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:1:19:0%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5136,13 +5136,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:2:10:00%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5154,13 +5154,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:2:13:30%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5172,13 +5172,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:12:2:16:0%%",
     "round": "Regular Season - 32",
     "status": "Not Started"
@@ -5190,13 +5190,13 @@
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 210,
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:0:16:30%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5208,13 +5208,13 @@
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 195,
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:0:20:0%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5226,13 +5226,13 @@
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 200,
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:0:21:0%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5244,13 +5244,13 @@
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 209,
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:1:14:30%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5262,13 +5262,13 @@
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 413,
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:1:16:0%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5280,13 +5280,13 @@
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 206,
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:1:19:0%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5298,13 +5298,13 @@
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 193,
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:2:10:00%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5316,13 +5316,13 @@
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 202,
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:2:13:30%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5334,13 +5334,13 @@
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 201,
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:13:2:16:0%%",
     "round": "Regular Season - 33",
     "status": "Not Started"
@@ -5352,13 +5352,13 @@
       "team_name": "AZ Alkmaar",
       "logo": "https://media.api-sports.io/football/teams/201.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 417,
       "team_name": "Waalwijk",
       "logo": "https://media.api-sports.io/football/teams/417.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:0:16:30%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5370,13 +5370,13 @@
       "team_name": "Feyenoord",
       "logo": "https://media.api-sports.io/football/teams/209.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 415,
       "team_name": "Twente",
       "logo": "https://media.api-sports.io/football/teams/415.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:0:20:0%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5388,13 +5388,13 @@
       "team_name": "Groningen",
       "logo": "https://media.api-sports.io/football/teams/202.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 420,
       "team_name": "Cambuur",
       "logo": "https://media.api-sports.io/football/teams/420.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:0:21:0%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5406,13 +5406,13 @@
       "team_name": "Heracles",
       "logo": "https://media.api-sports.io/football/teams/206.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 426,
       "team_name": "Sparta Rotterdam",
       "logo": "https://media.api-sports.io/football/teams/426.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:1:14:30%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5424,13 +5424,13 @@
       "team_name": "Heerenveen",
       "logo": "https://media.api-sports.io/football/teams/210.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 410,
       "team_name": "GO Ahead Eagles",
       "logo": "https://media.api-sports.io/football/teams/410.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:1:16:0%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5442,13 +5442,13 @@
       "team_name": "NEC Nijmegen",
       "logo": "https://media.api-sports.io/football/teams/413.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 205,
       "team_name": "Fortuna Sittard",
       "logo": "https://media.api-sports.io/football/teams/205.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:1:19:0%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5460,13 +5460,13 @@
       "team_name": "PEC Zwolle",
       "logo": "https://media.api-sports.io/football/teams/193.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 197,
       "team_name": "PSV Eindhoven",
       "logo": "https://media.api-sports.io/football/teams/197.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:2:10:00%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5478,13 +5478,13 @@
       "team_name": "Vitesse",
       "logo": "https://media.api-sports.io/football/teams/200.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 194,
       "team_name": "Ajax",
       "logo": "https://media.api-sports.io/football/teams/194.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:2:13:30%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
@@ -5496,13 +5496,13 @@
       "team_name": "Willem II",
       "logo": "https://media.api-sports.io/football/teams/195.png"
     },
-    "goalsHomeTeam": "",
+    "goalsHomeTeam": null,
     "awayTeam": {
       "team_id": 207,
       "team_name": "Utrecht",
       "logo": "https://media.api-sports.io/football/teams/207.png"
     },
-    "goalsAwayTeam": "",
+    "goalsAwayTeam": null,
     "event_timestamp": "%timestamp%add:14:2:16:0%%",
     "round": "Regular Season - 34",
     "status": "Not Started"
