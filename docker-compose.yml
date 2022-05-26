@@ -2,8 +2,8 @@ version: '3'
 services:
   service:
     build:
-      context: './service'
-      dockerfile: 'Dockerfile'
+      context: ./service
+      dockerfile: Dockerfile
     stdin_open: true
     volumes:
       - ./service:/scripts
@@ -12,6 +12,14 @@ services:
     networks:
       - toto-game-net
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+  dev-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    env_file:
+      - ./server/.env
+    networks:
+      - toto-game-net
 networks:
   toto-game-net:
     driver: bridge

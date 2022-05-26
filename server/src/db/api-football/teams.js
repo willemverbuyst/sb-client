@@ -1,5 +1,5 @@
 const Axios = require('axios');
-// const Team = require('../models').team;
+const Team = require('../models').team;
 
 const getTeams = async () => {
   const response = await Axios.get(
@@ -21,9 +21,9 @@ const getTeams = async () => {
 
   console.log(teams);
 
-  // await Team.bulkCreate(teams, {
-  //   updateOnDuplicate: ['id'],
-  // });
+  await Team.bulkCreate(teams, {
+    updateOnDuplicate: ['id'],
+  });
 };
 
 module.exports = getTeams;
