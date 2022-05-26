@@ -1,37 +1,45 @@
 # What is this?
 
-A repo with a server and a PostgreSQL database setup, made with Express and Sequelize.
+An server and a postgreSQL database setup, made with Express and Sequelize.
 
-This is a refactored version of a project started/created by [Michelle Pesch](https://github.com/mipes4/sportsbetting_fe).
+# Set up :electric_plug:
 
-# Development version
+## Environment
 
-## Set up :electric_plug:
+3. Add a **.env** file at the server level of the project
 
-### Genreal
+4. Add the environment variables and update them with your credentials
 
-1. Clone the repo
-2. Run `npm i` to install the dependencies
+5. Football api: you have two options
 
-### Environment
+- Sign up and get an api key from the football api
+- Run the service in this repo (this service mocks a football api response for teams and fixtures)
+  > docker-compose up service
 
-3. Create a PostgreSQL database
-4. Sign up and get an api key from the football api
-5. Add a `.env` file at the root level of the project
-6. Add the environment variables and update them with your credentials
+6. Create a PostgreSQL database
 
-### Database
+- cloud based
+- with docker
+  > docker-compose up dev-db
+
+## Development data
 
 7. Update or create seed-files if needed
-8. Use the `generate_predictions.sh` bash script to generate dummy predictions if desired
-9. Migrate tables and relations with `npx sequelize-cli db:migrate`
-10. Import teams by running `node api-football/api-calls.js --importTeams`
-11. Import your seeds with `npx sequelize-cli db:seed:all`
-12. Use the scripts in the `post-release.sh` and/or `package.json` files to undo/redo/customize your setup.
+8. Use the bash scripts in server/src/db/dummy-data to generate dummy predictions if desired
+   > generate_predictions.sh
+9. Migrate tables and relations with
+   > npx sequelize-cli db:migrate
+10. Import teams by running
+    > node api-football/api-calls.js --importTeams
+11. Import your seeds with
+    > npx sequelize-cli db:seed:all
+12. Use the other scripts in server folder to undo/redo/customize your setup
+    > bash set-up-dev-db.sh
 
-### Server
+## Server
 
-13. Start server with `npm run dev`
+13. Start server with
+    > npm run dev
 
 ## Environment variables
 
@@ -39,55 +47,23 @@ NODE_ENV=development or production
 
 PORT=port number
 
-DATABASE_DEV=[Your postgres database (example)](https://www.elephantsql.com/)
+DATABASE_DEV=your postgres database
 
-API_URL=[The API URL from https://www.api-football.com/](https://www.api-football.com/)
+POSTGRES_USER=user
 
-API_KEY=[The API Key from https://www.api-football.com/](https://www.api-football.com/)
+POSTGRES_PASSWORD=password
 
-LEAGUE_ID=Check documentation football api
+POSTGRES_DB=name of database
 
-ID_FIRST_FIXTURE=Check documentation football api
+API_URL=https://www.api-football.com/ or local mock service
 
-ID_LAST_FIXTURE=Check documentation football api
+API_KEY=the API Key from https://www.api-football.com/ or generate a key for the mock service
 
-UPDATE_INTERVAL=7200000 #2hrs
+LEAGUE_ID=check documentation football api or the mocked one
 
-JWT_SECRET=string
+ID_FIRST_FIXTURE=check documentation football api or the mocked one
 
-JWT_EXPIRES_IN=time in ms
-
-SALT_ROUNDS=number
-
-EMAIL_USERNAME=email
-
-EMAIL_PASSWORD=password
-
-EMAIL_HOST=e.g. mailtrap
-
-EMAIL_PORT=port number
-
-# Production version
-
-## Set up :electric_plug
-
-1. Create a new project at your host
-2. Add a PostgreSQL database
-3. Add env variables
-4. Update post-release script to migrate tables and seed database
-5. Deploy the branch you have for production
-
-## Environment variables
-
-API_URL=[The API URL from https://www.api-football.com/](https://www.api-football.com/)
-
-API_KEY=[The API Key from https://www.api-football.com/](https://www.api-football.com/)
-
-LEAGUE_ID=Check documentation football api
-
-ID_FIRST_FIXTURE=Check documentation football api
-
-ID_LAST_FIXTURE=Check documentation football api
+ID_LAST_FIXTURE=check documentation football api or the mocked one
 
 UPDATE_INTERVAL=7200000 #2hrs
 
