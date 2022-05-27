@@ -9,7 +9,7 @@ app.use('/', (_req: Request, res: Response, _next: NextFunction) => {
 })
 
 const expressServer = app.listen(port, () =>
-  console.log(`Server is listening on port ${port}!`)
+  console.log(`Server is listening on port ${port}`)
 )
 
 const io = new Server(expressServer)
