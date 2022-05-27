@@ -23,7 +23,7 @@ TIMESTAMP=$(date +"%Y-%m-%dT%H:%M:%SZ")
 
 echo "[" > $NEW_FILE
 
-for i in {707179..707200}
+for i in {707179..707484}
 do
   for userId in "${ARRAY_WITH_UUIDS[@]:1}"
   do

@@ -1,6 +1,6 @@
 'use strict';
 
-const dummyPredictions = require('../dummy-data/dummy_predictions');
+const dummyPredictions = require('../dummy-data/dummy_predictions.json');
 
 module.exports = {
   up: async (queryInterface, Sequelize) =>
