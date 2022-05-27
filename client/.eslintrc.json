@@ -25,10 +25,7 @@
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "packageDir": "./", "devDependencies": true }
-    ],
+    "import/no-extraneous-dependencies": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "react/no-array-index-key": "off",

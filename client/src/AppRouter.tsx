@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import * as ROUTES from './constants/routes'
+import Chat from './Pages/Chat'
 import ForgotPassword from './Pages/ForgotPassword'
 import Login from './Pages/Login'
 import PageNotFound from './Pages/PageNotFound'
@@ -29,6 +30,7 @@ const AppRouter = (): JSX.Element => (
     <Route exact path={ROUTES.TOTO_ROUND} component={TotoRound} />
     <Route exact path={ROUTES.LOGIN} component={Login} />
     <Route exact path={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
+    <Route exact path={ROUTES.CHAT} component={Chat} />
     <Route exact path={ROUTES.PAGE_NOT_FOUND} component={PageNotFound} />
     <Route exact path={ROUTES.EDIT_PROFILE} component={EditProfile} />
     <Route exact path={ROUTES.EDIT_PASSWORD} component={EditPassword} />
