@@ -1,0 +1,3522 @@
+[
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707179,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707180,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707181,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707182,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707183,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707184,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707185,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707186,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707187,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707188,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707189,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707190,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707191,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707192,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707193,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707194,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707195,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707196,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 4,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707197,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 2,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 3,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 3,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707198,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 2,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 1,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 0,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 1,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 1,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 4,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 0,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707199,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 1,
+    "pGoalsAwayTeam": 0,
+    "userId": "c915ba49-922e-437c-b773-6bdd741ca047",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 1,
+    "userId": "93c7e7f5-2872-49e3-ab71-41fd563d21e6",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "22d37683-3230-4e63-a62e-73a5ed803027",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "5292b601-ae7d-4452-bf17-ce9bc76b4f1f",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 0,
+    "userId": "49b2617f-07f3-42df-83cf-4af50d83a771",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "1a3a6370-2164-448a-8daa-d3899b10e16a",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "c813a78e-7d19-4de8-aec3-1d2ea24609cd",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "89b840df-891f-43ca-a091-ec9af7e1e7bc",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 2,
+    "userId": "ff649a0f-b790-4e6c-b225-adae0ec0750f",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "85120075-b044-42dd-a6d9-dce07cad8068",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "6a9ed2d8-7e01-479f-8891-afee18e0e977",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 2,
+    "userId": "f7f131a9-0004-4e20-8b84-2e1a3f9ac08c",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 3,
+    "userId": "32220f5e-d0f5-4c83-8d5b-fe135efe3715",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 0,
+    "pGoalsAwayTeam": 4,
+    "userId": "1c911fa0-b203-44b8-988e-df71966b1c95",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 2,
+    "userId": "218c0e05-5de9-41b7-bd84-cda40e0a58d8",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 0,
+    "userId": "eb718ebc-b685-4893-b5bd-c8caffdb7c69",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 4,
+    "userId": "b470d02a-c14f-4ddd-b577-fded45cd602f",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 2,
+    "pGoalsAwayTeam": 4,
+    "userId": "376f68ac-d1fa-446d-8852-816c4b17b9e9",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 3,
+    "pGoalsAwayTeam": 3,
+    "userId": "68e1e19b-ad85-494e-be58-7262aa2f2477",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  },
+  {
+    "pGoalsHomeTeam": 4,
+    "pGoalsAwayTeam": 1,
+    "userId": "e6b576fb-319b-4ed6-abac-e308db97a61f",
+    "fixtureId": 707200,
+    "createdAt": "2022-05-27T06:10:20Z",
+    "updatedAt": "2022-05-27T06:10:20Z"
+  }
+]
