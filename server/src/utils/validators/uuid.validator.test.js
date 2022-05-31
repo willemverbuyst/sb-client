@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const { isValidUUID } = require('../../../src/utils/validators');
+const isValidUUID = require('./uuid.validator');
 
 describe('isValidUUID', () => {
   test('returns false given no argument', () => {

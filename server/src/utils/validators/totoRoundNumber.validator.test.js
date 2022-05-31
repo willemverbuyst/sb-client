@@ -1,5 +1,5 @@
-const { NUMBER_OF_TOTO_ROUNDS } = require('../../../src/constants/set-up-game');
-const { isValidTotoRoundNumber } = require('../../../src/utils/validators');
+const { NUMBER_OF_TOTO_ROUNDS } = require('../../constants/set-up-game');
+const isValidTotoRoundNumber = require('./totoRoundNumber.validator');
 
 describe('isValidRoundNUmber', () => {
   test('returns false given no argument', () => {

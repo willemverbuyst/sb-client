@@ -1,4 +1,4 @@
-const { isValidFixtureStatus } = require('../../../src/utils/validators');
+const isValidFixtureStatus = require('./fixtureStatus.validator');
 
 describe('isValidFixtureStatus', () => {
   test('returns false given an empty string', () => {
