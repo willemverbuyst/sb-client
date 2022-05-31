@@ -1,4 +1,4 @@
-const getNextMonday = require('../../../src/utils/helpers/getNextMonday.helper');
+const getNextMonday = require('./getNextMonday.helper');
 
 describe('getNextMonday.helpers', () => {
   describe('getNextMonday', () => {

@@ -1,4 +1,4 @@
-const { chunkArrayHelper } = require('../../../src/utils/helpers');
+const { chunkArrayHelper } = require('./index');
 
 describe('chunkArrayHelper', () => {
   test('should return an empty array when no arguments are passed', () => {

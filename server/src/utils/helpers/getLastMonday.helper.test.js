@@ -4,7 +4,7 @@ const {
   getNowAsTimeStamp,
   getTodayAsNumber,
   isTodayAMonday,
-} = require('../../../src/utils/helpers/getLastMonday.helpers');
+} = require('./getLastMonday.helper');
 
 describe('getLastMonday.helpers', () => {
   describe('getLastMondayAsTimeStamp', () => {
