@@ -1,4 +1,4 @@
-const { isValidFixtureId } = require('../../../src/utils/validators');
+const isValidFixtureId = require('./fixtureId.validator');
 
 describe('isValidFixtureId', () => {
   test('returns false given not a number', () => {

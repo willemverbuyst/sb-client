@@ -1,4 +1,4 @@
-const { isValidOpenToBet } = require('../../../src/utils/validators');
+const isValidOpenToBet = require('./openToBet.validator');
 
 describe('isValidOpenToBet', () => {
   test('returns false if current and event timestamp are equal', () => {

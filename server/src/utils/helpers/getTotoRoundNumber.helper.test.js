@@ -1,8 +1,8 @@
-const { getTotoRoundNumberHelper } = require('../../../src/utils/helpers');
+const getTotoRoundNumberHelper = require('./getTotoRoundNumber.helper');
 const {
   ROUNDS_PER_TOTO_ROUND,
   NUMBER_OF_TOTO_ROUNDS,
-} = require('../../../src/constants/set-up-game');
+} = require('../../constants/set-up-game');
 
 describe('getTotoRoundNumberHelper', () => {
   test('should return 1 if no argument provided', () => {

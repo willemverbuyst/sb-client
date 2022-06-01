@@ -1,4 +1,4 @@
-const { calculateScore } = require('../../../src/utils/score');
+const calculateScore = require('./calculateScore.function');
 
 describe('getWinner function', () => {
   test('returns 0 when missing arguments(4)', () => {

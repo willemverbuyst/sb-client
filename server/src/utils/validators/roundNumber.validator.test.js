@@ -1,5 +1,5 @@
-const { NUMBER_OF_ROUNDS } = require('../../../src/constants/set-up-game');
-const { isValidRoundNumber } = require('../../../src/utils/validators');
+const { NUMBER_OF_ROUNDS } = require('../../constants/set-up-game');
+const isValidRoundNumber = require('./roundNumber.validator');
 
 describe('isValidRoundNUmber', () => {
   test('returns false given no argument', () => {

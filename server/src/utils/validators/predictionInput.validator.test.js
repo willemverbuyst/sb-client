@@ -1,4 +1,4 @@
-const { isValidPredictionInput } = require('../../../src/utils/validators');
+const isValidPredictionInput = require('./predictionInput.validator');
 
 // TODO test for negative numbers
 

@@ -1,4 +1,4 @@
-const { isValidEmail } = require('../../../src/utils/validators');
+const isValidEmail = require('./email.validator');
 
 describe('isValidUUID', () => {
   test('returns false given no argument', () => {
