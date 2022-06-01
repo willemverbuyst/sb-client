@@ -5,9 +5,9 @@ import corsMiddleware from 'cors'
 const app: Application = express()
 const port = 9000
 
-app.use(corsMiddleware)
+app.use(corsMiddleware())
 
-app.use('/', (_req: Request, res: Response, _next: NextFunction) => {
+app.get('/', (_req: Request, res: Response, _next: NextFunction) => {
   res.status(200).send({ message: 'Testing root' })
 })
 
