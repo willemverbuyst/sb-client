@@ -5,14 +5,11 @@ from controllers.root import root_router
 from controllers.teams import teams_router
 
 
-origins = ["http://0.0.0.0:3000",
-           "http://localhost:3000", "http://frontend:3000"]
-
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

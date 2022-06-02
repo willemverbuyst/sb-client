@@ -20,6 +20,22 @@ services:
       - ./server/.env
     networks:
       - toto-game-net
+  chat:
+    build:
+      context: ./chat
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./chat/src:/home/node/app/src
+      - ./chat/nodemon.json:/home/node/app/nodemon.json
+    container_name: chat
+    expose:
+      - '9000'
+    ports:
+      - '9000:9000'
+    command: npm run dev
+    networks:
+      - toto-game-net
 networks:
   toto-game-net:
     driver: bridge
