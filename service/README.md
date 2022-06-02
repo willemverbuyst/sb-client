@@ -33,3 +33,11 @@ http://localhost:8000/docs
 > /teams
 
 > /fixtures
+
+## Environment
+
+Add a **.env** file at the service level of the project
+
+LEAGUE_ID=id used as param in url to get the fixtures
+
+API_KEY=create a fake api key

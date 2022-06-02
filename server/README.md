@@ -6,17 +6,17 @@ An server and a postgreSQL database setup, made with Express and Sequelize.
 
 ## Environment
 
-3. Add a **.env** file at the server level of the project
+1. Add a **.env** file at the server level of the project
 
-4. Add the environment variables and update them with your credentials
+2. Add the environment variables and update them with your credentials
 
-5. Football api: you have two options
+3. Football api: you have two options
 
 - Sign up and get an api key from the football api
 - Run the service in this repo (this service mocks a football api response for teams and fixtures)
   > docker-compose up service
 
-6. Create a PostgreSQL database
+4. Create a PostgreSQL database
 
 - cloud based
 - with docker
@@ -24,21 +24,21 @@ An server and a postgreSQL database setup, made with Express and Sequelize.
 
 ## Development data
 
-7. Update or create seed-files if needed
-8. Use the bash scripts in server/src/db/dummy-data to generate dummy predictions if desired
+5. Update or create seed-files if needed
+6. Use the bash scripts in server/src/db/dummy-data to generate dummy predictions if desired
    > generate_predictions.sh
-9. Migrate tables and relations with
+7. Migrate tables and relations with
    > npx sequelize-cli db:migrate
-10. Import teams by running
-    > node api-football/api-calls.js --importTeams
-11. Import your seeds with
-    > npx sequelize-cli db:seed:all
-12. Use the other scripts in server folder to undo/redo/customize your setup
+8. Import teams by running
+   > node api-football/api-calls.js --importTeams
+9. Import your seeds with
+   > npx sequelize-cli db:seed:all
+10. Use the other scripts in server folder to undo/redo/customize your setup
     > bash set-up-dev-db.sh
 
 ## Server
 
-13. Start server with
+11. Start server with
     > npm run dev
 
 ## Environment variables
