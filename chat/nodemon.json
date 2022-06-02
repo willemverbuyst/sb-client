@@ -1,6 +1,8 @@
 {
-  "ignore": ["**/*.spec.ts", "node_modules", "dist", ".git"],
-  "watch": ["src"],
-  "exec": "npm start",
-  "ext": "ts"
+  "ignore": ["**/*.spec.ts", "node_modules", "dist", "build", ".git"],
+  "verbose": true,
+  "watch": ["src/**/*.ts"],
+  "execMap": {
+    "ts": "node --inspect=0.0.0.0:9229 --nolazy -r ts-node/register"
+  }
 }
