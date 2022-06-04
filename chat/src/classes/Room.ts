@@ -3,7 +3,7 @@ export class Room {
   roomTitle: string
   namespace: string
   privateRoom: boolean
-  history: Array<string>
+  history: Array<{ [key: string]: any }>
 
   constructor(
     roomId: number,
@@ -17,7 +17,7 @@ export class Room {
     this.privateRoom = privateRoom
     this.history = []
   }
-  addMessage(message: string) {
+  addMessage(message: { [key: string]: any }) {
     this.history.push(message)
   }
   clearHistory() {

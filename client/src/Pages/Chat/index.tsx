@@ -6,8 +6,25 @@ import './styles.css'
 
 const ENDPOINT = 'http://127.0.0.1:9000'
 
+interface Room {
+  roomId: number
+  roomTitle: string
+  namespace: string
+  privateRoom: boolean
+  history: Array<{ [key: string]: number | string }>
+}
+
+interface Namespace {
+  id: number
+  img: string
+  nsTitle: string
+  endpoint: string
+  rooms: Array<Room>
+}
+
 const Chat: React.FC = (): ReactElement => {
   const [response, setResponse] = useState('')
+  const [listOfNamespaces, setListOfNamespaces] = useState<Array<Namespace>>([])
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT)
@@ -16,6 +33,10 @@ const Chat: React.FC = (): ReactElement => {
     })
     socket.emit('messageFromClient', {
       message: 'This is a message from the client',
+    })
+
+    socket.on('nsList', (list) => {
+      setListOfNamespaces(list)
     })
   }, [])
 
@@ -26,24 +47,11 @@ const Chat: React.FC = (): ReactElement => {
 
       <Grid container spacing={2}>
         <Grid item xs={1} className="namespaces">
-          <div className="namespaces" id="/wiki">
-            <img
-              alt="logo"
-              src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/103px-Wikipedia-logo-v2.svg.png"
-            />
-          </div>
-          <div className="namespaces" id="/mozilla">
-            <img
-              alt="logo"
-              src="https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png"
-            />
-          </div>
-          <div className="namespaces" id="/linux">
-            <img
-              alt="logo"
-              src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png"
-            />
-          </div>
+          {listOfNamespaces.map(({ img, endpoint }) => (
+            <div className="namespaces" id={endpoint}>
+              <img alt="logo" src={img} />
+            </div>
+          ))}
         </Grid>
         <Grid item xs={2} className="rooms">
           <h3>Rooms</h3>
