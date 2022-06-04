@@ -1,4 +1,6 @@
 import { Box, Grid } from '@material-ui/core'
+import Lock from '@material-ui/icons/Lock'
+import LockOpen from '@material-ui/icons/LockOpen'
 import React, { useState, useEffect, ReactElement } from 'react'
 import socketIOClient from 'socket.io-client'
 import PageTitle from '../../Components/Title/PageTitle'
@@ -41,7 +43,10 @@ const Chat: React.FC = (): ReactElement => {
     })
 
     const nsSocket = socketIOClient(`${ENDPOINT}/linux`)
-    nsSocket.on('nsRoomLoad', (rooms) => setListOfRooms(rooms))
+    nsSocket.on('nsRoomLoad', (rooms) => {
+      console.log(rooms)
+      setListOfRooms(rooms)
+    })
   }, [])
 
   const selectNamespace = (endpoint: string) => {
@@ -69,8 +74,11 @@ const Chat: React.FC = (): ReactElement => {
         <Grid item xs={2} className="rooms">
           <h3>Rooms</h3>
           <ul className="room-list">
-            {listOfRooms.map(({ roomTitle }) => (
-              <li>{roomTitle}</li>
+            {listOfRooms.map(({ privateRoom, roomTitle }) => (
+              <li>
+                {privateRoom ? <Lock /> : <LockOpen />}
+                {roomTitle}
+              </li>
             ))}
           </ul>
         </Grid>
