@@ -25,6 +25,7 @@ interface Namespace {
 const Chat: React.FC = (): ReactElement => {
   const [response, setResponse] = useState('')
   const [listOfNamespaces, setListOfNamespaces] = useState<Array<Namespace>>([])
+  const [listOfRooms, setListOfRooms] = useState<Array<Room>>([])
 
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT)
@@ -38,7 +39,14 @@ const Chat: React.FC = (): ReactElement => {
     socket.on('nsList', (list) => {
       setListOfNamespaces(list)
     })
+
+    const nsSocket = socketIOClient(`${ENDPOINT}/linux`)
+    nsSocket.on('nsRoomLoad', (rooms) => setListOfRooms(rooms))
   }, [])
+
+  const selectNamespace = (endpoint: string) => {
+    console.log('event', endpoint)
+  }
 
   return (
     <Box>
@@ -48,22 +56,22 @@ const Chat: React.FC = (): ReactElement => {
       <Grid container spacing={2}>
         <Grid item xs={1} className="namespaces">
           {listOfNamespaces.map(({ img, endpoint }) => (
-            <div className="namespaces" id={endpoint}>
+            <button
+              type="button"
+              className="namespaces"
+              id={endpoint}
+              onClick={() => selectNamespace(endpoint)}
+            >
               <img alt="logo" src={img} />
-            </div>
+            </button>
           ))}
         </Grid>
         <Grid item xs={2} className="rooms">
           <h3>Rooms</h3>
           <ul className="room-list">
-            <li>
-              <span className="glyphicon glyphicon-lock" />
-              Main Room
-            </li>
-            <li>
-              <span className="glyphicon glyphicon-globe" />
-              Meeting Room
-            </li>
+            {listOfRooms.map(({ roomTitle }) => (
+              <li>{roomTitle}</li>
+            ))}
           </ul>
         </Grid>
         <Grid item xs={9} className="chat-panel">
