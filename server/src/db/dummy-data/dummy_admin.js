@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+
 const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
 const admin = [
   {

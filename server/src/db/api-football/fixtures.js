@@ -23,16 +23,16 @@ const getFixtures = async () => {
     const fixtureData = response.data.api;
 
     const fixtures = fixtureData.fixtures.map((fixture) => ({
-      id: parseInt(fixture.fixture_id),
-      homeTeamId: parseInt(fixture.homeTeam.team_id),
+      id: Number(fixture.fixture_id),
+      homeTeamId: Number(fixture.homeTeam.team_id),
       homeTeamName: fixture.homeTeam.team_name,
       homeTeamLogo: fixture.homeTeam.logo,
       goalsHomeTeam: fixture.goalsHomeTeam,
-      awayTeamId: parseInt(fixture.awayTeam.team_id),
+      awayTeamId: Number(fixture.awayTeam.team_id),
       awayTeamName: fixture.awayTeam.team_name,
       awayTeamLogo: fixture.awayTeam.logo,
       goalsAwayTeam: fixture.goalsAwayTeam,
-      eventTimeStamp: parseInt(fixture.event_timestamp),
+      eventTimeStamp: Number(fixture.event_timestamp),
       round: fixture.round,
       status: fixture.status,
       updateAt: rightNow,
