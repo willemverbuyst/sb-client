@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { Dispatch, Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
@@ -45,7 +45,7 @@ export const changePassword =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -91,7 +91,7 @@ export const editUserProfile = (
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -121,7 +121,7 @@ export const userLogIn =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -158,7 +158,7 @@ export const getUserWithStoredToken =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -182,7 +182,7 @@ export const requestEmailForNewPassword =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)

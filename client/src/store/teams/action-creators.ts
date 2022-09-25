@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { Dispatch, Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
@@ -23,7 +23,7 @@ const fetchAllTeams =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)

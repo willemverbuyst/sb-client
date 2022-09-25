@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { Action, Dispatch } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
@@ -30,7 +30,7 @@ export const fetchScoresFixture =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -55,7 +55,7 @@ export const fetchScoresRound =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -80,7 +80,7 @@ export const fetchScoresTotalToto =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -105,7 +105,7 @@ export const fetchScoresTotoRound =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
@@ -131,7 +131,7 @@ export const fetchPlayerScores =
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof AxiosError && error.response?.data?.message) {
         message = error.response.data.message
       } else {
         message = String(error)
