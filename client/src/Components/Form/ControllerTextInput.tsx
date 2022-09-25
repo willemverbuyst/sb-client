@@ -10,7 +10,7 @@ import {
 
 import { useValidationStyles } from '../../theme/validation'
 
-interface IProps<T> extends UseControllerProps<T> {
+interface IProps<T extends FieldValues> extends UseControllerProps<T> {
   error: FieldError | undefined
   label: string
 }

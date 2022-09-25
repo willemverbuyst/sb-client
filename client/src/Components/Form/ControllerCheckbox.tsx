@@ -2,7 +2,7 @@ import { Checkbox, FormControlLabel, Grid } from '@material-ui/core'
 import React, { ReactElement } from 'react'
 import { Controller, FieldValues, UseControllerProps } from 'react-hook-form'
 
-interface IProps<T> extends UseControllerProps<T> {
+interface IProps<T extends FieldValues> extends UseControllerProps<T> {
   label: string
 }
 
