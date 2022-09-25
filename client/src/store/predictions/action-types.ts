@@ -3,6 +3,7 @@ import {
   IPostedPrediction,
   IUpdatedPrediction,
 } from '../../models/predictions.model'
+import { Action, ActionWithPayload } from '../types'
 
 export enum ActionType {
   STORE_CURRENT_ROUND = 'STORE_CURRENT_ROUND',
@@ -12,24 +13,22 @@ export enum ActionType {
   UPDATE_PREDICTION = 'UPDATE_PREDICTION',
 }
 
-export type PostPrediction = {
-  type: ActionType.POST_PREDICTION
-  payload: IPostedPrediction
-}
+export type PostPrediction = ActionWithPayload<
+  ActionType.POST_PREDICTION,
+  IPostedPrediction
+>
 
-export type ResetAllPredictions = {
-  type: ActionType.RESET_ALL_PREDICTIONS
-}
+export type ResetAllPredictions = Action<ActionType.RESET_ALL_PREDICTIONS>
 
-export type StoreAllPredictions = {
-  type: ActionType.STORE_ALL_PREDICTIONS
-  payload: IPlayerWithPredictions
-}
+export type StoreAllPredictions = ActionWithPayload<
+  ActionType.STORE_ALL_PREDICTIONS,
+  IPlayerWithPredictions
+>
 
-export type UpdatePrediction = {
-  type: ActionType.UPDATE_PREDICTION
-  payload: IUpdatedPrediction
-}
+export type UpdatePrediction = ActionWithPayload<
+  ActionType.UPDATE_PREDICTION,
+  IUpdatedPrediction
+>
 
 export type PredictionActions =
   | PostPrediction

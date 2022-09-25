@@ -1,4 +1,5 @@
 import { IAllPlayers, INewPlayer } from '../../models/player.model'
+import { Action, ActionWithPayload } from '../types'
 
 export enum ActionType {
   ADD_NEW_PLAYER = 'UPDATE_PREDICTION',
@@ -7,24 +8,19 @@ export enum ActionType {
   STORE_ALL_PLAYERS = 'STORE_ALL_PLAYERS',
 }
 
-export type AddNewPlayer = {
-  type: ActionType.ADD_NEW_PLAYER
-  payload: INewPlayer
-}
+export type AddNewPlayer = ActionWithPayload<
+  ActionType.ADD_NEW_PLAYER,
+  INewPlayer
+>
 
-export type DeletePlayer = {
-  type: ActionType.DELETE_PLAYER
-  payload: string
-}
+export type DeletePlayer = ActionWithPayload<ActionType.DELETE_PLAYER, string>
 
-export type ResetPlayers = {
-  type: ActionType.RESET_PLAYERS
-}
+export type ResetPlayers = Action<ActionType.RESET_PLAYERS>
 
-export type StoreAllPlayers = {
-  type: ActionType.STORE_ALL_PLAYERS
-  payload: IAllPlayers
-}
+export type StoreAllPlayers = ActionWithPayload<
+  ActionType.STORE_ALL_PLAYERS,
+  IAllPlayers
+>
 
 export type PlayersActions =
   | AddNewPlayer

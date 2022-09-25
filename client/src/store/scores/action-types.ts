@@ -1,3 +1,4 @@
+import { Action } from 'redux'
 import { IScoresPlayer } from '../../models/player.model'
 import {
   IFixtureWithPlayersWithScoreAndPrediction,
@@ -5,6 +6,7 @@ import {
   ITotalToto,
   ITotoRoundWithPlayersWithScore,
 } from '../../models/scores.models'
+import { ActionWithPayload } from '../types'
 
 export enum ActionType {
   RESET_ALL_SCORES = 'RESET_ALL_SCORES ',
@@ -16,38 +18,34 @@ export enum ActionType {
   STORE_PLAYER_SCORES = 'STORE_PLAYER_SCORES',
 }
 
-export type ResetAllScores = {
-  type: ActionType.RESET_ALL_SCORES
-}
+export type ResetAllScores = Action<ActionType.RESET_ALL_SCORES>
 
-export type ResetScoresPlayer = {
-  type: ActionType.RESET_SCORES_PLAYER
-}
+export type ResetScoresPlayer = Action<ActionType.RESET_SCORES_PLAYER>
 
-export type StoreScoresFixture = {
-  type: ActionType.STORE_SCORES_FIXTURE
-  payload: IFixtureWithPlayersWithScoreAndPrediction
-}
+export type StoreScoresFixture = ActionWithPayload<
+  ActionType.STORE_SCORES_FIXTURE,
+  IFixtureWithPlayersWithScoreAndPrediction
+>
 
-export type StoreScoresRound = {
-  type: ActionType.STORE_SCORES_ROUND
-  payload: IRoundWithPlayersWithScore
-}
+export type StoreScoresRound = ActionWithPayload<
+  ActionType.STORE_SCORES_ROUND,
+  IRoundWithPlayersWithScore
+>
 
-export type StoreScoresTotalToto = {
-  type: ActionType.STORE_SCORES_TOTAL_TOTO
-  payload: ITotalToto
-}
+export type StoreScoresTotalToto = ActionWithPayload<
+  ActionType.STORE_SCORES_TOTAL_TOTO,
+  ITotalToto
+>
 
-export type StoreScoresTotoRound = {
-  type: ActionType.STORE_SCORES_TOTO_ROUND
-  payload: ITotoRoundWithPlayersWithScore
-}
+export type StoreScoresTotoRound = ActionWithPayload<
+  ActionType.STORE_SCORES_TOTO_ROUND,
+  ITotoRoundWithPlayersWithScore
+>
 
-export type StorePlayerScores = {
-  type: ActionType.STORE_PLAYER_SCORES
-  payload: IScoresPlayer
-}
+export type StorePlayerScores = ActionWithPayload<
+  ActionType.STORE_PLAYER_SCORES,
+  IScoresPlayer
+>
 
 export type ScoresActions =
   | ResetAllScores
