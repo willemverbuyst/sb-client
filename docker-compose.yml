@@ -12,7 +12,7 @@ services:
     networks:
       - toto-game-net
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-  dev-db:
+  totodb:
     image: postgres:13
     ports:
       - 5434:5432
