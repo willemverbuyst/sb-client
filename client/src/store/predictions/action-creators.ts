@@ -30,15 +30,15 @@ export const getAllPredictions =
 
       dispatch(storeAllPredictions(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -69,15 +69,15 @@ export const changePrediction =
       dispatch(updatePrediction(response.data.data))
       dispatch(updateUserCurrentRound(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -109,15 +109,15 @@ export const postNewPrediction =
       dispatch(postPrediction(response.data.data))
       dispatch(updateUserCurrentRound(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }

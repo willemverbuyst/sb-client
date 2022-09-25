@@ -28,15 +28,15 @@ export const fetchScoresFixture =
 
       dispatch(storeScoresFixture(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -53,15 +53,15 @@ export const fetchScoresRound =
 
       dispatch(storeScoresRound(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -78,15 +78,15 @@ export const fetchScoresTotalToto =
 
       dispatch(storeScoresTotalToto(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -103,15 +103,15 @@ export const fetchScoresTotoRound =
 
       dispatch(storeScoresTotoRound(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -129,15 +129,15 @@ export const fetchPlayerScores =
 
       dispatch(storePlayerScores(response.data.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }

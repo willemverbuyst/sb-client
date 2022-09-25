@@ -43,15 +43,15 @@ export const changePassword =
       )
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -89,15 +89,15 @@ export const editUserProfile = (
       dispatch(updateUserProfile(response.data.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -119,15 +119,15 @@ export const userLogIn =
       dispatch(logInSuccessUser(response.data))
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -156,16 +156,15 @@ export const getUserWithStoredToken =
       })
       dispatch(tokenUserStillValid(response.data))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
-      userLogOut()(dispatch)
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
@@ -181,15 +180,15 @@ export const requestEmailForNewPassword =
 
       dispatch(setMessage(response.data.status, response.data.message))
       dispatch(appDoneLoading())
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      if (error.response) {
-        console.log(error.response.data.message)
-        dispatch(setMessage('error', error.response.data.message))
+    } catch (error: unknown) {
+      let message
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response.data.message
       } else {
-        console.log(error.message)
-        dispatch(setMessage('error', error.message))
+        message = String(error)
       }
+      console.log(message)
+      dispatch(setMessage('error', message))
       dispatch(appDoneLoading())
     }
   }
