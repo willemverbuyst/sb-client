@@ -9,25 +9,30 @@ This is a refactor/extension of/on a project started/created by fellow student [
 ```mermaid
 flowchart LR
   A[seed]
-  B[(data)]
-  C[server]
-  D(((client)))
-  E[e2e]
-  F[service]
-  G[Postman]
-  A-->B
+  B[(postgres database)]
+  C[nodejs-server]
+  D(((react-client)))
+  E[puppeteer e2e]
+  F[api with python]
+  G[postman tests]
+  H[micro-service with go]
+  I[(mobogo database)]
+  I<-->H
+  I<-->F
+  A-->C
+  G-->C
   C<-->B
   D<-->C
   E-->D
-  F-->B
-  G-->C
+  H-->D
+  F<-->C
 ```
 
 ---
 
 ## Quick start
 
-Start database and service
+Start database and mock soccer api
 
 > docker-compose up --build
 
@@ -42,3 +47,9 @@ Run server
 Run client
 
 > cd client && npm start
+
+Run go-sevice for rules
+
+> cd go-service && go run main.go
+
+Todo: implement mongodb
