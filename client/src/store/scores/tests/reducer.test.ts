@@ -50,7 +50,7 @@ describe('#scoresStateReducer', () => {
       pGoalsHomeTeam: 1,
       score: 10,
       name: 'test_user',
-      id: 1,
+      userId: 'id_1',
     }
     const fixtureWithScores: IFixtureWithPlayersWithScoreAndPrediction = {
       fixture,
@@ -59,7 +59,7 @@ describe('#scoresStateReducer', () => {
     const roundScores: IRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -71,14 +71,14 @@ describe('#scoresStateReducer', () => {
         {
           score: 10,
           name: 'test_user',
-          id: 1,
+          userId: 'id_1',
         },
       ],
     }
     const totoRoundScores: ITotoRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -86,7 +86,7 @@ describe('#scoresStateReducer', () => {
       totoRoundId: 1,
     }
     const scoresPlayer: IScoresPlayer = {
-      id: 1,
+      userId: 'id_1',
       scores: [[1], [3]],
       name: 'test_user',
     }
@@ -136,7 +136,7 @@ describe('#scoresStateReducer', () => {
       pGoalsHomeTeam: 1,
       score: 10,
       name: 'test_user',
-      id: 1,
+      userId: 'id_1',
     }
     const fixture: IFixtureWithPlayersWithScoreAndPrediction = {
       fixture: fetchedFixture,
@@ -174,7 +174,7 @@ describe('#scoresStateReducer', () => {
     const roundScores: IRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -212,7 +212,7 @@ describe('#scoresStateReducer', () => {
         {
           score: 10,
           name: 'test_user',
-          id: 1,
+          userId: 'id_1',
         },
       ],
     }
@@ -245,7 +245,7 @@ describe('#scoresStateReducer', () => {
     const totoRoundScores: ITotoRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -279,7 +279,7 @@ describe('#scoresStateReducer', () => {
       scoresPlayer: null,
     }
     const scoresPlayer: IScoresPlayer = {
-      id: 1,
+      userId: 'id_1',
       scores: [[1], [3]],
       name: 'test_user',
     }

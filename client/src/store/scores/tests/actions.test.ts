@@ -62,7 +62,7 @@ describe('#scoressState', () => {
       pGoalsHomeTeam: 1,
       score: 10,
       name: 'test_user',
-      id: 1,
+      userId: 'id_1',
     }
     const fixtureScores: IFixtureWithPlayersWithScoreAndPrediction = {
       fixture,
@@ -86,7 +86,7 @@ describe('#scoressState', () => {
     const roundScores: IRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -113,7 +113,7 @@ describe('#scoressState', () => {
         {
           score: 10,
           name: 'test_user',
-          id: 1,
+          userId: 'id_1',
         },
       ],
     }
@@ -136,7 +136,7 @@ describe('#scoressState', () => {
     const totoRoundScores: ITotoRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -161,7 +161,7 @@ describe('#scoressState', () => {
 
   describe('#storeScoresPlayer w/ sores', () => {
     const scoresPlayer: IScoresPlayer = {
-      id: 1,
+      userId: 'id_1',
       scores: [[1], [3]],
       name: 'test_user',
     }

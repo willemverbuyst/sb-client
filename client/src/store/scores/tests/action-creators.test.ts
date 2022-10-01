@@ -58,7 +58,7 @@ describe('#fetchScoresFixture', () => {
       pGoalsHomeTeam: 1,
       score: 10,
       name: 'test_user',
-      id: 1,
+      userId: 'id_1',
     }
     const fixtureScores: IFixtureWithPlayersWithScoreAndPrediction = {
       fixture,
@@ -90,7 +90,7 @@ describe('#fetchScoresRound', () => {
     const roundScores: IRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -122,7 +122,7 @@ describe('#fetchScoresTotalToto', () => {
         {
           score: 10,
           name: 'test_user',
-          id: 1,
+          userId: 'id_1',
         },
       ],
     }
@@ -152,7 +152,7 @@ describe('#fetchScoresTotoRound', () => {
     const totoRoundScores: ITotoRoundWithPlayersWithScore = {
       scores: [
         {
-          id: 1,
+          userId: 'id_1',
           score: 1,
           name: 'test_user',
         },
@@ -181,9 +181,9 @@ describe('#fetchScoresTotoRound', () => {
 
 describe('#fetchPlayerScores', () => {
   it('calls axios and returns a totoRound with scores', async () => {
-    const id = 1
+    const id = 'id_1'
     const scoresPlayer: IScoresPlayer = {
-      id: 1,
+      userId: 'id_1',
       scores: [[1], [3]],
       name: 'test_user',
     }
