@@ -13,20 +13,20 @@ import {
   getUserPredictions,
 } from '../barchart.functions'
 
-describe('#displayUserScores', () => {
+describe('displayUserScores', () => {
   describe('if given an array with usersWithScoresandPrediction', () => {
     const usersWithScoreAndPrediction: IPlayerWithScoreAndPrediction[] = [
       {
         score: 5,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
         pGoalsHomeTeam: 2,
         pGoalsAwayTeam: 1,
       },
       {
         score: 0,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
         pGoalsHomeTeam: 2,
         pGoalsAwayTeam: 1,
       },
@@ -38,59 +38,59 @@ describe('#displayUserScores', () => {
   })
 })
 
-describe('#getColorBars', () => {
+describe('getColorBars', () => {
   describe('if given an array with usersWithScores and an id', () => {
     const usersWithScoreOne: IPlayerWithScore[] = [
       {
         score: 5,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
       },
       {
         score: 0,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
       },
     ]
     const usersWithScoreTwo: IPlayerWithScore[] = [
       {
         score: 5,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
       },
       {
         score: 0,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
       },
     ]
     const usersWithScoreThree: IPlayerWithScore[] = [
       {
         score: 5,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
       },
       {
         score: 0,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
       },
     ]
 
     test('returns a array with colors for the charts', () => {
-      expect(getColorBars(usersWithScoreOne, 1)).toEqual([
+      expect(getColorBars(usersWithScoreOne, 'id_1')).toEqual([
         colorPrimary.color1,
         colorPrimary.color1,
       ])
-      expect(getColorBars(usersWithScoreTwo, 1)).toEqual([
+      expect(getColorBars(usersWithScoreTwo, 'id_1')).toEqual([
         colorSecondary.color1,
         colorSecondary.color1,
       ])
-      expect(getColorBars(usersWithScoreThree, 1)).toEqual([
+      expect(getColorBars(usersWithScoreThree, 'id_1')).toEqual([
         colorPrimary.color1,
         colorSecondary.color1,
       ])
-      expect(getColorBars(usersWithScoreThree, 1)).not.toEqual([
+      expect(getColorBars(usersWithScoreThree, 'id_1')).not.toEqual([
         colorSecondary.color1,
         colorSecondary.color1,
       ])
@@ -114,12 +114,12 @@ describe('#getHoverColorsBars', () => {
       {
         score: 5,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
       },
       {
         score: 0,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
       },
     ]
 
@@ -135,12 +135,12 @@ describe('#getScoresOfAllPlayes', () => {
       {
         score: 5,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
       },
       {
         score: 0,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
       },
     ]
 
@@ -169,14 +169,14 @@ describe('#getUserPredictions', () => {
       {
         score: 5,
         name: 'Sifan',
-        id: 1,
+        userId: 'id_1',
         pGoalsHomeTeam: 2,
         pGoalsAwayTeam: 1,
       },
       {
         score: 0,
         name: 'Bolt',
-        id: 2,
+        userId: 'id_2',
         pGoalsHomeTeam: 8,
         pGoalsAwayTeam: 4,
       },
