@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { IAllTeams } from '../../../models/toto.models'
 import { appDoneLoading, appLoading } from '../../appState/actions'
-import { fetchAllTeams } from '../action-creators'
+import fetchAllTeams from '../action-creators'
 import { storeAllTeams } from '../actions'
 
 const mockAxios = axios as jest.Mocked<typeof axios>
