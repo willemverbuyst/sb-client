@@ -54,7 +54,7 @@ describe('#IPredictionsStateReducer', () => {
     const newState: IPredictionsState = reducer(initialState, action)
 
     test('returns the initial state with all fixtures', () => {
-      expect(newState.allPredictions).not.toBeNull
+      expect(newState.allPredictions).not.toEqual(null)
       expect(newState.allPredictions?.fixtures.length).not.toBe(3)
       expect(newState).not.toEqual(initialState)
     })
@@ -138,7 +138,7 @@ describe('#IPredictionsStateReducer', () => {
     const newState: IPredictionsState = reducer(state, action)
 
     test('returns the state with prediction added', () => {
-      expect(newState.allPredictions).not.toBeNull
+      expect(newState.allPredictions).not.toEqual(null)
       expect(newState.allPredictions).toEqual(newAllPredictions)
     })
   })
@@ -186,7 +186,7 @@ describe('#IPredictionsStateReducer', () => {
     const newState: IPredictionsState = reducer(state, action)
 
     test('returns the initial state', () => {
-      expect(newState.allPredictions).toBeNull
+      expect(newState.allPredictions).toEqual(null)
       expect(newState).toEqual(initialState)
     })
   })
@@ -269,7 +269,7 @@ describe('#IPredictionsStateReducer', () => {
     const newState: IPredictionsState = reducer(state, action)
 
     test('returns the state with updated prediction', () => {
-      expect(newState.allPredictions).not.toBeNull
+      expect(newState.allPredictions).not.toEqual(null)
       expect(newState.allPredictions).toEqual(newAllPredictions)
     })
   })

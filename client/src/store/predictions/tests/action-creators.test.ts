@@ -102,7 +102,7 @@ describe('#getAllPredictions', () => {
         ],
       ],
     }
-    const playerId = 1
+    const playerId = 'id_1'
     const dispatch = jest.fn()
     const getState = jest.fn()
     const extraArg = 'extra'
