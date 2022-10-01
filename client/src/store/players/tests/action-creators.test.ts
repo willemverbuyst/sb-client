@@ -28,7 +28,7 @@ describe('#addPlayer', () => {
       admin: false,
       email: 'test@test.com',
       firstName: 'test_player',
-      id: 1,
+      id: '1',
       lastName: 'tst_player',
       phoneNumber: '123',
       team: {
@@ -80,7 +80,7 @@ describe('#fetchAllPlayers', () => {
           admin: false,
           email: 'test@test.com',
           firstName: 'test_player',
-          id: 1,
+          id: '1',
           lastName: 'tst_player',
           phoneNumber: '123',
           team: {
@@ -113,7 +113,7 @@ describe('#fetchAllPlayers', () => {
 
 describe('#playerDelete', () => {
   it('calls axios and returns a succes message', async () => {
-    const id = 1
+    const id = '1'
 
     const dispatch = jest.fn()
     const getState = jest.fn()

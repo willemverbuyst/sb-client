@@ -20,7 +20,7 @@ describe('#playersState', () => {
         admin: false,
         email: 'test@test.com',
         firstName: 'test_player',
-        id: 1,
+        id: '1',
         lastName: 'tst_player',
         phoneNumber: '123',
         team: {
@@ -51,7 +51,7 @@ describe('#playersState', () => {
           admin: false,
           email: 'test@test.com',
           firstName: 'test_player',
-          id: 1,
+          id: '1',
           lastName: 'tst_player',
           phoneNumber: '123',
           team: {
@@ -79,7 +79,7 @@ describe('#playersState', () => {
   })
 
   describe('#deletePlayer w/ players', () => {
-    const playerId = 1
+    const playerId = '1'
     const expected: DeletePlayer = {
       type: ActionType.DELETE_PLAYER,
       payload: playerId,

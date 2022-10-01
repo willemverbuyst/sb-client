@@ -15,7 +15,7 @@ describe('#playersStateReducer', () => {
         admin: false,
         email: 'test@test.com',
         firstName: 'test_player',
-        id: 1,
+        id: 'id_1',
         lastName: 'tst_player',
         phoneNumber: '123',
         team: {
@@ -40,7 +40,7 @@ describe('#playersStateReducer', () => {
       expect(newState).toEqual({
         players: null,
       })
-      expect(newState.players).toBeNull
+      expect(newState.players).toEqual(null)
       expect(newState).toEqual(initialState)
     })
   })
@@ -50,7 +50,7 @@ describe('#playersStateReducer', () => {
       admin: false,
       email: 'test@test.com',
       firstName: 'test_player',
-      id: 1,
+      id: 'id_1',
       lastName: 'tst_player',
       phoneNumber: '123',
       team: {
@@ -84,7 +84,7 @@ describe('#playersStateReducer', () => {
           admin: false,
           email: 'test@test.com',
           firstName: 'test_player',
-          id: 1,
+          id: 'id_1',
           lastName: 'tst_player',
           phoneNumber: '123',
           team: {
@@ -117,7 +117,7 @@ describe('#playersStateReducer', () => {
       admin: false,
       email: 'test@test.com',
       firstName: 'test_player1',
-      id: 1,
+      id: 'id_1',
       lastName: 'tst_player',
       phoneNumber: '123',
       team: {
@@ -132,7 +132,7 @@ describe('#playersStateReducer', () => {
       admin: false,
       email: 'test@test.com',
       firstName: 'test_player2',
-      id: 2,
+      id: 'id_2',
       lastName: 'tst_player',
       phoneNumber: '123',
       team: {
@@ -167,7 +167,7 @@ describe('#playersStateReducer', () => {
         admin: false,
         email: 'test@test.com',
         firstName: 'test_player',
-        id: 1,
+        id: 'id_1',
         lastName: 'tst_player',
         phoneNumber: '123',
         team: {
@@ -191,7 +191,7 @@ describe('#playersStateReducer', () => {
     const newState: IPlayersState = reducer(state, action)
 
     test('returns the state with no profile and no players', () => {
-      expect(newState.players).toBeNull
+      expect(newState.players).toBe(null)
       expect(newState).toEqual(initialState)
     })
   })
