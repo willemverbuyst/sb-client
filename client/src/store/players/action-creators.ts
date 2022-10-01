@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios'
 import { Action, Dispatch } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
-import API_URL from '../../config/apiUrl'
+import { API_URL } from '../../config/apiUrl'
 import { IProfileDetails } from '../../models/credentials.model'
 import { AppStateActions } from '../appState/action-types'
 import { appDoneLoading, appLoading, setMessage } from '../appState/actions'

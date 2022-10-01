@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios'
 import { Dispatch, Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
-import API_URL from '../../config/apiUrl'
+import { API_URL } from '../../config/apiUrl'
 import {
   ILogInCredentials,
   IProfileDetails,
