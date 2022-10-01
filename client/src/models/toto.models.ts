@@ -48,6 +48,4 @@ export type Round = IFixtureWithScoreAndPredictions[]
 
 export type TotoRound = Round[]
 
-export interface Goal {
-  [key: string]: number | null
-}
+export type Goal = number | null
