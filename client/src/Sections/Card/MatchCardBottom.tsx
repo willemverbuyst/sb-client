@@ -4,11 +4,12 @@ import React, { ReactElement, useState } from 'react'
 import CardButton from '../../Components/Button/CardButton'
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models'
 import * as UTILS from '../../utils'
+import { Display } from '../../utils'
 import MatchCardInput from './MatchCardInput'
 
 interface IProps {
   fixtureWithPrediction: IFixtureWithScoreAndPredictions
-  display: 'private' | 'public'
+  display: Display
   userNamePlayer: string
 }
 
@@ -28,19 +29,19 @@ const MatchCardBottom: React.FC<IProps> = ({
   const setShowInputToFalse = () => setShowInput(false)
   const setShowInputToTrue = () => setShowInput(true)
 
-  const prediction = UTILS.getPrediction(
+  const prediction = UTILS.getPrediction({
     pGoalsHomeTeam,
     pGoalsAwayTeam,
     status,
     eventTimeStamp,
     display,
-    userNamePlayer
-  )
+    userNamePlayer,
+  })
 
   const renderEditButton = (): ReactElement | null =>
     status !== 'Match Finished' &&
     !UTILS.hasBettingClosed(eventTimeStamp) &&
-    display === 'private' &&
+    display === Display.Private &&
     !showInput ? (
       <CardButton
         caption="Edit"
@@ -53,7 +54,7 @@ const MatchCardBottom: React.FC<IProps> = ({
   const renderInput = (): ReactElement | null =>
     status !== 'Match Finished' &&
     !UTILS.hasBettingClosed(eventTimeStamp) &&
-    display === 'private' ? (
+    display === Display.Private ? (
       <MatchCardInput
         fixtureWithPrediction={fixtureWithPrediction}
         hideInput={setShowInputToFalse}

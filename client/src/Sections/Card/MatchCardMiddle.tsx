@@ -51,12 +51,12 @@ const MatchCardMiddle: React.FC<IProps> = ({
       <LogoComponent alt={homeTeamName} source={homeTeamLogo} size="small" />
       <TextComponent
         xs={2}
-        content={UTILS.getOutCome(
+        content={UTILS.getOutCome({
           status,
           goalsHomeTeam,
           goalsAwayTeam,
-          eventTimeStamp
-        )}
+          eventTimeStamp,
+        })}
         justify="center"
       />
       <LogoComponent alt={awayTeamName} source={awayTeamLogo} size="small" />

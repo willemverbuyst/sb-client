@@ -10,8 +10,8 @@ export interface IFixture {
   awayTeamName: string
   createdAt: string
   eventTimeStamp: number
-  goalsAwayTeam: number | null
-  goalsHomeTeam: number | null
+  goalsAwayTeam: Goal
+  goalsHomeTeam: Goal
   homeTeamId: number
   homeTeamLogo: string
   homeTeamName: string
@@ -27,8 +27,8 @@ export interface IFixtureWithScore extends IFixture {
 
 export interface IFixtureWithScoreAndPredictions extends IFixtureWithScore {
   predictions: {
-    pGoalsAwayTeam: number | null
-    pGoalsHomeTeam: number | null
+    pGoalsAwayTeam: Goal
+    pGoalsHomeTeam: Goal
   }
 }
 
@@ -38,10 +38,7 @@ export interface ITeam {
   logo: string
 }
 
-export interface ITeamForSelector {
-  id: number
-  name: string
-}
+export type ITeamForSelector = Omit<ITeam, 'logo'>
 
 export interface IAllTeams {
   teams: ITeam[]
@@ -50,3 +47,7 @@ export interface IAllTeams {
 export type Round = IFixtureWithScoreAndPredictions[]
 
 export type TotoRound = Round[]
+
+export interface Goal {
+  [key: string]: number | null
+}

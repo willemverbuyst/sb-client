@@ -4,6 +4,7 @@ import React, { ReactElement } from 'react'
 
 import ChipComponent from '../../Components/Chip'
 import { IFixtureWithScoreAndPredictions } from '../../models/toto.models'
+import { Display } from '../../utils'
 import MatchCardBottom from './MatchCardBottom'
 import MatchCardMiddle from './MatchCardMiddle'
 import MatchCardTop from './MatchCardTop'
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface IProps {
   wedstrijdMetVoorspellingen: IFixtureWithScoreAndPredictions
-  display: 'private' | 'public'
+  display: Display
   userNamePlayer: string
 }
 

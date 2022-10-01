@@ -24,9 +24,14 @@ const MatchCardInput: React.FC<IProps> = ({
     id,
     predictions: { pGoalsAwayTeam, pGoalsHomeTeam },
   } = fixtureWithPrediction
+  const pGoalsHome: number =
+    typeof pGoalsHomeTeam === 'number' ? pGoalsHomeTeam : 0
+  const pGoalsAway: number =
+    typeof pGoalsAwayTeam === 'number' ? pGoalsAwayTeam : 0
+
   const dispatch = useDispatch()
-  const [pGoalsHT, setpGoalsHT] = useState<number>(pGoalsHomeTeam || 0)
-  const [pGoalsAT, setpGoalsAT] = useState<number>(pGoalsAwayTeam || 0)
+  const [pGoalsHT, setpGoalsHT] = useState<number>(pGoalsHome)
+  const [pGoalsAT, setpGoalsAT] = useState<number>(pGoalsAway)
 
   const handleSubmit = () => {
     const prediction: IPrediction = {
@@ -57,15 +62,9 @@ const MatchCardInput: React.FC<IProps> = ({
       <CardButton caption="Cancel" color="secondary" handleClick={hideInput} />
 
       <Grid item xs={8} container justify="center">
-        <NumberField
-          defaultValue={pGoalsHomeTeam || 0}
-          onChange={handleGoalsHomeTeam}
-        />
+        <NumberField defaultValue={pGoalsHome} onChange={handleGoalsHomeTeam} />
         &nbsp;&nbsp;-&nbsp;&nbsp;
-        <NumberField
-          defaultValue={pGoalsAwayTeam || 0}
-          onChange={handleGoalsAwayTeam}
-        />
+        <NumberField defaultValue={pGoalsAway} onChange={handleGoalsAwayTeam} />
       </Grid>
 
       <CardButton caption="Submit" color="primary" handleClick={handleSubmit} />
