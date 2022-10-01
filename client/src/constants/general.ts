@@ -1,1 +1,1 @@
-export const APP_NAME = 'ErPaSitoto'
+export const APP_NAME = 'TOTO GAME'

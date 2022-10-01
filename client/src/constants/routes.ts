@@ -2,8 +2,6 @@ export const HOME = '/'
 export const LOGIN = '/login'
 export const SIGN_UP = '/signup'
 export const FORGOT_PASSWORD = '/forgotPassword'
-export const CHAT = '/chat'
-
 export const ROUND = '/klassement/ronde/:ronde'
 export const TOTAL_TOTO = '/klassement/totaaltoto'
 export const TOTO_ROUND = '/klassement/totoronde/:totoronde'
