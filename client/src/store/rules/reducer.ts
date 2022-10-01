@@ -1,5 +1,5 @@
 import { Rule } from '../../models/rules.models'
-import { ActionType, TeamsActions } from './action-types'
+import { ActionType, RulesActions } from './action-types'
 
 export interface RulesState {
   rules: Rule[]
@@ -11,7 +11,7 @@ const initialState: RulesState = {
 
 const rulesReducer = (
   state = initialState,
-  action: TeamsActions
+  action: RulesActions
 ): RulesState => {
   switch (action.type) {
     case ActionType.STORE_ALL_RULES:

@@ -14,12 +14,10 @@ export const fetchAllRules =
   async (dispatch: Dispatch<AppStateActions | RulesActions>) => {
     dispatch(appLoading())
     try {
-      const token = localStorage.getItem('user_token')
-      const response = await axios.get(`${GO_SERVICE_URL}/rules`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await axios.get(`${GO_SERVICE_URL}/rules`)
 
-      dispatch(storeAllRules(response.data.data))
+      console.log('response.data', response.data)
+      dispatch(storeAllRules({ rules: response.data }))
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message

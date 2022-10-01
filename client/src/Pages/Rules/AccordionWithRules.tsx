@@ -3,9 +3,14 @@ import MuiAccordion from '@material-ui/core/Accordion'
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary'
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import ProgressComponent from '../../Components/Progress'
 
-import listOfRules from '../../constants/listOfRules'
+import { selectAppLoading } from '../../store/appState/selectors'
+import { fetchAllRules } from '../../store/rules/action-creators'
+import { selectRules } from '../../store/rules/selectors'
+import { selectToken } from '../../store/user/selectors'
 import AccordionAnswers from './AccordionAnswers'
 
 const Accordion = withStyles(() => ({
@@ -51,23 +56,37 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AccordionWithRules: React.FC = (): ReactElement => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+  const isLoading = useSelector(selectAppLoading)
+  const rules = useSelector(selectRules)
+  const token = useSelector(selectToken)
+
+  useEffect(() => {
+    if (token && !rules.length) {
+      dispatch(fetchAllRules())
+    }
+  }, [dispatch, rules, token])
 
   return (
     <Grid container justify="center" className={classes.content}>
-      <Grid item xs={12} md={8}>
-        {listOfRules.map((rule) => (
-          <Accordion key={rule.id}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography variant="overline">{rule.question}</Typography>
-            </AccordionSummary>
-            <AccordionAnswers answers={rule.answers} />
-          </Accordion>
-        ))}
-      </Grid>
+      {isLoading ? (
+        <ProgressComponent />
+      ) : (
+        <Grid item xs={12} md={8}>
+          {rules.map((rule) => (
+            <Accordion key={rule.id}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography variant="overline">{rule.question}</Typography>
+              </AccordionSummary>
+              <AccordionAnswers answers={rule.answers} />
+            </Accordion>
+          ))}
+        </Grid>
+      )}
     </Grid>
   )
 }

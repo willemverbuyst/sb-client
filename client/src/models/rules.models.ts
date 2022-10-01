@@ -8,3 +8,7 @@ export interface Rule {
   question: string
   answers: Answer[]
 }
+
+export interface Rules {
+  rules: Rule[]
+}
