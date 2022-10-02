@@ -16,16 +16,23 @@ flowchart LR
   F[api with python]
   G[postman tests]
   H[micro-service with go]
-  I[(mobogo database)]
+  I[(mongo database)]
+  J[seed with docker]
+  subgraph docker
+  B
+  F
+  J
+  I
+  J-->I
   I<-->H
-  I<-->F
+  end
+  B<-->C
+  F<-->C
   A-->C
-  G-->C
-  C<-->B
   D<-->C
   E-->D
   H-->D
-  F<-->C
+  G-->C
 ```
 
 ---
