@@ -10,17 +10,19 @@ services:
       - mongo-db:/data/db
     networks:
       - toto-game-net
-  # go-service:
-  #   build:
-  #     context: ./go-service
-  #     dockerfile: Dockerfile
-  #   container_name: toto-go-server
-  #   hostname: toto-go-service
-  #   ports:
-  #     - 9090:9090
-  #   depends_on:
-  #     - mongodb
-  #     - mongodb-seed
+  go-service:
+    build:
+      context: ./go-service
+      dockerfile: Dockerfile
+    container_name: toto-go-service
+    hostname: toto-go-service
+    ports:
+      - 9090:9090
+    depends_on:
+      - mongodb
+      - mongodb-seed
+    networks:
+      - toto-game-net
   mongodb-seed:
     build:
       context: ./mongodb-seed
