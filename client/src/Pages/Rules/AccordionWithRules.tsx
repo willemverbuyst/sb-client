@@ -65,13 +65,13 @@ const AccordionWithRules: React.FC = (): ReactElement => {
     if (token && !rules.length) {
       dispatch(fetchAllRules())
     }
-  }, [dispatch, rules, token])
+  }, [])
 
   return (
     <Grid container justify="center" className={classes.content}>
       {isLoading ? (
         <ProgressComponent />
-      ) : (
+      ) : rules.length ? (
         <Grid item xs={12} md={8}>
           {rules.map((rule) => (
             <Accordion key={rule.id}>
@@ -86,6 +86,8 @@ const AccordionWithRules: React.FC = (): ReactElement => {
             </Accordion>
           ))}
         </Grid>
+      ) : (
+        <Typography variant="overline">Geen regels gevonden</Typography>
       )}
     </Grid>
   )

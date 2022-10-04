@@ -2,11 +2,11 @@ import { Rule } from '../../models/rules.models'
 import { ActionType, RulesActions } from './action-types'
 
 export interface RulesState {
-  rules: Rule[]
+  rules: Rule[] | null
 }
 
 const initialState: RulesState = {
-  rules: [],
+  rules: null,
 }
 
 const rulesReducer = (

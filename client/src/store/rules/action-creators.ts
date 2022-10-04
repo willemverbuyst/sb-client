@@ -16,8 +16,7 @@ export const fetchAllRules =
     try {
       const response = await axios.get(`${GO_SERVICE_URL}/rules`)
 
-      console.log('response.data', response.data)
-      dispatch(storeAllRules({ rules: response.data }))
+      dispatch(storeAllRules({ rules: response.data.data.data }))
       dispatch(appDoneLoading())
     } catch (error: unknown) {
       let message
