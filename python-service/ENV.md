@@ -1,3 +1,0 @@
-LEAGUE_ID=
-
-API_KEY=
