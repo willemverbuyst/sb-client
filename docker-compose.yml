@@ -1,17 +1,5 @@
 version: '3'
 services:
-  service:
-    build:
-      context: ./python-service
-      dockerfile: Dockerfile
-    stdin_open: true
-    volumes:
-      - ./python-service:/scripts
-    ports:
-      - 8000:8000
-    networks:
-      - toto-game-net
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
   totodb:
     image: postgres:13
     ports:
