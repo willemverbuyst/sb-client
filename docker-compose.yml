@@ -11,6 +11,3 @@ services:
 networks:
   toto-game-net:
     driver: bridge
-
-volumes:
-  mongo-db:
