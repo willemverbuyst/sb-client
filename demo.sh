@@ -28,15 +28,7 @@ echo "{
   \"password\": \"$PASSWORD\"
 }" > $NEW_FILE
 
-echo "Spinning up the service for dummy soccer data"
-echo "Spinning up the postgress database"
-
-docker-compose up -d
-
-echo "Starting go service for rules"
-
-
-
+echo "Seeds for database are ready" 
 
 
 # exit 0
