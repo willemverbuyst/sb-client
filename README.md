@@ -20,9 +20,12 @@ An server and a postgreSQL database setup, made with Express and Sequelize.
 
 - cloud based
 - with docker
-  > docker-compose up dev-db
+  > docker-compose up totodb
 
 ## Development data
+
+> **Note**
+> set your environment to development in the dotenv
 
 5. Update or create seed-files if needed
 6. Use the bash scripts in server/src/db/dummy-data to generate dummy predictions if desired

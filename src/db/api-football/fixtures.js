@@ -15,7 +15,7 @@ const getFixtures = async () => {
       `${process.env.API_URL}/fixtures/league/${process.env.LEAGUE_ID}`,
       {
         headers: {
-          'X-RapidAPI-Key': process.env.API_KEY,
+          'toto-game-API-Key': process.env.API_KEY,
         },
       },
     );

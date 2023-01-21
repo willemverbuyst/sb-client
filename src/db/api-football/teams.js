@@ -6,7 +6,7 @@ const getTeams = async () => {
     `${process.env.API_URL}/teams/search/Netherlands`,
     {
       headers: {
-        'X-RapidAPI-Key': process.env.API_KEY,
+        'toto-game-API-Key': process.env.API_KEY,
       },
     },
   );
